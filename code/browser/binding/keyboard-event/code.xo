@@ -1,94 +1,94 @@
 
-force build-keyboard-event
-  cause invoke-constructor
-    mount constructor, |KeyboardEvent|
-    throw build
+task build-keyboard-event
+  call make
+    bind constructor, text <KeyboardEvent>
+    turn seed
 
-force get-alt-key
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |altKey|
-    throw build
-
-force get-code
-  start build
+task get-alt-key
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |code|
-    throw build
+    bind object, link build
+    bind aspect, text <altKey>
+    turn seed
 
-force get-ctrl-key
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |ctrlKey|
-    throw build
-
-force get-is-composing
-  start build
+task get-code
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |isComposing|
-    throw build
+    bind object, link build
+    bind aspect, text <code>
+    turn seed
 
-force get-key
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |key|
-    throw build
-
-force get-locale
-  start build
+task get-ctrl-key
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |locale|
-    throw build
+    bind object, link build
+    bind aspect, text <ctrlKey>
+    turn seed
 
-force get-location
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |location|
-    throw build
-
-force get-meta-key
-  start build
+task get-is-composing
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |metaKey|
-    throw build
+    bind object, link build
+    bind aspect, text <isComposing>
+    turn seed
 
-force get-repeat
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |repeat|
-    throw build
-
-force get-shift-key
-  start build
+task get-key
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |shiftKey|
-    throw build
+    bind object, link build
+    bind aspect, text <key>
+    turn seed
 
-force get-modifier-state
-  start build
-  start key-arg
+task get-locale
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <locale>
+    turn seed
+
+task get-location
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <location>
+    turn seed
+
+task get-meta-key
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <metaKey>
+    turn seed
+
+task get-repeat
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <repeat>
+    turn seed
+
+task get-shift-key
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <shiftKey>
+    turn seed
+
+task get-modifier-state
+  base build
+  base key-arg
 
   cause call-method
-    mount object, share build
-    mount method, |getModifierState|
-    mount factor, share key-arg
+    bind object, link build
+    bind method, text <getModifierState>
+    bind factor, link key-arg

@@ -1,211 +1,211 @@
 
-force build-range
-  cause invoke-constructor
-    mount constructor, |Range|
-    throw build
+task build-range
+  call make
+    bind constructor, text <Range>
+    turn seed
 
-force get-collapsed
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |collapsed|
-    throw build
-
-force get-common-ancestor-container
-  start build
+task get-collapsed
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |commonAncestorContainer|
-    throw build
+    bind object, link build
+    bind aspect, text <collapsed>
+    turn seed
 
-force get-end-container
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |endContainer|
-    throw build
-
-force get-end-offset
-  start build
+task get-common-ancestor-container
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |endOffset|
-    throw build
+    bind object, link build
+    bind aspect, text <commonAncestorContainer>
+    turn seed
 
-force get-start-container
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |startContainer|
-    throw build
-
-force get-start-offset
-  start build
+task get-end-container
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |startOffset|
-    throw build
+    bind object, link build
+    bind aspect, text <endContainer>
+    turn seed
 
-force set-start
-  start build
-  start start-node
-  start start-offset
+task get-end-offset
+  base build
 
-  cause call-method
-    mount object, share build
-    mount method, |setStart|
-    mount factor, share start-node
-    mount factor, share start-offset
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <endOffset>
+    turn seed
 
-force set-end
-  start build
-  start end-node
-  start end-offset
+task get-start-container
+  base build
 
-  cause call-method
-    mount object, share build
-    mount method, |setEnd|
-    mount factor, share end-node
-    mount factor, share end-offset
-    throw build
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <startContainer>
+    turn seed
 
-force set-start-before
-  start build
-  start reference-node
+task get-start-offset
+  base build
 
-  cause call-method
-    mount object, share build
-    mount method, |setStartBefore|
-    mount factor, share reference-node
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <startOffset>
+    turn seed
 
-force set-start-after
-  start build
-  start reference-node
+task set-start
+  base build
+  base start-node
+  base start-offset
 
   cause call-method
-    mount object, share build
-    mount method, |setStartAfter|
-    mount factor, share reference-node
+    bind object, link build
+    bind method, text <setStart>
+    bind factor, link start-node
+    bind factor, link start-offset
 
-force set-end-before
-  start build
-  start reference-node
-
-  cause call-method
-    mount object, share build
-    mount method, |setEndBefore|
-    mount factor, share reference-node
-
-force set-end-after
-  start build
-  start reference-node
+task set-end
+  base build
+  base end-node
+  base end-offset
 
   cause call-method
-    mount object, share build
-    mount method, |setEndAfter|
-    mount factor, share reference-node
+    bind object, link build
+    bind method, text <setEnd>
+    bind factor, link end-node
+    bind factor, link end-offset
+    turn seed
 
-force select-node
-  start build
-  start reference-node
-
-  cause call-method
-    mount object, share build
-    mount method, |selectNode|
-    mount factor, share reference-node
-
-force select-node-contents
-  start build
-  start reference-node
+task set-start-before
+  base build
+  base reference-node
 
   cause call-method
-    mount object, share build
-    mount method, |selectNodeContents|
-    mount factor, share reference-node
+    bind object, link build
+    bind method, text <setStartBefore>
+    bind factor, link reference-node
 
-force collapse
-  start build
-  start to-start
-
-  cause call-method
-    mount object, share build
-    mount method, |collapse|
-    mount factor, share to-start
-
-force clone-contents
-  start build
+task set-start-after
+  base build
+  base reference-node
 
   cause call-method
-    mount object, share build
-    mount method, |cloneContents|
+    bind object, link build
+    bind method, text <setStartAfter>
+    bind factor, link reference-node
 
-force delete-contents
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |deleteContents|
-
-force extract-contents
-  start build
+task set-end-before
+  base build
+  base reference-node
 
   cause call-method
-    mount object, share build
-    mount method, |extractContents|
+    bind object, link build
+    bind method, text <setEndBefore>
+    bind factor, link reference-node
 
-force insert-node
-  start build
-  start new-node
-
-  cause call-method
-    mount object, share build
-    mount method, |insertNode|
-    mount factor, share new-node
-
-force surround-contents
-  start build
-  start new-parent
+task set-end-after
+  base build
+  base reference-node
 
   cause call-method
-    mount object, share build
-    mount method, |surroundContents|
-    mount factor, share new-parent
+    bind object, link build
+    bind method, text <setEndAfter>
+    bind factor, link reference-node
 
-force compare-boundary-points
-  start build
-  start how
-  start source-range
-
-  cause call-method
-    mount object, share build
-    mount method, |compareBoundaryPoints|
-    mount factor, share how
-    mount factor, share source-range
-    throw build
-
-force clone-range
-  start build
+task select-node
+  base build
+  base reference-node
 
   cause call-method
-    mount object, share build
-    mount method, |cloneRange|
+    bind object, link build
+    bind method, text <selectNode>
+    bind factor, link reference-node
 
-force detach
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |detach|
-
-force to-string
-  start build
+task select-node-contents
+  base build
+  base reference-node
 
   cause call-method
-    mount object, share build
-    mount method, |toString|
+    bind object, link build
+    bind method, text <selectNodeContents>
+    bind factor, link reference-node
+
+task collapse
+  base build
+  base to-start
+
+  cause call-method
+    bind object, link build
+    bind method, text <collapse>
+    bind factor, link to-start
+
+task clone-contents
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <cloneContents>
+
+task delete-contents
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <deleteContents>
+
+task extract-contents
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <extractContents>
+
+task insert-node
+  base build
+  base new-node
+
+  cause call-method
+    bind object, link build
+    bind method, text <insertNode>
+    bind factor, link new-node
+
+task surround-contents
+  base build
+  base new-parent
+
+  cause call-method
+    bind object, link build
+    bind method, text <surroundContents>
+    bind factor, link new-parent
+
+task compare-boundary-points
+  base build
+  base how
+  base source-range
+
+  cause call-method
+    bind object, link build
+    bind method, text <compareBoundaryPoints>
+    bind factor, link how
+    bind factor, link source-range
+    turn seed
+
+task clone-range
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <cloneRange>
+
+task detach
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <detach>
+
+task to-string
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <toString>

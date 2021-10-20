@@ -1,24 +1,24 @@
 
-force build-federated-credential
-  start init
+task build-federated-credential
+  base init
 
-  cause invoke-constructor
-    mount constructor, |FederatedCredential|
-    mount factor, share init
-    throw build
+  call make
+    bind constructor, text <FederatedCredential>
+    bind factor, link init
+    turn seed
 
-force get-provider
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |provider|
-    throw build
-
-force get-protocol
-  start build
+task get-provider
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |protocol|
-    throw build
+    bind object, link build
+    bind aspect, text <provider>
+    turn seed
+
+task get-protocol
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <protocol>
+    turn seed

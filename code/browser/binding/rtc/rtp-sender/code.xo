@@ -1,70 +1,70 @@
 
-force get-dtmf
-  start build
+task get-dtmf
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |dtmf|
-    throw build
+    bind object, link build
+    bind aspect, text <dtmf>
+    turn seed
 
-force get-track
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |track|
-    throw build
-
-force get-transport
-  start build
+task get-track
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |transport|
-    throw build
+    bind object, link build
+    bind aspect, text <track>
+    turn seed
 
-force get-parameters
-  start build
+task get-transport
+  base build
 
-  cause call-method
-    mount object, share build
-    mount method, |getParameters|
-    throw build
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <transport>
+    turn seed
 
-force get-stats
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |getStats|
-    throw build
-
-force set-parameters
-  start build
-  start parameters
+task get-parameters
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |setParameters|
-    mount factor, share parameters
-    throw build
+    bind object, link build
+    bind method, text <getParameters>
+    turn seed
 
-force set-streams
-  start build
-  start media-stream
+task get-stats
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |setStreams|
-    mount factor, share media-stream
-    throw build
+    bind object, link build
+    bind method, text <getStats>
+    turn seed
 
-force replace-track
-  start build
-  start new-track
+task set-parameters
+  base build
+  base parameters
 
   cause call-method
-    mount object, share build
-    mount method, |replaceTrack|
-    mount factor, share new-track
-    throw build
+    bind object, link build
+    bind method, text <setParameters>
+    bind factor, link parameters
+    turn seed
+
+task set-streams
+  base build
+  base media-stream
+
+  cause call-method
+    bind object, link build
+    bind method, text <setStreams>
+    bind factor, link media-stream
+    turn seed
+
+task replace-track
+  base build
+  base new-track
+
+  cause call-method
+    bind object, link build
+    bind method, text <replaceTrack>
+    bind factor, link new-track
+    turn seed

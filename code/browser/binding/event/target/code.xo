@@ -1,51 +1,51 @@
 
-force build-event-target
-  cause invoke-constructor
-    mount constructor, |EventTarget|
-    throw build
+task build-event-target
+  call make
+    bind constructor, text <EventTarget>
+    turn seed
 
-force add-event-listener
-  start build
-  start type
-  start listener
-  start options
-  start use-capture
-  start use-capture
-  start wants-untrusted
-
-  cause call-method
-    mount object, share build
-    mount method, |addEventListener|
-    mount factor, share type
-    mount factor, share listener
-    mount factor, share options
-    mount factor, share use-capture
-    mount factor, share use-capture
-    mount factor, share wants-untrusted
-    throw build
-
-force remove-event-listener
-  start build
-  start type
-  start listener
-  start options
-  start use-capture
-  start use-capture
+task add-event-listener
+  base build
+  base type
+  base listener
+  base options
+  base use-capture
+  base use-capture
+  base wants-untrusted
 
   cause call-method
-    mount object, share build
-    mount method, |removeEventListener|
-    mount factor, share type
-    mount factor, share listener
-    mount factor, share options
-    mount factor, share use-capture
-    mount factor, share use-capture
-    throw build
+    bind object, link build
+    bind method, text <addEventListener>
+    bind factor, link type
+    bind factor, link listener
+    bind factor, link options
+    bind factor, link use-capture
+    bind factor, link use-capture
+    bind factor, link wants-untrusted
+    turn seed
 
-force dispatch-event
-  start build
+task remove-event-listener
+  base build
+  base type
+  base listener
+  base options
+  base use-capture
+  base use-capture
 
   cause call-method
-    mount object, share build
-    mount method, |dispatchEvent|
-    throw build
+    bind object, link build
+    bind method, text <removeEventListener>
+    bind factor, link type
+    bind factor, link listener
+    bind factor, link options
+    bind factor, link use-capture
+    bind factor, link use-capture
+    turn seed
+
+task dispatch-event
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <dispatchEvent>
+    turn seed

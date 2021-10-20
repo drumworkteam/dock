@@ -1,34 +1,34 @@
 
-force build-usb-configuration
-  start device
-  start configuration-value
+task build-usb-configuration
+  base device
+  base configuration-value
 
-  cause invoke-constructor
-    mount constructor, |USBConfiguration|
-    mount factor, share device
-    mount factor, share configuration-value
-    throw build
+  call make
+    bind constructor, text <USBConfiguration>
+    bind factor, link device
+    bind factor, link configuration-value
+    turn seed
 
-force get-configuration-value
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |configurationValue|
-    throw build
-
-force get-configuration-name
-  start build
+task get-configuration-value
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |configurationName|
-    throw build
+    bind object, link build
+    bind aspect, text <configurationValue>
+    turn seed
 
-force get-interfaces
-  start build
+task get-configuration-name
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |interfaces|
-    throw build
+    bind object, link build
+    bind aspect, text <configurationName>
+    turn seed
+
+task get-interfaces
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <interfaces>
+    turn seed

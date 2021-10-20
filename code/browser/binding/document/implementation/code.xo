@@ -1,46 +1,46 @@
 
-force create-document
-  start build
-  start namespace-uri
-  start qualified-name-str
-  start document-type
+task create-document
+  base build
+  base namespace-uri
+  base qualified-name-str
+  base document-type
 
   cause call-method
-    mount object, share build
-    mount method, |createDocument|
-    mount factor, share namespace-uri
-    mount factor, share qualified-name-str
-    mount factor, share document-type
+    bind object, link build
+    bind method, text <createDocument>
+    bind factor, link namespace-uri
+    bind factor, link qualified-name-str
+    bind factor, link document-type
 
-force create-document-type
-  start build
-  start qualified-name-str
-  start public-id
-  start system-id
-
-  cause call-method
-    mount object, share build
-    mount method, |createDocumentType|
-    mount factor, share qualified-name-str
-    mount factor, share public-id
-    mount factor, share system-id
-
-force create-html-document
-  start build
-  start title
+task create-document-type
+  base build
+  base qualified-name-str
+  base public-id
+  base system-id
 
   cause call-method
-    mount object, share build
-    mount method, |createHTMLDocument|
-    mount factor, share title
+    bind object, link build
+    bind method, text <createDocumentType>
+    bind factor, link qualified-name-str
+    bind factor, link public-id
+    bind factor, link system-id
 
-force has-feature
-  start build
-  start feature
-  start version
+task create-html-document
+  base build
+  base title
 
   cause call-method
-    mount object, share build
-    mount method, |hasFeature|
-    mount factor, share feature
-    mount factor, share version
+    bind object, link build
+    bind method, text <createHTMLDocument>
+    bind factor, link title
+
+task has-feature
+  base build
+  base feature
+  base version
+
+  cause call-method
+    bind object, link build
+    bind method, text <hasFeature>
+    bind factor, link feature
+    bind factor, link version

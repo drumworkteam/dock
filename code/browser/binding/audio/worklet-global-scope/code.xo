@@ -1,36 +1,36 @@
 
-force get-current-frame
-  start build
+task get-current-frame
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |currentFrame|
-    throw build
+    bind object, link build
+    bind aspect, text <currentFrame>
+    turn seed
 
-force get-current-time
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |currentTime|
-    throw build
-
-force get-sample-rate
-  start build
+task get-current-time
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |sampleRate|
-    throw build
+    bind object, link build
+    bind aspect, text <currentTime>
+    turn seed
 
-force register-processor
-  start build
-  start name
-  start processor-ctor
+task get-sample-rate
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <sampleRate>
+    turn seed
+
+task register-processor
+  base build
+  base name
+  base processor-ctor
 
   cause call-method
-    mount object, share build
-    mount method, |registerProcessor|
-    mount factor, share name
-    mount factor, share processor-ctor
-    throw build
+    bind object, link build
+    bind method, text <registerProcessor>
+    bind factor, link name
+    bind factor, link processor-ctor
+    turn seed

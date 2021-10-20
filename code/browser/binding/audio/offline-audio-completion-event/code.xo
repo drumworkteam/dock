@@ -1,18 +1,18 @@
 
-force build-offline-audio-completion-event
-  start type
-  start init
+task build-offline-audio-completion-event
+  base type
+  base init
 
-  cause invoke-constructor
-    mount constructor, |OfflineAudioCompletionEvent|
-    mount factor, share type
-    mount factor, share init
-    throw build
+  call make
+    bind constructor, text <OfflineAudioCompletionEvent>
+    bind factor, link type
+    bind factor, link init
+    turn seed
 
-force get-rendered-buffer
-  start build
+task get-rendered-buffer
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |renderedBuffer|
-    throw build
+    bind object, link build
+    bind aspect, text <renderedBuffer>
+    turn seed

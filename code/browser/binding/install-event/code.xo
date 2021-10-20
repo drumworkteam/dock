@@ -1,18 +1,18 @@
 
-force build-install-event
-  start type
-  start init
+task build-install-event
+  base type
+  base init
 
-  cause invoke-constructor
-    mount constructor, |InstallEvent|
-    mount factor, share type
-    mount factor, share init
-    throw build
+  call make
+    bind constructor, text <InstallEvent>
+    bind factor, link type
+    bind factor, link init
+    turn seed
 
-force get-active-worker
-  start build
+task get-active-worker
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |activeWorker|
-    throw build
+    bind object, link build
+    bind aspect, text <activeWorker>
+    turn seed

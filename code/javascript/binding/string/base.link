@@ -1,147 +1,147 @@
 
 fetch ../number
-  catch field unsigned-integer
-  catch field integer
+  catch form unsigned-integer
+  catch form integer
 
 field string
 
-force replace
-  start string, field string
-  start pattern
-  start replacer
+task replace
+  base string, form string
+  base pattern
+  base replacer
 
-  cause call-method
-    mount object, share string
-    mount method, |replace|
-    mount factor, share pattern
-    mount factor, share replacer
-    raise build
+  call call-method
+    bind object, link string
+    bind method, <replace>
+    bind factor, link pattern
+    bind factor, link replacer
+    turn seed
 
-force trim
-  start string, field string
+task trim
+  base string, form string
 
-  cause call-method
-    mount object, share string
-    mount method, |trim|
-    raise build
+  call call-method
+    bind object, link string
+    bind method, <trim>
+    turn seed
 
-force get-char-code-at
-  start string, field string
-  start index, field unsigned-integer
+task get-char-code-at
+  base string, form string
+  base index, form unsigned-integer
 
-  cause call-method
-    mount object, share string
-    mount method, |charCodeAt|
-    mount factor, share index
-    raise build
+  call call-method
+    bind object, link string
+    bind method, <charCodeAt>
+    bind factor, link index
+    turn seed
 
-force get-char-at
-  start string, field string
-  start index, field unsigned-integer
+task get-char-at
+  base string, form string
+  base index, form unsigned-integer
 
-  cause call-method
-    mount object, share string
-    mount method, |charAt|
-    mount factor, share index
-    raise build
+  call call-method
+    bind object, link string
+    bind method, <charAt>
+    bind factor, link index
+    turn seed
 
-force get-char-from-code
-  start code, field integer
+task get-char-from-code
+  base code, form integer
 
-  cause call-method
-    mount object, |String|
-    mount method, |fromCharCode|
-    mount factor, share code
-    raise build
+  call call-method
+    bind object, <String>
+    bind method, <fromCharCode>
+    bind factor, link code
+    turn seed
 
-force get-char-from-code-point
-  start code, field integer
+task get-char-from-code-point
+  base code, form integer
 
-  cause call-method
-    mount object, |String|
-    mount method, |fromCodePoint|
-    mount factor, share code
-    raise build
+  call call-method
+    bind object, <String>
+    bind method, <fromCodePoint>
+    bind factor, link code
+    turn seed
 
-force convert-to-lowercase
-  start string
+task convert-to-lowercase
+  base string
 
-  cause call-method
-    mount object, share string
-    mount method, |toLowerCase|
-    raise build
+  call call-method
+    bind object, link string
+    bind method, <toLowerCase>
+    turn seed
 
-force convert-to-uppercase
-  start string
+task convert-to-uppercase
+  base string
 
-  cause call-method
-    mount object, share string
-    mount method, |toUpperCase|
-    raise build
+  call call-method
+    bind object, link string
+    bind method, <toUpperCase>
+    turn seed
 
-force create
-  cause create-literal
-    mount literal, |''|
-    raise build
+task create
+  call create-literal
+    bind literal, <''>
+    turn seed
 
-force match
-  start string
-  start pattern
+task match
+  base string
+  base pattern
 
-  cause call-method
-    mount object, share string
-    mount method, |match|
-    mount factor, share pattern
-    raise build
+  call call-method
+    bind object, link string
+    bind method, <match>
+    bind factor, link pattern
+    turn seed
 
-force create-collator
-  cause invoke-constructor
-    mount constructor, |Intl.Collator|
+task create-collator
+  call invoke-constructor
+    bind constructor, <Intl.Collator>
 
-force get-collator-comparator
-  start collator
-  cause get-aspect
-    mount object, share collator
-    mount aspect, |compare|
+task get-collator-comparator
+  base collator
+  call get-aspect
+    bind object, link collator
+    bind aspect, <compare>
 
-force split
-  start string
-  start pattern
+task split
+  base string
+  base pattern
 
-  cause call-method
-    mount object, share string
-    mount method, |split|
-    mount factor, share pattern
-    raise build
+  call call-method
+    bind object, link string
+    bind method, <split>
+    bind factor, link pattern
+    turn seed
 
-force check-starts-with
-  start string
-  start pattern
+task check-starts-with
+  base string
+  base pattern
 
-  cause call-method
-    mount object, share string
-    mount method, |startsWith|
-    mount factor, share pattern
-    raise build
+  call call-method
+    bind object, link string
+    bind method, <startsWith>
+    bind factor, link pattern
+    turn seed
 
-force check-ends-with
-  start string
-  start pattern
+task check-ends-with
+  base string
+  base pattern
 
-  cause call-method
-    mount object, share string
-    mount method, |endsWith|
-    mount factor, share pattern
-    raise build
+  call call-method
+    bind object, link string
+    bind method, <endsWith>
+    bind factor, link pattern
+    turn seed
 
-force pad-start
-  start string
-  start pad-size
-  start pad-string
+task pad-start
+  base string
+  base pad-size
+  base pad-string
 
-  cause call-method
-    mount object, share string
-    mount method, |padStart|
-    mount factor, share pad-size
-    mount factor, share pad-string
-    raise build
+  call call-method
+    bind object, link string
+    bind method, <padStart>
+    bind factor, link pad-size
+    bind factor, link pad-string
+    turn seed

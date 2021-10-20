@@ -1,42 +1,42 @@
 
-force build-readable-stream-default-reader
-  start stream
+task build-readable-stream-default-reader
+  base stream
 
-  cause invoke-constructor
-    mount constructor, |ReadableStreamDefaultReader|
-    mount factor, share stream
-    throw build
+  call make
+    bind constructor, text <ReadableStreamDefaultReader>
+    bind factor, link stream
+    turn seed
 
-force get-closed
-  start build
+task get-closed
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |closed|
-    throw build
+    bind object, link build
+    bind aspect, text <closed>
+    turn seed
 
-force cancel
-  start build
-  start reason
-
-  cause call-method
-    mount object, share build
-    mount method, |cancel|
-    mount factor, share reason
-    throw build
-
-force read
-  start build
+task cancel
+  base build
+  base reason
 
   cause call-method
-    mount object, share build
-    mount method, |read|
-    throw build
+    bind object, link build
+    bind method, text <cancel>
+    bind factor, link reason
+    turn seed
 
-force release-lock
-  start build
+task read
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |releaseLock|
-    throw build
+    bind object, link build
+    bind method, text <read>
+    turn seed
+
+task release-lock
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <releaseLock>
+    turn seed

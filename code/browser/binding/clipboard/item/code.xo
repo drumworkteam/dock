@@ -1,26 +1,26 @@
 
-force build-clipboard-item
-  start clipboard-item-data
+task build-clipboard-item
+  base clipboard-item-data
 
-  cause invoke-constructor
-    mount constructor, |ClipboardItem|
-    mount factor, share clipboard-item-data
-    throw build
+  call make
+    bind constructor, text <ClipboardItem>
+    bind factor, link clipboard-item-data
+    turn seed
 
-force get-types
-  start build
+task get-types
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |types|
-    throw build
+    bind object, link build
+    bind aspect, text <types>
+    turn seed
 
-force get-type
-  start build
-  start type
+task get-type
+  base build
+  base type
 
   cause call-method
-    mount object, share build
-    mount method, |getType|
-    mount factor, share type
-    throw build
+    bind object, link build
+    bind method, text <getType>
+    bind factor, link type
+    turn seed

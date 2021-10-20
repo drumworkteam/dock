@@ -1,32 +1,32 @@
 
-force get-description
-  start build
+task get-description
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |description|
-    throw build
+    bind object, link build
+    bind aspect, text <description>
+    turn seed
 
-force get-duration
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |duration|
-    throw build
-
-force get-name
-  start build
+task get-duration
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |name|
-    throw build
+    bind object, link build
+    bind aspect, text <duration>
+    turn seed
 
-force to-j-s-o-n
-  start build
+task get-name
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <name>
+    turn seed
+
+task to-j-s-o-n
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |toJSON|
-    throw build
+    bind object, link build
+    bind method, text <toJSON>
+    turn seed

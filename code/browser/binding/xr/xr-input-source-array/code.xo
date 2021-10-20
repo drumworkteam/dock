@@ -1,44 +1,44 @@
 
-force get-length
-  start build
+task get-length
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |length|
-    throw build
+    bind object, link build
+    bind aspect, text <length>
+    turn seed
 
-force entries
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |entries|
-    throw build
-
-force for-each
-  start build
-  start callback
-  start this-arg
+task entries
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |forEach|
-    mount factor, share callback
-    mount factor, share this-arg
-    throw build
+    bind object, link build
+    bind method, text <entries>
+    turn seed
 
-force keys
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |keys|
-    throw build
-
-force values
-  start build
+task for-each
+  base build
+  base callback
+  base this-arg
 
   cause call-method
-    mount object, share build
-    mount method, |values|
-    throw build
+    bind object, link build
+    bind method, text <forEach>
+    bind factor, link callback
+    bind factor, link this-arg
+    turn seed
+
+task keys
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <keys>
+    turn seed
+
+task values
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <values>
+    turn seed

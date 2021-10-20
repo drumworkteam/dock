@@ -1,77 +1,77 @@
 
-force build-audio-buffer
-  start options
+task build-audio-buffer
+  base options
 
-  cause invoke-constructor
-    mount constructor, |AudioBuffer|
-    mount factor, share options
-    throw build
+  call make
+    bind constructor, text <AudioBuffer>
+    bind factor, link options
+    turn seed
 
-force get-sample-rate
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |sampleRate|
-    throw build
-
-force get-length
-  start build
+task get-sample-rate
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |length|
-    throw build
+    bind object, link build
+    bind aspect, text <sampleRate>
+    turn seed
 
-force get-duration
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |duration|
-    throw build
-
-force get-number-of-channels
-  start build
+task get-length
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |numberOfChannels|
-    throw build
+    bind object, link build
+    bind aspect, text <length>
+    turn seed
 
-force get-channel-data
-  start build
-  start channel
+task get-duration
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <duration>
+    turn seed
+
+task get-number-of-channels
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <numberOfChannels>
+    turn seed
+
+task get-channel-data
+  base build
+  base channel
 
   cause call-method
-    mount object, share build
-    mount method, |getChannelData|
-    mount factor, share channel
-    throw build
+    bind object, link build
+    bind method, text <getChannelData>
+    bind factor, link channel
+    turn seed
 
-force copy-from-channel
-  start build
-  start destination
-  start channel-number
-  start start-in-channel
-
-  cause call-method
-    mount object, share build
-    mount method, |copyFromChannel|
-    mount factor, share destination
-    mount factor, share channel-number
-    mount factor, share start-in-channel
-    throw build
-
-force copy-to-channel
-  start build
-  start source
-  start channel-number
-  start start-in-channel
+task copy-from-channel
+  base build
+  base destination
+  base channel-number
+  base start-in-channel
 
   cause call-method
-    mount object, share build
-    mount method, |copyToChannel|
-    mount factor, share source
-    mount factor, share channel-number
-    mount factor, share start-in-channel
+    bind object, link build
+    bind method, text <copyFromChannel>
+    bind factor, link destination
+    bind factor, link channel-number
+    bind factor, link start-in-channel
+    turn seed
+
+task copy-to-channel
+  base build
+  base source
+  base channel-number
+  base start-in-channel
+
+  cause call-method
+    bind object, link build
+    bind method, text <copyToChannel>
+    bind factor, link source
+    bind factor, link channel-number
+    bind factor, link start-in-channel

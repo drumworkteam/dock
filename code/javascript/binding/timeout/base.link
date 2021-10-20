@@ -1,24 +1,24 @@
 
 fetch ../number
-  catch field integer-32
+  catch form integer-32
 fetch ../function
-  catch field function
+  catch form function
 
-force create
-  start timeout, field integer-32
-  start callback, field function
+task create
+  base timeout, form integer-32
+  base callback, form function
 
-  cause call-method
-    mount object, |window|
-    mount method, |setTimeout|
-    mount factor, share callback
-    mount factor, share timeout
-    raise build
+  call call-method
+    bind object, <window>
+    bind method, <setTimeout>
+    bind factor, link callback
+    bind factor, link timeout
+    turn seed
 
-force remove
-  start id, field integer-32
+task remove
+  base id, form integer-32
 
-  cause call-method
-    mount object, |window|
-    mount method, |clearTimeout|
-    mount factor, share id
+  call call-method
+    bind object, <window>
+    bind method, <clearTimeout>
+    bind factor, link id

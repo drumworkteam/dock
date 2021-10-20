@@ -1,56 +1,56 @@
 
-force build-static-range
-  start range-spec
+task build-static-range
+  base range-spec
 
-  cause invoke-constructor
-    mount constructor, |StaticRange|
-    mount factor, share range-spec
-    throw build
+  call make
+    bind constructor, text <StaticRange>
+    bind factor, link range-spec
+    turn seed
 
-force get-collapsed
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |collapsed|
-    throw build
-
-force get-end-container
-  start build
+task get-collapsed
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |endContainer|
-    throw build
+    bind object, link build
+    bind aspect, text <collapsed>
+    turn seed
 
-force get-end-offset
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |endOffset|
-    throw build
-
-force get-start-container
-  start build
+task get-end-container
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |startContainer|
-    throw build
+    bind object, link build
+    bind aspect, text <endContainer>
+    turn seed
 
-force get-start-offset
-  start build
+task get-end-offset
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |startOffset|
-    throw build
+    bind object, link build
+    bind aspect, text <endOffset>
+    turn seed
 
-force to-range
-  start build
+task get-start-container
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <startContainer>
+    turn seed
+
+task get-start-offset
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <startOffset>
+    turn seed
+
+task to-range
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |toRange|
-    throw build
+    bind object, link build
+    bind method, text <toRange>
+    turn seed

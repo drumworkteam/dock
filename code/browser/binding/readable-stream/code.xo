@@ -1,70 +1,70 @@
 
-force build-readable-stream
-  start underlying-source
-  start queuing-strategy
+task build-readable-stream
+  base underlying-source
+  base queuing-strategy
 
-  cause invoke-constructor
-    mount constructor, |ReadableStream|
-    mount factor, share underlying-source
-    mount factor, share queuing-strategy
-    throw build
+  call make
+    bind constructor, text <ReadableStream>
+    bind factor, link underlying-source
+    bind factor, link queuing-strategy
+    turn seed
 
-force get-locked
-  start build
+task get-locked
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |locked|
-    throw build
+    bind object, link build
+    bind aspect, text <locked>
+    turn seed
 
-force cancel
-  start build
-  start reason
-
-  cause call-method
-    mount object, share build
-    mount method, |cancel|
-    mount factor, share reason
-    throw build
-
-force get-reader
-  start build
-  start mode
+task cancel
+  base build
+  base reason
 
   cause call-method
-    mount object, share build
-    mount method, |getReader|
-    mount factor, share mode
-    throw build
+    bind object, link build
+    bind method, text <cancel>
+    bind factor, link reason
+    turn seed
 
-force pipe-through
-  start build
-  start transform-stream
-  start options
-
-  cause call-method
-    mount object, share build
-    mount method, |pipeThrough|
-    mount factor, share transform-stream
-    mount factor, share options
-    throw build
-
-force pipe-to
-  start build
-  start destination
-  start options
+task get-reader
+  base build
+  base mode
 
   cause call-method
-    mount object, share build
-    mount method, |pipeTo|
-    mount factor, share destination
-    mount factor, share options
-    throw build
+    bind object, link build
+    bind method, text <getReader>
+    bind factor, link mode
+    turn seed
 
-force tee
-  start build
+task pipe-through
+  base build
+  base transform-stream
+  base options
 
   cause call-method
-    mount object, share build
-    mount method, |tee|
-    throw build
+    bind object, link build
+    bind method, text <pipeThrough>
+    bind factor, link transform-stream
+    bind factor, link options
+    turn seed
+
+task pipe-to
+  base build
+  base destination
+  base options
+
+  cause call-method
+    bind object, link build
+    bind method, text <pipeTo>
+    bind factor, link destination
+    bind factor, link options
+    turn seed
+
+task tee
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <tee>
+    turn seed

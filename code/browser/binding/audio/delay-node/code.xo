@@ -1,18 +1,18 @@
 
-force build-delay-node
-  start context
-  start options
+task build-delay-node
+  base context
+  base options
 
-  cause invoke-constructor
-    mount constructor, |DelayNode|
-    mount factor, share context
-    mount factor, share options
-    throw build
+  call make
+    bind constructor, text <DelayNode>
+    bind factor, link context
+    bind factor, link options
+    turn seed
 
-force get-delay-time
-  start build
+task get-delay-time
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |delayTime|
-    throw build
+    bind object, link build
+    bind aspect, text <delayTime>
+    turn seed

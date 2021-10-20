@@ -1,58 +1,58 @@
 
-force get-length
-  start build
+task get-length
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |length|
-    throw build
+    bind object, link build
+    bind aspect, text <length>
+    turn seed
 
-force key
-  start build
-  start index
-
-  cause call-method
-    mount object, share build
-    mount method, |key|
-    mount factor, share index
-    throw build
-
-force get-item
-  start build
-  start key-name
+task key
+  base build
+  base index
 
   cause call-method
-    mount object, share build
-    mount method, |getItem|
-    mount factor, share key-name
-    throw build
+    bind object, link build
+    bind method, text <key>
+    bind factor, link index
+    turn seed
 
-force set-item
-  start build
-  start key-name
-  start key-value
-
-  cause call-method
-    mount object, share build
-    mount method, |setItem|
-    mount factor, share key-name
-    mount factor, share key-value
-    throw build
-
-force remove-item
-  start build
-  start key-name
+task get-item
+  base build
+  base key-name
 
   cause call-method
-    mount object, share build
-    mount method, |removeItem|
-    mount factor, share key-name
-    throw build
+    bind object, link build
+    bind method, text <getItem>
+    bind factor, link key-name
+    turn seed
 
-force clear
-  start build
+task set-item
+  base build
+  base key-name
+  base key-value
 
   cause call-method
-    mount object, share build
-    mount method, |clear|
-    throw build
+    bind object, link build
+    bind method, text <setItem>
+    bind factor, link key-name
+    bind factor, link key-value
+    turn seed
+
+task remove-item
+  base build
+  base key-name
+
+  cause call-method
+    bind object, link build
+    bind method, text <removeItem>
+    bind factor, link key-name
+    turn seed
+
+task clear
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <clear>
+    turn seed

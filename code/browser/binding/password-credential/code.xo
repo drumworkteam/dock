@@ -1,85 +1,85 @@
 
-force build-passwordcredentialsecure-context
-  start password-credential-data
-  start html-form-element
+task build-passwordcredentialsecure-context
+  base password-credential-data
+  base html-form-element
 
-  cause invoke-constructor
-    mount constructor, |PasswordCredentialSecure context|
-    mount factor, share password-credential-data
-    mount factor, share html-form-element
-    throw build
+  call make
+    bind constructor, text <PasswordCredentialSecure context>
+    bind factor, link password-credential-data
+    bind factor, link html-form-element
+    turn seed
 
-force get-additional-data
-  start build
+task get-additional-data
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |additionalData|
-    throw build
+    bind object, link build
+    bind aspect, text <additionalData>
+    turn seed
 
-force set-additional-data
-  start build
-  start value
+task set-additional-data
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |additionalData|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <additionalData>
+    bind factor, link value
 
-force get-iconurl-secure-context
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |iconURL Secure context|
-    throw build
-
-force get-id-name
-  start build
+task get-iconurl-secure-context
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |idName|
-    throw build
+    bind object, link build
+    bind aspect, text <iconURL Secure context>
+    turn seed
 
-force set-id-name
-  start build
-  start value
+task get-id-name
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <idName>
+    turn seed
+
+task set-id-name
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |idName|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <idName>
+    bind factor, link value
 
-force get-name-secure-context
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |name Secure context|
-    throw build
-
-force get-password-secure-context
-  start build
+task get-name-secure-context
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |password Secure context|
-    throw build
+    bind object, link build
+    bind aspect, text <name Secure context>
+    turn seed
 
-force get-password-name
-  start build
+task get-password-secure-context
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |passwordName|
-    throw build
+    bind object, link build
+    bind aspect, text <password Secure context>
+    turn seed
 
-force set-password-name
-  start build
-  start value
+task get-password-name
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <passwordName>
+    turn seed
+
+task set-password-name
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |passwordName|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <passwordName>
+    bind factor, link value

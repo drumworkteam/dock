@@ -1,201 +1,201 @@
 
-force get-index-names
-  start build
+task get-index-names
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |indexNames|
-    throw build
+    bind object, link build
+    bind aspect, text <indexNames>
+    turn seed
 
-force get-key-path
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |keyPath|
-    throw build
-
-force get-name
-  start build
+task get-key-path
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |name|
-    throw build
+    bind object, link build
+    bind aspect, text <keyPath>
+    turn seed
 
-force set-name
-  start build
-  start value
+task get-name
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <name>
+    turn seed
+
+task set-name
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |name|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <name>
+    bind factor, link value
 
-force get-transaction
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |transaction|
-    throw build
-
-force get-auto-increment
-  start build
+task get-transaction
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |autoIncrement|
-    throw build
+    bind object, link build
+    bind aspect, text <transaction>
+    turn seed
 
-force add
-  start build
-  start value
-  start key
+task get-auto-increment
+  base build
 
-  cause call-method
-    mount object, share build
-    mount method, |add|
-    mount factor, share value
-    mount factor, share key
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <autoIncrement>
+    turn seed
 
-force clear
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |clear|
-
-force count
-  start build
-  start query
+task add
+  base build
+  base value
+  base key
 
   cause call-method
-    mount object, share build
-    mount method, |count|
-    mount factor, share query
-    throw build
+    bind object, link build
+    bind method, text <add>
+    bind factor, link value
+    bind factor, link key
 
-force create-index
-  start build
-  start index-name
-  start key-path
-  start object-parameters
+task clear
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |createIndex|
-    mount factor, share index-name
-    mount factor, share key-path
-    mount factor, share object-parameters
-    throw build
+    bind object, link build
+    bind method, text <clear>
 
-force delete
-  start build
-  start key
+task count
+  base build
+  base query
 
   cause call-method
-    mount object, share build
-    mount method, |delete|
-    mount factor, share key
-    throw build
+    bind object, link build
+    bind method, text <count>
+    bind factor, link query
+    turn seed
 
-force delete-index
-  start build
-  start index-name
-
-  cause call-method
-    mount object, share build
-    mount method, |deleteIndex|
-    mount factor, share index-name
-    throw build
-
-force get
-  start build
-  start key
+task create-index
+  base build
+  base index-name
+  base key-path
+  base object-parameters
 
   cause call-method
-    mount object, share build
-    mount method, |get|
-    mount factor, share key
-    throw build
+    bind object, link build
+    bind method, text <createIndex>
+    bind factor, link index-name
+    bind factor, link key-path
+    bind factor, link object-parameters
+    turn seed
 
-force get-key
-  start build
-  start key
-
-  cause call-method
-    mount object, share build
-    mount method, |getKey|
-    mount factor, share key
-    throw build
-
-force get-all
-  start build
-  start query
-  start count
+task delete
+  base build
+  base key
 
   cause call-method
-    mount object, share build
-    mount method, |getAll|
-    mount factor, share query
-    mount factor, share count
-    throw build
+    bind object, link build
+    bind method, text <delete>
+    bind factor, link key
+    turn seed
 
-force get-all-keys
-  start build
-  start query
-  start count
+task delete-index
+  base build
+  base index-name
 
   cause call-method
-    mount object, share build
-    mount method, |getAllKeys|
-    mount factor, share query
-    mount factor, share count
-    throw build
+    bind object, link build
+    bind method, text <deleteIndex>
+    bind factor, link index-name
+    turn seed
 
-force index
-  start build
-  start name
-
-  cause call-method
-    mount object, share build
-    mount method, |index|
-    mount factor, share name
-    throw build
-
-force open-cursor
-  start build
-  start query
-  start direction
+task get
+  base build
+  base key
 
   cause call-method
-    mount object, share build
-    mount method, |openCursor|
-    mount factor, share query
-    mount factor, share direction
-    throw build
+    bind object, link build
+    bind method, text <get>
+    bind factor, link key
+    turn seed
 
-force open-key-cursor
-  start build
-  start query
-  start direction
+task get-key
+  base build
+  base key
 
   cause call-method
-    mount object, share build
-    mount method, |openKeyCursor|
-    mount factor, share query
-    mount factor, share direction
-    throw build
+    bind object, link build
+    bind method, text <getKey>
+    bind factor, link key
+    turn seed
 
-force put
-  start build
-  start item
-  start key
+task get-all
+  base build
+  base query
+  base count
 
   cause call-method
-    mount object, share build
-    mount method, |put|
-    mount factor, share item
-    mount factor, share key
-    throw build
+    bind object, link build
+    bind method, text <getAll>
+    bind factor, link query
+    bind factor, link count
+    turn seed
+
+task get-all-keys
+  base build
+  base query
+  base count
+
+  cause call-method
+    bind object, link build
+    bind method, text <getAllKeys>
+    bind factor, link query
+    bind factor, link count
+    turn seed
+
+task index
+  base build
+  base name
+
+  cause call-method
+    bind object, link build
+    bind method, text <index>
+    bind factor, link name
+    turn seed
+
+task open-cursor
+  base build
+  base query
+  base direction
+
+  cause call-method
+    bind object, link build
+    bind method, text <openCursor>
+    bind factor, link query
+    bind factor, link direction
+    turn seed
+
+task open-key-cursor
+  base build
+  base query
+  base direction
+
+  cause call-method
+    bind object, link build
+    bind method, text <openKeyCursor>
+    bind factor, link query
+    bind factor, link direction
+    turn seed
+
+task put
+  base build
+  base item
+  base key
+
+  cause call-method
+    bind object, link build
+    bind method, text <put>
+    bind factor, link item
+    bind factor, link key
+    turn seed

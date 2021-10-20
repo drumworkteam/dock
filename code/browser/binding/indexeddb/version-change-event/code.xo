@@ -1,26 +1,26 @@
 
-force build-idb-version-change-event
-  start type
-  start event-init-dict
+task build-idb-version-change-event
+  base type
+  base event-init-dict
 
-  cause invoke-constructor
-    mount constructor, |IDBVersionChangeEvent|
-    mount factor, share type
-    mount factor, share event-init-dict
-    throw build
+  call make
+    bind constructor, text <IDBVersionChangeEvent>
+    bind factor, link type
+    bind factor, link event-init-dict
+    turn seed
 
-force get-old-version
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |oldVersion|
-    throw build
-
-force get-new-version
-  start build
+task get-old-version
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |newVersion|
-    throw build
+    bind object, link build
+    bind aspect, text <oldVersion>
+    turn seed
+
+task get-new-version
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <newVersion>
+    turn seed

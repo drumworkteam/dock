@@ -1,36 +1,36 @@
 
-force get-matches
-  start build
+task get-matches
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |matches|
-    throw build
+    bind object, link build
+    bind aspect, text <matches>
+    turn seed
 
-force get-media
-  start build
+task get-media
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |media|
-    throw build
+    bind object, link build
+    bind aspect, text <media>
+    turn seed
 
-force add-listener
-  start build
-  start func
-
-  cause call-method
-    mount object, share build
-    mount method, |addListener|
-    mount factor, share func
-    throw build
-
-force remove-listener
-  start build
-  start func
+task add-listener
+  base build
+  base func
 
   cause call-method
-    mount object, share build
-    mount method, |removeListener|
-    mount factor, share func
-    throw build
+    bind object, link build
+    bind method, text <addListener>
+    bind factor, link func
+    turn seed
+
+task remove-listener
+  base build
+  base func
+
+  cause call-method
+    bind object, link build
+    bind method, text <removeListener>
+    bind factor, link func
+    turn seed

@@ -1,26 +1,26 @@
 
-force build-x-r-input-source-event
-  start type
-  start event-init-dict
+task build-x-r-input-source-event
+  base type
+  base event-init-dict
 
-  cause invoke-constructor
-    mount constructor, |XRInputSourceEvent|
-    mount factor, share type
-    mount factor, share event-init-dict
-    throw build
+  call make
+    bind constructor, text <XRInputSourceEvent>
+    bind factor, link type
+    bind factor, link event-init-dict
+    turn seed
 
-force get-frame
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |frame|
-    throw build
-
-force get-input-source
-  start build
+task get-frame
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |inputSource|
-    throw build
+    bind object, link build
+    bind aspect, text <frame>
+    turn seed
+
+task get-input-source
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <inputSource>
+    turn seed

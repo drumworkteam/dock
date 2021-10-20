@@ -1,103 +1,103 @@
 
-force get-context
-  start build
+task get-context
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |context|
-    throw build
+    bind object, link build
+    bind aspect, text <context>
+    turn seed
 
-force get-number-of-inputs
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |numberOfInputs|
-    throw build
-
-force get-number-of-outputs
-  start build
+task get-number-of-inputs
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |numberOfOutputs|
-    throw build
+    bind object, link build
+    bind aspect, text <numberOfInputs>
+    turn seed
 
-force get-channel-count
-  start build
+task get-number-of-outputs
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |channelCount|
-    throw build
+    bind object, link build
+    bind aspect, text <numberOfOutputs>
+    turn seed
 
-force set-channel-count
-  start build
-  start value
+task get-channel-count
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <channelCount>
+    turn seed
+
+task set-channel-count
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |channelCount|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <channelCount>
+    bind factor, link value
 
-force get-channel-count-mode
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |channelCountMode|
-    throw build
-
-force set-channel-count-mode
-  start build
-  start value
-
-  cause set-aspect
-    mount object, share build
-    mount aspect, |channelCountMode|
-    mount factor, share value
-
-force get-channel-interpretation
-  start build
+task get-channel-count-mode
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |channelInterpretation|
-    throw build
+    bind object, link build
+    bind aspect, text <channelCountMode>
+    turn seed
 
-force set-channel-interpretation
-  start build
-  start value
+task set-channel-count-mode
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |channelInterpretation|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <channelCountMode>
+    bind factor, link value
 
-force connect
-  start build
-  start destination
-  start output-index
-  start input-index
+task get-channel-interpretation
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <channelInterpretation>
+    turn seed
+
+task set-channel-interpretation
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <channelInterpretation>
+    bind factor, link value
+
+task connect
+  base build
+  base destination
+  base output-index
+  base input-index
 
   cause call-method
-    mount object, share build
-    mount method, |connect|
-    mount factor, share destination
-    mount factor, share output-index
-    mount factor, share input-index
-    throw build
+    bind object, link build
+    bind method, text <connect>
+    bind factor, link destination
+    bind factor, link output-index
+    bind factor, link input-index
+    turn seed
 
-force disconnect
-  start build
-  start destination
-  start output
-  start input
+task disconnect
+  base build
+  base destination
+  base output
+  base input
 
   cause call-method
-    mount object, share build
-    mount method, |disconnect|
-    mount factor, share destination
-    mount factor, share output
-    mount factor, share input
-    throw build
+    bind object, link build
+    bind method, text <disconnect>
+    bind factor, link destination
+    bind factor, link output
+    bind factor, link input
+    turn seed

@@ -1,36 +1,36 @@
 
-force read
-  start build
+task read
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |read|
-    throw build
+    bind object, link build
+    bind method, text <read>
+    turn seed
 
-force read-text
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |readText|
-    throw build
-
-force write
-  start build
-  start data
+task read-text
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |write|
-    mount factor, share data
-    throw build
+    bind object, link build
+    bind method, text <readText>
+    turn seed
 
-force write-text
-  start build
-  start new-clip-text
+task write
+  base build
+  base data
 
   cause call-method
-    mount object, share build
-    mount method, |writeText|
-    mount factor, share new-clip-text
-    throw build
+    bind object, link build
+    bind method, text <write>
+    bind factor, link data
+    turn seed
+
+task write-text
+  base build
+  base new-clip-text
+
+  cause call-method
+    bind object, link build
+    bind method, text <writeText>
+    bind factor, link new-clip-text
+    turn seed

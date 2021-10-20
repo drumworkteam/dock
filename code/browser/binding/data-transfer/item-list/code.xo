@@ -1,50 +1,50 @@
 
-force get-length
-  start build
+task get-length
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |length|
-    throw build
+    bind object, link build
+    bind aspect, text <length>
+    turn seed
 
-force add
-  start build
-  start data
-  start type
-  start file
-
-  cause call-method
-    mount object, share build
-    mount method, |add|
-    mount factor, share data
-    mount factor, share type
-    mount factor, share file
-    throw build
-
-force remove
-  start build
-  start index
+task add
+  base build
+  base data
+  base type
+  base file
 
   cause call-method
-    mount object, share build
-    mount method, |remove|
-    mount factor, share index
-    throw build
+    bind object, link build
+    bind method, text <add>
+    bind factor, link data
+    bind factor, link type
+    bind factor, link file
+    turn seed
 
-force clear
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |clear|
-    throw build
-
-force data-transfer-item
-  start build
-  start index
+task remove
+  base build
+  base index
 
   cause call-method
-    mount object, share build
-    mount method, |DataTransferItem|
-    mount factor, share index
-    throw build
+    bind object, link build
+    bind method, text <remove>
+    bind factor, link index
+    turn seed
+
+task clear
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <clear>
+    turn seed
+
+task data-transfer-item
+  base build
+  base index
+
+  cause call-method
+    bind object, link build
+    bind method, text <DataTransferItem>
+    bind factor, link index
+    turn seed

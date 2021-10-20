@@ -1,88 +1,88 @@
 
-force build-oscillator-node
-  start context
-  start options
+task build-oscillator-node
+  base context
+  base options
 
-  cause invoke-constructor
-    mount constructor, |OscillatorNode|
-    mount factor, share context
-    mount factor, share options
-    throw build
+  call make
+    bind constructor, text <OscillatorNode>
+    bind factor, link context
+    bind factor, link options
+    turn seed
 
-force get-frequency
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |frequency|
-    throw build
-
-force set-frequency
-  start build
-  start value
-
-  cause set-aspect
-    mount object, share build
-    mount aspect, |frequency|
-    mount factor, share value
-
-force get-detune
-  start build
+task get-frequency
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |detune|
-    throw build
+    bind object, link build
+    bind aspect, text <frequency>
+    turn seed
 
-force set-detune
-  start build
-  start value
+task set-frequency
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |detune|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <frequency>
+    bind factor, link value
 
-force get-type
-  start build
+task get-detune
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |type|
-    throw build
+    bind object, link build
+    bind aspect, text <detune>
+    turn seed
 
-force set-type
-  start build
-  start value
+task set-detune
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |type|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <detune>
+    bind factor, link value
 
-force set-periodic-wave
-  start build
-  start wave
+task get-type
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <type>
+    turn seed
+
+task set-type
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <type>
+    bind factor, link value
+
+task set-periodic-wave
+  base build
+  base wave
 
   cause call-method
-    mount object, share build
-    mount method, |setPeriodicWave|
-    mount factor, share wave
+    bind object, link build
+    bind method, text <setPeriodicWave>
+    bind factor, link wave
 
-force start
-  start build
-  start when
-
-  cause call-method
-    mount object, share build
-    mount method, |start|
-    mount factor, share when
-
-force stop
-  start build
-  start when
+task start
+  base build
+  base when
 
   cause call-method
-    mount object, share build
-    mount method, |stop|
-    mount factor, share when
+    bind object, link build
+    bind method, text <start>
+    bind factor, link when
+
+task stop
+  base build
+  base when
+
+  cause call-method
+    bind object, link build
+    bind method, text <stop>
+    bind factor, link when

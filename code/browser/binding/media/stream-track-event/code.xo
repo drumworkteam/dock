@@ -1,18 +1,18 @@
 
-force build-media-stream-track-event
-  start type
-  start track
+task build-media-stream-track-event
+  base type
+  base track
 
-  cause invoke-constructor
-    mount constructor, |MediaStreamTrackEvent|
-    mount factor, share type
-    mount factor, share track
-    throw build
+  call make
+    bind constructor, text <MediaStreamTrackEvent>
+    bind factor, link type
+    bind factor, link track
+    turn seed
 
-force get-track
-  start build
+task get-track
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |track|
-    throw build
+    bind object, link build
+    bind aspect, text <track>
+    turn seed

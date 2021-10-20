@@ -1,21 +1,21 @@
 
-force build-blob-event
-  cause invoke-constructor
-    mount constructor, |BlobEvent|
-    throw build
+task build-blob-event
+  call make
+    bind constructor, text <BlobEvent>
+    turn seed
 
-force get-data
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |data|
-    throw build
-
-force get-timecode
-  start build
+task get-data
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |timecode|
-    throw build
+    bind object, link build
+    bind aspect, text <data>
+    turn seed
+
+task get-timecode
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <timecode>
+    turn seed

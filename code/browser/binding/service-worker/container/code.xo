@@ -1,54 +1,54 @@
 
-force get-controller
-  start build
+task get-controller
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |controller|
-    throw build
+    bind object, link build
+    bind aspect, text <controller>
+    turn seed
 
-force get-ready
-  start build
+task get-ready
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |ready|
-    throw build
+    bind object, link build
+    bind aspect, text <ready>
+    turn seed
 
-force register
-  start build
-  start script-url
-  start options
-
-  cause call-method
-    mount object, share build
-    mount method, |register|
-    mount factor, share script-url
-    mount factor, share options
-    throw build
-
-force get-registration
-  start build
-  start scope
+task register
+  base build
+  base script-url
+  base options
 
   cause call-method
-    mount object, share build
-    mount method, |getRegistration|
-    mount factor, share scope
-    throw build
+    bind object, link build
+    bind method, text <register>
+    bind factor, link script-url
+    bind factor, link options
+    turn seed
 
-force get-registrations
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |getRegistrations|
-    throw build
-
-force start-messages
-  start build
+task get-registration
+  base build
+  base scope
 
   cause call-method
-    mount object, share build
-    mount method, |startMessages|
-    throw build
+    bind object, link build
+    bind method, text <getRegistration>
+    bind factor, link scope
+    turn seed
+
+task get-registrations
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <getRegistrations>
+    turn seed
+
+task start-messages
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <startMessages>
+    turn seed

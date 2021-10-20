@@ -1,288 +1,288 @@
 
-force get-configuration
-  start build
+task get-configuration
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |configuration|
-    throw build
+    bind object, link build
+    bind aspect, text <configuration>
+    turn seed
 
-force get-configurations
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |configurations|
-    throw build
-
-force get-device-class
-  start build
+task get-configurations
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |deviceClass|
-    throw build
+    bind object, link build
+    bind aspect, text <configurations>
+    turn seed
 
-force get-device-protocol
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |deviceProtocol|
-    throw build
-
-force get-device-subclass
-  start build
+task get-device-class
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |deviceSubclass|
-    throw build
+    bind object, link build
+    bind aspect, text <deviceClass>
+    turn seed
 
-force get-device-version-major
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |deviceVersionMajor|
-    throw build
-
-force get-device-version-minor
-  start build
+task get-device-protocol
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |deviceVersionMinor|
-    throw build
+    bind object, link build
+    bind aspect, text <deviceProtocol>
+    turn seed
 
-force get-device-version-subminor
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |deviceVersionSubminor|
-    throw build
-
-force get-manufacturer-name
-  start build
+task get-device-subclass
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |manufacturerName|
-    throw build
+    bind object, link build
+    bind aspect, text <deviceSubclass>
+    turn seed
 
-force get-opened
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |opened|
-    throw build
-
-force get-product-id
-  start build
+task get-device-version-major
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |productId|
-    throw build
+    bind object, link build
+    bind aspect, text <deviceVersionMajor>
+    turn seed
 
-force get-product-name
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |productName|
-    throw build
-
-force get-serial-number
-  start build
+task get-device-version-minor
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |serialNumber|
-    throw build
+    bind object, link build
+    bind aspect, text <deviceVersionMinor>
+    turn seed
 
-force get-usb-version-major
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |usbVersionMajor|
-    throw build
-
-force get-usb-version-minor
-  start build
+task get-device-version-subminor
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |usbVersionMinor|
-    throw build
+    bind object, link build
+    bind aspect, text <deviceVersionSubminor>
+    turn seed
 
-force get-usb-version-subminor
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |usbVersionSubminor|
-    throw build
-
-force get-vendor-id
-  start build
+task get-manufacturer-name
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |vendorId|
-    throw build
+    bind object, link build
+    bind aspect, text <manufacturerName>
+    turn seed
 
-force claim-interface
-  start build
-  start interface-number
+task get-opened
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <opened>
+    turn seed
+
+task get-product-id
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <productId>
+    turn seed
+
+task get-product-name
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <productName>
+    turn seed
+
+task get-serial-number
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <serialNumber>
+    turn seed
+
+task get-usb-version-major
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <usbVersionMajor>
+    turn seed
+
+task get-usb-version-minor
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <usbVersionMinor>
+    turn seed
+
+task get-usb-version-subminor
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <usbVersionSubminor>
+    turn seed
+
+task get-vendor-id
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <vendorId>
+    turn seed
+
+task claim-interface
+  base build
+  base interface-number
 
   cause call-method
-    mount object, share build
-    mount method, |claimInterface|
-    mount factor, share interface-number
-    throw build
+    bind object, link build
+    bind method, text <claimInterface>
+    bind factor, link interface-number
+    turn seed
 
-force clear-halt
-  start build
-  start direction
-  start endpoint-number
-
-  cause call-method
-    mount object, share build
-    mount method, |clearHalt|
-    mount factor, share direction
-    mount factor, share endpoint-number
-    throw build
-
-force control-transfer-in
-  start build
-  start setup
-  start length
+task clear-halt
+  base build
+  base direction
+  base endpoint-number
 
   cause call-method
-    mount object, share build
-    mount method, |controlTransferIn|
-    mount factor, share setup
-    mount factor, share length
-    throw build
+    bind object, link build
+    bind method, text <clearHalt>
+    bind factor, link direction
+    bind factor, link endpoint-number
+    turn seed
 
-force control-transfer-out
-  start build
-  start setup
-  start data
-
-  cause call-method
-    mount object, share build
-    mount method, |controlTransferOut|
-    mount factor, share setup
-    mount factor, share data
-    throw build
-
-force close
-  start build
+task control-transfer-in
+  base build
+  base setup
+  base length
 
   cause call-method
-    mount object, share build
-    mount method, |close|
-    throw build
+    bind object, link build
+    bind method, text <controlTransferIn>
+    bind factor, link setup
+    bind factor, link length
+    turn seed
 
-force isochronous-transfer-in
-  start build
-  start endpoint-number
-  start packet-lengths
-
-  cause call-method
-    mount object, share build
-    mount method, |isochronousTransferIn|
-    mount factor, share endpoint-number
-    mount factor, share packet-lengths
-    throw build
-
-force isochronous-transfer-out
-  start build
-  start endpoint-number
-  start data
-  start packet-lengths
+task control-transfer-out
+  base build
+  base setup
+  base data
 
   cause call-method
-    mount object, share build
-    mount method, |isochronousTransferOut|
-    mount factor, share endpoint-number
-    mount factor, share data
-    mount factor, share packet-lengths
-    throw build
+    bind object, link build
+    bind method, text <controlTransferOut>
+    bind factor, link setup
+    bind factor, link data
+    turn seed
 
-force open
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |open|
-    throw build
-
-force release-interface
-  start build
-  start interface-number
+task close
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |releaseInterface|
-    mount factor, share interface-number
-    throw build
+    bind object, link build
+    bind method, text <close>
+    turn seed
 
-force reset
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |reset|
-    throw build
-
-force select-alternate-interface
-  start build
-  start interface-number
-  start alternate-setting
+task isochronous-transfer-in
+  base build
+  base endpoint-number
+  base packet-lengths
 
   cause call-method
-    mount object, share build
-    mount method, |selectAlternateInterface|
-    mount factor, share interface-number
-    mount factor, share alternate-setting
-    throw build
+    bind object, link build
+    bind method, text <isochronousTransferIn>
+    bind factor, link endpoint-number
+    bind factor, link packet-lengths
+    turn seed
 
-force select-configuration
-  start build
-  start configuration-value
-
-  cause call-method
-    mount object, share build
-    mount method, |selectConfiguration|
-    mount factor, share configuration-value
-    throw build
-
-force transfer-in
-  start build
-  start endpoint-number
-  start length
+task isochronous-transfer-out
+  base build
+  base endpoint-number
+  base data
+  base packet-lengths
 
   cause call-method
-    mount object, share build
-    mount method, |transferIn|
-    mount factor, share endpoint-number
-    mount factor, share length
-    throw build
+    bind object, link build
+    bind method, text <isochronousTransferOut>
+    bind factor, link endpoint-number
+    bind factor, link data
+    bind factor, link packet-lengths
+    turn seed
 
-force transfer-out
-  start build
-  start endpoint-number
-  start data
+task open
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |transferOut|
-    mount factor, share endpoint-number
-    mount factor, share data
-    throw build
+    bind object, link build
+    bind method, text <open>
+    turn seed
+
+task release-interface
+  base build
+  base interface-number
+
+  cause call-method
+    bind object, link build
+    bind method, text <releaseInterface>
+    bind factor, link interface-number
+    turn seed
+
+task reset
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <reset>
+    turn seed
+
+task select-alternate-interface
+  base build
+  base interface-number
+  base alternate-setting
+
+  cause call-method
+    bind object, link build
+    bind method, text <selectAlternateInterface>
+    bind factor, link interface-number
+    bind factor, link alternate-setting
+    turn seed
+
+task select-configuration
+  base build
+  base configuration-value
+
+  cause call-method
+    bind object, link build
+    bind method, text <selectConfiguration>
+    bind factor, link configuration-value
+    turn seed
+
+task transfer-in
+  base build
+  base endpoint-number
+  base length
+
+  cause call-method
+    bind object, link build
+    bind method, text <transferIn>
+    bind factor, link endpoint-number
+    bind factor, link length
+    turn seed
+
+task transfer-out
+  base build
+  base endpoint-number
+  base data
+
+  cause call-method
+    bind object, link build
+    bind method, text <transferOut>
+    bind factor, link endpoint-number
+    bind factor, link data
+    turn seed

@@ -1,26 +1,26 @@
 
-force build-sync-event
-  start type
-  start init
+task build-sync-event
+  base type
+  base init
 
-  cause invoke-constructor
-    mount constructor, |SyncEvent|
-    mount factor, share type
-    mount factor, share init
-    throw build
+  call make
+    bind constructor, text <SyncEvent>
+    bind factor, link type
+    bind factor, link init
+    turn seed
 
-force get-tag
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |tag|
-    throw build
-
-force get-last-chance
-  start build
+task get-tag
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |lastChance|
-    throw build
+    bind object, link build
+    bind aspect, text <tag>
+    turn seed
+
+task get-last-chance
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <lastChance>
+    turn seed

@@ -1,44 +1,44 @@
 
-force open
-  start build
-  start name
-  start version
+task open
+  base build
+  base name
+  base version
 
   cause call-method
-    mount object, share build
-    mount method, |open|
-    mount factor, share name
-    mount factor, share version
-    throw build
+    bind object, link build
+    bind method, text <open>
+    bind factor, link name
+    bind factor, link version
+    turn seed
 
-force delete-database
-  start build
-  start name
-  start options
-
-  cause call-method
-    mount object, share build
-    mount method, |deleteDatabase|
-    mount factor, share name
-    mount factor, share options
-    throw build
-
-force cmp
-  start build
-  start first
-  start second
+task delete-database
+  base build
+  base name
+  base options
 
   cause call-method
-    mount object, share build
-    mount method, |cmp|
-    mount factor, share first
-    mount factor, share second
-    throw build
+    bind object, link build
+    bind method, text <deleteDatabase>
+    bind factor, link name
+    bind factor, link options
+    turn seed
 
-force databases
-  start build
+task cmp
+  base build
+  base first
+  base second
 
   cause call-method
-    mount object, share build
-    mount method, |databases|
-    throw build
+    bind object, link build
+    bind method, text <cmp>
+    bind factor, link first
+    bind factor, link second
+    turn seed
+
+task databases
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <databases>
+    turn seed

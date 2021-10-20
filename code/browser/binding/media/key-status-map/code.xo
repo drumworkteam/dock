@@ -1,65 +1,65 @@
 
-force get-size
-  start build
+task get-size
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |size|
-    throw build
+    bind object, link build
+    bind aspect, text <size>
+    turn seed
 
-force entries-read-only
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |entries Read only|
-
-force foreach-callback-argument-read-only
-  start build
-  start callback
-  start this-arg
+task entries-read-only
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |forEach(callback[, argument]) Read only|
-    mount factor, share callback
-    mount factor, share this-arg
+    bind object, link build
+    bind method, text <entries Read only>
 
-force get-read-only
-  start build
-  start key
-
-  cause call-method
-    mount object, share build
-    mount method, |get Read only|
-    mount factor, share key
-
-force has-read-only
-  start build
-  start key
+task foreach-callback-argument-read-only
+  base build
+  base callback
+  base this-arg
 
   cause call-method
-    mount object, share build
-    mount method, |has Read only|
-    mount factor, share key
+    bind object, link build
+    bind method, text <forEach(callback[, argument]) Read only>
+    bind factor, link callback
+    bind factor, link this-arg
 
-force keys-read-only
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |keys Read only|
-
-force values-read-only
-  start build
+task get-read-only
+  base build
+  base key
 
   cause call-method
-    mount object, share build
-    mount method, |values Read only|
+    bind object, link build
+    bind method, text <get Read only>
+    bind factor, link key
 
-force iterator-read-only
-  start build
+task has-read-only
+  base build
+  base key
 
   cause call-method
-    mount object, share build
-    mount method, |[@@iterator] Read only|
+    bind object, link build
+    bind method, text <has Read only>
+    bind factor, link key
+
+task keys-read-only
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <keys Read only>
+
+task values-read-only
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <values Read only>
+
+task iterator-read-only
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <[@@iterator] Read only>

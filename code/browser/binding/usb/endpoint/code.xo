@@ -1,61 +1,61 @@
 
-force build-usb-endpoint
-  start endpoint-number
-  start data
+task build-usb-endpoint
+  base endpoint-number
+  base data
 
-  cause invoke-constructor
-    mount constructor, |USBEndpoint|
-    mount factor, share endpoint-number
-    mount factor, share data
-    throw build
+  call make
+    bind constructor, text <USBEndpoint>
+    bind factor, link endpoint-number
+    bind factor, link data
+    turn seed
 
-force get-endpoint-number
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |endpointNumber|
-    throw build
-
-force set-endpoint-number
-  start build
-  start value
-
-  cause set-aspect
-    mount object, share build
-    mount aspect, |endpointNumber|
-    mount factor, share value
-
-force get-direction
-  start build
+task get-endpoint-number
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |direction|
-    throw build
+    bind object, link build
+    bind aspect, text <endpointNumber>
+    turn seed
 
-force set-direction
-  start build
-  start value
+task set-endpoint-number
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |direction|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <endpointNumber>
+    bind factor, link value
 
-force get-type
-  start build
+task get-direction
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |type|
-    throw build
+    bind object, link build
+    bind aspect, text <direction>
+    turn seed
 
-force set-type
-  start build
-  start value
+task set-direction
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |type|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <direction>
+    bind factor, link value
+
+task get-type
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <type>
+    turn seed
+
+task set-type
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <type>
+    bind factor, link value

@@ -1,22 +1,22 @@
 
-force build-midi-message-event
-  cause invoke-constructor
-    mount constructor, |MIDIMessageEvent|
-    throw build
+task build-midi-message-event
+  call make
+    bind constructor, text <MIDIMessageEvent>
+    turn seed
 
-force get-data
-  start build
+task get-data
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |data|
-    throw build
+    bind object, link build
+    bind aspect, text <data>
+    turn seed
 
-force set-data
-  start build
-  start value
+task set-data
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |data|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <data>
+    bind factor, link value

@@ -1,18 +1,18 @@
 
-force build-submit-event
-  start type
-  start event-init-dict
+task build-submit-event
+  base type
+  base event-init-dict
 
-  cause invoke-constructor
-    mount constructor, |SubmitEvent|
-    mount factor, share type
-    mount factor, share event-init-dict
-    throw build
+  call make
+    bind constructor, text <SubmitEvent>
+    bind factor, link type
+    bind factor, link event-init-dict
+    turn seed
 
-force get-submitter
-  start build
+task get-submitter
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |submitter|
-    throw build
+    bind object, link build
+    bind aspect, text <submitter>
+    turn seed

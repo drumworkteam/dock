@@ -1,46 +1,46 @@
 
-force get-kind
-  start build
+task get-kind
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |kind|
-    throw build
+    bind object, link build
+    bind aspect, text <kind>
+    turn seed
 
-force get-name
-  start build
+task get-name
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |name|
-    throw build
+    bind object, link build
+    bind aspect, text <name>
+    turn seed
 
-force is-same-entry
-  start build
-  start file-system-handle
-
-  cause call-method
-    mount object, share build
-    mount method, |isSameEntry|
-    mount factor, share file-system-handle
-    throw build
-
-force query-permission
-  start build
-  start file-system-handle-permission-descriptor
+task is-same-entry
+  base build
+  base file-system-handle
 
   cause call-method
-    mount object, share build
-    mount method, |queryPermission|
-    mount factor, share file-system-handle-permission-descriptor
-    throw build
+    bind object, link build
+    bind method, text <isSameEntry>
+    bind factor, link file-system-handle
+    turn seed
 
-force request-permission
-  start build
-  start file-system-handle-permission-descriptor
+task query-permission
+  base build
+  base file-system-handle-permission-descriptor
 
   cause call-method
-    mount object, share build
-    mount method, |requestPermission|
-    mount factor, share file-system-handle-permission-descriptor
-    throw build
+    bind object, link build
+    bind method, text <queryPermission>
+    bind factor, link file-system-handle-permission-descriptor
+    turn seed
+
+task request-permission
+  base build
+  base file-system-handle-permission-descriptor
+
+  cause call-method
+    bind object, link build
+    bind method, text <requestPermission>
+    bind factor, link file-system-handle-permission-descriptor
+    turn seed

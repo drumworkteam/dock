@@ -1,36 +1,36 @@
 
-force get-desired-size
-  start build
+task get-desired-size
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |desiredSize|
-    throw build
+    bind object, link build
+    bind aspect, text <desiredSize>
+    turn seed
 
-force close
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |close|
-    throw build
-
-force enqueue
-  start build
-  start chunk
+task close
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |enqueue|
-    mount factor, share chunk
-    throw build
+    bind object, link build
+    bind method, text <close>
+    turn seed
 
-force error
-  start build
-  start e
+task enqueue
+  base build
+  base chunk
 
   cause call-method
-    mount object, share build
-    mount method, |error|
-    mount factor, share e
-    throw build
+    bind object, link build
+    bind method, text <enqueue>
+    bind factor, link chunk
+    turn seed
+
+task error
+  base build
+  base e
+
+  cause call-method
+    bind object, link build
+    bind method, text <error>
+    bind factor, link e
+    turn seed

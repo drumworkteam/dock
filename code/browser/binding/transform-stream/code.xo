@@ -1,26 +1,26 @@
 
-force build-transform-stream
-  start type
-  start event-info
+task build-transform-stream
+  base type
+  base event-info
 
-  cause invoke-constructor
-    mount constructor, |TransformStream|
-    mount factor, share type
-    mount factor, share event-info
-    throw build
+  call make
+    bind constructor, text <TransformStream>
+    bind factor, link type
+    bind factor, link event-info
+    turn seed
 
-force get-readable
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |readable|
-    throw build
-
-force get-writable
-  start build
+task get-readable
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |writable|
-    throw build
+    bind object, link build
+    bind aspect, text <readable>
+    turn seed
+
+task get-writable
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <writable>
+    turn seed

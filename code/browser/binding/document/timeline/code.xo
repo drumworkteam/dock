@@ -1,25 +1,25 @@
 
-force build-document-timeline
-  start options
+task build-document-timeline
+  base options
 
-  cause invoke-constructor
-    mount constructor, |DocumentTimeline|
-    mount factor, share options
-    throw build
+  call make
+    bind constructor, text <DocumentTimeline>
+    bind factor, link options
+    turn seed
 
-force get-current-time
-  start build
+task get-current-time
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |currentTime|
-    throw build
+    bind object, link build
+    bind aspect, text <currentTime>
+    turn seed
 
-force set-current-time
-  start build
-  start value
+task set-current-time
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |currentTime|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <currentTime>
+    bind factor, link value

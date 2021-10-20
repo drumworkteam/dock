@@ -1,263 +1,263 @@
 
-force drive
-  start check, field force
-  start block, field force
+task drive
+  base check, form force
+  base block, form force
 
-  cause loop
-    mount check, share check
-    mount block, share block
+  call loop
+    bind check, link check
+    bind block, link block
 
-force check
-  start check, field force
-  start block, field force
+task check
+  base check, form force
+  base block, form force
 
-  cause test
-    mount check, share check
-    mount block, share block
+  call test
+    bind check, link check
+    bind block, link block
 
-force check-else
-  start check, field force
-  start block, field force
-  start else, field force
+task check-else
+  base check, form force
+  base block, form force
+  base else, form force
 
-  cause test-else
-    mount check, share check
-    mount block, share block
-    mount else, share else
+  call test-else
+    bind check, link check
+    bind block, link block
+    bind else, link else
 
-force debug-function
-  start function, field function
+task debug-function
+  base function, form function
 
-  cause call-method
-    mount object, |window|
-    mount method, |debug|
-    mount factor, share function
+  call call-method
+    bind object, <window>
+    bind method, <debug>
+    bind factor, link function
 
-force debug
-  cause debug
-    mount keyword, |debugger|
+task debug
+  call debug
+    bind keyword, <debugger>
 
-force queue
-  start function, field function
+task queue
+  base function, form function
 
-  cause call-method
-    mount object, |window|
-    mount method, |setImmediate|
-    mount factor, share function
+  call call-method
+    bind object, <window>
+    bind method, <setImmediate>
+    bind factor, link function
 
-force compute-bitwise-or
-  start left
-  start right
+task compute-bitwise-or
+  base left
+  base right
 
-  cause call-binary-operation
-    mount left, share left
-    mount operation, |\||
-    mount right, share right
-    raise build
+  call call-binary-operation
+    bind left, link left
+    bind operation, <|>
+    bind right, link right
+    turn seed
 
-force check-if-equal
-  start left
-  start right
+task check-if-equal
+  base left
+  base right
 
-  cause call-binary-operation
-    mount left, share left
-    mount operation, |==|
-    mount right, share right
-    raise build
+  call call-binary-operation
+    bind left, link left
+    bind operation, <==>
+    bind right, link right
+    turn seed
 
-force check-if-strictly-equal
-  start left
-  start right
+task check-if-strictly-equal
+  base left
+  base right
 
-  cause call-binary-operation
-    mount left, share left
-    mount operation, |===|
-    mount right, share right
-    raise build
+  call call-binary-operation
+    bind left, link left
+    bind operation, <===>
+    bind right, link right
+    turn seed
 
-force get-typeof
-  start value
+task get-typeof
+  base value
 
-  cause call-keyword
-    mount keyword, |typeof|
-    mount value, share value
-    raise build
+  call call-keyword
+    bind keyword, <typeof>
+    bind value, link value
+    turn seed
 
-force get-instanceof
-  start left
-  start right
+task get-instanceof
+  base left
+  base right
 
-  cause call-keyword-2
-    mount left, share left
-    mount keyword, |instanceof|
-    mount right, share right
-    raise build
+  call call-keyword-2
+    bind left, link left
+    bind keyword, <instanceof>
+    bind right, link right
+    turn seed
 
-force set-field
-  start object
-  start attribute, field chord
-  start value
+task set-field
+  base object
+  base attribute, form chord
+  base value
 
-  cause set-dynamic-aspect
-    mount object, share object
-    mount aspect, share attribute
-    mount factor, share value
+  call set-dynamic-aspect
+    bind object, link object
+    bind aspect, link attribute
+    bind factor, link value
 
-force get-field
-  start object
-  start attribute, field chord
+task get-field
+  base object
+  base attribute, form chord
 
-  cause get-dynamic-aspect
-    mount object, share object
-    mount aspect, share attribute
-    raise build
+  call get-dynamic-aspect
+    bind object, link object
+    bind aspect, link attribute
+    turn seed
 
-force remove-field
-  start object
-  start attribute, field chord
+task remove-field
+  base object
+  base attribute, form chord
 
-  cause delete
-    mount object, share object
-    mount aspect, share attribute
+  call delete
+    bind object, link object
+    bind aspect, link attribute
 
-force shift-left
-  start left
-  start right
+task shift-left
+  base left
+  base right
 
-  cause call-binary-operation
-    mount left, share left
-    mount operation, |<<|
-    mount right, share right
-    raise build
+  call call-binary-operation
+    bind left, link left
+    bind operation, <\<\<>
+    bind right, link right
+    turn seed
 
-force shift-right
-  start left
-  start right
+task shift-right
+  base left
+  base right
 
-  cause call-binary-operation
-    mount left, share left
-    mount operation, |>>|
-    mount right, share right
-    raise build
+  call call-binary-operation
+    bind left, link left
+    bind operation, <\>\>>
+    bind right, link right
+    turn seed
 
-force shift-right-unsigned
-  start left
-  start right
+task shift-right-unsigned
+  base left
+  base right
 
-  cause call-binary-operation
-    mount left, share left
-    mount operation, |>>>|
-    mount right, share right
-    raise build
+  call call-binary-operation
+    bind left, link left
+    bind operation, <\>\>\>>
+    bind right, link right
+    turn seed
 
-force compute-bitwise-and
-  start left
-  start right
+task compute-bitwise-and
+  base left
+  base right
 
-  cause call-binary-operation
-    mount left, share left
-    mount operation, |&|
-    mount right, share right
-    raise build
+  call call-binary-operation
+    bind left, link left
+    bind operation, <&>
+    bind right, link right
+    turn seed
 
-force check-or
-  start left
-  start right
+task check-or
+  base left
+  base right
 
-  cause call-binary-operation
-    mount left, share left
-    mount operation, |\|\||
-    mount right, share right
-    raise build
+  call call-binary-operation
+    bind left, link left
+    bind operation, <||>
+    bind right, link right
+    turn seed
 
-force try-catch
-  start block, field function
-  start error, field function
+task try-catch
+  base block, form function
+  base error, form function
 
-  cause call-try
-    mount block, share block
-    mount error, share error
+  call call-try
+    bind block, link block
+    bind error, link error
 
-force check-if-truthy
-  start value
+task check-if-truthy
+  base value
 
-  cause call-unary-operation
-    mount operation, |!!|
-    mount value, share value
-    raise build
+  call call-unary-operation
+    bind operation, <!!>
+    bind value, link value
+    turn seed
 
-force check-opposite
-  start value
+task check-opposite
+  base value
 
-  cause call-unary-operation
-    mount operation, |!|
-    mount value, share value
-    raise build
+  call call-unary-operation
+    bind operation, <!>
+    bind value, link value
+    turn seed
 
-force check-not-equal
-  start left
-  start right
+task check-not-equal
+  base left
+  base right
 
-  cause call-binary-operation
-    mount left, share left
-    mount operation, |!==|
-    mount right, share right
-    raise build
+  call call-binary-operation
+    bind left, link left
+    bind operation, <!==>
+    bind right, link right
+    turn seed
 
-force flip-block
-  start value
+task flip-block
+  base value
 
-  cause call-unary-operation
-    mount operation, |~|
-    mount value, share value
-    raise build
+  call call-unary-operation
+    bind operation, <~>
+    bind value, link value
+    turn seed
 
-force check-gt
-  start left
-  start right
+task check-gt
+  base left
+  base right
 
-  cause call-binary-operation
-    mount left, share left
-    mount operation, |>|
-    mount right, share right
-    raise build
+  call call-binary-operation
+    bind left, link left
+    bind operation, <\>>
+    bind right, link right
+    turn seed
 
-force check-lt
-  start left
-  start right
+task check-lt
+  base left
+  base right
 
-  cause call-binary-operation
-    mount left, share left
-    mount operation, |<|
-    mount right, share right
-    raise build
+  call call-binary-operation
+    bind left, link left
+    bind operation, <\<>
+    bind right, link right
+    turn seed
 
-force check-gte
-  start left
-  start right
+task check-gte
+  base left
+  base right
 
-  cause call-binary-operation
-    mount left, share left
-    mount operation, |>=|
-    mount right, share right
-    raise build
+  call call-binary-operation
+    bind left, link left
+    bind operation, <\>=>
+    bind right, link right
+    turn seed
 
-force check-lte
-  start left
-  start right
+task check-lte
+  base left
+  base right
 
-  cause call-binary-operation
-    mount left, share left
-    mount operation, |<=|
-    mount right, share right
-    raise build
+  call call-binary-operation
+    bind left, link left
+    bind operation, <\<=>
+    bind right, link right
+    turn seed
 
-force check-and
-  start left
-  start right
+task check-and
+  base left
+  base right
 
-  cause call-binary-operation
-    mount left, share left
-    mount operation, |&&|
-    mount right, share right
-    raise build
+  call call-binary-operation
+    bind left, link left
+    bind operation, <&&>
+    bind right, link right
+    turn seed

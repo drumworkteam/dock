@@ -1,25 +1,25 @@
 
-force get-timing
-  start build
+task get-timing
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |getTiming|
+    bind object, link build
+    bind method, text <getTiming>
 
-force get-computed-timing
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |getComputedTiming|
-    throw build
-
-force update-timing
-  start build
-  start timing
+task get-computed-timing
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |updateTiming|
-    mount factor, share timing
-    throw build
+    bind object, link build
+    bind method, text <getComputedTiming>
+    turn seed
+
+task update-timing
+  base build
+  base timing
+
+  cause call-method
+    bind object, link build
+    bind method, text <updateTiming>
+    bind factor, link timing
+    turn seed

@@ -1,26 +1,26 @@
 
-force build-ndef-reading-event
-  start message
-  start options
+task build-ndef-reading-event
+  base message
+  base options
 
-  cause invoke-constructor
-    mount constructor, |NDEFReadingEvent|
-    mount factor, share message
-    mount factor, share options
-    throw build
+  call make
+    bind constructor, text <NDEFReadingEvent>
+    bind factor, link message
+    bind factor, link options
+    turn seed
 
-force get-serial-number
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |serialNumber|
-    throw build
-
-force get-message
-  start build
+task get-serial-number
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |message|
-    throw build
+    bind object, link build
+    bind aspect, text <serialNumber>
+    turn seed
+
+task get-message
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <message>
+    turn seed

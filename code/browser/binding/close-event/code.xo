@@ -1,29 +1,29 @@
 
-force build-close-event
-  cause invoke-constructor
-    mount constructor, |CloseEvent|
-    throw build
+task build-close-event
+  call make
+    bind constructor, text <CloseEvent>
+    turn seed
 
-force get-code
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |code|
-    throw build
-
-force get-reason
-  start build
+task get-code
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |reason|
-    throw build
+    bind object, link build
+    bind aspect, text <code>
+    turn seed
 
-force get-was-clean
-  start build
+task get-reason
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |wasClean|
-    throw build
+    bind object, link build
+    bind aspect, text <reason>
+    turn seed
+
+task get-was-clean
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <wasClean>
+    turn seed

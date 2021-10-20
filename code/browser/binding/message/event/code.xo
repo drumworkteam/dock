@@ -1,50 +1,50 @@
 
-force build-message-event
-  start type
-  start init
+task build-message-event
+  base type
+  base init
 
-  cause invoke-constructor
-    drive constructor, |MessageEvent|
-    drive factor, share type
-    drive factor, share init
-    throw build
+  call make
+    drive constructor, text <MessageEvent>
+    drive factor, link type
+    drive factor, link init
+    turn seed
 
-force get-data
-  start build
-
-  cause get-aspect
-    drive object, share build
-    drive aspect, |data|
-    throw build
-
-force get-origin
-  start build
+task get-data
+  base build
 
   cause get-aspect
-    drive object, share build
-    drive aspect, |origin|
-    throw build
+    drive object, link build
+    drive aspect, text <data>
+    turn seed
 
-force get-last-event-id
-  start build
-
-  cause get-aspect
-    drive object, share build
-    drive aspect, |lastEventId|
-    throw build
-
-force get-source
-  start build
+task get-origin
+  base build
 
   cause get-aspect
-    drive object, share build
-    drive aspect, |source|
-    throw build
+    drive object, link build
+    drive aspect, text <origin>
+    turn seed
 
-force get-ports
-  start build
+task get-last-event-id
+  base build
 
   cause get-aspect
-    drive object, share build
-    drive aspect, |ports|
-    throw build
+    drive object, link build
+    drive aspect, text <lastEventId>
+    turn seed
+
+task get-source
+  base build
+
+  cause get-aspect
+    drive object, link build
+    drive aspect, text <source>
+    turn seed
+
+task get-ports
+  base build
+
+  cause get-aspect
+    drive object, link build
+    drive aspect, text <ports>
+    turn seed

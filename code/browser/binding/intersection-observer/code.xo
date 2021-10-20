@@ -1,70 +1,70 @@
 
-force build-intersection-observer
-  start callback
-  start options
+task build-intersection-observer
+  base callback
+  base options
 
-  cause invoke-constructor
-    mount constructor, |IntersectionObserver|
-    mount factor, share callback
-    mount factor, share options
-    throw build
+  call make
+    bind constructor, text <IntersectionObserver>
+    bind factor, link callback
+    bind factor, link options
+    turn seed
 
-force get-root
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |root|
-    throw build
-
-force get-root-margin
-  start build
+task get-root
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |rootMargin|
-    throw build
+    bind object, link build
+    bind aspect, text <root>
+    turn seed
 
-force get-thresholds
-  start build
+task get-root-margin
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |thresholds|
-    throw build
+    bind object, link build
+    bind aspect, text <rootMargin>
+    turn seed
 
-force disconnect
-  start build
+task get-thresholds
+  base build
 
-  cause call-method
-    mount object, share build
-    mount method, |disconnect|
-    throw build
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <thresholds>
+    turn seed
 
-force observe
-  start build
-  start target-element
-
-  cause call-method
-    mount object, share build
-    mount method, |observe|
-    mount factor, share target-element
-    throw build
-
-force take-records
-  start build
+task disconnect
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |takeRecords|
-    throw build
+    bind object, link build
+    bind method, text <disconnect>
+    turn seed
 
-force unobserve
-  start build
-  start target
+task observe
+  base build
+  base target-element
 
   cause call-method
-    mount object, share build
-    mount method, |unobserve|
-    mount factor, share target
-    throw build
+    bind object, link build
+    bind method, text <observe>
+    bind factor, link target-element
+    turn seed
+
+task take-records
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <takeRecords>
+    turn seed
+
+task unobserve
+  base build
+  base target
+
+  cause call-method
+    bind object, link build
+    bind method, text <unobserve>
+    bind factor, link target
+    turn seed

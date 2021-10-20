@@ -1,39 +1,39 @@
 
-force build-ndef-reader
-  cause invoke-constructor
-    mount constructor, |NDEFReader|
-    throw build
+task build-ndef-reader
+  call make
+    bind constructor, text <NDEFReader>
+    turn seed
 
-force get-onreading
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |onreading|
-    throw build
-
-force set-onreading
-  start build
-  start value
-
-  cause set-aspect
-    mount object, share build
-    mount aspect, |onreading|
-    mount factor, share value
-
-force get-onreadingerror
-  start build
+task get-onreading
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |onreadingerror|
-    throw build
+    bind object, link build
+    bind aspect, text <onreading>
+    turn seed
 
-force set-onreadingerror
-  start build
-  start value
+task set-onreading
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |onreadingerror|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <onreading>
+    bind factor, link value
+
+task get-onreadingerror
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <onreadingerror>
+    turn seed
+
+task set-onreadingerror
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <onreadingerror>
+    bind factor, link value

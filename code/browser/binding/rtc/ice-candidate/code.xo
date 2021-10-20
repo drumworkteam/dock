@@ -1,136 +1,136 @@
 
-force build-rtc-ice-candidate
-  start candidate-info
+task build-rtc-ice-candidate
+  base candidate-info
 
-  cause invoke-constructor
-    mount constructor, |RTCIceCandidate|
-    mount factor, share candidate-info
-    throw build
+  call make
+    bind constructor, text <RTCIceCandidate>
+    bind factor, link candidate-info
+    turn seed
 
-force get-candidate
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |candidate|
-    throw build
-
-force get-component
-  start build
+task get-candidate
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |component|
-    throw build
+    bind object, link build
+    bind aspect, text <candidate>
+    turn seed
 
-force get-foundation
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |foundation|
-    throw build
-
-force get-ip
-  start build
+task get-component
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |ip|
-    throw build
+    bind object, link build
+    bind aspect, text <component>
+    turn seed
 
-force get-port
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |port|
-    throw build
-
-force get-priority
-  start build
+task get-foundation
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |priority|
-    throw build
+    bind object, link build
+    bind aspect, text <foundation>
+    turn seed
 
-force get-address
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |address|
-    throw build
-
-force get-protocol
-  start build
+task get-ip
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |protocol|
-    throw build
+    bind object, link build
+    bind aspect, text <ip>
+    turn seed
 
-force get-related-address
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |relatedAddress|
-    throw build
-
-force get-related-port
-  start build
+task get-port
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |relatedPort|
-    throw build
+    bind object, link build
+    bind aspect, text <port>
+    turn seed
 
-force get-sdp-mid
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |sdpMid|
-    throw build
-
-force get-sdp-m-line-index
-  start build
+task get-priority
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |sdpMLineIndex|
-    throw build
+    bind object, link build
+    bind aspect, text <priority>
+    turn seed
 
-force get-tcp-type
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |tcpType|
-    throw build
-
-force get-type
-  start build
+task get-address
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |type|
-    throw build
+    bind object, link build
+    bind aspect, text <address>
+    turn seed
 
-force get-username-fragment
-  start build
+task get-protocol
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |usernameFragment|
-    throw build
+    bind object, link build
+    bind aspect, text <protocol>
+    turn seed
 
-force to-j-s-o-n
-  start build
+task get-related-address
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <relatedAddress>
+    turn seed
+
+task get-related-port
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <relatedPort>
+    turn seed
+
+task get-sdp-mid
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <sdpMid>
+    turn seed
+
+task get-sdp-m-line-index
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <sdpMLineIndex>
+    turn seed
+
+task get-tcp-type
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <tcpType>
+    turn seed
+
+task get-type
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <type>
+    turn seed
+
+task get-username-fragment
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <usernameFragment>
+    turn seed
+
+task to-j-s-o-n
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |toJSON|
-    throw build
+    bind object, link build
+    bind method, text <toJSON>
+    turn seed

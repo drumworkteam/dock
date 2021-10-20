@@ -1,64 +1,64 @@
 
-force build-document-fragment
-  cause invoke-constructor
-    mount constructor, |DocumentFragment|
-    throw build
+task build-document-fragment
+  call make
+    bind constructor, text <DocumentFragment>
+    turn seed
 
-force get-children
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |children|
-    throw build
-
-force get-first-element-child
-  start build
+task get-children
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |firstElementChild|
-    throw build
+    bind object, link build
+    bind aspect, text <children>
+    turn seed
 
-force get-last-element-child
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |lastElementChild|
-    throw build
-
-force get-child-element-count
-  start build
+task get-first-element-child
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |childElementCount|
-    throw build
+    bind object, link build
+    bind aspect, text <firstElementChild>
+    turn seed
 
-force query-selector
-  start build
-  start selectors
+task get-last-element-child
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <lastElementChild>
+    turn seed
+
+task get-child-element-count
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <childElementCount>
+    turn seed
+
+task query-selector
+  base build
+  base selectors
 
   cause call-method
-    mount object, share build
-    mount method, |querySelector|
-    mount factor, share selectors
+    bind object, link build
+    bind method, text <querySelector>
+    bind factor, link selectors
 
-force query-selector-all
-  start build
-  start selectors
-
-  cause call-method
-    mount object, share build
-    mount method, |querySelectorAll|
-    mount factor, share selectors
-
-force get-element-by-id
-  start build
-  start selectors
+task query-selector-all
+  base build
+  base selectors
 
   cause call-method
-    mount object, share build
-    mount method, |getElementById|
-    mount factor, share selectors
+    bind object, link build
+    bind method, text <querySelectorAll>
+    bind factor, link selectors
+
+task get-element-by-id
+  base build
+  base selectors
+
+  cause call-method
+    bind object, link build
+    bind method, text <getElementById>
+    bind factor, link selectors

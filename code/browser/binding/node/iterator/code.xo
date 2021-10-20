@@ -1,62 +1,62 @@
 
-force get-root
-  start build
+task get-root
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |root|
-    throw build
+    bind object, link build
+    bind aspect, text <root>
+    turn seed
 
-force get-what-to-show
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |whatToShow|
-    throw build
-
-force get-filter
-  start build
+task get-what-to-show
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |filter|
-    throw build
+    bind object, link build
+    bind aspect, text <whatToShow>
+    turn seed
 
-force get-expand-entity-references
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |expandEntityReferences|
-    throw build
-
-force get-reference-node
-  start build
+task get-filter
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |referenceNode|
-    throw build
+    bind object, link build
+    bind aspect, text <filter>
+    turn seed
 
-force get-pointer-before-reference-node
-  start build
+task get-expand-entity-references
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |pointerBeforeReferenceNode|
-    throw build
+    bind object, link build
+    bind aspect, text <expandEntityReferences>
+    turn seed
 
-force previous-node
-  start build
+task get-reference-node
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <referenceNode>
+    turn seed
+
+task get-pointer-before-reference-node
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <pointerBeforeReferenceNode>
+    turn seed
+
+task previous-node
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |previousNode|
+    bind object, link build
+    bind method, text <previousNode>
 
-force next-node
-  start build
+task next-node
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |nextNode|
+    bind object, link build
+    bind method, text <nextNode>

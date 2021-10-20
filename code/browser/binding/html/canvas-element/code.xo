@@ -1,106 +1,106 @@
 
-force get-height
-  start build
+task get-height
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |height|
-    throw build
+    bind object, link build
+    bind aspect, text <height>
+    turn seed
 
-force set-height
-  start build
-  start value
+task set-height
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |height|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <height>
+    bind factor, link value
 
-force get-width
-  start build
+task get-width
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |width|
-    throw build
+    bind object, link build
+    bind aspect, text <width>
+    turn seed
 
-force set-width
-  start build
-  start value
+task set-width
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |width|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <width>
+    bind factor, link value
 
-force get-moz-opaque
-  start build
+task get-moz-opaque
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |mozOpaque|
-    throw build
+    bind object, link build
+    bind aspect, text <mozOpaque>
+    turn seed
 
-force set-moz-opaque
-  start build
-  start value
+task set-moz-opaque
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |mozOpaque|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <mozOpaque>
+    bind factor, link value
 
-force get-moz-print-callback
-  start build
+task get-moz-print-callback
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |mozPrintCallback|
-    throw build
+    bind object, link build
+    bind aspect, text <mozPrintCallback>
+    turn seed
 
-force set-moz-print-callback
-  start build
-  start value
+task set-moz-print-callback
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |mozPrintCallback|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <mozPrintCallback>
+    bind factor, link value
 
-force get-context
-  start build
-  start type
-  start attributes
+task get-context
+  base build
+  base type
+  base attributes
 
   cause call-method
-    mount object, share build
-    mount method, |getContext|
-    mount factor, share type
-    mount factor, share attributes
-    throw build
+    bind object, link build
+    bind method, text <getContext>
+    bind factor, link type
+    bind factor, link attributes
+    turn seed
 
-force to-data-url
-  start build
-  start type
-  start encoder-options
-
-  cause call-method
-    mount object, share build
-    mount method, |toDataURL|
-    mount factor, share type
-    mount factor, share encoder-options
-    throw build
-
-force to-blob
-  start build
-  start callback
-  start mime-type
-  start quality-argument
+task to-data-url
+  base build
+  base type
+  base encoder-options
 
   cause call-method
-    mount object, share build
-    mount method, |toBlob|
-    mount factor, share callback
-    mount factor, share mime-type
-    mount factor, share quality-argument
-    throw build
+    bind object, link build
+    bind method, text <toDataURL>
+    bind factor, link type
+    bind factor, link encoder-options
+    turn seed
+
+task to-blob
+  base build
+  base callback
+  base mime-type
+  base quality-argument
+
+  cause call-method
+    bind object, link build
+    bind method, text <toBlob>
+    bind factor, link callback
+    bind factor, link mime-type
+    bind factor, link quality-argument
+    turn seed

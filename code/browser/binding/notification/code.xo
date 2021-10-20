@@ -1,10 +1,10 @@
 
-force build-notification
-  start title
-  start options
+task build-notification
+  base title
+  base options
 
-  cause invoke-constructor
-    mount constructor, |Notification|
-    mount factor, share title
-    mount factor, share options
-    throw build
+  call make
+    bind constructor, text <Notification>
+    bind factor, link title
+    bind factor, link options
+    turn seed

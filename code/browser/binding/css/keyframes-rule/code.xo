@@ -1,52 +1,52 @@
 
-force get-name
-  start build
+task get-name
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |name|
-    throw build
+    bind object, link build
+    bind aspect, text <name>
+    turn seed
 
-force set-name
-  start build
-  start value
+task set-name
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |name|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <name>
+    bind factor, link value
 
-force get-css-rules
-  start build
+task get-css-rules
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |cssRules|
-    throw build
+    bind object, link build
+    bind aspect, text <cssRules>
+    turn seed
 
-force append-rule
-  start build
-  start rule
-
-  cause call-method
-    mount object, share build
-    mount method, |appendRule|
-    mount factor, share rule
-
-force delete-rule
-  start build
-  start select
+task append-rule
+  base build
+  base rule
 
   cause call-method
-    mount object, share build
-    mount method, |deleteRule|
-    mount factor, share select
+    bind object, link build
+    bind method, text <appendRule>
+    bind factor, link rule
 
-force find-rule
-  start build
-  start select
+task delete-rule
+  base build
+  base select
 
   cause call-method
-    mount object, share build
-    mount method, |findRule|
-    mount factor, share select
+    bind object, link build
+    bind method, text <deleteRule>
+    bind factor, link select
+
+task find-rule
+  base build
+  base select
+
+  cause call-method
+    bind object, link build
+    bind method, text <findRule>
+    bind factor, link select

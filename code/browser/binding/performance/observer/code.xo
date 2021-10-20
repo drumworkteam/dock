@@ -1,32 +1,32 @@
 
-force build-performance-observer
-  start callback
+task build-performance-observer
+  base callback
 
-  cause invoke-constructor
-    mount constructor, |PerformanceObserver|
-    mount factor, share callback
-    throw build
+  call make
+    bind constructor, text <PerformanceObserver>
+    bind factor, link callback
+    turn seed
 
-force observe
-  start build
-  start options
-
-  cause call-method
-    mount object, share build
-    mount method, |observe|
-    mount factor, share options
-
-force disconnect
-  start build
+task observe
+  base build
+  base options
 
   cause call-method
-    mount object, share build
-    mount method, |disconnect|
+    bind object, link build
+    bind method, text <observe>
+    bind factor, link options
 
-force take-records
-  start build
+task disconnect
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |takeRecords|
-    throw build
+    bind object, link build
+    bind method, text <disconnect>
+
+task take-records
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <takeRecords>
+    turn seed

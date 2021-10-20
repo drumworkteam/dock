@@ -1,26 +1,26 @@
 
-force build-media-key-message-event
-  start type-arg
-  start options
+task build-media-key-message-event
+  base type-arg
+  base options
 
-  cause invoke-constructor
-    mount constructor, |MediaKeyMessageEvent|
-    mount factor, share type-arg
-    mount factor, share options
-    throw build
+  call make
+    bind constructor, text <MediaKeyMessageEvent>
+    bind factor, link type-arg
+    bind factor, link options
+    turn seed
 
-force get-message
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |message|
-    throw build
-
-force get-message-type
-  start build
+task get-message
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |messageType|
-    throw build
+    bind object, link build
+    bind aspect, text <message>
+    turn seed
+
+task get-message-type
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <messageType>
+    turn seed

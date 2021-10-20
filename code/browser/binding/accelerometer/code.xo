@@ -1,32 +1,32 @@
 
-force build-accelerometer
-  start options
+task build-accelerometer
+  base options
 
-  cause invoke-constructor
-    mount constructor, |Accelerometer|
-    mount factor, share options
-    throw build
+  call make
+    bind constructor, text <Accelerometer>
+    bind factor, link options
+    turn seed
 
-force get-x
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |x|
-    throw build
-
-force get-y
-  start build
+task get-x
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |y|
-    throw build
+    bind object, link build
+    bind aspect, text <x>
+    turn seed
 
-force get-z
-  start build
+task get-y
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |z|
-    throw build
+    bind object, link build
+    bind aspect, text <y>
+    turn seed
+
+task get-z
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <z>
+    turn seed

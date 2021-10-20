@@ -1,134 +1,134 @@
 
-force get-length
-  start build
+task get-length
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |length|
-    throw build
+    bind object, link build
+    bind aspect, text <length>
+    turn seed
 
-force get-value
-  start build
+task get-value
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |value|
-    throw build
+    bind object, link build
+    bind aspect, text <value>
+    turn seed
 
-force set-value
-  start build
-  start value
+task set-value
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |value|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <value>
+    bind factor, link value
 
-force item-index
-  start build
-  start index
-
-  cause call-method
-    mount object, share build
-    mount method, |item(index)|
-    mount factor, share index
-    throw build
-
-force contains-token
-  start build
-  start token
+task item-index
+  base build
+  base index
 
   cause call-method
-    mount object, share build
-    mount method, |contains(token)|
-    mount factor, share token
-    throw build
+    bind object, link build
+    bind method, text <item(index)>
+    bind factor, link index
+    turn seed
 
-force token-n
-  start build
-  start token-n
-
-  cause call-method
-    mount object, share build
-    mount method, |tokenN]])|
-    mount factor, share token-n
-    throw build
-
-force token-n
-  start build
-  start token-n
+task contains-token
+  base build
+  base token
 
   cause call-method
-    mount object, share build
-    mount method, |tokenN]])|
-    mount factor, share token-n
-    throw build
+    bind object, link build
+    bind method, text <contains(token)>
+    bind factor, link token
+    turn seed
 
-force replace-oldtoken-newtoken
-  start build
-  start old-token
-  start new-token
-
-  cause call-method
-    mount object, share build
-    mount method, |replace(oldToken, newToken)|
-    mount factor, share old-token
-    mount factor, share new-token
-    throw build
-
-force supports-token
-  start build
-  start token
+task token-n
+  base build
+  base token-n
 
   cause call-method
-    mount object, share build
-    mount method, |supports(token)|
-    mount factor, share token
+    bind object, link build
+    bind method, text <tokenN]])>
+    bind factor, link token-n
+    turn seed
 
-force toggle-token-force
-  start build
-  start token
-  start force
-
-  cause call-method
-    mount object, share build
-    mount method, |toggle(token [, force])|
-    mount factor, share token
-    mount factor, share force
-    throw build
-
-force entries
-  start build
+task token-n
+  base build
+  base token-n
 
   cause call-method
-    mount object, share build
-    mount method, |entries|
-    throw build
+    bind object, link build
+    bind method, text <tokenN]])>
+    bind factor, link token-n
+    turn seed
 
-force foreach-callback-thisarg
-  start build
-  start callback
-  start this-arg
-
-  cause call-method
-    mount object, share build
-    mount method, |forEach(callback [, thisArg])|
-    mount factor, share callback
-    mount factor, share this-arg
-    throw build
-
-force keys
-  start build
+task replace-oldtoken-newtoken
+  base build
+  base old-token
+  base new-token
 
   cause call-method
-    mount object, share build
-    mount method, |keys|
-    throw build
+    bind object, link build
+    bind method, text <replace(oldToken, newToken)>
+    bind factor, link old-token
+    bind factor, link new-token
+    turn seed
 
-force values
-  start build
+task supports-token
+  base build
+  base token
 
   cause call-method
-    mount object, share build
-    mount method, |values|
-    throw build
+    bind object, link build
+    bind method, text <supports(token)>
+    bind factor, link token
+
+task toggle-token-force
+  base build
+  base token
+  base force
+
+  cause call-method
+    bind object, link build
+    bind method, text <toggle(token [, force])>
+    bind factor, link token
+    bind factor, link force
+    turn seed
+
+task entries
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <entries>
+    turn seed
+
+task foreach-callback-thisarg
+  base build
+  base callback
+  base this-arg
+
+  cause call-method
+    bind object, link build
+    bind method, text <forEach(callback [, thisArg])>
+    bind factor, link callback
+    bind factor, link this-arg
+    turn seed
+
+task keys
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <keys>
+    turn seed
+
+task values
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <values>
+    turn seed

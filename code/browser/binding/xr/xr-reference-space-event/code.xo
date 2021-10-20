@@ -1,26 +1,26 @@
 
-force build-x-r-reference-space-event
-  start type
-  start event-init-dict
+task build-x-r-reference-space-event
+  base type
+  base event-init-dict
 
-  cause invoke-constructor
-    mount constructor, |XRReferenceSpaceEvent|
-    mount factor, share type
-    mount factor, share event-init-dict
-    throw build
+  call make
+    bind constructor, text <XRReferenceSpaceEvent>
+    bind factor, link type
+    bind factor, link event-init-dict
+    turn seed
 
-force get-reference-space
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |referenceSpace|
-    throw build
-
-force get-transform
-  start build
+task get-reference-space
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |transform|
-    throw build
+    bind object, link build
+    bind aspect, text <referenceSpace>
+    turn seed
+
+task get-transform
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <transform>
+    turn seed

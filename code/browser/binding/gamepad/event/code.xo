@@ -1,18 +1,18 @@
 
-force build-gamepad-event
-  start type-arg
-  start options
+task build-gamepad-event
+  base type-arg
+  base options
 
-  cause invoke-constructor
-    mount constructor, |GamepadEvent|
-    mount factor, share type-arg
-    mount factor, share options
-    throw build
+  call make
+    bind constructor, text <GamepadEvent>
+    bind factor, link type-arg
+    bind factor, link options
+    turn seed
 
-force get-gamepad
-  start build
+task get-gamepad
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |gamepad|
-    throw build
+    bind object, link build
+    bind aspect, text <gamepad>
+    turn seed

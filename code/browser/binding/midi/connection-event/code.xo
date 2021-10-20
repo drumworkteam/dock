@@ -1,22 +1,22 @@
 
-force build-midi-connection-event
-  cause invoke-constructor
-    mount constructor, |MIDIConnectionEvent|
-    throw build
+task build-midi-connection-event
+  call make
+    bind constructor, text <MIDIConnectionEvent>
+    turn seed
 
-force get-port
-  start build
+task get-port
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |port|
-    throw build
+    bind object, link build
+    bind aspect, text <port>
+    turn seed
 
-force set-port
-  start build
-  start value
+task set-port
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |port|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <port>
+    bind factor, link value

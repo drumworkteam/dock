@@ -1,78 +1,78 @@
 
-force build-dom-rect-read-only
-  start x
-  start y
-  start width
-  start height
+task build-dom-rect-read-only
+  base x
+  base y
+  base width
+  base height
 
-  cause invoke-constructor
-    mount constructor, |DOMRectReadOnly|
-    mount factor, share x
-    mount factor, share y
-    mount factor, share width
-    mount factor, share height
-    throw build
+  call make
+    bind constructor, text <DOMRectReadOnly>
+    bind factor, link x
+    bind factor, link y
+    bind factor, link width
+    bind factor, link height
+    turn seed
 
-force get-x
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |x|
-    throw build
-
-force get-y
-  start build
+task get-x
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |y|
-    throw build
+    bind object, link build
+    bind aspect, text <x>
+    turn seed
 
-force get-width
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |width|
-    throw build
-
-force get-height
-  start build
+task get-y
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |height|
-    throw build
+    bind object, link build
+    bind aspect, text <y>
+    turn seed
 
-force get-top
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |top|
-    throw build
-
-force get-right
-  start build
+task get-width
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |right|
-    throw build
+    bind object, link build
+    bind aspect, text <width>
+    turn seed
 
-force get-bottom
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |bottom|
-    throw build
-
-force get-left
-  start build
+task get-height
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |left|
-    throw build
+    bind object, link build
+    bind aspect, text <height>
+    turn seed
+
+task get-top
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <top>
+    turn seed
+
+task get-right
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <right>
+    turn seed
+
+task get-bottom
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <bottom>
+    turn seed
+
+task get-left
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <left>
+    turn seed

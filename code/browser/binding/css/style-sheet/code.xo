@@ -1,38 +1,38 @@
 
-force get-css-rules
-  start build
+task get-css-rules
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |cssRules|
-    throw build
+    bind object, link build
+    bind aspect, text <cssRules>
+    turn seed
 
-force get-owner-rule
-  start build
+task get-owner-rule
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |ownerRule|
-    throw build
+    bind object, link build
+    bind aspect, text <ownerRule>
+    turn seed
 
-force delete-rule
-  start build
-  start index
-
-  cause call-method
-    mount object, share build
-    mount method, |deleteRule|
-    mount factor, share index
-    throw build
-
-force insert-rule
-  start build
-  start rule
-  start index
+task delete-rule
+  base build
+  base index
 
   cause call-method
-    mount object, share build
-    mount method, |insertRule|
-    mount factor, share rule
-    mount factor, share index
-    throw build
+    bind object, link build
+    bind method, text <deleteRule>
+    bind factor, link index
+    turn seed
+
+task insert-rule
+  base build
+  base rule
+  base index
+
+  cause call-method
+    bind object, link build
+    bind method, text <insertRule>
+    bind factor, link rule
+    bind factor, link index
+    turn seed

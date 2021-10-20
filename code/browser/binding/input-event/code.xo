@@ -1,45 +1,45 @@
 
-force build-input-event
-  cause invoke-constructor
-    mount constructor, |InputEvent|
-    throw build
+task build-input-event
+  call make
+    bind constructor, text <InputEvent>
+    turn seed
 
-force get-data
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |data|
-    throw build
-
-force get-data-transfer
-  start build
+task get-data
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |dataTransfer|
-    throw build
+    bind object, link build
+    bind aspect, text <data>
+    turn seed
 
-force get-input-type
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |inputType|
-    throw build
-
-force get-is-composing
-  start build
+task get-data-transfer
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |isComposing|
-    throw build
+    bind object, link build
+    bind aspect, text <dataTransfer>
+    turn seed
 
-force get-target-ranges
-  start build
+task get-input-type
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <inputType>
+    turn seed
+
+task get-is-composing
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <isComposing>
+    turn seed
+
+task get-target-ranges
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |getTargetRanges|
-    throw build
+    bind object, link build
+    bind method, text <getTargetRanges>
+    turn seed

@@ -1,16 +1,16 @@
 
-force build-audio-worklet-processor
-  start options
+task build-audio-worklet-processor
+  base options
 
-  cause invoke-constructor
-    mount constructor, |AudioWorkletProcessor|
-    mount factor, share options
-    throw build
+  call make
+    bind constructor, text <AudioWorkletProcessor>
+    bind factor, link options
+    turn seed
 
-force get-port
-  start build
+task get-port
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |port|
-    throw build
+    bind object, link build
+    bind aspect, text <port>
+    turn seed

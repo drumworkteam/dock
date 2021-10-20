@@ -1,82 +1,82 @@
 
-force build-dom-point
-  start x
-  start y
-  start z
-  start w
+task build-dom-point
+  base x
+  base y
+  base z
+  base w
 
-  cause invoke-constructor
-    mount constructor, |DOMPoint|
-    mount factor, share x
-    mount factor, share y
-    mount factor, share z
-    mount factor, share w
-    throw build
+  call make
+    bind constructor, text <DOMPoint>
+    bind factor, link x
+    bind factor, link y
+    bind factor, link z
+    bind factor, link w
+    turn seed
 
-force get-x
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |x|
-    throw build
-
-force set-x
-  start build
-  start value
-
-  cause set-aspect
-    mount object, share build
-    mount aspect, |x|
-    mount factor, share value
-
-force get-y
-  start build
+task get-x
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |y|
-    throw build
+    bind object, link build
+    bind aspect, text <x>
+    turn seed
 
-force set-y
-  start build
-  start value
+task set-x
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |y|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <x>
+    bind factor, link value
 
-force get-z
-  start build
+task get-y
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |z|
-    throw build
+    bind object, link build
+    bind aspect, text <y>
+    turn seed
 
-force set-z
-  start build
-  start value
+task set-y
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |z|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <y>
+    bind factor, link value
 
-force get-w
-  start build
+task get-z
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |w|
-    throw build
+    bind object, link build
+    bind aspect, text <z>
+    turn seed
 
-force set-w
-  start build
-  start value
+task set-z
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |w|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <z>
+    bind factor, link value
+
+task get-w
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <w>
+    turn seed
+
+task set-w
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <w>
+    bind factor, link value

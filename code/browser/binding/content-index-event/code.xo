@@ -1,18 +1,18 @@
 
-force build-content-index-event
-  start type
-  start event-init-dict
+task build-content-index-event
+  base type
+  base event-init-dict
 
-  cause invoke-constructor
-    mount constructor, |ContentIndexEvent|
-    mount factor, share type
-    mount factor, share event-init-dict
-    throw build
+  call make
+    bind constructor, text <ContentIndexEvent>
+    bind factor, link type
+    bind factor, link event-init-dict
+    turn seed
 
-force get-id
-  start build
+task get-id
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |id|
-    throw build
+    bind object, link build
+    bind aspect, text <id>
+    turn seed

@@ -1,118 +1,118 @@
 
-force get-filesystem
-  start build
+task get-filesystem
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |filesystem|
-    throw build
+    bind object, link build
+    bind aspect, text <filesystem>
+    turn seed
 
-force get-full-path
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |fullPath|
-    throw build
-
-force get-is-directory
-  start build
+task get-full-path
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |isDirectory|
-    throw build
+    bind object, link build
+    bind aspect, text <fullPath>
+    turn seed
 
-force get-is-file
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |isFile|
-    throw build
-
-force get-name
-  start build
+task get-is-directory
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |name|
-    throw build
+    bind object, link build
+    bind aspect, text <isDirectory>
+    turn seed
 
-force copy-to
-  start build
-  start new-parent
-  start new-name
-  start success-callback
-  start error-callback
+task get-is-file
+  base build
 
-  cause call-method
-    mount object, share build
-    mount method, |copyTo|
-    mount factor, share new-parent
-    mount factor, share new-name
-    mount factor, share success-callback
-    mount factor, share error-callback
-    throw build
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <isFile>
+    turn seed
 
-force get-metadata
-  start build
-  start success-callback
-  start error-callback
+task get-name
+  base build
 
-  cause call-method
-    mount object, share build
-    mount method, |getMetadata|
-    mount factor, share success-callback
-    mount factor, share error-callback
-    throw build
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <name>
+    turn seed
 
-force get-parent
-  start build
-  start success-callback
-  start error-callback
+task copy-to
+  base build
+  base new-parent
+  base new-name
+  base success-callback
+  base error-callback
 
   cause call-method
-    mount object, share build
-    mount method, |getParent|
-    mount factor, share success-callback
-    mount factor, share error-callback
-    throw build
+    bind object, link build
+    bind method, text <copyTo>
+    bind factor, link new-parent
+    bind factor, link new-name
+    bind factor, link success-callback
+    bind factor, link error-callback
+    turn seed
 
-force move-to
-  start build
-  start new-parent
-  start new-name
-  start success-callback
-  start error-callback
-
-  cause call-method
-    mount object, share build
-    mount method, |moveTo|
-    mount factor, share new-parent
-    mount factor, share new-name
-    mount factor, share success-callback
-    mount factor, share error-callback
-    throw build
-
-force remove
-  start build
-  start success-callback
-  start error-callback
+task get-metadata
+  base build
+  base success-callback
+  base error-callback
 
   cause call-method
-    mount object, share build
-    mount method, |remove|
-    mount factor, share success-callback
-    mount factor, share error-callback
-    throw build
+    bind object, link build
+    bind method, text <getMetadata>
+    bind factor, link success-callback
+    bind factor, link error-callback
+    turn seed
 
-force to-url
-  start build
-  start mime-type
+task get-parent
+  base build
+  base success-callback
+  base error-callback
 
   cause call-method
-    mount object, share build
-    mount method, |toURL|
-    mount factor, share mime-type
-    throw build
+    bind object, link build
+    bind method, text <getParent>
+    bind factor, link success-callback
+    bind factor, link error-callback
+    turn seed
+
+task move-to
+  base build
+  base new-parent
+  base new-name
+  base success-callback
+  base error-callback
+
+  cause call-method
+    bind object, link build
+    bind method, text <moveTo>
+    bind factor, link new-parent
+    bind factor, link new-name
+    bind factor, link success-callback
+    bind factor, link error-callback
+    turn seed
+
+task remove
+  base build
+  base success-callback
+  base error-callback
+
+  cause call-method
+    bind object, link build
+    bind method, text <remove>
+    bind factor, link success-callback
+    bind factor, link error-callback
+    turn seed
+
+task to-url
+  base build
+  base mime-type
+
+  cause call-method
+    bind object, link build
+    bind method, text <toURL>
+    bind factor, link mime-type
+    turn seed

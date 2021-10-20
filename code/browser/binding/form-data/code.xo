@@ -1,83 +1,83 @@
 
-force build-form-data
-  start form
+task build-form-data
+  base form
 
-  cause invoke-constructor
-    mount constructor, |FormData|
-    mount factor, share form
-    throw build
+  call make
+    bind constructor, text <FormData>
+    bind factor, link form
+    turn seed
 
-force append
-  start build
-  start name
-  start value
-  start filename
-
-  cause call-method
-    mount object, share build
-    mount method, |append|
-    mount factor, share name
-    mount factor, share value
-    mount factor, share filename
-
-force delete
-  start build
+task append
+  base build
+  base name
+  base value
+  base filename
 
   cause call-method
-    mount object, share build
-    mount method, |delete|
+    bind object, link build
+    bind method, text <append>
+    bind factor, link name
+    bind factor, link value
+    bind factor, link filename
 
-force entries
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |entries|
-    throw build
-
-force get
-  start build
-  start name
+task delete
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |get|
-    mount factor, share name
-    throw build
+    bind object, link build
+    bind method, text <delete>
 
-force get-all
-  start build
+task entries
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |getAll|
+    bind object, link build
+    bind method, text <entries>
+    turn seed
 
-force has
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |has|
-
-force keys
-  start build
+task get
+  base build
+  base name
 
   cause call-method
-    mount object, share build
-    mount method, |keys|
-    throw build
+    bind object, link build
+    bind method, text <get>
+    bind factor, link name
+    turn seed
 
-force set
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |set|
-
-force values
-  start build
+task get-all
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |values|
-    throw build
+    bind object, link build
+    bind method, text <getAll>
+
+task has
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <has>
+
+task keys
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <keys>
+    turn seed
+
+task set
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <set>
+
+task values
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <values>
+    turn seed

@@ -1,50 +1,50 @@
 
-force build-error-event
-  start name
-  start force
+task build-error-event
+  base name
+  base force
 
-  cause invoke-constructor
-    mount constructor, |ErrorEvent|
-    mount factor, share name
-    mount factor, share force
-    throw build
+  call make
+    bind constructor, text <ErrorEvent>
+    bind factor, link name
+    bind factor, link force
+    turn seed
 
-force get-message
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |message|
-    throw build
-
-force get-filename
-  start build
+task get-message
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |filename|
-    throw build
+    bind object, link build
+    bind aspect, text <message>
+    turn seed
 
-force get-lineno
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |lineno|
-    throw build
-
-force get-colno
-  start build
+task get-filename
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |colno|
-    throw build
+    bind object, link build
+    bind aspect, text <filename>
+    turn seed
 
-force get-error
-  start build
+task get-lineno
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |error|
-    throw build
+    bind object, link build
+    bind aspect, text <lineno>
+    turn seed
+
+task get-colno
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <colno>
+    turn seed
+
+task get-error
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <error>
+    turn seed

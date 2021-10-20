@@ -1,21 +1,21 @@
 
-force build-composition-event
-  cause invoke-constructor
-    mount constructor, |CompositionEvent|
-    throw build
+task build-composition-event
+  call make
+    bind constructor, text <CompositionEvent>
+    turn seed
 
-force get-data
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |data|
-    throw build
-
-force get-locale
-  start build
+task get-data
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |locale|
-    throw build
+    bind object, link build
+    bind aspect, text <data>
+    turn seed
+
+task get-locale
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <locale>
+    turn seed

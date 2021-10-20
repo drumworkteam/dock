@@ -1,36 +1,36 @@
 
-force enumerate-devices
-  start build
+task enumerate-devices
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |enumerateDevices|
-    throw build
+    bind object, link build
+    bind method, text <enumerateDevices>
+    turn seed
 
-force get-supported-constraints
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |getSupportedConstraints|
-    throw build
-
-force get-display-media
-  start build
-  start constraints
+task get-supported-constraints
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |getDisplayMedia|
-    mount factor, share constraints
-    throw build
+    bind object, link build
+    bind method, text <getSupportedConstraints>
+    turn seed
 
-force get-user-media
-  start build
-  start constraints
+task get-display-media
+  base build
+  base constraints
 
   cause call-method
-    mount object, share build
-    mount method, |getUserMedia|
-    mount factor, share constraints
-    throw build
+    bind object, link build
+    bind method, text <getDisplayMedia>
+    bind factor, link constraints
+    turn seed
+
+task get-user-media
+  base build
+  base constraints
+
+  cause call-method
+    bind object, link build
+    bind method, text <getUserMedia>
+    bind factor, link constraints
+    turn seed

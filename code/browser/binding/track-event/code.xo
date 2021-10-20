@@ -1,18 +1,18 @@
 
-force build-track-event
-  start type
-  start event-info
+task build-track-event
+  base type
+  base event-info
 
-  cause invoke-constructor
-    mount constructor, |TrackEvent|
-    mount factor, share type
-    mount factor, share event-info
-    throw build
+  call make
+    bind constructor, text <TrackEvent>
+    bind factor, link type
+    bind factor, link event-info
+    turn seed
 
-force get-track
-  start build
+task get-track
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |track|
-    throw build
+    bind object, link build
+    bind aspect, text <track>
+    turn seed

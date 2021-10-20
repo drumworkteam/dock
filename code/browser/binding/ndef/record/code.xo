@@ -1,8 +1,8 @@
 
-force build-ndef-record
-  start ndef-record-init
+task build-ndef-record
+  base ndef-record-init
 
-  cause invoke-constructor
-    mount constructor, |NDEFRecord|
-    mount factor, share ndef-record-init
-    throw build
+  call make
+    bind constructor, text <NDEFRecord>
+    bind factor, link ndef-record-init
+    turn seed

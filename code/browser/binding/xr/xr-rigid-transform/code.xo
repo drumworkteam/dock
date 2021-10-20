@@ -1,42 +1,42 @@
 
-force build-xr-rigid-transform
-  start position
-  start orientation
+task build-xr-rigid-transform
+  base position
+  base orientation
 
-  cause invoke-constructor
-    mount constructor, |XRRigidTransform|
-    mount factor, share position
-    mount factor, share orientation
-    throw build
+  call make
+    bind constructor, text <XRRigidTransform>
+    bind factor, link position
+    bind factor, link orientation
+    turn seed
 
-force get-position
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |position|
-    throw build
-
-force get-orientation
-  start build
+task get-position
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |orientation|
-    throw build
+    bind object, link build
+    bind aspect, text <position>
+    turn seed
 
-force get-matrix
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |matrix|
-    throw build
-
-force get-inverse
-  start build
+task get-orientation
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |inverse|
-    throw build
+    bind object, link build
+    bind aspect, text <orientation>
+    turn seed
+
+task get-matrix
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <matrix>
+    turn seed
+
+task get-inverse
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <inverse>
+    turn seed

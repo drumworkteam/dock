@@ -1,73 +1,73 @@
 
-force get-closed
-  start build
+task get-closed
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |closed|
-    throw build
+    bind object, link build
+    bind aspect, text <closed>
+    turn seed
 
-force get-expiration
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |expiration|
-    throw build
-
-force get-key-statuses
-  start build
+task get-expiration
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |keyStatuses|
-    throw build
+    bind object, link build
+    bind aspect, text <expiration>
+    turn seed
 
-force get-session-id
-  start build
+task get-key-statuses
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |sessionId|
-    throw build
+    bind object, link build
+    bind aspect, text <keyStatuses>
+    turn seed
 
-force close
-  start build
+task get-session-id
+  base build
 
-  cause call-method
-    mount object, share build
-    mount method, |close|
-    throw build
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <sessionId>
+    turn seed
 
-force generate-request
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |generateRequest|
-
-force load
-  start build
+task close
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |load|
-    throw build
+    bind object, link build
+    bind method, text <close>
+    turn seed
 
-force remove
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |remove|
-    throw build
-
-force update
-  start build
-  start response
+task generate-request
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |update|
-    mount factor, share response
-    throw build
+    bind object, link build
+    bind method, text <generateRequest>
+
+task load
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <load>
+    turn seed
+
+task remove
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <remove>
+    turn seed
+
+task update
+  base build
+  base response
+
+  cause call-method
+    bind object, link build
+    bind method, text <update>
+    bind factor, link response
+    turn seed

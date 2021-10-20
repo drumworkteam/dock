@@ -1,149 +1,149 @@
 
-force add-path
-  start build
-  start path
-  start transform
+task add-path
+  base build
+  base path
+  base transform
 
   cause call-method
-    mount object, share build
-    mount method, |addPath|
-    mount factor, share path
-    mount factor, share transform
+    bind object, link build
+    bind method, text <addPath>
+    bind factor, link path
+    bind factor, link transform
 
-force close-path
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |closePath|
-
-force move-to
-  start build
-  start x
-  start y
+task close-path
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |moveTo|
-    mount factor, share x
-    mount factor, share y
+    bind object, link build
+    bind method, text <closePath>
 
-force line-to
-  start build
-  start x
-  start y
+task move-to
+  base build
+  base x
+  base y
 
   cause call-method
-    mount object, share build
-    mount method, |lineTo|
-    mount factor, share x
-    mount factor, share y
-    throw build
+    bind object, link build
+    bind method, text <moveTo>
+    bind factor, link x
+    bind factor, link y
 
-force bezier-curve-to
-  start build
-  start cp1x
-  start cp1y
-  start cp2x
-  start cp2y
-  start x
-  start y
+task line-to
+  base build
+  base x
+  base y
 
   cause call-method
-    mount object, share build
-    mount method, |bezierCurveTo|
-    mount factor, share cp1x
-    mount factor, share cp1y
-    mount factor, share cp2x
-    mount factor, share cp2y
-    mount factor, share x
-    mount factor, share y
+    bind object, link build
+    bind method, text <lineTo>
+    bind factor, link x
+    bind factor, link y
+    turn seed
 
-force quadratic-curve-to
-  start build
-  start cpx
-  start cpy
-  start x
-  start y
-
-  cause call-method
-    mount object, share build
-    mount method, |quadraticCurveTo|
-    mount factor, share cpx
-    mount factor, share cpy
-    mount factor, share x
-    mount factor, share y
-
-force arc
-  start build
-  start x
-  start y
-  start radius
-  start start-angle
-  start end-angle
-  start anticlockwise
+task bezier-curve-to
+  base build
+  base cp1x
+  base cp1y
+  base cp2x
+  base cp2y
+  base x
+  base y
 
   cause call-method
-    mount object, share build
-    mount method, |arc|
-    mount factor, share x
-    mount factor, share y
-    mount factor, share radius
-    mount factor, share start-angle
-    mount factor, share end-angle
-    mount factor, share anticlockwise
+    bind object, link build
+    bind method, text <bezierCurveTo>
+    bind factor, link cp1x
+    bind factor, link cp1y
+    bind factor, link cp2x
+    bind factor, link cp2y
+    bind factor, link x
+    bind factor, link y
 
-force arc-to
-  start build
-  start x1
-  start y1
-  start x2
-  start y2
-  start radius
-
-  cause call-method
-    mount object, share build
-    mount method, |arcTo|
-    mount factor, share x1
-    mount factor, share y1
-    mount factor, share x2
-    mount factor, share y2
-    mount factor, share radius
-
-force ellipse
-  start build
-  start x
-  start y
-  start radius-x
-  start radius-y
-  start rotation
-  start start-angle
-  start end-angle
-  start anticlockwise
+task quadratic-curve-to
+  base build
+  base cpx
+  base cpy
+  base x
+  base y
 
   cause call-method
-    mount object, share build
-    mount method, |ellipse|
-    mount factor, share x
-    mount factor, share y
-    mount factor, share radius-x
-    mount factor, share radius-y
-    mount factor, share rotation
-    mount factor, share start-angle
-    mount factor, share end-angle
-    mount factor, share anticlockwise
+    bind object, link build
+    bind method, text <quadraticCurveTo>
+    bind factor, link cpx
+    bind factor, link cpy
+    bind factor, link x
+    bind factor, link y
 
-force rect
-  start build
-  start x
-  start y
-  start width
-  start height
+task arc
+  base build
+  base x
+  base y
+  base radius
+  base start-angle
+  base end-angle
+  base anticlockwise
 
   cause call-method
-    mount object, share build
-    mount method, |rect|
-    mount factor, share x
-    mount factor, share y
-    mount factor, share width
-    mount factor, share height
+    bind object, link build
+    bind method, text <arc>
+    bind factor, link x
+    bind factor, link y
+    bind factor, link radius
+    bind factor, link start-angle
+    bind factor, link end-angle
+    bind factor, link anticlockwise
+
+task arc-to
+  base build
+  base x1
+  base y1
+  base x2
+  base y2
+  base radius
+
+  cause call-method
+    bind object, link build
+    bind method, text <arcTo>
+    bind factor, link x1
+    bind factor, link y1
+    bind factor, link x2
+    bind factor, link y2
+    bind factor, link radius
+
+task ellipse
+  base build
+  base x
+  base y
+  base radius-x
+  base radius-y
+  base rotation
+  base start-angle
+  base end-angle
+  base anticlockwise
+
+  cause call-method
+    bind object, link build
+    bind method, text <ellipse>
+    bind factor, link x
+    bind factor, link y
+    bind factor, link radius-x
+    bind factor, link radius-y
+    bind factor, link rotation
+    bind factor, link start-angle
+    bind factor, link end-angle
+    bind factor, link anticlockwise
+
+task rect
+  base build
+  base x
+  base y
+  base width
+  base height
+
+  cause call-method
+    bind object, link build
+    bind method, text <rect>
+    bind factor, link x
+    bind factor, link y
+    bind factor, link width
+    bind factor, link height

@@ -1,48 +1,48 @@
 
-force build-rtc-peer-connection-ice-error-event
-  start configuration
+task build-rtc-peer-connection-ice-error-event
+  base configuration
 
-  cause invoke-constructor
-    mount constructor, |RTCPeerConnectionIceErrorEvent|
-    mount factor, share configuration
-    throw build
+  call make
+    bind constructor, text <RTCPeerConnectionIceErrorEvent>
+    bind factor, link configuration
+    turn seed
 
-force get-address
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |address|
-    throw build
-
-force get-error-code
-  start build
+task get-address
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |errorCode|
-    throw build
+    bind object, link build
+    bind aspect, text <address>
+    turn seed
 
-force get-error-text
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |errorText|
-    throw build
-
-force get-port
-  start build
+task get-error-code
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |port|
-    throw build
+    bind object, link build
+    bind aspect, text <errorCode>
+    turn seed
 
-force get-url
-  start build
+task get-error-text
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |url|
-    throw build
+    bind object, link build
+    bind aspect, text <errorText>
+    turn seed
+
+task get-port
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <port>
+    turn seed
+
+task get-url
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <url>
+    turn seed

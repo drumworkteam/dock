@@ -1,26 +1,26 @@
 
-force build-promise-rejection-event
-  start type
-  start options
+task build-promise-rejection-event
+  base type
+  base options
 
-  cause invoke-constructor
-    mount constructor, |PromiseRejectionEvent|
-    mount factor, share type
-    mount factor, share options
-    throw build
+  call make
+    bind constructor, text <PromiseRejectionEvent>
+    bind factor, link type
+    bind factor, link options
+    turn seed
 
-force get-promise
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |promise|
-    throw build
-
-force get-reason
-  start build
+task get-promise
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |reason|
-    throw build
+    bind object, link build
+    bind aspect, text <promise>
+    turn seed
+
+task get-reason
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <reason>
+    turn seed

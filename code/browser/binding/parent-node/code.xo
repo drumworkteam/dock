@@ -1,80 +1,80 @@
 
-force get-child-element-count
-  start build
+task get-child-element-count
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |childElementCount|
-    throw build
+    bind object, link build
+    bind aspect, text <childElementCount>
+    turn seed
 
-force get-children
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |children|
-    throw build
-
-force get-first-element-child
-  start build
+task get-children
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |firstElementChild|
-    throw build
+    bind object, link build
+    bind aspect, text <children>
+    turn seed
 
-force get-last-element-child
-  start build
+task get-first-element-child
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |lastElementChild|
-    throw build
+    bind object, link build
+    bind aspect, text <firstElementChild>
+    turn seed
 
-force append
-  start build
-  start nodes-or-dom-strings
+task get-last-element-child
+  base build
 
-  cause call-method
-    mount object, share build
-    mount method, |append|
-    mount factor, share nodes-or-dom-strings
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <lastElementChild>
+    turn seed
 
-force prepend
-  start build
-  start nodes-or-dom-strings
-
-  cause call-method
-    mount object, share build
-    mount method, |prepend|
-    mount factor, share nodes-or-dom-strings
-    throw build
-
-force query-selector
-  start build
-  start selectors
+task append
+  base build
+  base nodes-or-dom-strings
 
   cause call-method
-    mount object, share build
-    mount method, |querySelector|
-    mount factor, share selectors
-    throw build
+    bind object, link build
+    bind method, text <append>
+    bind factor, link nodes-or-dom-strings
 
-force query-selector-all
-  start build
-  start selectors
-
-  cause call-method
-    mount object, share build
-    mount method, |querySelectorAll|
-    mount factor, share selectors
-    throw build
-
-force replace-children
-  start build
-  start nodes-or-dom-strings
+task prepend
+  base build
+  base nodes-or-dom-strings
 
   cause call-method
-    mount object, share build
-    mount method, |replaceChildren|
-    mount factor, share nodes-or-dom-strings
+    bind object, link build
+    bind method, text <prepend>
+    bind factor, link nodes-or-dom-strings
+    turn seed
+
+task query-selector
+  base build
+  base selectors
+
+  cause call-method
+    bind object, link build
+    bind method, text <querySelector>
+    bind factor, link selectors
+    turn seed
+
+task query-selector-all
+  base build
+  base selectors
+
+  cause call-method
+    bind object, link build
+    bind method, text <querySelectorAll>
+    bind factor, link selectors
+    turn seed
+
+task replace-children
+  base build
+  base nodes-or-dom-strings
+
+  cause call-method
+    bind object, link build
+    bind method, text <replaceChildren>
+    bind factor, link nodes-or-dom-strings

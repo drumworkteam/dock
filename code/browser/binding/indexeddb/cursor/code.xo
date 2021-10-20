@@ -1,86 +1,86 @@
 
-force get-source
-  start build
+task get-source
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |source|
-    throw build
+    bind object, link build
+    bind aspect, text <source>
+    turn seed
 
-force get-direction
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |direction|
-    throw build
-
-force get-key
-  start build
+task get-direction
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |key|
-    throw build
+    bind object, link build
+    bind aspect, text <direction>
+    turn seed
 
-force get-primary-key
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |primaryKey|
-    throw build
-
-force get-request
-  start build
+task get-key
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |request|
-    throw build
+    bind object, link build
+    bind aspect, text <key>
+    turn seed
 
-force advance
-  start build
-  start count
+task get-primary-key
+  base build
 
-  cause call-method
-    mount object, share build
-    mount method, |advance|
-    mount factor, share count
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <primaryKey>
+    turn seed
 
-force continue
-  start build
-  start key
+task get-request
+  base build
 
-  cause call-method
-    mount object, share build
-    mount method, |continue|
-    mount factor, share key
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <request>
+    turn seed
 
-force continue-primary-key
-  start build
-  start key
-  start primary-key
+task advance
+  base build
+  base count
 
   cause call-method
-    mount object, share build
-    mount method, |continuePrimaryKey|
-    mount factor, share key
-    mount factor, share primary-key
+    bind object, link build
+    bind method, text <advance>
+    bind factor, link count
 
-force delete
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |delete|
-
-force update
-  start build
-  start value
+task continue
+  base build
+  base key
 
   cause call-method
-    mount object, share build
-    mount method, |update|
-    mount factor, share value
-    throw build
+    bind object, link build
+    bind method, text <continue>
+    bind factor, link key
+
+task continue-primary-key
+  base build
+  base key
+  base primary-key
+
+  cause call-method
+    bind object, link build
+    bind method, text <continuePrimaryKey>
+    bind factor, link key
+    bind factor, link primary-key
+
+task delete
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <delete>
+
+task update
+  base build
+  base value
+
+  cause call-method
+    bind object, link build
+    bind method, text <update>
+    bind factor, link value
+    turn seed

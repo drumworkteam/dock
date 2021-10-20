@@ -1,18 +1,18 @@
 
-force build-periodic-sync-event
-  start type
-  start periodic-sync-event-init-dict
+task build-periodic-sync-event
+  base type
+  base periodic-sync-event-init-dict
 
-  cause invoke-constructor
-    mount constructor, |PeriodicSyncEvent|
-    mount factor, share type
-    mount factor, share periodic-sync-event-init-dict
-    throw build
+  call make
+    bind constructor, text <PeriodicSyncEvent>
+    bind factor, link type
+    bind factor, link periodic-sync-event-init-dict
+    turn seed
 
-force get-tag
-  start build
+task get-tag
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |tag|
-    throw build
+    bind object, link build
+    bind aspect, text <tag>
+    turn seed

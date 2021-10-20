@@ -1,18 +1,18 @@
 
-force build-x-r-session-event
-  start type
-  start event-init-dict
+task build-x-r-session-event
+  base type
+  base event-init-dict
 
-  cause invoke-constructor
-    mount constructor, |XRSessionEvent|
-    mount factor, share type
-    mount factor, share event-init-dict
-    throw build
+  call make
+    bind constructor, text <XRSessionEvent>
+    bind factor, link type
+    bind factor, link event-init-dict
+    turn seed
 
-force get-session
-  start build
+task get-session
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |session|
-    throw build
+    bind object, link build
+    bind aspect, text <session>
+    turn seed

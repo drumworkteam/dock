@@ -1,65 +1,65 @@
 
-force build-fetch-event
-  start type
-  start init
+task build-fetch-event
+  base type
+  base init
 
-  cause invoke-constructor
-    mount constructor, |FetchEvent|
-    mount factor, share type
-    mount factor, share init
-    throw build
+  call make
+    bind constructor, text <FetchEvent>
+    bind factor, link type
+    bind factor, link init
+    turn seed
 
-force get-client-id
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |clientId|
-    throw build
-
-force get-preload-response
-  start build
+task get-client-id
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |preloadResponse|
-    throw build
+    bind object, link build
+    bind aspect, text <clientId>
+    turn seed
 
-force get-replaces-client-id
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |replacesClientId|
-    throw build
-
-force get-resulting-client-id
-  start build
+task get-preload-response
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |resultingClientId|
-    throw build
+    bind object, link build
+    bind aspect, text <preloadResponse>
+    turn seed
 
-force get-request
-  start build
+task get-replaces-client-id
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |request|
-    throw build
+    bind object, link build
+    bind aspect, text <replacesClientId>
+    turn seed
 
-force respond-with
-  start build
+task get-resulting-client-id
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <resultingClientId>
+    turn seed
+
+task get-request
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <request>
+    turn seed
+
+task respond-with
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |respondWith|
-    throw build
+    bind object, link build
+    bind method, text <respondWith>
+    turn seed
 
-force wait-until
-  start build
+task wait-until
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |waitUntil|
+    bind object, link build
+    bind method, text <waitUntil>

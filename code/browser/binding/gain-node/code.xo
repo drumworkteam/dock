@@ -1,18 +1,18 @@
 
-force build-gain-node
-  start context
-  start options
+task build-gain-node
+  base context
+  base options
 
-  cause invoke-constructor
-    mount constructor, |GainNode|
-    mount factor, share context
-    mount factor, share options
-    throw build
+  call make
+    bind constructor, text <GainNode>
+    bind factor, link context
+    bind factor, link options
+    turn seed
 
-force get-gain
-  start build
+task get-gain
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |gain|
-    throw build
+    bind object, link build
+    bind aspect, text <gain>
+    turn seed

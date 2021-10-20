@@ -1,83 +1,83 @@
 
-force get-delegates-focus
-  start build
+task get-delegates-focus
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |delegatesFocus|
-    throw build
+    bind object, link build
+    bind aspect, text <delegatesFocus>
+    turn seed
 
-force get-host
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |host|
-    throw build
-
-force get-inner-html
-  start build
+task get-host
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |innerHTML|
-    throw build
+    bind object, link build
+    bind aspect, text <host>
+    turn seed
 
-force set-inner-html
-  start build
-  start value
+task get-inner-html
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <innerHTML>
+    turn seed
+
+task set-inner-html
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |innerHTML|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <innerHTML>
+    bind factor, link value
 
-force get-mode
-  start build
+task get-mode
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |mode|
-    throw build
+    bind object, link build
+    bind aspect, text <mode>
+    turn seed
 
-force get-selection
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |getSelection|
-
-force element-from-point
-  start build
-  start x
-  start y
+task get-selection
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |elementFromPoint|
-    mount factor, share x
-    mount factor, share y
-    throw build
+    bind object, link build
+    bind method, text <getSelection>
 
-force elements-from-point
-  start build
-  start x
-  start y
+task element-from-point
+  base build
+  base x
+  base y
 
   cause call-method
-    mount object, share build
-    mount method, |elementsFromPoint|
-    mount factor, share x
-    mount factor, share y
-    throw build
+    bind object, link build
+    bind method, text <elementFromPoint>
+    bind factor, link x
+    bind factor, link y
+    turn seed
 
-force caret-position-from-point
-  start build
-  start x
-  start y
+task elements-from-point
+  base build
+  base x
+  base y
 
   cause call-method
-    mount object, share build
-    mount method, |caretPositionFromPoint|
-    mount factor, share x
-    mount factor, share y
+    bind object, link build
+    bind method, text <elementsFromPoint>
+    bind factor, link x
+    bind factor, link y
+    turn seed
+
+task caret-position-from-point
+  base build
+  base x
+  base y
+
+  cause call-method
+    bind object, link build
+    bind method, text <caretPositionFromPoint>
+    bind factor, link x
+    bind factor, link y

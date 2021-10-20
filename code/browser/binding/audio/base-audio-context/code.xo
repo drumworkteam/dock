@@ -1,201 +1,201 @@
 
-force get-audio-worklet
-  start build
+task get-audio-worklet
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |audioWorklet|
-    throw build
+    bind object, link build
+    bind aspect, text <audioWorklet>
+    turn seed
 
-force get-current-time
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |currentTime|
-    throw build
-
-force get-destination
-  start build
+task get-current-time
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |destination|
-    throw build
+    bind object, link build
+    bind aspect, text <currentTime>
+    turn seed
 
-force get-listener
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |listener|
-    throw build
-
-force get-sample-rate
-  start build
+task get-destination
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |sampleRate|
-    throw build
+    bind object, link build
+    bind aspect, text <destination>
+    turn seed
 
-force get-state
-  start build
+task get-listener
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |state|
-    throw build
+    bind object, link build
+    bind aspect, text <listener>
+    turn seed
 
-force create-analyser
-  start build
+task get-sample-rate
+  base build
 
-  cause call-method
-    mount object, share build
-    mount method, |createAnalyser|
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <sampleRate>
+    turn seed
 
-force create-biquad-filter
-  start build
+task get-state
+  base build
 
-  cause call-method
-    mount object, share build
-    mount method, |createBiquadFilter|
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <state>
+    turn seed
 
-force create-buffer
-  start build
-  start num-of-channels
-  start length
-  start sample-rate
-
-  cause call-method
-    mount object, share build
-    mount method, |createBuffer|
-    mount factor, share num-of-channels
-    mount factor, share length
-    mount factor, share sample-rate
-
-force create-buffer-source
-  start build
+task create-analyser
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |createBufferSource|
+    bind object, link build
+    bind method, text <createAnalyser>
 
-force create-constant-source
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |createConstantSource|
-
-force create-channel-merger
-  start build
-  start number-of-inputs
+task create-biquad-filter
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |createChannelMerger|
-    mount factor, share number-of-inputs
+    bind object, link build
+    bind method, text <createBiquadFilter>
 
-force create-channel-splitter
-  start build
-  start number-of-outputs
-
-  cause call-method
-    mount object, share build
-    mount method, |createChannelSplitter|
-    mount factor, share number-of-outputs
-
-force create-convolver
-  start build
+task create-buffer
+  base build
+  base num-of-channels
+  base length
+  base sample-rate
 
   cause call-method
-    mount object, share build
-    mount method, |createConvolver|
+    bind object, link build
+    bind method, text <createBuffer>
+    bind factor, link num-of-channels
+    bind factor, link length
+    bind factor, link sample-rate
 
-force create-delay
-  start build
-  start max-delay-time
-
-  cause call-method
-    mount object, share build
-    mount method, |createDelay|
-    mount factor, share max-delay-time
-
-force create-dynamics-compressor
-  start build
+task create-buffer-source
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |createDynamicsCompressor|
+    bind object, link build
+    bind method, text <createBufferSource>
 
-force create-gain
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |createGain|
-
-force create-i-i-r-filter
-  start build
-  start feedforward
-  start feedback
+task create-constant-source
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |createIIRFilter|
-    mount factor, share feedforward
-    mount factor, share feedback
+    bind object, link build
+    bind method, text <createConstantSource>
 
-force create-oscillator
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |createOscillator|
-
-force create-panner
-  start build
+task create-channel-merger
+  base build
+  base number-of-inputs
 
   cause call-method
-    mount object, share build
-    mount method, |createPanner|
+    bind object, link build
+    bind method, text <createChannelMerger>
+    bind factor, link number-of-inputs
 
-force create-periodic-wave
-  start build
-  start real
-  start imag
-
-  cause call-method
-    mount object, share build
-    mount method, |createPeriodicWave|
-    mount factor, share real
-    mount factor, share imag
-
-force create-stereo-panner
-  start build
+task create-channel-splitter
+  base build
+  base number-of-outputs
 
   cause call-method
-    mount object, share build
-    mount method, |createStereoPanner|
+    bind object, link build
+    bind method, text <createChannelSplitter>
+    bind factor, link number-of-outputs
 
-force create-wave-shaper
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |createWaveShaper|
-
-force decode-audio-data
-  start build
-  start array-buffer
-  start success-callback
-  start error-callback
+task create-convolver
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |decodeAudioData|
-    mount factor, share array-buffer
-    mount factor, share success-callback
-    mount factor, share error-callback
-    throw build
+    bind object, link build
+    bind method, text <createConvolver>
+
+task create-delay
+  base build
+  base max-delay-time
+
+  cause call-method
+    bind object, link build
+    bind method, text <createDelay>
+    bind factor, link max-delay-time
+
+task create-dynamics-compressor
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <createDynamicsCompressor>
+
+task create-gain
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <createGain>
+
+task create-i-i-r-filter
+  base build
+  base feedforward
+  base feedback
+
+  cause call-method
+    bind object, link build
+    bind method, text <createIIRFilter>
+    bind factor, link feedforward
+    bind factor, link feedback
+
+task create-oscillator
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <createOscillator>
+
+task create-panner
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <createPanner>
+
+task create-periodic-wave
+  base build
+  base real
+  base imag
+
+  cause call-method
+    bind object, link build
+    bind method, text <createPeriodicWave>
+    bind factor, link real
+    bind factor, link imag
+
+task create-stereo-panner
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <createStereoPanner>
+
+task create-wave-shaper
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <createWaveShaper>
+
+task decode-audio-data
+  base build
+  base array-buffer
+  base success-callback
+  base error-callback
+
+  cause call-method
+    bind object, link build
+    bind method, text <decodeAudioData>
+    bind factor, link array-buffer
+    bind factor, link success-callback
+    bind factor, link error-callback
+    turn seed

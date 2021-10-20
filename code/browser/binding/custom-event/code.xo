@@ -1,18 +1,18 @@
 
-force build-custom-event
-  start type-arg
-  start custom-event-init
+task build-custom-event
+  base type-arg
+  base custom-event-init
 
-  cause invoke-constructor
-    mount constructor, |CustomEvent|
-    mount factor, share type-arg
-    mount factor, share custom-event-init
-    throw build
+  call make
+    bind constructor, text <CustomEvent>
+    bind factor, link type-arg
+    bind factor, link custom-event-init
+    turn seed
 
-force get-detail
-  start build
+task get-detail
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |detail|
-    throw build
+    bind object, link build
+    bind aspect, text <detail>
+    turn seed

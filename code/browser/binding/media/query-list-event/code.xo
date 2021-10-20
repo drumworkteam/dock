@@ -1,24 +1,24 @@
 
-force build-media-query-list-event
-  start init
+task build-media-query-list-event
+  base init
 
-  cause invoke-constructor
-    mount constructor, |MediaQueryListEvent|
-    mount factor, share init
-    throw build
+  call make
+    bind constructor, text <MediaQueryListEvent>
+    bind factor, link init
+    turn seed
 
-force get-matches
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |matches|
-    throw build
-
-force get-media
-  start build
+task get-matches
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |media|
-    throw build
+    bind object, link build
+    bind aspect, text <matches>
+    turn seed
+
+task get-media
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <media>
+    turn seed

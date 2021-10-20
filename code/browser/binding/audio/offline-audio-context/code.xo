@@ -1,36 +1,36 @@
 
-force build-offline-audio-context
-  start number-of-channels
-  start length
-  start sample-rate
+task build-offline-audio-context
+  base number-of-channels
+  base length
+  base sample-rate
 
-  cause invoke-constructor
-    mount constructor, |OfflineAudioContext|
-    mount factor, share number-of-channels
-    mount factor, share length
-    mount factor, share sample-rate
-    throw build
+  call make
+    bind constructor, text <OfflineAudioContext>
+    bind factor, link number-of-channels
+    bind factor, link length
+    bind factor, link sample-rate
+    turn seed
 
-force get-length
-  start build
+task get-length
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |length|
-    throw build
+    bind object, link build
+    bind aspect, text <length>
+    turn seed
 
-force suspend
-  start build
-  start suspend-time
-
-  cause call-method
-    mount object, share build
-    mount method, |suspend|
-    mount factor, share suspend-time
-
-force start-rendering
-  start build
+task suspend
+  base build
+  base suspend-time
 
   cause call-method
-    mount object, share build
-    mount method, |startRendering|
+    bind object, link build
+    bind method, text <suspend>
+    bind factor, link suspend-time
+
+task start-rendering
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <startRendering>

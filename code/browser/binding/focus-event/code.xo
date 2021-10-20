@@ -1,22 +1,22 @@
 
-force build-focus-event
-  cause invoke-constructor
-    mount constructor, |FocusEvent|
-    throw build
+task build-focus-event
+  call make
+    bind constructor, text <FocusEvent>
+    turn seed
 
-force get-related-target
-  start build
+task get-related-target
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |relatedTarget|
-    throw build
+    bind object, link build
+    bind aspect, text <relatedTarget>
+    turn seed
 
-force set-related-target
-  start build
-  start value
+task set-related-target
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |relatedTarget|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <relatedTarget>
+    bind factor, link value

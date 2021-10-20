@@ -1,17 +1,17 @@
 
-force get-status-message
-  start build
+task get-status-message
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |statusMessage|
-    throw build
+    bind object, link build
+    bind aspect, text <statusMessage>
+    turn seed
 
-force set-status-message
-  start build
-  start value
+task set-status-message
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |statusMessage|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <statusMessage>
+    bind factor, link value

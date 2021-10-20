@@ -1,44 +1,44 @@
 
-force build-convolver-node
-  start context
-  start options
+task build-convolver-node
+  base context
+  base options
 
-  cause invoke-constructor
-    mount constructor, |ConvolverNode|
-    mount factor, share context
-    mount factor, share options
-    throw build
+  call make
+    bind constructor, text <ConvolverNode>
+    bind factor, link context
+    bind factor, link options
+    turn seed
 
-force get-buffer
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |buffer|
-    throw build
-
-force set-buffer
-  start build
-  start value
-
-  cause set-aspect
-    mount object, share build
-    mount aspect, |buffer|
-    mount factor, share value
-
-force get-normalize
-  start build
+task get-buffer
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |normalize|
-    throw build
+    bind object, link build
+    bind aspect, text <buffer>
+    turn seed
 
-force set-normalize
-  start build
-  start value
+task set-buffer
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |normalize|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <buffer>
+    bind factor, link value
+
+task get-normalize
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <normalize>
+    turn seed
+
+task set-normalize
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <normalize>
+    bind factor, link value

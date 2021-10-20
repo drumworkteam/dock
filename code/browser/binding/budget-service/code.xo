@@ -1,23 +1,23 @@
 
-force get-cost
-  start build
+task get-cost
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |getCost|
+    bind object, link build
+    bind method, text <getCost>
 
-force get-budget
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |getBudget|
-
-force reserve
-  start build
-  start operation
+task get-budget
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |reserve|
-    mount factor, share operation
+    bind object, link build
+    bind method, text <getBudget>
+
+task reserve
+  base build
+  base operation
+
+  cause call-method
+    bind object, link build
+    bind method, text <reserve>
+    bind factor, link operation

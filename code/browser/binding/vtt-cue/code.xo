@@ -1,196 +1,196 @@
 
-force build-vtt-cue-starttime-endtime-text
-  start start-time
-  start end-time
-  start text
+task build-vtt-cue-starttime-endtime-text
+  base start-time
+  base end-time
+  base text
 
-  cause invoke-constructor
-    mount constructor, |VTTCue|
-    mount factor, share start-time
-    mount factor, share end-time
-    mount factor, share text
-    throw build
+  call make
+    bind constructor, text <VTTCue>
+    bind factor, link start-time
+    bind factor, link end-time
+    bind factor, link text
+    turn seed
 
-force get-region
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |region|
-    throw build
-
-force set-region
-  start build
-  start value
-
-  cause set-aspect
-    mount object, share build
-    mount aspect, |region|
-    mount factor, share value
-
-force get-vertical
-  start build
+task get-region
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |vertical|
-    throw build
+    bind object, link build
+    bind aspect, text <region>
+    turn seed
 
-force set-vertical
-  start build
-  start value
+task set-region
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |vertical|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <region>
+    bind factor, link value
 
-force get-snap-to-lines
-  start build
+task get-vertical
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |snapToLines|
-    throw build
+    bind object, link build
+    bind aspect, text <vertical>
+    turn seed
 
-force set-snap-to-lines
-  start build
-  start value
+task set-vertical
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |snapToLines|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <vertical>
+    bind factor, link value
 
-force get-line
-  start build
+task get-snap-to-lines
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |line|
-    throw build
+    bind object, link build
+    bind aspect, text <snapToLines>
+    turn seed
 
-force set-line
-  start build
-  start value
+task set-snap-to-lines
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |line|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <snapToLines>
+    bind factor, link value
 
-force get-line-align
-  start build
+task get-line
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |lineAlign|
-    throw build
+    bind object, link build
+    bind aspect, text <line>
+    turn seed
 
-force set-line-align
-  start build
-  start value
+task set-line
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |lineAlign|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <line>
+    bind factor, link value
 
-force get-position
-  start build
+task get-line-align
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |position|
-    throw build
+    bind object, link build
+    bind aspect, text <lineAlign>
+    turn seed
 
-force set-position
-  start build
-  start value
+task set-line-align
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |position|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <lineAlign>
+    bind factor, link value
 
-force get-position-align
-  start build
+task get-position
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |positionAlign|
-    throw build
+    bind object, link build
+    bind aspect, text <position>
+    turn seed
 
-force set-position-align
-  start build
-  start value
+task set-position
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |positionAlign|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <position>
+    bind factor, link value
 
-force get-size
-  start build
+task get-position-align
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |size|
-    throw build
+    bind object, link build
+    bind aspect, text <positionAlign>
+    turn seed
 
-force set-size
-  start build
-  start value
+task set-position-align
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |size|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <positionAlign>
+    bind factor, link value
 
-force get-text-align
-  start build
+task get-size
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |textAlign|
-    throw build
+    bind object, link build
+    bind aspect, text <size>
+    turn seed
 
-force set-text-align
-  start build
-  start value
+task set-size
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |textAlign|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <size>
+    bind factor, link value
 
-force get-text
-  start build
+task get-text-align
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |text|
-    throw build
+    bind object, link build
+    bind aspect, text <textAlign>
+    turn seed
 
-force set-text
-  start build
-  start value
+task set-text-align
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |text|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <textAlign>
+    bind factor, link value
 
-force get-cue-as-html
-  start build
-  start start-time
-  start end-time
-  start text
+task get-text
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <text>
+    turn seed
+
+task set-text
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <text>
+    bind factor, link value
+
+task get-cue-as-html
+  base build
+  base start-time
+  base end-time
+  base text
 
   cause call-method
-    mount object, share build
-    mount method, |getCueAsHTML|
-    mount factor, share start-time
-    mount factor, share end-time
-    mount factor, share text
-    throw build
+    bind object, link build
+    bind method, text <getCueAsHTML>
+    bind factor, link start-time
+    bind factor, link end-time
+    bind factor, link text
+    turn seed

@@ -1,253 +1,253 @@
 
-force get-base-uri
-  start build
+task get-base-uri
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |baseURI|
-    throw build
+    bind object, link build
+    bind aspect, text <baseURI>
+    turn seed
 
-force get-child-nodes
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |childNodes|
-    throw build
-
-force get-first-child
-  start build
+task get-child-nodes
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |firstChild|
-    throw build
+    bind object, link build
+    bind aspect, text <childNodes>
+    turn seed
 
-force get-is-connected
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |isConnected|
-    throw build
-
-force get-last-child
-  start build
+task get-first-child
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |lastChild|
-    throw build
+    bind object, link build
+    bind aspect, text <firstChild>
+    turn seed
 
-force get-next-sibling
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |nextSibling|
-    throw build
-
-force get-node-name
-  start build
+task get-is-connected
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |nodeName|
-    throw build
+    bind object, link build
+    bind aspect, text <isConnected>
+    turn seed
 
-force get-node-type
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |nodeType|
-    throw build
-
-force get-node-value
-  start build
+task get-last-child
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |nodeValue|
-    throw build
+    bind object, link build
+    bind aspect, text <lastChild>
+    turn seed
 
-force set-node-value
-  start build
-  start value
+task get-next-sibling
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <nextSibling>
+    turn seed
+
+task get-node-name
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <nodeName>
+    turn seed
+
+task get-node-type
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <nodeType>
+    turn seed
+
+task get-node-value
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <nodeValue>
+    turn seed
+
+task set-node-value
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |nodeValue|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <nodeValue>
+    bind factor, link value
 
-force get-owner-document
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |ownerDocument|
-    throw build
-
-force get-parent-node
-  start build
+task get-owner-document
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |parentNode|
-    throw build
+    bind object, link build
+    bind aspect, text <ownerDocument>
+    turn seed
 
-force get-parent-element
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |parentElement|
-    throw build
-
-force get-previous-sibling
-  start build
+task get-parent-node
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |previousSibling|
-    throw build
+    bind object, link build
+    bind aspect, text <parentNode>
+    turn seed
 
-force get-text-content
-  start build
+task get-parent-element
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |textContent|
-    throw build
+    bind object, link build
+    bind aspect, text <parentElement>
+    turn seed
 
-force set-text-content
-  start build
-  start value
+task get-previous-sibling
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <previousSibling>
+    turn seed
+
+task get-text-content
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <textContent>
+    turn seed
+
+task set-text-content
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |textContent|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <textContent>
+    bind factor, link value
 
-force append-child-child-node
-  start build
-  start a-child
-
-  cause call-method
-    mount object, share build
-    mount method, |appendChild(childNode)|
-    mount factor, share a-child
-
-force clone-node
-  start build
+task append-child-child-node
+  base build
+  base a-child
 
   cause call-method
-    mount object, share build
-    mount method, |cloneNode|
+    bind object, link build
+    bind method, text <appendChild(childNode)>
+    bind factor, link a-child
 
-force compare-document-position
-  start build
-  start other-node
-
-  cause call-method
-    mount object, share build
-    mount method, |compareDocumentPosition|
-    mount factor, share other-node
-    throw build
-
-force contains
-  start build
+task clone-node
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |contains|
+    bind object, link build
+    bind method, text <cloneNode>
 
-force get-root-node
-  start build
-  start options
-
-  cause call-method
-    mount object, share build
-    mount method, |getRootNode|
-    mount factor, share options
-
-force has-child-nodes
-  start build
+task compare-document-position
+  base build
+  base other-node
 
   cause call-method
-    mount object, share build
-    mount method, |hasChildNodes|
-    throw build
+    bind object, link build
+    bind method, text <compareDocumentPosition>
+    bind factor, link other-node
+    turn seed
 
-force insert-before
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |insertBefore|
-    throw build
-
-force is-default-namespace
-  start build
+task contains
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |isDefaultNamespace|
-    throw build
+    bind object, link build
+    bind method, text <contains>
 
-force is-equal-node
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |isEqualNode|
-
-force is-same-node
-  start build
+task get-root-node
+  base build
+  base options
 
   cause call-method
-    mount object, share build
-    mount method, |isSameNode|
+    bind object, link build
+    bind method, text <getRootNode>
+    bind factor, link options
 
-force lookup-prefix
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |lookupPrefix|
-
-force lookup-namespace-uri
-  start build
-  start prefix
+task has-child-nodes
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |lookupNamespaceURI|
-    mount factor, share prefix
-    throw build
+    bind object, link build
+    bind method, text <hasChildNodes>
+    turn seed
 
-force normalize
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |normalize|
-
-force remove-child
-  start build
+task insert-before
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |removeChild|
+    bind object, link build
+    bind method, text <insertBefore>
+    turn seed
 
-force replace-child
-  start build
-  start new-child
-  start old-child
+task is-default-namespace
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |replaceChild|
-    mount factor, share new-child
-    mount factor, share old-child
-    throw build
+    bind object, link build
+    bind method, text <isDefaultNamespace>
+    turn seed
+
+task is-equal-node
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <isEqualNode>
+
+task is-same-node
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <isSameNode>
+
+task lookup-prefix
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <lookupPrefix>
+
+task lookup-namespace-uri
+  base build
+  base prefix
+
+  cause call-method
+    bind object, link build
+    bind method, text <lookupNamespaceURI>
+    bind factor, link prefix
+    turn seed
+
+task normalize
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <normalize>
+
+task remove-child
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <removeChild>
+
+task replace-child
+  base build
+  base new-child
+  base old-child
+
+  cause call-method
+    bind object, link build
+    bind method, text <replaceChild>
+    bind factor, link new-child
+    bind factor, link old-child
+    turn seed

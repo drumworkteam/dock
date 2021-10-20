@@ -1,26 +1,26 @@
 
-force build-payment-method-change-event
-  start type
-  start options
+task build-payment-method-change-event
+  base type
+  base options
 
-  cause invoke-constructor
-    mount constructor, |PaymentMethodChangeEvent|
-    mount factor, share type
-    mount factor, share options
-    throw build
+  call make
+    bind constructor, text <PaymentMethodChangeEvent>
+    bind factor, link type
+    bind factor, link options
+    turn seed
 
-force get-methoddetails-secure-context
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |methodDetails  Secure context|
-    throw build
-
-force get-methodname-secure-context
-  start build
+task get-methoddetails-secure-context
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |methodName  Secure context|
-    throw build
+    bind object, link build
+    bind aspect, text <methodDetails  Secure context>
+    turn seed
+
+task get-methodname-secure-context
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <methodName  Secure context>
+    turn seed

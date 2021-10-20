@@ -1,42 +1,42 @@
 
-force get-kind
-  start build
+task get-kind
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |kind|
-    throw build
+    bind object, link build
+    bind aspect, text <kind>
+    turn seed
 
-force get-type
-  start build
+task get-type
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |type|
-    throw build
+    bind object, link build
+    bind aspect, text <type>
+    turn seed
 
-force get-as-file
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |getAsFile|
-    throw build
-
-force get-as-file-system-handle
-  start build
+task get-as-file
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |getAsFileSystemHandle|
-    throw build
+    bind object, link build
+    bind method, text <getAsFile>
+    turn seed
 
-force get-as-string
-  start build
-  start callback
+task get-as-file-system-handle
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |getAsString|
-    mount factor, share callback
-    throw build
+    bind object, link build
+    bind method, text <getAsFileSystemHandle>
+    turn seed
+
+task get-as-string
+  base build
+  base callback
+
+  cause call-method
+    bind object, link build
+    bind method, text <getAsString>
+    bind factor, link callback
+    turn seed

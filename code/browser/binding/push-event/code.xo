@@ -1,18 +1,18 @@
 
-force build-push-event
-  start type
-  start event-init-dict
+task build-push-event
+  base type
+  base event-init-dict
 
-  cause invoke-constructor
-    mount constructor, |PushEvent|
-    mount factor, share type
-    mount factor, share event-init-dict
-    throw build
+  call make
+    bind constructor, text <PushEvent>
+    bind factor, link type
+    bind factor, link event-init-dict
+    turn seed
 
-force get-data
-  start build
+task get-data
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |data|
-    throw build
+    bind object, link build
+    bind aspect, text <data>
+    turn seed

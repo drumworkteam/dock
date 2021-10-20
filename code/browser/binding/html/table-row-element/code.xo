@@ -1,44 +1,44 @@
 
-force get-cells
-  start build
+task get-cells
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |cells|
-    throw build
+    bind object, link build
+    bind aspect, text <cells>
+    turn seed
 
-force get-row-index
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |rowIndex|
-    throw build
-
-force get-section-row-index
-  start build
+task get-row-index
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |sectionRowIndex|
-    throw build
+    bind object, link build
+    bind aspect, text <rowIndex>
+    turn seed
 
-force delete-cell
-  start build
-  start index
+task get-section-row-index
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <sectionRowIndex>
+    turn seed
+
+task delete-cell
+  base build
+  base index
 
   cause call-method
-    mount object, share build
-    mount method, |deleteCell|
-    mount factor, share index
-    throw build
+    bind object, link build
+    bind method, text <deleteCell>
+    bind factor, link index
+    turn seed
 
-force insert-cell
-  start build
-  start index
+task insert-cell
+  base build
+  base index
 
   cause call-method
-    mount object, share build
-    mount method, |insertCell|
-    mount factor, share index
-    throw build
+    bind object, link build
+    bind method, text <insertCell>
+    bind factor, link index
+    turn seed

@@ -1,114 +1,114 @@
 
-force build-request
-  start input
-  start init
+task build-request
+  base input
+  base init
 
-  cause invoke-constructor
-    mount constructor, |Request|
-    mount factor, share input
-    mount factor, share init
-    throw build
+  call make
+    bind constructor, text <Request>
+    bind factor, link input
+    bind factor, link init
+    turn seed
 
-force get-cache
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |cache|
-    throw build
-
-force get-context
-  start build
+task get-cache
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |context|
-    throw build
+    bind object, link build
+    bind aspect, text <cache>
+    turn seed
 
-force get-credentials
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |credentials|
-    throw build
-
-force get-destination
-  start build
+task get-context
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |destination|
-    throw build
+    bind object, link build
+    bind aspect, text <context>
+    turn seed
 
-force get-headers
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |headers|
-    throw build
-
-force get-integrity
-  start build
+task get-credentials
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |integrity|
-    throw build
+    bind object, link build
+    bind aspect, text <credentials>
+    turn seed
 
-force get-method
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |method|
-    throw build
-
-force get-mode
-  start build
+task get-destination
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |mode|
-    throw build
+    bind object, link build
+    bind aspect, text <destination>
+    turn seed
 
-force get-redirect
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |redirect|
-    throw build
-
-force get-referrer
-  start build
+task get-headers
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |referrer|
-    throw build
+    bind object, link build
+    bind aspect, text <headers>
+    turn seed
 
-force get-referrer-policy
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |referrerPolicy|
-    throw build
-
-force get-url
-  start build
+task get-integrity
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |url|
-    throw build
+    bind object, link build
+    bind aspect, text <integrity>
+    turn seed
 
-force clone
-  start build
+task get-method
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <method>
+    turn seed
+
+task get-mode
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <mode>
+    turn seed
+
+task get-redirect
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <redirect>
+    turn seed
+
+task get-referrer
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <referrer>
+    turn seed
+
+task get-referrer-policy
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <referrerPolicy>
+    turn seed
+
+task get-url
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <url>
+    turn seed
+
+task clone
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |clone|
-    throw build
+    bind object, link build
+    bind method, text <clone>
+    turn seed

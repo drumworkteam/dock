@@ -1,76 +1,76 @@
 
-force build-media-metadata
-  start metadata
+task build-media-metadata
+  base metadata
 
-  cause invoke-constructor
-    mount constructor, |MediaMetadata|
-    mount factor, share metadata
-    throw build
+  call make
+    bind constructor, text <MediaMetadata>
+    bind factor, link metadata
+    turn seed
 
-force get-title
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |title|
-    throw build
-
-force set-title
-  start build
-  start value
-
-  cause set-aspect
-    mount object, share build
-    mount aspect, |title|
-    mount factor, share value
-
-force get-artist
-  start build
+task get-title
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |artist|
-    throw build
+    bind object, link build
+    bind aspect, text <title>
+    turn seed
 
-force set-artist
-  start build
-  start value
+task set-title
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |artist|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <title>
+    bind factor, link value
 
-force get-album
-  start build
+task get-artist
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |album|
-    throw build
+    bind object, link build
+    bind aspect, text <artist>
+    turn seed
 
-force set-album
-  start build
-  start value
+task set-artist
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |album|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <artist>
+    bind factor, link value
 
-force get-artwork
-  start build
+task get-album
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |artwork|
-    throw build
+    bind object, link build
+    bind aspect, text <album>
+    turn seed
 
-force set-artwork
-  start build
-  start value
+task set-album
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |artwork|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <album>
+    bind factor, link value
+
+task get-artwork
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <artwork>
+    turn seed
+
+task set-artwork
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <artwork>
+    bind factor, link value

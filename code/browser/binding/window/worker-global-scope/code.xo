@@ -1,113 +1,113 @@
 
-force atob
-  start build
-  start encoded-data
+task atob
+  base build
+  base encoded-data
 
   cause call-method
-    mount object, share build
-    mount method, |atob|
-    mount factor, share encoded-data
-    throw build
+    bind object, link build
+    bind method, text <atob>
+    bind factor, link encoded-data
+    turn seed
 
-force btoa
-  start build
-  start string-to-encode
-
-  cause call-method
-    mount object, share build
-    mount method, |btoa|
-    mount factor, share string-to-encode
-    throw build
-
-force clear-interval
-  start build
-  start interval-i-d
+task btoa
+  base build
+  base string-to-encode
 
   cause call-method
-    mount object, share build
-    mount method, |clearInterval|
-    mount factor, share interval-i-d
-    throw build
+    bind object, link build
+    bind method, text <btoa>
+    bind factor, link string-to-encode
+    turn seed
 
-force clear-timeout
-  start build
-  start timeout-i-d
-
-  cause call-method
-    mount object, share build
-    mount method, |clearTimeout|
-    mount factor, share timeout-i-d
-
-force create-image-bitmap
-  start build
-  start image
-  start sx
-  start sy
-  start sw
-  start sh
-  start options
+task clear-interval
+  base build
+  base interval-i-d
 
   cause call-method
-    mount object, share build
-    mount method, |createImageBitmap|
-    mount factor, share image
-    mount factor, share sx
-    mount factor, share sy
-    mount factor, share sw
-    mount factor, share sh
-    mount factor, share options
-    throw build
+    bind object, link build
+    bind method, text <clearInterval>
+    bind factor, link interval-i-d
+    turn seed
 
-force fetch
-  start build
-  start resource
-  start init
+task clear-timeout
+  base build
+  base timeout-i-d
 
   cause call-method
-    mount object, share build
-    mount method, |fetch|
-    mount factor, share resource
-    mount factor, share init
-    throw build
+    bind object, link build
+    bind method, text <clearTimeout>
+    bind factor, link timeout-i-d
 
-force queue-microtask
-  start build
-  start function
-
-  cause call-method
-    mount object, share build
-    mount method, |queueMicrotask|
-    mount factor, share function
-    throw build
-
-force set-interval
-  start build
-  start func
-  start code
-  start delay
-  start arg1
+task create-image-bitmap
+  base build
+  base image
+  base sx
+  base sy
+  base sw
+  base sh
+  base options
 
   cause call-method
-    mount object, share build
-    mount method, |setInterval|
-    mount factor, share func
-    mount factor, share code
-    mount factor, share delay
-    mount factor, share arg1
-    throw build
+    bind object, link build
+    bind method, text <createImageBitmap>
+    bind factor, link image
+    bind factor, link sx
+    bind factor, link sy
+    bind factor, link sw
+    bind factor, link sh
+    bind factor, link options
+    turn seed
 
-force set-timeout
-  start build
-  start function
-  start code
-  start delay
-  start arg1
+task fetch
+  base build
+  base resource
+  base init
 
   cause call-method
-    mount object, share build
-    mount method, |setTimeout|
-    mount factor, share function
-    mount factor, share code
-    mount factor, share delay
-    mount factor, share arg1
-    throw build
+    bind object, link build
+    bind method, text <fetch>
+    bind factor, link resource
+    bind factor, link init
+    turn seed
+
+task queue-microtask
+  base build
+  base function
+
+  cause call-method
+    bind object, link build
+    bind method, text <queueMicrotask>
+    bind factor, link function
+    turn seed
+
+task set-interval
+  base build
+  base func
+  base code
+  base delay
+  base arg1
+
+  cause call-method
+    bind object, link build
+    bind method, text <setInterval>
+    bind factor, link func
+    bind factor, link code
+    bind factor, link delay
+    bind factor, link arg1
+    turn seed
+
+task set-timeout
+  base build
+  base function
+  base code
+  base delay
+  base arg1
+
+  cause call-method
+    bind object, link build
+    bind method, text <setTimeout>
+    bind factor, link function
+    bind factor, link code
+    bind factor, link delay
+    bind factor, link arg1
+    turn seed

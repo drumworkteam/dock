@@ -1,91 +1,91 @@
 
-force get-data
-  start build
+task get-data
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |data|
-    throw build
+    bind object, link build
+    bind aspect, text <data>
+    turn seed
 
-force set-data
-  start build
-  start value
+task set-data
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |data|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <data>
+    bind factor, link value
 
-force get-length
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |length|
-    throw build
-
-force get-next-element-sibling
-  start build
+task get-length
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |nextElementSibling|
-    throw build
+    bind object, link build
+    bind aspect, text <length>
+    turn seed
 
-force get-previous-element-sibling
-  start build
+task get-next-element-sibling
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |previousElementSibling|
-    throw build
+    bind object, link build
+    bind aspect, text <nextElementSibling>
+    turn seed
 
-force append-data
-  start build
-  start context
-  start options
+task get-previous-element-sibling
+  base build
 
-  cause call-method
-    mount object, share build
-    mount method, |appendData|
-    mount factor, share context
-    mount factor, share options
-    throw build
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <previousElementSibling>
+    turn seed
 
-force delete-data
-  start build
-  start context
-  start options
+task append-data
+  base build
+  base context
+  base options
 
   cause call-method
-    mount object, share build
-    mount method, |deleteData|
-    mount factor, share context
-    mount factor, share options
-    throw build
+    bind object, link build
+    bind method, text <appendData>
+    bind factor, link context
+    bind factor, link options
+    turn seed
 
-force insert-data
-  start build
-  start context
-  start options
-
-  cause call-method
-    mount object, share build
-    mount method, |insertData|
-    mount factor, share context
-    mount factor, share options
-    throw build
-
-force replace-data
-  start build
+task delete-data
+  base build
+  base context
+  base options
 
   cause call-method
-    mount object, share build
-    mount method, |replaceData|
+    bind object, link build
+    bind method, text <deleteData>
+    bind factor, link context
+    bind factor, link options
+    turn seed
 
-force substring-data
-  start build
+task insert-data
+  base build
+  base context
+  base options
 
   cause call-method
-    mount object, share build
-    mount method, |substringData|
+    bind object, link build
+    bind method, text <insertData>
+    bind factor, link context
+    bind factor, link options
+    turn seed
+
+task replace-data
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <replaceData>
+
+task substring-data
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <substringData>

@@ -1,25 +1,25 @@
 
-force build-ambient-light-sensor
-  start options
+task build-ambient-light-sensor
+  base options
 
-  cause invoke-constructor
-    mount constructor, |AmbientLightSensor|
-    mount factor, share options
-    throw build
+  call make
+    bind constructor, text <AmbientLightSensor>
+    bind factor, link options
+    turn seed
 
-force get-illuminance
-  start build
+task get-illuminance
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |illuminance|
-    throw build
+    bind object, link build
+    bind aspect, text <illuminance>
+    turn seed
 
-force set-illuminance
-  start build
-  start value
+task set-illuminance
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |illuminance|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <illuminance>
+    bind factor, link value

@@ -1,31 +1,31 @@
 
-force get-caches
-  start build
+task get-caches
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |caches|
-    throw build
+    bind object, link build
+    bind aspect, text <caches>
+    turn seed
 
-force get-clients
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |clients|
-    throw build
-
-force get-registration
-  start build
+task get-clients
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |registration|
-    throw build
+    bind object, link build
+    bind aspect, text <clients>
+    turn seed
 
-force skip-waiting
-  start build
+task get-registration
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <registration>
+    turn seed
+
+task skip-waiting
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |skipWaiting|
+    bind object, link build
+    bind method, text <skipWaiting>

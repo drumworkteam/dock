@@ -1,98 +1,98 @@
 
-force get-root
-  start build
+task get-root
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |root|
-    throw build
+    bind object, link build
+    bind aspect, text <root>
+    turn seed
 
-force get-what-to-show
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |whatToShow|
-    throw build
-
-force get-filter
-  start build
+task get-what-to-show
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |filter|
-    throw build
+    bind object, link build
+    bind aspect, text <whatToShow>
+    turn seed
 
-force get-expand-entity-references
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |expandEntityReferences|
-    throw build
-
-force get-current-node
-  start build
+task get-filter
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |currentNode|
-    throw build
+    bind object, link build
+    bind aspect, text <filter>
+    turn seed
 
-force set-current-node
-  start build
-  start value
+task get-expand-entity-references
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <expandEntityReferences>
+    turn seed
+
+task get-current-node
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <currentNode>
+    turn seed
+
+task set-current-node
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |currentNode|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <currentNode>
+    bind factor, link value
 
-force parent-node
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |parentNode|
-
-force first-child
-  start build
+task parent-node
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |firstChild|
+    bind object, link build
+    bind method, text <parentNode>
 
-force last-child
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |lastChild|
-
-force previous-sibling
-  start build
+task first-child
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |previousSibling|
+    bind object, link build
+    bind method, text <firstChild>
 
-force next-sibling
-  start build
-
-  cause call-method
-    mount object, share build
-    mount method, |nextSibling|
-
-force previous-node
-  start build
+task last-child
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |previousNode|
+    bind object, link build
+    bind method, text <lastChild>
 
-force next-node
-  start build
+task previous-sibling
+  base build
 
   cause call-method
-    mount object, share build
-    mount method, |nextNode|
+    bind object, link build
+    bind method, text <previousSibling>
+
+task next-sibling
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <nextSibling>
+
+task previous-node
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <previousNode>
+
+task next-node
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <nextNode>

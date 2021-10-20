@@ -1,29 +1,29 @@
 
-force build-progress-event
-  cause invoke-constructor
-    mount constructor, |ProgressEvent|
-    throw build
+task build-progress-event
+  call make
+    bind constructor, text <ProgressEvent>
+    turn seed
 
-force get-length-computable
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |lengthComputable|
-    throw build
-
-force get-loaded
-  start build
+task get-length-computable
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |loaded|
-    throw build
+    bind object, link build
+    bind aspect, text <lengthComputable>
+    turn seed
 
-force get-total
-  start build
+task get-loaded
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |total|
-    throw build
+    bind object, link build
+    bind aspect, text <loaded>
+    turn seed
+
+task get-total
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <total>
+    turn seed

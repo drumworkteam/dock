@@ -1,40 +1,40 @@
 
-force build-rtc-track-event
-  start event-info
+task build-rtc-track-event
+  base event-info
 
-  cause invoke-constructor
-    mount constructor, |RTCTrackEvent|
-    mount factor, share event-info
-    throw build
+  call make
+    bind constructor, text <RTCTrackEvent>
+    bind factor, link event-info
+    turn seed
 
-force get-receiver
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |receiver|
-    throw build
-
-force get-streams
-  start build
+task get-receiver
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |streams|
-    throw build
+    bind object, link build
+    bind aspect, text <receiver>
+    turn seed
 
-force get-track
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |track|
-    throw build
-
-force get-transceiver
-  start build
+task get-streams
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |transceiver|
-    throw build
+    bind object, link build
+    bind aspect, text <streams>
+    turn seed
+
+task get-track
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <track>
+    turn seed
+
+task get-transceiver
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <transceiver>
+    turn seed

@@ -1,84 +1,84 @@
 
-force get-current-direction
-  start build
+task get-current-direction
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |currentDirection|
-    throw build
+    bind object, link build
+    bind aspect, text <currentDirection>
+    turn seed
 
-force get-direction
-  start build
+task get-direction
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |direction|
-    throw build
+    bind object, link build
+    bind aspect, text <direction>
+    turn seed
 
-force set-direction
-  start build
-  start value
+task set-direction
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |direction|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <direction>
+    bind factor, link value
 
-force get-mid
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |mid|
-    throw build
-
-force get-receiver
-  start build
+task get-mid
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |receiver|
-    throw build
+    bind object, link build
+    bind aspect, text <mid>
+    turn seed
 
-force get-sender
-  start build
-
-  cause get-aspect
-    mount object, share build
-    mount aspect, |sender|
-    throw build
-
-force get-stopped
-  start build
+task get-receiver
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |stopped|
-    throw build
+    bind object, link build
+    bind aspect, text <receiver>
+    turn seed
 
-force set-stopped
-  start build
-  start value
+task get-sender
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <sender>
+    turn seed
+
+task get-stopped
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <stopped>
+    turn seed
+
+task set-stopped
+  base build
+  base value
 
   cause set-aspect
-    mount object, share build
-    mount aspect, |stopped|
-    mount factor, share value
+    bind object, link build
+    bind aspect, text <stopped>
+    bind factor, link value
 
-force set-codec-preferences
-  start build
-  start codecs
-
-  cause call-method
-    mount object, share build
-    mount method, |setCodecPreferences|
-    mount factor, share codecs
-    throw build
-
-force stop
-  start build
+task set-codec-preferences
+  base build
+  base codecs
 
   cause call-method
-    mount object, share build
-    mount method, |stop|
-    throw build
+    bind object, link build
+    bind method, text <setCodecPreferences>
+    bind factor, link codecs
+    turn seed
+
+task stop
+  base build
+
+  cause call-method
+    bind object, link build
+    bind method, text <stop>
+    turn seed

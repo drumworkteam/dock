@@ -1,18 +1,18 @@
 
-force build-media-stream-audio-source-node
-  start context
-  start options
+task build-media-stream-audio-source-node
+  base context
+  base options
 
-  cause invoke-constructor
-    mount constructor, |MediaStreamAudioSourceNode|
-    mount factor, share context
-    mount factor, share options
-    throw build
+  call make
+    bind constructor, text <MediaStreamAudioSourceNode>
+    bind factor, link context
+    bind factor, link options
+    turn seed
 
-force get-media-stream
-  start build
+task get-media-stream
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |mediaStream|
-    throw build
+    bind object, link build
+    bind aspect, text <mediaStream>
+    turn seed

@@ -1,16 +1,16 @@
 
-force build-media-stream-recorder-event
-  start error-info
+task build-media-stream-recorder-event
+  base error-info
 
-  cause invoke-constructor
-    mount constructor, |MediaStreamRecorderEvent|
-    mount factor, share error-info
-    throw build
+  call make
+    bind constructor, text <MediaStreamRecorderEvent>
+    bind factor, link error-info
+    turn seed
 
-force get-error
-  start build
+task get-error
+  base build
 
   cause get-aspect
-    mount object, share build
-    mount aspect, |error|
-    throw build
+    bind object, link build
+    bind aspect, text <error>
+    turn seed
