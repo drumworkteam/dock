@@ -1,0 +1,80 @@
+
+task get-name
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <name>
+    turn seed
+
+task get-version
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <version>
+    turn seed
+
+task get-object-store-names
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <objectStoreNames>
+    turn seed
+
+task close
+  base build
+
+  cause call-base
+    bind object, link build
+    bind method, text <close>
+
+task create-mutable-file
+  base build
+
+  cause call-base
+    bind object, link build
+    bind method, text <createMutableFile>
+
+task create-object-store
+  base build
+  base name
+  base optional-parameters
+
+  cause call-base
+    bind object, link build
+    bind method, text <createObjectStore>
+    bind factor, link name
+    bind factor, link optional-parameters
+
+task delete-object-store
+  base build
+  base name
+
+  cause call-base
+    bind object, link build
+    bind method, text <deleteObjectStore>
+    bind factor, link name
+
+task transaction
+  base build
+  base store-names
+  base store-names
+  base store-names
+  base store-names
+  base mode
+  base mode
+  base options
+
+  cause call-base
+    bind object, link build
+    bind method, text <transaction>
+    bind factor, link store-names
+    bind factor, link store-names
+    bind factor, link store-names
+    bind factor, link store-names
+    bind factor, link mode
+    bind factor, link mode
+    bind factor, link options
+    turn seed

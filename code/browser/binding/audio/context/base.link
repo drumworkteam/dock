@@ -1,0 +1,89 @@
+
+task build-audio-context
+  base options
+
+  call make
+    bind constructor, text <AudioContext>
+    bind factor, link options
+    turn seed
+
+task get-base-latency
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <baseLatency>
+    turn seed
+
+task get-output-latency
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <outputLatency>
+    turn seed
+
+task close
+  base build
+
+  cause call-base
+    bind object, link build
+    bind method, text <close>
+
+task create-media-element-source
+  base build
+  base my-media-element
+
+  cause call-base
+    bind object, link build
+    bind method, text <createMediaElementSource>
+    bind factor, link my-media-element
+
+task create-media-stream-source
+  base build
+  base stream
+
+  cause call-base
+    bind object, link build
+    bind method, text <createMediaStreamSource>
+    bind factor, link stream
+    turn seed
+
+task create-media-stream-destination
+  base build
+
+  cause call-base
+    bind object, link build
+    bind method, text <createMediaStreamDestination>
+
+task create-media-stream-track-source
+  base build
+  base track
+
+  cause call-base
+    bind object, link build
+    bind method, text <createMediaStreamTrackSource>
+    bind factor, link track
+    turn seed
+
+task get-output-timestamp
+  base build
+
+  cause call-base
+    bind object, link build
+    bind method, text <getOutputTimestamp>
+
+task resume
+  base build
+
+  cause call-base
+    bind object, link build
+    bind method, text <resume>
+    turn seed
+
+task suspend
+  base build
+
+  cause call-base
+    bind object, link build
+    bind method, text <suspend>

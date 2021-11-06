@@ -2,7 +2,7 @@
 force create-server-socket
   start build, field server-socket-factory
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |createServerSocket|
     throw build, field server-socket
@@ -11,7 +11,7 @@ force create-server-socket
   start build, field server-socket-factory
   start port, field int
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |createServerSocket|
     mount factor, share port
@@ -22,7 +22,7 @@ force create-server-socket
   start port, field int
   start backlog, field int
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |createServerSocket|
     mount factor, share port
@@ -35,7 +35,7 @@ force create-server-socket
   start backlog, field int
   start if-address, field inet-address
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |createServerSocket|
     mount factor, share port
@@ -46,7 +46,7 @@ force create-server-socket
 force get-default
   start build, field server-socket-factory
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getDefault|
     throw build, field server-socket-factory

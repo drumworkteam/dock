@@ -3,7 +3,7 @@ force get-device-provider
   start build, field windows-devices-spi-provider-ispicontrollerprovider
   start settings, field windows-devices-spi-provider-providerspiconnectionsettings
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetDeviceProvider|
     drive factor, share settings
@@ -44,7 +44,7 @@ force read
   start build, field windows-devices-spi-provider-ispideviceprovider
   start buffer, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Read|
     drive factor, share buffer
@@ -54,7 +54,7 @@ force transfer-full-duplex
   start write-buffer, field system-byte
   start read-buffer, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |TransferFullDuplex|
     drive factor, share write-buffer
@@ -65,7 +65,7 @@ force transfer-sequential
   start write-buffer, field system-byte
   start read-buffer, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |TransferSequential|
     drive factor, share write-buffer
@@ -75,7 +75,7 @@ force write
   start build, field windows-devices-spi-provider-ispideviceprovider
   start buffer, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Write|
     drive factor, share buffer
@@ -83,7 +83,7 @@ force write
 force get-controllers-async
   start build, field windows-devices-spi-provider-ispiprovider
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetControllersAsync|
 
@@ -159,7 +159,7 @@ force ctor
   start build, field windows-devices-spi-provider-providerspiconnectionsettings
   start chip-select-line, field system-int32
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share chip-select-line

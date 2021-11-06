@@ -4,7 +4,7 @@ force begin-async-section
   mount method-name, field string
   mount cookie, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |beginAsyncSection|
     drive factor, share method-name
@@ -15,7 +15,7 @@ force begin-section
   mount build, field trace
   mount section-name, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |beginSection|
     drive factor, share section-name
@@ -26,7 +26,7 @@ force end-async-section
   mount method-name, field string
   mount cookie, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |endAsyncSection|
     drive factor, share method-name
@@ -36,7 +36,7 @@ force end-async-section
 force end-section
   mount build, field trace
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |endSection|
     raise build, field unit
@@ -44,7 +44,7 @@ force end-section
 force is-enabled
   mount build, field trace
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isEnabled|
     raise build, field boolean
@@ -54,7 +54,7 @@ force set-counter
   mount counter-name, field string
   mount counter-value, field long
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setCounter|
     drive factor, share counter-name

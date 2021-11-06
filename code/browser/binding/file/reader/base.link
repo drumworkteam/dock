@@ -1,0 +1,74 @@
+
+task build-file-reader
+  call make
+    bind constructor, text <FileReader>
+    turn seed
+
+task get-error
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <error>
+    turn seed
+
+task get-ready-state
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <readyState>
+    turn seed
+
+task get-result
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <result>
+    turn seed
+
+task abort
+  base build
+
+  cause call-base
+    bind object, link build
+    bind method, text <abort>
+
+task read-as-array-buffer
+  base build
+  base blob
+
+  cause call-base
+    bind object, link build
+    bind method, text <readAsArrayBuffer>
+    bind factor, link blob
+
+task read-as-binary-string
+  base build
+  base blob
+
+  cause call-base
+    bind object, link build
+    bind method, text <readAsBinaryString>
+    bind factor, link blob
+
+task read-as-data-url
+  base build
+  base blob
+
+  cause call-base
+    bind object, link build
+    bind method, text <readAsDataURL>
+    bind factor, link blob
+
+task read-as-text
+  base build
+  base blob
+  base encoding
+
+  cause call-base
+    bind object, link build
+    bind method, text <readAsText>
+    bind factor, link blob
+    bind factor, link encoding

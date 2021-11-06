@@ -6,7 +6,7 @@ force build-control-channel-trigger
 force close
   start build, field windows-networking-sockets-controlchanneltrigger
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Close|
 
@@ -16,7 +16,7 @@ force ctor
   start server-keep-alive-interval-in-minutes, field system-uint32
   start resource-request-type, field windows-networking-sockets-controlchanneltriggerresourcetype
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share channel-id
@@ -28,7 +28,7 @@ force ctor
   start channel-id, field system-string
   start server-keep-alive-interval-in-minutes, field system-uint32
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share channel-id
@@ -69,14 +69,14 @@ force set-current-keep-alive-interval-in-minutes
 force decrease-network-keep-alive-interval
   start build, field windows-networking-sockets-controlchanneltrigger
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |DecreaseNetworkKeepAliveInterval|
 
 force flush-transport
   start build, field windows-networking-sockets-controlchanneltrigger
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |FlushTransport|
 
@@ -164,7 +164,7 @@ force using-transport
   start build, field windows-networking-sockets-controlchanneltrigger
   start transport, field system-object
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |UsingTransport|
     drive factor, share transport
@@ -172,7 +172,7 @@ force using-transport
 force wait-for-push-enabled
   start build, field windows-networking-sockets-controlchanneltrigger
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |WaitForPushEnabled|
 
@@ -197,7 +197,7 @@ force bind-endpoint-async
   start local-host-name, field windows-networking-hostname
   start local-service-name, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |BindEndpointAsync|
     drive factor, share local-host-name
@@ -208,7 +208,7 @@ force bind-service-name-async
   start local-service-name, field system-string
   start adapter, field windows-networking-connectivity-networkadapter
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |BindServiceNameAsync|
     drive factor, share local-service-name
@@ -218,7 +218,7 @@ force bind-service-name-async
   start build, field windows-networking-sockets-datagramsocket
   start local-service-name, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |BindServiceNameAsync|
     drive factor, share local-service-name
@@ -226,14 +226,14 @@ force bind-service-name-async
 force cancel-i-o-async
   start build, field windows-networking-sockets-datagramsocket
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |CancelIOAsync|
 
 force close
   start build, field windows-networking-sockets-datagramsocket
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Close|
 
@@ -241,7 +241,7 @@ force connect-async
   start build, field windows-networking-sockets-datagramsocket
   start endpoint-pair, field windows-networking-endpointpair
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ConnectAsync|
     drive factor, share endpoint-pair
@@ -251,7 +251,7 @@ force connect-async
   start remote-host-name, field windows-networking-hostname
   start remote-service-name, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ConnectAsync|
     drive factor, share remote-host-name
@@ -276,7 +276,7 @@ force set-control
 force ctor
   start build, field windows-networking-sockets-datagramsocket
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -284,7 +284,7 @@ force enable-transfer-ownership
   start build, field windows-networking-sockets-datagramsocket
   start task-id, field system-guid
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |EnableTransferOwnership|
     drive factor, share task-id
@@ -294,7 +294,7 @@ force enable-transfer-ownership
   start task-id, field system-guid
   start connected-standby-action, field windows-networking-sockets-socketactivityconnectedstandbyaction
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |EnableTransferOwnership|
     drive factor, share task-id
@@ -305,7 +305,7 @@ force get-endpoint-pairs-async
   start remote-host-name, field windows-networking-hostname
   start remote-service-name, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetEndpointPairsAsync|
     drive factor, share remote-host-name
@@ -317,7 +317,7 @@ force get-endpoint-pairs-async
   start remote-service-name, field system-string
   start sort-options, field windows-networking-hostnamesortoptions
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetEndpointPairsAsync|
     drive factor, share remote-host-name
@@ -329,7 +329,7 @@ force get-output-stream-async
   start remote-host-name, field windows-networking-hostname
   start remote-service-name, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetOutputStreamAsync|
     drive factor, share remote-host-name
@@ -339,7 +339,7 @@ force get-output-stream-async
   start build, field windows-networking-sockets-datagramsocket
   start endpoint-pair, field windows-networking-endpointpair
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetOutputStreamAsync|
     drive factor, share endpoint-pair
@@ -364,7 +364,7 @@ force join-multicast-group
   start build, field windows-networking-sockets-datagramsocket
   start host, field windows-networking-hostname
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |JoinMulticastGroup|
     drive factor, share host
@@ -389,7 +389,7 @@ force transfer-ownership
   start build, field windows-networking-sockets-datagramsocket
   start socket-id, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |TransferOwnership|
     drive factor, share socket-id
@@ -399,7 +399,7 @@ force transfer-ownership
   start socket-id, field system-string
   start data, field windows-networking-sockets-socketactivitycontext
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |TransferOwnership|
     drive factor, share socket-id
@@ -411,7 +411,7 @@ force transfer-ownership
   start data, field windows-networking-sockets-socketactivitycontext
   start keep-alive-time, field windows-foundation-timespan
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |TransferOwnership|
     drive factor, share socket-id
@@ -577,14 +577,14 @@ force build-datagram-socket-message-received-event-args
 force get-data-reader
   start build, field windows-networking-sockets-datagramsocketmessagereceivedeventargs
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetDataReader|
 
 force get-data-stream
   start build, field windows-networking-sockets-datagramsocketmessagereceivedeventargs
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetDataStream|
 
@@ -705,7 +705,7 @@ force close
   start code, field system-uint16
   start reason, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Close|
     drive factor, share code
@@ -715,7 +715,7 @@ force connect-async
   start build, field windows-networking-sockets-iwebsocket
   start uri, field windows-foundation-uri
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ConnectAsync|
     drive factor, share uri
@@ -741,7 +741,7 @@ force set-request-header
   start header-name, field system-string
   start header-value, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SetRequestHeader|
     drive factor, share header-name
@@ -948,7 +948,7 @@ force close
   start code, field system-uint16
   start reason, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Close|
     drive factor, share code
@@ -957,7 +957,7 @@ force close
 force close
   start build, field windows-networking-sockets-messagewebsocket
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Close|
 
@@ -965,7 +965,7 @@ force connect-async
   start build, field windows-networking-sockets-messagewebsocket
   start uri, field windows-foundation-uri
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ConnectAsync|
     drive factor, share uri
@@ -1005,7 +1005,7 @@ force set-information
 force ctor
   start build, field windows-networking-sockets-messagewebsocket
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -1029,7 +1029,7 @@ force send-final-frame-async
   start build, field windows-networking-sockets-messagewebsocket
   start data, field windows-storage-streams-ibuffer
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SendFinalFrameAsync|
     drive factor, share data
@@ -1038,7 +1038,7 @@ force send-nonfinal-frame-async
   start build, field windows-networking-sockets-messagewebsocket
   start data, field windows-storage-streams-ibuffer
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SendNonfinalFrameAsync|
     drive factor, share data
@@ -1048,7 +1048,7 @@ force set-request-header
   start header-name, field system-string
   start header-value, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SetRequestHeader|
     drive factor, share header-name
@@ -1357,14 +1357,14 @@ force build-message-web-socket-message-received-event-args
 force get-data-reader
   start build, field windows-networking-sockets-messagewebsocketmessagereceivedeventargs
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetDataReader|
 
 force get-data-stream
   start build, field windows-networking-sockets-messagewebsocketmessagereceivedeventargs
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetDataStream|
 
@@ -1413,7 +1413,7 @@ force close
   start code, field system-uint16
   start reason, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Close|
     drive factor, share code
@@ -1422,7 +1422,7 @@ force close
 force close
   start build, field windows-networking-sockets-servermessagewebsocket
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Close|
 
@@ -1555,7 +1555,7 @@ force close
   start code, field system-uint16
   start reason, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Close|
     drive factor, share code
@@ -1564,7 +1564,7 @@ force close
 force close
   start build, field windows-networking-sockets-serverstreamwebsocket
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Close|
 
@@ -1696,7 +1696,7 @@ force ctor
   start build, field windows-networking-sockets-socketactivitycontext
   start data, field windows-storage-streams-ibuffer
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share data
@@ -1885,7 +1885,7 @@ force get-status
   start build, field windows-networking-sockets-socketerror
   start hresult, field system-int32
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetStatus|
     drive factor, share hresult
@@ -1917,14 +1917,14 @@ force build-stream-socket
 force cancel-i-o-async
   start build, field windows-networking-sockets-streamsocket
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |CancelIOAsync|
 
 force close
   start build, field windows-networking-sockets-streamsocket
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Close|
 
@@ -1932,7 +1932,7 @@ force connect-async
   start build, field windows-networking-sockets-streamsocket
   start endpoint-pair, field windows-networking-endpointpair
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ConnectAsync|
     drive factor, share endpoint-pair
@@ -1942,7 +1942,7 @@ force connect-async
   start remote-host-name, field windows-networking-hostname
   start remote-service-name, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ConnectAsync|
     drive factor, share remote-host-name
@@ -1955,7 +1955,7 @@ force connect-async
   start protection-level, field windows-networking-sockets-socketprotectionlevel
   start adapter, field windows-networking-connectivity-networkadapter
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ConnectAsync|
     drive factor, share remote-host-name
@@ -1968,7 +1968,7 @@ force connect-async
   start endpoint-pair, field windows-networking-endpointpair
   start protection-level, field windows-networking-sockets-socketprotectionlevel
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ConnectAsync|
     drive factor, share endpoint-pair
@@ -1980,7 +1980,7 @@ force connect-async
   start remote-service-name, field system-string
   start protection-level, field windows-networking-sockets-socketprotectionlevel
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ConnectAsync|
     drive factor, share remote-host-name
@@ -2007,7 +2007,7 @@ force enable-transfer-ownership
   start build, field windows-networking-sockets-streamsocket
   start task-id, field system-guid
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |EnableTransferOwnership|
     drive factor, share task-id
@@ -2017,7 +2017,7 @@ force enable-transfer-ownership
   start task-id, field system-guid
   start connected-standby-action, field windows-networking-sockets-socketactivityconnectedstandbyaction
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |EnableTransferOwnership|
     drive factor, share task-id
@@ -2028,7 +2028,7 @@ force get-endpoint-pairs-async
   start remote-host-name, field windows-networking-hostname
   start remote-service-name, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetEndpointPairsAsync|
     drive factor, share remote-host-name
@@ -2040,7 +2040,7 @@ force get-endpoint-pairs-async
   start remote-service-name, field system-string
   start sort-options, field windows-networking-hostnamesortoptions
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetEndpointPairsAsync|
     drive factor, share remote-host-name
@@ -2098,7 +2098,7 @@ force set-output-stream
 force ctor
   start build, field windows-networking-sockets-streamsocket
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -2106,7 +2106,7 @@ force transfer-ownership
   start build, field windows-networking-sockets-streamsocket
   start socket-id, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |TransferOwnership|
     drive factor, share socket-id
@@ -2116,7 +2116,7 @@ force transfer-ownership
   start socket-id, field system-string
   start data, field windows-networking-sockets-socketactivitycontext
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |TransferOwnership|
     drive factor, share socket-id
@@ -2128,7 +2128,7 @@ force transfer-ownership
   start data, field windows-networking-sockets-socketactivitycontext
   start keep-alive-time, field windows-foundation-timespan
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |TransferOwnership|
     drive factor, share socket-id
@@ -2140,7 +2140,7 @@ force upgrade-to-ssl-async
   start protection-level, field windows-networking-sockets-socketprotectionlevel
   start validation-host-name, field windows-networking-hostname
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |UpgradeToSslAsync|
     drive factor, share protection-level
@@ -2531,7 +2531,7 @@ force bind-endpoint-async
   start local-host-name, field windows-networking-hostname
   start local-service-name, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |BindEndpointAsync|
     drive factor, share local-host-name
@@ -2543,7 +2543,7 @@ force bind-service-name-async
   start protection-level, field windows-networking-sockets-socketprotectionlevel
   start adapter, field windows-networking-connectivity-networkadapter
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |BindServiceNameAsync|
     drive factor, share local-service-name
@@ -2555,7 +2555,7 @@ force bind-service-name-async
   start local-service-name, field system-string
   start protection-level, field windows-networking-sockets-socketprotectionlevel
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |BindServiceNameAsync|
     drive factor, share local-service-name
@@ -2565,7 +2565,7 @@ force bind-service-name-async
   start build, field windows-networking-sockets-streamsocketlistener
   start local-service-name, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |BindServiceNameAsync|
     drive factor, share local-service-name
@@ -2573,14 +2573,14 @@ force bind-service-name-async
 force cancel-i-o-async
   start build, field windows-networking-sockets-streamsocketlistener
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |CancelIOAsync|
 
 force close
   start build, field windows-networking-sockets-streamsocketlistener
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Close|
 
@@ -2604,7 +2604,7 @@ force enable-transfer-ownership
   start build, field windows-networking-sockets-streamsocketlistener
   start task-id, field system-guid
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |EnableTransferOwnership|
     drive factor, share task-id
@@ -2614,7 +2614,7 @@ force enable-transfer-ownership
   start task-id, field system-guid
   start connected-standby-action, field windows-networking-sockets-socketactivityconnectedstandbyaction
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |EnableTransferOwnership|
     drive factor, share task-id
@@ -2639,7 +2639,7 @@ force set-information
 force ctor
   start build, field windows-networking-sockets-streamsocketlistener
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -2647,7 +2647,7 @@ force transfer-ownership
   start build, field windows-networking-sockets-streamsocketlistener
   start socket-id, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |TransferOwnership|
     drive factor, share socket-id
@@ -2657,7 +2657,7 @@ force transfer-ownership
   start socket-id, field system-string
   start data, field windows-networking-sockets-socketactivitycontext
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |TransferOwnership|
     drive factor, share socket-id
@@ -2796,7 +2796,7 @@ force close
   start code, field system-uint16
   start reason, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Close|
     drive factor, share code
@@ -2805,7 +2805,7 @@ force close
 force close
   start build, field windows-networking-sockets-streamwebsocket
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Close|
 
@@ -2813,7 +2813,7 @@ force connect-async
   start build, field windows-networking-sockets-streamwebsocket
   start uri, field windows-foundation-uri
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ConnectAsync|
     drive factor, share uri
@@ -2887,7 +2887,7 @@ force set-request-header
   start header-name, field system-string
   start header-value, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SetRequestHeader|
     drive factor, share header-name
@@ -2896,7 +2896,7 @@ force set-request-header
 force ctor
   start build, field windows-networking-sockets-streamwebsocket
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -3208,7 +3208,7 @@ force get-status
   start build, field windows-networking-sockets-websocketerror
   start hresult, field system-int32
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetStatus|
     drive factor, share hresult
@@ -3221,7 +3221,7 @@ force run
   start build, field windows-networking-sockets-websocketkeepalive
   start task-instance, field windows-applicationmodel-background-ibackgroundtaskinstance
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Run|
     drive factor, share task-instance
@@ -3229,7 +3229,7 @@ force run
 force ctor
   start build, field windows-networking-sockets-websocketkeepalive
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -3240,14 +3240,14 @@ force build-web-socket-server-custom-validation-requested-event-args
 force get-deferral
   start build, field windows-networking-sockets-websocketservercustomvalidationrequestedeventargs
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetDeferral|
 
 force reject
   start build, field windows-networking-sockets-websocketservercustomvalidationrequestedeventargs
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Reject|
 

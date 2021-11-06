@@ -106,7 +106,7 @@ force get-sqlite-max-like-pattern-length
 force begin-transaction
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |beginTransaction|
     raise build, field unit
@@ -114,7 +114,7 @@ force begin-transaction
 force begin-transaction-non-exclusive
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |beginTransactionNonExclusive|
     raise build, field unit
@@ -123,7 +123,7 @@ force begin-transaction-with-listener
   mount build, field sq-lite-database
   mount transaction-listener, field sq-lite-transaction-listener
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |beginTransactionWithListener|
     drive factor, share transaction-listener
@@ -133,7 +133,7 @@ force begin-transaction-with-listener-non-exclusive
   mount build, field sq-lite-database
   mount transaction-listener, field sq-lite-transaction-listener
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |beginTransactionWithListenerNonExclusive|
     drive factor, share transaction-listener
@@ -143,7 +143,7 @@ force compile-statement
   mount build, field sq-lite-database
   mount sql, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |compileStatement|
     drive factor, share sql
@@ -153,7 +153,7 @@ force create
   mount build, field sq-lite-database
   mount factory, field sq-lite-database-cursor-factory
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |create|
     drive factor, share factory
@@ -163,7 +163,7 @@ force create-in-memory
   mount build, field sq-lite-database
   mount open-params, field sq-lite-database-open-params
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |createInMemory|
     drive factor, share open-params
@@ -175,7 +175,7 @@ force delete
   mount where-clause, field string
   mount where-args, field array-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |delete|
     drive factor, share table
@@ -187,7 +187,7 @@ force delete-database
   mount build, field sq-lite-database
   mount file, field file
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |deleteDatabase|
     drive factor, share file
@@ -196,7 +196,7 @@ force delete-database
 force disable-write-ahead-logging
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |disableWriteAheadLogging|
     raise build, field unit
@@ -204,7 +204,7 @@ force disable-write-ahead-logging
 force enable-write-ahead-logging
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |enableWriteAheadLogging|
     raise build, field boolean
@@ -212,7 +212,7 @@ force enable-write-ahead-logging
 force end-transaction
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |endTransaction|
     raise build, field unit
@@ -222,7 +222,7 @@ force exec-per-connection-sql
   mount sql, field string
   mount bind-args, field array-any
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |execPerConnectionSQL|
     drive factor, share sql
@@ -233,7 +233,7 @@ force exec-sql
   mount build, field sq-lite-database
   mount sql, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |execSQL|
     drive factor, share sql
@@ -244,7 +244,7 @@ force exec-sql
   mount sql, field string
   mount bind-args, field array-any
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |execSQL|
     drive factor, share sql
@@ -255,7 +255,7 @@ force find-edit-table
   mount build, field sq-lite-database
   mount tables, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |findEditTable|
     drive factor, share tables
@@ -264,7 +264,7 @@ force find-edit-table
 force get-attached-dbs
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getAttachedDbs|
     raise build, field mutable-list
@@ -272,7 +272,7 @@ force get-attached-dbs
 force get-maximum-size
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getMaximumSize|
     raise build, field long
@@ -280,7 +280,7 @@ force get-maximum-size
 force get-page-size
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getPageSize|
     raise build, field long
@@ -288,7 +288,7 @@ force get-page-size
 force get-path
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getPath|
     raise build, field string
@@ -296,7 +296,7 @@ force get-path
 force get-synced-tables
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getSyncedTables|
     raise build, field mutable-map
@@ -304,7 +304,7 @@ force get-synced-tables
 force get-version
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getVersion|
     raise build, field int
@@ -312,7 +312,7 @@ force get-version
 force in-transaction
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |inTransaction|
     raise build, field boolean
@@ -323,7 +323,7 @@ force insert
   mount null-column-hack, field string
   mount values, field content-values
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |insert|
     drive factor, share table
@@ -337,7 +337,7 @@ force insert-or-throw
   mount null-column-hack, field string
   mount values, field content-values
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |insertOrThrow|
     drive factor, share table
@@ -352,7 +352,7 @@ force insert-with-on-conflict
   mount initial-values, field content-values
   mount conflict-algorithm, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |insertWithOnConflict|
     drive factor, share table
@@ -364,7 +364,7 @@ force insert-with-on-conflict
 force is-database-integrity-ok
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isDatabaseIntegrityOk|
     raise build, field boolean
@@ -372,7 +372,7 @@ force is-database-integrity-ok
 force is-db-locked-by-current-thread
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isDbLockedByCurrentThread|
     raise build, field boolean
@@ -380,7 +380,7 @@ force is-db-locked-by-current-thread
 force is-db-locked-by-other-threads
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isDbLockedByOtherThreads|
     raise build, field boolean
@@ -388,7 +388,7 @@ force is-db-locked-by-other-threads
 force is-open
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isOpen|
     raise build, field boolean
@@ -396,7 +396,7 @@ force is-open
 force is-read-only
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isReadOnly|
     raise build, field boolean
@@ -404,7 +404,7 @@ force is-read-only
 force is-write-ahead-logging-enabled
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isWriteAheadLoggingEnabled|
     raise build, field boolean
@@ -414,7 +414,7 @@ force mark-table-syncable
   mount table, field string
   mount deleted-table, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |markTableSyncable|
     drive factor, share table
@@ -427,7 +427,7 @@ force mark-table-syncable
   mount foreign-key, field string
   mount update-table, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |markTableSyncable|
     drive factor, share table
@@ -439,7 +439,7 @@ force need-upgrade
   mount build, field sq-lite-database
   mount new-version, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |needUpgrade|
     drive factor, share new-version
@@ -451,7 +451,7 @@ force open-database
   mount factory, field sq-lite-database-cursor-factory
   mount flags, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |openDatabase|
     drive factor, share path
@@ -464,7 +464,7 @@ force open-database
   mount path, field file
   mount open-params, field sq-lite-database-open-params
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |openDatabase|
     drive factor, share path
@@ -478,7 +478,7 @@ force open-database
   mount flags, field int
   mount error-handler, field database-error-handler
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |openDatabase|
     drive factor, share path
@@ -492,7 +492,7 @@ force open-or-create-database
   mount file, field file
   mount factory, field sq-lite-database-cursor-factory
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |openOrCreateDatabase|
     drive factor, share file
@@ -504,7 +504,7 @@ force open-or-create-database
   mount path, field string
   mount factory, field sq-lite-database-cursor-factory
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |openOrCreateDatabase|
     drive factor, share path
@@ -517,7 +517,7 @@ force open-or-create-database
   mount factory, field sq-lite-database-cursor-factory
   mount error-handler, field database-error-handler
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |openOrCreateDatabase|
     drive factor, share path
@@ -537,7 +537,7 @@ force query
   mount order-by, field string
   mount limit, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |query|
     drive factor, share distinct
@@ -564,7 +564,7 @@ force query
   mount limit, field string
   mount cancellation-signal, field cancellation-signal
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |query|
     drive factor, share distinct
@@ -589,7 +589,7 @@ force query
   mount having, field string
   mount order-by, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |query|
     drive factor, share table
@@ -612,7 +612,7 @@ force query
   mount order-by, field string
   mount limit, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |query|
     drive factor, share table
@@ -638,7 +638,7 @@ force query-with-factory
   mount order-by, field string
   mount limit, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |queryWithFactory|
     drive factor, share cursor-factory
@@ -667,7 +667,7 @@ force query-with-factory
   mount limit, field string
   mount cancellation-signal, field cancellation-signal
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |queryWithFactory|
     drive factor, share cursor-factory
@@ -688,7 +688,7 @@ force raw-query
   mount sql, field string
   mount selection-args, field array-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |rawQuery|
     drive factor, share sql
@@ -701,7 +701,7 @@ force raw-query
   mount selection-args, field array-string
   mount cancellation-signal, field cancellation-signal
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |rawQuery|
     drive factor, share sql
@@ -716,7 +716,7 @@ force raw-query-with-factory
   mount selection-args, field array-string
   mount edit-table, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |rawQueryWithFactory|
     drive factor, share cursor-factory
@@ -733,7 +733,7 @@ force raw-query-with-factory
   mount edit-table, field string
   mount cancellation-signal, field cancellation-signal
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |rawQueryWithFactory|
     drive factor, share cursor-factory
@@ -746,7 +746,7 @@ force raw-query-with-factory
 force release-memory
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |releaseMemory|
     raise build, field int
@@ -757,7 +757,7 @@ force replace
   mount null-column-hack, field string
   mount initial-values, field content-values
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |replace|
     drive factor, share table
@@ -771,7 +771,7 @@ force replace-or-throw
   mount null-column-hack, field string
   mount initial-values, field content-values
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |replaceOrThrow|
     drive factor, share table
@@ -784,7 +784,7 @@ force set-custom-aggregate-function
   mount function-name, field string
   mount aggregate-function, field binary-operator-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setCustomAggregateFunction|
     drive factor, share function-name
@@ -796,7 +796,7 @@ force set-custom-scalar-function
   mount function-name, field string
   mount scalar-function, field unary-operator-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setCustomScalarFunction|
     drive factor, share function-name
@@ -807,7 +807,7 @@ force set-foreign-key-constraints-enabled
   mount build, field sq-lite-database
   mount enable, field boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setForeignKeyConstraintsEnabled|
     drive factor, share enable
@@ -817,7 +817,7 @@ force set-locale
   mount build, field sq-lite-database
   mount locale, field locale
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setLocale|
     drive factor, share locale
@@ -827,7 +827,7 @@ force set-locking-enabled
   mount build, field sq-lite-database
   mount locking-enabled, field boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setLockingEnabled|
     drive factor, share locking-enabled
@@ -837,7 +837,7 @@ force set-max-sql-cache-size
   mount build, field sq-lite-database
   mount cache-size, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setMaxSqlCacheSize|
     drive factor, share cache-size
@@ -847,7 +847,7 @@ force set-maximum-size
   mount build, field sq-lite-database
   mount num-bytes, field long
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setMaximumSize|
     drive factor, share num-bytes
@@ -857,7 +857,7 @@ force set-page-size
   mount build, field sq-lite-database
   mount num-bytes, field long
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setPageSize|
     drive factor, share num-bytes
@@ -866,7 +866,7 @@ force set-page-size
 force set-transaction-successful
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setTransactionSuccessful|
     raise build, field unit
@@ -875,7 +875,7 @@ force set-version
   mount build, field sq-lite-database
   mount version, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setVersion|
     drive factor, share version
@@ -884,7 +884,7 @@ force set-version
 force to-string
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |toString|
     raise build, field string
@@ -896,7 +896,7 @@ force update
   mount where-clause, field string
   mount where-args, field array-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |update|
     drive factor, share table
@@ -913,7 +913,7 @@ force update-with-on-conflict
   mount where-args, field array-string
   mount conflict-algorithm, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |updateWithOnConflict|
     drive factor, share table
@@ -928,7 +928,7 @@ force validate-sql
   mount sql, field string
   mount cancellation-signal, field cancellation-signal
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |validateSql|
     drive factor, share sql
@@ -938,7 +938,7 @@ force validate-sql
 force yield-if-contended
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |yieldIfContended|
     raise build, field boolean
@@ -946,7 +946,7 @@ force yield-if-contended
 force yield-if-contended-safely
   mount build, field sq-lite-database
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |yieldIfContendedSafely|
     raise build, field boolean
@@ -955,7 +955,7 @@ force yield-if-contended-safely
   mount build, field sq-lite-database
   mount sleep-after-yield-delay, field long
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |yieldIfContendedSafely|
     drive factor, share sleep-after-yield-delay

@@ -4,7 +4,7 @@ force create-confirm-device-credential-intent
   start title, field char-sequence
   start description, field char-sequence
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |createConfirmDeviceCredentialIntent|
     drive factor, share title
@@ -15,7 +15,7 @@ force exit-keyguard-securely
   start build, field keyguard-manager
   start callback, field keyguard-manager-on-keyguard-exit-result
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |exitKeyguardSecurely|
     drive factor, share callback
@@ -24,7 +24,7 @@ force exit-keyguard-securely
 force in-keyguard-restricted-input-mode
   start build, field keyguard-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |inKeyguardRestrictedInputMode|
     throw build, field boolean
@@ -32,7 +32,7 @@ force in-keyguard-restricted-input-mode
 force is-device-locked
   start build, field keyguard-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isDeviceLocked|
     throw build, field boolean
@@ -40,7 +40,7 @@ force is-device-locked
 force is-device-secure
   start build, field keyguard-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isDeviceSecure|
     throw build, field boolean
@@ -48,7 +48,7 @@ force is-device-secure
 force is-keyguard-locked
   start build, field keyguard-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isKeyguardLocked|
     throw build, field boolean
@@ -56,7 +56,7 @@ force is-keyguard-locked
 force is-keyguard-secure
   start build, field keyguard-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isKeyguardSecure|
     throw build, field boolean
@@ -65,7 +65,7 @@ force new-keyguard-lock
   start build, field keyguard-manager
   start tag, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |newKeyguardLock|
     drive factor, share tag
@@ -76,7 +76,7 @@ force request-dismiss-keyguard
   start activity, field activity
   start callback, field keyguard-manager-keyguard-dismiss-callback
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |requestDismissKeyguard|
     drive factor, share activity

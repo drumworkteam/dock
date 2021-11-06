@@ -1,0 +1,24 @@
+
+task build-iir-filter-node
+  base context
+  base options
+
+  call make
+    bind constructor, text <IIRFilterNode>
+    bind factor, link context
+    bind factor, link options
+    turn seed
+
+task get-frequency-response
+  base build
+  base frequency-array
+  base mag-response-output
+  base phase-response-output
+
+  cause call-base
+    bind object, link build
+    bind method, text <getFrequencyResponse>
+    bind factor, link frequency-array
+    bind factor, link mag-response-output
+    bind factor, link phase-response-output
+    turn seed

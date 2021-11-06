@@ -36,7 +36,7 @@ force create
   mount gnss-status, field gnss-status
   mount time-to-first-fix, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |create|
     drive factor, share gnss-status
@@ -46,7 +46,7 @@ force create
 force get-max-satellites
   mount build, field gps-status
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getMaxSatellites|
     raise build, field int
@@ -54,7 +54,7 @@ force get-max-satellites
 force get-satellites
   mount build, field gps-status
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getSatellites|
     raise build, field mutable-iterable
@@ -62,7 +62,7 @@ force get-satellites
 force get-time-to-first-fix
   mount build, field gps-status
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getTimeToFirstFix|
     raise build, field int

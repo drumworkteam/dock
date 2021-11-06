@@ -1,0 +1,80 @@
+
+task get-environment-blend-mode
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <environmentBlendMode>
+    turn seed
+
+task get-input-sources
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <inputSources>
+    turn seed
+
+task get-render-state
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <renderState>
+    turn seed
+
+task get-visibility-state
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <visibilityState>
+    turn seed
+
+task cancel-animation-frame
+  base build
+  base handle
+
+  cause call-base
+    bind object, link build
+    bind method, text <cancelAnimationFrame>
+    bind factor, link handle
+    turn seed
+
+task end
+  base build
+
+  cause call-base
+    bind object, link build
+    bind method, text <end>
+    turn seed
+
+task request-animation-frame
+  base build
+  base animation-frame-callback
+
+  cause call-base
+    bind object, link build
+    bind method, text <requestAnimationFrame>
+    bind factor, link animation-frame-callback
+    turn seed
+
+task request-reference-space
+  base build
+  base type
+
+  cause call-base
+    bind object, link build
+    bind method, text <requestReferenceSpace>
+    bind factor, link type
+    turn seed
+
+task update-render-state
+  base build
+  base new-state
+
+  cause call-base
+    bind object, link build
+    bind method, text <updateRenderState>
+    bind factor, link new-state
+    turn seed

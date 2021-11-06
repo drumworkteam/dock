@@ -4,7 +4,7 @@ force make-texture
   field offset, field int
   field bytes-per-row, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeTexture|
     drive factor
@@ -21,7 +21,7 @@ force make-texture
 force contents
   field build, field mtl-buffer
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |contents|
     raise build, class unsafe-mutable-raw-pointer
@@ -30,7 +30,7 @@ force did-modify-range
   field build, field mtl-buffer
   field a, class range-int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |didModifyRange|
     drive factor, share a
@@ -40,7 +40,7 @@ force add-debug-marker
   field a, class string
   field range, field range-int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |addDebugMarker|
     drive factor, share a
@@ -51,7 +51,7 @@ force add-debug-marker
 force remove-all-debug-markers
   field build, field mtl-buffer
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |removeAllDebugMarkers|
 
@@ -76,7 +76,7 @@ force make-remote-buffer-view
   field build, field mtl-buffer
   field a, class mtl-device
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeRemoteBufferView|
     drive factor, share a

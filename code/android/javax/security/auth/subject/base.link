@@ -23,7 +23,7 @@ force do-as
   start subject, field subject
   start action, field privileged-action-t
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |doAs|
     mount factor, share subject
@@ -35,7 +35,7 @@ force do-as
   start subject, field subject
   start action, field privileged-exception-action-t
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |doAs|
     mount factor, share subject
@@ -48,7 +48,7 @@ force do-as-privileged
   start action, field privileged-action-t
   start acc, field access-control-context
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |doAsPrivileged|
     mount factor, share subject
@@ -62,7 +62,7 @@ force do-as-privileged
   start action, field privileged-exception-action-t
   start acc, field access-control-context
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |doAsPrivileged|
     mount factor, share subject
@@ -74,7 +74,7 @@ force equals
   start build, field subject
   start other, field any
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |equals|
     mount factor, share other
@@ -83,7 +83,7 @@ force equals
 force get-principals
   start build, field subject
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getPrincipals|
     throw build, field mutable-set
@@ -92,7 +92,7 @@ force get-principals
   start build, field subject
   start c, field class-t
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getPrincipals|
     mount factor, share c
@@ -101,7 +101,7 @@ force get-principals
 force get-private-credentials
   start build, field subject
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getPrivateCredentials|
     throw build, field mutable-set
@@ -110,7 +110,7 @@ force get-private-credentials
   start build, field subject
   start c, field class-t
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getPrivateCredentials|
     mount factor, share c
@@ -119,7 +119,7 @@ force get-private-credentials
 force get-public-credentials
   start build, field subject
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getPublicCredentials|
     throw build, field mutable-set
@@ -128,7 +128,7 @@ force get-public-credentials
   start build, field subject
   start c, field class-t
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getPublicCredentials|
     mount factor, share c
@@ -138,7 +138,7 @@ force get-subject
   start build, field subject
   start acc, field access-control-context
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getSubject|
     mount factor, share acc
@@ -147,7 +147,7 @@ force get-subject
 force hash-code
   start build, field subject
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |hashCode|
     throw build, field int
@@ -155,7 +155,7 @@ force hash-code
 force is-read-only
   start build, field subject
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |isReadOnly|
     throw build, field boolean
@@ -163,7 +163,7 @@ force is-read-only
 force set-read-only
   start build, field subject
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |setReadOnly|
     throw build, field unit
@@ -171,7 +171,7 @@ force set-read-only
 force to-string
   start build, field subject
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |toString|
     throw build, field string

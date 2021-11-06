@@ -1,0 +1,120 @@
+
+task get-default-value
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <defaultValue>
+    turn seed
+
+task get-max-value
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <maxValue>
+    turn seed
+
+task get-min-value
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <minValue>
+    turn seed
+
+task get-value
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <value>
+    turn seed
+
+task set-value
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <value>
+    bind factor, link value
+
+task set-value-at-time
+  base build
+  base value
+  base start-time
+
+  cause call-base
+    bind object, link build
+    bind method, text <setValueAtTime>
+    bind factor, link value
+    bind factor, link start-time
+
+task linear-ramp-to-value-at-time
+  base build
+  base value
+  base end-time
+
+  cause call-base
+    bind object, link build
+    bind method, text <linearRampToValueAtTime>
+    bind factor, link value
+    bind factor, link end-time
+
+task exponential-ramp-to-value-at-time
+  base build
+  base value
+  base end-time
+
+  cause call-base
+    bind object, link build
+    bind method, text <exponentialRampToValueAtTime>
+    bind factor, link value
+    bind factor, link end-time
+
+task set-target-at-time
+  base build
+  base target
+  base start-time
+  base time-constant
+
+  cause call-base
+    bind object, link build
+    bind method, text <setTargetAtTime>
+    bind factor, link target
+    bind factor, link start-time
+    bind factor, link time-constant
+
+task set-value-curve-at-time
+  base build
+  base values
+  base start-time
+  base duration
+
+  cause call-base
+    bind object, link build
+    bind method, text <setValueCurveAtTime>
+    bind factor, link values
+    bind factor, link start-time
+    bind factor, link duration
+    turn seed
+
+task cancel-scheduled-values
+  base build
+  base start-time
+
+  cause call-base
+    bind object, link build
+    bind method, text <cancelScheduledValues>
+    bind factor, link start-time
+
+task cancel-and-hold-at-time
+  base build
+  base cancel-time
+
+  cause call-base
+    bind object, link build
+    bind method, text <cancelAndHoldAtTime>
+    bind factor, link cancel-time
+    turn seed

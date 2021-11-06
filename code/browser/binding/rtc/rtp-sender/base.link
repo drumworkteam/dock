@@ -1,0 +1,70 @@
+
+task get-dtmf
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <dtmf>
+    turn seed
+
+task get-track
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <track>
+    turn seed
+
+task get-transport
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <transport>
+    turn seed
+
+task get-parameters
+  base build
+
+  cause call-base
+    bind object, link build
+    bind method, text <getParameters>
+    turn seed
+
+task get-stats
+  base build
+
+  cause call-base
+    bind object, link build
+    bind method, text <getStats>
+    turn seed
+
+task set-parameters
+  base build
+  base parameters
+
+  cause call-base
+    bind object, link build
+    bind method, text <setParameters>
+    bind factor, link parameters
+    turn seed
+
+task set-streams
+  base build
+  base media-stream
+
+  cause call-base
+    bind object, link build
+    bind method, text <setStreams>
+    bind factor, link media-stream
+    turn seed
+
+task replace-track
+  base build
+  base new-track
+
+  cause call-base
+    bind object, link build
+    bind method, text <replaceTrack>
+    bind factor, link new-track
+    turn seed

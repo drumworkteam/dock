@@ -1,0 +1,54 @@
+
+task get-align
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <align>
+    turn seed
+
+task set-align
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <align>
+    bind factor, link value
+
+task get-use-map
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <useMap>
+    turn seed
+
+task set-use-map
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <useMap>
+    bind factor, link value
+
+task step-down
+  base build
+  base step-decrement
+  base step-decrement
+
+  cause call-base
+    bind object, link build
+    bind method, text <stepDown>
+    bind factor, link step-decrement
+    bind factor, link step-decrement
+
+task step-up
+  base build
+  base step-increment
+
+  cause call-base
+    bind object, link build
+    bind method, text <stepUp>
+    bind factor, link step-increment

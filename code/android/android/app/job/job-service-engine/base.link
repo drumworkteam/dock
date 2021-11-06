@@ -10,7 +10,7 @@ force build-job-service-engine
 force get-binder
   start build, field job-service-engine
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getBinder|
     throw build, field i-binder
@@ -20,7 +20,7 @@ force job-finished
   start params, field job-parameters
   start needs-reschedule, field boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |jobFinished|
     drive factor, share params
@@ -31,7 +31,7 @@ force on-start-job
   start build, field job-service-engine
   start params, field job-parameters
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onStartJob|
     drive factor, share params
@@ -41,7 +41,7 @@ force on-stop-job
   start build, field job-service-engine
   start params, field job-parameters
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onStopJob|
     drive factor, share params

@@ -21,27 +21,27 @@ field unsigned-integer
 task parse-decimal
   base string, form string
 
-  call call-method
-    bind object, <window>
-    bind method, <parseFloat>
+  call call-base
+    bind object, text <window>
+    bind method, text <parseFloat>
     bind factor, link string
     turn seed
 
 task parse-int
   base string, form string
 
-  call call-method
-    bind object, <window>
-    bind method, <parseInt>
+  call call-base
+    bind object, text <window>
+    bind method, text <parseInt>
     bind factor, link string
     turn seed
 
 task parse-number
   base value
 
-  call call-method
-    bind object, <window>
-    bind method, <Number>
+  call call-base
+    bind object, text <window>
+    bind method, text <Number>
     bind factor, link value
     turn seed
 
@@ -49,9 +49,9 @@ task get-max
   base start, form number
   base end, form number
 
-  call call-method
-    bind object, <Math>
-    bind method, <max>
+  call call-base
+    bind object, text <Math>
+    bind method, text <max>
     bind factor, link start
     bind factor, link end
     turn seed
@@ -60,9 +60,9 @@ task get-min
   base start, form number
   base end, form number
 
-  call call-method
-    bind object, <Math>
-    bind method, <max>
+  call call-base
+    bind object, text <Math>
+    bind method, text <max>
     bind factor, link start
     bind factor, link end
     turn seed
@@ -70,117 +70,117 @@ task get-min
 task floor
   base number, form number
 
-  call call-method
-    bind object, <Math>
-    bind method, <floor>
+  call call-base
+    bind object, text <Math>
+    bind method, text <floor>
     bind factor, link number
     turn seed
 
 task ceil
   base number, form number
 
-  call call-method
-    bind object, <Math>
-    bind method, <ceil>
+  call call-base
+    bind object, text <Math>
+    bind method, text <ceil>
     bind factor, link number
     turn seed
 
 task round
   base number, form number
 
-  call call-method
-    bind object, <Math>
-    bind method, <round>
+  call call-base
+    bind object, text <Math>
+    bind method, text <round>
     bind factor, link number
     turn seed
 
 task get-abs
   base number, form number
 
-  call call-method
-    bind object, <Math>
-    bind method, <abs>
+  call call-base
+    bind object, text <Math>
+    bind method, text <abs>
     bind factor, link number
     turn seed
 
 task get-cos
   base number, form number
 
-  call call-method
-    bind object, <Math>
-    bind method, <cos>
+  call call-base
+    bind object, text <Math>
+    bind method, text <cos>
     bind factor, link number
     turn seed
 
 task get-acos
   base number, form number
 
-  call call-method
-    bind object, <Math>
-    bind method, <acos>
+  call call-base
+    bind object, text <Math>
+    bind method, text <acos>
     bind factor, link number
     turn seed
 
 task get-sin
   base number, form number
 
-  call call-method
-    bind object, <Math>
-    bind method, <sin>
+  call call-base
+    bind object, text <Math>
+    bind method, text <sin>
     bind factor, link number
     turn seed
 
 task get-asin
   base number, form number
 
-  call call-method
-    bind object, <Math>
-    bind method, <asin>
+  call call-base
+    bind object, text <Math>
+    bind method, text <asin>
     bind factor, link number
     turn seed
 
 task get-tan
   base number, form number
 
-  call call-method
-    bind object, <Math>
-    bind method, <tan>
+  call call-base
+    bind object, text <Math>
+    bind method, text <tan>
     bind factor, link number
     turn seed
 
 task get-atan
   base number, form number
 
-  call call-method
-    bind object, <Math>
-    bind method, <atan>
+  call call-base
+    bind object, text <Math>
+    bind method, text <atan>
     bind factor, link number
     turn seed
 
 task get-atan2
   base number, form number
 
-  call call-method
-    bind object, <Math>
-    bind method, <atan2>
+  call call-base
+    bind object, text <Math>
+    bind method, text <atan2>
     bind factor, link number
     turn seed
 
 task get-log
   base number, form number
 
-  call call-method
-    bind object, <Math>
-    bind method, <log>
+  call call-base
+    bind object, text <Math>
+    bind method, text <log>
     bind factor, link number
     turn seed
 
 task get-sqrt
   base number, form number
 
-  call call-method
-    bind object, <Math>
-    bind method, <sqrt>
+  call call-base
+    bind object, text <Math>
+    bind method, text <sqrt>
     bind factor, link number
     turn seed
 
@@ -188,9 +188,9 @@ task add
   base left, form number
   base right, form number
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <+>
+    bind operation, text <+>
     bind right, link right
     turn seed
 
@@ -198,9 +198,9 @@ task subtract
   base left, form number
   base right, form number
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <->
+    bind operation, text <->
     bind right, link right
     turn seed
 
@@ -208,9 +208,9 @@ task multiply
   base left, form number
   base right, form number
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <*>
+    bind operation, text <*>
     bind right, link right
     turn seed
 
@@ -218,9 +218,9 @@ task divide
   base left, form number
   base right, form number
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, </>
+    bind operation, text </>
     bind right, link right
     turn seed
 
@@ -228,9 +228,9 @@ task modulus
   base left, form number
   base right, form number
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <%>
+    bind operation, text <%>
     bind right, link right
     turn seed
 
@@ -238,41 +238,41 @@ task get-exponent
   base left, form number
   base right, form number
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <**>
+    bind operation, text <**>
     bind right, link right
     turn seed
 
 task increment
   base value, form number
 
-  call call-unary-operation
+  call call-head
     bind value, link value
-    bind operation, <++>
+    bind operation, text <++>
     turn seed
 
 task decrement
   base value, form number
 
-  call call-unary-operation
+  call call-head
     bind value, link value
-    bind operation, <-->
+    bind operation, text <-->
     turn seed
 
 task check-if-not-number
   base value
 
-  call call-method
-    bind object, <window>
-    bind method, <isNaN>
+  call call-base
+    bind object, text <window>
+    bind method, text <isNaN>
     bind factor, link value
     turn seed
 
 task get-random
-  call call-method
-    bind object, <Math>
-    bind method, <random>
+  call call-base
+    bind object, text <Math>
+    bind method, text <random>
     turn seed
 
 task loop
@@ -280,7 +280,7 @@ task loop
   base end, form number
   base step, form function
 
-  call loop-count
+  call walk-size
     bind start, link start
     bind end, link end
     bind step, link step

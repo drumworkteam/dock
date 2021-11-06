@@ -17,7 +17,7 @@ force attach-interface
   mount owner, field i-interface
   mount descriptor, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |attachInterface|
     drive factor, share owner
@@ -27,7 +27,7 @@ force attach-interface
 force clear-calling-identity
   mount build, field binder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |clearCallingIdentity|
     raise build, field long
@@ -35,7 +35,7 @@ force clear-calling-identity
 force clear-calling-work-source
   mount build, field binder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |clearCallingWorkSource|
     raise build, field long
@@ -45,7 +45,7 @@ force dump
   mount fd, field file-descriptor
   mount args, field array-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |dump|
     drive factor, share fd
@@ -57,7 +57,7 @@ force dump-async
   mount fd, field file-descriptor
   mount args, field array-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |dumpAsync|
     drive factor, share fd
@@ -67,7 +67,7 @@ force dump-async
 force flush-pending-commands
   mount build, field binder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |flushPendingCommands|
     raise build, field unit
@@ -75,7 +75,7 @@ force flush-pending-commands
 force get-calling-pid
   mount build, field binder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getCallingPid|
     raise build, field int
@@ -83,7 +83,7 @@ force get-calling-pid
 force get-calling-uid
   mount build, field binder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getCallingUid|
     raise build, field int
@@ -91,7 +91,7 @@ force get-calling-uid
 force get-calling-uid-or-throw
   mount build, field binder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getCallingUidOrThrow|
     raise build, field int
@@ -99,7 +99,7 @@ force get-calling-uid-or-throw
 force get-calling-user-handle
   mount build, field binder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getCallingUserHandle|
     raise build, field user-handle
@@ -107,7 +107,7 @@ force get-calling-user-handle
 force get-calling-work-source-uid
   mount build, field binder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getCallingWorkSourceUid|
     raise build, field int
@@ -115,7 +115,7 @@ force get-calling-work-source-uid
 force get-interface-descriptor
   mount build, field binder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getInterfaceDescriptor|
     raise build, field string
@@ -123,7 +123,7 @@ force get-interface-descriptor
 force is-binder-alive
   mount build, field binder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isBinderAlive|
     raise build, field boolean
@@ -131,7 +131,7 @@ force is-binder-alive
 force join-thread-pool
   mount build, field binder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |joinThreadPool|
     raise build, field unit
@@ -141,7 +141,7 @@ force link-to-death
   mount recipient, field i-binder-death-recipient
   mount flags, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |linkToDeath|
     drive factor, share recipient
@@ -151,7 +151,7 @@ force link-to-death
 force ping-binder
   mount build, field binder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |pingBinder|
     raise build, field boolean
@@ -160,7 +160,7 @@ force query-local-interface
   mount build, field binder
   mount descriptor, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |queryLocalInterface|
     drive factor, share descriptor
@@ -170,7 +170,7 @@ force restore-calling-identity
   mount build, field binder
   mount token, field long
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |restoreCallingIdentity|
     drive factor, share token
@@ -180,7 +180,7 @@ force restore-calling-work-source
   mount build, field binder
   mount token, field long
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |restoreCallingWorkSource|
     drive factor, share token
@@ -190,7 +190,7 @@ force set-calling-work-source-uid
   mount build, field binder
   mount work-source, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setCallingWorkSourceUid|
     drive factor, share work-source
@@ -203,7 +203,7 @@ force transact
   mount reply, field parcel
   mount flags, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |transact|
     drive factor, share code
@@ -217,7 +217,7 @@ force unlink-to-death
   mount recipient, field i-binder-death-recipient
   mount flags, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |unlinkToDeath|
     drive factor, share recipient

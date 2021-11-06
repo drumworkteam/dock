@@ -1,5 +1,5 @@
 
-task drive
+task walk
   base check, form force
   base block, form force
 
@@ -18,40 +18,40 @@ task check
 task check-else
   base check, form force
   base block, form force
-  base else, form force
+  base other, form force
 
   call test-else
     bind check, link check
     bind block, link block
-    bind else, link else
+    bind else, link other
 
 task debug-function
-  base function, form function
+  base func, form function
 
-  call call-method
-    bind object, <window>
-    bind method, <debug>
-    bind factor, link function
+  call call-base
+    bind object, text <window>
+    bind method, text <debug>
+    bind factor, link func
 
 task debug
   call debug
-    bind keyword, <debugger>
+    bind keyword, text <debugger>
 
 task queue
-  base function, form function
+  base func, form function
 
-  call call-method
-    bind object, <window>
-    bind method, <setImmediate>
-    bind factor, link function
+  call call-base
+    bind object, text <window>
+    bind method, text <setImmediate>
+    bind factor, link func
 
 task compute-bitwise-or
   base left
   base right
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <|>
+    bind operation, text <|>
     bind right, link right
     turn seed
 
@@ -59,9 +59,9 @@ task check-if-equal
   base left
   base right
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <==>
+    bind operation, text <==>
     bind right, link right
     turn seed
 
@@ -69,9 +69,9 @@ task check-if-strictly-equal
   base left
   base right
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <===>
+    bind operation, text <===>
     bind right, link right
     turn seed
 
@@ -79,7 +79,7 @@ task get-typeof
   base value
 
   call call-keyword
-    bind keyword, <typeof>
+    bind keyword, text <typeof>
     bind value, link value
     turn seed
 
@@ -89,7 +89,7 @@ task get-instanceof
 
   call call-keyword-2
     bind left, link left
-    bind keyword, <instanceof>
+    bind keyword, text <instanceof>
     bind right, link right
     turn seed
 
@@ -124,9 +124,9 @@ task shift-left
   base left
   base right
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <\<\<>
+    bind operation, text <\<\<>
     bind right, link right
     turn seed
 
@@ -134,9 +134,9 @@ task shift-right
   base left
   base right
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <\>\>>
+    bind operation, text <\>\>>
     bind right, link right
     turn seed
 
@@ -144,9 +144,9 @@ task shift-right-unsigned
   base left
   base right
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <\>\>\>>
+    bind operation, text <\>\>\>>
     bind right, link right
     turn seed
 
@@ -154,9 +154,9 @@ task compute-bitwise-and
   base left
   base right
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <&>
+    bind operation, text <&>
     bind right, link right
     turn seed
 
@@ -164,9 +164,9 @@ task check-or
   base left
   base right
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <||>
+    bind operation, text <||>
     bind right, link right
     turn seed
 
@@ -181,16 +181,16 @@ task try-catch
 task check-if-truthy
   base value
 
-  call call-unary-operation
-    bind operation, <!!>
+  call call-head
+    bind operation, text <!!>
     bind value, link value
     turn seed
 
 task check-opposite
   base value
 
-  call call-unary-operation
-    bind operation, <!>
+  call call-head
+    bind operation, text <!>
     bind value, link value
     turn seed
 
@@ -198,17 +198,17 @@ task check-not-equal
   base left
   base right
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <!==>
+    bind operation, text <!==>
     bind right, link right
     turn seed
 
 task flip-block
   base value
 
-  call call-unary-operation
-    bind operation, <~>
+  call call-head
+    bind operation, text <~>
     bind value, link value
     turn seed
 
@@ -216,9 +216,9 @@ task check-gt
   base left
   base right
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <\>>
+    bind operation, text <\>>
     bind right, link right
     turn seed
 
@@ -226,9 +226,9 @@ task check-lt
   base left
   base right
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <\<>
+    bind operation, text <\<>
     bind right, link right
     turn seed
 
@@ -236,9 +236,9 @@ task check-gte
   base left
   base right
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <\>=>
+    bind operation, text <\>=>
     bind right, link right
     turn seed
 
@@ -246,9 +246,9 @@ task check-lte
   base left
   base right
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <\<=>
+    bind operation, text <\<=>
     bind right, link right
     turn seed
 
@@ -256,8 +256,8 @@ task check-and
   base left
   base right
 
-  call call-binary-operation
+  call call-twin
     bind left, link left
-    bind operation, <&&>
+    bind operation, text <&&>
     bind right, link right
     turn seed

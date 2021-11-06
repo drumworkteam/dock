@@ -11,7 +11,7 @@ force download-latest-settings-for-namespace
   start download-over-costed-network, field system-boolean
   start download-over-battery, field system-boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |DownloadLatestSettingsForNamespace|
     drive factor, share partner
@@ -26,7 +26,7 @@ force force-upload
   start upload-over-costed-network, field system-boolean
   start upload-over-battery, field system-boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ForceUpload|
     drive factor, share latency
@@ -36,7 +36,7 @@ force force-upload
 force get-active-scenario-list
   start build, field windows-system-diagnostics-tracereporting-platformdiagnosticactions
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetActiveScenarioList|
 
@@ -44,7 +44,7 @@ force get-active-trace-runtime
   start build, field windows-system-diagnostics-tracereporting-platformdiagnosticactions
   start slot-type, field windows-system-diagnostics-tracereporting-platformdiagnostictraceslottype
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetActiveTraceRuntime|
     drive factor, share slot-type
@@ -53,7 +53,7 @@ force get-known-trace-list
   start build, field windows-system-diagnostics-tracereporting-platformdiagnosticactions
   start slot-type, field windows-system-diagnostics-tracereporting-platformdiagnostictraceslottype
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetKnownTraceList|
     drive factor, share slot-type
@@ -62,7 +62,7 @@ force is-scenario-enabled
   start build, field windows-system-diagnostics-tracereporting-platformdiagnosticactions
   start scenario-id, field system-guid
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |IsScenarioEnabled|
     drive factor, share scenario-id
@@ -73,7 +73,7 @@ force is-trace-running
   start scenario-id, field system-guid
   start trace-profile-hash, field system-uint64
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |IsTraceRunning|
     drive factor, share slot-type
@@ -89,7 +89,7 @@ force try-escalate-scenario
   start force-escalation-upload, field system-boolean
   start triggers, field windows-foundation-collections-imapview-system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |TryEscalateScenario|
     drive factor, share scenario-id

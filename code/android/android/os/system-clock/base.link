@@ -2,7 +2,7 @@
 force current-gnss-time-clock
   mount build, field system-clock
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |currentGnssTimeClock|
     raise build, field clock
@@ -10,7 +10,7 @@ force current-gnss-time-clock
 force current-thread-time-millis
   mount build, field system-clock
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |currentThreadTimeMillis|
     raise build, field long
@@ -18,7 +18,7 @@ force current-thread-time-millis
 force elapsed-realtime
   mount build, field system-clock
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |elapsedRealtime|
     raise build, field long
@@ -26,7 +26,7 @@ force elapsed-realtime
 force elapsed-realtime-nanos
   mount build, field system-clock
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |elapsedRealtimeNanos|
     raise build, field long
@@ -35,7 +35,7 @@ force set-current-time-millis
   mount build, field system-clock
   mount millis, field long
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setCurrentTimeMillis|
     drive factor, share millis
@@ -45,7 +45,7 @@ force sleep
   mount build, field system-clock
   mount ms, field long
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |sleep|
     drive factor, share ms
@@ -54,7 +54,7 @@ force sleep
 force uptime-millis
   mount build, field system-clock
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |uptimeMillis|
     raise build, field long

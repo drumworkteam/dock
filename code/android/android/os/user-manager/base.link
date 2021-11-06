@@ -534,7 +534,7 @@ force create-user-creation-intent
   mount account-type, field string
   mount account-options, field persistable-bundle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |createUserCreationIntent|
     drive factor, share user-name
@@ -547,7 +547,7 @@ force get-application-restrictions
   mount build, field user-manager
   mount package-name, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getApplicationRestrictions|
     drive factor, share package-name
@@ -557,7 +557,7 @@ force get-serial-number-for-user
   mount build, field user-manager
   mount user, field user-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getSerialNumberForUser|
     drive factor, share user
@@ -566,7 +566,7 @@ force get-serial-number-for-user
 force get-user-count
   mount build, field user-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getUserCount|
     raise build, field int
@@ -575,7 +575,7 @@ force get-user-creation-time
   mount build, field user-manager
   mount user-handle, field user-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getUserCreationTime|
     drive factor, share user-handle
@@ -585,7 +585,7 @@ force get-user-for-serial-number
   mount build, field user-manager
   mount serial-number, field long
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getUserForSerialNumber|
     drive factor, share serial-number
@@ -594,7 +594,7 @@ force get-user-for-serial-number
 force get-user-name
   mount build, field user-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getUserName|
     raise build, field string
@@ -602,7 +602,7 @@ force get-user-name
 force get-user-profiles
   mount build, field user-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getUserProfiles|
     raise build, field mutable-list
@@ -610,7 +610,7 @@ force get-user-profiles
 force get-user-restrictions
   mount build, field user-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getUserRestrictions|
     raise build, field bundle
@@ -619,7 +619,7 @@ force get-user-restrictions
   mount build, field user-manager
   mount user-handle, field user-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getUserRestrictions|
     drive factor, share user-handle
@@ -629,7 +629,7 @@ force has-user-restriction
   mount build, field user-manager
   mount restriction-key, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |hasUserRestriction|
     drive factor, share restriction-key
@@ -638,7 +638,7 @@ force has-user-restriction
 force is-demo-user
   mount build, field user-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isDemoUser|
     raise build, field boolean
@@ -646,7 +646,7 @@ force is-demo-user
 force is-managed-profile
   mount build, field user-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isManagedProfile|
     raise build, field boolean
@@ -655,7 +655,7 @@ force is-quiet-mode-enabled
   mount build, field user-manager
   mount user-handle, field user-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isQuietModeEnabled|
     drive factor, share user-handle
@@ -664,7 +664,7 @@ force is-quiet-mode-enabled
 force is-system-user
   mount build, field user-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isSystemUser|
     raise build, field boolean
@@ -672,7 +672,7 @@ force is-system-user
 force is-user-a-goat
   mount build, field user-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isUserAGoat|
     raise build, field boolean
@@ -681,7 +681,7 @@ force is-user-running
   mount build, field user-manager
   mount user, field user-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isUserRunning|
     drive factor, share user
@@ -691,7 +691,7 @@ force is-user-running-or-stopping
   mount build, field user-manager
   mount user, field user-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isUserRunningOrStopping|
     drive factor, share user
@@ -700,7 +700,7 @@ force is-user-running-or-stopping
 force is-user-unlocked
   mount build, field user-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isUserUnlocked|
     raise build, field boolean
@@ -709,7 +709,7 @@ force is-user-unlocked
   mount build, field user-manager
   mount user, field user-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isUserUnlocked|
     drive factor, share user
@@ -720,7 +720,7 @@ force request-quiet-mode-enabled
   mount enable-quiet-mode, field boolean
   mount user-handle, field user-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |requestQuietModeEnabled|
     drive factor, share enable-quiet-mode
@@ -733,7 +733,7 @@ force request-quiet-mode-enabled
   mount user-handle, field user-handle
   mount flags, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |requestQuietModeEnabled|
     drive factor, share enable-quiet-mode
@@ -745,7 +745,7 @@ force set-restrictions-challenge
   mount build, field user-manager
   mount new-pin, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setRestrictionsChallenge|
     drive factor, share new-pin
@@ -756,7 +756,7 @@ force set-user-restriction
   mount key, field string
   mount value, field boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setUserRestriction|
     drive factor, share key
@@ -767,7 +767,7 @@ force set-user-restrictions
   mount build, field user-manager
   mount restrictions, field bundle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setUserRestrictions|
     drive factor, share restrictions
@@ -778,7 +778,7 @@ force set-user-restrictions
   mount restrictions, field bundle
   mount user-handle, field user-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setUserRestrictions|
     drive factor, share restrictions
@@ -788,7 +788,7 @@ force set-user-restrictions
 force supports-multiple-users
   mount build, field user-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |supportsMultipleUsers|
     raise build, field boolean

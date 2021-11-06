@@ -1,0 +1,181 @@
+
+task finished
+  base stream, form stream
+  base stream, form stream
+  base options, form object
+  base callback, form function
+
+  call task
+    bind host, link stream
+    bind name, text <finished>
+    bind base, link stream
+    bind base, link options
+    bind base, link callback
+    turn seed, form function
+
+task pipeline
+  base stream, form stream
+  base streams, form stream-iterable-async-iterable-function
+  base source, form stream-iterable-async-iterable-function
+  base transforms, form stream-function
+  base destination, form stream-function
+  base callback, form function
+
+  call task
+    bind host, link stream
+    bind name, text <pipeline>
+    bind base, link streams
+    bind base, link source
+    bind base, link transforms
+    bind base, link destination
+    bind base, link callback
+    turn seed, form stream
+
+task pipeline
+  base stream, form stream
+  base streams, form stream-iterable-async-iterable-function
+  base source, form stream-iterable-async-iterable-function
+  base transforms, form stream-function
+  base destination, form stream-function
+  base callback, form function
+
+  call task
+    bind host, link stream
+    bind name, text <pipeline>
+    bind base, link streams
+    bind base, link source
+    bind base, link transforms
+    bind base, link destination
+    bind base, link callback
+    turn seed, form stream
+
+task compose
+  base stream, form stream
+  base streams, form stream-iterable-async-iterable-function
+
+  call task
+    bind host, link stream
+    bind name, text <compose>
+    bind base, link streams
+    turn seed, form stream-duplex
+
+task from
+  base stream, form stream
+  base iterable, form iterable
+  base options, form object
+
+  call task
+    bind host, link stream
+    bind name, text <from>
+    bind base, link iterable
+    bind base, link options
+    turn seed, form stream-readable
+
+task from-web
+  base stream, form stream
+  base readable-stream, form readable-stream
+  base options, form object
+
+  call task
+    bind host, link stream
+    bind name, text <fromWeb>
+    bind base, link readable-stream
+    bind base, link options
+    turn seed, form stream-readable
+
+task is-disturbed
+  base stream, form stream
+  base stream, form stream-readable-readablestream
+
+  call task
+    bind host, link stream
+    bind name, text <isDisturbed>
+    bind base, link stream
+
+task to-web
+  base stream, form stream
+  base stream-readable, form stream-readable
+
+  call task
+    bind host, link stream
+    bind name, text <toWeb>
+    bind base, link stream-readable
+    turn seed, form readable-stream
+
+task from-web
+  base stream, form stream
+  base writable-stream, form writable-stream
+  base options, form object
+
+  call task
+    bind host, link stream
+    bind name, text <fromWeb>
+    bind base, link writable-stream
+    bind base, link options
+    turn seed, form stream-writable
+
+task to-web
+  base stream, form stream
+  base stream-writable, form stream-writable
+
+  call task
+    bind host, link stream
+    bind name, text <toWeb>
+    bind base, link stream-writable
+    turn seed, form writable-stream
+
+task from
+  base stream, form stream
+  base src, form stream-blob-arraybuffer-string-iterable-asynciterable-asyncgeneratorfunction-asyncfunction-promise-object
+
+  call task
+    bind host, link stream
+    bind name, text <from>
+    bind base, link src
+
+task from-web
+  base stream, form stream
+  base pair, form object
+  base options, form object
+
+  call task
+    bind host, link stream
+    bind name, text <fromWeb>
+    bind base, link pair
+    bind base, link options
+    turn seed, form stream-duplex
+
+task to-web
+  base stream, form stream
+  base stream-duplex, form stream-duplex
+
+  call task
+    bind host, link stream
+    bind name, text <toWeb>
+    bind base, link stream-duplex
+    turn seed, form object
+
+task add-abort-signal
+  base stream, form stream
+  base signal, form abort-signal
+  base stream, form stream
+
+  call task
+    bind host, link stream
+    bind name, text <addAbortSignal>
+    bind base, link signal
+    bind base, link stream
+
+task read
+  base stream, form stream
+
+  call task
+    bind host, link stream
+    bind name, text <read>
+
+task push
+  base stream, form stream
+
+  call task
+    bind host, link stream
+    bind name, text <push>

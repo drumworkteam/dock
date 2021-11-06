@@ -55,7 +55,7 @@ force build-media-extractor
 force advance
   start build, field media-extractor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |advance|
     raise build, field boolean
@@ -64,7 +64,7 @@ force get-audio-presentations
   start build, field media-extractor
   start track-index, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getAudioPresentations|
     drive factor, share track-index
@@ -73,7 +73,7 @@ force get-audio-presentations
 force get-cached-duration
   start build, field media-extractor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getCachedDuration|
     raise build, field long
@@ -82,7 +82,7 @@ force get-cas-info
   start build, field media-extractor
   start index, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getCasInfo|
     drive factor, share index
@@ -91,7 +91,7 @@ force get-cas-info
 force get-drm-init-data
   start build, field media-extractor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getDrmInitData|
     raise build, field drm-init-data
@@ -99,7 +99,7 @@ force get-drm-init-data
 force get-metrics
   start build, field media-extractor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getMetrics|
     raise build, field persistable-bundle
@@ -107,7 +107,7 @@ force get-metrics
 force get-pssh-info
   start build, field media-extractor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getPsshInfo|
     raise build, field mutable-map
@@ -116,7 +116,7 @@ force get-sample-crypto-info
   start build, field media-extractor
   start info, field media-codec-crypto-info
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getSampleCryptoInfo|
     drive factor, share info
@@ -125,7 +125,7 @@ force get-sample-crypto-info
 force get-sample-flags
   start build, field media-extractor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getSampleFlags|
     raise build, field int
@@ -133,7 +133,7 @@ force get-sample-flags
 force get-sample-size
   start build, field media-extractor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getSampleSize|
     raise build, field long
@@ -141,7 +141,7 @@ force get-sample-size
 force get-sample-time
   start build, field media-extractor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getSampleTime|
     raise build, field long
@@ -149,7 +149,7 @@ force get-sample-time
 force get-sample-track-index
   start build, field media-extractor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getSampleTrackIndex|
     raise build, field int
@@ -157,7 +157,7 @@ force get-sample-track-index
 force get-track-count
   start build, field media-extractor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getTrackCount|
     raise build, field int
@@ -166,7 +166,7 @@ force get-track-format
   start build, field media-extractor
   start index, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getTrackFormat|
     drive factor, share index
@@ -175,7 +175,7 @@ force get-track-format
 force has-cache-reached-end-of-stream
   start build, field media-extractor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |hasCacheReachedEndOfStream|
     raise build, field boolean
@@ -185,7 +185,7 @@ force read-sample-data
   start byte-buf, field byte-buffer
   start offset, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |readSampleData|
     drive factor, share byte-buf
@@ -195,7 +195,7 @@ force read-sample-data
 force release
   start build, field media-extractor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |release|
     raise build, field unit
@@ -205,7 +205,7 @@ force seek-to
   start time-us, field long
   start mode, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |seekTo|
     drive factor, share time-us
@@ -216,7 +216,7 @@ force select-track
   start build, field media-extractor
   start index, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |selectTrack|
     drive factor, share index
@@ -226,7 +226,7 @@ force set-data-source
   start build, field media-extractor
   start data-source, field media-data-source
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setDataSource|
     drive factor, share data-source
@@ -239,7 +239,7 @@ force set-data-source
   start headers, field mutable-map-string
   start string, field undefined
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setDataSource|
     drive factor, share context
@@ -254,7 +254,7 @@ force set-data-source
   start headers, field mutable-map-string
   start string, field undefined
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setDataSource|
     drive factor, share path
@@ -266,7 +266,7 @@ force set-data-source
   start build, field media-extractor
   start path, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setDataSource|
     drive factor, share path
@@ -276,7 +276,7 @@ force set-data-source
   start build, field media-extractor
   start afd, field asset-file-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setDataSource|
     drive factor, share afd
@@ -286,7 +286,7 @@ force set-data-source
   start build, field media-extractor
   start fd, field file-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setDataSource|
     drive factor, share fd
@@ -298,7 +298,7 @@ force set-data-source
   start offset, field long
   start length, field long
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setDataSource|
     drive factor, share fd
@@ -310,7 +310,7 @@ force set-media-cas
   start build, field media-extractor
   start media-cas, field media-cas
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setMediaCas|
     drive factor, share media-cas
@@ -320,7 +320,7 @@ force unselect-track
   start build, field media-extractor
   start index, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |unselectTrack|
     drive factor, share index

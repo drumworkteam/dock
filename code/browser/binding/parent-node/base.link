@@ -1,0 +1,80 @@
+
+task get-child-element-count
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <childElementCount>
+    turn seed
+
+task get-children
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <children>
+    turn seed
+
+task get-first-element-child
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <firstElementChild>
+    turn seed
+
+task get-last-element-child
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <lastElementChild>
+    turn seed
+
+task append
+  base build
+  base nodes-or-dom-strings
+
+  cause call-base
+    bind object, link build
+    bind method, text <append>
+    bind factor, link nodes-or-dom-strings
+
+task prepend
+  base build
+  base nodes-or-dom-strings
+
+  cause call-base
+    bind object, link build
+    bind method, text <prepend>
+    bind factor, link nodes-or-dom-strings
+    turn seed
+
+task query-selector
+  base build
+  base selectors
+
+  cause call-base
+    bind object, link build
+    bind method, text <querySelector>
+    bind factor, link selectors
+    turn seed
+
+task query-selector-all
+  base build
+  base selectors
+
+  cause call-base
+    bind object, link build
+    bind method, text <querySelectorAll>
+    bind factor, link selectors
+    turn seed
+
+task replace-children
+  base build
+  base nodes-or-dom-strings
+
+  cause call-base
+    bind object, link build
+    bind method, text <replaceChildren>
+    bind factor, link nodes-or-dom-strings

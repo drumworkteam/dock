@@ -1,7 +1,7 @@
 force mtl-create-system-default-device
   field build, field mtl-device
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |MTLCreateSystemDefaultDevice|
     raise build, class mtl-device
@@ -9,7 +9,7 @@ force mtl-create-system-default-device
 force mtl-copy-all-devices
   field build, field mtl-device
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |MTLCopyAllDevices|
     raise build, class mtl-device
@@ -18,7 +18,7 @@ force mtl-remove-device-observer
   field build, field mtl-device
   field a, class ns-object-protocol
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |MTLRemoveDeviceObserver|
     drive factor, share a
@@ -231,7 +231,7 @@ force supports-family
   field build, field mtl-device
   field a, class mtlgpu-family
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |supportsFamily|
     drive factor, share a
@@ -241,7 +241,7 @@ force supports-feature-set
   field build, field mtl-device
   field a, class mtl-feature-set
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |supportsFeatureSet|
     drive factor, share a
@@ -336,7 +336,7 @@ force get-default-sample-positions
   field build, field mtl-device
   field sample-count, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getDefaultSamplePositions|
     drive factor
@@ -416,7 +416,7 @@ force supports-vertex-amplification-count
   field build, field mtl-device
   field a, class int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |supportsVertexAmplificationCount|
     drive factor, share a
@@ -425,7 +425,7 @@ force supports-vertex-amplification-count
 force make-command-queue
   field build, field mtl-device
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeCommandQueue|
     raise build, class mtl-command-queue
@@ -434,7 +434,7 @@ force make-command-queue
   field build, field mtl-device
   field max-command-buffer-count, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeCommandQueue|
     drive factor
@@ -445,7 +445,7 @@ force make-command-queue
 force make-event
   field build, field mtl-device
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeEvent|
     raise build, class mtl-event
@@ -453,7 +453,7 @@ force make-event
 force make-shared-event
   field build, field mtl-device
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeSharedEvent|
     raise build, class mtl-shared-event
@@ -462,7 +462,7 @@ force make-shared-event
   field build, field mtl-device
   field handle, field mtl-shared-event-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeSharedEvent|
     drive factor
@@ -473,7 +473,7 @@ force make-shared-event
 force make-fence
   field build, field mtl-device
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeFence|
     raise build, class mtl-fence
@@ -481,7 +481,7 @@ force make-fence
 force make-default-library
   field build, field mtl-device
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeDefaultLibrary|
     raise build, class mtl-library
@@ -490,7 +490,7 @@ force make-default-library
   field build, field mtl-device
   field bundle, field bundle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeDefaultLibrary|
     drive factor
@@ -502,7 +502,7 @@ force make-library
   field build, field mtl-device
   field filepath, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeLibrary|
     drive factor
@@ -514,7 +514,7 @@ force make-library
   field build, field mtl-device
   field url, field url
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeLibrary|
     drive factor
@@ -526,7 +526,7 @@ force make-library
   field build, field mtl-device
   field data, field dispatch-data
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeLibrary|
     drive factor
@@ -540,7 +540,7 @@ force make-library
   field options, field mtl-compile-options
   field completion-handler, field mtl-new-library-completion-handler
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeLibrary|
     drive factor
@@ -558,7 +558,7 @@ force make-library
   field source, field string
   field options, field mtl-compile-options
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeLibrary|
     drive factor
@@ -574,7 +574,7 @@ force make-render-pipeline-state
   field descriptor, field mtl-render-pipeline-descriptor
   field completion-handler, field mtl-new-render-pipeline-state-completion-handler
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeRenderPipelineState|
     drive factor
@@ -590,7 +590,7 @@ force make-render-pipeline-state
   field options, field mtl-pipeline-option
   field completion-handler, field mtl-new-render-pipeline-state-with-reflection-completion-handler
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeRenderPipelineState|
     drive factor
@@ -607,7 +607,7 @@ force make-render-pipeline-state
   field build, field mtl-device
   field descriptor, field mtl-render-pipeline-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeRenderPipelineState|
     drive factor
@@ -621,7 +621,7 @@ force make-render-pipeline-state
   field options, field mtl-pipeline-option
   field reflection, field autoreleasing-unsafe-mutable-pointer-mtl-autoreleased-render-pipeline-reflection
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeRenderPipelineState|
     drive factor
@@ -641,7 +641,7 @@ force make-render-pipeline-state
   field options, field mtl-pipeline-option
   field completion-handler, field mtl-new-render-pipeline-state-with-reflection-completion-handler
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeRenderPipelineState|
     drive factor
@@ -660,7 +660,7 @@ force make-render-pipeline-state
   field options, field mtl-pipeline-option
   field reflection, field autoreleasing-unsafe-mutable-pointer-mtl-autoreleased-render-pipeline-reflection
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeRenderPipelineState|
     drive factor
@@ -680,7 +680,7 @@ force make-compute-pipeline-state
   field options, field mtl-pipeline-option
   field completion-handler, field mtl-new-compute-pipeline-state-with-reflection-completion-handler
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeComputePipelineState|
     drive factor
@@ -698,7 +698,7 @@ force make-compute-pipeline-state
   field function, field mtl-function
   field completion-handler, field mtl-new-compute-pipeline-state-completion-handler
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeComputePipelineState|
     drive factor
@@ -714,7 +714,7 @@ force make-compute-pipeline-state
   field options, field mtl-pipeline-option
   field completion-handler, field mtl-new-compute-pipeline-state-with-reflection-completion-handler
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeComputePipelineState|
     drive factor
@@ -733,7 +733,7 @@ force make-compute-pipeline-state
   field options, field mtl-pipeline-option
   field reflection, field autoreleasing-unsafe-mutable-pointer-mtl-autoreleased-compute-pipeline-reflection
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeComputePipelineState|
     drive factor
@@ -751,7 +751,7 @@ force make-compute-pipeline-state
   field build, field mtl-device
   field function, field mtl-function
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeComputePipelineState|
     drive factor
@@ -765,7 +765,7 @@ force make-compute-pipeline-state
   field options, field mtl-pipeline-option
   field reflection, field autoreleasing-unsafe-mutable-pointer-mtl-autoreleased-compute-pipeline-reflection
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeComputePipelineState|
     drive factor
@@ -801,7 +801,7 @@ force make-buffer
   field length, field int
   field options, field mtl-resource-options
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeBuffer|
     drive factor
@@ -818,7 +818,7 @@ force make-buffer
   field length, field int
   field options, field mtl-resource-options
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeBuffer|
     drive factor
@@ -836,7 +836,7 @@ force supports-texture-sample-count
   field build, field mtl-device
   field a, class int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |supportsTextureSampleCount|
     drive factor, share a
@@ -846,7 +846,7 @@ force minimum-linear-texture-alignment
   field build, field mtl-device
   field for, field mtl-pixel-format
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |minimumLinearTextureAlignment|
     drive factor
@@ -858,7 +858,7 @@ force minimum-texture-buffer-alignment
   field build, field mtl-device
   field for, field mtl-pixel-format
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |minimumTextureBufferAlignment|
     drive factor
@@ -887,7 +887,7 @@ force make-texture
   field build, field mtl-device
   field descriptor, field mtl-texture-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeTexture|
     drive factor
@@ -901,7 +901,7 @@ force make-texture
   field iosurface, field io-surface-ref
   field plane, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeTexture|
     drive factor
@@ -919,7 +919,7 @@ force make-shared-texture
   field build, field mtl-device
   field descriptor, field mtl-texture-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeSharedTexture|
     drive factor
@@ -931,7 +931,7 @@ force make-shared-texture
   field build, field mtl-device
   field handle, field mtl-shared-texture-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeSharedTexture|
     drive factor
@@ -943,7 +943,7 @@ force make-sampler-state
   field build, field mtl-device
   field descriptor, field mtl-sampler-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeSamplerState|
     drive factor
@@ -989,7 +989,7 @@ force make-argument-encoder
   field build, field mtl-device
   field arguments, field mtl-argument-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeArgumentEncoder|
     drive factor
@@ -1003,7 +1003,7 @@ force make-indirect-command-buffer
   field max-command-count, field int
   field options, field mtl-resource-options
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeIndirectCommandBuffer|
     drive factor
@@ -1021,7 +1021,7 @@ force make-heap
   field build, field mtl-device
   field descriptor, field mtl-heap-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeHeap|
     drive factor
@@ -1034,7 +1034,7 @@ force heap-buffer-size-and-align
   field length, field int
   field options, field mtl-resource-options
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |heapBufferSizeAndAlign|
     drive factor
@@ -1049,7 +1049,7 @@ force heap-texture-size-and-align
   field build, field mtl-device
   field descriptor, field mtl-texture-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |heapTextureSizeAndAlign|
     drive factor
@@ -1061,7 +1061,7 @@ force make-depth-stencil-state
   field build, field mtl-device
   field descriptor, field mtl-depth-stencil-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeDepthStencilState|
     drive factor
@@ -1090,7 +1090,7 @@ force make-counter-sample-buffer
   field build, field mtl-device
   field descriptor, field mtl-counter-sample-buffer-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeCounterSampleBuffer|
     drive factor
@@ -1102,7 +1102,7 @@ force supports-rasterization-rate-map
   field build, field mtl-device
   field layer-count, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |supportsRasterizationRateMap|
     drive factor
@@ -1114,7 +1114,7 @@ force make-rasterization-rate-map
   field build, field mtl-device
   field descriptor, field mtl-rasterization-rate-map-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeRasterizationRateMap|
     drive factor
@@ -1145,7 +1145,7 @@ force sparse-tile-size
   field pixel-format, field mtl-pixel-format
   field sample-count, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |sparseTileSize|
     drive factor
@@ -1167,7 +1167,7 @@ force convert-sparse-pixel-regions
   field alignment-mode, field mtl-sparse-texture-region-alignment-mode
   field num-regions, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |convertSparsePixelRegions|
     drive factor, share a
@@ -1191,7 +1191,7 @@ force convert-sparse-tile-regions
   field with-tile-size, field mtl-size
   field num-regions, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |convertSparseTileRegions|
     drive factor, share a

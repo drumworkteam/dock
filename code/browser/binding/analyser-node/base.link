@@ -1,0 +1,126 @@
+
+task build-analyser-node
+  base context
+  base options
+
+  call make
+    bind constructor, text <AnalyserNode>
+    bind factor, link context
+    bind factor, link options
+    turn seed
+
+task get-fft-size
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <fftSize>
+    turn seed
+
+task set-fft-size
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <fftSize>
+    bind factor, link value
+
+task get-frequency-bin-count
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <frequencyBinCount>
+    turn seed
+
+task get-min-decibels
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <minDecibels>
+    turn seed
+
+task set-min-decibels
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <minDecibels>
+    bind factor, link value
+
+task get-max-decibels
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <maxDecibels>
+    turn seed
+
+task set-max-decibels
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <maxDecibels>
+    bind factor, link value
+
+task get-smoothing-time-constant
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <smoothingTimeConstant>
+    turn seed
+
+task set-smoothing-time-constant
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <smoothingTimeConstant>
+    bind factor, link value
+
+task get-float-frequency-data
+  base build
+  base array
+
+  cause call-base
+    bind object, link build
+    bind method, text <getFloatFrequencyData>
+    bind factor, link array
+    turn seed
+
+task get-byte-frequency-data
+  base build
+  base array
+
+  cause call-base
+    bind object, link build
+    bind method, text <getByteFrequencyData>
+    bind factor, link array
+    turn seed
+
+task get-float-time-domain-data
+  base build
+  base array
+
+  cause call-base
+    bind object, link build
+    bind method, text <getFloatTimeDomainData>
+    bind factor, link array
+    turn seed
+
+task get-byte-time-domain-data
+  base build
+  base array
+
+  cause call-base
+    bind object, link build
+    bind method, text <getByteTimeDomainData>
+    bind factor, link array
+    turn seed

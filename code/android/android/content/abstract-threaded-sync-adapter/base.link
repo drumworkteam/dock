@@ -32,7 +32,7 @@ force build-abstract-threaded-sync-adapter
 force get-context
   mount build, field abstract-threaded-sync-adapter
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getContext|
     throw build, field context
@@ -40,7 +40,7 @@ force get-context
 force get-sync-adapter-binder
   mount build, field abstract-threaded-sync-adapter
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getSyncAdapterBinder|
     throw build, field i-binder
@@ -53,7 +53,7 @@ force on-perform-sync
   mount provider, field content-provider-client
   mount sync-result, field sync-result
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onPerformSync|
     drive factor, share account
@@ -70,7 +70,7 @@ force on-security-exception
   mount authority, field string
   mount sync-result, field sync-result
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onSecurityException|
     drive factor, share account
@@ -82,7 +82,7 @@ force on-security-exception
 force on-sync-canceled
   mount build, field abstract-threaded-sync-adapter
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onSyncCanceled|
     throw build, field unit
@@ -91,7 +91,7 @@ force on-sync-canceled
   mount build, field abstract-threaded-sync-adapter
   mount thread, field thread
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onSyncCanceled|
     drive factor, share thread
@@ -100,7 +100,7 @@ force on-sync-canceled
 force on-unsyncable-account
   mount build, field abstract-threaded-sync-adapter
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onUnsyncableAccount|
     throw build, field boolean

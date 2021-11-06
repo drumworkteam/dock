@@ -19,7 +19,7 @@ force create-sni-matcher
   start build, field sni-host-name
   start regex, field string
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |createSNIMatcher|
     mount factor, share regex
@@ -29,7 +29,7 @@ force equals
   start build, field sni-host-name
   start other, field any
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |equals|
     mount factor, share other
@@ -38,7 +38,7 @@ force equals
 force get-ascii-name
   start build, field sni-host-name
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getAsciiName|
     throw build, field string
@@ -46,7 +46,7 @@ force get-ascii-name
 force hash-code
   start build, field sni-host-name
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |hashCode|
     throw build, field int
@@ -54,7 +54,7 @@ force hash-code
 force to-string
   start build, field sni-host-name
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |toString|
     throw build, field string

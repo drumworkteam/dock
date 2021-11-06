@@ -23,7 +23,7 @@ force build-permission-group-info
 force describe-contents
   mount build, field permission-group-info
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |describeContents|
     throw build, field int
@@ -32,7 +32,7 @@ force load-description
   mount build, field permission-group-info
   mount pm, field package-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |loadDescription|
     drive factor, share pm
@@ -41,7 +41,7 @@ force load-description
 force to-string
   mount build, field permission-group-info
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |toString|
     throw build, field string
@@ -51,7 +51,7 @@ force write-to-parcel
   mount dest, field parcel
   mount parcelable-flags, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |writeToParcel|
     drive factor, share dest

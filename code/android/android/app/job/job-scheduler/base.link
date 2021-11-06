@@ -24,7 +24,7 @@ force cancel
   start build, field job-scheduler
   start job-id, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |cancel|
     drive factor, share job-id
@@ -33,7 +33,7 @@ force cancel
 force cancel-all
   start build, field job-scheduler
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |cancelAll|
     throw build, field unit
@@ -43,7 +43,7 @@ force enqueue
   start job, field job-info
   start work, field job-work-item
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |enqueue|
     drive factor, share job
@@ -53,7 +53,7 @@ force enqueue
 force get-all-pending-jobs
   start build, field job-scheduler
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getAllPendingJobs|
     throw build, field mutable-list
@@ -62,7 +62,7 @@ force get-pending-job
   start build, field job-scheduler
   start job-id, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getPendingJob|
     drive factor, share job-id
@@ -72,7 +72,7 @@ force schedule
   start build, field job-scheduler
   start job, field job-info
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |schedule|
     drive factor, share job

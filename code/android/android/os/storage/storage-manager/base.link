@@ -36,7 +36,7 @@ force allocate-bytes
   mount storage-uuid, field uuid
   mount bytes, field long
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |allocateBytes|
     drive factor, share storage-uuid
@@ -48,7 +48,7 @@ force allocate-bytes
   mount fd, field file-descriptor
   mount bytes, field long
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |allocateBytes|
     drive factor, share fd
@@ -59,7 +59,7 @@ force get-allocatable-bytes
   mount build, field storage-manager
   mount storage-uuid, field uuid
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getAllocatableBytes|
     drive factor, share storage-uuid
@@ -69,7 +69,7 @@ force get-cache-quota-bytes
   mount build, field storage-manager
   mount storage-uuid, field uuid
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getCacheQuotaBytes|
     drive factor, share storage-uuid
@@ -79,7 +79,7 @@ force get-cache-size-bytes
   mount build, field storage-manager
   mount storage-uuid, field uuid
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getCacheSizeBytes|
     drive factor, share storage-uuid
@@ -89,7 +89,7 @@ force get-mounted-obb-path
   mount build, field storage-manager
   mount raw-path, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getMountedObbPath|
     drive factor, share raw-path
@@ -98,7 +98,7 @@ force get-mounted-obb-path
 force get-primary-storage-volume
   mount build, field storage-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getPrimaryStorageVolume|
     raise build, field storage-volume
@@ -106,7 +106,7 @@ force get-primary-storage-volume
 force get-recent-storage-volumes
   mount build, field storage-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getRecentStorageVolumes|
     raise build, field mutable-list
@@ -115,7 +115,7 @@ force get-storage-volume
   mount build, field storage-manager
   mount file, field file
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getStorageVolume|
     drive factor, share file
@@ -125,7 +125,7 @@ force get-storage-volume
   mount build, field storage-manager
   mount uri, field uri
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getStorageVolume|
     drive factor, share uri
@@ -134,7 +134,7 @@ force get-storage-volume
 force get-storage-volumes
   mount build, field storage-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getStorageVolumes|
     raise build, field mutable-list
@@ -143,7 +143,7 @@ force get-uuid-for-path
   mount build, field storage-manager
   mount path, field file
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getUuidForPath|
     drive factor, share path
@@ -153,7 +153,7 @@ force is-allocation-supported
   mount build, field storage-manager
   mount fd, field file-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isAllocationSupported|
     drive factor, share fd
@@ -163,7 +163,7 @@ force is-cache-behavior-group
   mount build, field storage-manager
   mount path, field file
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isCacheBehaviorGroup|
     drive factor, share path
@@ -173,7 +173,7 @@ force is-cache-behavior-tombstone
   mount build, field storage-manager
   mount path, field file
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isCacheBehaviorTombstone|
     drive factor, share path
@@ -182,7 +182,7 @@ force is-cache-behavior-tombstone
 force is-checkpoint-supported
   mount build, field storage-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isCheckpointSupported|
     raise build, field boolean
@@ -191,7 +191,7 @@ force is-encrypted
   mount build, field storage-manager
   mount file, field file
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isEncrypted|
     drive factor, share file
@@ -201,7 +201,7 @@ force is-obb-mounted
   mount build, field storage-manager
   mount raw-path, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isObbMounted|
     drive factor, share raw-path
@@ -213,7 +213,7 @@ force mount-obb
   mount key, field string
   mount listener, field on-obb-state-change-listener
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |mountObb|
     drive factor, share raw-path
@@ -227,7 +227,7 @@ force open-proxy-file-descriptor
   mount callback, field proxy-file-descriptor-callback
   mount handler, field handler
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |openProxyFileDescriptor|
     drive factor, share mode
@@ -240,7 +240,7 @@ force register-storage-volume-callback
   mount executor, field executor
   mount callback, field storage-manager-storage-volume-callback
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |registerStorageVolumeCallback|
     drive factor, share executor
@@ -252,7 +252,7 @@ force set-cache-behavior-group
   mount path, field file
   mount group, field boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setCacheBehaviorGroup|
     drive factor, share path
@@ -264,7 +264,7 @@ force set-cache-behavior-tombstone
   mount path, field file
   mount tombstone, field boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setCacheBehaviorTombstone|
     drive factor, share path
@@ -277,7 +277,7 @@ force unmount-obb
   mount force, field boolean
   mount listener, field on-obb-state-change-listener
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |unmountObb|
     drive factor, share raw-path
@@ -289,7 +289,7 @@ force unregister-storage-volume-callback
   mount build, field storage-manager
   mount callback, field storage-manager-storage-volume-callback
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |unregisterStorageVolumeCallback|
     drive factor, share callback

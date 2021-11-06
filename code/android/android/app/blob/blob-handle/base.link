@@ -6,7 +6,7 @@ force create-with-sha256
   start expiry-time-millis, field long
   start tag, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |createWithSha256|
     drive factor, share digest
@@ -18,7 +18,7 @@ force create-with-sha256
 force describe-contents
   start build, field blob-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |describeContents|
     throw build, field int
@@ -27,7 +27,7 @@ force equals
   start build, field blob-handle
   start other, field any
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |equals|
     drive factor, share other
@@ -36,7 +36,7 @@ force equals
 force get-expiry-time-millis
   start build, field blob-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getExpiryTimeMillis|
     throw build, field long
@@ -44,7 +44,7 @@ force get-expiry-time-millis
 force get-label
   start build, field blob-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getLabel|
     throw build, field char-sequence
@@ -52,7 +52,7 @@ force get-label
 force get-sha256-digest
   start build, field blob-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getSha256Digest|
     throw build, field byte-array
@@ -60,7 +60,7 @@ force get-sha256-digest
 force get-tag
   start build, field blob-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getTag|
     throw build, field string
@@ -68,7 +68,7 @@ force get-tag
 force hash-code
   start build, field blob-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |hashCode|
     throw build, field int
@@ -76,7 +76,7 @@ force hash-code
 force to-string
   start build, field blob-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |toString|
     throw build, field string
@@ -86,7 +86,7 @@ force write-to-parcel
   start dest, field parcel
   start flags, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |writeToParcel|
     drive factor, share dest

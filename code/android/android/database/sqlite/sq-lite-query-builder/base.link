@@ -9,7 +9,7 @@ force append-columns
   mount s, field string-builder
   mount columns, field array-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |appendColumns|
     drive factor, share s
@@ -20,7 +20,7 @@ force append-where
   mount build, field sq-lite-query-builder
   mount in-where, field char-sequence
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |appendWhere|
     drive factor, share in-where
@@ -30,7 +30,7 @@ force append-where-escape-string
   mount build, field sq-lite-query-builder
   mount in-where, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |appendWhereEscapeString|
     drive factor, share in-where
@@ -40,7 +40,7 @@ force append-where-standalone
   mount build, field sq-lite-query-builder
   mount in-where, field char-sequence
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |appendWhereStandalone|
     drive factor, share in-where
@@ -55,7 +55,7 @@ force build-query
   mount sort-order, field string
   mount limit, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |buildQuery|
     drive factor, share projection-in
@@ -76,7 +76,7 @@ force build-query
   mount sort-order, field string
   mount limit, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |buildQuery|
     drive factor, share projection-in
@@ -99,7 +99,7 @@ force build-query-string
   mount order-by, field string
   mount limit, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |buildQueryString|
     drive factor, share distinct
@@ -118,7 +118,7 @@ force build-union-query
   mount sort-order, field string
   mount limit, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |buildUnionQuery|
     drive factor, share sub-queries
@@ -137,7 +137,7 @@ force build-union-sub-query
   mount group-by, field string
   mount having, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |buildUnionSubQuery|
     drive factor, share type-discriminator-column
@@ -162,7 +162,7 @@ force build-union-sub-query
   mount group-by, field string
   mount having, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |buildUnionSubQuery|
     drive factor, share type-discriminator-column
@@ -182,7 +182,7 @@ force delete
   mount selection, field string
   mount selection-args, field array-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |delete|
     drive factor, share db
@@ -193,7 +193,7 @@ force delete
 force get-cursor-factory
   mount build, field sq-lite-query-builder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getCursorFactory|
     raise build, field sq-lite-database-cursor-factory
@@ -201,7 +201,7 @@ force get-cursor-factory
 force get-projection-greylist
   mount build, field sq-lite-query-builder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getProjectionGreylist|
     raise build, field mutable-collection
@@ -209,7 +209,7 @@ force get-projection-greylist
 force get-projection-map
   mount build, field sq-lite-query-builder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getProjectionMap|
     raise build, field mutable-map
@@ -217,7 +217,7 @@ force get-projection-map
 force get-tables
   mount build, field sq-lite-query-builder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getTables|
     raise build, field string
@@ -227,7 +227,7 @@ force insert
   mount db, field sq-lite-database
   mount values, field content-values
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |insert|
     drive factor, share db
@@ -237,7 +237,7 @@ force insert
 force is-distinct
   mount build, field sq-lite-query-builder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isDistinct|
     raise build, field boolean
@@ -245,7 +245,7 @@ force is-distinct
 force is-strict
   mount build, field sq-lite-query-builder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isStrict|
     raise build, field boolean
@@ -253,7 +253,7 @@ force is-strict
 force is-strict-columns
   mount build, field sq-lite-query-builder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isStrictColumns|
     raise build, field boolean
@@ -261,7 +261,7 @@ force is-strict-columns
 force is-strict-grammar
   mount build, field sq-lite-query-builder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isStrictGrammar|
     raise build, field boolean
@@ -276,7 +276,7 @@ force query
   mount having, field string
   mount sort-order, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |query|
     drive factor, share db
@@ -299,7 +299,7 @@ force query
   mount sort-order, field string
   mount limit, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |query|
     drive factor, share db
@@ -324,7 +324,7 @@ force query
   mount limit, field string
   mount cancellation-signal, field cancellation-signal
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |query|
     drive factor, share db
@@ -342,7 +342,7 @@ force set-cursor-factory
   mount build, field sq-lite-query-builder
   mount factory, field sq-lite-database-cursor-factory
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setCursorFactory|
     drive factor, share factory
@@ -352,7 +352,7 @@ force set-distinct
   mount build, field sq-lite-query-builder
   mount distinct, field boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setDistinct|
     drive factor, share distinct
@@ -362,7 +362,7 @@ force set-projection-greylist
   mount build, field sq-lite-query-builder
   mount projection-greylist, field mutable-collection-pattern
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setProjectionGreylist|
     drive factor, share projection-greylist
@@ -373,7 +373,7 @@ force set-projection-map
   mount column-map, field mutable-map-string
   mount string, field undefined
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setProjectionMap|
     drive factor, share column-map
@@ -384,7 +384,7 @@ force set-strict
   mount build, field sq-lite-query-builder
   mount strict, field boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setStrict|
     drive factor, share strict
@@ -394,7 +394,7 @@ force set-strict-columns
   mount build, field sq-lite-query-builder
   mount strict-columns, field boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setStrictColumns|
     drive factor, share strict-columns
@@ -404,7 +404,7 @@ force set-strict-grammar
   mount build, field sq-lite-query-builder
   mount strict-grammar, field boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setStrictGrammar|
     drive factor, share strict-grammar
@@ -414,7 +414,7 @@ force set-tables
   mount build, field sq-lite-query-builder
   mount in-tables, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setTables|
     drive factor, share in-tables
@@ -427,7 +427,7 @@ force update
   mount selection, field string
   mount selection-args, field array-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |update|
     drive factor, share db

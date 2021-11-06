@@ -1,0 +1,51 @@
+
+task build-constant-source-node
+  base context
+  base options
+
+  call make
+    bind constructor, text <ConstantSourceNode>
+    bind factor, link context
+    bind factor, link options
+    turn seed
+
+task get-offset
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <offset>
+    turn seed
+
+task set-offset
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <offset>
+    bind factor, link value
+
+task start
+  base build
+  base when
+  base offset
+  base duration
+
+  cause call-base
+    bind object, link build
+    bind method, text <start>
+    bind factor, link when
+    bind factor, link offset
+    bind factor, link duration
+    turn seed
+
+task stop
+  base build
+  base when
+
+  cause call-base
+    bind object, link build
+    bind method, text <stop>
+    bind factor, link when
+    turn seed

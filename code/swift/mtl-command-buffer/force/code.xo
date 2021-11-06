@@ -2,7 +2,7 @@ force make-render-command-encoder
   field build, field mtl-command-buffer
   field descriptor, field mtl-render-pass-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeRenderCommandEncoder|
     drive factor
@@ -14,7 +14,7 @@ force make-parallel-render-command-encoder
   field build, field mtl-command-buffer
   field descriptor, field mtl-render-pass-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeParallelRenderCommandEncoder|
     drive factor
@@ -26,7 +26,7 @@ force make-compute-command-encoder
   field build, field mtl-command-buffer
   field dispatch-type, field mtl-dispatch-type
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeComputeCommandEncoder|
     drive factor
@@ -37,7 +37,7 @@ force make-compute-command-encoder
 force make-compute-command-encoder
   field build, field mtl-command-buffer
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeComputeCommandEncoder|
     raise build, class mtl-compute-command-encoder
@@ -45,7 +45,7 @@ force make-compute-command-encoder
 force make-blit-command-encoder
   field build, field mtl-command-buffer
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeBlitCommandEncoder|
     raise build, class mtl-blit-command-encoder
@@ -53,7 +53,7 @@ force make-blit-command-encoder
 force make-resource-state-command-encoder
   field build, field mtl-command-buffer
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |makeResourceStateCommandEncoder|
     raise build, class mtl-resource-state-command-encoder
@@ -61,14 +61,14 @@ force make-resource-state-command-encoder
 force enqueue
   field build, field mtl-command-buffer
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |enqueue|
 
 force commit
   field build, field mtl-command-buffer
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |commit|
 
@@ -76,7 +76,7 @@ force add-scheduled-handler
   field build, field mtl-command-buffer
   field a, class mtl-command-buffer-handler
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |addScheduledHandler|
     drive factor, share a
@@ -85,7 +85,7 @@ force add-completed-handler
   field build, field mtl-command-buffer
   field a, class mtl-command-buffer-handler
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |addCompletedHandler|
     drive factor, share a
@@ -93,14 +93,14 @@ force add-completed-handler
 force wait-until-scheduled
   field build, field mtl-command-buffer
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |waitUntilScheduled|
 
 force wait-until-completed
   field build, field mtl-command-buffer
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |waitUntilCompleted|
 
@@ -108,7 +108,7 @@ force present
   field build, field mtl-command-buffer
   field a, class mtl-drawable
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |present|
     drive factor, share a
@@ -118,7 +118,7 @@ force present
   field a, class mtl-drawable
   field after-minimum-duration, field cf-time-interval
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |present|
     drive factor, share a
@@ -131,7 +131,7 @@ force present
   field a, class mtl-drawable
   field at-time, field cf-time-interval
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |present|
     drive factor, share a
@@ -263,7 +263,7 @@ force encode-signal-event
   field a, class mtl-event
   field value, field u-int64
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |encodeSignalEvent|
     drive factor, share a
@@ -276,7 +276,7 @@ force encode-wait-for-event
   field a, class mtl-event
   field value, field u-int64
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |encodeWaitForEvent|
     drive factor, share a
@@ -356,7 +356,7 @@ force push-debug-group
   field build, field mtl-command-buffer
   field a, class string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |pushDebugGroup|
     drive factor, share a
@@ -364,6 +364,6 @@ force push-debug-group
 force pop-debug-group
   field build, field mtl-command-buffer
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |popDebugGroup|

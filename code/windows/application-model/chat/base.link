@@ -91,7 +91,7 @@ force get-cached-capabilities-async
   start build, field windows-applicationmodel-chat-chatcapabilitiesmanager
   start address, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetCachedCapabilitiesAsync|
     drive factor, share address
@@ -101,7 +101,7 @@ force get-cached-capabilities-async
   start address, field system-string
   start transport-id, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetCachedCapabilitiesAsync|
     drive factor, share address
@@ -112,7 +112,7 @@ force get-capabilities-from-network-async
   start address, field system-string
   start transport-id, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetCapabilitiesFromNetworkAsync|
     drive factor, share address
@@ -122,7 +122,7 @@ force get-capabilities-from-network-async
   start build, field windows-applicationmodel-chat-chatcapabilitiesmanager
   start address, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetCapabilitiesFromNetworkAsync|
     drive factor, share address
@@ -150,14 +150,14 @@ force set-can-modify-participants
 force delete-async
   start build, field windows-applicationmodel-chat-chatconversation
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |DeleteAsync|
 
 force get-message-reader
   start build, field windows-applicationmodel-chat-chatconversation
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetMessageReader|
 
@@ -229,7 +229,7 @@ force mark-messages-as-read-async
   mount build, field windows-applicationmodel-chat-chatconversation
   mount value, field windows-foundation-datetime
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |MarkMessagesAsReadAsync|
     drive factor, share value
@@ -237,7 +237,7 @@ force mark-messages-as-read-async
 force mark-messages-as-read-async
   mount build, field windows-applicationmodel-chat-chatconversation
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |MarkMessagesAsReadAsync|
 
@@ -263,7 +263,7 @@ force notify-local-participant-composing
   mount participant-address, field system-string
   mount is-composing, field system-boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |NotifyLocalParticipantComposing|
     drive factor, share transport-id
@@ -276,7 +276,7 @@ force notify-remote-participant-composing
   mount participant-address, field system-string
   mount is-composing, field system-boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |NotifyRemoteParticipantComposing|
     drive factor, share transport-id
@@ -302,7 +302,7 @@ force set-participants
 force save-async
   mount build, field windows-applicationmodel-chat-chatconversation
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SaveAsync|
 
@@ -346,7 +346,7 @@ force read-batch-async
   mount build, field windows-applicationmodel-chat-chatconversationreader
   mount count, field system-int32
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ReadBatchAsync|
     drive factor, share count
@@ -354,7 +354,7 @@ force read-batch-async
 force read-batch-async
   mount build, field windows-applicationmodel-chat-chatconversationreader
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ReadBatchAsync|
 
@@ -365,7 +365,7 @@ force build-chat-conversation-threading-info
 force ctor
   mount build, field windows-applicationmodel-chat-chatconversationthreadinginfo
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -496,7 +496,7 @@ force set-body
 force ctor
   mount build, field windows-applicationmodel-chat-chatmessage
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -941,7 +941,7 @@ force ctor
   mount mime-type, field system-string
   mount data-stream-reference, field windows-storage-streams-irandomaccessstreamreference
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share mime-type
@@ -1068,7 +1068,7 @@ force mark-message-as-blocked-async
   mount local-chat-message-id, field system-string
   mount blocked, field system-boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |MarkMessageAsBlockedAsync|
     drive factor, share local-chat-message-id
@@ -1117,7 +1117,7 @@ force build-chat-message-changed-deferral
 force complete
   mount build, field windows-applicationmodel-chat-chatmessagechangeddeferral
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Complete|
 
@@ -1128,7 +1128,7 @@ force build-chat-message-changed-event-args
 force get-deferral
   mount build, field windows-applicationmodel-chat-chatmessagechangedeventargs
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetDeferral|
 
@@ -1139,7 +1139,7 @@ force build-chat-message-change-reader
 force accept-changes
   mount build, field windows-applicationmodel-chat-chatmessagechangereader
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |AcceptChanges|
 
@@ -1147,7 +1147,7 @@ force accept-changes-through
   mount build, field windows-applicationmodel-chat-chatmessagechangereader
   mount last-change-to-acknowledge, field windows-applicationmodel-chat-chatmessagechange
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |AcceptChangesThrough|
     drive factor, share last-change-to-acknowledge
@@ -1155,7 +1155,7 @@ force accept-changes-through
 force read-batch-async
   mount build, field windows-applicationmodel-chat-chatmessagechangereader
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ReadBatchAsync|
 
@@ -1166,21 +1166,21 @@ force build-chat-message-change-tracker
 force enable
   mount build, field windows-applicationmodel-chat-chatmessagechangetracker
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Enable|
 
 force get-change-reader
   mount build, field windows-applicationmodel-chat-chatmessagechangetracker
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetChangeReader|
 
 force reset
   mount build, field windows-applicationmodel-chat-chatmessagechangetracker
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Reset|
 
@@ -1200,7 +1200,7 @@ force get-transport-async
   mount build, field windows-applicationmodel-chat-chatmessagemanager
   mount transport-id, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetTransportAsync|
     drive factor, share transport-id
@@ -1208,28 +1208,28 @@ force get-transport-async
 force get-transports-async
   mount build, field windows-applicationmodel-chat-chatmessagemanager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetTransportsAsync|
 
 force register-transport-async
   mount build, field windows-applicationmodel-chat-chatmessagemanager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |RegisterTransportAsync|
 
 force request-store-async
   mount build, field windows-applicationmodel-chat-chatmessagemanager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |RequestStoreAsync|
 
 force request-sync-manager-async
   mount build, field windows-applicationmodel-chat-chatmessagemanager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |RequestSyncManagerAsync|
 
@@ -1237,7 +1237,7 @@ force show-compose-sms-message-async
   mount build, field windows-applicationmodel-chat-chatmessagemanager
   mount message, field windows-applicationmodel-chat-chatmessage
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ShowComposeSmsMessageAsync|
     drive factor, share message
@@ -1245,7 +1245,7 @@ force show-compose-sms-message-async
 force show-sms-settings
   mount build, field windows-applicationmodel-chat-chatmessagemanager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ShowSmsSettings|
 
@@ -1345,7 +1345,7 @@ force read-batch-async
   mount build, field windows-applicationmodel-chat-chatmessagereader
   mount count, field system-int32
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ReadBatchAsync|
     drive factor, share count
@@ -1353,7 +1353,7 @@ force read-batch-async
 force read-batch-async
   mount build, field windows-applicationmodel-chat-chatmessagereader
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ReadBatchAsync|
 
@@ -1385,7 +1385,7 @@ force delete-message-async
   mount build, field windows-applicationmodel-chat-chatmessagestore
   mount local-message-id, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |DeleteMessageAsync|
     drive factor, share local-message-id
@@ -1394,7 +1394,7 @@ force download-message-async
   mount build, field windows-applicationmodel-chat-chatmessagestore
   mount local-chat-message-id, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |DownloadMessageAsync|
     drive factor, share local-chat-message-id
@@ -1404,7 +1404,7 @@ force forward-message-async
   mount local-chat-message-id, field system-string
   mount addresses, field windows-foundation-collections-iiterable-system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ForwardMessageAsync|
     drive factor, share local-chat-message-id
@@ -1415,7 +1415,7 @@ force get-conversation-async
   mount conversation-id, field system-string
   mount transport-ids, field windows-foundation-collections-iiterable-system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetConversationAsync|
     drive factor, share conversation-id
@@ -1425,7 +1425,7 @@ force get-conversation-async
   mount build, field windows-applicationmodel-chat-chatmessagestore
   mount conversation-id, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetConversationAsync|
     drive factor, share conversation-id
@@ -1434,7 +1434,7 @@ force get-conversation-from-threading-info-async
   mount build, field windows-applicationmodel-chat-chatmessagestore
   mount threading-info, field windows-applicationmodel-chat-chatconversationthreadinginfo
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetConversationFromThreadingInfoAsync|
     drive factor, share threading-info
@@ -1442,7 +1442,7 @@ force get-conversation-from-threading-info-async
 force get-conversation-reader
   mount build, field windows-applicationmodel-chat-chatmessagestore
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetConversationReader|
 
@@ -1450,7 +1450,7 @@ force get-conversation-reader
   mount build, field windows-applicationmodel-chat-chatmessagestore
   mount transport-ids, field windows-foundation-collections-iiterable-system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetConversationReader|
     drive factor, share transport-ids
@@ -1459,7 +1459,7 @@ force get-message-async
   mount build, field windows-applicationmodel-chat-chatmessagestore
   mount local-chat-message-id, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetMessageAsync|
     drive factor, share local-chat-message-id
@@ -1469,7 +1469,7 @@ force get-message-by-remote-id-async
   mount transport-id, field system-string
   mount remote-id, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetMessageByRemoteIdAsync|
     drive factor, share transport-id
@@ -1479,7 +1479,7 @@ force get-message-by-sync-id-async
   mount build, field windows-applicationmodel-chat-chatmessagestore
   mount sync-id, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetMessageBySyncIdAsync|
     drive factor, share sync-id
@@ -1487,7 +1487,7 @@ force get-message-by-sync-id-async
 force get-message-reader
   mount build, field windows-applicationmodel-chat-chatmessagestore
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetMessageReader|
 
@@ -1495,7 +1495,7 @@ force get-message-reader
   mount build, field windows-applicationmodel-chat-chatmessagestore
   mount recent-time-limit, field windows-foundation-timespan
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetMessageReader|
     drive factor, share recent-time-limit
@@ -1504,7 +1504,7 @@ force get-search-reader
   mount build, field windows-applicationmodel-chat-chatmessagestore
   mount value, field windows-applicationmodel-chat-chatqueryoptions
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetSearchReader|
     drive factor, share value
@@ -1513,7 +1513,7 @@ force get-unseen-count-async
   mount build, field windows-applicationmodel-chat-chatmessagestore
   mount transport-ids, field windows-foundation-collections-iiterable-system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetUnseenCountAsync|
     drive factor, share transport-ids
@@ -1521,7 +1521,7 @@ force get-unseen-count-async
 force get-unseen-count-async
   mount build, field windows-applicationmodel-chat-chatmessagestore
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetUnseenCountAsync|
 
@@ -1529,7 +1529,7 @@ force mark-as-seen-async
   mount build, field windows-applicationmodel-chat-chatmessagestore
   mount transport-ids, field windows-foundation-collections-iiterable-system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |MarkAsSeenAsync|
     drive factor, share transport-ids
@@ -1537,7 +1537,7 @@ force mark-as-seen-async
 force mark-as-seen-async
   mount build, field windows-applicationmodel-chat-chatmessagestore
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |MarkAsSeenAsync|
 
@@ -1545,7 +1545,7 @@ force mark-message-read-async
   mount build, field windows-applicationmodel-chat-chatmessagestore
   mount local-chat-message-id, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |MarkMessageReadAsync|
     drive factor, share local-chat-message-id
@@ -1554,7 +1554,7 @@ force retry-send-message-async
   mount build, field windows-applicationmodel-chat-chatmessagestore
   mount local-chat-message-id, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |RetrySendMessageAsync|
     drive factor, share local-chat-message-id
@@ -1563,7 +1563,7 @@ force save-message-async
   mount build, field windows-applicationmodel-chat-chatmessagestore
   mount chat-message, field windows-applicationmodel-chat-chatmessage
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SaveMessageAsync|
     drive factor, share chat-message
@@ -1572,7 +1572,7 @@ force send-message-async
   mount build, field windows-applicationmodel-chat-chatmessagestore
   mount chat-message, field windows-applicationmodel-chat-chatmessage
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SendMessageAsync|
     drive factor, share chat-message
@@ -1581,7 +1581,7 @@ force try-cancel-download-message-async
   mount build, field windows-applicationmodel-chat-chatmessagestore
   mount local-chat-message-id, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |TryCancelDownloadMessageAsync|
     drive factor, share local-chat-message-id
@@ -1590,7 +1590,7 @@ force try-cancel-send-message-async
   mount build, field windows-applicationmodel-chat-chatmessagestore
   mount local-chat-message-id, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |TryCancelSendMessageAsync|
     drive factor, share local-chat-message-id
@@ -1599,7 +1599,7 @@ force validate-message
   mount build, field windows-applicationmodel-chat-chatmessagestore
   mount chat-message, field windows-applicationmodel-chat-chatmessage
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ValidateMessage|
     drive factor, share chat-message
@@ -1695,7 +1695,7 @@ force set-is-app-set-as-notification-provider
 force request-set-as-notification-provider-async
   mount build, field windows-applicationmodel-chat-chatmessagetransport
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |RequestSetAsNotificationProviderAsync|
 
@@ -1914,7 +1914,7 @@ force build-chat-query-options
 force ctor
   mount build, field windows-applicationmodel-chat-chatqueryoptions
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -1941,7 +1941,7 @@ force build-chat-recipient-delivery-info
 force ctor
   mount build, field windows-applicationmodel-chat-chatrecipientdeliveryinfo
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -2085,7 +2085,7 @@ force read-batch-async
   mount build, field windows-applicationmodel-chat-chatsearchreader
   mount count, field system-int32
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ReadBatchAsync|
     drive factor, share count
@@ -2093,7 +2093,7 @@ force read-batch-async
 force read-batch-async
   mount build, field windows-applicationmodel-chat-chatsearchreader
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ReadBatchAsync|
 
@@ -2145,7 +2145,7 @@ force associate-account-async
   mount build, field windows-applicationmodel-chat-chatsyncmanager
   mount web-account, field windows-security-credentials-webaccount
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |AssociateAccountAsync|
     drive factor, share web-account
@@ -2170,7 +2170,7 @@ force is-account-associated
   mount build, field windows-applicationmodel-chat-chatsyncmanager
   mount web-account, field windows-security-credentials-webaccount
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |IsAccountAssociated|
     drive factor, share web-account
@@ -2179,7 +2179,7 @@ force set-configuration-async
   mount build, field windows-applicationmodel-chat-chatsyncmanager
   mount configuration, field windows-applicationmodel-chat-chatsyncconfiguration
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SetConfigurationAsync|
     drive factor, share configuration
@@ -2187,14 +2187,14 @@ force set-configuration-async
 force start-sync
   mount build, field windows-applicationmodel-chat-chatsyncmanager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |StartSync|
 
 force unassociate-account-async
   mount build, field windows-applicationmodel-chat-chatsyncmanager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |UnassociateAccountAsync|
 
@@ -2262,7 +2262,7 @@ force send-response-async
   mount build, field windows-applicationmodel-chat-rcsendusermessage
   mount action, field windows-applicationmodel-chat-rcsendusermessageaction
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SendResponseAsync|
     drive factor, share action
@@ -2272,7 +2272,7 @@ force send-response-with-pin-async
   mount action, field windows-applicationmodel-chat-rcsendusermessageaction
   mount pin, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SendResponseWithPinAsync|
     drive factor, share action
@@ -2429,7 +2429,7 @@ force build-rcs-manager
 force get-end-user-message-manager
   mount build, field windows-applicationmodel-chat-rcsmanager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetEndUserMessageManager|
 
@@ -2437,7 +2437,7 @@ force get-transport-async
   mount build, field windows-applicationmodel-chat-rcsmanager
   mount transport-id, field system-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetTransportAsync|
     drive factor, share transport-id
@@ -2445,7 +2445,7 @@ force get-transport-async
 force get-transports-async
   mount build, field windows-applicationmodel-chat-rcsmanager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetTransportsAsync|
 
@@ -2453,7 +2453,7 @@ force leave-conversation-async
   mount build, field windows-applicationmodel-chat-rcsmanager
   mount conversation, field windows-applicationmodel-chat-chatconversation
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |LeaveConversationAsync|
     drive factor, share conversation
@@ -2538,7 +2538,7 @@ force is-service-kind-supported
   mount build, field windows-applicationmodel-chat-rcstransport
   mount service-kind, field windows-applicationmodel-chat-rcsservicekind
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |IsServiceKindSupported|
     drive factor, share service-kind
@@ -2547,7 +2547,7 @@ force is-store-and-forward-enabled
   mount build, field windows-applicationmodel-chat-rcstransport
   mount service-kind, field windows-applicationmodel-chat-rcsservicekind
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |IsStoreAndForwardEnabled|
     drive factor, share service-kind

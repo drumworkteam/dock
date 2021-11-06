@@ -12,7 +12,7 @@ force build-media-scanner-connection
 force connect
   start build, field media-scanner-connection
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |connect|
     raise build, field unit
@@ -20,7 +20,7 @@ force connect
 force disconnect
   start build, field media-scanner-connection
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |disconnect|
     raise build, field unit
@@ -28,7 +28,7 @@ force disconnect
 force is-connected
   start build, field media-scanner-connection
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isConnected|
     raise build, field boolean
@@ -38,7 +38,7 @@ force on-service-connected
   start class-name, field component-name
   start service, field i-binder
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onServiceConnected|
     drive factor, share class-name
@@ -49,7 +49,7 @@ force on-service-disconnected
   start build, field media-scanner-connection
   start class-name, field component-name
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onServiceDisconnected|
     drive factor, share class-name
@@ -60,7 +60,7 @@ force scan-file
   start path, field string
   start mime-type, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |scanFile|
     drive factor, share path
@@ -74,7 +74,7 @@ force scan-file
   start mime-types, field array-string
   start callback, field media-scanner-connection-on-scan-completed-listener
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |scanFile|
     drive factor, share context

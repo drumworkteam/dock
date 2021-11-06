@@ -12,7 +12,7 @@ force build-base-input-connection
 force begin-batch-edit
   mount build, field base-input-connection
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |beginBatchEdit|
     raise build, field boolean
@@ -21,7 +21,7 @@ force clear-meta-key-states
   mount build, field base-input-connection
   mount states, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |clearMetaKeyStates|
     drive factor, share states
@@ -30,7 +30,7 @@ force clear-meta-key-states
 force close-connection
   mount build, field base-input-connection
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |closeConnection|
     raise build, field unit
@@ -39,7 +39,7 @@ force commit-completion
   mount build, field base-input-connection
   mount text, field completion-info
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |commitCompletion|
     drive factor, share text
@@ -51,7 +51,7 @@ force commit-content
   mount flags, field int
   mount opts, field bundle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |commitContent|
     drive factor, share input-content-info
@@ -63,7 +63,7 @@ force commit-correction
   mount build, field base-input-connection
   mount correction-info, field correction-info
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |commitCorrection|
     drive factor, share correction-info
@@ -74,7 +74,7 @@ force commit-text
   mount text, field char-sequence
   mount new-cursor-position, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |commitText|
     drive factor, share text
@@ -86,7 +86,7 @@ force delete-surrounding-text
   mount before-length, field int
   mount after-length, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |deleteSurroundingText|
     drive factor, share before-length
@@ -98,7 +98,7 @@ force delete-surrounding-text-in-code-points
   mount before-length, field int
   mount after-length, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |deleteSurroundingTextInCodePoints|
     drive factor, share before-length
@@ -108,7 +108,7 @@ force delete-surrounding-text-in-code-points
 force end-batch-edit
   mount build, field base-input-connection
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |endBatchEdit|
     raise build, field boolean
@@ -116,7 +116,7 @@ force end-batch-edit
 force finish-composing-text
   mount build, field base-input-connection
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |finishComposingText|
     raise build, field boolean
@@ -125,7 +125,7 @@ force get-composing-span-end
   mount build, field base-input-connection
   mount text, field spannable
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getComposingSpanEnd|
     drive factor, share text
@@ -135,7 +135,7 @@ force get-composing-span-start
   mount build, field base-input-connection
   mount text, field spannable
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getComposingSpanStart|
     drive factor, share text
@@ -145,7 +145,7 @@ force get-cursor-caps-mode
   mount build, field base-input-connection
   mount req-modes, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getCursorCapsMode|
     drive factor, share req-modes
@@ -154,7 +154,7 @@ force get-cursor-caps-mode
 force get-editable
   mount build, field base-input-connection
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getEditable|
     raise build, field editable
@@ -164,7 +164,7 @@ force get-extracted-text
   mount request, field extracted-text-request
   mount flags, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getExtractedText|
     drive factor, share request
@@ -174,7 +174,7 @@ force get-extracted-text
 force get-handler
   mount build, field base-input-connection
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getHandler|
     raise build, field handler
@@ -183,7 +183,7 @@ force get-selected-text
   mount build, field base-input-connection
   mount flags, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getSelectedText|
     drive factor, share flags
@@ -194,7 +194,7 @@ force get-text-after-cursor
   mount length, field int
   mount flags, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getTextAfterCursor|
     drive factor, share length
@@ -206,7 +206,7 @@ force get-text-before-cursor
   mount length, field int
   mount flags, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getTextBeforeCursor|
     drive factor, share length
@@ -217,7 +217,7 @@ force perform-context-menu-action
   mount build, field base-input-connection
   mount id, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |performContextMenuAction|
     drive factor, share id
@@ -227,7 +227,7 @@ force perform-editor-action
   mount build, field base-input-connection
   mount action-code, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |performEditorAction|
     drive factor, share action-code
@@ -238,7 +238,7 @@ force perform-private-command
   mount action, field string
   mount data, field bundle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |performPrivateCommand|
     drive factor, share action
@@ -249,7 +249,7 @@ force remove-composing-spans
   mount build, field base-input-connection
   mount text, field spannable
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |removeComposingSpans|
     drive factor, share text
@@ -259,7 +259,7 @@ force report-fullscreen-mode
   mount build, field base-input-connection
   mount enabled, field boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |reportFullscreenMode|
     drive factor, share enabled
@@ -269,7 +269,7 @@ force request-cursor-updates
   mount build, field base-input-connection
   mount cursor-update-mode, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |requestCursorUpdates|
     drive factor, share cursor-update-mode
@@ -279,7 +279,7 @@ force send-key-event
   mount build, field base-input-connection
   mount event, field key-event
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |sendKeyEvent|
     drive factor, share event
@@ -290,7 +290,7 @@ force set-composing-region
   mount start, field int
   mount end, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setComposingRegion|
     drive factor, share start
@@ -301,7 +301,7 @@ force set-composing-spans
   mount build, field base-input-connection
   mount text, field spannable
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setComposingSpans|
     drive factor, share text
@@ -312,7 +312,7 @@ force set-composing-text
   mount text, field char-sequence
   mount new-cursor-position, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setComposingText|
     drive factor, share text
@@ -324,7 +324,7 @@ force set-selection
   mount start, field int
   mount end, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setSelection|
     drive factor, share start

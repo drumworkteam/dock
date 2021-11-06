@@ -1,0 +1,88 @@
+
+task build-oscillator-node
+  base context
+  base options
+
+  call make
+    bind constructor, text <OscillatorNode>
+    bind factor, link context
+    bind factor, link options
+    turn seed
+
+task get-frequency
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <frequency>
+    turn seed
+
+task set-frequency
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <frequency>
+    bind factor, link value
+
+task get-detune
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <detune>
+    turn seed
+
+task set-detune
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <detune>
+    bind factor, link value
+
+task get-type
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <type>
+    turn seed
+
+task set-type
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <type>
+    bind factor, link value
+
+task set-periodic-wave
+  base build
+  base wave
+
+  cause call-base
+    bind object, link build
+    bind method, text <setPeriodicWave>
+    bind factor, link wave
+
+task start
+  base build
+  base when
+
+  cause call-base
+    bind object, link build
+    bind method, text <start>
+    bind factor, link when
+
+task stop
+  base build
+  base when
+
+  cause call-base
+    bind object, link build
+    bind method, text <stop>
+    bind factor, link when

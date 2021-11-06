@@ -1,0 +1,84 @@
+
+task get-length
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <length>
+    turn seed
+
+task get-scroll-restoration
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <scrollRestoration>
+    turn seed
+
+task set-scroll-restoration
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <scrollRestoration>
+    bind factor, link value
+
+task get-state
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <state>
+    turn seed
+
+task back
+  base build
+
+  cause call-base
+    bind object, link build
+    bind method, text <back>
+
+task forward
+  base build
+
+  cause call-base
+    bind object, link build
+    bind method, text <forward>
+
+task go
+  base build
+  base delta
+
+  cause call-base
+    bind object, link build
+    bind method, text <go>
+    bind factor, link delta
+
+task push-state
+  base build
+  base state
+  base state
+  base title
+  base url
+
+  cause call-base
+    bind object, link build
+    bind method, text <pushState>
+    bind factor, link state
+    bind factor, link state
+    bind factor, link title
+    bind factor, link url
+
+task replace-state
+  base build
+  base state-obj
+  base title
+  base url
+
+  cause call-base
+    bind object, link build
+    bind method, text <replaceState>
+    bind factor, link state-obj
+    bind factor, link title
+    bind factor, link url

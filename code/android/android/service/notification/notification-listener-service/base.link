@@ -271,7 +271,7 @@ force build-notification-listener-service
 force cancel-all-notifications
   mount build, field notification-listener-service
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |cancelAllNotifications|
     raise build, field unit
@@ -282,7 +282,7 @@ force cancel-notification
   mount tag, field string
   mount id, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |cancelNotification|
     drive factor, share pkg
@@ -294,7 +294,7 @@ force cancel-notification
   mount build, field notification-listener-service
   mount key, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |cancelNotification|
     drive factor, share key
@@ -304,7 +304,7 @@ force cancel-notifications
   mount build, field notification-listener-service
   mount keys, field array-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |cancelNotifications|
     drive factor, share keys
@@ -313,7 +313,7 @@ force cancel-notifications
 force clear-requested-listener-hints
   mount build, field notification-listener-service
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |clearRequestedListenerHints|
     raise build, field unit
@@ -321,7 +321,7 @@ force clear-requested-listener-hints
 force get-active-notifications
   mount build, field notification-listener-service
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getActiveNotifications|
     raise build, field array
@@ -330,7 +330,7 @@ force get-active-notifications
   mount build, field notification-listener-service
   mount keys, field array-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getActiveNotifications|
     drive factor, share keys
@@ -339,7 +339,7 @@ force get-active-notifications
 force get-current-interruption-filter
   mount build, field notification-listener-service
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getCurrentInterruptionFilter|
     raise build, field int
@@ -347,7 +347,7 @@ force get-current-interruption-filter
 force get-current-listener-hints
   mount build, field notification-listener-service
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getCurrentListenerHints|
     raise build, field int
@@ -355,7 +355,7 @@ force get-current-listener-hints
 force get-current-ranking
   mount build, field notification-listener-service
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getCurrentRanking|
     raise build, field notification-listener-service-ranking-map
@@ -365,7 +365,7 @@ force get-notification-channel-groups
   mount pkg, field string
   mount user, field user-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getNotificationChannelGroups|
     drive factor, share pkg
@@ -377,7 +377,7 @@ force get-notification-channels
   mount pkg, field string
   mount user, field user-handle
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getNotificationChannels|
     drive factor, share pkg
@@ -387,7 +387,7 @@ force get-notification-channels
 force get-snoozed-notifications
   mount build, field notification-listener-service
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getSnoozedNotifications|
     raise build, field array
@@ -396,7 +396,7 @@ force on-bind
   mount build, field notification-listener-service
   mount intent, field intent
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onBind|
     drive factor, share intent
@@ -405,7 +405,7 @@ force on-bind
 force on-destroy
   mount build, field notification-listener-service
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onDestroy|
     raise build, field unit
@@ -414,7 +414,7 @@ force on-interruption-filter-changed
   mount build, field notification-listener-service
   mount interruption-filter, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onInterruptionFilterChanged|
     drive factor, share interruption-filter
@@ -423,7 +423,7 @@ force on-interruption-filter-changed
 force on-listener-connected
   mount build, field notification-listener-service
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onListenerConnected|
     raise build, field unit
@@ -431,7 +431,7 @@ force on-listener-connected
 force on-listener-disconnected
   mount build, field notification-listener-service
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onListenerDisconnected|
     raise build, field unit
@@ -440,7 +440,7 @@ force on-listener-hints-changed
   mount build, field notification-listener-service
   mount hints, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onListenerHintsChanged|
     drive factor, share hints
@@ -453,7 +453,7 @@ force on-notification-channel-group-modified
   mount group, field notification-channel-group
   mount modification-type, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onNotificationChannelGroupModified|
     drive factor, share pkg
@@ -469,7 +469,7 @@ force on-notification-channel-modified
   mount channel, field notification-channel
   mount modification-type, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onNotificationChannelModified|
     drive factor, share pkg
@@ -482,7 +482,7 @@ force on-notification-posted
   mount build, field notification-listener-service
   mount sbn, field status-bar-notification
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onNotificationPosted|
     drive factor, share sbn
@@ -493,7 +493,7 @@ force on-notification-posted
   mount sbn, field status-bar-notification
   mount ranking-map, field notification-listener-service-ranking-map
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onNotificationPosted|
     drive factor, share sbn
@@ -504,7 +504,7 @@ force on-notification-ranking-update
   mount build, field notification-listener-service
   mount ranking-map, field notification-listener-service-ranking-map
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onNotificationRankingUpdate|
     drive factor, share ranking-map
@@ -514,7 +514,7 @@ force on-notification-removed
   mount build, field notification-listener-service
   mount sbn, field status-bar-notification
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onNotificationRemoved|
     drive factor, share sbn
@@ -525,7 +525,7 @@ force on-notification-removed
   mount sbn, field status-bar-notification
   mount ranking-map, field notification-listener-service-ranking-map
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onNotificationRemoved|
     drive factor, share sbn
@@ -538,7 +538,7 @@ force on-notification-removed
   mount ranking-map, field notification-listener-service-ranking-map
   mount reason, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onNotificationRemoved|
     drive factor, share sbn
@@ -550,7 +550,7 @@ force on-silent-status-bar-icons-visibility-changed
   mount build, field notification-listener-service
   mount hide-silent-status-icons, field boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onSilentStatusBarIconsVisibilityChanged|
     drive factor, share hide-silent-status-icons
@@ -560,7 +560,7 @@ force request-interruption-filter
   mount build, field notification-listener-service
   mount interruption-filter, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |requestInterruptionFilter|
     drive factor, share interruption-filter
@@ -570,7 +570,7 @@ force request-listener-hints
   mount build, field notification-listener-service
   mount hints, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |requestListenerHints|
     drive factor, share hints
@@ -580,7 +580,7 @@ force request-rebind
   mount build, field notification-listener-service
   mount component-name, field component-name
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |requestRebind|
     drive factor, share component-name
@@ -589,7 +589,7 @@ force request-rebind
 force request-unbind
   mount build, field notification-listener-service
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |requestUnbind|
     raise build, field unit
@@ -598,7 +598,7 @@ force set-notifications-shown
   mount build, field notification-listener-service
   mount keys, field array-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setNotificationsShown|
     drive factor, share keys
@@ -609,7 +609,7 @@ force snooze-notification
   mount key, field string
   mount duration-ms, field long
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |snoozeNotification|
     drive factor, share key
@@ -622,7 +622,7 @@ force update-notification-channel
   mount user, field user-handle
   mount channel, field notification-channel
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |updateNotificationChannel|
     drive factor, share pkg

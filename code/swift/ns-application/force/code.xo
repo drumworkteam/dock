@@ -54,7 +54,7 @@ force next-event
   field in-mode, field run-loop-mode
   field dequeue, field bool
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |nextEvent|
     drive factor
@@ -76,7 +76,7 @@ force discard-events
   field matching, field ns-event-event-type-mask
   field before, field ns-event
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |discardEvents|
     drive factor
@@ -123,14 +123,14 @@ force set-is-running
 force run
   field build, field ns-application
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |run|
 
 force finish-launching
   field build, field ns-application
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |finishLaunching|
 
@@ -138,7 +138,7 @@ force stop
   field build, field ns-application
   field a, class any
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |stop|
     drive factor, share a
@@ -147,7 +147,7 @@ force send-event
   field build, field ns-application
   field a, class ns-event
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |sendEvent|
     drive factor, share a
@@ -157,7 +157,7 @@ force post-event
   field a, class ns-event
   field at-start, field bool
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |postEvent|
     drive factor, share a
@@ -170,7 +170,7 @@ force try-to-perform
   field a, class selector
   field with, field any
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |tryToPerform|
     drive factor, share a
@@ -185,7 +185,7 @@ force send-action
   field to, field any
   field from, field any
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |sendAction|
     drive factor, share a
@@ -201,7 +201,7 @@ force target
   field build, field ns-application
   field for-action, field selector
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |target|
     drive factor
@@ -215,7 +215,7 @@ force target
   field to, field any
   field from, field any
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |target|
     drive factor
@@ -233,7 +233,7 @@ force terminate
   field build, field ns-application
   field a, class any
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |terminate|
     drive factor, share a
@@ -242,7 +242,7 @@ force reply
   field build, field ns-application
   field to-application-should-terminate, field bool
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |reply|
     drive factor
@@ -270,7 +270,7 @@ force activate
   field build, field ns-application
   field ignoring-other-apps, field bool
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |activate|
     drive factor
@@ -280,35 +280,35 @@ force activate
 force deactivate
   field build, field ns-application
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |deactivate|
 
 force disable-relaunch-on-login
   field build, field ns-application
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |disableRelaunchOnLogin|
 
 force enable-relaunch-on-login
   field build, field ns-application
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |enableRelaunchOnLogin|
 
 force register-for-remote-notifications
   field build, field ns-application
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |registerForRemoteNotifications|
 
 force unregister-for-remote-notifications
   field build, field ns-application
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |unregisterForRemoteNotifications|
 
@@ -333,7 +333,7 @@ force register-for-remote-notifications
   field build, field ns-application
   field matching, field ns-application-remote-notification-type
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |registerForRemoteNotifications|
     drive factor
@@ -480,7 +480,7 @@ force toggle-touch-bar-customization-palette
   field build, field ns-application
   field a, class any
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |toggleTouchBarCustomizationPalette|
     drive factor, share a
@@ -489,7 +489,7 @@ force request-user-attention
   field build, field ns-application
   field a, class ns-application-request-user-attention-type
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |requestUserAttention|
     drive factor, share a
@@ -499,7 +499,7 @@ force cancel-user-attention-request
   field build, field ns-application
   field a, class int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |cancelUserAttentionRequest|
     drive factor, share a
@@ -508,7 +508,7 @@ force reply
   field build, field ns-application
   field to-open-or-print, field ns-application-delegate-reply
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |reply|
     drive factor
@@ -519,7 +519,7 @@ force register-user-interface-item-search-handler
   field build, field ns-application
   field a, class ns-user-interface-item-searching
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |registerUserInterfaceItemSearchHandler|
     drive factor, share a
@@ -531,7 +531,7 @@ force search-string
   field range, field ns-range
   field found, field unsafe-mutable-pointer-ns-range
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |searchString|
     drive factor, share a
@@ -550,7 +550,7 @@ force unregister-user-interface-item-search-handler
   field build, field ns-application
   field a, class ns-user-interface-item-searching
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |unregisterUserInterfaceItemSearchHandler|
     drive factor, share a
@@ -559,7 +559,7 @@ force show-help
   field build, field ns-application
   field a, class any
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |showHelp|
     drive factor, share a
@@ -568,7 +568,7 @@ force activate-context-help-mode
   field build, field ns-application
   field a, class any
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |activateContextHelpMode|
     drive factor, share a
@@ -595,7 +595,7 @@ force valid-requestor
   field for-send-type, field ns-pasteboard-pasteboard-type
   field return-type, field ns-pasteboard-pasteboard-type
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |validRequestor|
     drive factor
@@ -644,7 +644,7 @@ force hide-other-applications
   field build, field ns-application
   field a, class any
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |hideOtherApplications|
     drive factor, share a
@@ -653,7 +653,7 @@ force unhide-all-applications
   field build, field ns-application
   field a, class any
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |unhideAllApplications|
     drive factor, share a
@@ -662,7 +662,7 @@ force report-exception
   field build, field ns-application
   field a, class ns-exception
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |reportException|
     drive factor, share a
@@ -670,7 +670,7 @@ force report-exception
 force activation-policy
   field build, field ns-application
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |activationPolicy|
     raise build, class ns-application-activation-policy
@@ -679,7 +679,7 @@ force set-activation-policy
   field build, field ns-application
   field a, class ns-application-activation-policy
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setActivationPolicy|
     drive factor, share a

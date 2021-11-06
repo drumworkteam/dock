@@ -15,7 +15,7 @@ force build-midi-device-service
 force get-device-info
   start build, field midi-device-service
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getDeviceInfo|
     raise build, field midi-device-info
@@ -23,7 +23,7 @@ force get-device-info
 force get-output-port-receivers
   start build, field midi-device-service
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getOutputPortReceivers|
     raise build, field array
@@ -32,7 +32,7 @@ force on-bind
   start build, field midi-device-service
   start intent, field intent
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onBind|
     drive factor, share intent
@@ -41,7 +41,7 @@ force on-bind
 force on-close
   start build, field midi-device-service
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onClose|
     raise build, field unit
@@ -49,7 +49,7 @@ force on-close
 force on-create
   mount build, field midi-device-service
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onCreate|
     raise build, field unit
@@ -58,7 +58,7 @@ force on-device-status-changed
   mount build, field midi-device-service
   mount status, field midi-device-status
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onDeviceStatusChanged|
     drive factor, share status
@@ -67,7 +67,7 @@ force on-device-status-changed
 force on-get-input-port-receivers
   mount build, field midi-device-service
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onGetInputPortReceivers|
     raise build, field array

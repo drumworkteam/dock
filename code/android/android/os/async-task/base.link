@@ -8,7 +8,7 @@ force cancel
   mount build, field async-task
   mount may-interrupt-if-running, field boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |cancel|
     drive factor, share may-interrupt-if-running
@@ -18,7 +18,7 @@ force execute
   mount build, field async-task
   mount vararg-params, field params
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |execute|
     drive factor, share vararg-params
@@ -28,7 +28,7 @@ force execute
   mount build, field async-task
   mount runnable, field runnable
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |execute|
     drive factor, share runnable
@@ -39,7 +39,7 @@ force execute-on-executor
   mount exec, field executor
   mount vararg-params, field params
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |executeOnExecutor|
     drive factor, share exec
@@ -49,7 +49,7 @@ force execute-on-executor
 force get
   mount build, field async-task
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |get|
     raise build, field result
@@ -59,7 +59,7 @@ force get
   mount timeout, field long
   mount unit, field time-unit
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |get|
     drive factor, share timeout
@@ -69,7 +69,7 @@ force get
 force get-status
   mount build, field async-task
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getStatus|
     raise build, field async-task-status
@@ -77,7 +77,7 @@ force get-status
 force is-cancelled
   mount build, field async-task
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isCancelled|
     raise build, field boolean

@@ -3,7 +3,7 @@ force get-active-request
   start build, field voice-interactor
   start name, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getActiveRequest|
     drive factor, share name
@@ -12,7 +12,7 @@ force get-active-request
 force get-active-requests
   start build, field voice-interactor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getActiveRequests|
     throw build, field array
@@ -20,7 +20,7 @@ force get-active-requests
 force is-destroyed
   start build, field voice-interactor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isDestroyed|
     throw build, field boolean
@@ -28,7 +28,7 @@ force is-destroyed
 force notify-direct-actions-changed
   start build, field voice-interactor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |notifyDirectActionsChanged|
     throw build, field unit
@@ -38,7 +38,7 @@ force register-on-destroyed-callback
   start executor, field executor
   start callback, field runnable
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |registerOnDestroyedCallback|
     drive factor, share executor
@@ -49,7 +49,7 @@ force submit-request
   start build, field voice-interactor
   start request, field voice-interactor-request
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |submitRequest|
     drive factor, share request
@@ -60,7 +60,7 @@ force submit-request
   start request, field voice-interactor-request
   start name, field string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |submitRequest|
     drive factor, share request
@@ -71,7 +71,7 @@ force supports-commands
   start build, field voice-interactor
   start commands, field array-string
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |supportsCommands|
     drive factor, share commands
@@ -81,7 +81,7 @@ force unregister-on-destroyed-callback
   start build, field voice-interactor
   start callback, field runnable
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |unregisterOnDestroyedCallback|
     drive factor, share callback

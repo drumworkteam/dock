@@ -1,0 +1,36 @@
+
+task get-current-frame
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <currentFrame>
+    turn seed
+
+task get-current-time
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <currentTime>
+    turn seed
+
+task get-sample-rate
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <sampleRate>
+    turn seed
+
+task register-processor
+  base build
+  base name
+  base processor-ctor
+
+  cause call-base
+    bind object, link build
+    bind method, text <registerProcessor>
+    bind factor, link name
+    bind factor, link processor-ctor
+    turn seed

@@ -13,7 +13,7 @@ force allow-purging
   mount build, field memory-file
   mount allow-purging, field boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |allowPurging|
     drive factor, share allow-purging
@@ -22,7 +22,7 @@ force allow-purging
 force close
   mount build, field memory-file
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |close|
     raise build, field unit
@@ -30,7 +30,7 @@ force close
 force get-input-stream
   mount build, field memory-file
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getInputStream|
     raise build, field input-stream
@@ -38,7 +38,7 @@ force get-input-stream
 force get-output-stream
   mount build, field memory-file
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getOutputStream|
     raise build, field output-stream
@@ -46,7 +46,7 @@ force get-output-stream
 force is-purging-allowed
   mount build, field memory-file
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |isPurgingAllowed|
     raise build, field boolean
@@ -54,7 +54,7 @@ force is-purging-allowed
 force length
   mount build, field memory-file
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |length|
     raise build, field int
@@ -66,7 +66,7 @@ force read-bytes
   mount dest-offset, field int
   mount count, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |readBytes|
     drive factor, share buffer
@@ -82,7 +82,7 @@ force write-bytes
   mount dest-offset, field int
   mount count, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |writeBytes|
     drive factor, share buffer

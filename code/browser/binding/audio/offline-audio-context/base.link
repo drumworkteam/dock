@@ -1,0 +1,36 @@
+
+task build-offline-audio-context
+  base number-of-channels
+  base length
+  base sample-rate
+
+  call make
+    bind constructor, text <OfflineAudioContext>
+    bind factor, link number-of-channels
+    bind factor, link length
+    bind factor, link sample-rate
+    turn seed
+
+task get-length
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <length>
+    turn seed
+
+task suspend
+  base build
+  base suspend-time
+
+  cause call-base
+    bind object, link build
+    bind method, text <suspend>
+    bind factor, link suspend-time
+
+task start-rendering
+  base build
+
+  cause call-base
+    bind object, link build
+    bind method, text <startRendering>

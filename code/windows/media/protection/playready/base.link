@@ -130,7 +130,7 @@ force set-can-seek
 force close
   start build, field windows-media-protection-playready-inddownloadengine
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Close|
 
@@ -155,7 +155,7 @@ force open
   start uri, field windows-foundation-uri
   start session-i-d-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Open|
     drive factor, share uri
@@ -164,14 +164,14 @@ force open
 force pause
   start build, field windows-media-protection-playready-inddownloadengine
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Pause|
 
 force resume
   start build, field windows-media-protection-playready-inddownloadengine
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Resume|
 
@@ -179,7 +179,7 @@ force seek
   start build, field windows-media-protection-playready-inddownloadengine
   start start-position, field windows-foundation-timespan
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Seek|
     drive factor, share start-position
@@ -188,7 +188,7 @@ force on-content-i-d-received
   start build, field windows-media-protection-playready-inddownloadenginenotifier
   start license-fetch-descriptor, field windows-media-protection-playready-indlicensefetchdescriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnContentIDReceived|
     drive factor, share license-fetch-descriptor
@@ -198,7 +198,7 @@ force on-data-received
   start data-bytes, field system-byte
   start bytes-received, field system-uint32
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnDataReceived|
     drive factor, share data-bytes
@@ -207,14 +207,14 @@ force on-data-received
 force on-end-of-stream
   start build, field windows-media-protection-playready-inddownloadenginenotifier
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnEndOfStream|
 
 force on-network-error
   start build, field windows-media-protection-playready-inddownloadenginenotifier
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnNetworkError|
 
@@ -222,7 +222,7 @@ force on-play-ready-object-received
   start build, field windows-media-protection-playready-inddownloadenginenotifier
   start data-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnPlayReadyObjectReceived|
     drive factor, share data-bytes
@@ -230,7 +230,7 @@ force on-play-ready-object-received
 force on-stream-opened
   start build, field windows-media-protection-playready-inddownloadenginenotifier
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnStreamOpened|
 
@@ -319,7 +319,7 @@ force send-license-fetch-request-async
   start session-i-d-bytes, field system-byte
   start challenge-data-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SendLicenseFetchRequestAsync|
     drive factor, share session-i-d-bytes
@@ -332,7 +332,7 @@ force send-proximity-detection-response-async
   start session-i-d-bytes, field system-byte
   start response-data-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SendProximityDetectionResponseAsync|
     drive factor, share pd-type
@@ -347,7 +347,7 @@ force send-proximity-detection-start-async
   start session-i-d-bytes, field system-byte
   start challenge-data-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SendProximityDetectionStartAsync|
     drive factor, share pd-type
@@ -360,7 +360,7 @@ force send-registration-request-async
   start session-i-d-bytes, field system-byte
   start challenge-data-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SendRegistrationRequestAsync|
     drive factor, share session-i-d-bytes
@@ -466,7 +466,7 @@ force get-file-u-r-ls
   start build, field windows-media-protection-playready-indstoragefilehelper
   start file, field windows-storage-istoragefile
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetFileURLs|
     drive factor, share file
@@ -474,14 +474,14 @@ force get-file-u-r-ls
 force begin-of-stream
   start build, field windows-media-protection-playready-indstreamparser
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |BeginOfStream|
 
 force end-of-stream
   start build, field windows-media-protection-playready-indstreamparser
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |EndOfStream|
 
@@ -490,7 +490,7 @@ force get-stream-information
   start descriptor, field windows-media-core-imediastreamdescriptor
   start stream-type, field windows-media-protection-playready-ndmediastreamtype
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetStreamInformation|
     drive factor, share descriptor
@@ -516,7 +516,7 @@ force parse-data
   start build, field windows-media-protection-playready-indstreamparser
   start data-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ParseData|
     drive factor, share data-bytes
@@ -527,7 +527,7 @@ force on-begin-setup-decryptor
   start key-i-d, field system-guid
   start pro-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnBeginSetupDecryptor|
     drive factor, share descriptor
@@ -538,7 +538,7 @@ force on-content-i-d-received
   start build, field windows-media-protection-playready-indstreamparsernotifier
   start license-fetch-descriptor, field windows-media-protection-playready-indlicensefetchdescriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnContentIDReceived|
     drive factor, share license-fetch-descriptor
@@ -548,7 +548,7 @@ force on-media-stream-descriptor-created
   start audio-stream-descriptors, field windows-foundation-collections-ivector-windows-media-core-audiostreamdescriptor
   start video-stream-descriptors, field windows-foundation-collections-ivector-windows-media-core-videostreamdescriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnMediaStreamDescriptorCreated|
     drive factor, share audio-stream-descriptors
@@ -563,7 +563,7 @@ force on-sample-parsed
   start cc-format, field windows-media-protection-playready-ndclosedcaptionformat
   start cc-data-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnSampleParsed|
     drive factor, share stream-i-d
@@ -913,7 +913,7 @@ force get-k-i-d-at-chain-depth
   start build, field windows-media-protection-playready-iplayreadylicense
   start chain-depth, field system-uint32
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetKIDAtChainDepth|
     drive factor, share chain-depth
@@ -971,7 +971,7 @@ force create-license-iterable
   start content-header, field windows-media-protection-playready-playreadycontentheader
   start fully-evaluated, field system-boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |CreateLicenseIterable|
     drive factor, share content-header
@@ -981,7 +981,7 @@ force configure-media-protection-manager
   start build, field windows-media-protection-playready-iplayreadylicensesession
   start mpm, field windows-media-protection-mediaprotectionmanager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ConfigureMediaProtectionManager|
     drive factor, share mpm
@@ -989,7 +989,7 @@ force configure-media-protection-manager
 force create-l-a-service-request
   start build, field windows-media-protection-playready-iplayreadylicensesession
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |CreateLAServiceRequest|
 
@@ -1076,7 +1076,7 @@ force set-update-time
 force begin-service-request
   start build, field windows-media-protection-playready-iplayreadyservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |BeginServiceRequest|
 
@@ -1099,14 +1099,14 @@ force set-challenge-custom-data
 force generate-manual-enabling-challenge
   start build, field windows-media-protection-playready-iplayreadyservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GenerateManualEnablingChallenge|
 
 force next-service-request
   start build, field windows-media-protection-playready-iplayreadyservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |NextServiceRequest|
 
@@ -1114,7 +1114,7 @@ force process-manual-enabling-response
   start build, field windows-media-protection-playready-iplayreadyservicerequest
   start response-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ProcessManualEnablingResponse|
     drive factor, share response-bytes
@@ -1170,7 +1170,7 @@ force build-n-d-client
 force close
   start build, field windows-media-protection-playready-ndclient
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |Close|
 
@@ -1178,7 +1178,7 @@ force license-fetch-async
   start build, field windows-media-protection-playready-ndclient
   start license-fetch-descriptor, field windows-media-protection-playready-indlicensefetchdescriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |LicenseFetchAsync|
     drive factor, share license-fetch-descriptor
@@ -1189,7 +1189,7 @@ force ctor
   start stream-parser, field windows-media-protection-playready-indstreamparser
   start p-messenger, field windows-media-protection-playready-indmessenger
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share download-engine
@@ -1200,7 +1200,7 @@ force re-registration-async
   start build, field windows-media-protection-playready-ndclient
   start registration-custom-data, field windows-media-protection-playready-indcustomdata
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ReRegistrationAsync|
     drive factor, share registration-custom-data
@@ -1212,7 +1212,7 @@ force start-async
   start registration-custom-data, field windows-media-protection-playready-indcustomdata
   start license-fetch-descriptor, field windows-media-protection-playready-indlicensefetchdescriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |StartAsync|
     drive factor, share content-url
@@ -1269,7 +1269,7 @@ force ctor
   start custom-data-type-i-d-bytes, field system-byte
   start custom-data-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share custom-data-type-i-d-bytes
@@ -1282,7 +1282,7 @@ force build-n-d-download-engine-notifier
 force ctor
   start build, field windows-media-protection-playready-nddownloadenginenotifier
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -1290,7 +1290,7 @@ force on-content-i-d-received
   start build, field windows-media-protection-playready-nddownloadenginenotifier
   start license-fetch-descriptor, field windows-media-protection-playready-indlicensefetchdescriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnContentIDReceived|
     drive factor, share license-fetch-descriptor
@@ -1300,7 +1300,7 @@ force on-data-received
   start data-bytes, field system-byte
   start bytes-received, field system-uint32
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnDataReceived|
     drive factor, share data-bytes
@@ -1309,14 +1309,14 @@ force on-data-received
 force on-end-of-stream
   start build, field windows-media-protection-playready-nddownloadenginenotifier
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnEndOfStream|
 
 force on-network-error
   start build, field windows-media-protection-playready-nddownloadenginenotifier
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnNetworkError|
 
@@ -1324,7 +1324,7 @@ force on-play-ready-object-received
   start build, field windows-media-protection-playready-nddownloadenginenotifier
   start data-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnPlayReadyObjectReceived|
     drive factor, share data-bytes
@@ -1332,7 +1332,7 @@ force on-play-ready-object-received
 force on-stream-opened
   start build, field windows-media-protection-playready-nddownloadenginenotifier
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnStreamOpened|
 
@@ -1394,7 +1394,7 @@ force ctor
   start content-i-d-bytes, field system-byte
   start license-fetch-challenge-custom-data, field windows-media-protection-playready-indcustomdata
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share content-i-d-type
@@ -1421,7 +1421,7 @@ force get-file-u-r-ls
   start build, field windows-media-protection-playready-ndstoragefilehelper
   start file, field windows-storage-istoragefile
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetFileURLs|
     drive factor, share file
@@ -1429,7 +1429,7 @@ force get-file-u-r-ls
 force ctor
   start build, field windows-media-protection-playready-ndstoragefilehelper
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -1440,7 +1440,7 @@ force build-n-d-stream-parser-notifier
 force ctor
   start build, field windows-media-protection-playready-ndstreamparsernotifier
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -1450,7 +1450,7 @@ force on-begin-setup-decryptor
   start key-i-d, field system-guid
   start pro-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnBeginSetupDecryptor|
     drive factor, share descriptor
@@ -1461,7 +1461,7 @@ force on-content-i-d-received
   start build, field windows-media-protection-playready-ndstreamparsernotifier
   start license-fetch-descriptor, field windows-media-protection-playready-indlicensefetchdescriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnContentIDReceived|
     drive factor, share license-fetch-descriptor
@@ -1471,7 +1471,7 @@ force on-media-stream-descriptor-created
   start audio-stream-descriptors, field windows-foundation-collections-ivector-windows-media-core-audiostreamdescriptor
   start video-stream-descriptors, field windows-foundation-collections-ivector-windows-media-core-videostreamdescriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnMediaStreamDescriptorCreated|
     drive factor, share audio-stream-descriptors
@@ -1486,7 +1486,7 @@ force on-sample-parsed
   start cc-format, field windows-media-protection-playready-ndclosedcaptionformat
   start cc-data-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |OnSampleParsed|
     drive factor, share stream-i-d
@@ -1505,7 +1505,7 @@ force ctor
   start remote-host-name, field system-string
   start remote-host-port, field system-uint32
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share remote-host-name
@@ -1516,7 +1516,7 @@ force send-license-fetch-request-async
   start session-i-d-bytes, field system-byte
   start challenge-data-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SendLicenseFetchRequestAsync|
     drive factor, share session-i-d-bytes
@@ -1529,7 +1529,7 @@ force send-proximity-detection-response-async
   start session-i-d-bytes, field system-byte
   start response-data-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SendProximityDetectionResponseAsync|
     drive factor, share pd-type
@@ -1544,7 +1544,7 @@ force send-proximity-detection-start-async
   start session-i-d-bytes, field system-byte
   start challenge-data-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SendProximityDetectionStartAsync|
     drive factor, share pd-type
@@ -1557,7 +1557,7 @@ force send-registration-request-async
   start session-i-d-bytes, field system-byte
   start challenge-data-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |SendRegistrationRequestAsync|
     drive factor, share session-i-d-bytes
@@ -1634,7 +1634,7 @@ force set-encryption-type
 force get-serialized-header
   start build, field windows-media-protection-playready-playreadycontentheader
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetSerializedHeader|
 
@@ -1760,7 +1760,7 @@ force ctor
   start custom-attributes, field system-string
   start domain-service-id, field system-guid
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share content-key-id
@@ -1779,7 +1779,7 @@ force ctor
   start custom-attributes, field system-string
   start domain-service-id, field system-guid
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share header-bytes
@@ -1799,7 +1799,7 @@ force ctor
   start custom-attributes, field system-string
   start domain-service-id, field system-guid
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share dw-flags
@@ -1815,7 +1815,7 @@ force ctor
   start build, field windows-media-protection-playready-playreadycontentheader
   start header-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share header-bytes
@@ -1828,7 +1828,7 @@ force service-request
   start build, field windows-media-protection-playready-playreadycontentresolver
   start content-header, field windows-media-protection-playready-playreadycontentheader
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ServiceRequest|
     drive factor, share content-header
@@ -1928,7 +1928,7 @@ force build-play-ready-domain-iterable
 force first
   start build, field windows-media-protection-playready-playreadydomainiterable
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |First|
 
@@ -1936,7 +1936,7 @@ force ctor
   start build, field windows-media-protection-playready-playreadydomainiterable
   start domain-account-id, field system-guid
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share domain-account-id
@@ -1965,7 +1965,7 @@ force get-many
   start build, field windows-media-protection-playready-playreadydomainiterator
   start items, field windows-media-protection-playready-iplayreadydomain
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetMany|
     drive factor, share items
@@ -1989,7 +1989,7 @@ force set-has-current
 force move-next
   start build, field windows-media-protection-playready-playreadydomainiterator
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |MoveNext|
 
@@ -2000,7 +2000,7 @@ force build-play-ready-domain-join-service-request
 force begin-service-request
   start build, field windows-media-protection-playready-playreadydomainjoinservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |BeginServiceRequest|
 
@@ -2071,21 +2071,21 @@ force set-domain-service-id
 force generate-manual-enabling-challenge
   start build, field windows-media-protection-playready-playreadydomainjoinservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GenerateManualEnablingChallenge|
 
 force next-service-request
   start build, field windows-media-protection-playready-playreadydomainjoinservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |NextServiceRequest|
 
 force ctor
   start build, field windows-media-protection-playready-playreadydomainjoinservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -2093,7 +2093,7 @@ force process-manual-enabling-response
   start build, field windows-media-protection-playready-playreadydomainjoinservicerequest
   start response-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ProcessManualEnablingResponse|
     drive factor, share response-bytes
@@ -2169,7 +2169,7 @@ force build-play-ready-domain-leave-service-request
 force begin-service-request
   start build, field windows-media-protection-playready-playreadydomainleaveservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |BeginServiceRequest|
 
@@ -2224,21 +2224,21 @@ force set-domain-service-id
 force generate-manual-enabling-challenge
   start build, field windows-media-protection-playready-playreadydomainleaveservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GenerateManualEnablingChallenge|
 
 force next-service-request
   start build, field windows-media-protection-playready-playreadydomainleaveservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |NextServiceRequest|
 
 force ctor
   start build, field windows-media-protection-playready-playreadydomainleaveservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -2246,7 +2246,7 @@ force process-manual-enabling-response
   start build, field windows-media-protection-playready-playreadydomainleaveservicerequest
   start response-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ProcessManualEnablingResponse|
     drive factor, share response-bytes
@@ -2330,7 +2330,7 @@ force build-play-ready-individualization-service-request
 force begin-service-request
   start build, field windows-media-protection-playready-playreadyindividualizationservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |BeginServiceRequest|
 
@@ -2353,21 +2353,21 @@ force set-challenge-custom-data
 force generate-manual-enabling-challenge
   start build, field windows-media-protection-playready-playreadyindividualizationservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GenerateManualEnablingChallenge|
 
 force next-service-request
   start build, field windows-media-protection-playready-playreadyindividualizationservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |NextServiceRequest|
 
 force ctor
   start build, field windows-media-protection-playready-playreadyindividualizationservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -2375,7 +2375,7 @@ force process-manual-enabling-response
   start build, field windows-media-protection-playready-playreadyindividualizationservicerequest
   start response-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ProcessManualEnablingResponse|
     drive factor, share response-bytes
@@ -2459,7 +2459,7 @@ force generate-data
   start configuration, field windows-foundation-collections-ipropertyset
   start format, field windows-media-protection-playready-playreadyitadataformat
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GenerateData|
     drive factor, share guid-c-p-system-id
@@ -2470,7 +2470,7 @@ force generate-data
 force ctor
   start build, field windows-media-protection-playready-playreadyitadatagenerator
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -2578,7 +2578,7 @@ force get-k-i-d-at-chain-depth
   start build, field windows-media-protection-playready-playreadylicense
   start chain-depth, field system-uint32
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetKIDAtChainDepth|
     drive factor, share chain-depth
@@ -2654,7 +2654,7 @@ force build-play-ready-license-acquisition-service-request
 force begin-service-request
   start build, field windows-media-protection-playready-playreadylicenseacquisitionservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |BeginServiceRequest|
 
@@ -2695,7 +2695,7 @@ force create-license-iterable
   start content-header, field windows-media-protection-playready-playreadycontentheader
   start fully-evaluated, field system-boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |CreateLicenseIterable|
     drive factor, share content-header
@@ -2720,21 +2720,21 @@ force set-domain-service-id
 force generate-manual-enabling-challenge
   start build, field windows-media-protection-playready-playreadylicenseacquisitionservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GenerateManualEnablingChallenge|
 
 force next-service-request
   start build, field windows-media-protection-playready-playreadylicenseacquisitionservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |NextServiceRequest|
 
 force ctor
   start build, field windows-media-protection-playready-playreadylicenseacquisitionservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -2742,7 +2742,7 @@ force process-manual-enabling-response
   start build, field windows-media-protection-playready-playreadylicenseacquisitionservicerequest
   start response-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ProcessManualEnablingResponse|
     drive factor, share response-bytes
@@ -2834,14 +2834,14 @@ force build-play-ready-license-iterable
 force first
   start build, field windows-media-protection-playready-playreadylicenseiterable
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |First|
 
 force ctor
   start build, field windows-media-protection-playready-playreadylicenseiterable
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -2850,7 +2850,7 @@ force ctor
   start content-header, field windows-media-protection-playready-playreadycontentheader
   start fully-evaluated, field system-boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share content-header
@@ -2880,7 +2880,7 @@ force get-many
   start build, field windows-media-protection-playready-playreadylicenseiterator
   start items, field windows-media-protection-playready-iplayreadylicense
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetMany|
     drive factor, share items
@@ -2904,7 +2904,7 @@ force set-has-current
 force move-next
   start build, field windows-media-protection-playready-playreadylicenseiterator
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |MoveNext|
 
@@ -2916,7 +2916,7 @@ force delete-licenses
   start build, field windows-media-protection-playready-playreadylicensemanagement
   start content-header, field windows-media-protection-playready-playreadycontentheader
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |DeleteLicenses|
     drive factor, share content-header
@@ -2929,7 +2929,7 @@ force configure-media-protection-manager
   start build, field windows-media-protection-playready-playreadylicensesession
   start mpm, field windows-media-protection-mediaprotectionmanager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ConfigureMediaProtectionManager|
     drive factor, share mpm
@@ -2937,7 +2937,7 @@ force configure-media-protection-manager
 force create-l-a-service-request
   start build, field windows-media-protection-playready-playreadylicensesession
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |CreateLAServiceRequest|
 
@@ -2946,7 +2946,7 @@ force create-license-iterable
   start content-header, field windows-media-protection-playready-playreadycontentheader
   start fully-evaluated, field system-boolean
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |CreateLicenseIterable|
     drive factor, share content-header
@@ -2956,7 +2956,7 @@ force ctor
   start build, field windows-media-protection-playready-playreadylicensesession
   start configuration, field windows-foundation-collections-ipropertyset
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share configuration
@@ -2968,7 +2968,7 @@ force build-play-ready-metering-report-service-request
 force begin-service-request
   start build, field windows-media-protection-playready-playreadymeteringreportservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |BeginServiceRequest|
 
@@ -2991,7 +2991,7 @@ force set-challenge-custom-data
 force generate-manual-enabling-challenge
   start build, field windows-media-protection-playready-playreadymeteringreportservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GenerateManualEnablingChallenge|
 
@@ -3014,14 +3014,14 @@ force set-metering-certificate
 force next-service-request
   start build, field windows-media-protection-playready-playreadymeteringreportservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |NextServiceRequest|
 
 force ctor
   start build, field windows-media-protection-playready-playreadymeteringreportservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -3029,7 +3029,7 @@ force process-manual-enabling-response
   start build, field windows-media-protection-playready-playreadymeteringreportservicerequest
   start response-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ProcessManualEnablingResponse|
     drive factor, share response-bytes
@@ -3105,7 +3105,7 @@ force build-play-ready-revocation-service-request
 force begin-service-request
   start build, field windows-media-protection-playready-playreadyrevocationservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |BeginServiceRequest|
 
@@ -3128,21 +3128,21 @@ force set-challenge-custom-data
 force generate-manual-enabling-challenge
   start build, field windows-media-protection-playready-playreadyrevocationservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GenerateManualEnablingChallenge|
 
 force next-service-request
   start build, field windows-media-protection-playready-playreadyrevocationservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |NextServiceRequest|
 
 force ctor
   start build, field windows-media-protection-playready-playreadyrevocationservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
 
@@ -3150,7 +3150,7 @@ force process-manual-enabling-response
   start build, field windows-media-protection-playready-playreadyrevocationservicerequest
   start response-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ProcessManualEnablingResponse|
     drive factor, share response-bytes
@@ -3226,7 +3226,7 @@ force build-play-ready-secure-stop-iterable
 force first
   start build, field windows-media-protection-playready-playreadysecurestopiterable
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |First|
 
@@ -3234,7 +3234,7 @@ force ctor
   start build, field windows-media-protection-playready-playreadysecurestopiterable
   start publisher-cert-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share publisher-cert-bytes
@@ -3263,7 +3263,7 @@ force get-many
   start build, field windows-media-protection-playready-playreadysecurestopiterator
   start items, field windows-media-protection-playready-iplayreadysecurestopservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetMany|
     drive factor, share items
@@ -3287,7 +3287,7 @@ force set-has-current
 force move-next
   start build, field windows-media-protection-playready-playreadysecurestopiterator
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |MoveNext|
 
@@ -3298,7 +3298,7 @@ force build-play-ready-secure-stop-service-request
 force begin-service-request
   start build, field windows-media-protection-playready-playreadysecurestopservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |BeginServiceRequest|
 
@@ -3321,14 +3321,14 @@ force set-challenge-custom-data
 force generate-manual-enabling-challenge
   start build, field windows-media-protection-playready-playreadysecurestopservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GenerateManualEnablingChallenge|
 
 force next-service-request
   start build, field windows-media-protection-playready-playreadysecurestopservicerequest
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |NextServiceRequest|
 
@@ -3337,7 +3337,7 @@ force ctor
   start session-i-d, field system-guid
   start publisher-cert-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share session-i-d
@@ -3347,7 +3347,7 @@ force ctor
   start build, field windows-media-protection-playready-playreadysecurestopservicerequest
   start publisher-cert-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |#ctor|
     drive factor, share publisher-cert-bytes
@@ -3356,7 +3356,7 @@ force process-manual-enabling-response
   start build, field windows-media-protection-playready-playreadysecurestopservicerequest
   start response-bytes, field system-byte
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ProcessManualEnablingResponse|
     drive factor, share response-bytes
@@ -3512,7 +3512,7 @@ force build-play-ready-soap-message
 force get-message-body
   start build, field windows-media-protection-playready-playreadysoapmessage
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |GetMessageBody|
 
@@ -3556,7 +3556,7 @@ force check-supported-hardware
   start build, field windows-media-protection-playready-playreadystatics
   start hwdrm-feature, field windows-media-protection-playready-playreadyhardwaredrmfeatures
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |CheckSupportedHardware|
     drive factor, share hwdrm-feature
@@ -3756,7 +3756,7 @@ force set-protection-system-id
 force reset-hardware-d-r-m-disabled
   start build, field windows-media-protection-playready-playreadystatics
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |ResetHardwareDRMDisabled|
 

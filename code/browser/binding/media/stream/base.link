@@ -1,0 +1,36 @@
+
+task build-media-stream
+  base stream
+  base tracks
+
+  call make
+    bind constructor, text <MediaStream>
+    bind factor, link stream
+    bind factor, link tracks
+    turn seed
+
+task get-active
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <active>
+    turn seed
+
+task get-ended
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <ended>
+    turn seed
+
+task add-track
+  base build
+  base track
+
+  cause call-base
+    bind object, link build
+    bind method, text <addTrack>
+    bind factor, link track
+    turn seed

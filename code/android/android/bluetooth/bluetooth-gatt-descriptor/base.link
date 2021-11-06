@@ -76,7 +76,7 @@ force build-bluetooth-gatt-descriptor
 force describe-contents
   mount build, field bluetooth-gatt-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |describeContents|
     throw build, field int
@@ -84,7 +84,7 @@ force describe-contents
 force get-characteristic
   mount build, field bluetooth-gatt-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getCharacteristic|
     throw build, field bluetooth-gatt-characteristic
@@ -92,7 +92,7 @@ force get-characteristic
 force get-permissions
   mount build, field bluetooth-gatt-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getPermissions|
     throw build, field int
@@ -100,7 +100,7 @@ force get-permissions
 force get-uuid
   mount build, field bluetooth-gatt-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getUuid|
     throw build, field uuid
@@ -108,7 +108,7 @@ force get-uuid
 force get-value
   mount build, field bluetooth-gatt-descriptor
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getValue|
     throw build, field byte-array
@@ -117,7 +117,7 @@ force set-value
   mount build, field bluetooth-gatt-descriptor
   mount value, field byte-array
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |setValue|
     drive factor, share value
@@ -128,7 +128,7 @@ force write-to-parcel
   mount out, field parcel
   mount flags, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |writeToParcel|
     drive factor, share out

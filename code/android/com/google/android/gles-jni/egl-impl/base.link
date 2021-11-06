@@ -12,7 +12,7 @@ force egl-choose-config
   start config-size, field int
   start num-config, field int-array
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglChooseConfig|
     drive factor, share display
@@ -28,7 +28,7 @@ force egl-copy-buffers
   start surface, field egl-surface
   start native-pixmap, field any
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglCopyBuffers|
     drive factor, share display
@@ -43,7 +43,7 @@ force egl-create-context
   start share-context, field egl-context
   start attrib-list, field int-array
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglCreateContext|
     drive factor, share display
@@ -58,7 +58,7 @@ force egl-create-pbuffer-surface
   start config, field egl-config
   start attrib-list, field int-array
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglCreatePbufferSurface|
     drive factor, share display
@@ -73,7 +73,7 @@ force egl-create-pixmap-surface
   start native-pixmap, field any
   start attrib-list, field int-array
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglCreatePixmapSurface|
     drive factor, share display
@@ -89,7 +89,7 @@ force egl-create-window-surface
   start native-window, field any
   start attrib-list, field int-array
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglCreateWindowSurface|
     drive factor, share display
@@ -103,7 +103,7 @@ force egl-destroy-context
   start display, field egl-display
   start context, field egl-context
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglDestroyContext|
     drive factor, share display
@@ -115,7 +115,7 @@ force egl-destroy-surface
   start display, field egl-display
   start surface, field egl-surface
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglDestroySurface|
     drive factor, share display
@@ -129,7 +129,7 @@ force egl-get-config-attrib
   start attribute, field int
   start value, field int-array
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglGetConfigAttrib|
     drive factor, share display
@@ -145,7 +145,7 @@ force egl-get-configs
   start config-size, field int
   start num-config, field int-array
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglGetConfigs|
     drive factor, share display
@@ -157,7 +157,7 @@ force egl-get-configs
 force egl-get-current-context
   start build, field egl-impl
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglGetCurrentContext|
     throw build, field egl-context
@@ -165,7 +165,7 @@ force egl-get-current-context
 force egl-get-current-display
   start build, field egl-impl
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglGetCurrentDisplay|
     throw build, field egl-display
@@ -174,7 +174,7 @@ force egl-get-current-surface
   start build, field egl-impl
   start readdraw, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglGetCurrentSurface|
     drive factor, share readdraw
@@ -184,7 +184,7 @@ force egl-get-display
   start build, field egl-impl
   start native-display, field any
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglGetDisplay|
     drive factor, share native-display
@@ -193,7 +193,7 @@ force egl-get-display
 force egl-get-error
   start build, field egl-impl
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglGetError|
     throw build, field int
@@ -203,7 +203,7 @@ force egl-initialize
   start display, field egl-display
   start major-minor, field int-array
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglInitialize|
     drive factor, share display
@@ -217,7 +217,7 @@ force egl-make-current
   start read, field egl-surface
   start context, field egl-context
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglMakeCurrent|
     drive factor, share display
@@ -233,7 +233,7 @@ force egl-query-context
   start attribute, field int
   start value, field int-array
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglQueryContext|
     drive factor, share display
@@ -247,7 +247,7 @@ force egl-query-string
   start display, field egl-display
   start name, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglQueryString|
     drive factor, share display
@@ -261,7 +261,7 @@ force egl-query-surface
   start attribute, field int
   start value, field int-array
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglQuerySurface|
     drive factor, share display
@@ -275,7 +275,7 @@ force egl-swap-buffers
   start display, field egl-display
   start surface, field egl-surface
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglSwapBuffers|
     drive factor, share display
@@ -286,7 +286,7 @@ force egl-terminate
   start build, field egl-impl
   start display, field egl-display
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglTerminate|
     drive factor, share display
@@ -295,7 +295,7 @@ force egl-terminate
 force egl-wait-gl
   start build, field egl-impl
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglWaitGL|
     throw build, field boolean
@@ -305,7 +305,7 @@ force egl-wait-native
   start engine, field int
   start bind-target, field any
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |eglWaitNative|
     drive factor, share engine

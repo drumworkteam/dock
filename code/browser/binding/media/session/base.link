@@ -1,0 +1,56 @@
+
+task get-metadata
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <metadata>
+    turn seed
+
+task set-metadata
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <metadata>
+    bind factor, link value
+
+task get-playback-state
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <playbackState>
+    turn seed
+
+task set-playback-state
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <playbackState>
+    bind factor, link value
+
+task set-action-handler
+  base build
+  base type
+  base callback
+
+  cause call-base
+    bind object, link build
+    bind method, text <setActionHandler>
+    bind factor, link type
+    bind factor, link callback
+    turn seed
+
+task set-position-state
+  base build
+  base state-dict
+
+  cause call-base
+    bind object, link build
+    bind method, text <setPositionState>
+    bind factor, link state-dict
+    turn seed

@@ -4,7 +4,7 @@ force do-phase
   start key, field key
   start last-phase, field boolean
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |doPhase|
     mount factor, share key
@@ -14,7 +14,7 @@ force do-phase
 force generate-secret
   start build, field key-agreement
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |generateSecret|
     throw build, field byte-array
@@ -24,7 +24,7 @@ force generate-secret
   start shared-secret, field byte-array
   start offset, field int
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |generateSecret|
     mount factor, share shared-secret
@@ -35,7 +35,7 @@ force generate-secret
   start build, field key-agreement
   start algorithm, field string
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |generateSecret|
     mount factor, share algorithm
@@ -44,7 +44,7 @@ force generate-secret
 force get-algorithm
   start build, field key-agreement
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getAlgorithm|
     throw build, field string
@@ -53,7 +53,7 @@ force get-instance
   start build, field key-agreement
   start algorithm, field string
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getInstance|
     mount factor, share algorithm
@@ -64,7 +64,7 @@ force get-instance
   start algorithm, field string
   start provider, field string
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getInstance|
     mount factor, share algorithm
@@ -76,7 +76,7 @@ force get-instance
   start algorithm, field string
   start provider, field provider
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getInstance|
     mount factor, share algorithm
@@ -86,7 +86,7 @@ force get-instance
 force get-provider
   start build, field key-agreement
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getProvider|
     throw build, field provider
@@ -95,7 +95,7 @@ force init
   start build, field key-agreement
   start key, field key
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |init|
     mount factor, share key
@@ -106,7 +106,7 @@ force init
   start key, field key
   start random, field secure-random
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |init|
     mount factor, share key
@@ -118,7 +118,7 @@ force init
   start key, field key
   start params, field algorithm-parameter-spec
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |init|
     mount factor, share key
@@ -131,7 +131,7 @@ force init
   start params, field algorithm-parameter-spec
   start random, field secure-random
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |init|
     mount factor, share key

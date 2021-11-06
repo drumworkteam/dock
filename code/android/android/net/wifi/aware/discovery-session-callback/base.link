@@ -9,7 +9,7 @@ force on-message-received
   mount peer-handle, field peer-handle
   mount message, field byte-array
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onMessageReceived|
     drive factor, share peer-handle
@@ -20,7 +20,7 @@ force on-message-send-failed
   mount build, field discovery-session-callback
   mount message-id, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onMessageSendFailed|
     drive factor, share message-id
@@ -30,7 +30,7 @@ force on-message-send-succeeded
   mount build, field discovery-session-callback
   mount message-id, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onMessageSendSucceeded|
     drive factor, share message-id
@@ -40,7 +40,7 @@ force on-publish-started
   mount build, field discovery-session-callback
   mount session, field publish-discovery-session
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onPublishStarted|
     drive factor, share session
@@ -52,7 +52,7 @@ force on-service-discovered
   mount service-specific-info, field byte-array
   mount match-filter, field mutable-list-byte-array
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onServiceDiscovered|
     drive factor, share peer-handle
@@ -67,7 +67,7 @@ force on-service-discovered-within-range
   mount match-filter, field mutable-list-byte-array
   mount distance-mm, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onServiceDiscoveredWithinRange|
     drive factor, share peer-handle
@@ -79,7 +79,7 @@ force on-service-discovered-within-range
 force on-session-config-failed
   mount build, field discovery-session-callback
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onSessionConfigFailed|
     throw build, field unit
@@ -87,7 +87,7 @@ force on-session-config-failed
 force on-session-config-updated
   mount build, field discovery-session-callback
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onSessionConfigUpdated|
     throw build, field unit
@@ -95,7 +95,7 @@ force on-session-config-updated
 force on-session-terminated
   mount build, field discovery-session-callback
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onSessionTerminated|
     throw build, field unit
@@ -104,7 +104,7 @@ force on-subscribe-started
   mount build, field discovery-session-callback
   mount session, field subscribe-discovery-session
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |onSubscribeStarted|
     drive factor, share session

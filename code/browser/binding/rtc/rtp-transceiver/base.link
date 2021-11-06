@@ -1,0 +1,84 @@
+
+task get-current-direction
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <currentDirection>
+    turn seed
+
+task get-direction
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <direction>
+    turn seed
+
+task set-direction
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <direction>
+    bind factor, link value
+
+task get-mid
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <mid>
+    turn seed
+
+task get-receiver
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <receiver>
+    turn seed
+
+task get-sender
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <sender>
+    turn seed
+
+task get-stopped
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <stopped>
+    turn seed
+
+task set-stopped
+  base build
+  base value
+
+  cause set-aspect
+    bind object, link build
+    bind aspect, text <stopped>
+    bind factor, link value
+
+task set-codec-preferences
+  base build
+  base codecs
+
+  cause call-base
+    bind object, link build
+    bind method, text <setCodecPreferences>
+    bind factor, link codecs
+    turn seed
+
+task stop
+  base build
+
+  cause call-base
+    bind object, link build
+    bind method, text <stop>
+    turn seed

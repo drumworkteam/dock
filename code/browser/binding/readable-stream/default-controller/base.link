@@ -1,0 +1,36 @@
+
+task get-desired-size
+  base build
+
+  cause get-aspect
+    bind object, link build
+    bind aspect, text <desiredSize>
+    turn seed
+
+task close
+  base build
+
+  cause call-base
+    bind object, link build
+    bind method, text <close>
+    turn seed
+
+task enqueue
+  base build
+  base chunk
+
+  cause call-base
+    bind object, link build
+    bind method, text <enqueue>
+    bind factor, link chunk
+    turn seed
+
+task error
+  base build
+  base e
+
+  cause call-base
+    bind object, link build
+    bind method, text <error>
+    bind factor, link e
+    turn seed

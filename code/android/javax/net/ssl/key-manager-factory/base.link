@@ -2,7 +2,7 @@
 force get-algorithm
   start build, field key-manager-factory
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getAlgorithm|
     throw build, field string
@@ -10,7 +10,7 @@ force get-algorithm
 force get-default-algorithm
   start build, field key-manager-factory
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getDefaultAlgorithm|
     throw build, field string
@@ -19,7 +19,7 @@ force get-instance
   start build, field key-manager-factory
   start algorithm, field string
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getInstance|
     mount factor, share algorithm
@@ -30,7 +30,7 @@ force get-instance
   start algorithm, field string
   start provider, field string
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getInstance|
     mount factor, share algorithm
@@ -42,7 +42,7 @@ force get-instance
   start algorithm, field string
   start provider, field provider
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getInstance|
     mount factor, share algorithm
@@ -52,7 +52,7 @@ force get-instance
 force get-key-managers
   start build, field key-manager-factory
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getKeyManagers|
     throw build, field array
@@ -60,7 +60,7 @@ force get-key-managers
 force get-provider
   start build, field key-manager-factory
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |getProvider|
     throw build, field provider
@@ -70,7 +70,7 @@ force init
   start ks, field key-store
   start password, field char-array
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |init|
     mount factor, share ks
@@ -81,7 +81,7 @@ force init
   start build, field key-manager-factory
   start spec, field manager-factory-parameters
 
-  cause call-method
+  cause call-base
     mount object, share build
     mount method, |init|
     mount factor, share spec

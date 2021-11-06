@@ -2,7 +2,7 @@
 force get-adapter
   mount build, field bluetooth-manager
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getAdapter|
     throw build, field bluetooth-adapter
@@ -11,7 +11,7 @@ force get-connected-devices
   mount build, field bluetooth-manager
   mount profile, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getConnectedDevices|
     drive factor, share profile
@@ -22,7 +22,7 @@ force get-connection-state
   mount device, field bluetooth-device
   mount profile, field int
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getConnectionState|
     drive factor, share device
@@ -34,7 +34,7 @@ force get-devices-matching-connection-states
   mount profile, field int
   mount states, field int-array
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |getDevicesMatchingConnectionStates|
     drive factor, share profile
@@ -46,7 +46,7 @@ force open-gatt-server
   mount context, field context
   mount callback, field bluetooth-gatt-server-callback
 
-  cause call-method
+  cause call-base
     drive object, share build
     drive method, |openGattServer|
     drive factor, share context
