@@ -8,40 +8,40 @@ task get-index-of
   base index, form integer
   call call-base
     bind object, link array
-    bind method, <indexOf>
+    bind method, text <indexOf>
     bind factor, link index
     turn seed
 
 task create
   call create-literal
-    bind literal, <[]>
+    bind literal, text <[]>
     turn seed
 
 task create-uint8
   base value
-  call invoke-constructor
-    bind constructor, <Uint8Array>
+  call make
+    bind constructor, text <Uint8Array>
     bind factor, link value
     turn seed
 
 task create-uint16
   base value
-  call invoke-constructor
-    bind constructor, <Uint16Array>
+  call make
+    bind constructor, text <Uint16Array>
     bind factor, link value
     turn seed
 
 task create-uint32
   base value
-  call invoke-constructor
-    bind constructor, <Uint32Array>
+  call make
+    bind constructor, text <Uint32Array>
     bind factor, link value
     turn seed
 
 task create-float32
   base value
-  call invoke-constructor
-    bind constructor, <Float32Array>
+  call make
+    bind constructor, text <Float32Array>
     bind factor, link value
     turn seed
 
@@ -51,7 +51,7 @@ task push
 
   call call-base
     bind object, link array
-    bind method, <push>
+    bind method, text <push>
     bind factor, link value
 
 task pop
@@ -59,7 +59,7 @@ task pop
 
   call call-base
     bind object, link array
-    bind method, <pop>
+    bind method, text <pop>
     turn seed
 
 task shift
@@ -67,7 +67,7 @@ task shift
 
   call call-base
     bind object, link array
-    bind method, <shift>
+    bind method, text <shift>
     turn seed
 
 task unshift
@@ -76,7 +76,7 @@ task unshift
 
   call call-base
     bind object, link array
-    bind method, <unshift>
+    bind method, text <unshift>
     bind factor, link value
 
 task store
@@ -103,5 +103,5 @@ task get-length
 
   call get-aspect
     bind object, link array
-    bind aspect, <length>
+    bind aspect, text <length>
     turn seed

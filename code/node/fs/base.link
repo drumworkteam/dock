@@ -1,205 +1,197 @@
 
-fetch ../../../javascript/binding
-  fetch /number
-    catch field unsigned-integer
-  fetch /string
-    catch field string
-  fetch /function
-    catch field function
+task write-file
+  base fs
+  base path
+  base content
+  base encoding, text <utf-8>
+  base callback, form function
 
-force write-file
-  start fs
-  start path
-  start content
-  start encoding, start |utf-8|
-  start callback, field function
+  call call-base
+    bind object, link fs
+    bind method, text <writeFile>
+    bind factor, link path
+    bind factor, link content
+    bind factor, link encoding
+    bind factor, link callback
 
-  cause call-base
-    mount object, share fs
-    mount method, |writeFile|
-    mount factor, share path
-    mount factor, share content
-    mount factor, share encoding
-    mount factor, share callback
+task read-file
+  base fs
+  base path
+  base encoding, text <utf-8>
+  base callback, form function
 
-force read-file
-  start fs
-  start path
-  start encoding, start |utf-8|
-  start callback, field function
+  call call-base
+    bind object, link fs
+    bind method, text <readFile>
+    bind factor, link path
+    bind factor, link encoding
+    bind factor, link callback
 
-  cause call-base
-    mount object, share fs
-    mount method, |readFile|
-    mount factor, share path
-    mount factor, share encoding
-    mount factor, share callback
+task append-file
+  base fs
+  base path, form string
+  base data, form string
+  base callback, form function
 
-force append-file
-  start fs
-  start path, field string
-  start data, field string
-  start callback, field function
+  call call-base
+    bind object, link fs
+    bind method, text <appendFile>
+    bind factor, link path
+    bind factor, link data
+    bind factor, link callback
 
-  cause call-base
-    mount object, share fs
-    mount method, |appendFile|
-    mount factor, share path
-    mount factor, share data
-    mount factor, share callback
+task change-mode
+  base fs
+  base path, form string
+  base mode
+  base callback
 
-force change-mode
-  start fs
-  start path, string
-  start mode
-  start callback
+  call call-base
+    bind object, link fs
+    bind method, text <chmod>
+    bind factor, link path
+    bind factor, link mode
+    bind factor, link callback
 
-  cause call-base
-    mount object, share fs
-    mount method, |chmod|
-    mount factor, share path
-    mount factor, share mode
-    mount factor, share callback
+task change-owner
+  base fs
+  base path
+  base uid
+  base gid
+  base callback
 
-force change-owner
-  start fs
-  start path
-  start uid
-  start gid
-  start callback
+  call call-base
+    bind object, link fs
+    bind method, text <chown>
+    bind factor, link path
+    bind factor, link uid
+    bind factor, link gid
+    bind factor, link callback
 
-  cause call-base
-    mount object, share fs
-    mount method, |chown|
-    mount factor, share path
-    mount factor, share uid
-    mount factor, share gid
-    mount factor, share callback
+task copy-file
+  base fs
+  base src, form string
+  base dest, form string
+  base mode, form string
+  base callback, form function
 
-force copy-file
-  start fs
-  start src, field string
-  start dest, field string
-  start mode, field string
-  start callback, field function
+  call call-base
+    bind object, link fs
+    bind method, text <copyFile>
+    bind factor, link src
+    bind factor, link dest
+    bind factor, link mode
+    bind factor, link callback
 
-  cause call-base
-    mount object, share fs
-    mount method, |copyFile|
-    mount factor, share src
-    mount factor, share dest
-    mount factor, share mode
-    mount factor, share callback
+task create-read-stream
+  base fs
+  base path, form string
+  base options
 
-force create-read-stream
-  start fs
-  start path, field string
-  start options
-
-  cause call-base
-    mount object, share fs
-    mount method, |createReadStream|
-    mount factor, share path
-    mount factor, share options
+  call call-base
+    bind object, link fs
+    bind method, text <createReadStream>
+    bind factor, link path
+    bind factor, link options
     raise build
 
-force create-write-stream
-  start fs
-  start path, field string
-  start options
+task create-write-stream
+  base fs
+  base path, form string
+  base options
 
-  cause call-base
-    mount object, share fs
-    mount method, |createWriteStream|
-    mount factor, share path
-    mount factor, share options
+  call call-base
+    bind object, link fs
+    bind method, text <createWriteStream>
+    bind factor, link path
+    bind factor, link options
     raise build
 
-force build-directory
-  start fs
-  start path, field string
-  start options
-  start callback, field function
+task build-directory
+  base fs
+  base path, form string
+  base options
+  base callback, form function
 
-  cause call-base
-    mount object, share fs
-    mount method, |mkdir|
-    mount factor, share path
-    mount factor, share options
-    mount factor, share callback
+  call call-base
+    bind object, link fs
+    bind method, text <mkdir>
+    bind factor, link path
+    bind factor, link options
+    bind factor, link callback
 
-force read-directory
-  start fs
-  start path, field string
-  start options
-  start callback, field function
+task read-directory
+  base fs
+  base path, form string
+  base options
+  base callback, form function
 
-  cause call-base
-    mount object, share fs
-    mount method, |readdir|
-    mount factor, share path
-    mount factor, share options
-    mount factor, share callback
+  call call-base
+    bind object, link fs
+    bind method, text <readdir>
+    bind factor, link path
+    bind factor, link options
+    bind factor, link callback
 
-force rename
-  start fs
-  start old, field string
-  start new, field string
-  start callback, field function
+task rename
+  base fs
+  base old-path, form string
+  base new-path, form string
+  base callback, form function
 
-  cause call-base
-    mount object, share fs
-    mount method, |rename|
-    mount factor, share old
-    mount factor, share new
-    mount factor, share callback
+  call call-base
+    bind object, link fs
+    bind method, text <rename>
+    bind factor, link old-path
+    bind factor, link new-path
+    bind factor, link callback
 
-force clear-directory
-  start fs
-  start path, field string
-  start options
-  start callback, field function
+task clear-directory
+  base fs
+  base path, form string
+  base options
+  base callback, form function
 
-  cause call-base
-    mount object, share fs
-    mount method, |rmdir|
-    mount factor, share path
-    mount factor, share options
-    mount factor, share callback
+  call call-base
+    bind object, link fs
+    bind method, text <rmdir>
+    bind factor, link path
+    bind factor, link options
+    bind factor, link callback
 
-force stat
-  start fs
-  start path, field string
-  start options
-  start callback, field function
+task stat
+  base fs
+  base path, form string
+  base options
+  base callback, form function
 
-  cause call-base
-    mount object, share fs
-    mount method, |stat|
-    mount factor, share path
-    mount factor, share options
-    mount factor, share callback
+  call call-base
+    bind object, link fs
+    bind method, text <stat>
+    bind factor, link path
+    bind factor, link options
+    bind factor, link callback
 
-force truncate
-  start fs
-  start path, field string
-  start size, field unsigned-integer
-  start callback, field function
+task truncate
+  base fs
+  base path, form string
+  base size, form unsigned-integer
+  base callback, form function
 
-  cause call-base
-    mount object, share fs
-    mount method, |truncate|
-    mount factor, share path
-    mount factor, share size
-    mount factor, share callback
+  call call-base
+    bind object, link fs
+    bind method, text <truncate>
+    bind factor, link path
+    bind factor, link size
+    bind factor, link callback
 
-force unlink
-  start fs
-  start path, field string
-  start callback, field function
+task unlink
+  base fs
+  base path, form string
+  base callback, form function
 
-  cause call-base
-    mount object, share fs
-    mount method, |unlink|
-    mount factor, share path
-    mount factor, share callback
+  call call-base
+    bind object, link fs
+    bind method, text <unlink>
+    bind factor, link path
+    bind factor, link callback

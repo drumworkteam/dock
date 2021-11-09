@@ -1,7 +1,7 @@
 
 task create
   call create-literal
-    bind literal, <{}>
+    bind literal, text <\{\}>
     turn seed
 
 task check-if-has-property
@@ -10,7 +10,7 @@ task check-if-has-property
 
   call call-base
     bind object, link object
-    bind method, <hasOwnProperty>
+    bind method, text <hasOwnProperty>
     bind factor, link property
     turn seed
 
@@ -18,8 +18,8 @@ task stringify-json
   base object
 
   call call-base
-    bind object, <JSON>
-    bind method, <stringify>
+    bind object, text <JSON>
+    bind method, text <stringify>
     bind factor, link object
     turn seed
 
@@ -27,8 +27,8 @@ task parse-json
   base string
 
   call call-base
-    bind object, <JSON>
-    bind method, <parse>
+    bind object, text <JSON>
+    bind method, text <parse>
     bind factor, link string
     turn seed
 
@@ -36,14 +36,16 @@ task get-keys
   base object
 
   call call-base
-    bind object, <Object>
-    bind method, <keys>
+    bind object, text <Object>
+    bind method, text <keys>
     bind factor, link object
+    turn seed
 
 task get-values
   base object
 
   call call-base
-    bind object, <Object>
-    bind method, <values>
+    bind object, text <Object>
+    bind method, text <values>
     bind factor, link object
+    turn seed

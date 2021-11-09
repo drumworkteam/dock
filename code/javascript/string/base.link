@@ -12,7 +12,7 @@ task replace
 
   call call-base
     bind object, link string
-    bind method, <replace>
+    bind method, text <replace>
     bind factor, link pattern
     bind factor, link replacer
     turn seed
@@ -22,7 +22,7 @@ task trim
 
   call call-base
     bind object, link string
-    bind method, <trim>
+    bind method, text <trim>
     turn seed
 
 task get-char-code-at
@@ -31,7 +31,7 @@ task get-char-code-at
 
   call call-base
     bind object, link string
-    bind method, <charCodeAt>
+    bind method, text <charCodeAt>
     bind factor, link index
     turn seed
 
@@ -41,7 +41,7 @@ task get-char-at
 
   call call-base
     bind object, link string
-    bind method, <charAt>
+    bind method, text <charAt>
     bind factor, link index
     turn seed
 
@@ -49,8 +49,8 @@ task get-char-from-code
   base code, form integer
 
   call call-base
-    bind object, <String>
-    bind method, <fromCharCode>
+    bind object, text <String>
+    bind method, text <fromCharCode>
     bind factor, link code
     turn seed
 
@@ -58,8 +58,8 @@ task get-char-from-code-point
   base code, form integer
 
   call call-base
-    bind object, <String>
-    bind method, <fromCodePoint>
+    bind object, text <String>
+    bind method, text <fromCodePoint>
     bind factor, link code
     turn seed
 
@@ -68,7 +68,7 @@ task convert-to-lowercase
 
   call call-base
     bind object, link string
-    bind method, <toLowerCase>
+    bind method, text <toLowerCase>
     turn seed
 
 task convert-to-uppercase
@@ -76,12 +76,12 @@ task convert-to-uppercase
 
   call call-base
     bind object, link string
-    bind method, <toUpperCase>
+    bind method, text <toUpperCase>
     turn seed
 
 task create
   call create-literal
-    bind literal, <''>
+    bind literal, text <''>
     turn seed
 
 task match
@@ -90,19 +90,19 @@ task match
 
   call call-base
     bind object, link string
-    bind method, <match>
+    bind method, text <match>
     bind factor, link pattern
     turn seed
 
 task create-collator
-  call invoke-constructor
-    bind constructor, <Intl.Collator>
+  call make
+    bind constructor, text <Intl.Collator>
 
 task get-collator-comparator
   base collator
   call get-aspect
     bind object, link collator
-    bind aspect, <compare>
+    bind aspect, text <compare>
 
 task split
   base string
@@ -110,7 +110,7 @@ task split
 
   call call-base
     bind object, link string
-    bind method, <split>
+    bind method, text <split>
     bind factor, link pattern
     turn seed
 
@@ -120,7 +120,7 @@ task check-starts-with
 
   call call-base
     bind object, link string
-    bind method, <startsWith>
+    bind method, text <startsWith>
     bind factor, link pattern
     turn seed
 
@@ -130,7 +130,7 @@ task check-ends-with
 
   call call-base
     bind object, link string
-    bind method, <endsWith>
+    bind method, text <endsWith>
     bind factor, link pattern
     turn seed
 
@@ -141,7 +141,7 @@ task pad-start
 
   call call-base
     bind object, link string
-    bind method, <padStart>
+    bind method, text <padStart>
     bind factor, link pad-size
     bind factor, link pad-string
     turn seed

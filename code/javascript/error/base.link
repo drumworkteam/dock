@@ -1,16 +1,24 @@
 
-fetch ../string
-  catch form string
+load ../string
+  take form string
 
-field error
+form error
   base message, form string
+
+task create
+  base message
+
+  call make
+    bind constructor, text <Error>
+    bind factor, link message
+    turn seed
 
 task get-stack
   base error, form error
 
   call get-aspect
     bind object, link error
-    bind aspect, <stack>
+    bind aspect, text <stack>
     turn seed
 
 task throw
