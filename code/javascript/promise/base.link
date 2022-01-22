@@ -2,7 +2,16 @@
 task make
   base hook, form task
 
-  call make
-    bind constructor, text <Promise>
-    bind factor, link hook
-    turn seed
+  turn seed
+    call make
+      bind constructor, text <Promise>
+      bind factor, link hook
+
+task call-all
+  base array
+
+  turn seed
+    call call-base
+      bind object, text <Promise>
+      bind method, text <all>
+      bind factor, link array
