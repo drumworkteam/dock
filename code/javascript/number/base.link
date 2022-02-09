@@ -1,25 +1,24 @@
 
-fetch ..
-  fetch /string
-    catch form string
-  fetch /function
-    catch form function
+load ../string
+  take form string
+load ../function
+  take form function
 
-field number
+form number
 
-field integer
+form integer
   form number
 
-field integer-32
+form integer-32
   form integer
 
-field decimal
+form decimal
 
-field unsigned-integer
+form unsigned-integer
   form integer
 
 task parse-decimal
-  base string, form string
+  link string, form string
 
   call call-base
     bind object, text <window>
@@ -28,7 +27,7 @@ task parse-decimal
     turn seed
 
 task parse-int
-  base string, form string
+  link string, form string
 
   call call-base
     bind object, text <window>
@@ -37,7 +36,7 @@ task parse-int
     turn seed
 
 task parse-number
-  base value
+  link value
 
   call call-base
     bind object, text <window>
@@ -46,8 +45,8 @@ task parse-number
     turn seed
 
 task get-max
-  base start, form number
-  base end, form number
+  link start, form number
+  link end, form number
 
   call call-base
     bind object, text <Math>
@@ -57,8 +56,8 @@ task get-max
     turn seed
 
 task get-min
-  base start, form number
-  base end, form number
+  link start, form number
+  link end, form number
 
   call call-base
     bind object, text <Math>
@@ -68,7 +67,7 @@ task get-min
     turn seed
 
 task floor
-  base number, form number
+  link number, form number
 
   call call-base
     bind object, text <Math>
@@ -77,7 +76,7 @@ task floor
     turn seed
 
 task ceil
-  base number, form number
+  link number, form number
 
   call call-base
     bind object, text <Math>
@@ -86,7 +85,7 @@ task ceil
     turn seed
 
 task round
-  base number, form number
+  link number, form number
 
   call call-base
     bind object, text <Math>
@@ -95,7 +94,7 @@ task round
     turn seed
 
 task get-abs
-  base number, form number
+  link number, form number
 
   call call-base
     bind object, text <Math>
@@ -104,7 +103,7 @@ task get-abs
     turn seed
 
 task get-cos
-  base number, form number
+  link number, form number
 
   call call-base
     bind object, text <Math>
@@ -113,7 +112,7 @@ task get-cos
     turn seed
 
 task get-acos
-  base number, form number
+  link number, form number
 
   call call-base
     bind object, text <Math>
@@ -122,7 +121,7 @@ task get-acos
     turn seed
 
 task get-sin
-  base number, form number
+  link number, form number
 
   call call-base
     bind object, text <Math>
@@ -131,7 +130,7 @@ task get-sin
     turn seed
 
 task get-asin
-  base number, form number
+  link number, form number
 
   call call-base
     bind object, text <Math>
@@ -140,7 +139,7 @@ task get-asin
     turn seed
 
 task get-tan
-  base number, form number
+  link number, form number
 
   call call-base
     bind object, text <Math>
@@ -149,7 +148,7 @@ task get-tan
     turn seed
 
 task get-atan
-  base number, form number
+  link number, form number
 
   call call-base
     bind object, text <Math>
@@ -158,7 +157,7 @@ task get-atan
     turn seed
 
 task get-atan2
-  base number, form number
+  link number, form number
 
   call call-base
     bind object, text <Math>
@@ -167,7 +166,7 @@ task get-atan2
     turn seed
 
 task get-log
-  base number, form number
+  link number, form number
 
   call call-base
     bind object, text <Math>
@@ -176,7 +175,7 @@ task get-log
     turn seed
 
 task get-sqrt
-  base number, form number
+  link number, form number
 
   call call-base
     bind object, text <Math>
@@ -185,8 +184,8 @@ task get-sqrt
     turn seed
 
 task add
-  base left, form number
-  base right, form number
+  link left, form number
+  link right, form number
 
   call call-twin
     bind left, link left
@@ -195,8 +194,8 @@ task add
     turn seed
 
 task subtract
-  base left, form number
-  base right, form number
+  link left, form number
+  link right, form number
 
   call call-twin
     bind left, link left
@@ -205,8 +204,8 @@ task subtract
     turn seed
 
 task multiply
-  base left, form number
-  base right, form number
+  link left, form number
+  link right, form number
 
   call call-twin
     bind left, link left
@@ -215,8 +214,8 @@ task multiply
     turn seed
 
 task divide
-  base left, form number
-  base right, form number
+  link left, form number
+  link right, form number
 
   call call-twin
     bind left, link left
@@ -225,8 +224,8 @@ task divide
     turn seed
 
 task modulus
-  base left, form number
-  base right, form number
+  link left, form number
+  link right, form number
 
   call call-twin
     bind left, link left
@@ -235,8 +234,8 @@ task modulus
     turn seed
 
 task get-exponent
-  base left, form number
-  base right, form number
+  link left, form number
+  link right, form number
 
   call call-twin
     bind left, link left
@@ -245,7 +244,7 @@ task get-exponent
     turn seed
 
 task increment
-  base value, form number
+  link value, form number
 
   call call-head
     bind value, link value
@@ -253,7 +252,7 @@ task increment
     turn seed
 
 task decrement
-  base value, form number
+  link value, form number
 
   call call-head
     bind value, link value
@@ -261,7 +260,7 @@ task decrement
     turn seed
 
 task check-if-not-number
-  base value
+  link value
 
   call call-base
     bind object, text <window>
@@ -274,13 +273,3 @@ task get-random
     bind object, text <Math>
     bind method, text <random>
     turn seed
-
-task loop
-  base start, form number
-  base end, form number
-  base step, form function
-
-  call walk-size
-    bind start, link start
-    bind end, link end
-    bind step, link step

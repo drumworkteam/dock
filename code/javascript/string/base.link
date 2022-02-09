@@ -1,14 +1,14 @@
 
-fetch ../number
-  catch form unsigned-integer
-  catch form integer
+load ../number
+  take form unsigned-integer
+  take form integer
 
 field string
 
 task replace
-  base string, form string
-  base pattern
-  base replacer
+  link string, form string
+  link pattern
+  link replacer
 
   call call-base
     bind object, link string
@@ -18,7 +18,7 @@ task replace
     turn seed
 
 task trim
-  base string, form string
+  link string, form string
 
   call call-base
     bind object, link string
@@ -26,8 +26,8 @@ task trim
     turn seed
 
 task get-char-code-at
-  base string, form string
-  base index, form unsigned-integer
+  link string, form string
+  link index, form unsigned-integer
 
   call call-base
     bind object, link string
@@ -36,8 +36,8 @@ task get-char-code-at
     turn seed
 
 task get-char-at
-  base string, form string
-  base index, form unsigned-integer
+  link string, form string
+  link index, form unsigned-integer
 
   call call-base
     bind object, link string
@@ -46,7 +46,7 @@ task get-char-at
     turn seed
 
 task get-char-from-code
-  base code, form integer
+  link code, form integer
 
   call call-base
     bind object, text <String>
@@ -55,7 +55,7 @@ task get-char-from-code
     turn seed
 
 task get-char-from-code-point
-  base code, form integer
+  link code, form integer
 
   call call-base
     bind object, text <String>
@@ -64,7 +64,7 @@ task get-char-from-code-point
     turn seed
 
 task convert-to-lowercase
-  base string
+  link string
 
   call call-base
     bind object, link string
@@ -72,7 +72,7 @@ task convert-to-lowercase
     turn seed
 
 task convert-to-uppercase
-  base string
+  link string
 
   call call-base
     bind object, link string
@@ -85,8 +85,8 @@ task create
     turn seed
 
 task match
-  base string
-  base pattern
+  link string
+  link pattern
 
   call call-base
     bind object, link string
@@ -99,14 +99,14 @@ task create-collator
     bind constructor, text <Intl.Collator>
 
 task get-collator-comparator
-  base collator
+  link collator
   call get-aspect
     bind object, link collator
     bind aspect, text <compare>
 
 task split
-  base string
-  base pattern
+  link string
+  link pattern
 
   call call-base
     bind object, link string
@@ -115,8 +115,8 @@ task split
     turn seed
 
 task check-starts-with
-  base string
-  base pattern
+  link string
+  link pattern
 
   call call-base
     bind object, link string
@@ -125,8 +125,8 @@ task check-starts-with
     turn seed
 
 task check-ends-with
-  base string
-  base pattern
+  link string
+  link pattern
 
   call call-base
     bind object, link string
@@ -135,9 +135,9 @@ task check-ends-with
     turn seed
 
 task pad-start
-  base string
-  base pad-size
-  base pad-string
+  link string
+  link pad-size
+  link pad-string
 
   call call-base
     bind object, link string

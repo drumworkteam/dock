@@ -1,24 +1,24 @@
 
 task walk
-  base check, form force
-  base block, form force
+  link check, form force
+  link block, form force
 
   call loop
     bind check, link check
     bind block, link block
 
 task check
-  base check, form force
-  base block, form force
+  link check, form force
+  link block, form force
 
   call test
     bind check, link check
     bind block, link block
 
 task check-else
-  base check, form force
-  base block, form force
-  base other, form force
+  link check, form force
+  link block, form force
+  link other, form force
 
   call test-else
     bind check, link check
@@ -26,7 +26,7 @@ task check-else
     bind else, link other
 
 task debug-function
-  base func, form function
+  link func, form function
 
   call call-base
     bind object, text <window>
@@ -38,16 +38,17 @@ task debug
     bind keyword, text <debugger>
 
 task queue
-  base func, form function
+  link func, form function
 
   call call-base
     bind object, text <window>
     bind method, text <setImmediate>
     bind factor, link func
+    turn seed
 
 task compute-bitwise-or
-  base left
-  base right
+  link left
+  link right
 
   call call-twin
     bind left, link left
@@ -56,8 +57,8 @@ task compute-bitwise-or
     turn seed
 
 task check-if-equal
-  base left
-  base right
+  link left
+  link right
 
   call call-twin
     bind left, link left
@@ -66,7 +67,7 @@ task check-if-equal
     turn seed
 
 task check-if-null
-  base value
+  link value
 
   call call-twin
     bind left, link value
@@ -75,8 +76,8 @@ task check-if-null
     turn seed
 
 task check-if-strictly-equal
-  base left
-  base right
+  link left
+  link right
 
   call call-twin
     bind left, link left
@@ -85,7 +86,7 @@ task check-if-strictly-equal
     turn seed
 
 task get-typeof
-  base value
+  link value
 
   call call-keyword
     bind keyword, text <typeof>
@@ -93,8 +94,8 @@ task get-typeof
     turn seed
 
 task get-instanceof
-  base left
-  base right
+  link left
+  link right
 
   call call-keyword-2
     bind left, link left
@@ -103,9 +104,9 @@ task get-instanceof
     turn seed
 
 task set-field
-  base object
-  base attribute, form chord
-  base value
+  link object
+  link attribute, form chord
+  link value
 
   call set-dynamic-aspect
     bind object, link object
@@ -113,8 +114,8 @@ task set-field
     bind factor, link value
 
 task get-field
-  base object
-  base attribute, form chord
+  link object
+  link attribute, form chord
 
   call get-dynamic-aspect
     bind object, link object
@@ -122,16 +123,16 @@ task get-field
     turn seed
 
 task remove-field
-  base object
-  base attribute, form chord
+  link object
+  link attribute, form chord
 
   call delete
     bind object, link object
     bind aspect, link attribute
 
 task shift-left
-  base left
-  base right
+  link left
+  link right
 
   call call-twin
     bind left, link left
@@ -140,8 +141,8 @@ task shift-left
     turn seed
 
 task shift-right
-  base left
-  base right
+  link left
+  link right
 
   call call-twin
     bind left, link left
@@ -150,8 +151,8 @@ task shift-right
     turn seed
 
 task shift-right-unsigned
-  base left
-  base right
+  link left
+  link right
 
   call call-twin
     bind left, link left
@@ -160,8 +161,8 @@ task shift-right-unsigned
     turn seed
 
 task compute-bitwise-and
-  base left
-  base right
+  link left
+  link right
 
   call call-twin
     bind left, link left
@@ -170,8 +171,8 @@ task compute-bitwise-and
     turn seed
 
 task check-or
-  base left
-  base right
+  link left
+  link right
 
   call call-twin
     bind left, link left
@@ -180,15 +181,15 @@ task check-or
     turn seed
 
 task try-catch
-  base block, form function
-  base error, form function
+  link block, form function
+  link error, form function
 
   call call-try
     bind block, link block
     bind error, link error
 
 task check-if-truthy
-  base value
+  link value
 
   call call-head
     bind operation, text <!!>
@@ -196,7 +197,7 @@ task check-if-truthy
     turn seed
 
 task check-opposite
-  base value
+  link value
 
   call call-head
     bind operation, text <!>
@@ -204,8 +205,8 @@ task check-opposite
     turn seed
 
 task check-not-equal
-  base left
-  base right
+  link left
+  link right
 
   call call-twin
     bind left, link left
@@ -214,7 +215,7 @@ task check-not-equal
     turn seed
 
 task flip-block
-  base value
+  link value
 
   call call-head
     bind operation, text <~>
@@ -222,8 +223,8 @@ task flip-block
     turn seed
 
 task check-gt
-  base left
-  base right
+  link left
+  link right
 
   call call-twin
     bind left, link left
@@ -232,8 +233,8 @@ task check-gt
     turn seed
 
 task check-lt
-  base left
-  base right
+  link left
+  link right
 
   call call-twin
     bind left, link left
@@ -242,8 +243,8 @@ task check-lt
     turn seed
 
 task check-gte
-  base left
-  base right
+  link left
+  link right
 
   call call-twin
     bind left, link left
@@ -252,8 +253,8 @@ task check-gte
     turn seed
 
 task check-lte
-  base left
-  base right
+  link left
+  link right
 
   call call-twin
     bind left, link left
@@ -262,8 +263,8 @@ task check-lte
     turn seed
 
 task check-and
-  base left
-  base right
+  link left
+  link right
 
   call call-twin
     bind left, link left
