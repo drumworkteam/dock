@@ -1,39 +1,24 @@
 
-load ../string
-  take form string
+load ../text
+  take form text
 load ../function
   take form function
 
-form number
-
-form integer
-  form number
-
-form integer-32
-  form integer
-
-form decimal
-
-form unsigned-integer
-  form integer
-
 task parse-decimal
-  link string, form string
+  link string, form text
 
   call call-base
     bind object, text <window>
     bind method, text <parseFloat>
     bind factor, link string
-    turn seed
 
 task parse-int
-  link string, form string
+  link string, form text
 
   call call-base
     bind object, text <window>
     bind method, text <parseInt>
     bind factor, link string
-    turn seed
 
 task parse-number
   link value
@@ -42,7 +27,6 @@ task parse-number
     bind object, text <window>
     bind method, text <Number>
     bind factor, link value
-    turn seed
 
 task get-max
   link start, form number
@@ -53,7 +37,6 @@ task get-max
     bind method, text <max>
     bind factor, link start
     bind factor, link end
-    turn seed
 
 task get-min
   link start, form number
@@ -64,7 +47,6 @@ task get-min
     bind method, text <max>
     bind factor, link start
     bind factor, link end
-    turn seed
 
 task floor
   link number, form number
@@ -73,7 +55,6 @@ task floor
     bind object, text <Math>
     bind method, text <floor>
     bind factor, link number
-    turn seed
 
 task ceil
   link number, form number
@@ -82,7 +63,6 @@ task ceil
     bind object, text <Math>
     bind method, text <ceil>
     bind factor, link number
-    turn seed
 
 task round
   link number, form number
@@ -91,7 +71,6 @@ task round
     bind object, text <Math>
     bind method, text <round>
     bind factor, link number
-    turn seed
 
 task get-abs
   link number, form number
@@ -100,7 +79,6 @@ task get-abs
     bind object, text <Math>
     bind method, text <abs>
     bind factor, link number
-    turn seed
 
 task get-cos
   link number, form number
@@ -109,7 +87,6 @@ task get-cos
     bind object, text <Math>
     bind method, text <cos>
     bind factor, link number
-    turn seed
 
 task get-acos
   link number, form number
@@ -118,7 +95,6 @@ task get-acos
     bind object, text <Math>
     bind method, text <acos>
     bind factor, link number
-    turn seed
 
 task get-sin
   link number, form number
@@ -127,7 +103,6 @@ task get-sin
     bind object, text <Math>
     bind method, text <sin>
     bind factor, link number
-    turn seed
 
 task get-asin
   link number, form number
@@ -136,7 +111,6 @@ task get-asin
     bind object, text <Math>
     bind method, text <asin>
     bind factor, link number
-    turn seed
 
 task get-tan
   link number, form number
@@ -145,7 +119,6 @@ task get-tan
     bind object, text <Math>
     bind method, text <tan>
     bind factor, link number
-    turn seed
 
 task get-atan
   link number, form number
@@ -154,7 +127,6 @@ task get-atan
     bind object, text <Math>
     bind method, text <atan>
     bind factor, link number
-    turn seed
 
 task get-atan2
   link number, form number
@@ -163,7 +135,6 @@ task get-atan2
     bind object, text <Math>
     bind method, text <atan2>
     bind factor, link number
-    turn seed
 
 task get-log
   link number, form number
@@ -172,7 +143,6 @@ task get-log
     bind object, text <Math>
     bind method, text <log>
     bind factor, link number
-    turn seed
 
 task get-sqrt
   link number, form number
@@ -181,7 +151,6 @@ task get-sqrt
     bind object, text <Math>
     bind method, text <sqrt>
     bind factor, link number
-    turn seed
 
 task add
   link left, form number
@@ -191,7 +160,6 @@ task add
     bind left, link left
     bind operation, text <+>
     bind right, link right
-    turn seed
 
 task subtract
   link left, form number
@@ -201,7 +169,6 @@ task subtract
     bind left, link left
     bind operation, text <->
     bind right, link right
-    turn seed
 
 task multiply
   link left, form number
@@ -211,7 +178,6 @@ task multiply
     bind left, link left
     bind operation, text <*>
     bind right, link right
-    turn seed
 
 task divide
   link left, form number
@@ -221,7 +187,6 @@ task divide
     bind left, link left
     bind operation, text </>
     bind right, link right
-    turn seed
 
 task modulus
   link left, form number
@@ -231,7 +196,6 @@ task modulus
     bind left, link left
     bind operation, text <%>
     bind right, link right
-    turn seed
 
 task get-exponent
   link left, form number
@@ -241,7 +205,6 @@ task get-exponent
     bind left, link left
     bind operation, text <**>
     bind right, link right
-    turn seed
 
 task increment
   link value, form number
@@ -249,7 +212,6 @@ task increment
   call call-head
     bind value, link value
     bind operation, text <++>
-    turn seed
 
 task decrement
   link value, form number
@@ -257,7 +219,6 @@ task decrement
   call call-head
     bind value, link value
     bind operation, text <-->
-    turn seed
 
 task check-if-not-number
   link value
@@ -266,10 +227,8 @@ task check-if-not-number
     bind object, text <window>
     bind method, text <isNaN>
     bind factor, link value
-    turn seed
 
 task get-random
   call call-base
     bind object, text <Math>
     bind method, text <random>
-    turn seed

@@ -1,10 +1,15 @@
 
+load @drumwork/seed/code/form/text
+  take form cord
+
+form object
+
 task create
   call create-literal
     bind literal, text <\{\}>
 
 task check-if-has-property
-  link object
+  link object, form object
   link property
 
   call call-base
@@ -13,7 +18,7 @@ task check-if-has-property
     bind factor, link property
 
 task stringify-json
-  link object
+  link object, form object
 
   call call-base
     bind object, text <JSON>
@@ -21,7 +26,7 @@ task stringify-json
     bind factor, link object
 
 task parse-json
-  link string
+  link string, form cord
 
   call call-base
     bind object, text <JSON>
@@ -29,7 +34,7 @@ task parse-json
     bind factor, link string
 
 task get-keys
-  link object
+  link object, form object
 
   call call-base
     bind object, text <Object>
@@ -37,7 +42,7 @@ task get-keys
     bind factor, link object
 
 task get-values
-  link object
+  link object, form object
 
   call call-base
     bind object, text <Object>

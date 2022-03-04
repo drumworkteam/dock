@@ -1,24 +1,24 @@
 
-fetch ../number
-  catch form integer-32
-fetch ../function
-  catch form function
+load @drumwork/seed/code/form/number
+  take form unsigned-integer-32
+
+load @drumwork/seed/code/form/task
+  take form task
 
 task create
-  base interval, form integer-32
-  base callback, form function
+  link interval, form unsigned-integer-32
+  link callback, form task
 
   call call-base
-    bind object, <window>
-    bind method, <setInterval>
+    bind object, text <window>
+    bind method, text <setInterval>
     bind factor, link callback
     bind factor, link interval
-    turn seed
 
 task remove
-  base id, form integer-32
+  link id, form unsigned-integer-32
 
   call call-base
-    bind object, <window>
-    bind method, <clearInterval>
+    bind object, text <window>
+    bind method, text <clearInterval>
     bind factor, link id

@@ -1,26 +1,26 @@
 
-load ../string
-  take form string
+load @drumwork/seed/code/form/text
+  take form cord
 
 form error
-  link message, form string
+  link message, form cord
 
 task create
-  link message
+  link message, form cord
 
   call make
     bind constructor, text <Error>
-    bind factor, link message
+    bind factor, loan message
 
 task get-stack
   link error, form error
 
   call get-aspect
-    bind object, link error
+    bind object, loan error
     bind aspect, text <stack>
 
 task throw
-  link message, form string
+  link message, form cord
 
   call throw-error
-    bind factor, link message
+    bind factor, loan message

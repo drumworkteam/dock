@@ -1,49 +1,60 @@
 
+load @drumwork/seed/code/form/task
+  take form task
+
+load @drumwork/seed/code/form/boolean
+  take form boolean
+
+cast boolean-task
+  bear boolean
+
+cast void-task
+
 task walk
-  link check, form force
-  link block, form force
+  link check, cast boolean-task
+  link block, cast void-task
 
   call loop
-    bind check, link check
-    bind block, link block
+    bind check, loan check
+    bind block, loan block
 
 task check
-  link check, form force
-  link block, form force
+  link check, cast boolean-task
+  link block, cast void-task
 
   call test
-    bind check, link check
-    bind block, link block
+    bind check, loan check
+    bind block, loan block
 
 task check-else
-  link check, form force
-  link block, form force
-  link other, form force
+  link check, cast boolean-task
+  link block, cast void-task
+  link other, cast void-task
 
   call test-else
-    bind check, link check
-    bind block, link block
-    bind else, link other
+    bind check, loan check
+    bind block, loan block
+    bind else, loan other
 
 task debug-function
-  link func, form function
+  link func, form task
 
   call call-base
     bind object, text <window>
     bind method, text <debug>
-    bind factor, link func
+    bind factor, loan func
 
 task debug
   call debug
     bind keyword, text <debugger>
 
 task queue
-  link func, form function
+  link func, form task
 
   call call-base
     bind object, text <window>
     bind method, text <setImmediate>
-    bind factor, link func
+    bind factor, loan func
     turn seed
 
 task compute-bitwise-or
@@ -51,9 +62,9 @@ task compute-bitwise-or
   link right
 
   call call-twin
-    bind left, link left
+    bind left, loan left
     bind operation, text <|>
-    bind right, link right
+    bind right, loan right
     turn seed
 
 task check-if-equal
@@ -61,16 +72,16 @@ task check-if-equal
   link right
 
   call call-twin
-    bind left, link left
+    bind left, loan left
     bind operation, text <==>
-    bind right, link right
+    bind right, loan right
     turn seed
 
 task check-if-null
   link value
 
   call call-twin
-    bind left, link value
+    bind left, loan value
     bind operation, text <==>
     bind right, text <null>
     turn seed
@@ -80,9 +91,9 @@ task check-if-strictly-equal
   link right
 
   call call-twin
-    bind left, link left
+    bind left, loan left
     bind operation, text <===>
-    bind right, link right
+    bind right, loan right
     turn seed
 
 task get-typeof
@@ -90,7 +101,7 @@ task get-typeof
 
   call call-keyword
     bind keyword, text <typeof>
-    bind value, link value
+    bind value, loan value
     turn seed
 
 task get-instanceof
@@ -98,9 +109,9 @@ task get-instanceof
   link right
 
   call call-keyword-2
-    bind left, link left
+    bind left, loan left
     bind keyword, text <instanceof>
-    bind right, link right
+    bind right, loan right
     turn seed
 
 task set-field
@@ -109,17 +120,17 @@ task set-field
   link value
 
   call set-dynamic-aspect
-    bind object, link object
-    bind aspect, link attribute
-    bind factor, link value
+    bind object, loan object
+    bind aspect, loan attribute
+    bind factor, loan value
 
 task get-field
   link object
   link attribute, form chord
 
   call get-dynamic-aspect
-    bind object, link object
-    bind aspect, link attribute
+    bind object, loan object
+    bind aspect, loan attribute
     turn seed
 
 task remove-field
@@ -127,17 +138,17 @@ task remove-field
   link attribute, form chord
 
   call delete
-    bind object, link object
-    bind aspect, link attribute
+    bind object, loan object
+    bind aspect, loan attribute
 
 task shift-left
   link left
   link right
 
   call call-twin
-    bind left, link left
+    bind left, loan left
     bind operation, text <\<\<>
-    bind right, link right
+    bind right, loan right
     turn seed
 
 task shift-right
@@ -145,9 +156,9 @@ task shift-right
   link right
 
   call call-twin
-    bind left, link left
+    bind left, loan left
     bind operation, text <\>\>>
-    bind right, link right
+    bind right, loan right
     turn seed
 
 task shift-right-unsigned
@@ -155,9 +166,9 @@ task shift-right-unsigned
   link right
 
   call call-twin
-    bind left, link left
+    bind left, loan left
     bind operation, text <\>\>\>>
-    bind right, link right
+    bind right, loan right
     turn seed
 
 task compute-bitwise-and
@@ -165,9 +176,9 @@ task compute-bitwise-and
   link right
 
   call call-twin
-    bind left, link left
+    bind left, loan left
     bind operation, text <&>
-    bind right, link right
+    bind right, loan right
     turn seed
 
 task check-or
@@ -175,25 +186,25 @@ task check-or
   link right
 
   call call-twin
-    bind left, link left
+    bind left, loan left
     bind operation, text <||>
-    bind right, link right
+    bind right, loan right
     turn seed
 
 task try-catch
-  link block, form function
-  link error, form function
+  link block, form task
+  link error, form task
 
   call call-try
-    bind block, link block
-    bind error, link error
+    bind block, loan block
+    bind error, loan error
 
 task check-if-truthy
   link value
 
   call call-head
     bind operation, text <!!>
-    bind value, link value
+    bind value, loan value
     turn seed
 
 task check-opposite
@@ -201,7 +212,7 @@ task check-opposite
 
   call call-head
     bind operation, text <!>
-    bind value, link value
+    bind value, loan value
     turn seed
 
 task check-not-equal
@@ -209,9 +220,9 @@ task check-not-equal
   link right
 
   call call-twin
-    bind left, link left
+    bind left, loan left
     bind operation, text <!==>
-    bind right, link right
+    bind right, loan right
     turn seed
 
 task flip-block
@@ -219,7 +230,7 @@ task flip-block
 
   call call-head
     bind operation, text <~>
-    bind value, link value
+    bind value, loan value
     turn seed
 
 task check-gt
@@ -227,9 +238,9 @@ task check-gt
   link right
 
   call call-twin
-    bind left, link left
+    bind left, loan left
     bind operation, text <\>>
-    bind right, link right
+    bind right, loan right
     turn seed
 
 task check-lt
@@ -237,9 +248,9 @@ task check-lt
   link right
 
   call call-twin
-    bind left, link left
+    bind left, loan left
     bind operation, text <\<>
-    bind right, link right
+    bind right, loan right
     turn seed
 
 task check-gte
@@ -247,9 +258,9 @@ task check-gte
   link right
 
   call call-twin
-    bind left, link left
+    bind left, loan left
     bind operation, text <\>=>
-    bind right, link right
+    bind right, loan right
     turn seed
 
 task check-lte
@@ -257,9 +268,9 @@ task check-lte
   link right
 
   call call-twin
-    bind left, link left
+    bind left, loan left
     bind operation, text <\<=>
-    bind right, link right
+    bind right, loan right
     turn seed
 
 task check-and
@@ -267,7 +278,7 @@ task check-and
   link right
 
   call call-twin
-    bind left, link left
+    bind left, loan left
     bind operation, text <&&>
-    bind right, link right
+    bind right, loan right
     turn seed

@@ -1,53 +1,66 @@
 
-load ..
-  load /number
-    hook form integer
+load @drumwork/seed/code/form/number
+  take form unsigned-integer-32
+
+load @drumwork/seed/code/form/array
+  take form array
 
 task get-index-of
-  base array, form array
-  base index, form integer
+  link array, form array
+  link index, form unsigned-integer-32
+
   call call-base
     bind object, link array
     bind method, text <indexOf>
     bind factor, link index
-    turn seed
 
-task create
+task make
   call create-literal
     bind literal, text <[]>
-    turn seed
 
-task create-uint8
-  base value
+task make-uint-8
+  link value
+    case array
+      head unsigned-integer-8
+    case unsigned-integer-32
+
   call make
     bind constructor, text <Uint8Array>
     bind factor, link value
-    turn seed
 
-task create-uint16
-  base value
+task make-uint-16
+  link value
+    case array
+      head unsigned-integer-16
+    case unsigned-integer-32
+
   call make
     bind constructor, text <Uint16Array>
     bind factor, link value
-    turn seed
 
-task create-uint32
-  base value
+task make-uint-32
+  link value
+    case array
+      head unsigned-integer-32
+    case unsigned-integer-32
+
   call make
     bind constructor, text <Uint32Array>
     bind factor, link value
-    turn seed
 
-task create-float32
-  base value
+task make-float-32
+  link value
+    case array
+      head decimal-32
+    case unsigned-integer-32
+
   call make
     bind constructor, text <Float32Array>
     bind factor, link value
-    turn seed
 
 task push
-  base array, form array
-  base value
+  link array, form array
+  link value
 
   call call-base
     bind object, link array
@@ -55,24 +68,22 @@ task push
     bind factor, link value
 
 task pop
-  base array, form array
+  link array, form array
 
   call call-base
     bind object, link array
     bind method, text <pop>
-    turn seed
 
 task shift
-  base array, form array
+  link array, form array
 
   call call-base
     bind object, link array
     bind method, text <shift>
-    turn seed
 
 task unshift
-  base array, form array
-  base value
+  link array, form array
+  link value
 
   call call-base
     bind object, link array
@@ -80,28 +91,26 @@ task unshift
     bind factor, link value
 
 task store
-  base array, form array
-  base index, form integer
-  base value
+  link array, form array
+  link index, form unsigned-integer-32
+  link value
 
   call set-dynamic-aspect
     bind object, link array
     bind aspect, link index
     bind factor, link value
 
-task fetch
-  base array, form array
-  base index, form integer
+task get-at-index
+  link array, form array
+  link index, form unsigned-integer-32
 
   call get-dynamic-aspect
     bind object, link array
     bind aspect, link index
-    turn seed
 
 task get-length
-  base array, form array
+  link array, form array
 
   call get-aspect
     bind object, link array
     bind aspect, text <length>
-    turn seed

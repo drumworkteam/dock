@@ -1,12 +1,13 @@
 
-load ../number
-  take form unsigned-integer
-  take form integer
+load @drumwork/seed/code/form/text
+  take form cord
 
-field string
+load @drumwork/seed/code/form/number
+  take form unsigned-integer-32
+  take form unsigned-integer-32-32
 
 task replace
-  link string, form string
+  link string, form cord
   link pattern
   link replacer
 
@@ -15,84 +16,74 @@ task replace
     bind method, text <replace>
     bind factor, link pattern
     bind factor, link replacer
-    turn seed
 
 task trim
-  link string, form string
+  link string, form cord
 
   call call-base
     bind object, link string
     bind method, text <trim>
-    turn seed
 
 task get-char-code-at
-  link string, form string
-  link index, form unsigned-integer
+  link string, form cord
+  link index, form unsigned-integer-32
 
   call call-base
     bind object, link string
     bind method, text <charCodeAt>
     bind factor, link index
-    turn seed
 
 task get-char-at
-  link string, form string
-  link index, form unsigned-integer
+  link string, form cord
+  link index, form unsigned-integer-32
 
   call call-base
     bind object, link string
     bind method, text <charAt>
     bind factor, link index
-    turn seed
 
 task get-char-from-code
-  link code, form integer
+  link code, form unsigned-integer-32
 
   call call-base
     bind object, text <String>
     bind method, text <fromCharCode>
     bind factor, link code
-    turn seed
 
 task get-char-from-code-point
-  link code, form integer
+  link code, form unsigned-integer-32
 
   call call-base
     bind object, text <String>
     bind method, text <fromCodePoint>
     bind factor, link code
-    turn seed
 
 task convert-to-lowercase
-  link string
+  link string, form cord
 
   call call-base
     bind object, link string
     bind method, text <toLowerCase>
-    turn seed
 
 task convert-to-uppercase
-  link string
+  link string, form cord
 
   call call-base
     bind object, link string
     bind method, text <toUpperCase>
-    turn seed
 
 task create
   call create-literal
     bind literal, text <''>
-    turn seed
 
 task match
-  link string
+  link string, form cord
   link pattern
 
   call call-base
     bind object, link string
     bind method, text <match>
     bind factor, link pattern
-    turn seed
 
 task create-collator
   call make
@@ -100,43 +91,41 @@ task create-collator
 
 task get-collator-comparator
   link collator
+
   call get-aspect
     bind object, link collator
     bind aspect, text <compare>
 
 task split
-  link string
+  link string, form cord
   link pattern
 
   call call-base
     bind object, link string
     bind method, text <split>
     bind factor, link pattern
-    turn seed
 
 task check-starts-with
-  link string
+  link string, form cord
   link pattern
 
   call call-base
     bind object, link string
     bind method, text <startsWith>
     bind factor, link pattern
-    turn seed
 
 task check-ends-with
-  link string
+  link string, form cord
   link pattern
 
   call call-base
     bind object, link string
     bind method, text <endsWith>
     bind factor, link pattern
-    turn seed
 
 task pad-start
-  link string
-  link pad-size
+  link string, form cord
+  link pad-size, form unsigned-integer-32
   link pad-string
 
   call call-base
@@ -144,4 +133,3 @@ task pad-start
     bind method, text <padStart>
     bind factor, link pad-size
     bind factor, link pad-string
-    turn seed
