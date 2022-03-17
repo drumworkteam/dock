@@ -1,0 +1,84 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-never
+  take form native-never
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/es5/base/form/promise-like
+  take form promise-like
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form promise
+  head t, like like-link-text
+
+  task then
+    like task
+      head t-result1, like like-link-text
+        back t
+      head t-result2, like like-link-text
+        back native-never
+      take onfulfilled
+        like sink-link-text
+          like task
+            take value, like t
+            free seed
+              like sink-link-text
+                like t-result1
+                like promise-like
+                  like t-result1
+          like native-undefined
+          like native-null
+        void take
+      take onrejected
+        like sink-link-text
+          like task
+            take reason, like native-any
+            free seed
+              like sink-link-text
+                like t-result2
+                like promise-like
+                  like t-result2
+          like native-undefined
+          like native-null
+        void take
+      free seed
+        like promise
+          like sink-link-text
+            like t-result1
+            like t-result2
+
+  task catch
+    like task
+      head t-result, like like-link-text
+        back native-never
+      take onrejected
+        like sink-link-text
+          like task
+            take reason, like native-any
+            free seed
+              like sink-link-text
+                like t-result
+                like promise-like
+                  like t-result
+          like native-undefined
+          like native-null
+        void take
+      free seed
+        like promise
+          like sink-link-text
+            like t
+            like t-result

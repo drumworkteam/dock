@@ -1,0 +1,19 @@
+
+load @drumwork/land/code/javascript/dom/base/form/dom-time-stamp
+  take form dom-time-stamp
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-dtls-fingerprint
+  take form rtc-dtls-fingerprint
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form rtc-certificate
+  take expires, like dom-time-stamp
+
+  task get-fingerprints
+    like task
+      free seed
+        like list-link-text
+          like rtc-dtls-fingerprint

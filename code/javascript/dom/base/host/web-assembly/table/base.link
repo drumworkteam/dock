@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/dom/base/form/web-assembly/table
+  take form table
+
+load @drumwork/land/code/javascript/dom/base/form/web-assembly/table-descriptor
+  take form table-descriptor
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host table
+  like form-link-text
+    take prototype, like table
+      lock free
+    task new
+      like task
+        take descriptor, like table-descriptor
+        take value, like native-any
+          void take
+        free seed, like table
+  

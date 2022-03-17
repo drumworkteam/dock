@@ -1,0 +1,309 @@
+
+load @drumwork/land/code/javascript/base/form/iterable
+  take form iterable
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/g-lboolean
+  take form g-lboolean
+
+load @drumwork/land/code/javascript/dom/base/form/g-lenum
+  take form g-lenum
+
+load @drumwork/land/code/javascript/dom/base/form/g-lfloat
+  take form g-lfloat
+
+load @drumwork/land/code/javascript/dom/base/form/g-lint
+  take form g-lint
+
+load @drumwork/land/code/javascript/dom/base/form/g-lsizei
+  take form g-lsizei
+
+load @drumwork/land/code/javascript/dom/base/form/g-luint
+  take form g-luint
+
+load @drumwork/land/code/javascript/dom/base/form/webgl-program
+  take form webgl-program
+
+load @drumwork/land/code/javascript/dom/base/form/webgl-uniform-location
+  take form webgl-uniform-location
+
+load @drumwork/land/code/javascript/dom/base/form/webgl2-rendering-context-base
+  take form webgl2-rendering-context-base
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form webgl2-rendering-context-base
+  task clear-bufferfv
+    like task
+      take buffer, like g-lenum
+      take drawbuffer, like g-lint
+      take values
+        like iterable
+          like g-lfloat
+      take src-offset, like g-luint
+        void take
+      free seed, like native-void
+
+  task clear-bufferiv
+    like task
+      take buffer, like g-lenum
+      take drawbuffer, like g-lint
+      take values
+        like iterable
+          like g-lint
+      take src-offset, like g-luint
+        void take
+      free seed, like native-void
+
+  task clear-bufferuiv
+    like task
+      take buffer, like g-lenum
+      take drawbuffer, like g-lint
+      take values
+        like iterable
+          like g-luint
+      take src-offset, like g-luint
+        void take
+      free seed, like native-void
+
+  task draw-buffers
+    like task
+      take buffers
+        like iterable
+          like g-lenum
+      free seed, like native-void
+
+  task get-active-uniforms
+    like task
+      take program, like webgl-program
+      take uniform-indices
+        like iterable
+          like g-luint
+      take pname, like g-lenum
+      free seed, like native-any
+
+  task get-uniform-indices
+    like task
+      take program, like webgl-program
+      take uniform-names
+        like iterable
+          like native-string
+      free seed
+        like sink-link-text
+          like iterable
+            like g-luint
+          like native-null
+
+  task invalidate-framebuffer
+    like task
+      take target, like g-lenum
+      take attachments
+        like iterable
+          like g-lenum
+      free seed, like native-void
+
+  task invalidate-sub-framebuffer
+    like task
+      take target, like g-lenum
+      take attachments
+        like iterable
+          like g-lenum
+      take x, like g-lint
+      take y, like g-lint
+      take width, like g-lsizei
+      take height, like g-lsizei
+      free seed, like native-void
+
+  task transform-feedback-varyings
+    like task
+      take program, like webgl-program
+      take varyings
+        like iterable
+          like native-string
+      take buffer-mode, like g-lenum
+      free seed, like native-void
+
+  task uniform1uiv
+    like task
+      take location
+        like sink-link-text
+          like webgl-uniform-location
+          like native-null
+      take data
+        like iterable
+          like g-luint
+      take src-offset, like g-luint
+        void take
+      take src-length, like g-luint
+        void take
+      free seed, like native-void
+
+  task uniform2uiv
+    like task
+      take location
+        like sink-link-text
+          like webgl-uniform-location
+          like native-null
+      take data
+        like iterable
+          like g-luint
+      take src-offset, like g-luint
+        void take
+      take src-length, like g-luint
+        void take
+      free seed, like native-void
+
+  task uniform3uiv
+    like task
+      take location
+        like sink-link-text
+          like webgl-uniform-location
+          like native-null
+      take data
+        like iterable
+          like g-luint
+      take src-offset, like g-luint
+        void take
+      take src-length, like g-luint
+        void take
+      free seed, like native-void
+
+  task uniform4uiv
+    like task
+      take location
+        like sink-link-text
+          like webgl-uniform-location
+          like native-null
+      take data
+        like iterable
+          like g-luint
+      take src-offset, like g-luint
+        void take
+      take src-length, like g-luint
+        void take
+      free seed, like native-void
+
+  task uniform-matrix2x3fv
+    like task
+      take location
+        like sink-link-text
+          like webgl-uniform-location
+          like native-null
+      take transpose, like g-lboolean
+      take data
+        like iterable
+          like g-lfloat
+      take src-offset, like g-luint
+        void take
+      take src-length, like g-luint
+        void take
+      free seed, like native-void
+
+  task uniform-matrix2x4fv
+    like task
+      take location
+        like sink-link-text
+          like webgl-uniform-location
+          like native-null
+      take transpose, like g-lboolean
+      take data
+        like iterable
+          like g-lfloat
+      take src-offset, like g-luint
+        void take
+      take src-length, like g-luint
+        void take
+      free seed, like native-void
+
+  task uniform-matrix3x2fv
+    like task
+      take location
+        like sink-link-text
+          like webgl-uniform-location
+          like native-null
+      take transpose, like g-lboolean
+      take data
+        like iterable
+          like g-lfloat
+      take src-offset, like g-luint
+        void take
+      take src-length, like g-luint
+        void take
+      free seed, like native-void
+
+  task uniform-matrix3x4fv
+    like task
+      take location
+        like sink-link-text
+          like webgl-uniform-location
+          like native-null
+      take transpose, like g-lboolean
+      take data
+        like iterable
+          like g-lfloat
+      take src-offset, like g-luint
+        void take
+      take src-length, like g-luint
+        void take
+      free seed, like native-void
+
+  task uniform-matrix4x2fv
+    like task
+      take location
+        like sink-link-text
+          like webgl-uniform-location
+          like native-null
+      take transpose, like g-lboolean
+      take data
+        like iterable
+          like g-lfloat
+      take src-offset, like g-luint
+        void take
+      take src-length, like g-luint
+        void take
+      free seed, like native-void
+
+  task uniform-matrix4x3fv
+    like task
+      take location
+        like sink-link-text
+          like webgl-uniform-location
+          like native-null
+      take transpose, like g-lboolean
+      take data
+        like iterable
+          like g-lfloat
+      take src-offset, like g-luint
+        void take
+      take src-length, like g-luint
+        void take
+      free seed, like native-void
+
+  task vertex-attrib-i4iv
+    like task
+      take index, like g-luint
+      take values
+        like iterable
+          like g-lint
+      free seed, like native-void
+
+  task vertex-attrib-i4uiv
+    like task
+      take index, like g-luint
+      take values
+        like iterable
+          like g-luint
+      free seed, like native-void

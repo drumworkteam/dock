@@ -1,0 +1,49 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/base/form/dom-high-res-time-stamp
+  take form dom-high-res-time-stamp
+
+load @drumwork/land/code/javascript/dom/base/form/performance-entry
+  take form performance-entry
+
+load @drumwork/land/code/javascript/dom/base/form/performance-server-timing
+  take form performance-server-timing
+
+load @drumwork/land/code/javascript/es5/base/form/readonly-array
+  take form readonly-array
+
+form performance-resource-timing
+  base performance-entry
+
+  take connect-end, like dom-high-res-time-stamp
+  take connect-start, like dom-high-res-time-stamp
+  take decoded-body-size, like native-number
+  take domain-lookup-end, like dom-high-res-time-stamp
+  take domain-lookup-start, like dom-high-res-time-stamp
+  take encoded-body-size, like native-number
+  take fetch-start, like dom-high-res-time-stamp
+  take initiator-type, like native-string
+  take next-hop-protocol, like native-string
+  take redirect-end, like dom-high-res-time-stamp
+  take redirect-start, like dom-high-res-time-stamp
+  take request-start, like dom-high-res-time-stamp
+  take response-end, like dom-high-res-time-stamp
+  take response-start, like dom-high-res-time-stamp
+  take secure-connection-start, like dom-high-res-time-stamp
+  take server-timing
+    like readonly-array
+      like performance-server-timing
+  take transfer-size, like native-number
+  take worker-start, like dom-high-res-time-stamp
+
+  task to-json
+    like task
+      free seed, like native-any

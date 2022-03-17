@@ -1,0 +1,30 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/es5/base/form/array-buffer
+  take form array-buffer
+
+load @drumwork/land/code/javascript/es5/base/form/array-buffer-view
+  take form array-buffer-view
+
+form array-buffer-constructor
+  take prototype, like array-buffer
+
+  task is-view
+    like task
+      take arg, like native-any
+      free seed
+        free seed, like native-boolean
+        rank arg, like array-buffer-view
+
+  task new
+    like task
+      take byte-length, like native-number
+      free seed, like array-buffer

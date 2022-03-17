@@ -1,0 +1,54 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-object
+  take form native-object
+
+load @drumwork/land/code/javascript/es2015/collection/form/weak-map
+  take form weak-map
+
+load @drumwork/seed/code/form/band
+  take form band
+    save form band-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form weak-map-constructor
+  take prototype
+    like weak-map
+      like native-object
+      like native-any
+
+  task new
+    like task
+      head k, like like-link-text
+        base native-object
+        back native-object
+      head v, like like-link-text
+        back native-any
+      take entries
+        like sink-link-text
+          like list-link-text
+            like band-link-text
+              like k
+              like v
+          like native-null
+        void take
+      free seed
+        like weak-map
+          like k
+          like v

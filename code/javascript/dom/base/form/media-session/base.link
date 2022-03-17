@@ -1,0 +1,49 @@
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/media-metadata
+  take form media-metadata
+
+load @drumwork/land/code/javascript/dom/base/form/media-position-state
+  take form media-position-state
+
+load @drumwork/land/code/javascript/dom/base/form/media-session-action
+  take form media-session-action
+
+load @drumwork/land/code/javascript/dom/base/form/media-session-action-handler
+  take form media-session-action-handler
+
+load @drumwork/land/code/javascript/dom/base/form/media-session-playback-state
+  take form media-session-playback-state
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form media-session
+  take metadata
+    like sink-link-text
+      like media-metadata
+      like native-null
+    lock free
+  take playback-state, like media-session-playback-state
+    lock free
+
+  task set-action-handler
+    like task
+      take action, like media-session-action
+      take handler
+        like sink-link-text
+          like media-session-action-handler
+          like native-null
+      free seed, like native-void
+
+  task set-position-state
+    like task
+      take state, like media-position-state
+        void take
+      free seed, like native-void

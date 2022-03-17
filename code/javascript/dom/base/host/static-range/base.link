@@ -1,0 +1,20 @@
+
+load @drumwork/land/code/javascript/dom/base/form/static-range
+  take form static-range
+
+load @drumwork/land/code/javascript/dom/base/form/static-range-init
+  take form static-range-init
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host static-range
+  like form-link-text
+    take prototype, like static-range
+      lock free
+    task new
+      like task
+        take init, like static-range-init
+        free seed, like static-range
+  

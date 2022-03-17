@@ -1,0 +1,24 @@
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/webworker/base/form/xml-http-request
+  take form xml-http-request
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host xml-http-request
+  like form-link-text
+    take prototype, like xml-http-request
+      lock free
+    task new
+      like task
+        free seed, like xml-http-request
+  
+    take done, like native-number
+    take headers-received, like native-number
+    take loading, like native-number
+    take opened, like native-number
+    take unsent, like native-number

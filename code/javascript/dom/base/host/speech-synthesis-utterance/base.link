@@ -1,0 +1,21 @@
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/base/form/speech-synthesis-utterance
+  take form speech-synthesis-utterance
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host speech-synthesis-utterance
+  like form-link-text
+    take prototype, like speech-synthesis-utterance
+      lock free
+    task new
+      like task
+        take text, like native-string
+          void take
+        free seed, like speech-synthesis-utterance
+  

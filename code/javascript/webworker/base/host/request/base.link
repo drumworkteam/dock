@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/webworker/base/form/request
+  take form request
+
+load @drumwork/land/code/javascript/webworker/base/form/request-info
+  take form request-info
+
+load @drumwork/land/code/javascript/webworker/base/form/request-init
+  take form request-init
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host request
+  like form-link-text
+    take prototype, like request
+      lock free
+    task new
+      like task
+        take input, like request-info
+        take init, like request-init
+          void take
+        free seed, like request
+  

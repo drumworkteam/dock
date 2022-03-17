@@ -1,0 +1,45 @@
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/es5/base/form/record
+  take form record
+
+load @drumwork/land/code/javascript/webworker/base/form/url-search-params
+  take form url-search-params
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+host url-search-params
+  like form-link-text
+    take prototype, like url-search-params
+      lock free
+    task new
+      like task
+        take init
+          like sink-link-text
+            like list-link-text
+              like list-link-text
+                like native-string
+            like record
+              like native-string
+              like native-string
+            like native-string
+            like url-search-params
+          void take
+        free seed, like url-search-params
+  
+    task to-string
+      like task
+        free seed, like native-string
+  

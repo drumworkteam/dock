@@ -1,0 +1,16 @@
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-dtmf-sender
+  take form rtc-dtmf-sender
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host rtc-dtmf-sender
+  like form-link-text
+    take prototype, like rtc-dtmf-sender
+      lock free
+    task new
+      like task
+        free seed, like rtc-dtmf-sender
+  

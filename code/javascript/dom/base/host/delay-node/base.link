@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/dom/base/form/base-audio-context
+  take form base-audio-context
+
+load @drumwork/land/code/javascript/dom/base/form/delay-node
+  take form delay-node
+
+load @drumwork/land/code/javascript/dom/base/form/delay-options
+  take form delay-options
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host delay-node
+  like form-link-text
+    take prototype, like delay-node
+      lock free
+    task new
+      like task
+        take context, like base-audio-context
+        take options, like delay-options
+          void take
+        free seed, like delay-node
+  

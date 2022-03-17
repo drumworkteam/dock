@@ -1,0 +1,16 @@
+
+load @drumwork/land/code/javascript/webworker/base/form/service-worker-registration
+  take form service-worker-registration
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host service-worker-registration
+  like form-link-text
+    take prototype, like service-worker-registration
+      lock free
+    task new
+      like task
+        free seed, like service-worker-registration
+  

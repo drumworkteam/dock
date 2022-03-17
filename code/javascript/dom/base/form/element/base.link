@@ -1,0 +1,598 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/animatable
+  take form animatable
+
+load @drumwork/land/code/javascript/dom/base/form/aria-mixin
+  take form aria-mixin
+
+load @drumwork/land/code/javascript/dom/base/form/attr
+  take form attr
+
+load @drumwork/land/code/javascript/dom/base/form/child-node
+  take form child-node
+
+load @drumwork/land/code/javascript/dom/base/form/document
+  take form document
+
+load @drumwork/land/code/javascript/dom/base/form/dom-rect
+  take form dom-rect
+
+load @drumwork/land/code/javascript/dom/base/form/dom-rect-list
+  take form dom-rect-list
+
+load @drumwork/land/code/javascript/dom/base/form/dom-token-list
+  take form dom-token-list
+
+load @drumwork/land/code/javascript/dom/base/form/element-event-map
+  take form element-event-map
+
+load @drumwork/land/code/javascript/dom/base/form/event
+  take form event
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/base/form/fullscreen-options
+  take form fullscreen-options
+
+load @drumwork/land/code/javascript/dom/base/form/html-collection-of
+  take form html-collection-of
+
+load @drumwork/land/code/javascript/dom/base/form/html-element
+  take form html-element
+
+load @drumwork/land/code/javascript/dom/base/form/html-element-tag-name-map
+  take form html-element-tag-name-map
+
+load @drumwork/land/code/javascript/dom/base/form/inner-html
+  take form inner-html
+
+load @drumwork/land/code/javascript/dom/base/form/insert-position
+  take form insert-position
+
+load @drumwork/land/code/javascript/dom/base/form/named-node-map
+  take form named-node-map
+
+load @drumwork/land/code/javascript/dom/base/form/node
+  take form node
+
+load @drumwork/land/code/javascript/dom/base/form/non-document-type-child-node
+  take form non-document-type-child-node
+
+load @drumwork/land/code/javascript/dom/base/form/parent-node
+  take form parent-node
+
+load @drumwork/land/code/javascript/dom/base/form/scroll-into-view-options
+  take form scroll-into-view-options
+
+load @drumwork/land/code/javascript/dom/base/form/scroll-to-options
+  take form scroll-to-options
+
+load @drumwork/land/code/javascript/dom/base/form/shadow-root
+  take form shadow-root
+
+load @drumwork/land/code/javascript/dom/base/form/shadow-root-init
+  take form shadow-root-init
+
+load @drumwork/land/code/javascript/dom/base/form/slottable
+  take form slottable
+
+load @drumwork/land/code/javascript/dom/base/form/svg-element
+  take form svg-element
+
+load @drumwork/land/code/javascript/dom/base/form/svg-element-tag-name-map
+  take form svg-element-tag-name-map
+
+load @drumwork/land/code/javascript/es5/base/form/promise
+  take form promise
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form element
+  base node
+  base aria-mixin
+  base animatable
+  base child-node
+  base inner-html
+  base non-document-type-child-node
+  base parent-node
+  base slottable
+
+  take attributes, like named-node-map
+  take class-list, like dom-token-list
+  take class-name, like native-string
+    lock free
+  take client-height, like native-number
+  take client-left, like native-number
+  take client-top, like native-number
+  take client-width, like native-number
+  take id, like native-string
+    lock free
+  take local-name, like native-string
+  take namespace-uri
+    like sink-link-text
+      like native-string
+      like native-null
+  take onfullscreenchange
+    like sink-link-text
+      like task
+        take this, like element
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onfullscreenerror
+    like sink-link-text
+      like task
+        take this, like element
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take outer-html, like native-string
+    lock free
+  take owner-document, like document
+  take part, like dom-token-list
+  take prefix
+    like sink-link-text
+      like native-string
+      like native-null
+  take scroll-height, like native-number
+  take scroll-left, like native-number
+    lock free
+  take scroll-top, like native-number
+    lock free
+  take scroll-width, like native-number
+  take shadow-root
+    like sink-link-text
+      like shadow-root
+      like native-null
+  take slot, like native-string
+    lock free
+  take tag-name, like native-string
+
+  task attach-shadow
+    like task
+      take init, like shadow-root-init
+      free seed, like shadow-root
+
+  task closest
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like html-element-tag-name-map
+      take selector, like k
+      free seed
+        like sink-link-text
+          like form-link-link-text
+            like html-element-tag-name-map
+            like k
+          like native-null
+
+  task closest
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like svg-element-tag-name-map
+      take selector, like k
+      free seed
+        like sink-link-text
+          like form-link-link-text
+            like svg-element-tag-name-map
+            like k
+          like native-null
+
+  task closest
+    like task
+      head e, like like-link-text
+        base element
+        back element
+      take selectors, like native-string
+      free seed
+        like sink-link-text
+          like e
+          like native-null
+
+  task get-attribute
+    like task
+      take qualified-name, like native-string
+      free seed
+        like sink-link-text
+          like native-string
+          like native-null
+
+  task get-attribute-n-s
+    like task
+      take namespace
+        like sink-link-text
+          like native-string
+          like native-null
+      take local-name, like native-string
+      free seed
+        like sink-link-text
+          like native-string
+          like native-null
+
+  task get-attribute-names
+    like task
+      free seed
+        like list-link-text
+          like native-string
+
+  task get-attribute-node
+    like task
+      take qualified-name, like native-string
+      free seed
+        like sink-link-text
+          like attr
+          like native-null
+
+  task get-attribute-node-n-s
+    like task
+      take namespace
+        like sink-link-text
+          like native-string
+          like native-null
+      take local-name, like native-string
+      free seed
+        like sink-link-text
+          like attr
+          like native-null
+
+  task get-bounding-client-rect
+    like task
+      free seed, like dom-rect
+
+  task get-client-rects
+    like task
+      free seed, like dom-rect-list
+
+  task get-elements-by-class-name
+    like task
+      take class-names, like native-string
+      free seed
+        like html-collection-of
+          like element
+
+  task get-elements-by-tag-name
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like html-element-tag-name-map
+      take qualified-name, like k
+      free seed
+        like html-collection-of
+          like form-link-link-text
+            like html-element-tag-name-map
+            like k
+
+  task get-elements-by-tag-name
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like svg-element-tag-name-map
+      take qualified-name, like k
+      free seed
+        like html-collection-of
+          like form-link-link-text
+            like svg-element-tag-name-map
+            like k
+
+  task get-elements-by-tag-name
+    like task
+      take qualified-name, like native-string
+      free seed
+        like html-collection-of
+          like element
+
+  task get-elements-by-tag-name-n-s
+    like task
+      take namespace-uri, text <http://www.w3.org/1999/xhtml>
+      take local-name, like native-string
+      free seed
+        like html-collection-of
+          like html-element
+
+  task get-elements-by-tag-name-n-s
+    like task
+      take namespace-uri, text <http://www.w3.org/2000/svg>
+      take local-name, like native-string
+      free seed
+        like html-collection-of
+          like svg-element
+
+  task get-elements-by-tag-name-n-s
+    like task
+      take namespace
+        like sink-link-text
+          like native-string
+          like native-null
+      take local-name, like native-string
+      free seed
+        like html-collection-of
+          like element
+
+  task has-attribute
+    like task
+      take qualified-name, like native-string
+      free seed, like native-boolean
+
+  task has-attribute-n-s
+    like task
+      take namespace
+        like sink-link-text
+          like native-string
+          like native-null
+      take local-name, like native-string
+      free seed, like native-boolean
+
+  task has-attributes
+    like task
+      free seed, like native-boolean
+
+  task has-pointer-capture
+    like task
+      take pointer-id, like native-number
+      free seed, like native-boolean
+
+  task insert-adjacent-element
+    like task
+      take where, like insert-position
+      take element, like element
+      free seed
+        like sink-link-text
+          like element
+          like native-null
+
+  task insert-adjacent-html
+    like task
+      take position, like insert-position
+      take text, like native-string
+      free seed, like native-void
+
+  task insert-adjacent-text
+    like task
+      take where, like insert-position
+      take data, like native-string
+      free seed, like native-void
+
+  task matches
+    like task
+      take selectors, like native-string
+      free seed, like native-boolean
+
+  task release-pointer-capture
+    like task
+      take pointer-id, like native-number
+      free seed, like native-void
+
+  task remove-attribute
+    like task
+      take qualified-name, like native-string
+      free seed, like native-void
+
+  task remove-attribute-n-s
+    like task
+      take namespace
+        like sink-link-text
+          like native-string
+          like native-null
+      take local-name, like native-string
+      free seed, like native-void
+
+  task remove-attribute-node
+    like task
+      take attr, like attr
+      free seed, like attr
+
+  task request-fullscreen
+    like task
+      take options, like fullscreen-options
+        void take
+      free seed
+        like promise
+          like native-void
+
+  task request-pointer-lock
+    like task
+      free seed, like native-void
+
+  task scroll
+    like task
+      take options, like scroll-to-options
+        void take
+      free seed, like native-void
+
+  task scroll
+    like task
+      take x, like native-number
+      take y, like native-number
+      free seed, like native-void
+
+  task scroll-by
+    like task
+      take options, like scroll-to-options
+        void take
+      free seed, like native-void
+
+  task scroll-by
+    like task
+      take x, like native-number
+      take y, like native-number
+      free seed, like native-void
+
+  task scroll-into-view
+    like task
+      take arg
+        like sink-link-text
+          like native-boolean
+          like scroll-into-view-options
+        void take
+      free seed, like native-void
+
+  task scroll-to
+    like task
+      take options, like scroll-to-options
+        void take
+      free seed, like native-void
+
+  task scroll-to
+    like task
+      take x, like native-number
+      take y, like native-number
+      free seed, like native-void
+
+  task set-attribute
+    like task
+      take qualified-name, like native-string
+      take value, like native-string
+      free seed, like native-void
+
+  task set-attribute-n-s
+    like task
+      take namespace
+        like sink-link-text
+          like native-string
+          like native-null
+      take qualified-name, like native-string
+      take value, like native-string
+      free seed, like native-void
+
+  task set-attribute-node
+    like task
+      take attr, like attr
+      free seed
+        like sink-link-text
+          like attr
+          like native-null
+
+  task set-attribute-node-n-s
+    like task
+      take attr, like attr
+      free seed
+        like sink-link-text
+          like attr
+          like native-null
+
+  task set-pointer-capture
+    like task
+      take pointer-id, like native-number
+      free seed, like native-void
+
+  task toggle-attribute
+    like task
+      take qualified-name, like native-string
+      take force, like native-boolean
+        void take
+      free seed, like native-boolean
+
+  task webkit-matches-selector
+    like task
+      take selectors, like native-string
+      free seed, like native-boolean
+
+  task add-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like element-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like element
+          take ev
+            like form-link-link-text
+              like element-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task add-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like element-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like element
+          take ev
+            like form-link-link-text
+              like element-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void

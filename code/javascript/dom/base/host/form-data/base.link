@@ -1,0 +1,21 @@
+
+load @drumwork/land/code/javascript/dom/base/form/form-data
+  take form form-data
+
+load @drumwork/land/code/javascript/dom/base/form/html-form-element
+  take form html-form-element
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host form-data
+  like form-link-text
+    take prototype, like form-data
+      lock free
+    task new
+      like task
+        take form, like html-form-element
+          void take
+        free seed, like form-data
+  

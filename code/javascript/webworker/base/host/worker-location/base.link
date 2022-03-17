@@ -1,0 +1,16 @@
+
+load @drumwork/land/code/javascript/webworker/base/form/worker-location
+  take form worker-location
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host worker-location
+  like form-link-text
+    take prototype, like worker-location
+      lock free
+    task new
+      like task
+        free seed, like worker-location
+  

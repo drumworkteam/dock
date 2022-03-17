@@ -1,0 +1,43 @@
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/base/form/notification
+  take form notification
+
+load @drumwork/land/code/javascript/dom/base/form/notification-options
+  take form notification-options
+
+load @drumwork/land/code/javascript/dom/base/form/notification-permission
+  take form notification-permission
+
+load @drumwork/land/code/javascript/dom/base/form/notification-permission-callback
+  take form notification-permission-callback
+
+load @drumwork/land/code/javascript/es5/base/form/promise
+  take form promise
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host notification
+  like form-link-text
+    take prototype, like notification
+      lock free
+    task new
+      like task
+        take title, like native-string
+        take options, like notification-options
+          void take
+        free seed, like notification
+  
+    take permission, like notification-permission
+    task request-permission
+      like task
+        take deprecated-callback, like notification-permission-callback
+          void take
+        free seed
+          like promise
+            like notification-permission
+  

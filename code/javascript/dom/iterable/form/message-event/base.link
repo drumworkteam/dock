@@ -1,0 +1,63 @@
+
+load @drumwork/land/code/javascript/base/form/iterable
+  take form iterable
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/message-event
+  take form message-event
+
+load @drumwork/land/code/javascript/dom/base/form/message-event-source
+  take form message-event-source
+
+load @drumwork/land/code/javascript/dom/base/form/message-port
+  take form message-port
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form message-event
+  head t, like like-link-text
+    back native-any
+
+  task init-message-event
+    like task
+      take type, like native-string
+      take bubbles, like native-boolean
+        void take
+      take cancelable, like native-boolean
+        void take
+      take data, like native-any
+        void take
+      take origin, like native-string
+        void take
+      take last-event-id, like native-string
+        void take
+      take source
+        like sink-link-text
+          like message-event-source
+          like native-null
+        void take
+      take ports
+        like iterable
+          like message-port
+        void take
+      free seed, like native-void

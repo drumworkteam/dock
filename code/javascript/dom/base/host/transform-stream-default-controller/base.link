@@ -1,0 +1,16 @@
+
+load @drumwork/land/code/javascript/dom/base/form/transform-stream-default-controller
+  take form transform-stream-default-controller
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host transform-stream-default-controller
+  like form-link-text
+    take prototype, like transform-stream-default-controller
+      lock free
+    task new
+      like task
+        free seed, like transform-stream-default-controller
+  

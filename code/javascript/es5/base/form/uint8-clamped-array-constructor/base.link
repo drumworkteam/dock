@@ -1,0 +1,84 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/es5/base/form/array-buffer-like
+  take form array-buffer-like
+
+load @drumwork/land/code/javascript/es5/base/form/array-like
+  take form array-like
+
+load @drumwork/land/code/javascript/es5/base/form/uint8-clamped-array
+  take form uint8-clamped-array
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form uint8-clamped-array-constructor
+  take prototype, like uint8-clamped-array
+  take bytes-per-element, like native-number
+
+  task of
+    like task
+      take items
+        like list-link-text
+          like native-number
+        rest take
+      free seed, like uint8-clamped-array
+
+  task from
+    like task
+      take array-like
+        like array-like
+          like native-number
+      free seed, like uint8-clamped-array
+
+  task from
+    like task
+      head t, like like-link-text
+      take array-like
+        like array-like
+          like t
+      take mapfn
+        like task
+          take v, like t
+          take k, like native-number
+          free seed, like native-number
+      take this-arg, like native-any
+        void take
+      free seed, like uint8-clamped-array
+
+  task new
+    like task
+      take length, like native-number
+      free seed, like uint8-clamped-array
+
+  task new
+    like task
+      take array
+        like sink-link-text
+          like array-like
+            like native-number
+          like array-buffer-like
+      free seed, like uint8-clamped-array
+
+  task new
+    like task
+      take buffer, like array-buffer-like
+      take byte-offset, like native-number
+        void take
+      take length, like native-number
+        void take
+      free seed, like uint8-clamped-array

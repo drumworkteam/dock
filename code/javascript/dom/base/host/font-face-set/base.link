@@ -1,0 +1,26 @@
+
+load @drumwork/land/code/javascript/dom/base/form/font-face
+  take form font-face
+
+load @drumwork/land/code/javascript/dom/base/form/font-face-set
+  take form font-face-set
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+host font-face-set
+  like form-link-text
+    take prototype, like font-face-set
+      lock free
+    task new
+      like task
+        take initial-faces
+          like list-link-text
+            like font-face
+        free seed, like font-face-set
+  

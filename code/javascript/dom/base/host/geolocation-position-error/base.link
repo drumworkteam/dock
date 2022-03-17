@@ -1,0 +1,22 @@
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/base/form/geolocation-position-error
+  take form geolocation-position-error
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host geolocation-position-error
+  like form-link-text
+    take prototype, like geolocation-position-error
+      lock free
+    task new
+      like task
+        free seed, like geolocation-position-error
+  
+    take permission-denied, like native-number
+    take position-unavailable, like native-number
+    take timeout, like native-number

@@ -1,0 +1,193 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/event
+  take form event
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/base/form/event-target
+  take form event-target
+
+load @drumwork/land/code/javascript/dom/base/form/media-stream-track-event-map
+  take form media-stream-track-event-map
+
+load @drumwork/land/code/javascript/dom/base/form/media-stream-track-state
+  take form media-stream-track-state
+
+load @drumwork/land/code/javascript/dom/base/form/media-track-capabilities
+  take form media-track-capabilities
+
+load @drumwork/land/code/javascript/dom/base/form/media-track-constraints
+  take form media-track-constraints
+
+load @drumwork/land/code/javascript/dom/base/form/media-track-settings
+  take form media-track-settings
+
+load @drumwork/land/code/javascript/es5/base/form/promise
+  take form promise
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form media-stream-track
+  base event-target
+
+  take content-hint, like native-string
+    lock free
+  take enabled, like native-boolean
+    lock free
+  take id, like native-string
+  take kind, like native-string
+  take label, like native-string
+  take muted, like native-boolean
+  take onended
+    like sink-link-text
+      like task
+        take this, like media-stream-track
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onmute
+    like sink-link-text
+      like task
+        take this, like media-stream-track
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onunmute
+    like sink-link-text
+      like task
+        take this, like media-stream-track
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take ready-state, like media-stream-track-state
+
+  task apply-constraints
+    like task
+      take constraints, like media-track-constraints
+        void take
+      free seed
+        like promise
+          like native-void
+
+  task clone
+    like task
+      free seed, like media-stream-track
+
+  task get-capabilities
+    like task
+      free seed, like media-track-capabilities
+
+  task get-constraints
+    like task
+      free seed, like media-track-constraints
+
+  task get-settings
+    like task
+      free seed, like media-track-settings
+
+  task stop
+    like task
+      free seed, like native-void
+
+  task add-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like media-stream-track-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like media-stream-track
+          take ev
+            like form-link-link-text
+              like media-stream-track-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task add-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like media-stream-track-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like media-stream-track
+          take ev
+            like form-link-link-text
+              like media-stream-track-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void

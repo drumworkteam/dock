@@ -1,0 +1,36 @@
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/base/form/dom-rect-init
+  take form dom-rect-init
+
+load @drumwork/land/code/javascript/dom/base/form/dom-rect-read-only
+  take form dom-rect-read-only
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host dom-rect-read-only
+  like form-link-text
+    take prototype, like dom-rect-read-only
+      lock free
+    task new
+      like task
+        take x, like native-number
+          void take
+        take y, like native-number
+          void take
+        take width, like native-number
+          void take
+        take height, like native-number
+          void take
+        free seed, like dom-rect-read-only
+  
+    task from-rect
+      like task
+        take other, like dom-rect-init
+          void take
+        free seed, like dom-rect-read-only
+  

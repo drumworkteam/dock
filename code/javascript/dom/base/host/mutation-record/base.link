@@ -1,0 +1,16 @@
+
+load @drumwork/land/code/javascript/dom/base/form/mutation-record
+  take form mutation-record
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host mutation-record
+  like form-link-text
+    take prototype, like mutation-record
+      lock free
+    task new
+      like task
+        free seed, like mutation-record
+  

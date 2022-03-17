@@ -1,0 +1,72 @@
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/animation-effect
+  take form animation-effect
+
+load @drumwork/land/code/javascript/dom/base/form/composite-operation
+  take form composite-operation
+
+load @drumwork/land/code/javascript/dom/base/form/computed-keyframe
+  take form computed-keyframe
+
+load @drumwork/land/code/javascript/dom/base/form/element
+  take form element
+
+load @drumwork/land/code/javascript/dom/base/form/iteration-composite-operation
+  take form iteration-composite-operation
+
+load @drumwork/land/code/javascript/dom/base/form/keyframe
+  take form keyframe
+
+load @drumwork/land/code/javascript/dom/base/form/property-indexed-keyframes
+  take form property-indexed-keyframes
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form keyframe-effect
+  base animation-effect
+
+  take composite, like composite-operation
+    lock free
+  take iteration-composite, like iteration-composite-operation
+    lock free
+  take pseudo-element
+    like sink-link-text
+      like native-string
+      like native-null
+    lock free
+  take target
+    like sink-link-text
+      like element
+      like native-null
+    lock free
+
+  task get-keyframes
+    like task
+      free seed
+        like list-link-text
+          like computed-keyframe
+
+  task set-keyframes
+    like task
+      take keyframes
+        like sink-link-text
+          like list-link-text
+            like keyframe
+          like property-indexed-keyframes
+          like native-null
+      free seed, like native-void

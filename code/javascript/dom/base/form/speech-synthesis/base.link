@@ -1,0 +1,161 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/event
+  take form event
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/base/form/event-target
+  take form event-target
+
+load @drumwork/land/code/javascript/dom/base/form/speech-synthesis-event-map
+  take form speech-synthesis-event-map
+
+load @drumwork/land/code/javascript/dom/base/form/speech-synthesis-utterance
+  take form speech-synthesis-utterance
+
+load @drumwork/land/code/javascript/dom/base/form/speech-synthesis-voice
+  take form speech-synthesis-voice
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form speech-synthesis
+  base event-target
+
+  take onvoiceschanged
+    like sink-link-text
+      like task
+        take this, like speech-synthesis
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take paused, like native-boolean
+  take pending, like native-boolean
+  take speaking, like native-boolean
+
+  task cancel
+    like task
+      free seed, like native-void
+
+  task get-voices
+    like task
+      free seed
+        like list-link-text
+          like speech-synthesis-voice
+
+  task pause
+    like task
+      free seed, like native-void
+
+  task resume
+    like task
+      free seed, like native-void
+
+  task speak
+    like task
+      take utterance, like speech-synthesis-utterance
+      free seed, like native-void
+
+  task add-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like speech-synthesis-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like speech-synthesis
+          take ev
+            like form-link-link-text
+              like speech-synthesis-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task add-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like speech-synthesis-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like speech-synthesis
+          take ev
+            like form-link-link-text
+              like speech-synthesis-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void

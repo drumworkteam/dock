@@ -1,0 +1,128 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/base/form/offscreen-canvas
+  take form offscreen-canvas
+
+load @drumwork/land/code/javascript/es5/base/form/promise
+  take form promise
+
+load @drumwork/land/code/javascript/webworker/base/form/blob
+  take form blob
+
+load @drumwork/land/code/javascript/webworker/base/form/canvas-rendering-context2-d-settings
+  take form canvas-rendering-context2-d-settings
+
+load @drumwork/land/code/javascript/webworker/base/form/event-target
+  take form event-target
+
+load @drumwork/land/code/javascript/webworker/base/form/image-bitmap
+  take form image-bitmap
+
+load @drumwork/land/code/javascript/webworker/base/form/image-bitmap-rendering-context
+  take form image-bitmap-rendering-context
+
+load @drumwork/land/code/javascript/webworker/base/form/image-bitmap-rendering-context-settings
+  take form image-bitmap-rendering-context-settings
+
+load @drumwork/land/code/javascript/webworker/base/form/image-encode-options
+  take form image-encode-options
+
+load @drumwork/land/code/javascript/webworker/base/form/offscreen-canvas-rendering-context2-d
+  take form offscreen-canvas-rendering-context2-d
+
+load @drumwork/land/code/javascript/webworker/base/form/offscreen-rendering-context
+  take form offscreen-rendering-context
+
+load @drumwork/land/code/javascript/webworker/base/form/offscreen-rendering-context-id
+  take form offscreen-rendering-context-id
+
+load @drumwork/land/code/javascript/webworker/base/form/webgl-context-attributes
+  take form webgl-context-attributes
+
+load @drumwork/land/code/javascript/webworker/base/form/webgl-rendering-context
+  take form webgl-rendering-context
+
+load @drumwork/land/code/javascript/webworker/base/form/webgl2-rendering-context
+  take form webgl2-rendering-context
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form offscreen-canvas
+  base event-target
+
+  take height, like native-number
+    lock free
+  take width, like native-number
+    lock free
+
+  task convert-to-blob
+    like task
+      take options, like image-encode-options
+        void take
+      free seed
+        like promise
+          like blob
+
+  task get-context
+    like task
+      take context-id, text <2d>
+      take options, like canvas-rendering-context2-d-settings
+        void take
+      free seed
+        like sink-link-text
+          like offscreen-canvas-rendering-context2-d
+          like native-null
+
+  task get-context
+    like task
+      take context-id, text <bitmaprenderer>
+      take options, like image-bitmap-rendering-context-settings
+        void take
+      free seed
+        like sink-link-text
+          like image-bitmap-rendering-context
+          like native-null
+
+  task get-context
+    like task
+      take context-id, text <webgl>
+      take options, like webgl-context-attributes
+        void take
+      free seed
+        like sink-link-text
+          like webgl-rendering-context
+          like native-null
+
+  task get-context
+    like task
+      take context-id, text <webgl2>
+      take options, like webgl-context-attributes
+        void take
+      free seed
+        like sink-link-text
+          like webgl2-rendering-context
+          like native-null
+
+  task get-context
+    like task
+      take context-id, like offscreen-rendering-context-id
+      take options, like native-any
+        void take
+      free seed
+        like sink-link-text
+          like offscreen-rendering-context
+          like native-null
+
+  task transfer-to-image-bitmap
+    like task
+      free seed, like image-bitmap

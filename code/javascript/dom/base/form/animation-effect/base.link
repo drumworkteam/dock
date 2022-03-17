@@ -1,0 +1,27 @@
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/computed-effect-timing
+  take form computed-effect-timing
+
+load @drumwork/land/code/javascript/dom/base/form/effect-timing
+  take form effect-timing
+
+load @drumwork/land/code/javascript/dom/base/form/optional-effect-timing
+  take form optional-effect-timing
+
+form animation-effect
+  task get-computed-timing
+    like task
+      free seed, like computed-effect-timing
+
+  task get-timing
+    like task
+      free seed, like effect-timing
+
+  task update-timing
+    like task
+      take timing, like optional-effect-timing
+        void take
+      free seed, like native-void

@@ -1,0 +1,154 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/audio-buffer
+  take form audio-buffer
+
+load @drumwork/land/code/javascript/dom/base/form/base-audio-context
+  take form base-audio-context
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/base/form/offline-audio-completion-event
+  take form offline-audio-completion-event
+
+load @drumwork/land/code/javascript/dom/base/form/offline-audio-context-event-map
+  take form offline-audio-context-event-map
+
+load @drumwork/land/code/javascript/es5/base/form/promise
+  take form promise
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form offline-audio-context
+  base base-audio-context
+
+  take length, like native-number
+  take oncomplete
+    like sink-link-text
+      like task
+        take this, like offline-audio-context
+        take ev, like offline-audio-completion-event
+        free seed, like native-any
+      like native-null
+    lock free
+
+  task resume
+    like task
+      free seed
+        like promise
+          like native-void
+
+  task start-rendering
+    like task
+      free seed
+        like promise
+          like audio-buffer
+
+  task suspend
+    like task
+      take suspend-time, like native-number
+      free seed
+        like promise
+          like native-void
+
+  task add-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like offline-audio-context-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like offline-audio-context
+          take ev
+            like form-link-link-text
+              like offline-audio-context-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task add-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like offline-audio-context-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like offline-audio-context
+          take ev
+            like form-link-link-text
+              like offline-audio-context-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void

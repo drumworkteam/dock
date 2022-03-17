@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/dom/base/form/web-assembly/global
+  take form global
+
+load @drumwork/land/code/javascript/dom/base/form/web-assembly/global-descriptor
+  take form global-descriptor
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host global
+  like form-link-text
+    take prototype, like global
+      lock free
+    task new
+      like task
+        take descriptor, like global-descriptor
+        take v, like native-any
+          void take
+        free seed, like global
+  

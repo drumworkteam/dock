@@ -1,0 +1,22 @@
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/dom/base/form/authenticator-attachment
+  take form authenticator-attachment
+
+load @drumwork/land/code/javascript/dom/base/form/resident-key-requirement
+  take form resident-key-requirement
+
+load @drumwork/land/code/javascript/dom/base/form/user-verification-requirement
+  take form user-verification-requirement
+
+form authenticator-selection-criteria
+  take authenticator-attachment, like authenticator-attachment
+    lock free
+  take require-resident-key, like native-boolean
+    lock free
+  take resident-key, like resident-key-requirement
+    lock free
+  take user-verification, like user-verification-requirement
+    lock free

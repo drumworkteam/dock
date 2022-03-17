@@ -1,0 +1,40 @@
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-bundle-policy
+  take form rtc-bundle-policy
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-certificate
+  take form rtc-certificate
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-ice-server
+  take form rtc-ice-server
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-ice-transport-policy
+  take form rtc-ice-transport-policy
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-rtcp-mux-policy
+  take form rtc-rtcp-mux-policy
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form rtc-configuration
+  take bundle-policy, like rtc-bundle-policy
+    lock free
+  take certificates
+    like list-link-text
+      like rtc-certificate
+    lock free
+  take ice-candidate-pool-size, like native-number
+    lock free
+  take ice-servers
+    like list-link-text
+      like rtc-ice-server
+    lock free
+  take ice-transport-policy, like rtc-ice-transport-policy
+    lock free
+  take rtcp-mux-policy, like rtc-rtcp-mux-policy
+    lock free

@@ -1,0 +1,16 @@
+
+load @drumwork/land/code/javascript/dom/base/form/idb-transaction
+  take form idb-transaction
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host idb-transaction
+  like form-link-text
+    take prototype, like idb-transaction
+      lock free
+    task new
+      like task
+        free seed, like idb-transaction
+  

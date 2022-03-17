@@ -1,0 +1,35 @@
+
+load @drumwork/land/code/javascript/dom/base/form/media-stream
+  take form media-stream
+
+load @drumwork/land/code/javascript/dom/base/form/media-stream-track
+  take form media-stream-track
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+host media-stream
+  like form-link-text
+    take prototype, like media-stream
+      lock free
+    task new
+      like task
+        free seed, like media-stream
+  
+    task new
+      like task
+        take stream, like media-stream
+        free seed, like media-stream
+  
+    task new
+      like task
+        take tracks
+          like list-link-text
+            like media-stream-track
+        free seed, like media-stream
+  

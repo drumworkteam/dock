@@ -1,0 +1,44 @@
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/dom/base/form/push-permission-state
+  take form push-permission-state
+
+load @drumwork/land/code/javascript/dom/base/form/push-subscription
+  take form push-subscription
+
+load @drumwork/land/code/javascript/dom/base/form/push-subscription-options-init
+  take form push-subscription-options-init
+
+load @drumwork/land/code/javascript/es5/base/form/promise
+  take form promise
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form push-manager
+  task get-subscription
+    like task
+      free seed
+        like promise
+          like sink-link-text
+            like push-subscription
+            like native-null
+
+  task permission-state
+    like task
+      take options, like push-subscription-options-init
+        void take
+      free seed
+        like promise
+          like push-permission-state
+
+  task subscribe
+    like task
+      take options, like push-subscription-options-init
+        void take
+      free seed
+        like promise
+          like push-subscription

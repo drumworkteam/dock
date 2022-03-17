@@ -1,0 +1,37 @@
+
+load @drumwork/land/code/javascript/dom/base/form/algorithm-identifier
+  take form algorithm-identifier
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-certificate
+  take form rtc-certificate
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-configuration
+  take form rtc-configuration
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-peer-connection
+  take form rtc-peer-connection
+
+load @drumwork/land/code/javascript/es5/base/form/promise
+  take form promise
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host rtc-peer-connection
+  like form-link-text
+    take prototype, like rtc-peer-connection
+      lock free
+    task new
+      like task
+        take configuration, like rtc-configuration
+          void take
+        free seed, like rtc-peer-connection
+  
+    task generate-certificate
+      like task
+        take keygen-algorithm, like algorithm-identifier
+        free seed
+          like promise
+            like rtc-certificate
+  

@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/dom/base/form/audio-context
+  take form audio-context
+
+load @drumwork/land/code/javascript/dom/base/form/audio-node-options
+  take form audio-node-options
+
+load @drumwork/land/code/javascript/dom/base/form/media-stream-audio-destination-node
+  take form media-stream-audio-destination-node
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host media-stream-audio-destination-node
+  like form-link-text
+    take prototype, like media-stream-audio-destination-node
+      lock free
+    task new
+      like task
+        take context, like audio-context
+        take options, like audio-node-options
+          void take
+        free seed, like media-stream-audio-destination-node
+  

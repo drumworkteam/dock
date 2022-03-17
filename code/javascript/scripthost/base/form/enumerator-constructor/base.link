@@ -1,0 +1,53 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/safe-array
+  take form safe-array
+
+load @drumwork/land/code/javascript/scripthost/base/form/enumerator
+  take form enumerator
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+form enumerator-constructor
+  task new
+    like task
+      head t, like like-link-text
+        back native-any
+      take safearray
+        like safe-array
+          like t
+      free seed
+        like enumerator
+          like t
+
+  task new
+    like task
+      head t, like like-link-text
+        back native-any
+      take collection
+        like form-link-text
+          task item
+            like task
+              take index, like native-any
+              free seed, like t
+        
+      free seed
+        like enumerator
+          like t
+
+  task new
+    like task
+      head t, like like-link-text
+        back native-any
+      take collection, like native-any
+      free seed
+        like enumerator
+          like t

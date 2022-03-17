@@ -1,0 +1,34 @@
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+form svg-angle
+  take unit-type, like native-number
+  take value, like native-number
+    lock free
+  take value-as-string, like native-string
+    lock free
+  take value-in-specified-units, like native-number
+    lock free
+  take svg-angletype-deg, like native-number
+  take svg-angletype-grad, like native-number
+  take svg-angletype-rad, like native-number
+  take svg-angletype-unknown, like native-number
+  take svg-angletype-unspecified, like native-number
+
+  task convert-to-specified-units
+    like task
+      take unit-type, like native-number
+      free seed, like native-void
+
+  task new-value-specified-units
+    like task
+      take unit-type, like native-number
+      take value-in-specified-units, like native-number
+      free seed, like native-void

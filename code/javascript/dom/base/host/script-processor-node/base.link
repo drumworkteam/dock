@@ -1,0 +1,16 @@
+
+load @drumwork/land/code/javascript/dom/base/form/script-processor-node
+  take form script-processor-node
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host script-processor-node
+  like form-link-text
+    take prototype, like script-processor-node
+      lock free
+    task new
+      like task
+        free seed, like script-processor-node
+  

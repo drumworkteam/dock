@@ -1,0 +1,216 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/es5/base/form/function
+  take form function
+
+load @drumwork/land/code/javascript/es5/base/form/omit-this-parameter
+  take form omit-this-parameter
+
+load @drumwork/land/code/javascript/es5/base/form/this-parameter-type
+  take form this-parameter-type
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form callable-function
+  base function
+
+  task apply
+    like task
+      head t, like like-link-text
+      head r, like like-link-text
+      take this
+        like task
+          take this, like t
+          free seed, like r
+      take this-arg, like t
+      free seed, like r
+
+  task apply
+    like task
+      head t, like like-link-text
+      head a, like like-link-text
+        base list-link-text
+          like native-any
+      head r, like like-link-text
+      take this
+        like task
+          take this, like t
+          take args, like a
+            rest take
+          free seed, like r
+      take this-arg, like t
+      take args, like a
+      free seed, like r
+
+  task call
+    like task
+      head t, like like-link-text
+      head a, like like-link-text
+        base list-link-text
+          like native-any
+      head r, like like-link-text
+      take this
+        like task
+          take this, like t
+          take args, like a
+            rest take
+          free seed, like r
+      take this-arg, like t
+      take args, like a
+        rest take
+      free seed, like r
+
+  task bind
+    like task
+      head t, like like-link-text
+      take this, like t
+      take this-arg
+        like this-parameter-type
+          like t
+      free seed
+        like omit-this-parameter
+          like t
+
+  task bind
+    like task
+      head t, like like-link-text
+      head a0, like like-link-text
+      head a, like like-link-text
+        base list-link-text
+          like native-any
+      head r, like like-link-text
+      take this
+        like task
+          take this, like t
+          take arg0, like a0
+          take args, like a
+            rest take
+          free seed, like r
+      take this-arg, like t
+      take arg0, like a0
+      free seed
+        like task
+          take args, like a
+            rest take
+          free seed, like r
+
+  task bind
+    like task
+      head t, like like-link-text
+      head a0, like like-link-text
+      head a1, like like-link-text
+      head a, like like-link-text
+        base list-link-text
+          like native-any
+      head r, like like-link-text
+      take this
+        like task
+          take this, like t
+          take arg0, like a0
+          take arg1, like a1
+          take args, like a
+            rest take
+          free seed, like r
+      take this-arg, like t
+      take arg0, like a0
+      take arg1, like a1
+      free seed
+        like task
+          take args, like a
+            rest take
+          free seed, like r
+
+  task bind
+    like task
+      head t, like like-link-text
+      head a0, like like-link-text
+      head a1, like like-link-text
+      head a2, like like-link-text
+      head a, like like-link-text
+        base list-link-text
+          like native-any
+      head r, like like-link-text
+      take this
+        like task
+          take this, like t
+          take arg0, like a0
+          take arg1, like a1
+          take arg2, like a2
+          take args, like a
+            rest take
+          free seed, like r
+      take this-arg, like t
+      take arg0, like a0
+      take arg1, like a1
+      take arg2, like a2
+      free seed
+        like task
+          take args, like a
+            rest take
+          free seed, like r
+
+  task bind
+    like task
+      head t, like like-link-text
+      head a0, like like-link-text
+      head a1, like like-link-text
+      head a2, like like-link-text
+      head a3, like like-link-text
+      head a, like like-link-text
+        base list-link-text
+          like native-any
+      head r, like like-link-text
+      take this
+        like task
+          take this, like t
+          take arg0, like a0
+          take arg1, like a1
+          take arg2, like a2
+          take arg3, like a3
+          take args, like a
+            rest take
+          free seed, like r
+      take this-arg, like t
+      take arg0, like a0
+      take arg1, like a1
+      take arg2, like a2
+      take arg3, like a3
+      free seed
+        like task
+          take args, like a
+            rest take
+          free seed, like r
+
+  task bind
+    like task
+      head t, like like-link-text
+      head ax, like like-link-text
+      head r, like like-link-text
+      take this
+        like task
+          take this, like t
+          take args
+            like list-link-text
+              like ax
+            rest take
+          free seed, like r
+      take this-arg, like t
+      take args
+        like list-link-text
+          like ax
+        rest take
+      free seed
+        like task
+          take args
+            like list-link-text
+              like ax
+            rest take
+          free seed, like r

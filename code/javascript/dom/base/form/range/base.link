@@ -1,0 +1,154 @@
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/abstract-range
+  take form abstract-range
+
+load @drumwork/land/code/javascript/dom/base/form/document-fragment
+  take form document-fragment
+
+load @drumwork/land/code/javascript/dom/base/form/dom-rect
+  take form dom-rect
+
+load @drumwork/land/code/javascript/dom/base/form/dom-rect-list
+  take form dom-rect-list
+
+load @drumwork/land/code/javascript/dom/base/form/node
+  take form node
+
+form range
+  base abstract-range
+
+  take common-ancestor-container, like node
+  take end-to-end, like native-number
+  take end-to-start, like native-number
+  take start-to-end, like native-number
+  take start-to-start, like native-number
+
+  task clone-contents
+    like task
+      free seed, like document-fragment
+
+  task clone-range
+    like task
+      free seed, like range
+
+  task collapse
+    like task
+      take to-start, like native-boolean
+        void take
+      free seed, like native-void
+
+  task compare-boundary-points
+    like task
+      take how, like native-number
+      take source-range, like range
+      free seed, like native-number
+
+  task compare-point
+    like task
+      take node, like node
+      take offset, like native-number
+      free seed, like native-number
+
+  task create-contextual-fragment
+    like task
+      take fragment, like native-string
+      free seed, like document-fragment
+
+  task delete-contents
+    like task
+      free seed, like native-void
+
+  task detach
+    like task
+      free seed, like native-void
+
+  task extract-contents
+    like task
+      free seed, like document-fragment
+
+  task get-bounding-client-rect
+    like task
+      free seed, like dom-rect
+
+  task get-client-rects
+    like task
+      free seed, like dom-rect-list
+
+  task insert-node
+    like task
+      take node, like node
+      free seed, like native-void
+
+  task intersects-node
+    like task
+      take node, like node
+      free seed, like native-boolean
+
+  task is-point-in-range
+    like task
+      take node, like node
+      take offset, like native-number
+      free seed, like native-boolean
+
+  task select-node
+    like task
+      take node, like node
+      free seed, like native-void
+
+  task select-node-contents
+    like task
+      take node, like node
+      free seed, like native-void
+
+  task set-end
+    like task
+      take node, like node
+      take offset, like native-number
+      free seed, like native-void
+
+  task set-end-after
+    like task
+      take node, like node
+      free seed, like native-void
+
+  task set-end-before
+    like task
+      take node, like node
+      free seed, like native-void
+
+  task set-start
+    like task
+      take node, like node
+      take offset, like native-number
+      free seed, like native-void
+
+  task set-start-after
+    like task
+      take node, like node
+      free seed, like native-void
+
+  task set-start-before
+    like task
+      take node, like node
+      free seed, like native-void
+
+  task surround-contents
+    like task
+      take new-parent, like node
+      free seed, like native-void
+
+  task to-string
+    like task
+      free seed, like native-string

@@ -1,0 +1,28 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/readable-stream-generic-reader
+  take form readable-stream-generic-reader
+
+load @drumwork/land/code/javascript/es5/base/form/promise
+  take form promise
+
+form readable-stream-generic-reader
+  take closed
+    like promise
+      like native-undefined
+
+  task cancel
+    like task
+      take reason, like native-any
+        void take
+      free seed
+        like promise
+          like native-void

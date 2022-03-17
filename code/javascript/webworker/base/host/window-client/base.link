@@ -1,0 +1,16 @@
+
+load @drumwork/land/code/javascript/webworker/base/form/window-client
+  take form window-client
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host window-client
+  like form-link-text
+    take prototype, like window-client
+      lock free
+    task new
+      like task
+        free seed, like window-client
+  

@@ -1,0 +1,69 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/writable-stream-default-writer
+  take form writable-stream-default-writer
+
+load @drumwork/land/code/javascript/es5/base/form/promise
+  take form promise
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form writable-stream-default-writer
+  head w, like like-link-text
+    back native-any
+
+  take closed
+    like promise
+      like native-undefined
+  take desired-size
+    like sink-link-text
+      like native-number
+      like native-null
+  take ready
+    like promise
+      like native-undefined
+
+  task abort
+    like task
+      take reason, like native-any
+        void take
+      free seed
+        like promise
+          like native-void
+
+  task close
+    like task
+      free seed
+        like promise
+          like native-void
+
+  task release-lock
+    like task
+      free seed, like native-void
+
+  task write
+    like task
+      take chunk, like w
+      free seed
+        like promise
+          like native-void

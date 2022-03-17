@@ -1,0 +1,75 @@
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/data-transfer-item-list
+  take form data-transfer-item-list
+
+load @drumwork/land/code/javascript/dom/base/form/element
+  take form element
+
+load @drumwork/land/code/javascript/dom/base/form/file-list
+  take form file-list
+
+load @drumwork/land/code/javascript/es5/base/form/readonly-array
+  take form readonly-array
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form data-transfer
+  take drop-effect
+    like sink-link-text
+      text <none>
+      text <copy>
+      text <link>
+      text <move>
+    lock free
+  take effect-allowed
+    like sink-link-text
+      text <none>
+      text <copy>
+      text <copyLink>
+      text <copyMove>
+      text <link>
+      text <linkMove>
+      text <move>
+      text <all>
+      text <uninitialized>
+    lock free
+  take files, like file-list
+  take items, like data-transfer-item-list
+  take types
+    like readonly-array
+      like native-string
+
+  task clear-data
+    like task
+      take format, like native-string
+        void take
+      free seed, like native-void
+
+  task get-data
+    like task
+      take format, like native-string
+      free seed, like native-string
+
+  task set-data
+    like task
+      take format, like native-string
+      take data, like native-string
+      free seed, like native-void
+
+  task set-drag-image
+    like task
+      take image, like element
+      take x, like native-number
+      take y, like native-number
+      free seed, like native-void

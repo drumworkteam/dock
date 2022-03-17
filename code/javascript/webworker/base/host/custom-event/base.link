@@ -1,0 +1,34 @@
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/webworker/base/form/custom-event
+  take form custom-event
+
+load @drumwork/land/code/javascript/webworker/base/form/custom-event-init
+  take form custom-event-init
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+host custom-event
+  like form-link-text
+    take prototype, like custom-event
+      lock free
+    task new
+      like task
+        head t, like like-link-text
+        take type-arg, like native-string
+        take event-init-dict
+          like custom-event-init
+            like t
+          void take
+        free seed
+          like custom-event
+            like t
+  

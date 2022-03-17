@@ -1,0 +1,317 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-bigint
+  take form native-bigint
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-this
+  take form native-this
+
+load @drumwork/land/code/javascript/base/form/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/es2015/iterable/form/iterable-iterator
+  take form iterable-iterator
+
+load @drumwork/land/code/javascript/es5/base/form/array-buffer-like
+  take form array-buffer-like
+
+load @drumwork/land/code/javascript/es5/base/form/array-like
+  take form array-like
+
+load @drumwork/seed/code/form/band
+  take form band
+    save form band-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form big-int64-array
+  take bytes-per-element, like native-number
+  take buffer, like array-buffer-like
+  take byte-length, like native-number
+  take byte-offset, like native-number
+  take length, like native-number
+  take loan symbol/to-string-tag
+    text <BigInt64Array>
+    read take
+
+  task copy-within
+    like task
+      take target, like native-number
+      take start, like native-number
+      take end, like native-number
+        void take
+      free seed, like native-this
+
+  task entries
+    like task
+      free seed
+        like iterable-iterator
+          like band-link-text
+            like native-number
+            like native-bigint
+
+  task every
+    like task
+      take predicate
+        like task
+          take value, like native-bigint
+          take index, like native-number
+          take array, like big-int64-array
+          free seed, like native-boolean
+      take this-arg, like native-any
+        void take
+      free seed, like native-boolean
+
+  task fill
+    like task
+      take value, like native-bigint
+      take start, like native-number
+        void take
+      take end, like native-number
+        void take
+      free seed, like native-this
+
+  task filter
+    like task
+      take predicate
+        like task
+          take value, like native-bigint
+          take index, like native-number
+          take array, like big-int64-array
+          free seed, like native-any
+      take this-arg, like native-any
+        void take
+      free seed, like big-int64-array
+
+  task find
+    like task
+      take predicate
+        like task
+          take value, like native-bigint
+          take index, like native-number
+          take array, like big-int64-array
+          free seed, like native-boolean
+      take this-arg, like native-any
+        void take
+      free seed
+        like sink-link-text
+          like native-bigint
+          like native-undefined
+
+  task find-index
+    like task
+      take predicate
+        like task
+          take value, like native-bigint
+          take index, like native-number
+          take array, like big-int64-array
+          free seed, like native-boolean
+      take this-arg, like native-any
+        void take
+      free seed, like native-number
+
+  task for-each
+    like task
+      take callbackfn
+        like task
+          take value, like native-bigint
+          take index, like native-number
+          take array, like big-int64-array
+          free seed, like native-void
+      take this-arg, like native-any
+        void take
+      free seed, like native-void
+
+  task includes
+    like task
+      take search-element, like native-bigint
+      take from-index, like native-number
+        void take
+      free seed, like native-boolean
+
+  task index-of
+    like task
+      take search-element, like native-bigint
+      take from-index, like native-number
+        void take
+      free seed, like native-number
+
+  task join
+    like task
+      take separator, like native-string
+        void take
+      free seed, like native-string
+
+  task keys
+    like task
+      free seed
+        like iterable-iterator
+          like native-number
+
+  task last-index-of
+    like task
+      take search-element, like native-bigint
+      take from-index, like native-number
+        void take
+      free seed, like native-number
+
+  task map
+    like task
+      take callbackfn
+        like task
+          take value, like native-bigint
+          take index, like native-number
+          take array, like big-int64-array
+          free seed, like native-bigint
+      take this-arg, like native-any
+        void take
+      free seed, like big-int64-array
+
+  task reduce
+    like task
+      take callbackfn
+        like task
+          take previous-value, like native-bigint
+          take current-value, like native-bigint
+          take current-index, like native-number
+          take array, like big-int64-array
+          free seed, like native-bigint
+      free seed, like native-bigint
+
+  task reduce
+    like task
+      head u, like like-link-text
+      take callbackfn
+        like task
+          take previous-value, like u
+          take current-value, like native-bigint
+          take current-index, like native-number
+          take array, like big-int64-array
+          free seed, like u
+      take initial-value, like u
+      free seed, like u
+
+  task reduce-right
+    like task
+      take callbackfn
+        like task
+          take previous-value, like native-bigint
+          take current-value, like native-bigint
+          take current-index, like native-number
+          take array, like big-int64-array
+          free seed, like native-bigint
+      free seed, like native-bigint
+
+  task reduce-right
+    like task
+      head u, like like-link-text
+      take callbackfn
+        like task
+          take previous-value, like u
+          take current-value, like native-bigint
+          take current-index, like native-number
+          take array, like big-int64-array
+          free seed, like u
+      take initial-value, like u
+      free seed, like u
+
+  task reverse
+    like task
+      free seed, like native-this
+
+  task set
+    like task
+      take array
+        like array-like
+          like native-bigint
+      take offset, like native-number
+        void take
+      free seed, like native-void
+
+  task slice
+    like task
+      take start, like native-number
+        void take
+      take end, like native-number
+        void take
+      free seed, like big-int64-array
+
+  task some
+    like task
+      take predicate
+        like task
+          take value, like native-bigint
+          take index, like native-number
+          take array, like big-int64-array
+          free seed, like native-boolean
+      take this-arg, like native-any
+        void take
+      free seed, like native-boolean
+
+  task sort
+    like task
+      take compare-fn
+        like task
+          take a, like native-bigint
+          take b, like native-bigint
+          free seed
+            like sink-link-text
+              like native-number
+              like native-bigint
+        void take
+      free seed, like native-this
+
+  task subarray
+    like task
+      take begin, like native-number
+        void take
+      take end, like native-number
+        void take
+      free seed, like big-int64-array
+
+  task to-locale-string
+    like task
+      free seed, like native-string
+
+  task to-string
+    like task
+      free seed, like native-string
+
+  task value-of
+    like task
+      free seed, like big-int64-array
+
+  task values
+    like task
+      free seed
+        like iterable-iterator
+          like native-bigint
+
+  task loan symbol/iterator
+    like task
+      free seed
+        like iterable-iterator
+          like native-bigint
+
+  cite index, like native-number
+    like native-bigint

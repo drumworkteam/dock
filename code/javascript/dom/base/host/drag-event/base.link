@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/base/form/drag-event
+  take form drag-event
+
+load @drumwork/land/code/javascript/dom/base/form/drag-event-init
+  take form drag-event-init
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host drag-event
+  like form-link-text
+    take prototype, like drag-event
+      lock free
+    task new
+      like task
+        take type, like native-string
+        take event-init-dict, like drag-event-init
+          void take
+        free seed, like drag-event
+  

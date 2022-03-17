@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/base/form/vtt-cue
+  take form vtt-cue
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host vtt-cue
+  like form-link-text
+    take prototype, like vtt-cue
+      lock free
+    task new
+      like task
+        take start-time, like native-number
+        take end-time, like native-number
+        take text, like native-string
+        free seed, like vtt-cue
+  

@@ -1,0 +1,29 @@
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/es2018/intl/form/intl/plural-rule-type
+  take form plural-rule-type
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form plural-rules-options
+  take locale-matcher
+    like sink-link-text
+      text <lookup>
+      text <best fit>
+    lock free
+  take type, like plural-rule-type
+    lock free
+  take minimum-integer-digits, like native-number
+    lock free
+  take minimum-fraction-digits, like native-number
+    lock free
+  take maximum-fraction-digits, like native-number
+    lock free
+  take minimum-significant-digits, like native-number
+    lock free
+  take maximum-significant-digits, like native-number
+    lock free

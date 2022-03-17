@@ -1,0 +1,63 @@
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/css-rule
+  take form css-rule
+
+load @drumwork/land/code/javascript/dom/base/form/css-rule-list
+  take form css-rule-list
+
+load @drumwork/land/code/javascript/dom/base/form/style-sheet
+  take form style-sheet
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form css-style-sheet
+  base style-sheet
+
+  take css-rules, like css-rule-list
+  take owner-rule
+    like sink-link-text
+      like css-rule
+      like native-null
+  take rules, like css-rule-list
+
+  task add-rule
+    like task
+      take selector, like native-string
+        void take
+      take style, like native-string
+        void take
+      take index, like native-number
+        void take
+      free seed, like native-number
+
+  task delete-rule
+    like task
+      take index, like native-number
+      free seed, like native-void
+
+  task insert-rule
+    like task
+      take rule, like native-string
+      take index, like native-number
+        void take
+      free seed, like native-number
+
+  task remove-rule
+    like task
+      take index, like native-number
+        void take
+      free seed, like native-void

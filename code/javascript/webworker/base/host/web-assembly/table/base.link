@@ -1,0 +1,20 @@
+
+load @drumwork/land/code/javascript/webworker/base/form/web-assembly/table
+  take form table
+
+load @drumwork/land/code/javascript/webworker/base/form/web-assembly/table-descriptor
+  take form table-descriptor
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host table
+  like form-link-text
+    take prototype, like table
+      lock free
+    task new
+      like task
+        take descriptor, like table-descriptor
+        free seed, like table
+  

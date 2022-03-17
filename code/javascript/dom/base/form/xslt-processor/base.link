@@ -1,0 +1,78 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/document
+  take form document
+
+load @drumwork/land/code/javascript/dom/base/form/document-fragment
+  take form document-fragment
+
+load @drumwork/land/code/javascript/dom/base/form/node
+  take form node
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form xslt-processor
+  task clear-parameters
+    like task
+      free seed, like native-void
+
+  task get-parameter
+    like task
+      take namespace-uri
+        like sink-link-text
+          like native-string
+          like native-null
+      take local-name, like native-string
+      free seed, like native-any
+
+  task import-stylesheet
+    like task
+      take style, like node
+      free seed, like native-void
+
+  task remove-parameter
+    like task
+      take namespace-uri
+        like sink-link-text
+          like native-string
+          like native-null
+      take local-name, like native-string
+      free seed, like native-void
+
+  task reset
+    like task
+      free seed, like native-void
+
+  task set-parameter
+    like task
+      take namespace-uri
+        like sink-link-text
+          like native-string
+          like native-null
+      take local-name, like native-string
+      take value, like native-any
+      free seed, like native-void
+
+  task transform-to-document
+    like task
+      take source, like node
+      free seed, like document
+
+  task transform-to-fragment
+    like task
+      take source, like node
+      take output, like document
+      free seed, like document-fragment

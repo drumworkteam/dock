@@ -1,0 +1,38 @@
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/es5/base/form/promise
+  take form promise
+
+load @drumwork/land/code/javascript/webworker/base/form/navigation-preload-state
+  take form navigation-preload-state
+
+form navigation-preload-manager
+  task disable
+    like task
+      free seed
+        like promise
+          like native-void
+
+  task enable
+    like task
+      free seed
+        like promise
+          like native-void
+
+  task get-state
+    like task
+      free seed
+        like promise
+          like navigation-preload-state
+
+  task set-header-value
+    like task
+      take value, like native-string
+      free seed
+        like promise
+          like native-void

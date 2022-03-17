@@ -1,0 +1,33 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/base/form/dom-high-res-time-stamp
+  take form dom-high-res-time-stamp
+
+load @drumwork/land/code/javascript/dom/base/form/navigation-type
+  take form navigation-type
+
+load @drumwork/land/code/javascript/dom/base/form/performance-resource-timing
+  take form performance-resource-timing
+
+form performance-navigation-timing
+  base performance-resource-timing
+
+  take dom-complete, like dom-high-res-time-stamp
+  take dom-content-loaded-event-end, like dom-high-res-time-stamp
+  take dom-content-loaded-event-start, like dom-high-res-time-stamp
+  take dom-interactive, like dom-high-res-time-stamp
+  take load-event-end, like dom-high-res-time-stamp
+  take load-event-start, like dom-high-res-time-stamp
+  take redirect-count, like native-number
+  take type, like navigation-type
+  take unload-event-end, like dom-high-res-time-stamp
+  take unload-event-start, like dom-high-res-time-stamp
+
+  task to-json
+    like task
+      free seed, like native-any

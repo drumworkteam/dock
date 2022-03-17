@@ -1,0 +1,207 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/iterable/form/idb-database
+  take form idb-database
+
+load @drumwork/land/code/javascript/webworker/base/form/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/webworker/base/form/dom-string-list
+  take form dom-string-list
+
+load @drumwork/land/code/javascript/webworker/base/form/event
+  take form event
+
+load @drumwork/land/code/javascript/webworker/base/form/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/webworker/base/form/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/webworker/base/form/event-target
+  take form event-target
+
+load @drumwork/land/code/javascript/webworker/base/form/idb-database-event-map
+  take form idb-database-event-map
+
+load @drumwork/land/code/javascript/webworker/base/form/idb-object-store
+  take form idb-object-store
+
+load @drumwork/land/code/javascript/webworker/base/form/idb-object-store-parameters
+  take form idb-object-store-parameters
+
+load @drumwork/land/code/javascript/webworker/base/form/idb-transaction
+  take form idb-transaction
+
+load @drumwork/land/code/javascript/webworker/base/form/idb-transaction-mode
+  take form idb-transaction-mode
+
+load @drumwork/land/code/javascript/webworker/base/form/idb-version-change-event
+  take form idb-version-change-event
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form idb-database
+  base event-target
+
+  take name, like native-string
+  take object-store-names, like dom-string-list
+  take onabort
+    like sink-link-text
+      like task
+        take this, like idb-database
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onclose
+    like sink-link-text
+      like task
+        take this, like idb-database
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onerror
+    like sink-link-text
+      like task
+        take this, like idb-database
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onversionchange
+    like sink-link-text
+      like task
+        take this, like idb-database
+        take ev, like idb-version-change-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take version, like native-number
+
+  task close
+    like task
+      free seed, like native-void
+
+  task create-object-store
+    like task
+      take name, like native-string
+      take options, like idb-object-store-parameters
+        void take
+      free seed, like idb-object-store
+
+  task delete-object-store
+    like task
+      take name, like native-string
+      free seed, like native-void
+
+  task transaction
+    like task
+      take store-names
+        like sink-link-text
+          like native-string
+          like list-link-text
+            like native-string
+      take mode, like idb-transaction-mode
+        void take
+      free seed, like idb-transaction
+
+  task add-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like idb-database-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like idb-database
+          take ev
+            like form-link-link-text
+              like idb-database-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task add-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like idb-database-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like idb-database
+          take ev
+            like form-link-link-text
+              like idb-database-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void

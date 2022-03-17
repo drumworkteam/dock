@@ -1,0 +1,57 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form readonly-map
+  head k, like like-link-text
+  head v, like like-link-text
+
+  take size, like native-number
+
+  task for-each
+    like task
+      take callbackfn
+        like task
+          take value, like v
+          take key, like k
+          take map
+            like readonly-map
+              like k
+              like v
+          free seed, like native-void
+      take this-arg, like native-any
+        void take
+      free seed, like native-void
+
+  task get
+    like task
+      take key, like k
+      free seed
+        like sink-link-text
+          like v
+          like native-undefined
+
+  task has
+    like task
+      take key, like k
+      free seed, like native-boolean

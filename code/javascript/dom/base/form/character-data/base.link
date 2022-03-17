@@ -1,0 +1,61 @@
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/child-node
+  take form child-node
+
+load @drumwork/land/code/javascript/dom/base/form/document
+  take form document
+
+load @drumwork/land/code/javascript/dom/base/form/node
+  take form node
+
+load @drumwork/land/code/javascript/dom/base/form/non-document-type-child-node
+  take form non-document-type-child-node
+
+form character-data
+  base node
+  base child-node
+  base non-document-type-child-node
+
+  take data, like native-string
+    lock free
+  take length, like native-number
+  take owner-document, like document
+
+  task append-data
+    like task
+      take data, like native-string
+      free seed, like native-void
+
+  task delete-data
+    like task
+      take offset, like native-number
+      take count, like native-number
+      free seed, like native-void
+
+  task insert-data
+    like task
+      take offset, like native-number
+      take data, like native-string
+      free seed, like native-void
+
+  task replace-data
+    like task
+      take offset, like native-number
+      take count, like native-number
+      take data, like native-string
+      free seed, like native-void
+
+  task substring-data
+    like task
+      take offset, like native-number
+      take count, like native-number
+      free seed, like native-string

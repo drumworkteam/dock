@@ -1,0 +1,22 @@
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/base/form/mutation-event
+  take form mutation-event
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host mutation-event
+  like form-link-text
+    take prototype, like mutation-event
+      lock free
+    task new
+      like task
+        free seed, like mutation-event
+  
+    take addition, like native-number
+    take modification, like native-number
+    take removal, like native-number

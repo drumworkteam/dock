@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/base/form/performance-mark
+  take form performance-mark
+
+load @drumwork/land/code/javascript/dom/base/form/performance-mark-options
+  take form performance-mark-options
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host performance-mark
+  like form-link-text
+    take prototype, like performance-mark
+      lock free
+    task new
+      like task
+        take mark-name, like native-string
+        take mark-options, like performance-mark-options
+          void take
+        free seed, like performance-mark
+  

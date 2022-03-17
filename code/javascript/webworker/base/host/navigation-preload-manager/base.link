@@ -1,0 +1,16 @@
+
+load @drumwork/land/code/javascript/webworker/base/form/navigation-preload-manager
+  take form navigation-preload-manager
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host navigation-preload-manager
+  like form-link-text
+    take prototype, like navigation-preload-manager
+      lock free
+    task new
+      like task
+        free seed, like navigation-preload-manager
+  

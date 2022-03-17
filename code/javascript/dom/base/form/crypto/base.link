@@ -1,0 +1,29 @@
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/dom/base/form/subtle-crypto
+  take form subtle-crypto
+
+load @drumwork/land/code/javascript/es5/base/form/array-buffer-view
+  take form array-buffer-view
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form crypto
+  take subtle, like subtle-crypto
+
+  task get-random-values
+    like task
+      head t, like like-link-text
+        base sink-link-text
+          like array-buffer-view
+          like native-null
+      take array, like t
+      free seed, like t

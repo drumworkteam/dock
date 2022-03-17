@@ -1,0 +1,16 @@
+
+load @drumwork/land/code/javascript/dom/base/form/idb-cursor-with-value
+  take form idb-cursor-with-value
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host idb-cursor-with-value
+  like form-link-text
+    take prototype, like idb-cursor-with-value
+      lock free
+    task new
+      like task
+        free seed, like idb-cursor-with-value
+  

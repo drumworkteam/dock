@@ -1,0 +1,41 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/webworker/base/form/queuing-strategy
+  take form queuing-strategy
+
+load @drumwork/land/code/javascript/webworker/base/form/underlying-sink
+  take form underlying-sink
+
+load @drumwork/land/code/javascript/webworker/base/form/writable-stream
+  take form writable-stream
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+host writable-stream
+  like form-link-text
+    take prototype, like writable-stream
+      lock free
+    task new
+      like task
+        head w, like like-link-text
+          back native-any
+        take underlying-sink
+          like underlying-sink
+            like w
+          void take
+        take strategy
+          like queuing-strategy
+            like w
+          void take
+        free seed
+          like writable-stream
+            like w
+  

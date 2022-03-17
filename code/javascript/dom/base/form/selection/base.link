@@ -1,0 +1,126 @@
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/node
+  take form node
+
+load @drumwork/land/code/javascript/dom/base/form/range
+  take form range
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form selection
+  take anchor-node
+    like sink-link-text
+      like node
+      like native-null
+  take anchor-offset, like native-number
+  take focus-node
+    like sink-link-text
+      like node
+      like native-null
+  take focus-offset, like native-number
+  take is-collapsed, like native-boolean
+  take range-count, like native-number
+  take type, like native-string
+
+  task add-range
+    like task
+      take range, like range
+      free seed, like native-void
+
+  task collapse
+    like task
+      take node
+        like sink-link-text
+          like node
+          like native-null
+      take offset, like native-number
+        void take
+      free seed, like native-void
+
+  task collapse-to-end
+    like task
+      free seed, like native-void
+
+  task collapse-to-start
+    like task
+      free seed, like native-void
+
+  task contains-node
+    like task
+      take node, like node
+      take allow-partial-containment, like native-boolean
+        void take
+      free seed, like native-boolean
+
+  task delete-from-document
+    like task
+      free seed, like native-void
+
+  task empty
+    like task
+      free seed, like native-void
+
+  task extend
+    like task
+      take node, like node
+      take offset, like native-number
+        void take
+      free seed, like native-void
+
+  task get-range-at
+    like task
+      take index, like native-number
+      free seed, like range
+
+  task remove-all-ranges
+    like task
+      free seed, like native-void
+
+  task remove-range
+    like task
+      take range, like range
+      free seed, like native-void
+
+  task select-all-children
+    like task
+      take node, like node
+      free seed, like native-void
+
+  task set-base-and-extent
+    like task
+      take anchor-node, like node
+      take anchor-offset, like native-number
+      take focus-node, like node
+      take focus-offset, like native-number
+      free seed, like native-void
+
+  task set-position
+    like task
+      take node
+        like sink-link-text
+          like node
+          like native-null
+      take offset, like native-number
+        void take
+      free seed, like native-void
+
+  task to-string
+    like task
+      free seed, like native-string

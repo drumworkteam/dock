@@ -1,0 +1,275 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/can-play-type-result
+  take form can-play-type-result
+
+load @drumwork/land/code/javascript/dom/base/form/event
+  take form event
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/base/form/html-element
+  take form html-element
+
+load @drumwork/land/code/javascript/dom/base/form/html-media-element-event-map
+  take form html-media-element-event-map
+
+load @drumwork/land/code/javascript/dom/base/form/media-encrypted-event
+  take form media-encrypted-event
+
+load @drumwork/land/code/javascript/dom/base/form/media-error
+  take form media-error
+
+load @drumwork/land/code/javascript/dom/base/form/media-keys
+  take form media-keys
+
+load @drumwork/land/code/javascript/dom/base/form/media-provider
+  take form media-provider
+
+load @drumwork/land/code/javascript/dom/base/form/remote-playback
+  take form remote-playback
+
+load @drumwork/land/code/javascript/dom/base/form/text-track
+  take form text-track
+
+load @drumwork/land/code/javascript/dom/base/form/text-track-kind
+  take form text-track-kind
+
+load @drumwork/land/code/javascript/dom/base/form/text-track-list
+  take form text-track-list
+
+load @drumwork/land/code/javascript/dom/base/form/time-ranges
+  take form time-ranges
+
+load @drumwork/land/code/javascript/es5/base/form/promise
+  take form promise
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form html-media-element
+  base html-element
+
+  take autoplay, like native-boolean
+    lock free
+  take buffered, like time-ranges
+  take controls, like native-boolean
+    lock free
+  take cross-origin
+    like sink-link-text
+      like native-string
+      like native-null
+    lock free
+  take current-src, like native-string
+  take current-time, like native-number
+    lock free
+  take default-muted, like native-boolean
+    lock free
+  take default-playback-rate, like native-number
+    lock free
+  take disable-remote-playback, like native-boolean
+    lock free
+  take duration, like native-number
+  take ended, like native-boolean
+  take error
+    like sink-link-text
+      like media-error
+      like native-null
+  take loop, like native-boolean
+    lock free
+  take media-keys
+    like sink-link-text
+      like media-keys
+      like native-null
+  take muted, like native-boolean
+    lock free
+  take network-state, like native-number
+  take onencrypted
+    like sink-link-text
+      like task
+        take this, like html-media-element
+        take ev, like media-encrypted-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onwaitingforkey
+    like sink-link-text
+      like task
+        take this, like html-media-element
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take paused, like native-boolean
+  take playback-rate, like native-number
+    lock free
+  take played, like time-ranges
+  take preload, like native-string
+    lock free
+  take ready-state, like native-number
+  take remote, like remote-playback
+  take seekable, like time-ranges
+  take seeking, like native-boolean
+  take src, like native-string
+    lock free
+  take src-object
+    like sink-link-text
+      like media-provider
+      like native-null
+    lock free
+  take text-tracks, like text-track-list
+  take volume, like native-number
+    lock free
+  take have-current-data, like native-number
+  take have-enough-data, like native-number
+  take have-future-data, like native-number
+  take have-metadata, like native-number
+  take have-nothing, like native-number
+  take network-empty, like native-number
+  take network-idle, like native-number
+  take network-loading, like native-number
+  take network-no-source, like native-number
+
+  task add-text-track
+    like task
+      take kind, like text-track-kind
+      take label, like native-string
+        void take
+      take language, like native-string
+        void take
+      free seed, like text-track
+
+  task can-play-type
+    like task
+      take type, like native-string
+      free seed, like can-play-type-result
+
+  task fast-seek
+    like task
+      take time, like native-number
+      free seed, like native-void
+
+  task load
+    like task
+      free seed, like native-void
+
+  task pause
+    like task
+      free seed, like native-void
+
+  task play
+    like task
+      free seed
+        like promise
+          like native-void
+
+  task set-media-keys
+    like task
+      take media-keys
+        like sink-link-text
+          like media-keys
+          like native-null
+      free seed
+        like promise
+          like native-void
+
+  task add-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like html-media-element-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like html-media-element
+          take ev
+            like form-link-link-text
+              like html-media-element-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task add-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like html-media-element-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like html-media-element
+          take ev
+            like form-link-link-text
+              like html-media-element-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void

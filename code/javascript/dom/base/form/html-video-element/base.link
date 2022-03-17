@@ -1,0 +1,167 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/event
+  take form event
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/base/form/html-media-element
+  take form html-media-element
+
+load @drumwork/land/code/javascript/dom/base/form/html-video-element-event-map
+  take form html-video-element-event-map
+
+load @drumwork/land/code/javascript/dom/base/form/picture-in-picture-window
+  take form picture-in-picture-window
+
+load @drumwork/land/code/javascript/dom/base/form/video-playback-quality
+  take form video-playback-quality
+
+load @drumwork/land/code/javascript/es5/base/form/promise
+  take form promise
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form html-video-element
+  base html-media-element
+
+  take disable-picture-in-picture, like native-boolean
+    lock free
+  take height, like native-number
+    lock free
+  take onenterpictureinpicture
+    like sink-link-text
+      like task
+        take this, like html-video-element
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onleavepictureinpicture
+    like sink-link-text
+      like task
+        take this, like html-video-element
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take plays-inline, like native-boolean
+    lock free
+  take poster, like native-string
+    lock free
+  take video-height, like native-number
+  take video-width, like native-number
+  take width, like native-number
+    lock free
+
+  task get-video-playback-quality
+    like task
+      free seed, like video-playback-quality
+
+  task request-picture-in-picture
+    like task
+      free seed
+        like promise
+          like picture-in-picture-window
+
+  task add-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like html-video-element-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like html-video-element
+          take ev
+            like form-link-link-text
+              like html-video-element-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task add-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like html-video-element-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like html-video-element
+          take ev
+            like form-link-link-text
+              like html-video-element-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void

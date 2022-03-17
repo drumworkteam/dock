@@ -1,0 +1,26 @@
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/base/form/text-decoder
+  take form text-decoder
+
+load @drumwork/land/code/javascript/webworker/base/form/buffer-source
+  take form buffer-source
+
+load @drumwork/land/code/javascript/webworker/base/form/text-decode-options
+  take form text-decode-options
+
+load @drumwork/land/code/javascript/webworker/base/form/text-decoder-common
+  take form text-decoder-common
+
+form text-decoder
+  base text-decoder-common
+
+  task decode
+    like task
+      take input, like buffer-source
+        void take
+      take options, like text-decode-options
+        void take
+      free seed, like native-string

@@ -1,0 +1,36 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/dom/base/form/underlying-source-cancel-callback
+  take form underlying-source-cancel-callback
+
+load @drumwork/land/code/javascript/dom/base/form/underlying-source-pull-callback
+  take form underlying-source-pull-callback
+
+load @drumwork/land/code/javascript/dom/base/form/underlying-source-start-callback
+  take form underlying-source-start-callback
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+form underlying-source
+  head r, like like-link-text
+    back native-any
+
+  take cancel, like underlying-source-cancel-callback
+    lock free
+  take pull
+    like underlying-source-pull-callback
+      like r
+    lock free
+  take start
+    like underlying-source-start-callback
+      like r
+    lock free
+  take type, like native-undefined
+    lock free

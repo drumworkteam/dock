@@ -1,0 +1,50 @@
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/node
+  take form node
+
+load @drumwork/land/code/javascript/dom/base/form/node-filter
+  take form node-filter
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form node-iterator
+  take filter
+    like sink-link-text
+      like node-filter
+      like native-null
+  take pointer-before-reference-node, like native-boolean
+  take reference-node, like node
+  take root, like node
+  take what-to-show, like native-number
+
+  task detach
+    like task
+      free seed, like native-void
+
+  task next-node
+    like task
+      free seed
+        like sink-link-text
+          like node
+          like native-null
+
+  task previous-node
+    like task
+      free seed
+        like sink-link-text
+          like node
+          like native-null

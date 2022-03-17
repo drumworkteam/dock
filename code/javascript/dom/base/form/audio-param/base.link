@@ -1,0 +1,72 @@
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/base/form/automation-rate
+  take form automation-rate
+
+load @drumwork/land/code/javascript/es5/base/form/float32-array
+  take form float32-array
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form audio-param
+  take automation-rate, like automation-rate
+    lock free
+  take default-value, like native-number
+  take max-value, like native-number
+  take min-value, like native-number
+  take value, like native-number
+    lock free
+
+  task cancel-and-hold-at-time
+    like task
+      take cancel-time, like native-number
+      free seed, like audio-param
+
+  task cancel-scheduled-values
+    like task
+      take cancel-time, like native-number
+      free seed, like audio-param
+
+  task exponential-ramp-to-value-at-time
+    like task
+      take value, like native-number
+      take end-time, like native-number
+      free seed, like audio-param
+
+  task linear-ramp-to-value-at-time
+    like task
+      take value, like native-number
+      take end-time, like native-number
+      free seed, like audio-param
+
+  task set-target-at-time
+    like task
+      take target, like native-number
+      take start-time, like native-number
+      take time-constant, like native-number
+      free seed, like audio-param
+
+  task set-value-at-time
+    like task
+      take value, like native-number
+      take start-time, like native-number
+      free seed, like audio-param
+
+  task set-value-curve-at-time
+    like task
+      take values
+        like sink-link-text
+          like list-link-text
+            like native-number
+          like float32-array
+      take start-time, like native-number
+      take duration, like native-number
+      free seed, like audio-param

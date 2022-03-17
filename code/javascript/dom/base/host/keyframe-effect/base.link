@@ -1,0 +1,62 @@
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/base/form/element
+  take form element
+
+load @drumwork/land/code/javascript/dom/base/form/keyframe
+  take form keyframe
+
+load @drumwork/land/code/javascript/dom/base/form/keyframe-effect
+  take form keyframe-effect
+
+load @drumwork/land/code/javascript/dom/base/form/keyframe-effect-options
+  take form keyframe-effect-options
+
+load @drumwork/land/code/javascript/dom/base/form/property-indexed-keyframes
+  take form property-indexed-keyframes
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+host keyframe-effect
+  like form-link-text
+    take prototype, like keyframe-effect
+      lock free
+    task new
+      like task
+        take target
+          like sink-link-text
+            like element
+            like native-null
+        take keyframes
+          like sink-link-text
+            like list-link-text
+              like keyframe
+            like property-indexed-keyframes
+            like native-null
+        take options
+          like sink-link-text
+            like native-number
+            like keyframe-effect-options
+          void take
+        free seed, like keyframe-effect
+  
+    task new
+      like task
+        take source, like keyframe-effect
+        free seed, like keyframe-effect
+  

@@ -1,0 +1,29 @@
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/base/form/node
+  take form node
+
+load @drumwork/land/code/javascript/dom/base/form/x-path-result
+  take form x-path-result
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form x-path-expression
+  task evaluate
+    like task
+      take context-node, like node
+      take type, like native-number
+        void take
+      take result
+        like sink-link-text
+          like x-path-result
+          like native-null
+        void take
+      free seed, like x-path-result

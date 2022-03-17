@@ -1,0 +1,131 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/base/form/svg-animated-enumeration
+  take form svg-animated-enumeration
+
+load @drumwork/land/code/javascript/dom/base/form/svg-animated-transform-list
+  take form svg-animated-transform-list
+
+load @drumwork/land/code/javascript/dom/base/form/svg-element
+  take form svg-element
+
+load @drumwork/land/code/javascript/dom/base/form/svg-element-event-map
+  take form svg-element-event-map
+
+load @drumwork/land/code/javascript/dom/base/form/svg-uri-reference
+  take form svg-uri-reference
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form svg-gradient-element
+  base svg-element
+  base svg-uri-reference
+
+  take gradient-transform, like svg-animated-transform-list
+  take gradient-units, like svg-animated-enumeration
+  take spread-method, like svg-animated-enumeration
+  take svg-spreadmethod-pad, like native-number
+  take svg-spreadmethod-reflect, like native-number
+  take svg-spreadmethod-repeat, like native-number
+  take svg-spreadmethod-unknown, like native-number
+
+  task add-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like svg-element-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like svg-gradient-element
+          take ev
+            like form-link-link-text
+              like svg-element-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task add-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like svg-element-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like svg-gradient-element
+          take ev
+            like form-link-link-text
+              like svg-element-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void

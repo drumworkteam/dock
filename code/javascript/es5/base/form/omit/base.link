@@ -1,0 +1,30 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/es5/base/form/exclude
+  take form exclude
+
+load @drumwork/land/code/javascript/es5/base/form/pick
+  take form pick
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+form omit
+  head t, like like-link-text
+  head k, like like-link-text
+    base link-read-link-text
+      like native-any
+
+  like pick
+    like t
+    like exclude
+      like link-read-link-text
+        like t
+      like k

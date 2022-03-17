@@ -1,0 +1,23 @@
+
+load @drumwork/land/code/javascript/dom/base/form/authenticator-transport
+  take form authenticator-transport
+
+load @drumwork/land/code/javascript/dom/base/form/buffer-source
+  take form buffer-source
+
+load @drumwork/land/code/javascript/dom/base/form/public-key-credential-type
+  take form public-key-credential-type
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form public-key-credential-descriptor
+  take id, like buffer-source
+    lock free
+  take transports
+    like list-link-text
+      like authenticator-transport
+    lock free
+  take type, like public-key-credential-type
+    lock free

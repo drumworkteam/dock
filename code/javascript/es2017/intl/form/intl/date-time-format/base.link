@@ -1,0 +1,32 @@
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/es2015/symbol/wellknown/form/date
+  take form date
+
+load @drumwork/land/code/javascript/es2017/intl/form/intl/date-time-format-part
+  take form date-time-format-part
+
+load @drumwork/land/code/javascript/es5/base/form/intl/date-time-format
+  take form date-time-format
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form date-time-format
+  task format-to-parts
+    like task
+      take date
+        like sink-link-text
+          like date
+          like native-number
+        void take
+      free seed
+        like list-link-text
+          like date-time-format-part

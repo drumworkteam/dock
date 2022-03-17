@@ -1,0 +1,191 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/buffer-source
+  take form buffer-source
+
+load @drumwork/land/code/javascript/dom/base/form/event
+  take form event
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/base/form/event-target
+  take form event-target
+
+load @drumwork/land/code/javascript/dom/base/form/media-key-message-event
+  take form media-key-message-event
+
+load @drumwork/land/code/javascript/dom/base/form/media-key-session-event-map
+  take form media-key-session-event-map
+
+load @drumwork/land/code/javascript/dom/base/form/media-key-status-map
+  take form media-key-status-map
+
+load @drumwork/land/code/javascript/es5/base/form/promise
+  take form promise
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form media-key-session
+  base event-target
+
+  take closed
+    like promise
+      like native-undefined
+  take expiration, like native-number
+  take key-statuses, like media-key-status-map
+  take onkeystatuseschange
+    like sink-link-text
+      like task
+        take this, like media-key-session
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onmessage
+    like sink-link-text
+      like task
+        take this, like media-key-session
+        take ev, like media-key-message-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take session-id, like native-string
+
+  task close
+    like task
+      free seed
+        like promise
+          like native-void
+
+  task generate-request
+    like task
+      take init-data-type, like native-string
+      take init-data, like buffer-source
+      free seed
+        like promise
+          like native-void
+
+  task load
+    like task
+      take session-id, like native-string
+      free seed
+        like promise
+          like native-boolean
+
+  task remove
+    like task
+      free seed
+        like promise
+          like native-void
+
+  task update
+    like task
+      take response, like buffer-source
+      free seed
+        like promise
+          like native-void
+
+  task add-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like media-key-session-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like media-key-session
+          take ev
+            like form-link-link-text
+              like media-key-session-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task add-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like media-key-session-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like media-key-session
+          take ev
+            like form-link-link-text
+              like media-key-session-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void

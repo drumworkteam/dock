@@ -1,0 +1,16 @@
+
+load @drumwork/land/code/javascript/dom/base/form/idle-deadline
+  take form idle-deadline
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host idle-deadline
+  like form-link-text
+    take prototype, like idle-deadline
+      lock free
+    task new
+      like task
+        free seed, like idle-deadline
+  

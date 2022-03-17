@@ -1,0 +1,45 @@
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/scripthost/base/form/text-stream-base
+  take form text-stream-base
+
+form text-stream-reader
+  base text-stream-base
+
+  take at-end-of-line, like native-boolean
+    lock free
+  take at-end-of-stream, like native-boolean
+    lock free
+
+  task read
+    like task
+      take characters, like native-number
+      free seed, like native-string
+
+  task read-all
+    like task
+      free seed, like native-string
+
+  task read-line
+    like task
+      free seed, like native-string
+
+  task skip
+    like task
+      take characters, like native-number
+      free seed, like native-void
+
+  task skip-line
+    like task
+      free seed, like native-void

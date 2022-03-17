@@ -1,0 +1,33 @@
+
+load @drumwork/land/code/javascript/dom/base/form/event-init
+  take form event-init
+
+load @drumwork/land/code/javascript/dom/base/form/media-stream
+  take form media-stream
+
+load @drumwork/land/code/javascript/dom/base/form/media-stream-track
+  take form media-stream-track
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-rtp-receiver
+  take form rtc-rtp-receiver
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-rtp-transceiver
+  take form rtc-rtp-transceiver
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form rtc-track-event-init
+  base event-init
+
+  take receiver, like rtc-rtp-receiver
+    lock free
+  take streams
+    like list-link-text
+      like media-stream
+    lock free
+  take track, like media-stream-track
+    lock free
+  take transceiver, like rtc-rtp-transceiver
+    lock free

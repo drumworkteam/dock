@@ -1,0 +1,30 @@
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/base/form/offline-audio-context
+  take form offline-audio-context
+
+load @drumwork/land/code/javascript/dom/base/form/offline-audio-context-options
+  take form offline-audio-context-options
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host offline-audio-context
+  like form-link-text
+    take prototype, like offline-audio-context
+      lock free
+    task new
+      like task
+        take context-options, like offline-audio-context-options
+        free seed, like offline-audio-context
+  
+    task new
+      like task
+        take number-of-channels, like native-number
+        take length, like native-number
+        take sample-rate, like native-number
+        free seed, like offline-audio-context
+  

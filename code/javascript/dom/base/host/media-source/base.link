@@ -1,0 +1,27 @@
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/base/form/media-source
+  take form media-source
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host media-source
+  like form-link-text
+    take prototype, like media-source
+      lock free
+    task new
+      like task
+        free seed, like media-source
+  
+    task is-type-supported
+      like task
+        take type, like native-string
+        free seed, like native-boolean
+  

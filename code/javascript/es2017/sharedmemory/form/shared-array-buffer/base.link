@@ -1,0 +1,19 @@
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+form shared-array-buffer
+  take byte-length, like native-number
+  take loan symbol/species
+    like shared-array-buffer
+    read take
+  take loan symbol/to-string-tag
+    text <SharedArrayBuffer>
+    read take
+
+  task slice
+    like task
+      take begin, like native-number
+      take end, like native-number
+        void take
+      free seed, like shared-array-buffer

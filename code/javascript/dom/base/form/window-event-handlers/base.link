@@ -1,0 +1,274 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/before-unload-event
+  take form before-unload-event
+
+load @drumwork/land/code/javascript/dom/base/form/event
+  take form event
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/base/form/message-event
+  take form message-event
+
+load @drumwork/land/code/javascript/dom/base/form/page-transition-event
+  take form page-transition-event
+
+load @drumwork/land/code/javascript/dom/base/form/pop-state-event
+  take form pop-state-event
+
+load @drumwork/land/code/javascript/dom/base/form/promise-rejection-event
+  take form promise-rejection-event
+
+load @drumwork/land/code/javascript/dom/base/form/storage-event
+  take form storage-event
+
+load @drumwork/land/code/javascript/dom/base/form/window-event-handlers-event-map
+  take form window-event-handlers-event-map
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form window-event-handlers
+  take onafterprint
+    like sink-link-text
+      like task
+        take this, like window-event-handlers
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onbeforeprint
+    like sink-link-text
+      like task
+        take this, like window-event-handlers
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onbeforeunload
+    like sink-link-text
+      like task
+        take this, like window-event-handlers
+        take ev, like before-unload-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take ongamepadconnected
+    like sink-link-text
+      like task
+        take this, like window-event-handlers
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take ongamepaddisconnected
+    like sink-link-text
+      like task
+        take this, like window-event-handlers
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onhashchange
+    like sink-link-text
+      like task
+        take this, like window-event-handlers
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onlanguagechange
+    like sink-link-text
+      like task
+        take this, like window-event-handlers
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onmessage
+    like sink-link-text
+      like task
+        take this, like window-event-handlers
+        take ev, like message-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onmessageerror
+    like sink-link-text
+      like task
+        take this, like window-event-handlers
+        take ev, like message-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onoffline
+    like sink-link-text
+      like task
+        take this, like window-event-handlers
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take ononline
+    like sink-link-text
+      like task
+        take this, like window-event-handlers
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onpagehide
+    like sink-link-text
+      like task
+        take this, like window-event-handlers
+        take ev, like page-transition-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onpageshow
+    like sink-link-text
+      like task
+        take this, like window-event-handlers
+        take ev, like page-transition-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onpopstate
+    like sink-link-text
+      like task
+        take this, like window-event-handlers
+        take ev, like pop-state-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onrejectionhandled
+    like sink-link-text
+      like task
+        take this, like window-event-handlers
+        take ev, like promise-rejection-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onstorage
+    like sink-link-text
+      like task
+        take this, like window-event-handlers
+        take ev, like storage-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onunhandledrejection
+    like sink-link-text
+      like task
+        take this, like window-event-handlers
+        take ev, like promise-rejection-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onunload
+    like sink-link-text
+      like task
+        take this, like window-event-handlers
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+
+  task add-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like window-event-handlers-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like window-event-handlers
+          take ev
+            like form-link-link-text
+              like window-event-handlers-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task add-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like window-event-handlers-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like window-event-handlers
+          take ev
+            like form-link-link-text
+              like window-event-handlers-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void

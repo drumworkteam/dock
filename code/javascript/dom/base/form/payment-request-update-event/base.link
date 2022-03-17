@@ -1,0 +1,28 @@
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/event
+  take form event
+
+load @drumwork/land/code/javascript/dom/base/form/payment-details-update
+  take form payment-details-update
+
+load @drumwork/land/code/javascript/es5/base/form/promise-like
+  take form promise-like
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form payment-request-update-event
+  base event
+
+  task update-with
+    like task
+      take details-promise
+        like sink-link-text
+          like payment-details-update
+          like promise-like
+            like payment-details-update
+      free seed, like native-void

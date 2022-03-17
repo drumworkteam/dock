@@ -1,0 +1,165 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/align-setting
+  take form align-setting
+
+load @drumwork/land/code/javascript/dom/base/form/direction-setting
+  take form direction-setting
+
+load @drumwork/land/code/javascript/dom/base/form/document-fragment
+  take form document-fragment
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/base/form/line-align-setting
+  take form line-align-setting
+
+load @drumwork/land/code/javascript/dom/base/form/line-and-position-setting
+  take form line-and-position-setting
+
+load @drumwork/land/code/javascript/dom/base/form/position-align-setting
+  take form position-align-setting
+
+load @drumwork/land/code/javascript/dom/base/form/text-track-cue
+  take form text-track-cue
+
+load @drumwork/land/code/javascript/dom/base/form/text-track-cue-event-map
+  take form text-track-cue-event-map
+
+load @drumwork/land/code/javascript/dom/base/form/vtt-region
+  take form vtt-region
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form vtt-cue
+  base text-track-cue
+
+  take align, like align-setting
+    lock free
+  take line, like line-and-position-setting
+    lock free
+  take line-align, like line-align-setting
+    lock free
+  take position, like line-and-position-setting
+    lock free
+  take position-align, like position-align-setting
+    lock free
+  take region
+    like sink-link-text
+      like vtt-region
+      like native-null
+    lock free
+  take size, like native-number
+    lock free
+  take snap-to-lines, like native-boolean
+    lock free
+  take text, like native-string
+    lock free
+  take vertical, like direction-setting
+    lock free
+
+  task get-cue-as-html
+    like task
+      free seed, like document-fragment
+
+  task add-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like text-track-cue-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like vtt-cue
+          take ev
+            like form-link-link-text
+              like text-track-cue-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task add-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like text-track-cue-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like vtt-cue
+          take ev
+            like form-link-link-text
+              like text-track-cue-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void

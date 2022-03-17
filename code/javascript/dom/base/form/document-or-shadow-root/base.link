@@ -1,0 +1,45 @@
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/dom/base/form/animation
+  take form animation
+
+load @drumwork/land/code/javascript/dom/base/form/element
+  take form element
+
+load @drumwork/land/code/javascript/dom/base/form/style-sheet-list
+  take form style-sheet-list
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form document-or-shadow-root
+  take active-element
+    like sink-link-text
+      like element
+      like native-null
+  take fullscreen-element
+    like sink-link-text
+      like element
+      like native-null
+  take picture-in-picture-element
+    like sink-link-text
+      like element
+      like native-null
+  take pointer-lock-element
+    like sink-link-text
+      like element
+      like native-null
+  take style-sheets, like style-sheet-list
+
+  task get-animations
+    like task
+      free seed
+        like list-link-text
+          like animation

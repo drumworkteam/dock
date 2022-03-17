@@ -1,0 +1,184 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/base/form/dom-matrix
+  take form dom-matrix
+
+load @drumwork/land/code/javascript/dom/base/form/dom-matrix-init
+  take form dom-matrix-init
+
+load @drumwork/land/code/javascript/dom/base/form/dom-point
+  take form dom-point
+
+load @drumwork/land/code/javascript/dom/base/form/dom-point-init
+  take form dom-point-init
+
+load @drumwork/land/code/javascript/es5/base/form/float32-array
+  take form float32-array
+
+load @drumwork/land/code/javascript/es5/base/form/float64-array
+  take form float64-array
+
+form dom-matrix-read-only
+  take a, like native-number
+  take b, like native-number
+  take c, like native-number
+  take d, like native-number
+  take e, like native-number
+  take f, like native-number
+  take is2d, like native-boolean
+  take is-identity, like native-boolean
+  take m11, like native-number
+  take m12, like native-number
+  take m13, like native-number
+  take m14, like native-number
+  take m21, like native-number
+  take m22, like native-number
+  take m23, like native-number
+  take m24, like native-number
+  take m31, like native-number
+  take m32, like native-number
+  take m33, like native-number
+  take m34, like native-number
+  take m41, like native-number
+  take m42, like native-number
+  take m43, like native-number
+  take m44, like native-number
+
+  task flip-x
+    like task
+      free seed, like dom-matrix
+
+  task flip-y
+    like task
+      free seed, like dom-matrix
+
+  task inverse
+    like task
+      free seed, like dom-matrix
+
+  task multiply
+    like task
+      take other, like dom-matrix-init
+        void take
+      free seed, like dom-matrix
+
+  task rotate
+    like task
+      take rot-x, like native-number
+        void take
+      take rot-y, like native-number
+        void take
+      take rot-z, like native-number
+        void take
+      free seed, like dom-matrix
+
+  task rotate-axis-angle
+    like task
+      take x, like native-number
+        void take
+      take y, like native-number
+        void take
+      take z, like native-number
+        void take
+      take angle, like native-number
+        void take
+      free seed, like dom-matrix
+
+  task rotate-from-vector
+    like task
+      take x, like native-number
+        void take
+      take y, like native-number
+        void take
+      free seed, like dom-matrix
+
+  task scale
+    like task
+      take scale-x, like native-number
+        void take
+      take scale-y, like native-number
+        void take
+      take scale-z, like native-number
+        void take
+      take origin-x, like native-number
+        void take
+      take origin-y, like native-number
+        void take
+      take origin-z, like native-number
+        void take
+      free seed, like dom-matrix
+
+  task scale3d
+    like task
+      take scale, like native-number
+        void take
+      take origin-x, like native-number
+        void take
+      take origin-y, like native-number
+        void take
+      take origin-z, like native-number
+        void take
+      free seed, like dom-matrix
+
+  task scale-non-uniform
+    like task
+      take scale-x, like native-number
+        void take
+      take scale-y, like native-number
+        void take
+      free seed, like dom-matrix
+
+  task skew-x
+    like task
+      take sx, like native-number
+        void take
+      free seed, like dom-matrix
+
+  task skew-y
+    like task
+      take sy, like native-number
+        void take
+      free seed, like dom-matrix
+
+  task to-float32-array
+    like task
+      free seed, like float32-array
+
+  task to-float64-array
+    like task
+      free seed, like float64-array
+
+  task to-json
+    like task
+      free seed, like native-any
+
+  task transform-point
+    like task
+      take point, like dom-point-init
+        void take
+      free seed, like dom-point
+
+  task translate
+    like task
+      take tx, like native-number
+        void take
+      take ty, like native-number
+        void take
+      take tz, like native-number
+        void take
+      free seed, like dom-matrix
+
+  task to-string
+    like task
+      free seed, like native-string

@@ -1,0 +1,75 @@
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/dom-matrix2-d-init
+  take form dom-matrix2-d-init
+
+load @drumwork/land/code/javascript/dom/base/form/svg-transform
+  take form svg-transform
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form svg-transform-list
+  take length, like native-number
+  take number-of-items, like native-number
+
+  task append-item
+    like task
+      take new-item, like svg-transform
+      free seed, like svg-transform
+
+  task clear
+    like task
+      free seed, like native-void
+
+  task consolidate
+    like task
+      free seed
+        like sink-link-text
+          like svg-transform
+          like native-null
+
+  task create-svg-transform-from-matrix
+    like task
+      take matrix, like dom-matrix2-d-init
+        void take
+      free seed, like svg-transform
+
+  task get-item
+    like task
+      take index, like native-number
+      free seed, like svg-transform
+
+  task initialize
+    like task
+      take new-item, like svg-transform
+      free seed, like svg-transform
+
+  task insert-item-before
+    like task
+      take new-item, like svg-transform
+      take index, like native-number
+      free seed, like svg-transform
+
+  task remove-item
+    like task
+      take index, like native-number
+      free seed, like svg-transform
+
+  task replace-item
+    like task
+      take new-item, like svg-transform
+      take index, like native-number
+      free seed, like svg-transform
+
+  cite index, like native-number
+    like svg-transform

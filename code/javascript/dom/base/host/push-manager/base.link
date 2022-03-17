@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/base/form/push-manager
+  take form push-manager
+
+load @drumwork/land/code/javascript/es5/base/form/readonly-array
+  take form readonly-array
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host push-manager
+  like form-link-text
+    take prototype, like push-manager
+      lock free
+    task new
+      like task
+        free seed, like push-manager
+  
+    take supported-content-encodings
+      like readonly-array
+        like native-string

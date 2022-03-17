@@ -1,0 +1,59 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/es2015/iterable/form/iterator-result
+  take form iterator-result
+
+load @drumwork/seed/code/form/band
+  take form band
+    save form band-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form iterator
+  head t, like like-link-text
+  head t-return, like like-link-text
+    back native-any
+  head t-next, like like-link-text
+    back native-undefined
+
+  task next
+    like task
+      take args
+        like sink-link-text
+          like band-link-text
+          like band-link-text
+            like t-next
+        rest take
+      free seed
+        like iterator-result
+          like t
+          like t-return
+
+  task return
+    like task
+      take value, like t-return
+        void take
+      free seed
+        like iterator-result
+          like t
+          like t-return
+
+  task throw
+    like task
+      take e, like native-any
+        void take
+      free seed
+        like iterator-result
+          like t
+          like t-return

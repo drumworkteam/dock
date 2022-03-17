@@ -1,0 +1,29 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/dom/base/form/transform-stream
+  take form transform-stream
+
+load @drumwork/land/code/javascript/webworker/base/form/readable-stream
+  take form readable-stream
+
+load @drumwork/land/code/javascript/webworker/base/form/writable-stream
+  take form writable-stream
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+form transform-stream
+  head i, like like-link-text
+    back native-any
+  head o, like like-link-text
+    back native-any
+
+  take readable
+    like readable-stream
+      like o
+  take writable
+    like writable-stream
+      like i

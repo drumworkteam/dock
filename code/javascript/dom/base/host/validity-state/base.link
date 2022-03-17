@@ -1,0 +1,16 @@
+
+load @drumwork/land/code/javascript/dom/base/form/validity-state
+  take form validity-state
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host validity-state
+  like form-link-text
+    take prototype, like validity-state
+      lock free
+    task new
+      like task
+        free seed, like validity-state
+  

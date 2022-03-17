@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/base/form/page-transition-event
+  take form page-transition-event
+
+load @drumwork/land/code/javascript/dom/base/form/page-transition-event-init
+  take form page-transition-event-init
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host page-transition-event
+  like form-link-text
+    take prototype, like page-transition-event
+      lock free
+    task new
+      like task
+        take type, like native-string
+        take event-init-dict, like page-transition-event-init
+          void take
+        free seed, like page-transition-event
+  

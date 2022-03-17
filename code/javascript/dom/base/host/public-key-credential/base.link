@@ -1,0 +1,28 @@
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/dom/base/form/public-key-credential
+  take form public-key-credential
+
+load @drumwork/land/code/javascript/es5/base/form/promise
+  take form promise
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host public-key-credential
+  like form-link-text
+    take prototype, like public-key-credential
+      lock free
+    task new
+      like task
+        free seed, like public-key-credential
+  
+    task is-user-verifying-platform-authenticator-available
+      like task
+        free seed
+          like promise
+            like native-boolean
+  

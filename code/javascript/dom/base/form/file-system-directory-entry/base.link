@@ -1,0 +1,65 @@
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/error-callback
+  take form error-callback
+
+load @drumwork/land/code/javascript/dom/base/form/file-system-directory-reader
+  take form file-system-directory-reader
+
+load @drumwork/land/code/javascript/dom/base/form/file-system-entry
+  take form file-system-entry
+
+load @drumwork/land/code/javascript/dom/base/form/file-system-entry-callback
+  take form file-system-entry-callback
+
+load @drumwork/land/code/javascript/dom/base/form/file-system-flags
+  take form file-system-flags
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form file-system-directory-entry
+  base file-system-entry
+
+  task create-reader
+    like task
+      free seed, like file-system-directory-reader
+
+  task get-directory
+    like task
+      take path
+        like sink-link-text
+          like native-string
+          like native-null
+        void take
+      take options, like file-system-flags
+        void take
+      take success-callback, like file-system-entry-callback
+        void take
+      take error-callback, like error-callback
+        void take
+      free seed, like native-void
+
+  task get-file
+    like task
+      take path
+        like sink-link-text
+          like native-string
+          like native-null
+        void take
+      take options, like file-system-flags
+        void take
+      take success-callback, like file-system-entry-callback
+        void take
+      take error-callback, like error-callback
+        void take
+      free seed, like native-void

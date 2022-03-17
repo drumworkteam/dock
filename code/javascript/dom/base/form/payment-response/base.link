@@ -1,0 +1,48 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/event-target
+  take form event-target
+
+load @drumwork/land/code/javascript/dom/base/form/payment-complete
+  take form payment-complete
+
+load @drumwork/land/code/javascript/dom/base/form/payment-validation-errors
+  take form payment-validation-errors
+
+load @drumwork/land/code/javascript/es5/base/form/promise
+  take form promise
+
+form payment-response
+  base event-target
+
+  take details, like native-any
+  take method-name, like native-string
+  take request-id, like native-string
+
+  task complete
+    like task
+      take result, like payment-complete
+        void take
+      free seed
+        like promise
+          like native-void
+
+  task retry
+    like task
+      take error-fields, like payment-validation-errors
+        void take
+      free seed
+        like promise
+          like native-void
+
+  task to-json
+    like task
+      free seed, like native-any

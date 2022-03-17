@@ -1,0 +1,19 @@
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/es2018/intl/form/intl/l-d-m-l-plural-rule
+  take form l-d-m-l-plural-rule
+
+load @drumwork/land/code/javascript/es2018/intl/form/intl/resolved-plural-rules-options
+  take form resolved-plural-rules-options
+
+form plural-rules
+  task resolved-options
+    like task
+      free seed, like resolved-plural-rules-options
+
+  task select
+    like task
+      take n, like native-number
+      free seed, like l-d-m-l-plural-rule

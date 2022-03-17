@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/dom/base/form/base-audio-context
+  take form base-audio-context
+
+load @drumwork/land/code/javascript/dom/base/form/convolver-node
+  take form convolver-node
+
+load @drumwork/land/code/javascript/dom/base/form/convolver-options
+  take form convolver-options
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host convolver-node
+  like form-link-text
+    take prototype, like convolver-node
+      lock free
+    task new
+      like task
+        take context, like base-audio-context
+        take options, like convolver-options
+          void take
+        free seed, like convolver-node
+  

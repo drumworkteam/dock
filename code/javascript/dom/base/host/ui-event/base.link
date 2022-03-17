@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/base/form/ui-event
+  take form ui-event
+
+load @drumwork/land/code/javascript/dom/base/form/ui-event-init
+  take form ui-event-init
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host ui-event
+  like form-link-text
+    take prototype, like ui-event
+      lock free
+    task new
+      like task
+        take type, like native-string
+        take event-init-dict, like ui-event-init
+          void take
+        free seed, like ui-event
+  

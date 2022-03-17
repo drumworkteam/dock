@@ -1,0 +1,48 @@
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/audio-node
+  take form audio-node
+
+load @drumwork/land/code/javascript/es5/base/form/float32-array
+  take form float32-array
+
+load @drumwork/land/code/javascript/es5/base/form/uint8-array
+  take form uint8-array
+
+form analyser-node
+  base audio-node
+
+  take fft-size, like native-number
+    lock free
+  take frequency-bin-count, like native-number
+  take max-decibels, like native-number
+    lock free
+  take min-decibels, like native-number
+    lock free
+  take smoothing-time-constant, like native-number
+    lock free
+
+  task get-byte-frequency-data
+    like task
+      take array, like uint8-array
+      free seed, like native-void
+
+  task get-byte-time-domain-data
+    like task
+      take array, like uint8-array
+      free seed, like native-void
+
+  task get-float-frequency-data
+    like task
+      take array, like float32-array
+      free seed, like native-void
+
+  task get-float-time-domain-data
+    like task
+      take array, like float32-array
+      free seed, like native-void

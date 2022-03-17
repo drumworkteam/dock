@@ -1,0 +1,80 @@
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/base/form/attr
+  take form attr
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form named-node-map
+  take length, like native-number
+
+  task get-named-item
+    like task
+      take qualified-name, like native-string
+      free seed
+        like sink-link-text
+          like attr
+          like native-null
+
+  task get-named-item-n-s
+    like task
+      take namespace
+        like sink-link-text
+          like native-string
+          like native-null
+      take local-name, like native-string
+      free seed
+        like sink-link-text
+          like attr
+          like native-null
+
+  task item
+    like task
+      take index, like native-number
+      free seed
+        like sink-link-text
+          like attr
+          like native-null
+
+  task remove-named-item
+    like task
+      take qualified-name, like native-string
+      free seed, like attr
+
+  task remove-named-item-n-s
+    like task
+      take namespace
+        like sink-link-text
+          like native-string
+          like native-null
+      take local-name, like native-string
+      free seed, like attr
+
+  task set-named-item
+    like task
+      take attr, like attr
+      free seed
+        like sink-link-text
+          like attr
+          like native-null
+
+  task set-named-item-n-s
+    like task
+      take attr, like attr
+      free seed
+        like sink-link-text
+          like attr
+          like native-null
+
+  cite index, like native-number
+    like attr

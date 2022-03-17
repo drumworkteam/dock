@@ -1,0 +1,163 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/event
+  take form event
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/base/form/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/base/form/event-target
+  take form event-target
+
+load @drumwork/land/code/javascript/dom/base/form/notification-direction
+  take form notification-direction
+
+load @drumwork/land/code/javascript/dom/base/form/notification-event-map
+  take form notification-event-map
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form notification
+  base event-target
+
+  take body, like native-string
+  take data, like native-any
+  take dir, like notification-direction
+  take icon, like native-string
+  take lang, like native-string
+  take onclick
+    like sink-link-text
+      like task
+        take this, like notification
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onclose
+    like sink-link-text
+      like task
+        take this, like notification
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onerror
+    like sink-link-text
+      like task
+        take this, like notification
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onshow
+    like sink-link-text
+      like task
+        take this, like notification
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take tag, like native-string
+  take title, like native-string
+
+  task close
+    like task
+      free seed, like native-void
+
+  task add-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like notification-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like notification
+          take ev
+            like form-link-link-text
+              like notification-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task add-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like add-event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      head k, like like-link-text
+        base link-read-link-text
+          like notification-event-map
+      take type, like k
+      take listener
+        like task
+          take this, like notification
+          take ev
+            like form-link-link-text
+              like notification-event-map
+              like k
+          free seed, like native-any
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void
+
+  task remove-event-listener
+    like task
+      take type, like native-string
+      take listener, like event-listener-or-event-listener-object
+      take options
+        like sink-link-text
+          like native-boolean
+          like event-listener-options
+        void take
+      free seed, like native-void

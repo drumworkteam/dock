@@ -1,0 +1,48 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/url
+  take form url
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+host url
+  like form-link-text
+    take prototype, like url
+      lock free
+    task new
+      like task
+        take url
+          like sink-link-text
+            like native-string
+            like url
+        take base
+          like sink-link-text
+            like native-string
+            like url
+          void take
+        free seed, like url
+  
+    task create-object-url
+      like task
+        take object, like native-any
+        free seed, like native-string
+  
+    task revoke-object-url
+      like task
+        take url, like native-string
+        free seed, like native-void
+  

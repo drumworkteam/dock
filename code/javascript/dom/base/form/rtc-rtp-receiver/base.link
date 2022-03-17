@@ -1,0 +1,61 @@
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/dom/base/form/media-stream-track
+  take form media-stream-track
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-dtls-transport
+  take form rtc-dtls-transport
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-rtp-contributing-source
+  take form rtc-rtp-contributing-source
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-rtp-receive-parameters
+  take form rtc-rtp-receive-parameters
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-rtp-synchronization-source
+  take form rtc-rtp-synchronization-source
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-stats-report
+  take form rtc-stats-report
+
+load @drumwork/land/code/javascript/es5/base/form/promise
+  take form promise
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form rtc-rtp-receiver
+  take track, like media-stream-track
+  take transport
+    like sink-link-text
+      like rtc-dtls-transport
+      like native-null
+
+  task get-contributing-sources
+    like task
+      free seed
+        like list-link-text
+          like rtc-rtp-contributing-source
+
+  task get-parameters
+    like task
+      free seed, like rtc-rtp-receive-parameters
+
+  task get-stats
+    like task
+      free seed
+        like promise
+          like rtc-stats-report
+
+  task get-synchronization-sources
+    like task
+      free seed
+        like list-link-text
+          like rtc-rtp-synchronization-source

@@ -1,0 +1,20 @@
+
+load @drumwork/land/code/javascript/dom/base/form/count-queuing-strategy
+  take form count-queuing-strategy
+
+load @drumwork/land/code/javascript/dom/base/form/queuing-strategy-init
+  take form queuing-strategy-init
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host count-queuing-strategy
+  like form-link-text
+    take prototype, like count-queuing-strategy
+      lock free
+    task new
+      like task
+        take init, like queuing-strategy-init
+        free seed, like count-queuing-strategy
+  

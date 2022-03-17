@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/dom/base/form/media-stream
+  take form media-stream
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-rtp-encoding-parameters
+  take form rtc-rtp-encoding-parameters
+
+load @drumwork/land/code/javascript/dom/base/form/rtc-rtp-transceiver-direction
+  take form rtc-rtp-transceiver-direction
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form rtc-rtp-transceiver-init
+  take direction, like rtc-rtp-transceiver-direction
+    lock free
+  take send-encodings
+    like list-link-text
+      like rtc-rtp-encoding-parameters
+    lock free
+  take streams
+    like list-link-text
+      like media-stream
+    lock free

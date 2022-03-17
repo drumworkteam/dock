@@ -1,0 +1,185 @@
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/es2016/array/include/form/int16-array
+  take form int16-array
+
+load @drumwork/land/code/javascript/es2016/array/include/form/int32-array
+  take form int32-array
+
+load @drumwork/land/code/javascript/es2016/array/include/form/int8-array
+  take form int8-array
+
+load @drumwork/land/code/javascript/es2016/array/include/form/uint16-array
+  take form uint16-array
+
+load @drumwork/land/code/javascript/es2016/array/include/form/uint32-array
+  take form uint32-array
+
+load @drumwork/land/code/javascript/es2016/array/include/form/uint8-array
+  take form uint8-array
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form atomics
+  take loan symbol/to-string-tag
+    text <Atomics>
+    read take
+
+  task add
+    like task
+      take typed-array
+        like sink-link-text
+          like int8-array
+          like uint8-array
+          like int16-array
+          like uint16-array
+          like int32-array
+          like uint32-array
+      take index, like native-number
+      take value, like native-number
+      free seed, like native-number
+
+  task and
+    like task
+      take typed-array
+        like sink-link-text
+          like int8-array
+          like uint8-array
+          like int16-array
+          like uint16-array
+          like int32-array
+          like uint32-array
+      take index, like native-number
+      take value, like native-number
+      free seed, like native-number
+
+  task compare-exchange
+    like task
+      take typed-array
+        like sink-link-text
+          like int8-array
+          like uint8-array
+          like int16-array
+          like uint16-array
+          like int32-array
+          like uint32-array
+      take index, like native-number
+      take expected-value, like native-number
+      take replacement-value, like native-number
+      free seed, like native-number
+
+  task exchange
+    like task
+      take typed-array
+        like sink-link-text
+          like int8-array
+          like uint8-array
+          like int16-array
+          like uint16-array
+          like int32-array
+          like uint32-array
+      take index, like native-number
+      take value, like native-number
+      free seed, like native-number
+
+  task is-lock-free
+    like task
+      take size, like native-number
+      free seed, like native-boolean
+
+  task load
+    like task
+      take typed-array
+        like sink-link-text
+          like int8-array
+          like uint8-array
+          like int16-array
+          like uint16-array
+          like int32-array
+          like uint32-array
+      take index, like native-number
+      free seed, like native-number
+
+  task or
+    like task
+      take typed-array
+        like sink-link-text
+          like int8-array
+          like uint8-array
+          like int16-array
+          like uint16-array
+          like int32-array
+          like uint32-array
+      take index, like native-number
+      take value, like native-number
+      free seed, like native-number
+
+  task store
+    like task
+      take typed-array
+        like sink-link-text
+          like int8-array
+          like uint8-array
+          like int16-array
+          like uint16-array
+          like int32-array
+          like uint32-array
+      take index, like native-number
+      take value, like native-number
+      free seed, like native-number
+
+  task sub
+    like task
+      take typed-array
+        like sink-link-text
+          like int8-array
+          like uint8-array
+          like int16-array
+          like uint16-array
+          like int32-array
+          like uint32-array
+      take index, like native-number
+      take value, like native-number
+      free seed, like native-number
+
+  task wait
+    like task
+      take typed-array, like int32-array
+      take index, like native-number
+      take value, like native-number
+      take timeout, like native-number
+        void take
+      free seed
+        like sink-link-text
+          text <ok>
+          text <not-equal>
+          text <timed-out>
+
+  task notify
+    like task
+      take typed-array, like int32-array
+      take index, like native-number
+      take count, like native-number
+        void take
+      free seed, like native-number
+
+  task xor
+    like task
+      take typed-array
+        like sink-link-text
+          like int8-array
+          like uint8-array
+          like int16-array
+          like uint16-array
+          like int32-array
+          like uint32-array
+      take index, like native-number
+      take value, like native-number
+      free seed, like native-number

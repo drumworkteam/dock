@@ -1,0 +1,184 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/form/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-object
+  take form native-object
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/es5/base/form/function
+  take form function
+
+load @drumwork/land/code/javascript/es5/base/form/object
+  take form object
+
+load @drumwork/land/code/javascript/es5/base/form/property-descriptor
+  take form property-descriptor
+
+load @drumwork/land/code/javascript/es5/base/form/property-descriptor-map
+  take form property-descriptor-map
+
+load @drumwork/land/code/javascript/es5/base/form/property-key
+  take form property-key
+
+load @drumwork/land/code/javascript/es5/base/form/readonly
+  take form readonly
+
+load @drumwork/land/code/javascript/es5/base/form/this-type
+  take form this-type
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form object-constructor
+  take prototype, like object
+
+  task get-prototype-of
+    like task
+      take o, like native-any
+      free seed, like native-any
+
+  task get-own-property-descriptor
+    like task
+      take o, like native-any
+      take p, like property-key
+      free seed
+        like sink-link-text
+          like property-descriptor
+          like native-undefined
+
+  task get-own-property-names
+    like task
+      take o, like native-any
+      free seed
+        like list-link-text
+          like native-string
+
+  task create
+    like task
+      take o
+        like sink-link-text
+          like native-object
+          like native-null
+      free seed, like native-any
+
+  task create
+    like task
+      take o
+        like sink-link-text
+          like native-object
+          like native-null
+      take properties
+        like link
+          like property-descriptor-map
+          like this-type
+            like native-any
+      free seed, like native-any
+
+  task define-property
+    like task
+      head t, like like-link-text
+      take o, like t
+      take p, like property-key
+      take attributes
+        like link
+          like property-descriptor
+          like this-type
+            like native-any
+      free seed, like t
+
+  task define-properties
+    like task
+      head t, like like-link-text
+      take o, like t
+      take properties
+        like link
+          like property-descriptor-map
+          like this-type
+            like native-any
+      free seed, like t
+
+  task seal
+    like task
+      head t, like like-link-text
+      take o, like t
+      free seed, like t
+
+  task freeze
+    like task
+      head t, like like-link-text
+      take a
+        like list-link-text
+          like t
+      free seed
+        like list-link-text
+          like t
+
+  task freeze
+    like task
+      head t, like like-link-text
+        base function
+      take f, like t
+      free seed, like t
+
+  task freeze
+    like task
+      head t, like like-link-text
+      take o, like t
+      free seed
+        like readonly
+          like t
+
+  task prevent-extensions
+    like task
+      head t, like like-link-text
+      take o, like t
+      free seed, like t
+
+  task is-sealed
+    like task
+      take o, like native-any
+      free seed, like native-boolean
+
+  task is-frozen
+    like task
+      take o, like native-any
+      free seed, like native-boolean
+
+  task is-extensible
+    like task
+      take o, like native-any
+      free seed, like native-boolean
+
+  task keys
+    like task
+      take o, like native-object
+      free seed
+        like list-link-text
+          like native-string
+
+  task new
+    like task
+      take value, like native-any
+        void take
+      free seed, like object

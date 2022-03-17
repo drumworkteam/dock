@@ -1,0 +1,53 @@
+
+load @drumwork/land/code/javascript/base/form/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/webworker/base/form/body-init
+  take form body-init
+
+load @drumwork/land/code/javascript/webworker/base/form/response
+  take form response
+
+load @drumwork/land/code/javascript/webworker/base/form/response-init
+  take form response-init
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+host response
+  like form-link-text
+    take prototype, like response
+      lock free
+    task new
+      like task
+        take body
+          like sink-link-text
+            like body-init
+            like native-null
+          void take
+        take init, like response-init
+          void take
+        free seed, like response
+  
+    task error
+      like task
+        free seed, like response
+  
+    task redirect
+      like task
+        take url, like native-string
+        take status, like native-number
+          void take
+        free seed, like response
+  

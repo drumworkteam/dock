@@ -1,0 +1,33 @@
+
+load @drumwork/land/code/javascript/base/form/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/dom/base/form/writable-stream
+  take form writable-stream
+
+load @drumwork/land/code/javascript/dom/base/form/writable-stream-default-writer
+  take form writable-stream-default-writer
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+host writable-stream-default-writer
+  like form-link-text
+    take prototype, like writable-stream-default-writer
+      lock free
+    task new
+      like task
+        head w, like like-link-text
+          back native-any
+        take stream
+          like writable-stream
+            like w
+        free seed
+          like writable-stream-default-writer
+            like w
+  

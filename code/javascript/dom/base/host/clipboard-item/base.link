@@ -1,0 +1,34 @@
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/base/form/clipboard-item
+  take form clipboard-item
+
+load @drumwork/land/code/javascript/dom/base/form/clipboard-item-data
+  take form clipboard-item-data
+
+load @drumwork/land/code/javascript/dom/base/form/clipboard-item-options
+  take form clipboard-item-options
+
+load @drumwork/land/code/javascript/es5/base/form/record
+  take form record
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host clipboard-item
+  like form-link-text
+    take prototype, like clipboard-item
+      lock free
+    task new
+      like task
+        take items
+          like record
+            like native-string
+            like clipboard-item-data
+        take options, like clipboard-item-options
+          void take
+        free seed, like clipboard-item
+  

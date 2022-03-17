@@ -1,0 +1,16 @@
+
+load @drumwork/land/code/javascript/dom/base/form/audio-scheduled-source-node
+  take form audio-scheduled-source-node
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host audio-scheduled-source-node
+  like form-link-text
+    take prototype, like audio-scheduled-source-node
+      lock free
+    task new
+      like task
+        free seed, like audio-scheduled-source-node
+  

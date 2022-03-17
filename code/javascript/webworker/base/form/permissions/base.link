@@ -1,0 +1,38 @@
+
+load @drumwork/land/code/javascript/dom/base/form/permissions
+  take form permissions
+
+load @drumwork/land/code/javascript/es5/base/form/promise
+  take form promise
+
+load @drumwork/land/code/javascript/webworker/base/form/device-permission-descriptor
+  take form device-permission-descriptor
+
+load @drumwork/land/code/javascript/webworker/base/form/midi-permission-descriptor
+  take form midi-permission-descriptor
+
+load @drumwork/land/code/javascript/webworker/base/form/permission-descriptor
+  take form permission-descriptor
+
+load @drumwork/land/code/javascript/webworker/base/form/permission-status
+  take form permission-status
+
+load @drumwork/land/code/javascript/webworker/base/form/push-permission-descriptor
+  take form push-permission-descriptor
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form permissions
+  task query
+    like task
+      take permission-desc
+        like sink-link-text
+          like permission-descriptor
+          like device-permission-descriptor
+          like midi-permission-descriptor
+          like push-permission-descriptor
+      free seed
+        like promise
+          like permission-status

@@ -1,0 +1,21 @@
+
+load @drumwork/land/code/javascript/dom/base/form/media-metadata
+  take form media-metadata
+
+load @drumwork/land/code/javascript/dom/base/form/media-metadata-init
+  take form media-metadata-init
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host media-metadata
+  like form-link-text
+    take prototype, like media-metadata
+      lock free
+    task new
+      like task
+        take init, like media-metadata-init
+          void take
+        free seed, like media-metadata
+  

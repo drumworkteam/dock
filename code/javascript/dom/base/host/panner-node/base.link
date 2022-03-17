@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/dom/base/form/base-audio-context
+  take form base-audio-context
+
+load @drumwork/land/code/javascript/dom/base/form/panner-node
+  take form panner-node
+
+load @drumwork/land/code/javascript/dom/base/form/panner-options
+  take form panner-options
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host panner-node
+  like form-link-text
+    take prototype, like panner-node
+      lock free
+    task new
+      like task
+        take context, like base-audio-context
+        take options, like panner-options
+          void take
+        free seed, like panner-node
+  

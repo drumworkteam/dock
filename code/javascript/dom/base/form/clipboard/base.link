@@ -1,0 +1,44 @@
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/clipboard-items
+  take form clipboard-items
+
+load @drumwork/land/code/javascript/dom/base/form/event-target
+  take form event-target
+
+load @drumwork/land/code/javascript/es5/base/form/promise
+  take form promise
+
+form clipboard
+  base event-target
+
+  task read
+    like task
+      free seed
+        like promise
+          like clipboard-items
+
+  task read-text
+    like task
+      free seed
+        like promise
+          like native-string
+
+  task write
+    like task
+      take data, like clipboard-items
+      free seed
+        like promise
+          like native-void
+
+  task write-text
+    like task
+      take data, like native-string
+      free seed
+        like promise
+          like native-void

@@ -1,0 +1,34 @@
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/mutation-observer-init
+  take form mutation-observer-init
+
+load @drumwork/land/code/javascript/dom/base/form/mutation-record
+  take form mutation-record
+
+load @drumwork/land/code/javascript/dom/base/form/node
+  take form node
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form mutation-observer
+  task disconnect
+    like task
+      free seed, like native-void
+
+  task observe
+    like task
+      take target, like node
+      take options, like mutation-observer-init
+        void take
+      free seed, like native-void
+
+  task take-records
+    like task
+      free seed
+        like list-link-text
+          like mutation-record

@@ -1,0 +1,20 @@
+
+load @drumwork/land/code/javascript/dom/base/form/audio-buffer
+  take form audio-buffer
+
+load @drumwork/land/code/javascript/dom/base/form/audio-buffer-options
+  take form audio-buffer-options
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host audio-buffer
+  like form-link-text
+    take prototype, like audio-buffer
+      lock free
+    task new
+      like task
+        take options, like audio-buffer-options
+        free seed, like audio-buffer
+  

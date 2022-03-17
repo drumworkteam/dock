@@ -1,0 +1,32 @@
+
+load @drumwork/land/code/javascript/base/form/iterable
+  take form iterable
+
+load @drumwork/land/code/javascript/base/form/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/base/form/idb-index
+  take form idb-index
+
+load @drumwork/land/code/javascript/dom/base/form/idb-index-parameters
+  take form idb-index-parameters
+
+load @drumwork/land/code/javascript/dom/base/form/idb-object-store
+  take form idb-object-store
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form idb-object-store
+  task create-index
+    like task
+      take name, like native-string
+      take key-path
+        like sink-link-text
+          like native-string
+          like iterable
+            like native-string
+      take options, like idb-index-parameters
+        void take
+      free seed, like idb-index

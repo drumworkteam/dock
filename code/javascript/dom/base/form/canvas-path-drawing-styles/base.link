@@ -1,0 +1,41 @@
+
+load @drumwork/land/code/javascript/base/form/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/form/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/base/form/canvas-line-cap
+  take form canvas-line-cap
+
+load @drumwork/land/code/javascript/dom/base/form/canvas-line-join
+  take form canvas-line-join
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form canvas-path-drawing-styles
+  take line-cap, like canvas-line-cap
+    lock free
+  take line-dash-offset, like native-number
+    lock free
+  take line-join, like canvas-line-join
+    lock free
+  take line-width, like native-number
+    lock free
+  take miter-limit, like native-number
+    lock free
+
+  task get-line-dash
+    like task
+      free seed
+        like list-link-text
+          like native-number
+
+  task set-line-dash
+    like task
+      take segments
+        like list-link-text
+          like native-number
+      free seed, like native-void
