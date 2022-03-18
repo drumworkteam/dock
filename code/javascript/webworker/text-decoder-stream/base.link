@@ -1,0 +1,33 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/text-decoder-stream
+  take form text-decoder-stream
+
+load @drumwork/land/code/javascript/webworker/buffer-source
+  take form buffer-source
+
+load @drumwork/land/code/javascript/webworker/generic-transform-stream
+  take form generic-transform-stream
+
+load @drumwork/land/code/javascript/webworker/readable-stream
+  take form readable-stream
+
+load @drumwork/land/code/javascript/webworker/text-decoder-common
+  take form text-decoder-common
+
+load @drumwork/land/code/javascript/webworker/writable-stream
+  take form writable-stream
+
+form text-decoder-stream
+  name <TextDecoderStream>
+  base generic-transform-stream
+  base text-decoder-common
+
+  take readable, name <readable>
+    like readable-stream
+      like native-string
+  take writable, name <writable>
+    like writable-stream
+      like buffer-source

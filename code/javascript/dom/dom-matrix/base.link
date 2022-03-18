@@ -1,0 +1,110 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/dom-matrix-init
+  take form dom-matrix-init
+
+load @drumwork/land/code/javascript/dom/dom-matrix-read-only
+  take form dom-matrix-read-only
+
+form dom-matrix, name <DOMMatrix>
+  base dom-matrix-read-only
+
+  task invert-self, name <invertSelf>
+    free seed, like dom-matrix
+
+  task multiply-self
+    name <multiplySelf>
+    take other, like dom-matrix-init
+      void take
+    free seed, like dom-matrix
+
+  task pre-multiply-self
+    name <preMultiplySelf>
+    take other, like dom-matrix-init
+      void take
+    free seed, like dom-matrix
+
+  task rotate-axis-angle-self
+    name <rotateAxisAngleSelf>
+    take x, like native-number
+      void take
+    take y, like native-number
+      void take
+    take z, like native-number
+      void take
+    take angle, like native-number
+      void take
+    free seed, like dom-matrix
+
+  task rotate-from-vector-self
+    name <rotateFromVectorSelf>
+    take x, like native-number
+      void take
+    take y, like native-number
+      void take
+    free seed, like dom-matrix
+
+  task rotate-self, name <rotateSelf>
+    take rot-x, like native-number
+      void take
+    take rot-y, like native-number
+      void take
+    take rot-z, like native-number
+      void take
+    free seed, like dom-matrix
+
+  task scale3d-self, name <scale3dSelf>
+    take scale, like native-number
+      void take
+    take origin-x, like native-number
+      void take
+    take origin-y, like native-number
+      void take
+    take origin-z, like native-number
+      void take
+    free seed, like dom-matrix
+
+  task scale-self, name <scaleSelf>
+    take scale-x, like native-number
+      void take
+    take scale-y, like native-number
+      void take
+    take scale-z, like native-number
+      void take
+    take origin-x, like native-number
+      void take
+    take origin-y, like native-number
+      void take
+    take origin-z, like native-number
+      void take
+    free seed, like dom-matrix
+
+  task set-matrix-value
+    name <setMatrixValue>
+    take transform-list, like native-string
+    free seed, like dom-matrix
+
+  task skew-x-self, name <skewXSelf>
+    take sx, like native-number
+      void take
+    free seed, like dom-matrix
+
+  task skew-y-self, name <skewYSelf>
+    take sy, like native-number
+      void take
+    free seed, like dom-matrix
+
+  task translate-self
+    name <translateSelf>
+    take tx, like native-number
+      void take
+    take ty, like native-number
+      void take
+    take tz, like native-number
+      void take
+    free seed, like dom-matrix

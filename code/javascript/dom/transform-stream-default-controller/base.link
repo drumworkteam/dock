@@ -1,0 +1,43 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form transform-stream-default-controller
+  name <TransformStreamDefaultController>
+  head o, like like-link-text
+    back native-any
+
+  take desired-size, name <desiredSize>
+    like sink-link-text
+      like native-number
+      like native-null
+
+  task enqueue, name <enqueue>
+    take chunk, like o
+      void take
+    free seed, like native-void
+
+  task error, name <error>
+    take reason, like native-any
+      void take
+    free seed, like native-void
+
+  task terminate, name <terminate>
+    free seed, like native-void

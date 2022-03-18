@@ -1,0 +1,93 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/node-js-dict
+  take form node-js-dict
+
+load @drumwork/land/code/javascript/node/worker-threads/resource-limits
+  take form resource-limits
+
+load @drumwork/land/code/javascript/node/worker-threads/transfer-list-item
+  take form transfer-list-item
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form worker-options
+  name <WorkerOptions>
+  take argv, name <argv>
+    like sink-link-text
+      like list-link-text
+        like native-any
+      like native-undefined
+    lock free
+  take env, name <env>
+    like sink-link-text
+      like node-js-dict
+        like native-string
+      like share-env
+      like native-undefined
+    lock free
+  take eval, name <eval>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take worker-data, name <workerData>
+    like native-any
+    lock free
+  take stdin, name <stdin>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take stdout, name <stdout>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take stderr, name <stderr>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take exec-argv, name <execArgv>
+    like sink-link-text
+      like list-link-text
+        like native-string
+      like native-undefined
+    lock free
+  take resource-limits
+    name <resourceLimits>
+    like sink-link-text
+      like resource-limits
+      like native-undefined
+    lock free
+  take transfer-list
+    name <transferList>
+    like sink-link-text
+      like list-link-text
+        like transfer-list-item
+      like native-undefined
+    lock free
+  take track-unmanaged-fds
+    name <trackUnmanagedFds>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free

@@ -1,0 +1,57 @@
+
+load @drumwork/land/code/javascript/base/error
+  take form error
+
+load @drumwork/land/code/javascript/base/function
+  take form function
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-object
+  take form native-object
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/node-js-call-site
+  take form node-js-call-site
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form error-constructor
+  name <ErrorConstructor>
+  take prepare-stack-trace
+    name <prepareStackTrace>
+    like sink-link-text
+      like task
+        take err, like error
+        take stack-traces
+          like list-link-text
+            like node-js-call-site
+        free seed, like native-any
+      like native-undefined
+    lock free
+  take stack-trace-limit
+    name <stackTraceLimit>
+    like native-number
+    lock free
+
+  task capture-stack-trace
+    name <captureStackTrace>
+    take target-object, like native-object
+    take constructor-opt, like function
+      void take
+    free seed, like native-void

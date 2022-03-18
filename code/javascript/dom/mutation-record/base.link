@@ -1,0 +1,54 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/mutation-record-type
+  take form mutation-record-type
+
+load @drumwork/land/code/javascript/dom/node
+  take form node
+
+load @drumwork/land/code/javascript/dom/node-list
+  take form node-list
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form mutation-record
+  name <MutationRecord>
+  take added-nodes, name <addedNodes>
+    like node-list
+  take attribute-name
+    name <attributeName>
+    like sink-link-text
+      like native-string
+      like native-null
+  take attribute-namespace
+    name <attributeNamespace>
+    like sink-link-text
+      like native-string
+      like native-null
+  take next-sibling, name <nextSibling>
+    like sink-link-text
+      like node
+      like native-null
+  take old-value, name <oldValue>
+    like sink-link-text
+      like native-string
+      like native-null
+  take previous-sibling
+    name <previousSibling>
+    like sink-link-text
+      like node
+      like native-null
+  take removed-nodes
+    name <removedNodes>
+    like node-list
+  take target, name <target>
+    like node
+  take type, name <type>
+    like mutation-record-type

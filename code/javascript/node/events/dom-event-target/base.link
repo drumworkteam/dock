@@ -1,0 +1,40 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form dom-event-target
+  name <DOMEventTarget>
+  task add-event-listener
+    name <addEventListener>
+    take event-name, like native-string
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    take opts
+      like form-link-text
+        take once, name <once>
+          like native-boolean
+          lock free
+      void take
+    free seed, like native-any

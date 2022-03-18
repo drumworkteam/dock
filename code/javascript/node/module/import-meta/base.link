@@ -1,0 +1,30 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/land/code/javascript/base/url
+  take form url
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form import-meta, name <ImportMeta>
+  home take
+  take url, name <url>
+    like native-string
+    lock free
+
+  task resolve, name <resolve>
+    take specified, like native-string
+    take parent
+      like sink-link-text
+        like native-string
+        like url
+      void take
+    free seed
+      like promise
+        like native-string

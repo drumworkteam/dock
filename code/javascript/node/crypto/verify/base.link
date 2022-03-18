@@ -1,0 +1,68 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/node-js-array-buffer-view
+  take form node-js-array-buffer-view
+
+load @drumwork/land/code/javascript/base/verify
+  take form verify
+
+load @drumwork/land/code/javascript/node/crypto/binary-like
+  take form binary-like
+
+load @drumwork/land/code/javascript/node/crypto/binary-to-text-encoding
+  take form binary-to-text-encoding
+
+load @drumwork/land/code/javascript/node/crypto/encoding
+  take form encoding
+
+load @drumwork/land/code/javascript/node/crypto/key-like
+  take form key-like
+
+load @drumwork/land/code/javascript/node/crypto/verify-key-object-input
+  take form verify-key-object-input
+
+load @drumwork/land/code/javascript/node/crypto/verify-public-key-input
+  take form verify-public-key-input
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form verify, name <Verify>
+  base stream-writable
+  task update, name <update>
+    take data, like binary-like
+    free seed, like verify
+
+  task update, name <update>
+    take data, like native-string
+    take input-encoding, like encoding
+    free seed, like verify
+
+  task verify, name <verify>
+    take object
+      like sink-link-text
+        like key-like
+        like verify-key-object-input
+        like verify-public-key-input
+    take signature, like node-js-array-buffer-view
+    free seed, like native-boolean
+
+  task verify, name <verify>
+    take object
+      like sink-link-text
+        like key-like
+        like verify-key-object-input
+        like verify-public-key-input
+    take signature, like native-string
+    take signature-format, like binary-to-text-encoding
+      void take
+    free seed, like native-boolean
+
+form verify-constructor
+  hook make

@@ -1,0 +1,39 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+load @drumwork/land/code/javascript/webworker/extendable-event-init
+  take form extendable-event-init
+
+load @drumwork/land/code/javascript/webworker/request
+  take form request
+
+form fetch-event-init
+  name <FetchEventInit>
+  base extendable-event-init
+
+  take client-id, name <clientId>
+    like native-string
+    lock free
+  take preload-response
+    name <preloadResponse>
+    like promise
+      like native-any
+    lock free
+  take replaces-client-id
+    name <replacesClientId>
+    like native-string
+    lock free
+  take request, name <request>
+    like request
+    lock free
+  take resulting-client-id
+    name <resultingClientId>
+    like native-string
+    lock free

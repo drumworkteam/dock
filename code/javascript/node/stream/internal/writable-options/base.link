@@ -1,0 +1,102 @@
+
+load @drumwork/land/code/javascript/base/error
+  take form error
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/writable
+  take form writable
+
+load @drumwork/land/code/javascript/node/buffer/buffer-encoding
+  take form buffer-encoding
+
+load @drumwork/land/code/javascript/node/globals/array
+  take form array
+
+load @drumwork/land/code/javascript/node/stream/internal/stream-options
+  take form stream-options
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form writable-options
+  name <WritableOptions>
+  base stream-options
+
+  take decode-strings
+    name <decodeStrings>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take default-encoding
+    name <defaultEncoding>
+    like sink-link-text
+      like buffer-encoding
+      like native-undefined
+    lock free
+
+  task write, name <write>
+    take this, like writable
+    take chunk, like native-any
+    take encoding, like buffer-encoding
+    take callback
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+          void take
+        free seed, like native-void
+    free seed, like native-void
+
+  task writev, name <writev>
+    take this, like writable
+    take chunks
+      like array
+        like form-link-text
+          take chunk, name <chunk>
+            like native-any
+            lock free
+          take encoding, name <encoding>
+            like buffer-encoding
+            lock free
+    take callback
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+          void take
+        free seed, like native-void
+    free seed, like native-void
+
+  task final, name <final>
+    take this, like writable
+    take callback
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+          void take
+        free seed, like native-void
+    free seed, like native-void

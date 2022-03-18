@@ -1,0 +1,72 @@
+
+load @drumwork/land/code/javascript/base/data-view
+  take form data-view
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/node-js-typed-array
+  take form node-js-typed-array
+
+load @drumwork/land/code/javascript/base/tls-socket
+  take form tls-socket
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/tls/common-connection-options
+  take form common-connection-options
+
+load @drumwork/land/code/javascript/node/tls/secure-context-options
+  take form secure-context-options
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form tls-options, name <TlsOptions>
+  base secure-context-options
+  base common-connection-options
+  base net-server-opts
+
+  take handshake-timeout
+    name <handshakeTimeout>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take session-timeout
+    name <sessionTimeout>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take ticket-keys, name <ticketKeys>
+    like sink-link-text
+      like buffer
+      like native-undefined
+    lock free
+  take psk-identity-hint
+    name <pskIdentityHint>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+
+  task psk-callback, name <pskCallback>
+    take socket, like tls-socket
+    take identity, like native-string
+    free seed
+      like sink-link-text
+        like data-view
+        like node-js-typed-array
+        like native-null

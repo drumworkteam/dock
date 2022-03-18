@@ -1,0 +1,39 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/body
+  take form body
+
+load @drumwork/land/code/javascript/dom/headers
+  take form headers
+
+load @drumwork/land/code/javascript/dom/response-type
+  take form response-type
+
+form response, name <Response>
+  base body
+
+  take headers, name <headers>
+    like headers
+  take ok, name <ok>
+    like native-boolean
+  take redirected, name <redirected>
+    like native-boolean
+  take status, name <status>
+    like native-number
+  take status-text, name <statusText>
+    like native-string
+  take type, name <type>
+    like response-type
+  take url, name <url>
+    like native-string
+
+  task clone, name <clone>
+    free seed, like response

@@ -1,0 +1,36 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/performance-entry
+  take form performance-entry
+
+load @drumwork/land/code/javascript/node/perf-hooks/entry-type
+  take form entry-type
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form performance-observer-entry-list
+  name <PerformanceObserverEntryList>
+  task get-entries, name <getEntries>
+    free seed
+      like list-link-text
+        like performance-entry
+
+  task get-entries-by-name
+    name <getEntriesByName>
+    take name, like native-string
+    take type, like entry-type
+      void take
+    free seed
+      like list-link-text
+        like performance-entry
+
+  task get-entries-by-type
+    name <getEntriesByType>
+    take type, like entry-type
+    free seed
+      like list-link-text
+        like performance-entry

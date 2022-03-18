@@ -1,0 +1,57 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/url
+  take form url
+
+load @drumwork/land/code/javascript/node/globals/node-module
+  take form node-module
+
+load @drumwork/land/code/javascript/node/globals/node-require
+  take form node-require
+
+load @drumwork/land/code/javascript/node/module/module
+  take form module
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form module, name <Module>
+  base node-module
+
+form module, name <Module>
+
+form module-constructor
+  take builtin-modules, name <builtinModules>
+    like list-link-text
+      like native-string
+  take module, name <Module>, like module
+
+  task run-main, name <runMain>
+    free seed, like native-void
+
+  task wrap, name <wrap>
+    take code, like native-string
+    free seed, like native-string
+
+  task create-require
+    name <createRequire>
+    take path
+      like sink-link-text
+        like native-string
+        like url
+    free seed, like node-require
+
+  hook make
+    take id, like native-string
+    take parent, like module
+      void take

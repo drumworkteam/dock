@@ -1,0 +1,52 @@
+
+load @drumwork/land/code/javascript/base/child-process
+  take form child-process
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/readable
+  take form readable
+
+load @drumwork/land/code/javascript/base/writable
+  take form writable
+
+load @drumwork/seed/code/form/band
+  take form band
+    save form band-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form child-process-without-null-streams
+  name <ChildProcessWithoutNullStreams>
+  base child-process
+
+  take stdin, name <stdin>
+    like writable
+    lock free
+  take stdout, name <stdout>
+    like readable
+    lock free
+  take stderr, name <stderr>
+    like readable
+    lock free
+  take stdio, name <stdio>
+    like band-link-text
+      like writable
+      like readable
+      like readable
+      like sink-link-text
+        like readable
+        like writable
+        like native-null
+        like native-undefined
+      like sink-link-text
+        like readable
+        like writable
+        like native-null
+        like native-undefined

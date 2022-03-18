@@ -1,0 +1,436 @@
+
+load @drumwork/land/code/javascript/base/error
+  take form error
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-symbol
+  take form native-symbol
+
+load @drumwork/land/code/javascript/base/native-this
+  take form native-this
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/socket
+  take form socket
+
+load @drumwork/land/code/javascript/node/net/address-info
+  take form address-info
+
+load @drumwork/land/code/javascript/node/net/listen-options
+  take form listen-options
+
+load @drumwork/land/code/javascript/node/net/server-opts
+  take form server-opts
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form server, name <Server>
+  base event-emitter
+  take max-connections, name <maxConnections>, like native-number
+  take connections, name <connections>, like native-number
+  take listening, name <listening>, like native-boolean
+
+  task listen, name <listen>
+    take port, like native-number
+      void take
+    take hostname, like native-string
+      void take
+    take backlog, like native-number
+      void take
+    take listening-listener
+      like task
+        free seed, like native-void
+      void take
+    free seed, like native-this
+
+  task listen, name <listen>
+    take port, like native-number
+      void take
+    take hostname, like native-string
+      void take
+    take listening-listener
+      like task
+        free seed, like native-void
+      void take
+    free seed, like native-this
+
+  task listen, name <listen>
+    take port, like native-number
+      void take
+    take backlog, like native-number
+      void take
+    take listening-listener
+      like task
+        free seed, like native-void
+      void take
+    free seed, like native-this
+
+  task listen, name <listen>
+    take port, like native-number
+      void take
+    take listening-listener
+      like task
+        free seed, like native-void
+      void take
+    free seed, like native-this
+
+  task listen, name <listen>
+    take path, like native-string
+    take backlog, like native-number
+      void take
+    take listening-listener
+      like task
+        free seed, like native-void
+      void take
+    free seed, like native-this
+
+  task listen, name <listen>
+    take path, like native-string
+    take listening-listener
+      like task
+        free seed, like native-void
+      void take
+    free seed, like native-this
+
+  task listen, name <listen>
+    take options, like listen-options
+    take listening-listener
+      like task
+        free seed, like native-void
+      void take
+    free seed, like native-this
+
+  task listen, name <listen>
+    take handle, like native-any
+    take backlog, like native-number
+      void take
+    take listening-listener
+      like task
+        free seed, like native-void
+      void take
+    free seed, like native-this
+
+  task listen, name <listen>
+    take handle, like native-any
+    take listening-listener
+      like task
+        free seed, like native-void
+      void take
+    free seed, like native-this
+
+  task close, name <close>
+    take callback
+      like task
+        take err, like error
+          void take
+        free seed, like native-void
+      void take
+    free seed, like native-this
+
+  task address, name <address>
+    free seed
+      like sink-link-text
+        like address-info
+        like native-string
+        like native-null
+
+  task get-connections
+    name <getConnections>
+    take cb
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+        take count, like native-number
+        free seed, like native-void
+    free seed, like native-void
+
+  task ref, name <ref>
+    free seed, like native-this
+
+  task unref, name <unref>
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event, like native-string
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event, text <close>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event, text <connection>
+    take listener
+      like task
+        take socket, like socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event, text <error>
+    take listener
+      like task
+        take err, like error
+        free seed, like native-void
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event, text <listening>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task emit, name <emit>
+    take event
+      like sink-link-text
+        like native-string
+        like native-symbol
+    take args
+      like list-link-text
+        like native-any
+      rest take
+    free seed, like native-boolean
+
+  task emit, name <emit>
+    take event, text <close>
+    free seed, like native-boolean
+
+  task emit, name <emit>
+    take event, text <connection>
+    take socket, like socket
+    free seed, like native-boolean
+
+  task emit, name <emit>
+    take event, text <error>
+    take err, like error
+    free seed, like native-boolean
+
+  task emit, name <emit>
+    take event, text <listening>
+    free seed, like native-boolean
+
+  task on, name <on>
+    take event, like native-string
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+  task on, name <on>
+    take event, text <close>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task on, name <on>
+    take event, text <connection>
+    take listener
+      like task
+        take socket, like socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task on, name <on>
+    take event, text <error>
+    take listener
+      like task
+        take err, like error
+        free seed, like native-void
+    free seed, like native-this
+
+  task on, name <on>
+    take event, text <listening>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, like native-string
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, text <close>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, text <connection>
+    take listener
+      like task
+        take socket, like socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, text <error>
+    take listener
+      like task
+        take err, like error
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, text <listening>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, like native-string
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, text <close>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, text <connection>
+    take listener
+      like task
+        take socket, like socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, text <error>
+    take listener
+      like task
+        take err, like error
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, text <listening>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, like native-string
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, text <close>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, text <connection>
+    take listener
+      like task
+        take socket, like socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, text <error>
+    take listener
+      like task
+        take err, like error
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, text <listening>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+form server-constructor
+  hook make
+    take connection-listener
+      like task
+        take socket, like socket
+        free seed, like native-void
+      void take
+
+  hook make
+    take options, like server-opts
+      void take
+    take connection-listener
+      like task
+        take socket, like socket
+        free seed, like native-void
+      void take

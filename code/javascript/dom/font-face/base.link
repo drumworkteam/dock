@@ -1,0 +1,63 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/font-face-load-status
+  take form font-face-load-status
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+form font-face, name <FontFace>
+  take ascent-override
+    name <ascentOverride>
+    like native-string
+    lock free
+  take descent-override
+    name <descentOverride>
+    like native-string
+    lock free
+  take display, name <display>
+    like native-string
+    lock free
+  take family, name <family>
+    like native-string
+    lock free
+  take feature-settings
+    name <featureSettings>
+    like native-string
+    lock free
+  take line-gap-override
+    name <lineGapOverride>
+    like native-string
+    lock free
+  take loaded, name <loaded>
+    like promise
+      like font-face
+  take status, name <status>
+    like font-face-load-status
+  take stretch, name <stretch>
+    like native-string
+    lock free
+  take style, name <style>
+    like native-string
+    lock free
+  take unicode-range
+    name <unicodeRange>
+    like native-string
+    lock free
+  take variant, name <variant>
+    like native-string
+    lock free
+  take variation-settings
+    name <variationSettings>
+    like native-string
+    lock free
+  take weight, name <weight>
+    like native-string
+    lock free
+
+  task load, name <load>
+    free seed
+      like promise
+        like font-face

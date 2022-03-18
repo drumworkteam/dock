@@ -1,0 +1,92 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/node-js-readable-stream
+  take form node-js-readable-stream
+
+load @drumwork/land/code/javascript/base/node-js-writable-stream
+  take form node-js-writable-stream
+
+load @drumwork/land/code/javascript/node/readline/async-completer
+  take form async-completer
+
+load @drumwork/land/code/javascript/node/readline/completer
+  take form completer
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form read-line-options
+  name <ReadLineOptions>
+  take input, name <input>
+    like node-js-readable-stream
+    lock free
+  take output, name <output>
+    like sink-link-text
+      like node-js-writable-stream
+      like native-undefined
+    lock free
+  take completer, name <completer>
+    like sink-link-text
+      like completer
+      like async-completer
+      like native-undefined
+    lock free
+  take terminal, name <terminal>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take history, name <history>
+    like sink-link-text
+      like list-link-text
+        like native-string
+      like native-undefined
+    lock free
+  take history-size, name <historySize>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take prompt, name <prompt>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take crlf-delay, name <crlfDelay>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take remove-history-duplicates
+    name <removeHistoryDuplicates>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take escape-code-timeout
+    name <escapeCodeTimeout>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take tab-size, name <tabSize>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free

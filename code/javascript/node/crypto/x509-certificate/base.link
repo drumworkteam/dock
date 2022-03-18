@@ -1,0 +1,111 @@
+
+load @drumwork/land/code/javascript/base/key-object
+  take form key-object
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/peer-certificate
+  take form peer-certificate
+
+load @drumwork/land/code/javascript/base/x509-certificate
+  take form x509-certificate
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/crypto/binary-like
+  take form binary-like
+
+load @drumwork/land/code/javascript/node/crypto/x509-check-options
+  take form x509-check-options
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form x509-certificate
+  name <X509Certificate>
+  take ca, name <ca>, like native-boolean
+  take fingerprint, name <fingerprint>, like native-string
+  take fingerprint256, name <fingerprint256>, like native-string
+  take subject, name <subject>, like native-string
+  take subject-alt-name, name <subjectAltName>, like native-string
+  take info-access, name <infoAccess>, like native-string
+  take key-usage, name <keyUsage>
+    like list-link-text
+      like native-string
+  take issuer, name <issuer>, like native-string
+  take issuer-certificate, name <issuerCertificate>
+    like sink-link-text
+      like x509-certificate
+      like native-undefined
+  take public-key, name <publicKey>, like key-object
+  take raw, name <raw>, like buffer
+  take serial-number, name <serialNumber>, like native-string
+  take valid-from, name <validFrom>, like native-string
+  take valid-to, name <validTo>, like native-string
+
+  task check-email, name <checkEmail>
+    take email, like native-string
+    take options, like x509-check-options
+      void take
+    free seed
+      like sink-link-text
+        like native-string
+        like native-undefined
+
+  task check-host, name <checkHost>
+    take name, like native-string
+    take options, like x509-check-options
+      void take
+    free seed
+      like sink-link-text
+        like native-string
+        like native-undefined
+
+  task check-ip, name <checkIP>
+    take ip, like native-string
+    take options, like x509-check-options
+      void take
+    free seed
+      like sink-link-text
+        like native-string
+        like native-undefined
+
+  task check-issued, name <checkIssued>
+    take other-cert, like x509-certificate
+    free seed, like native-boolean
+
+  task check-private-key
+    name <checkPrivateKey>
+    take private-key, like key-object
+    free seed, like native-boolean
+
+  task to-json, name <toJSON>
+    free seed, like native-string
+
+  task to-legacy-object
+    name <toLegacyObject>
+    free seed, like peer-certificate
+
+  task to-string, name <toString>
+    free seed, like native-string
+
+  task verify, name <verify>
+    take public-key, like key-object
+    free seed, like native-boolean
+
+form x509-certificate-constructor
+  hook make
+    take buffer, like binary-like

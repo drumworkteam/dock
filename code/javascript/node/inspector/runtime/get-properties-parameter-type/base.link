@@ -1,0 +1,37 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/inspector/runtime/remote-object-id
+  take form remote-object-id
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form get-properties-parameter-type
+  name <GetPropertiesParameterType>
+  take object-id, name <objectId>
+    like remote-object-id
+    lock free
+  take own-properties
+    name <ownProperties>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take accessor-properties-only
+    name <accessorPropertiesOnly>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take generate-preview
+    name <generatePreview>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free

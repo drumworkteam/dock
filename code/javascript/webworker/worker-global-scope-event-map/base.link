@@ -1,0 +1,33 @@
+
+load @drumwork/land/code/javascript/webworker/error-event
+  take form error-event
+
+load @drumwork/land/code/javascript/webworker/event
+  take form event
+
+load @drumwork/land/code/javascript/webworker/promise-rejection-event
+  take form promise-rejection-event
+
+form worker-global-scope-event-map
+  name <WorkerGlobalScopeEventMap>
+  take error, name <error>
+    like error-event
+    lock free
+  take languagechange
+    name <languagechange>
+    like event
+    lock free
+  take offline, name <offline>
+    like event
+    lock free
+  take online, name <online>
+    like event
+    lock free
+  take rejectionhandled
+    name <rejectionhandled>
+    like promise-rejection-event
+    lock free
+  take unhandledrejection
+    name <unhandledrejection>
+    like promise-rejection-event
+    lock free

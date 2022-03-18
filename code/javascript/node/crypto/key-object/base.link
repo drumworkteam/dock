@@ -1,0 +1,87 @@
+
+load @drumwork/land/code/javascript/base/key-object
+  take form key-object
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/webcrypto-crypto-key
+  take form webcrypto-crypto-key
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/crypto/asymmetric-key-details
+  take form asymmetric-key-details
+
+load @drumwork/land/code/javascript/node/crypto/json-web-key
+  take form json-web-key
+
+load @drumwork/land/code/javascript/node/crypto/jwk-key-export-options
+  take form jwk-key-export-options
+
+load @drumwork/land/code/javascript/node/crypto/key-export-options
+  take form key-export-options
+
+load @drumwork/land/code/javascript/node/crypto/key-object-type
+  take form key-object-type
+
+load @drumwork/land/code/javascript/node/crypto/key-type
+  take form key-type
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form key-object, name <KeyObject>
+  take asymmetric-key-type, name <asymmetricKeyType>
+    like sink-link-text
+      like key-type
+      like native-undefined
+  take asymmetric-key-size, name <asymmetricKeySize>
+    like sink-link-text
+      like native-number
+      like native-undefined
+  take asymmetric-key-details, name <asymmetricKeyDetails>
+    like sink-link-text
+      like asymmetric-key-details
+      like native-undefined
+  take symmetric-key-size, name <symmetricKeySize>
+    like sink-link-text
+      like native-number
+      like native-undefined
+  take type, name <type>, like key-object-type
+
+  task export, name <export>
+    take options
+      like key-export-options
+        text <pem>
+    free seed
+      like sink-link-text
+        like native-string
+        like buffer
+
+  task export, name <export>
+    take options
+      like key-export-options
+        text <der>
+      void take
+    free seed, like buffer
+
+  task export, name <export>
+    take options, like jwk-key-export-options
+      void take
+    free seed, like json-web-key
+
+form key-object-constructor
+  hook make
+
+  task from, name <from>
+    take key, like webcrypto-crypto-key
+    free seed, like key-object

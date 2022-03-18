@@ -1,0 +1,70 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/inspector/runtime/custom-preview
+  take form custom-preview
+
+load @drumwork/land/code/javascript/node/inspector/runtime/object-preview
+  take form object-preview
+
+load @drumwork/land/code/javascript/node/inspector/runtime/remote-object-id
+  take form remote-object-id
+
+load @drumwork/land/code/javascript/node/inspector/runtime/unserializable-value
+  take form unserializable-value
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form remote-object, name <RemoteObject>
+  take type, name <type>
+    like native-string
+    lock free
+  take subtype, name <subtype>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take class-name, name <className>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take value, name <value>
+    like native-any
+    lock free
+  take unserializable-value
+    name <unserializableValue>
+    like sink-link-text
+      like unserializable-value
+      like native-undefined
+    lock free
+  take description, name <description>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take object-id, name <objectId>
+    like sink-link-text
+      like remote-object-id
+      like native-undefined
+    lock free
+  take preview, name <preview>
+    like sink-link-text
+      like object-preview
+      like native-undefined
+    lock free
+  take custom-preview
+    name <customPreview>
+    like sink-link-text
+      like custom-preview
+      like native-undefined
+    lock free

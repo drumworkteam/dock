@@ -1,0 +1,39 @@
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/http2/session-options
+  take form session-options
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form server-session-options
+  name <ServerSessionOptions>
+  base session-options
+
+  take http1-incoming-message
+    name <Http1IncomingMessage>
+    like sink-link-text
+      like incoming-message
+      like native-undefined
+    lock free
+  take http1-server-response
+    name <Http1ServerResponse>
+    like sink-link-text
+      like server-response
+      like native-undefined
+    lock free
+  take http2-server-request
+    name <Http2ServerRequest>
+    like sink-link-text
+      like http2-server-request
+      like native-undefined
+    lock free
+  take http2-server-response
+    name <Http2ServerResponse>
+    like sink-link-text
+      like http2-server-response
+      like native-undefined
+    lock free

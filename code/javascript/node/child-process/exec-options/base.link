@@ -1,0 +1,47 @@
+
+load @drumwork/land/code/javascript/base/abort-signal
+  take form abort-signal
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/node-js-signals
+  take form node-js-signals
+
+load @drumwork/land/code/javascript/node/child-process/common-options
+  take form common-options
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form exec-options, name <ExecOptions>
+  base common-options
+
+  take shell, name <shell>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take signal, name <signal>
+    like sink-link-text
+      like abort-signal
+      like native-undefined
+    lock free
+  take max-buffer, name <maxBuffer>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take kill-signal, name <killSignal>
+    like sink-link-text
+      like node-js-signals
+      like native-number
+      like native-undefined
+    lock free

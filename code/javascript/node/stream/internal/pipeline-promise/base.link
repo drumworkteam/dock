@@ -1,0 +1,46 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/p
+  take form p
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/land/code/javascript/node/stream/internal/pipeline-destination
+  take form pipeline-destination
+
+load @drumwork/land/code/javascript/node/stream/internal/pipeline-destination-promise-function
+  take form pipeline-destination-promise-function
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/test
+  take form test
+    save form test-link-text
+
+form pipeline-promise
+  name <PipelinePromise>
+  head s, like like-link-text
+    base pipeline-destination
+      like native-any
+      like native-any
+
+  like test-link-text
+    stem roll
+      like s
+      like pipeline-destination-promise-function
+        like native-any
+        name p
+      hook take
+        like promise
+          like p
+      hook free
+        like promise
+          like native-void

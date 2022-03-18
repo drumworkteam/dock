@@ -1,0 +1,26 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+task promisify, name <__promisify__>
+  take address, like native-string
+  take port, like native-number
+  free seed
+    like promise
+      like form-link-text
+        take hostname, name <hostname>
+          like native-string
+          lock free
+        take service, name <service>
+          like native-string
+          lock free

@@ -1,0 +1,23 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/node/net/ip-version
+  take form ip-version
+
+load @drumwork/land/code/javascript/node/net/socket-address-init-options
+  take form socket-address-init-options
+
+form socket-address
+  name <SocketAddress>
+  take address, name <address>, like native-string
+  take family, name <family>, like ip-version
+  take port, name <port>, like native-number
+  take flowlabel, name <flowlabel>, like native-number
+
+form socket-address-constructor
+  hook make
+    take options, like socket-address-init-options

@@ -1,0 +1,32 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/dom-matrix-init
+  take form dom-matrix-init
+
+load @drumwork/land/code/javascript/dom/dom-point
+  take form dom-point
+
+form dom-point-read-only
+  name <DOMPointReadOnly>
+  take w, name <w>
+    like native-number
+  take x, name <x>
+    like native-number
+  take y, name <y>
+    like native-number
+  take z, name <z>
+    like native-number
+
+  task matrix-transform
+    name <matrixTransform>
+    take matrix, like dom-matrix-init
+      void take
+    free seed, like dom-point
+
+  task to-json, name <toJSON>
+    free seed, like native-any

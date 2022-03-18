@@ -1,0 +1,47 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/mouse-event
+  take form mouse-event
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form pointer-event, name <PointerEvent>
+  base mouse-event
+
+  take height, name <height>
+    like native-number
+  take is-primary, name <isPrimary>
+    like native-boolean
+  take pointer-id, name <pointerId>
+    like native-number
+  take pointer-type, name <pointerType>
+    like native-string
+  take pressure, name <pressure>
+    like native-number
+  take tangential-pressure
+    name <tangentialPressure>
+    like native-number
+  take tilt-x, name <tiltX>
+    like native-number
+  take tilt-y, name <tiltY>
+    like native-number
+  take twist, name <twist>
+    like native-number
+  take width, name <width>
+    like native-number
+
+  task get-coalesced-events
+    name <getCoalescedEvents>
+    free seed
+      like list-link-text
+        like pointer-event

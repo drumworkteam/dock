@@ -1,0 +1,28 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/es2020/intl/relative-time-format-numeric
+  take form relative-time-format-numeric
+
+load @drumwork/land/code/javascript/es2020/intl/relative-time-format-style
+  take form relative-time-format-style
+
+load @drumwork/land/code/javascript/es2020/intl/unicode-bcp47-locale-identifier
+  take form unicode-bcp47-locale-identifier
+
+form resolved-relative-time-format-options
+  name <ResolvedRelativeTimeFormatOptions>
+  take locale, name <locale>
+    like unicode-bcp47-locale-identifier
+    lock free
+  take style, name <style>
+    like relative-time-format-style
+    lock free
+  take numeric, name <numeric>
+    like relative-time-format-numeric
+    lock free
+  take numbering-system
+    name <numberingSystem>
+    like native-string
+    lock free

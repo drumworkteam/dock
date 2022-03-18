@@ -1,0 +1,70 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/canvas-fill-stroke-styles
+  take form canvas-fill-stroke-styles
+
+load @drumwork/land/code/javascript/webworker/canvas-gradient
+  take form canvas-gradient
+
+load @drumwork/land/code/javascript/webworker/canvas-image-source
+  take form canvas-image-source
+
+load @drumwork/land/code/javascript/webworker/canvas-pattern
+  take form canvas-pattern
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form canvas-fill-stroke-styles
+  name <CanvasFillStrokeStyles>
+  take fill-style, name <fillStyle>
+    like sink-link-text
+      like native-string
+      like canvas-gradient
+      like canvas-pattern
+    lock free
+  take stroke-style, name <strokeStyle>
+    like sink-link-text
+      like native-string
+      like canvas-gradient
+      like canvas-pattern
+    lock free
+
+  task create-linear-gradient
+    name <createLinearGradient>
+    take x0, like native-number
+    take y0, like native-number
+    take x1, like native-number
+    take y1, like native-number
+    free seed, like canvas-gradient
+
+  task create-pattern
+    name <createPattern>
+    take image, like canvas-image-source
+    take repetition
+      like sink-link-text
+        like native-string
+        like native-null
+    free seed
+      like sink-link-text
+        like canvas-pattern
+        like native-null
+
+  task create-radial-gradient
+    name <createRadialGradient>
+    take x0, like native-number
+    take y0, like native-number
+    take r0, like native-number
+    take x1, like native-number
+    take y1, like native-number
+    take r1, like native-number
+    free seed, like canvas-gradient

@@ -1,0 +1,34 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/land/code/javascript/node/fs/mode
+  take form mode
+
+load @drumwork/land/code/javascript/node/fs/open-mode
+  take form open-mode
+
+load @drumwork/land/code/javascript/node/fs/path-like
+  take form path-like
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+task promisify, name <__promisify__>
+  take path, like path-like
+  take flags, like open-mode
+  take mode
+    like sink-link-text
+      like mode
+      like native-null
+    void take
+  free seed
+    like promise
+      like native-number

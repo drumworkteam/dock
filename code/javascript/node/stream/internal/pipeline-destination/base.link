@@ -1,0 +1,56 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-never
+  take form native-never
+
+load @drumwork/land/code/javascript/base/node-js-writable-stream
+  take form node-js-writable-stream
+
+load @drumwork/land/code/javascript/base/st
+  take form st
+
+load @drumwork/land/code/javascript/node/stream/internal/pipeline-destination-iterable-function
+  take form pipeline-destination-iterable-function
+
+load @drumwork/land/code/javascript/node/stream/internal/pipeline-destination-promise-function
+  take form pipeline-destination-promise-function
+
+load @drumwork/land/code/javascript/node/stream/internal/pipeline-transform-source
+  take form pipeline-transform-source
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+load @drumwork/seed/code/form/test
+  take form test
+    save form test-link-text
+
+form pipeline-destination
+  name <PipelineDestination>
+  head s, like like-link-text
+    base pipeline-transform-source
+      like native-any
+  head p, like like-link-text
+
+  like test-link-text
+    stem roll
+      like s
+      like pipeline-transform-source
+        name st
+      hook take
+        like sink-link-text
+          like node-js-writable-stream
+          like pipeline-destination-iterable-function
+            like st
+          like pipeline-destination-promise-function
+            like st
+            like p
+      hook free
+        like native-never

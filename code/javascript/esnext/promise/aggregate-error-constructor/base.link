@@ -1,0 +1,28 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/es2015/iterable/iterable
+  take form iterable
+
+load @drumwork/land/code/javascript/es2021/promise/aggregate-error-constructor
+  take form aggregate-error-constructor
+
+load @drumwork/land/code/javascript/esnext/promise/aggregate-error
+  take form aggregate-error
+
+form aggregate-error-constructor
+  name <AggregateErrorConstructor>
+  take prototype, name <prototype>
+    like aggregate-error
+
+  hook make
+    take errors
+      like iterable
+        like native-any
+    take message, like native-string
+      void take
+    free seed, like aggregate-error

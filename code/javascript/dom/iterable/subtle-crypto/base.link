@@ -1,0 +1,220 @@
+
+load @drumwork/land/code/javascript/base/iterable
+  take form iterable
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/dom/aes-cbc-params
+  take form aes-cbc-params
+
+load @drumwork/land/code/javascript/dom/aes-ctr-params
+  take form aes-ctr-params
+
+load @drumwork/land/code/javascript/dom/aes-derived-key-params
+  take form aes-derived-key-params
+
+load @drumwork/land/code/javascript/dom/aes-gcm-params
+  take form aes-gcm-params
+
+load @drumwork/land/code/javascript/dom/aes-key-algorithm
+  take form aes-key-algorithm
+
+load @drumwork/land/code/javascript/dom/aes-key-gen-params
+  take form aes-key-gen-params
+
+load @drumwork/land/code/javascript/dom/algorithm-identifier
+  take form algorithm-identifier
+
+load @drumwork/land/code/javascript/dom/buffer-source
+  take form buffer-source
+
+load @drumwork/land/code/javascript/dom/crypto-key
+  take form crypto-key
+
+load @drumwork/land/code/javascript/dom/crypto-key-pair
+  take form crypto-key-pair
+
+load @drumwork/land/code/javascript/dom/ec-key-gen-params
+  take form ec-key-gen-params
+
+load @drumwork/land/code/javascript/dom/ec-key-import-params
+  take form ec-key-import-params
+
+load @drumwork/land/code/javascript/dom/ecdh-key-derive-params
+  take form ecdh-key-derive-params
+
+load @drumwork/land/code/javascript/dom/hkdf-params
+  take form hkdf-params
+
+load @drumwork/land/code/javascript/dom/hmac-import-params
+  take form hmac-import-params
+
+load @drumwork/land/code/javascript/dom/hmac-key-gen-params
+  take form hmac-key-gen-params
+
+load @drumwork/land/code/javascript/dom/json-web-key
+  take form json-web-key
+
+load @drumwork/land/code/javascript/dom/key-format
+  take form key-format
+
+load @drumwork/land/code/javascript/dom/key-usage
+  take form key-usage
+
+load @drumwork/land/code/javascript/dom/pbkdf2-params
+  take form pbkdf2-params
+
+load @drumwork/land/code/javascript/dom/rsa-hashed-import-params
+  take form rsa-hashed-import-params
+
+load @drumwork/land/code/javascript/dom/rsa-hashed-key-gen-params
+  take form rsa-hashed-key-gen-params
+
+load @drumwork/land/code/javascript/dom/rsa-oaep-params
+  take form rsa-oaep-params
+
+load @drumwork/land/code/javascript/dom/subtle-crypto
+  take form subtle-crypto
+
+load @drumwork/land/code/javascript/es5/exclude
+  take form exclude
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form subtle-crypto, name <SubtleCrypto>
+  task derive-key, name <deriveKey>
+    take algorithm
+      like sink-link-text
+        like algorithm-identifier
+        like ecdh-key-derive-params
+        like hkdf-params
+        like pbkdf2-params
+    take base-key, like crypto-key
+    take derived-key-type
+      like sink-link-text
+        like algorithm-identifier
+        like aes-derived-key-params
+        like hmac-import-params
+        like hkdf-params
+        like pbkdf2-params
+    take extractable, like native-boolean
+    take key-usages
+      like iterable
+        like key-usage
+    free seed
+      like promise
+        like crypto-key
+
+  task generate-key, name <generateKey>
+    take algorithm
+      like sink-link-text
+        like rsa-hashed-key-gen-params
+        like ec-key-gen-params
+    take extractable, like native-boolean
+    take key-usages
+      like list-link-text
+        like key-usage
+    free seed
+      like promise
+        like crypto-key-pair
+
+  task generate-key, name <generateKey>
+    take algorithm
+      like sink-link-text
+        like aes-key-gen-params
+        like hmac-key-gen-params
+        like pbkdf2-params
+    take extractable, like native-boolean
+    take key-usages
+      like list-link-text
+        like key-usage
+    free seed
+      like promise
+        like crypto-key
+
+  task generate-key, name <generateKey>
+    take algorithm, like algorithm-identifier
+    take extractable, like native-boolean
+    take key-usages
+      like iterable
+        like key-usage
+    free seed
+      like promise
+        like sink-link-text
+          like crypto-key-pair
+          like crypto-key
+
+  task import-key, name <importKey>
+    take format, text <jwk>
+    take key-data, like json-web-key
+    take algorithm
+      like sink-link-text
+        like algorithm-identifier
+        like rsa-hashed-import-params
+        like ec-key-import-params
+        like hmac-import-params
+        like aes-key-algorithm
+    take extractable, like native-boolean
+    take key-usages
+      like list-link-text
+        like key-usage
+    free seed
+      like promise
+        like crypto-key
+
+  task import-key, name <importKey>
+    take format
+      like exclude
+        like key-format
+        text <jwk>
+    take key-data, like buffer-source
+    take algorithm
+      like sink-link-text
+        like algorithm-identifier
+        like rsa-hashed-import-params
+        like ec-key-import-params
+        like hmac-import-params
+        like aes-key-algorithm
+    take extractable, like native-boolean
+    take key-usages
+      like iterable
+        like key-usage
+    free seed
+      like promise
+        like crypto-key
+
+  task unwrap-key, name <unwrapKey>
+    take format, like key-format
+    take wrapped-key, like buffer-source
+    take unwrapping-key, like crypto-key
+    take unwrap-algorithm
+      like sink-link-text
+        like algorithm-identifier
+        like rsa-oaep-params
+        like aes-ctr-params
+        like aes-cbc-params
+        like aes-gcm-params
+    take unwrapped-key-algorithm
+      like sink-link-text
+        like algorithm-identifier
+        like rsa-hashed-import-params
+        like ec-key-import-params
+        like hmac-import-params
+        like aes-key-algorithm
+    take extractable, like native-boolean
+    take key-usages
+      like iterable
+        like key-usage
+    free seed
+      like promise
+        like crypto-key

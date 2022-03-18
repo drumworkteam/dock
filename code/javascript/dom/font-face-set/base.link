@@ -1,0 +1,187 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/event
+  take form event
+
+load @drumwork/land/code/javascript/dom/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/event-target
+  take form event-target
+
+load @drumwork/land/code/javascript/dom/font-face
+  take form font-face
+
+load @drumwork/land/code/javascript/dom/font-face-set-event-map
+  take form font-face-set-event-map
+
+load @drumwork/land/code/javascript/dom/font-face-set-load-status
+  take form font-face-set-load-status
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form font-face-set, name <FontFaceSet>
+  base event-target
+
+  take onloading, name <onloading>
+    like sink-link-text
+      like task
+        take this, like font-face-set
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onloadingdone
+    name <onloadingdone>
+    like sink-link-text
+      like task
+        take this, like font-face-set
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onloadingerror
+    name <onloadingerror>
+    like sink-link-text
+      like task
+        take this, like font-face-set
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take ready, name <ready>
+    like promise
+      like font-face-set
+  take status, name <status>
+    like font-face-set-load-status
+
+  task check, name <check>
+    take font, like native-string
+    take text, like native-string
+      void take
+    free seed, like native-boolean
+
+  task load, name <load>
+    take font, like native-string
+    take text, like native-string
+      void take
+    free seed
+      like promise
+        like list-link-text
+          like font-face
+
+  task for-each, name <forEach>
+    take callbackfn
+      like task
+        take value, like font-face
+        take key, like font-face
+        take parent, like font-face-set
+        free seed, like native-void
+    take this-arg, like native-any
+      void take
+    free seed, like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like font-face-set-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like font-face-set
+        take ev
+          like form-link-link-text
+            like font-face-set-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like font-face-set-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like font-face-set
+        take ev
+          like form-link-link-text
+            like font-face-set-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void

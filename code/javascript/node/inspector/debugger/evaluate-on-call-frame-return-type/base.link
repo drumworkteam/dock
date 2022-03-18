@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/runtime-exception-details
+  take form runtime-exception-details
+
+load @drumwork/land/code/javascript/base/runtime-remote-object
+  take form runtime-remote-object
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form evaluate-on-call-frame-return-type
+  name <EvaluateOnCallFrameReturnType>
+  take result, name <result>
+    like runtime-remote-object
+    lock free
+  take exception-details
+    name <exceptionDetails>
+    like sink-link-text
+      like runtime-exception-details
+      like native-undefined
+    lock free

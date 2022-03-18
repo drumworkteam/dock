@@ -1,0 +1,21 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/es5/error-constructor
+  take form error-constructor
+
+load @drumwork/land/code/javascript/es5/range-error
+  take form range-error
+
+form range-error-constructor
+  name <RangeErrorConstructor>
+  base error-constructor
+
+  take prototype, name <prototype>
+    like range-error
+
+  hook make
+    take message, like native-string
+      void take
+    free seed, like range-error

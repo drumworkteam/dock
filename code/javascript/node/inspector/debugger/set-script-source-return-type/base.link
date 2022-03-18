@@ -1,0 +1,59 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/runtime-exception-details
+  take form runtime-exception-details
+
+load @drumwork/land/code/javascript/base/runtime-stack-trace
+  take form runtime-stack-trace
+
+load @drumwork/land/code/javascript/base/runtime-stack-trace-id
+  take form runtime-stack-trace-id
+
+load @drumwork/land/code/javascript/node/inspector/debugger/call-frame
+  take form call-frame
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form set-script-source-return-type
+  name <SetScriptSourceReturnType>
+  take call-frames, name <callFrames>
+    like sink-link-text
+      like list-link-text
+        like call-frame
+      like native-undefined
+    lock free
+  take stack-changed
+    name <stackChanged>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take async-stack-trace
+    name <asyncStackTrace>
+    like sink-link-text
+      like runtime-stack-trace
+      like native-undefined
+    lock free
+  take async-stack-trace-id
+    name <asyncStackTraceId>
+    like sink-link-text
+      like runtime-stack-trace-id
+      like native-undefined
+    lock free
+  take exception-details
+    name <exceptionDetails>
+    like sink-link-text
+      like runtime-exception-details
+      like native-undefined
+    lock free

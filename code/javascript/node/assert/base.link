@@ -1,0 +1,380 @@
+
+load @drumwork/land/code/javascript/base/error
+  take form error
+
+load @drumwork/land/code/javascript/base/function
+  take form function
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-never
+  take form native-never
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-unknown
+  take form native-unknown
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/omit
+  take form omit
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/land/code/javascript/base/reg-exp
+  take form reg-exp
+
+load @drumwork/land/code/javascript/node/assert/assert-predicate
+  take form assert-predicate
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+host strict, name <strict>
+  like link
+    like omit
+      like assert
+      like sink-link-text
+        text <equal>
+        text <notEqual>
+        text <deepEqual>
+        text <notDeepEqual>
+        text <ok>
+        text <strictEqual>
+        text <deepStrictEqual>
+        text <ifError>
+        text <strict>
+    like form-link-text
+      take equal, name <equal>
+        like strict-equal
+        lock free
+      take not-equal, name <notEqual>
+        like not-strict-equal
+        lock free
+      take deep-equal, name <deepEqual>
+        like deep-strict-equal
+        lock free
+      take not-deep-equal
+        name <notDeepEqual>
+        like not-deep-strict-equal
+        lock free
+      take ok, name <ok>
+        like ok
+        lock free
+      take strict-equal, name <strictEqual>
+        like strict-equal
+        lock free
+      take deep-strict-equal
+        name <deepStrictEqual>
+        like deep-strict-equal
+        lock free
+      take if-error, name <ifError>
+        like if-error
+        lock free
+      take strict, name <strict>
+        like strict
+        lock free
+
+task fail, name <fail>
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed, like native-never
+
+task fail, name <fail>
+  take actual, like native-unknown
+  take expected, like native-unknown
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  take operator, like native-string
+    void take
+  take stack-start-fn, like function
+    void take
+  free seed, like native-never
+
+task ok, name <ok>
+  take value, like native-unknown
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed
+    free seed, like native-boolean
+    rank value
+
+task equal, name <equal>
+  take actual, like native-unknown
+  take expected, like native-unknown
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed, like native-void
+
+task not-equal, name <notEqual>
+  take actual, like native-unknown
+  take expected, like native-unknown
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed, like native-void
+
+task deep-equal, name <deepEqual>
+  take actual, like native-unknown
+  take expected, like native-unknown
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed, like native-void
+
+task not-deep-equal, name <notDeepEqual>
+  take actual, like native-unknown
+  take expected, like native-unknown
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed, like native-void
+
+task strict-equal, name <strictEqual>
+  head t, like like-link-text
+  take actual, like native-unknown
+  take expected, like t
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed
+    free seed, like native-boolean
+    rank actual, like t
+
+task not-strict-equal
+  name <notStrictEqual>
+  take actual, like native-unknown
+  take expected, like native-unknown
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed, like native-void
+
+task deep-strict-equal
+  name <deepStrictEqual>
+  head t, like like-link-text
+  take actual, like native-unknown
+  take expected, like t
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed
+    free seed, like native-boolean
+    rank actual, like t
+
+task not-deep-strict-equal
+  name <notDeepStrictEqual>
+  take actual, like native-unknown
+  take expected, like native-unknown
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed, like native-void
+
+task throws, name <throws>
+  take block
+    like task
+      free seed, like native-unknown
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed, like native-void
+
+task throws, name <throws>
+  take block
+    like task
+      free seed, like native-unknown
+  take error, like assert-predicate
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed, like native-void
+
+task does-not-throw, name <doesNotThrow>
+  take block
+    like task
+      free seed, like native-unknown
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed, like native-void
+
+task does-not-throw, name <doesNotThrow>
+  take block
+    like task
+      free seed, like native-unknown
+  take error, like assert-predicate
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed, like native-void
+
+task if-error, name <ifError>
+  take value, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank value
+      like sink-link-text
+        like native-null
+        like native-undefined
+
+task rejects, name <rejects>
+  take block
+    like sink-link-text
+      like task
+        free seed
+          like promise
+            like native-unknown
+      like promise
+        like native-unknown
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed
+    like promise
+      like native-void
+
+task rejects, name <rejects>
+  take block
+    like sink-link-text
+      like task
+        free seed
+          like promise
+            like native-unknown
+      like promise
+        like native-unknown
+  take error, like assert-predicate
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed
+    like promise
+      like native-void
+
+task does-not-reject
+  name <doesNotReject>
+  take block
+    like sink-link-text
+      like task
+        free seed
+          like promise
+            like native-unknown
+      like promise
+        like native-unknown
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed
+    like promise
+      like native-void
+
+task does-not-reject
+  name <doesNotReject>
+  take block
+    like sink-link-text
+      like task
+        free seed
+          like promise
+            like native-unknown
+      like promise
+        like native-unknown
+  take error, like assert-predicate
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed
+    like promise
+      like native-void
+
+task match, name <match>
+  take value, like native-string
+  take reg-exp, like reg-exp
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed, like native-void
+
+task does-not-match, name <doesNotMatch>
+  take value, like native-string
+  take reg-exp, like reg-exp
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed, like native-void
+
+task assert, name <assert>
+  take value, like native-unknown
+  take message
+    like sink-link-text
+      like native-string
+      like error
+    void take
+  free seed
+    free seed, like native-boolean
+    rank value

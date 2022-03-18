@@ -1,0 +1,115 @@
+
+load @drumwork/land/code/javascript/base/error
+  take form error
+
+load @drumwork/land/code/javascript/base/fs-promises-file-handle
+  take form fs-promises-file-handle
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/node/http/outgoing-http-headers
+  take form outgoing-http-headers
+
+load @drumwork/land/code/javascript/node/http2/http2-stream
+  take form http2-stream
+
+load @drumwork/land/code/javascript/node/http2/server-stream-file-response-options
+  take form server-stream-file-response-options
+
+load @drumwork/land/code/javascript/node/http2/server-stream-file-response-options-with-error
+  take form server-stream-file-response-options-with-error
+
+load @drumwork/land/code/javascript/node/http2/server-stream-response-options
+  take form server-stream-response-options
+
+load @drumwork/land/code/javascript/node/http2/stream-priority-options
+  take form stream-priority-options
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form server-http2-stream
+  name <ServerHttp2Stream>
+  base http2-stream
+
+  take headers-sent, name <headersSent>
+    like native-boolean
+  take push-allowed, name <pushAllowed>
+    like native-boolean
+
+  task additional-headers
+    name <additionalHeaders>
+    take headers, like outgoing-http-headers
+    free seed, like native-void
+
+  task push-stream, name <pushStream>
+    take headers, like outgoing-http-headers
+    take callback
+      like task
+        take err
+          like sink-link-text
+            like error
+            like native-null
+        take push-stream, like server-http2-stream
+        take headers, like outgoing-http-headers
+        free seed, like native-void
+      void take
+    free seed, like native-void
+
+  task push-stream, name <pushStream>
+    take headers, like outgoing-http-headers
+    take options, like stream-priority-options
+      void take
+    take callback
+      like task
+        take err
+          like sink-link-text
+            like error
+            like native-null
+        take push-stream, like server-http2-stream
+        take headers, like outgoing-http-headers
+        free seed, like native-void
+      void take
+    free seed, like native-void
+
+  task respond, name <respond>
+    take headers, like outgoing-http-headers
+      void take
+    take options, like server-stream-response-options
+      void take
+    free seed, like native-void
+
+  task respond-with-fd
+    name <respondWithFD>
+    take fd
+      like sink-link-text
+        like native-number
+        like fs-promises-file-handle
+    take headers, like outgoing-http-headers
+      void take
+    take options, like server-stream-file-response-options
+      void take
+    free seed, like native-void
+
+  task respond-with-file
+    name <respondWithFile>
+    take path, like native-string
+    take headers, like outgoing-http-headers
+      void take
+    take options, like server-stream-file-response-options-with-error
+      void take
+    free seed, like native-void

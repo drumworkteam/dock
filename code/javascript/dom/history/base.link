@@ -1,0 +1,69 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/scroll-restoration
+  take form scroll-restoration
+
+load @drumwork/land/code/javascript/dom/url
+  take form url
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form history, name <History>
+  take length, name <length>
+    like native-number
+  take scroll-restoration
+    name <scrollRestoration>
+    like scroll-restoration
+    lock free
+  take state, name <state>
+    like native-any
+
+  task back, name <back>
+    free seed, like native-void
+
+  task forward, name <forward>
+    free seed, like native-void
+
+  task go, name <go>
+    take delta, like native-number
+      void take
+    free seed, like native-void
+
+  task push-state, name <pushState>
+    take data, like native-any
+    take unused, like native-string
+    take url
+      like sink-link-text
+        like native-string
+        like url
+        like native-null
+      void take
+    free seed, like native-void
+
+  task replace-state
+    name <replaceState>
+    take data, like native-any
+    take unused, like native-string
+    take url
+      like sink-link-text
+        like native-string
+        like url
+        like native-null
+      void take
+    free seed, like native-void

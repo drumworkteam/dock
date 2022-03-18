@@ -1,0 +1,37 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form concat-array, name <ConcatArray>
+  head t, like like-link-text
+
+  take length, name <length>
+    like native-number
+
+  task join, name <join>
+    take separator, like native-string
+      void take
+    free seed, like native-string
+
+  task slice, name <slice>
+    take start, like native-number
+      void take
+    take end, like native-number
+      void take
+    free seed
+      like list-link-text
+        like t
+
+  cite n, like native-number
+    like t

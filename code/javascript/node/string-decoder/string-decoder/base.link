@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/buffer/buffer-encoding
+  take form buffer-encoding
+
+form string-decoder
+  name <StringDecoder>
+  task write, name <write>
+    take buffer, like buffer
+    free seed, like native-string
+
+  task end, name <end>
+    take buffer, like buffer
+      void take
+    free seed, like native-string
+
+form string-decoder-constructor
+  hook make
+    take encoding, like buffer-encoding
+      void take

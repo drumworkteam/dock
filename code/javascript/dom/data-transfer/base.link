@@ -1,0 +1,75 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/data-transfer-item-list
+  take form data-transfer-item-list
+
+load @drumwork/land/code/javascript/dom/element
+  take form element
+
+load @drumwork/land/code/javascript/dom/file-list
+  take form file-list
+
+load @drumwork/land/code/javascript/es5/readonly-array
+  take form readonly-array
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form data-transfer, name <DataTransfer>
+  take drop-effect, name <dropEffect>
+    like sink-link-text
+      text <none>
+      text <copy>
+      text <link>
+      text <move>
+    lock free
+  take effect-allowed
+    name <effectAllowed>
+    like sink-link-text
+      text <none>
+      text <copy>
+      text <copyLink>
+      text <copyMove>
+      text <link>
+      text <linkMove>
+      text <move>
+      text <all>
+      text <uninitialized>
+    lock free
+  take files, name <files>
+    like file-list
+  take items, name <items>
+    like data-transfer-item-list
+  take types, name <types>
+    like readonly-array
+      like native-string
+
+  task clear-data, name <clearData>
+    take format, like native-string
+      void take
+    free seed, like native-void
+
+  task get-data, name <getData>
+    take format, like native-string
+    free seed, like native-string
+
+  task set-data, name <setData>
+    take format, like native-string
+    take data, like native-string
+    free seed, like native-void
+
+  task set-drag-image
+    name <setDragImage>
+    take image, like element
+    take x, like native-number
+    take y, like native-number
+    free seed, like native-void

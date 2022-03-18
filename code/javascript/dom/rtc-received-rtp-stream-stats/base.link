@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/rtc-rtp-stream-stats
+  take form rtc-rtp-stream-stats
+
+form rtc-received-rtp-stream-stats
+  name <RTCReceivedRtpStreamStats>
+  base rtc-rtp-stream-stats
+
+  take jitter, name <jitter>
+    like native-number
+    lock free
+  take packets-discarded
+    name <packetsDiscarded>
+    like native-number
+    lock free
+  take packets-lost, name <packetsLost>
+    like native-number
+    lock free
+  take packets-received
+    name <packetsReceived>
+    like native-number
+    lock free

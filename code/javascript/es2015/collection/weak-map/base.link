@@ -1,0 +1,45 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-object
+  take form native-object
+
+load @drumwork/land/code/javascript/base/native-this
+  take form native-this
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form weak-map, name <WeakMap>
+  head k, like like-link-text
+    base native-object
+  head v, like like-link-text
+
+  task delete, name <delete>
+    take key, like k
+    free seed, like native-boolean
+
+  task get, name <get>
+    take key, like k
+    free seed
+      like sink-link-text
+        like v
+        like native-undefined
+
+  task has, name <has>
+    take key, like k
+    free seed, like native-boolean
+
+  task set, name <set>
+    take key, like k
+    take value, like v
+    free seed, like native-this

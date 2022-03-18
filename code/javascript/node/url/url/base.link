@@ -1,0 +1,132 @@
+
+load @drumwork/land/code/javascript/base/blob
+  take form blob
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/node/querystring/parsed-url-query
+  take form parsed-url-query
+
+load @drumwork/land/code/javascript/node/url/url
+  take form url
+
+load @drumwork/land/code/javascript/node/url/url-search-params
+  take form url-search-params
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form url-base, name <Url>
+  take auth, name <auth>
+    like sink-link-text
+      like native-string
+      like native-null
+    lock free
+  take hash, name <hash>
+    like sink-link-text
+      like native-string
+      like native-null
+    lock free
+  take host, name <host>
+    like sink-link-text
+      like native-string
+      like native-null
+    lock free
+  take hostname, name <hostname>
+    like sink-link-text
+      like native-string
+      like native-null
+    lock free
+  take href, name <href>
+    like native-string
+    lock free
+  take path, name <path>
+    like sink-link-text
+      like native-string
+      like native-null
+    lock free
+  take pathname, name <pathname>
+    like sink-link-text
+      like native-string
+      like native-null
+    lock free
+  take protocol, name <protocol>
+    like sink-link-text
+      like native-string
+      like native-null
+    lock free
+  take search, name <search>
+    like sink-link-text
+      like native-string
+      like native-null
+    lock free
+  take slashes, name <slashes>
+    like sink-link-text
+      like native-boolean
+      like native-null
+    lock free
+  take port, name <port>
+    like sink-link-text
+      like native-string
+      like native-null
+    lock free
+  take query, name <query>
+    like sink-link-text
+      like native-string
+      like native-null
+      like parsed-url-query
+    lock free
+
+form url, name <URL>
+  take hash, name <hash>, like native-string
+  take host, name <host>, like native-string
+  take hostname, name <hostname>, like native-string
+  take href, name <href>, like native-string
+  take origin, name <origin>, like native-string
+  take password, name <password>, like native-string
+  take pathname, name <pathname>, like native-string
+  take port, name <port>, like native-string
+  take protocol, name <protocol>, like native-string
+  take search, name <search>, like native-string
+  take search-params, name <searchParams>, like url-search-params
+  take username, name <username>, like native-string
+
+  task to-string, name <toString>
+    free seed, like native-string
+
+  task to-json, name <toJSON>
+    free seed, like native-string
+
+form url-constructor
+  task create-object-url
+    name <createObjectURL>
+    take blob, like blob
+    free seed, like native-string
+
+  task revoke-object-url
+    name <revokeObjectURL>
+    take object-url, like native-string
+    free seed, like native-void
+
+  hook make
+    take input, like native-string
+    take base
+      like sink-link-text
+        like native-string
+        like url
+      void take
+
+form url, name <URL>
+  home take
+  base url

@@ -1,0 +1,44 @@
+
+load @drumwork/land/code/javascript/base/native-bigint
+  take form native-bigint
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/es2015/symbol/wellknown/data-view
+  take form data-view
+
+form data-view, name <DataView>
+  task get-big-int64, name <getBigInt64>
+    take byte-offset, like native-number
+    take little-endian, like native-boolean
+      void take
+    free seed, like native-bigint
+
+  task get-big-uint64
+    name <getBigUint64>
+    take byte-offset, like native-number
+    take little-endian, like native-boolean
+      void take
+    free seed, like native-bigint
+
+  task set-big-int64, name <setBigInt64>
+    take byte-offset, like native-number
+    take value, like native-bigint
+    take little-endian, like native-boolean
+      void take
+    free seed, like native-void
+
+  task set-big-uint64
+    name <setBigUint64>
+    take byte-offset, like native-number
+    take value, like native-bigint
+    take little-endian, like native-boolean
+      void take
+    free seed, like native-void

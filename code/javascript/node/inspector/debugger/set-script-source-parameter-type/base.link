@@ -1,0 +1,31 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/runtime-script-id
+  take form runtime-script-id
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form set-script-source-parameter-type
+  name <SetScriptSourceParameterType>
+  take script-id, name <scriptId>
+    like runtime-script-id
+    lock free
+  take script-source
+    name <scriptSource>
+    like native-string
+    lock free
+  take dry-run, name <dryRun>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free

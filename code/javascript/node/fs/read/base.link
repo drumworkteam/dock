@@ -1,0 +1,45 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/node-js-array-buffer-view
+  take form node-js-array-buffer-view
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+task promisify, name <__promisify__>
+  head t-buffer, like like-link-text
+    base node-js-array-buffer-view
+  take fd, like native-number
+  take buffer, like t-buffer
+  take offset, like native-number
+  take length, like native-number
+  take position
+    like sink-link-text
+      like native-number
+      like native-null
+  free seed
+    like promise
+      like form-link-text
+        take bytes-read, name <bytesRead>
+          like native-number
+          lock free
+        take buffer, name <buffer>
+          like t-buffer
+          lock free

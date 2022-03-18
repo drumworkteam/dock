@@ -1,0 +1,72 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/idb-cursor
+  take form idb-cursor
+
+load @drumwork/land/code/javascript/webworker/idb-cursor-direction
+  take form idb-cursor-direction
+
+load @drumwork/land/code/javascript/webworker/idb-index
+  take form idb-index
+
+load @drumwork/land/code/javascript/webworker/idb-object-store
+  take form idb-object-store
+
+load @drumwork/land/code/javascript/webworker/idb-request
+  take form idb-request
+
+load @drumwork/land/code/javascript/webworker/idb-valid-key
+  take form idb-valid-key
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form idb-cursor, name <IDBCursor>
+  take direction, name <direction>
+    like idb-cursor-direction
+  take key, name <key>
+    like idb-valid-key
+  take primary-key, name <primaryKey>
+    like idb-valid-key
+  take source, name <source>
+    like sink-link-text
+      like idb-object-store
+      like idb-index
+
+  task advance, name <advance>
+    take count, like native-number
+    free seed, like native-void
+
+  task continue, name <continue>
+    take key, like idb-valid-key
+      void take
+    free seed, like native-void
+
+  task continue-primary-key
+    name <continuePrimaryKey>
+    take key, like idb-valid-key
+    take primary-key, like idb-valid-key
+    free seed, like native-void
+
+  task delete, name <delete>
+    free seed
+      like idb-request
+        like native-undefined
+
+  task update, name <update>
+    take value, like native-any
+    free seed
+      like idb-request
+        like idb-valid-key

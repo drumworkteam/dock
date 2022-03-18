@@ -1,0 +1,63 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/socket-address
+  take form socket-address
+
+load @drumwork/land/code/javascript/node/net/ip-version
+  take form ip-version
+
+form block-list, name <BlockList>
+  task add-address, name <addAddress>
+    take address, like native-string
+    take type, like ip-version
+      void take
+    free seed, like native-void
+
+  task add-address, name <addAddress>
+    take address, like socket-address
+    free seed, like native-void
+
+  task add-range, name <addRange>
+    take start, like native-string
+    take end, like native-string
+    take type, like ip-version
+      void take
+    free seed, like native-void
+
+  task add-range, name <addRange>
+    take start, like socket-address
+    take end, like socket-address
+    free seed, like native-void
+
+  task add-subnet, name <addSubnet>
+    take net, like socket-address
+    take prefix, like native-number
+    free seed, like native-void
+
+  task add-subnet, name <addSubnet>
+    take net, like native-string
+    take prefix, like native-number
+    take type, like ip-version
+      void take
+    free seed, like native-void
+
+  task check, name <check>
+    take address, like socket-address
+    free seed, like native-boolean
+
+  task check, name <check>
+    take address, like native-string
+    take type, like ip-version
+      void take
+    free seed, like native-boolean

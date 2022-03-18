@@ -1,0 +1,48 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/node
+  take form node
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form child-node, name <ChildNode>
+  task after, name <after>
+    take nodes
+      like list-link-text
+        like sink-link-text
+          like node
+          like native-string
+      rest take
+    free seed, like native-void
+
+  task before, name <before>
+    take nodes
+      like list-link-text
+        like sink-link-text
+          like node
+          like native-string
+      rest take
+    free seed, like native-void
+
+  task remove, name <remove>
+    free seed, like native-void
+
+  task replace-with, name <replaceWith>
+    take nodes
+      like list-link-text
+        like sink-link-text
+          like node
+          like native-string
+      rest take
+    free seed, like native-void

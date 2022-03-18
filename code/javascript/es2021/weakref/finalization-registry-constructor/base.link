@@ -1,0 +1,29 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/es2021/weakref/finalization-registry
+  take form finalization-registry
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+form finalization-registry-constructor
+  name <FinalizationRegistryConstructor>
+  take prototype, name <prototype>
+    like finalization-registry
+      like native-any
+
+  hook make
+    head t, like like-link-text
+    take cleanup-callback
+      like task
+        take held-value, like t
+        free seed, like native-void
+    free seed
+      like finalization-registry
+        like t

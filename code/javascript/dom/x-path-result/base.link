@@ -1,0 +1,81 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/node
+  take form node
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form x-path-result, name <XPathResult>
+  take boolean-value
+    name <booleanValue>
+    like native-boolean
+  take invalid-iterator-state
+    name <invalidIteratorState>
+    like native-boolean
+  take number-value, name <numberValue>
+    like native-number
+  take result-type, name <resultType>
+    like native-number
+  take single-node-value
+    name <singleNodeValue>
+    like sink-link-text
+      like node
+      like native-null
+  take snapshot-length
+    name <snapshotLength>
+    like native-number
+  take string-value, name <stringValue>
+    like native-string
+  take any-type, name <ANY_TYPE>
+    like native-number
+  take any-unordered-node-type
+    name <ANY_UNORDERED_NODE_TYPE>
+    like native-number
+  take boolean-type, name <BOOLEAN_TYPE>
+    like native-number
+  take first-ordered-node-type
+    name <FIRST_ORDERED_NODE_TYPE>
+    like native-number
+  take number-type, name <NUMBER_TYPE>
+    like native-number
+  take ordered-node-iterator-type
+    name <ORDERED_NODE_ITERATOR_TYPE>
+    like native-number
+  take ordered-node-snapshot-type
+    name <ORDERED_NODE_SNAPSHOT_TYPE>
+    like native-number
+  take string-type, name <STRING_TYPE>
+    like native-number
+  take unordered-node-iterator-type
+    name <UNORDERED_NODE_ITERATOR_TYPE>
+    like native-number
+  take unordered-node-snapshot-type
+    name <UNORDERED_NODE_SNAPSHOT_TYPE>
+    like native-number
+
+  task iterate-next, name <iterateNext>
+    free seed
+      like sink-link-text
+        like node
+        like native-null
+
+  task snapshot-item
+    name <snapshotItem>
+    take index, like native-number
+    free seed
+      like sink-link-text
+        like node
+        like native-null

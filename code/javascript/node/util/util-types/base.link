@@ -1,0 +1,460 @@
+
+load @drumwork/land/code/javascript/base/array-buffer
+  take form array-buffer
+
+load @drumwork/land/code/javascript/base/array-buffer-like
+  take form array-buffer-like
+
+load @drumwork/land/code/javascript/base/big-int
+  take form big-int
+
+load @drumwork/land/code/javascript/base/boolean
+  take form boolean
+
+load @drumwork/land/code/javascript/base/data-view
+  take form data-view
+
+load @drumwork/land/code/javascript/base/date
+  take form date
+
+load @drumwork/land/code/javascript/base/error
+  take form error
+
+load @drumwork/land/code/javascript/base/generator
+  take form generator
+
+load @drumwork/land/code/javascript/base/generator-function
+  take form generator-function
+
+load @drumwork/land/code/javascript/base/i-arguments
+  take form i-arguments
+
+load @drumwork/land/code/javascript/base/map
+  take form map
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-never
+  take form native-never
+
+load @drumwork/land/code/javascript/base/native-object
+  take form native-object
+
+load @drumwork/land/code/javascript/base/native-unknown
+  take form native-unknown
+
+load @drumwork/land/code/javascript/base/node-js-array-buffer-view
+  take form node-js-array-buffer-view
+
+load @drumwork/land/code/javascript/base/node-js-typed-array
+  take form node-js-typed-array
+
+load @drumwork/land/code/javascript/base/number
+  take form number
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/land/code/javascript/base/readonly-map
+  take form readonly-map
+
+load @drumwork/land/code/javascript/base/readonly-set
+  take form readonly-set
+
+load @drumwork/land/code/javascript/base/reg-exp
+  take form reg-exp
+
+load @drumwork/land/code/javascript/base/set
+  take form set
+
+load @drumwork/land/code/javascript/base/shared-array-buffer
+  take form shared-array-buffer
+
+load @drumwork/land/code/javascript/base/symbol
+  take form symbol
+
+load @drumwork/land/code/javascript/base/weak-map
+  take form weak-map
+
+load @drumwork/land/code/javascript/base/weak-set
+  take form weak-set
+
+load @drumwork/land/code/javascript/base/webcrypto-crypto-key
+  take form webcrypto-crypto-key
+
+load @drumwork/land/code/javascript/node/globals/big-int64-array
+  take form big-int64-array
+
+load @drumwork/land/code/javascript/node/globals/big-uint64-array
+  take form big-uint64-array
+
+load @drumwork/land/code/javascript/node/globals/float32-array
+  take form float32-array
+
+load @drumwork/land/code/javascript/node/globals/float64-array
+  take form float64-array
+
+load @drumwork/land/code/javascript/node/globals/int16-array
+  take form int16-array
+
+load @drumwork/land/code/javascript/node/globals/int32-array
+  take form int32-array
+
+load @drumwork/land/code/javascript/node/globals/int8-array
+  take form int8-array
+
+load @drumwork/land/code/javascript/node/globals/string
+  take form string
+
+load @drumwork/land/code/javascript/node/globals/uint16-array
+  take form uint16-array
+
+load @drumwork/land/code/javascript/node/globals/uint32-array
+  take form uint32-array
+
+load @drumwork/land/code/javascript/node/globals/uint8-array
+  take form uint8-array
+
+load @drumwork/land/code/javascript/node/globals/uint8-clamped-array
+  take form uint8-clamped-array
+
+load @drumwork/land/code/javascript/node/tls/key-object
+  take form key-object
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+load @drumwork/seed/code/form/test
+  take form test
+    save form test-link-text
+
+task is-any-array-buffer
+  name <isAnyArrayBuffer>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like array-buffer-like
+
+task is-arguments-object
+  name <isArgumentsObject>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like i-arguments
+
+task is-array-buffer
+  name <isArrayBuffer>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like array-buffer
+
+task is-array-buffer-view
+  name <isArrayBufferView>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like node-js-array-buffer-view
+
+task is-async-function
+  name <isAsyncFunction>
+  take object, like native-unknown
+  free seed, like native-boolean
+
+task is-big-int64-array
+  name <isBigInt64Array>
+  take value, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank value, like big-int64-array
+
+task is-big-uint64-array
+  name <isBigUint64Array>
+  take value, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank value, like big-uint64-array
+
+task is-boolean-object
+  name <isBooleanObject>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like boolean
+
+task is-boxed-primitive
+  name <isBoxedPrimitive>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object
+      like sink-link-text
+        like string
+        like number
+        like big-int
+        like boolean
+        like symbol
+
+task is-data-view, name <isDataView>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like data-view
+
+task is-date, name <isDate>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like date
+
+task is-external, name <isExternal>
+  take object, like native-unknown
+  free seed, like native-boolean
+
+task is-float32-array
+  name <isFloat32Array>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like float32-array
+
+task is-float64-array
+  name <isFloat64Array>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like float64-array
+
+task is-generator-function
+  name <isGeneratorFunction>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like generator-function
+
+task is-generator-object
+  name <isGeneratorObject>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like generator
+
+task is-int8-array, name <isInt8Array>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like int8-array
+
+task is-int16-array, name <isInt16Array>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like int16-array
+
+task is-int32-array, name <isInt32Array>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like int32-array
+
+task is-map, name <isMap>
+  head t, like like-link-text
+  take object
+    like sink-link-text
+      like t
+      like form-link-text
+  free seed
+    free seed, like native-boolean
+    rank object
+      like test-link-text
+        stem roll
+          like t
+          like readonly-map
+            like native-any
+            like native-any
+          hook take
+            like test-link-text
+              stem roll
+                like native-unknown
+                like t
+                hook take
+                  like native-never
+                hook free
+                  like readonly-map
+                    like native-any
+                    like native-any
+          hook free
+            like map
+              like native-unknown
+              like native-unknown
+
+task is-map-iterator
+  name <isMapIterator>
+  take object, like native-unknown
+  free seed, like native-boolean
+
+task is-module-namespace-object
+  name <isModuleNamespaceObject>
+  take value, like native-unknown
+  free seed, like native-boolean
+
+task is-native-error
+  name <isNativeError>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like error
+
+task is-number-object
+  name <isNumberObject>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like number
+
+task is-promise, name <isPromise>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object
+      like promise
+        like native-unknown
+
+task is-proxy, name <isProxy>
+  take object, like native-unknown
+  free seed, like native-boolean
+
+task is-reg-exp, name <isRegExp>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like reg-exp
+
+task is-set, name <isSet>
+  head t, like like-link-text
+  take object
+    like sink-link-text
+      like t
+      like form-link-text
+  free seed
+    free seed, like native-boolean
+    rank object
+      like test-link-text
+        stem roll
+          like t
+          like readonly-set
+            like native-any
+          hook take
+            like test-link-text
+              stem roll
+                like native-unknown
+                like t
+                hook take
+                  like native-never
+                hook free
+                  like readonly-set
+                    like native-any
+          hook free
+            like set
+              like native-unknown
+
+task is-set-iterator
+  name <isSetIterator>
+  take object, like native-unknown
+  free seed, like native-boolean
+
+task is-shared-array-buffer
+  name <isSharedArrayBuffer>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like shared-array-buffer
+
+task is-string-object
+  name <isStringObject>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like string
+
+task is-symbol-object
+  name <isSymbolObject>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like symbol
+
+task is-typed-array, name <isTypedArray>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like node-js-typed-array
+
+task is-uint8-array, name <isUint8Array>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like uint8-array
+
+task is-uint8-clamped-array
+  name <isUint8ClampedArray>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like uint8-clamped-array
+
+task is-uint16-array
+  name <isUint16Array>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like uint16-array
+
+task is-uint32-array
+  name <isUint32Array>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like uint32-array
+
+task is-weak-map, name <isWeakMap>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object
+      like weak-map
+        like native-object
+        like native-unknown
+
+task is-weak-set, name <isWeakSet>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object
+      like weak-set
+        like native-object
+
+task is-key-object, name <isKeyObject>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like key-object
+
+task is-crypto-key, name <isCryptoKey>
+  take object, like native-unknown
+  free seed
+    free seed, like native-boolean
+    rank object, like webcrypto-crypto-key

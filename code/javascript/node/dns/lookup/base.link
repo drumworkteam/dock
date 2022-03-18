@@ -1,0 +1,58 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/land/code/javascript/node/dns/lookup-address
+  take form lookup-address
+
+load @drumwork/land/code/javascript/node/dns/lookup-all-options
+  take form lookup-all-options
+
+load @drumwork/land/code/javascript/node/dns/lookup-one-options
+  take form lookup-one-options
+
+load @drumwork/land/code/javascript/node/dns/lookup-options
+  take form lookup-options
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+task promisify, name <__promisify__>
+  take hostname, like native-string
+  take options, like lookup-all-options
+  free seed
+    like promise
+      like list-link-text
+        like lookup-address
+
+task promisify, name <__promisify__>
+  take hostname, like native-string
+  take options
+    like sink-link-text
+      like lookup-one-options
+      like native-number
+    void take
+  free seed
+    like promise
+      like lookup-address
+
+task promisify, name <__promisify__>
+  take hostname, like native-string
+  take options, like lookup-options
+  free seed
+    like promise
+      like sink-link-text
+        like lookup-address
+        like list-link-text
+          like lookup-address

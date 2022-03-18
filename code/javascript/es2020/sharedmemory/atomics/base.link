@@ -1,0 +1,121 @@
+
+load @drumwork/land/code/javascript/base/native-bigint
+  take form native-bigint
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/es2017/sharedmemory/atomics
+  take form atomics
+
+load @drumwork/land/code/javascript/es2020/bigint/big-int64-array
+  take form big-int64-array
+
+load @drumwork/land/code/javascript/es2020/bigint/big-uint64-array
+  take form big-uint64-array
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form atomics, name <Atomics>
+  task add, name <add>
+    take typed-array
+      like sink-link-text
+        like big-int64-array
+        like big-uint64-array
+    take index, like native-number
+    take value, like native-bigint
+    free seed, like native-bigint
+
+  task and, name <and>
+    take typed-array
+      like sink-link-text
+        like big-int64-array
+        like big-uint64-array
+    take index, like native-number
+    take value, like native-bigint
+    free seed, like native-bigint
+
+  task compare-exchange
+    name <compareExchange>
+    take typed-array
+      like sink-link-text
+        like big-int64-array
+        like big-uint64-array
+    take index, like native-number
+    take expected-value, like native-bigint
+    take replacement-value, like native-bigint
+    free seed, like native-bigint
+
+  task exchange, name <exchange>
+    take typed-array
+      like sink-link-text
+        like big-int64-array
+        like big-uint64-array
+    take index, like native-number
+    take value, like native-bigint
+    free seed, like native-bigint
+
+  task load, name <load>
+    take typed-array
+      like sink-link-text
+        like big-int64-array
+        like big-uint64-array
+    take index, like native-number
+    free seed, like native-bigint
+
+  task or, name <or>
+    take typed-array
+      like sink-link-text
+        like big-int64-array
+        like big-uint64-array
+    take index, like native-number
+    take value, like native-bigint
+    free seed, like native-bigint
+
+  task store, name <store>
+    take typed-array
+      like sink-link-text
+        like big-int64-array
+        like big-uint64-array
+    take index, like native-number
+    take value, like native-bigint
+    free seed, like native-bigint
+
+  task sub, name <sub>
+    take typed-array
+      like sink-link-text
+        like big-int64-array
+        like big-uint64-array
+    take index, like native-number
+    take value, like native-bigint
+    free seed, like native-bigint
+
+  task wait, name <wait>
+    take typed-array, like big-int64-array
+    take index, like native-number
+    take value, like native-bigint
+    take timeout, like native-number
+      void take
+    free seed
+      like sink-link-text
+        text <ok>
+        text <not-equal>
+        text <timed-out>
+
+  task notify, name <notify>
+    take typed-array, like big-int64-array
+    take index, like native-number
+    take count, like native-number
+      void take
+    free seed, like native-number
+
+  task xor, name <xor>
+    take typed-array
+      like sink-link-text
+        like big-int64-array
+        like big-uint64-array
+    take index, like native-number
+    take value, like native-bigint
+    free seed, like native-bigint

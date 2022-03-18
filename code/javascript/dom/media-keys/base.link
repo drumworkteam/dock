@@ -1,0 +1,29 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/dom/buffer-source
+  take form buffer-source
+
+load @drumwork/land/code/javascript/dom/media-key-session
+  take form media-key-session
+
+load @drumwork/land/code/javascript/dom/media-key-session-type
+  take form media-key-session-type
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+form media-keys, name <MediaKeys>
+  task create-session
+    name <createSession>
+    take session-type, like media-key-session-type
+      void take
+    free seed, like media-key-session
+
+  task set-server-certificate
+    name <setServerCertificate>
+    take server-certificate, like buffer-source
+    free seed
+      like promise
+        like native-boolean

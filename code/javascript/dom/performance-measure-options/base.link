@@ -1,0 +1,32 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/dom-high-res-time-stamp
+  take form dom-high-res-time-stamp
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form performance-measure-options
+  name <PerformanceMeasureOptions>
+  take detail, name <detail>
+    like native-any
+    lock free
+  take duration, name <duration>
+    like dom-high-res-time-stamp
+    lock free
+  take end, name <end>
+    like sink-link-text
+      like native-string
+      like dom-high-res-time-stamp
+    lock free
+  take start, name <start>
+    like sink-link-text
+      like native-string
+      like dom-high-res-time-stamp
+    lock free

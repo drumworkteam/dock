@@ -1,0 +1,41 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/node/http/incoming-http-headers
+  take form incoming-http-headers
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form information-event
+  name <InformationEvent>
+  take status-code, name <statusCode>
+    like native-number
+    lock free
+  take status-message
+    name <statusMessage>
+    like native-string
+    lock free
+  take http-version, name <httpVersion>
+    like native-string
+    lock free
+  take http-version-major
+    name <httpVersionMajor>
+    like native-number
+    lock free
+  take http-version-minor
+    name <httpVersionMinor>
+    like native-number
+    lock free
+  take headers, name <headers>
+    like incoming-http-headers
+    lock free
+  take raw-headers, name <rawHeaders>
+    like list-link-text
+      like native-string
+    lock free

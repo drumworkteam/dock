@@ -1,0 +1,190 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/performance
+  take form performance
+
+load @drumwork/land/code/javascript/webworker/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/webworker/event
+  take form event
+
+load @drumwork/land/code/javascript/webworker/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/webworker/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/webworker/event-target
+  take form event-target
+
+load @drumwork/land/code/javascript/webworker/performance-entry-list
+  take form performance-entry-list
+
+load @drumwork/land/code/javascript/webworker/performance-event-map
+  take form performance-event-map
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form performance, name <Performance>
+  base event-target
+
+  take onresourcetimingbufferfull
+    name <onresourcetimingbufferfull>
+    like sink-link-text
+      like task
+        take this, like performance
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take time-origin, name <timeOrigin>
+    like native-number
+
+  task clear-marks, name <clearMarks>
+    take mark-name, like native-string
+      void take
+    free seed, like native-void
+
+  task clear-measures
+    name <clearMeasures>
+    take measure-name, like native-string
+      void take
+    free seed, like native-void
+
+  task clear-resource-timings
+    name <clearResourceTimings>
+    free seed, like native-void
+
+  task get-entries, name <getEntries>
+    free seed, like performance-entry-list
+
+  task get-entries-by-name
+    name <getEntriesByName>
+    take name, like native-string
+    take type, like native-string
+      void take
+    free seed, like performance-entry-list
+
+  task get-entries-by-type
+    name <getEntriesByType>
+    take type, like native-string
+    free seed, like performance-entry-list
+
+  task mark, name <mark>
+    take mark-name, like native-string
+    free seed, like native-void
+
+  task measure, name <measure>
+    take measure-name, like native-string
+    take start-mark, like native-string
+      void take
+    take end-mark, like native-string
+      void take
+    free seed, like native-void
+
+  task now, name <now>
+    free seed, like native-number
+
+  task set-resource-timing-buffer-size
+    name <setResourceTimingBufferSize>
+    take max-size, like native-number
+    free seed, like native-void
+
+  task to-json, name <toJSON>
+    free seed, like native-any
+
+  task add-event-listener
+    name <addEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like performance-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like performance
+        take ev
+          like form-link-link-text
+            like performance-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like performance-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like performance
+        take ev
+          like form-link-link-text
+            like performance-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void

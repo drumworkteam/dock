@@ -1,0 +1,30 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/media-track-constraints
+  take form media-track-constraints
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form media-stream-constraints
+  name <MediaStreamConstraints>
+  take audio, name <audio>
+    like sink-link-text
+      like native-boolean
+      like media-track-constraints
+    lock free
+  take peer-identity
+    name <peerIdentity>
+    like native-string
+    lock free
+  take video, name <video>
+    like sink-link-text
+      like native-boolean
+      like media-track-constraints
+    lock free

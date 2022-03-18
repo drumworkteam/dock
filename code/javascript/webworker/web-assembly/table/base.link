@@ -1,0 +1,42 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/table
+  take form table
+
+load @drumwork/land/code/javascript/es5/function
+  take form function
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form table, name <Table>
+  take length, name <length>
+    like native-number
+
+  task get, name <get>
+    take index, like native-number
+    free seed
+      like sink-link-text
+        like function
+        like native-null
+
+  task grow, name <grow>
+    take delta, like native-number
+    free seed, like native-number
+
+  task set, name <set>
+    take index, like native-number
+    take value
+      like sink-link-text
+        like function
+        like native-null
+    free seed, like native-void

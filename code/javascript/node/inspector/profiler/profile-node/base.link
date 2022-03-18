@@ -1,0 +1,54 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/runtime-call-frame
+  take form runtime-call-frame
+
+load @drumwork/land/code/javascript/node/inspector/profiler/position-tick-info
+  take form position-tick-info
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form profile-node, name <ProfileNode>
+  take id, name <id>
+    like native-number
+    lock free
+  take call-frame, name <callFrame>
+    like runtime-call-frame
+    lock free
+  take hit-count, name <hitCount>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take children, name <children>
+    like sink-link-text
+      like list-link-text
+        like native-number
+      like native-undefined
+    lock free
+  take deopt-reason, name <deoptReason>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take position-ticks
+    name <positionTicks>
+    like sink-link-text
+      like list-link-text
+        like position-tick-info
+      like native-undefined
+    lock free

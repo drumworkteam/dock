@@ -1,0 +1,45 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/stream-duplex
+  take form stream-duplex
+
+load @drumwork/land/code/javascript/base/url-url
+  take form url-url
+
+load @drumwork/land/code/javascript/node/http2/session-options
+  take form session-options
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form client-session-options
+  name <ClientSessionOptions>
+  base session-options
+
+  take max-reserved-remote-streams
+    name <maxReservedRemoteStreams>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take create-connection
+    name <createConnection>
+    like sink-link-text
+      like task
+        take authority, like url-url
+        take option, like session-options
+        free seed, like stream-duplex
+      like native-undefined
+    lock free
+  take protocol, name <protocol>
+    like sink-link-text
+      text <http:>
+      text <https:>
+      like native-undefined
+    lock free

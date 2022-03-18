@@ -1,0 +1,163 @@
+
+load @drumwork/land/code/javascript/base/agent
+  take form agent
+
+load @drumwork/land/code/javascript/base/error
+  take form error
+
+load @drumwork/land/code/javascript/base/lookup-function
+  take form lookup-function
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/socket
+  take form socket
+
+load @drumwork/land/code/javascript/node/globals/abort-signal
+  take form abort-signal
+
+load @drumwork/land/code/javascript/node/http/outgoing-http-headers
+  take form outgoing-http-headers
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form client-request-args
+  name <ClientRequestArgs>
+  take signal, name <signal>
+    like sink-link-text
+      like abort-signal
+      like native-undefined
+    lock free
+  take protocol, name <protocol>
+    like sink-link-text
+      like native-string
+      like native-null
+      like native-undefined
+    lock free
+  take host, name <host>
+    like sink-link-text
+      like native-string
+      like native-null
+      like native-undefined
+    lock free
+  take hostname, name <hostname>
+    like sink-link-text
+      like native-string
+      like native-null
+      like native-undefined
+    lock free
+  take family, name <family>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take port, name <port>
+    like sink-link-text
+      like native-number
+      like native-string
+      like native-null
+      like native-undefined
+    lock free
+  take default-port, name <defaultPort>
+    like sink-link-text
+      like native-number
+      like native-string
+      like native-undefined
+    lock free
+  take local-address
+    name <localAddress>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take socket-path, name <socketPath>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take max-header-size
+    name <maxHeaderSize>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take method, name <method>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take path, name <path>
+    like sink-link-text
+      like native-string
+      like native-null
+      like native-undefined
+    lock free
+  take headers, name <headers>
+    like sink-link-text
+      like outgoing-http-headers
+      like native-undefined
+    lock free
+  take auth, name <auth>
+    like sink-link-text
+      like native-string
+      like native-null
+      like native-undefined
+    lock free
+  take agent, name <agent>
+    like sink-link-text
+      like agent
+      like native-boolean
+      like native-undefined
+    lock free
+  take default-agent
+    name <_defaultAgent>
+    like sink-link-text
+      like agent
+      like native-undefined
+    lock free
+  take timeout, name <timeout>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take set-host, name <setHost>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take create-connection
+    name <createConnection>
+    like sink-link-text
+      like task
+        take options, like client-request-args
+        take oncreate
+          like task
+            take err, like error
+            take socket, like socket
+            free seed, like native-void
+        free seed, like socket
+      like native-undefined
+    lock free
+  take lookup, name <lookup>
+    like sink-link-text
+      like lookup-function
+      like native-undefined
+    lock free

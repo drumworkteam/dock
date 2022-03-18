@@ -1,0 +1,81 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/node-js-typed-array
+  take form node-js-typed-array
+
+load @drumwork/land/code/javascript/base/readable
+  take form readable
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/v8/heap-code-statistics
+  take form heap-code-statistics
+
+load @drumwork/land/code/javascript/node/v8/heap-info
+  take form heap-info
+
+load @drumwork/land/code/javascript/node/v8/heap-space-info
+  take form heap-space-info
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+task cached-data-version-tag
+  name <cachedDataVersionTag>
+  free seed, like native-number
+
+task get-heap-statistics
+  name <getHeapStatistics>
+  free seed, like heap-info
+
+task get-heap-space-statistics
+  name <getHeapSpaceStatistics>
+  free seed
+    like list-link-text
+      like heap-space-info
+
+task set-flags-from-string
+  name <setFlagsFromString>
+  take flags, like native-string
+  free seed, like native-void
+
+task get-heap-snapshot
+  name <getHeapSnapshot>
+  free seed, like readable
+
+task write-heap-snapshot
+  name <writeHeapSnapshot>
+  take filename, like native-string
+    void take
+  free seed, like native-string
+
+task get-heap-code-statistics
+  name <getHeapCodeStatistics>
+  free seed, like heap-code-statistics
+
+task serialize, name <serialize>
+  take value, like native-any
+  free seed, like buffer
+
+task deserialize, name <deserialize>
+  take buffer, like node-js-typed-array
+  free seed, like native-any
+
+task take-coverage, name <takeCoverage>
+  free seed, like native-void
+
+task stop-coverage, name <stopCoverage>
+  free seed, like native-void

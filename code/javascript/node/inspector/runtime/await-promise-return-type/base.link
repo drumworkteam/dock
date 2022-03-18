@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/inspector/runtime/exception-details
+  take form exception-details
+
+load @drumwork/land/code/javascript/node/inspector/runtime/remote-object
+  take form remote-object
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form await-promise-return-type
+  name <AwaitPromiseReturnType>
+  take result, name <result>
+    like remote-object
+    lock free
+  take exception-details
+    name <exceptionDetails>
+    like sink-link-text
+      like exception-details
+      like native-undefined
+    lock free

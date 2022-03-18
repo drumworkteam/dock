@@ -1,0 +1,266 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/child-node
+  take form child-node
+
+load @drumwork/land/code/javascript/dom/document
+  take form document
+
+load @drumwork/land/code/javascript/dom/event-target
+  take form event-target
+
+load @drumwork/land/code/javascript/dom/get-root-node-options
+  take form get-root-node-options
+
+load @drumwork/land/code/javascript/dom/html-element
+  take form html-element
+
+load @drumwork/land/code/javascript/dom/node-list-of
+  take form node-list-of
+
+load @drumwork/land/code/javascript/dom/parent-node
+  take form parent-node
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form node, name <Node>
+  base event-target
+
+  take base-uri, name <baseURI>
+    like native-string
+  take child-nodes, name <childNodes>
+    like node-list-of
+      like link
+        like child-node
+        like node
+  take first-child, name <firstChild>
+    like sink-link-text
+      like link
+        like child-node
+        like node
+      like native-null
+  take is-connected, name <isConnected>
+    like native-boolean
+  take last-child, name <lastChild>
+    like sink-link-text
+      like link
+        like child-node
+        like node
+      like native-null
+  take next-sibling, name <nextSibling>
+    like sink-link-text
+      like link
+        like child-node
+        like node
+      like native-null
+  take node-name, name <nodeName>
+    like native-string
+  take node-type, name <nodeType>
+    like native-number
+  take node-value, name <nodeValue>
+    like sink-link-text
+      like native-string
+      like native-null
+    lock free
+  take owner-document
+    name <ownerDocument>
+    like sink-link-text
+      like document
+      like native-null
+  take parent-element
+    name <parentElement>
+    like sink-link-text
+      like html-element
+      like native-null
+  take parent-node, name <parentNode>
+    like sink-link-text
+      like link
+        like node
+        like parent-node
+      like native-null
+  take previous-sibling
+    name <previousSibling>
+    like sink-link-text
+      like link
+        like child-node
+        like node
+      like native-null
+  take text-content, name <textContent>
+    like sink-link-text
+      like native-string
+      like native-null
+    lock free
+  take attribute-node
+    name <ATTRIBUTE_NODE>
+    like native-number
+  take cdata-section-node
+    name <CDATA_SECTION_NODE>
+    like native-number
+  take comment-node, name <COMMENT_NODE>
+    like native-number
+  take document-fragment-node
+    name <DOCUMENT_FRAGMENT_NODE>
+    like native-number
+  take document-node
+    name <DOCUMENT_NODE>
+    like native-number
+  take document-position-contained-by
+    name <DOCUMENT_POSITION_CONTAINED_BY>
+    like native-number
+  take document-position-contains
+    name <DOCUMENT_POSITION_CONTAINS>
+    like native-number
+  take document-position-disconnected
+    name <DOCUMENT_POSITION_DISCONNECTED>
+    like native-number
+  take document-position-following
+    name <DOCUMENT_POSITION_FOLLOWING>
+    like native-number
+  take document-position-implementation-specific
+    name <DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC>
+    like native-number
+  take document-position-preceding
+    name <DOCUMENT_POSITION_PRECEDING>
+    like native-number
+  take document-type-node
+    name <DOCUMENT_TYPE_NODE>
+    like native-number
+  take element-node, name <ELEMENT_NODE>
+    like native-number
+  take entity-node, name <ENTITY_NODE>
+    like native-number
+  take entity-reference-node
+    name <ENTITY_REFERENCE_NODE>
+    like native-number
+  take notation-node
+    name <NOTATION_NODE>
+    like native-number
+  take processing-instruction-node
+    name <PROCESSING_INSTRUCTION_NODE>
+    like native-number
+  take text-node, name <TEXT_NODE>
+    like native-number
+
+  task append-child, name <appendChild>
+    head t, like like-link-text
+      base node
+    take node, like t
+    free seed, like t
+
+  task clone-node, name <cloneNode>
+    take deep, like native-boolean
+      void take
+    free seed, like node
+
+  task compare-document-position
+    name <compareDocumentPosition>
+    take other, like node
+    free seed, like native-number
+
+  task contains, name <contains>
+    take other
+      like sink-link-text
+        like node
+        like native-null
+    free seed, like native-boolean
+
+  task get-root-node, name <getRootNode>
+    take options, like get-root-node-options
+      void take
+    free seed, like node
+
+  task has-child-nodes
+    name <hasChildNodes>
+    free seed, like native-boolean
+
+  task insert-before
+    name <insertBefore>
+    head t, like like-link-text
+      base node
+    take node, like t
+    take child
+      like sink-link-text
+        like node
+        like native-null
+    free seed, like t
+
+  task is-default-namespace
+    name <isDefaultNamespace>
+    take namespace
+      like sink-link-text
+        like native-string
+        like native-null
+    free seed, like native-boolean
+
+  task is-equal-node, name <isEqualNode>
+    take other-node
+      like sink-link-text
+        like node
+        like native-null
+    free seed, like native-boolean
+
+  task is-same-node, name <isSameNode>
+    take other-node
+      like sink-link-text
+        like node
+        like native-null
+    free seed, like native-boolean
+
+  task lookup-namespace-uri
+    name <lookupNamespaceURI>
+    take prefix
+      like sink-link-text
+        like native-string
+        like native-null
+    free seed
+      like sink-link-text
+        like native-string
+        like native-null
+
+  task lookup-prefix
+    name <lookupPrefix>
+    take namespace
+      like sink-link-text
+        like native-string
+        like native-null
+    free seed
+      like sink-link-text
+        like native-string
+        like native-null
+
+  task normalize, name <normalize>
+    free seed, like native-void
+
+  task remove-child, name <removeChild>
+    head t, like like-link-text
+      base node
+    take child, like t
+    free seed, like t
+
+  task replace-child
+    name <replaceChild>
+    head t, like like-link-text
+      base node
+    take node, like node
+    take child, like t
+    free seed, like t

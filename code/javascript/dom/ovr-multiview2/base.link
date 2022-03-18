@@ -1,0 +1,50 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/g-lenum
+  take form g-lenum
+
+load @drumwork/land/code/javascript/dom/g-lint
+  take form g-lint
+
+load @drumwork/land/code/javascript/dom/g-lsizei
+  take form g-lsizei
+
+load @drumwork/land/code/javascript/dom/web-gl-texture
+  take form web-gl-texture
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form ovr-multiview2
+  name <OVR_multiview2>
+  take framebuffer-attachment-texture-base-view-index-ovr
+    name <FRAMEBUFFER_ATTACHMENT_TEXTURE_BASE_VIEW_INDEX_OVR>
+    like g-lenum
+  take framebuffer-attachment-texture-num-views-ovr
+    name <FRAMEBUFFER_ATTACHMENT_TEXTURE_NUM_VIEWS_OVR>
+    like g-lenum
+  take framebuffer-incomplete-view-targets-ovr
+    name <FRAMEBUFFER_INCOMPLETE_VIEW_TARGETS_OVR>
+    like g-lenum
+  take max-views-ovr
+    name <MAX_VIEWS_OVR>
+    like g-lenum
+
+  task framebuffer-texture-multiview-ovr
+    name <framebufferTextureMultiviewOVR>
+    take target, like g-lenum
+    take attachment, like g-lenum
+    take texture
+      like sink-link-text
+        like web-gl-texture
+        like native-null
+    take level, like g-lint
+    take base-view-index, like g-lint
+    take num-views, like g-lsizei
+    free seed, like native-void

@@ -1,0 +1,32 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/css-rule
+  take form css-rule
+
+load @drumwork/land/code/javascript/dom/css-rule-list
+  take form css-rule-list
+
+form css-grouping-rule
+  name <CSSGroupingRule>
+  base css-rule
+
+  take css-rules, name <cssRules>
+    like css-rule-list
+
+  task delete-rule, name <deleteRule>
+    take index, like native-number
+    free seed, like native-void
+
+  task insert-rule, name <insertRule>
+    take rule, like native-string
+    take index, like native-number
+      void take
+    free seed, like native-number

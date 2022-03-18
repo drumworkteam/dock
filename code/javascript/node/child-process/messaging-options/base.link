@@ -1,0 +1,41 @@
+
+load @drumwork/land/code/javascript/base/abortable
+  take form abortable
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/node-js-signals
+  take form node-js-signals
+
+load @drumwork/land/code/javascript/node/child-process/serialization-type
+  take form serialization-type
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form messaging-options
+  name <MessagingOptions>
+  base abortable
+
+  take serialization
+    name <serialization>
+    like sink-link-text
+      like serialization-type
+      like native-undefined
+    lock free
+  take kill-signal, name <killSignal>
+    like sink-link-text
+      like node-js-signals
+      like native-number
+      like native-undefined
+    lock free
+  take timeout, name <timeout>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free

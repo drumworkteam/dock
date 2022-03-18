@@ -1,0 +1,30 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/generic-transform-stream
+  take form generic-transform-stream
+
+load @drumwork/land/code/javascript/dom/readable-stream
+  take form readable-stream
+
+load @drumwork/land/code/javascript/dom/text-encoder-common
+  take form text-encoder-common
+
+load @drumwork/land/code/javascript/dom/writable-stream
+  take form writable-stream
+
+load @drumwork/land/code/javascript/es5/uint8-array
+  take form uint8-array
+
+form text-encoder-stream
+  name <TextEncoderStream>
+  base generic-transform-stream
+  base text-encoder-common
+
+  take readable, name <readable>
+    like readable-stream
+      like uint8-array
+  take writable, name <writable>
+    like writable-stream
+      like native-string

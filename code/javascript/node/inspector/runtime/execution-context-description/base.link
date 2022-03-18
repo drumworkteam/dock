@@ -1,0 +1,34 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/inspector/runtime/execution-context-id
+  take form execution-context-id
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form execution-context-description
+  name <ExecutionContextDescription>
+  take id, name <id>
+    like execution-context-id
+    lock free
+  take origin, name <origin>
+    like native-string
+    lock free
+  take name, name <name>
+    like native-string
+    lock free
+  take aux-data, name <auxData>
+    like sink-link-text
+      like form-link-text
+      like native-undefined
+    lock free

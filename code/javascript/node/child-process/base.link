@@ -1,0 +1,961 @@
+
+load @drumwork/land/code/javascript/base/child-process
+  take form child-process
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/object-encoding-options
+  take form object-encoding-options
+
+load @drumwork/land/code/javascript/base/readable
+  take form readable
+
+load @drumwork/land/code/javascript/base/readonly-array
+  take form readonly-array
+
+load @drumwork/land/code/javascript/base/writable
+  take form writable
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/buffer/buffer-encoding
+  take form buffer-encoding
+
+load @drumwork/land/code/javascript/node/child-process/child-process-by-stdio
+  take form child-process-by-stdio
+
+load @drumwork/land/code/javascript/node/child-process/child-process-without-null-streams
+  take form child-process-without-null-streams
+
+load @drumwork/land/code/javascript/node/child-process/exec-exception
+  take form exec-exception
+
+load @drumwork/land/code/javascript/node/child-process/exec-file-exception
+  take form exec-file-exception
+
+load @drumwork/land/code/javascript/node/child-process/exec-file-options
+  take form exec-file-options
+
+load @drumwork/land/code/javascript/node/child-process/exec-file-options-with-buffer-encoding
+  take form exec-file-options-with-buffer-encoding
+
+load @drumwork/land/code/javascript/node/child-process/exec-file-options-with-other-encoding
+  take form exec-file-options-with-other-encoding
+
+load @drumwork/land/code/javascript/node/child-process/exec-file-options-with-string-encoding
+  take form exec-file-options-with-string-encoding
+
+load @drumwork/land/code/javascript/node/child-process/exec-file-sync-options
+  take form exec-file-sync-options
+
+load @drumwork/land/code/javascript/node/child-process/exec-file-sync-options-with-buffer-encoding
+  take form exec-file-sync-options-with-buffer-encoding
+
+load @drumwork/land/code/javascript/node/child-process/exec-file-sync-options-with-string-encoding
+  take form exec-file-sync-options-with-string-encoding
+
+load @drumwork/land/code/javascript/node/child-process/exec-options
+  take form exec-options
+
+load @drumwork/land/code/javascript/node/child-process/exec-sync-options
+  take form exec-sync-options
+
+load @drumwork/land/code/javascript/node/child-process/exec-sync-options-with-buffer-encoding
+  take form exec-sync-options-with-buffer-encoding
+
+load @drumwork/land/code/javascript/node/child-process/exec-sync-options-with-string-encoding
+  take form exec-sync-options-with-string-encoding
+
+load @drumwork/land/code/javascript/node/child-process/fork-options
+  take form fork-options
+
+load @drumwork/land/code/javascript/node/child-process/spawn-options
+  take form spawn-options
+
+load @drumwork/land/code/javascript/node/child-process/spawn-options-with-stdio-tuple
+  take form spawn-options-with-stdio-tuple
+
+load @drumwork/land/code/javascript/node/child-process/spawn-options-without-stdio
+  take form spawn-options-without-stdio
+
+load @drumwork/land/code/javascript/node/child-process/spawn-sync-options
+  take form spawn-sync-options
+
+load @drumwork/land/code/javascript/node/child-process/spawn-sync-options-with-buffer-encoding
+  take form spawn-sync-options-with-buffer-encoding
+
+load @drumwork/land/code/javascript/node/child-process/spawn-sync-options-with-string-encoding
+  take form spawn-sync-options-with-string-encoding
+
+load @drumwork/land/code/javascript/node/child-process/spawn-sync-returns
+  take form spawn-sync-returns
+
+load @drumwork/land/code/javascript/node/child-process/stdio-null
+  take form stdio-null
+
+load @drumwork/land/code/javascript/node/child-process/stdio-pipe
+  take form stdio-pipe
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+task spawn, name <spawn>
+  take command, like native-string
+  take options, like spawn-options-without-stdio
+    void take
+  free seed, like child-process-without-null-streams
+
+task spawn, name <spawn>
+  take command, like native-string
+  take options
+    like spawn-options-with-stdio-tuple
+      like stdio-pipe
+      like stdio-pipe
+      like stdio-pipe
+  free seed
+    like child-process-by-stdio
+      like writable
+      like readable
+      like readable
+
+task spawn, name <spawn>
+  take command, like native-string
+  take options
+    like spawn-options-with-stdio-tuple
+      like stdio-pipe
+      like stdio-pipe
+      like stdio-null
+  free seed
+    like child-process-by-stdio
+      like writable
+      like readable
+      like native-null
+
+task spawn, name <spawn>
+  take command, like native-string
+  take options
+    like spawn-options-with-stdio-tuple
+      like stdio-pipe
+      like stdio-null
+      like stdio-pipe
+  free seed
+    like child-process-by-stdio
+      like writable
+      like native-null
+      like readable
+
+task spawn, name <spawn>
+  take command, like native-string
+  take options
+    like spawn-options-with-stdio-tuple
+      like stdio-null
+      like stdio-pipe
+      like stdio-pipe
+  free seed
+    like child-process-by-stdio
+      like native-null
+      like readable
+      like readable
+
+task spawn, name <spawn>
+  take command, like native-string
+  take options
+    like spawn-options-with-stdio-tuple
+      like stdio-pipe
+      like stdio-null
+      like stdio-null
+  free seed
+    like child-process-by-stdio
+      like writable
+      like native-null
+      like native-null
+
+task spawn, name <spawn>
+  take command, like native-string
+  take options
+    like spawn-options-with-stdio-tuple
+      like stdio-null
+      like stdio-pipe
+      like stdio-null
+  free seed
+    like child-process-by-stdio
+      like native-null
+      like readable
+      like native-null
+
+task spawn, name <spawn>
+  take command, like native-string
+  take options
+    like spawn-options-with-stdio-tuple
+      like stdio-null
+      like stdio-null
+      like stdio-pipe
+  free seed
+    like child-process-by-stdio
+      like native-null
+      like native-null
+      like readable
+
+task spawn, name <spawn>
+  take command, like native-string
+  take options
+    like spawn-options-with-stdio-tuple
+      like stdio-null
+      like stdio-null
+      like stdio-null
+  free seed
+    like child-process-by-stdio
+      like native-null
+      like native-null
+      like native-null
+
+task spawn, name <spawn>
+  take command, like native-string
+  take options, like spawn-options
+  free seed, like child-process
+
+task spawn, name <spawn>
+  take command, like native-string
+  take args
+    like readonly-array
+      like native-string
+    void take
+  take options, like spawn-options-without-stdio
+    void take
+  free seed, like child-process-without-null-streams
+
+task spawn, name <spawn>
+  take command, like native-string
+  take args
+    like readonly-array
+      like native-string
+  take options
+    like spawn-options-with-stdio-tuple
+      like stdio-pipe
+      like stdio-pipe
+      like stdio-pipe
+  free seed
+    like child-process-by-stdio
+      like writable
+      like readable
+      like readable
+
+task spawn, name <spawn>
+  take command, like native-string
+  take args
+    like readonly-array
+      like native-string
+  take options
+    like spawn-options-with-stdio-tuple
+      like stdio-pipe
+      like stdio-pipe
+      like stdio-null
+  free seed
+    like child-process-by-stdio
+      like writable
+      like readable
+      like native-null
+
+task spawn, name <spawn>
+  take command, like native-string
+  take args
+    like readonly-array
+      like native-string
+  take options
+    like spawn-options-with-stdio-tuple
+      like stdio-pipe
+      like stdio-null
+      like stdio-pipe
+  free seed
+    like child-process-by-stdio
+      like writable
+      like native-null
+      like readable
+
+task spawn, name <spawn>
+  take command, like native-string
+  take args
+    like readonly-array
+      like native-string
+  take options
+    like spawn-options-with-stdio-tuple
+      like stdio-null
+      like stdio-pipe
+      like stdio-pipe
+  free seed
+    like child-process-by-stdio
+      like native-null
+      like readable
+      like readable
+
+task spawn, name <spawn>
+  take command, like native-string
+  take args
+    like readonly-array
+      like native-string
+  take options
+    like spawn-options-with-stdio-tuple
+      like stdio-pipe
+      like stdio-null
+      like stdio-null
+  free seed
+    like child-process-by-stdio
+      like writable
+      like native-null
+      like native-null
+
+task spawn, name <spawn>
+  take command, like native-string
+  take args
+    like readonly-array
+      like native-string
+  take options
+    like spawn-options-with-stdio-tuple
+      like stdio-null
+      like stdio-pipe
+      like stdio-null
+  free seed
+    like child-process-by-stdio
+      like native-null
+      like readable
+      like native-null
+
+task spawn, name <spawn>
+  take command, like native-string
+  take args
+    like readonly-array
+      like native-string
+  take options
+    like spawn-options-with-stdio-tuple
+      like stdio-null
+      like stdio-null
+      like stdio-pipe
+  free seed
+    like child-process-by-stdio
+      like native-null
+      like native-null
+      like readable
+
+task spawn, name <spawn>
+  take command, like native-string
+  take args
+    like readonly-array
+      like native-string
+  take options
+    like spawn-options-with-stdio-tuple
+      like stdio-null
+      like stdio-null
+      like stdio-null
+  free seed
+    like child-process-by-stdio
+      like native-null
+      like native-null
+      like native-null
+
+task spawn, name <spawn>
+  take command, like native-string
+  take args
+    like readonly-array
+      like native-string
+  take options, like spawn-options
+  free seed, like child-process
+
+task exec, name <exec>
+  take command, like native-string
+  take callback
+    like task
+      take error
+        like sink-link-text
+          like exec-exception
+          like native-null
+      take stdout, like native-string
+      take stderr, like native-string
+      free seed, like native-void
+    void take
+  free seed, like child-process
+
+task exec, name <exec>
+  take command, like native-string
+  take options
+    like link
+      like form-link-text
+        take encoding, name <encoding>
+          like sink-link-text
+            text <buffer>
+            like native-null
+          lock free
+      like exec-options
+  take callback
+    like task
+      take error
+        like sink-link-text
+          like exec-exception
+          like native-null
+      take stdout, like buffer
+      take stderr, like buffer
+      free seed, like native-void
+    void take
+  free seed, like child-process
+
+task exec, name <exec>
+  take command, like native-string
+  take options
+    like link
+      like form-link-text
+        take encoding, name <encoding>
+          like buffer-encoding
+          lock free
+      like exec-options
+  take callback
+    like task
+      take error
+        like sink-link-text
+          like exec-exception
+          like native-null
+      take stdout, like native-string
+      take stderr, like native-string
+      free seed, like native-void
+    void take
+  free seed, like child-process
+
+task exec, name <exec>
+  take command, like native-string
+  take options
+    like link
+      like form-link-text
+        take encoding, name <encoding>
+          like buffer-encoding
+          lock free
+      like exec-options
+  take callback
+    like task
+      take error
+        like sink-link-text
+          like exec-exception
+          like native-null
+      take stdout
+        like sink-link-text
+          like native-string
+          like buffer
+      take stderr
+        like sink-link-text
+          like native-string
+          like buffer
+      free seed, like native-void
+    void take
+  free seed, like child-process
+
+task exec, name <exec>
+  take command, like native-string
+  take options, like exec-options
+  take callback
+    like task
+      take error
+        like sink-link-text
+          like exec-exception
+          like native-null
+      take stdout, like native-string
+      take stderr, like native-string
+      free seed, like native-void
+    void take
+  free seed, like child-process
+
+task exec, name <exec>
+  take command, like native-string
+  take options
+    like sink-link-text
+      like link
+        like object-encoding-options
+        like exec-options
+      like native-undefined
+      like native-null
+  take callback
+    like task
+      take error
+        like sink-link-text
+          like exec-exception
+          like native-null
+      take stdout
+        like sink-link-text
+          like native-string
+          like buffer
+      take stderr
+        like sink-link-text
+          like native-string
+          like buffer
+      free seed, like native-void
+    void take
+  free seed, like child-process
+
+task exec-file, name <execFile>
+  take file, like native-string
+  free seed, like child-process
+
+task exec-file, name <execFile>
+  take file, like native-string
+  take options
+    like sink-link-text
+      like link
+        like object-encoding-options
+        like exec-file-options
+      like native-undefined
+      like native-null
+  free seed, like child-process
+
+task exec-file, name <execFile>
+  take file, like native-string
+  take args
+    like sink-link-text
+      like readonly-array
+        like native-string
+      like native-null
+    void take
+  free seed, like child-process
+
+task exec-file, name <execFile>
+  take file, like native-string
+  take args
+    like sink-link-text
+      like readonly-array
+        like native-string
+      like native-undefined
+      like native-null
+  take options
+    like sink-link-text
+      like link
+        like object-encoding-options
+        like exec-file-options
+      like native-undefined
+      like native-null
+  free seed, like child-process
+
+task exec-file, name <execFile>
+  take file, like native-string
+  take callback
+    like task
+      take error
+        like sink-link-text
+          like exec-file-exception
+          like native-null
+      take stdout, like native-string
+      take stderr, like native-string
+      free seed, like native-void
+  free seed, like child-process
+
+task exec-file, name <execFile>
+  take file, like native-string
+  take args
+    like sink-link-text
+      like readonly-array
+        like native-string
+      like native-undefined
+      like native-null
+  take callback
+    like task
+      take error
+        like sink-link-text
+          like exec-file-exception
+          like native-null
+      take stdout, like native-string
+      take stderr, like native-string
+      free seed, like native-void
+  free seed, like child-process
+
+task exec-file, name <execFile>
+  take file, like native-string
+  take options, like exec-file-options-with-buffer-encoding
+  take callback
+    like task
+      take error
+        like sink-link-text
+          like exec-file-exception
+          like native-null
+      take stdout, like buffer
+      take stderr, like buffer
+      free seed, like native-void
+  free seed, like child-process
+
+task exec-file, name <execFile>
+  take file, like native-string
+  take args
+    like sink-link-text
+      like readonly-array
+        like native-string
+      like native-undefined
+      like native-null
+  take options, like exec-file-options-with-buffer-encoding
+  take callback
+    like task
+      take error
+        like sink-link-text
+          like exec-file-exception
+          like native-null
+      take stdout, like buffer
+      take stderr, like buffer
+      free seed, like native-void
+  free seed, like child-process
+
+task exec-file, name <execFile>
+  take file, like native-string
+  take options, like exec-file-options-with-string-encoding
+  take callback
+    like task
+      take error
+        like sink-link-text
+          like exec-file-exception
+          like native-null
+      take stdout, like native-string
+      take stderr, like native-string
+      free seed, like native-void
+  free seed, like child-process
+
+task exec-file, name <execFile>
+  take file, like native-string
+  take args
+    like sink-link-text
+      like readonly-array
+        like native-string
+      like native-undefined
+      like native-null
+  take options, like exec-file-options-with-string-encoding
+  take callback
+    like task
+      take error
+        like sink-link-text
+          like exec-file-exception
+          like native-null
+      take stdout, like native-string
+      take stderr, like native-string
+      free seed, like native-void
+  free seed, like child-process
+
+task exec-file, name <execFile>
+  take file, like native-string
+  take options, like exec-file-options-with-other-encoding
+  take callback
+    like task
+      take error
+        like sink-link-text
+          like exec-file-exception
+          like native-null
+      take stdout
+        like sink-link-text
+          like native-string
+          like buffer
+      take stderr
+        like sink-link-text
+          like native-string
+          like buffer
+      free seed, like native-void
+  free seed, like child-process
+
+task exec-file, name <execFile>
+  take file, like native-string
+  take args
+    like sink-link-text
+      like readonly-array
+        like native-string
+      like native-undefined
+      like native-null
+  take options, like exec-file-options-with-other-encoding
+  take callback
+    like task
+      take error
+        like sink-link-text
+          like exec-file-exception
+          like native-null
+      take stdout
+        like sink-link-text
+          like native-string
+          like buffer
+      take stderr
+        like sink-link-text
+          like native-string
+          like buffer
+      free seed, like native-void
+  free seed, like child-process
+
+task exec-file, name <execFile>
+  take file, like native-string
+  take options, like exec-file-options
+  take callback
+    like task
+      take error
+        like sink-link-text
+          like exec-file-exception
+          like native-null
+      take stdout, like native-string
+      take stderr, like native-string
+      free seed, like native-void
+  free seed, like child-process
+
+task exec-file, name <execFile>
+  take file, like native-string
+  take args
+    like sink-link-text
+      like readonly-array
+        like native-string
+      like native-undefined
+      like native-null
+  take options, like exec-file-options
+  take callback
+    like task
+      take error
+        like sink-link-text
+          like exec-file-exception
+          like native-null
+      take stdout, like native-string
+      take stderr, like native-string
+      free seed, like native-void
+  free seed, like child-process
+
+task exec-file, name <execFile>
+  take file, like native-string
+  take options
+    like sink-link-text
+      like link
+        like object-encoding-options
+        like exec-file-options
+      like native-undefined
+      like native-null
+  take callback
+    like sink-link-text
+      like task
+        take error
+          like sink-link-text
+            like exec-file-exception
+            like native-null
+        take stdout
+          like sink-link-text
+            like native-string
+            like buffer
+        take stderr
+          like sink-link-text
+            like native-string
+            like buffer
+        free seed, like native-void
+      like native-undefined
+      like native-null
+  free seed, like child-process
+
+task exec-file, name <execFile>
+  take file, like native-string
+  take args
+    like sink-link-text
+      like readonly-array
+        like native-string
+      like native-undefined
+      like native-null
+  take options
+    like sink-link-text
+      like link
+        like object-encoding-options
+        like exec-file-options
+      like native-undefined
+      like native-null
+  take callback
+    like sink-link-text
+      like task
+        take error
+          like sink-link-text
+            like exec-file-exception
+            like native-null
+        take stdout
+          like sink-link-text
+            like native-string
+            like buffer
+        take stderr
+          like sink-link-text
+            like native-string
+            like buffer
+        free seed, like native-void
+      like native-undefined
+      like native-null
+  free seed, like child-process
+
+task fork, name <fork>
+  take module-path, like native-string
+  take options, like fork-options
+    void take
+  free seed, like child-process
+
+task fork, name <fork>
+  take module-path, like native-string
+  take args
+    like readonly-array
+      like native-string
+    void take
+  take options, like fork-options
+    void take
+  free seed, like child-process
+
+task spawn-sync, name <spawnSync>
+  take command, like native-string
+  free seed
+    like spawn-sync-returns
+      like buffer
+
+task spawn-sync, name <spawnSync>
+  take command, like native-string
+  take options, like spawn-sync-options-with-string-encoding
+  free seed
+    like spawn-sync-returns
+      like native-string
+
+task spawn-sync, name <spawnSync>
+  take command, like native-string
+  take options, like spawn-sync-options-with-buffer-encoding
+  free seed
+    like spawn-sync-returns
+      like buffer
+
+task spawn-sync, name <spawnSync>
+  take command, like native-string
+  take options, like spawn-sync-options
+    void take
+  free seed
+    like spawn-sync-returns
+      like sink-link-text
+        like native-string
+        like buffer
+
+task spawn-sync, name <spawnSync>
+  take command, like native-string
+  take args
+    like readonly-array
+      like native-string
+  free seed
+    like spawn-sync-returns
+      like buffer
+
+task spawn-sync, name <spawnSync>
+  take command, like native-string
+  take args
+    like readonly-array
+      like native-string
+  take options, like spawn-sync-options-with-string-encoding
+  free seed
+    like spawn-sync-returns
+      like native-string
+
+task spawn-sync, name <spawnSync>
+  take command, like native-string
+  take args
+    like readonly-array
+      like native-string
+  take options, like spawn-sync-options-with-buffer-encoding
+  free seed
+    like spawn-sync-returns
+      like buffer
+
+task spawn-sync, name <spawnSync>
+  take command, like native-string
+  take args
+    like readonly-array
+      like native-string
+    void take
+  take options, like spawn-sync-options
+    void take
+  free seed
+    like spawn-sync-returns
+      like sink-link-text
+        like native-string
+        like buffer
+
+task exec-sync, name <execSync>
+  take command, like native-string
+  free seed, like buffer
+
+task exec-sync, name <execSync>
+  take command, like native-string
+  take options, like exec-sync-options-with-string-encoding
+  free seed, like native-string
+
+task exec-sync, name <execSync>
+  take command, like native-string
+  take options, like exec-sync-options-with-buffer-encoding
+  free seed, like buffer
+
+task exec-sync, name <execSync>
+  take command, like native-string
+  take options, like exec-sync-options
+    void take
+  free seed
+    like sink-link-text
+      like native-string
+      like buffer
+
+task exec-file-sync, name <execFileSync>
+  take file, like native-string
+  free seed, like buffer
+
+task exec-file-sync, name <execFileSync>
+  take file, like native-string
+  take options, like exec-file-sync-options-with-string-encoding
+  free seed, like native-string
+
+task exec-file-sync, name <execFileSync>
+  take file, like native-string
+  take options, like exec-file-sync-options-with-buffer-encoding
+  free seed, like buffer
+
+task exec-file-sync, name <execFileSync>
+  take file, like native-string
+  take options, like exec-file-sync-options
+    void take
+  free seed
+    like sink-link-text
+      like native-string
+      like buffer
+
+task exec-file-sync, name <execFileSync>
+  take file, like native-string
+  take args
+    like readonly-array
+      like native-string
+  free seed, like buffer
+
+task exec-file-sync, name <execFileSync>
+  take file, like native-string
+  take args
+    like readonly-array
+      like native-string
+  take options, like exec-file-sync-options-with-string-encoding
+  free seed, like native-string
+
+task exec-file-sync, name <execFileSync>
+  take file, like native-string
+  take args
+    like readonly-array
+      like native-string
+  take options, like exec-file-sync-options-with-buffer-encoding
+  free seed, like buffer
+
+task exec-file-sync, name <execFileSync>
+  take file, like native-string
+  take args
+    like readonly-array
+      like native-string
+    void take
+  take options, like exec-file-sync-options
+    void take
+  free seed
+    like sink-link-text
+      like native-string
+      like buffer

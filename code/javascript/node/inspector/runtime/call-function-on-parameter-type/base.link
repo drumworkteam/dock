@@ -1,0 +1,83 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/inspector/runtime/call-argument
+  take form call-argument
+
+load @drumwork/land/code/javascript/node/inspector/runtime/execution-context-id
+  take form execution-context-id
+
+load @drumwork/land/code/javascript/node/inspector/runtime/remote-object-id
+  take form remote-object-id
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form call-function-on-parameter-type
+  name <CallFunctionOnParameterType>
+  take function-declaration
+    name <functionDeclaration>
+    like native-string
+    lock free
+  take object-id, name <objectId>
+    like sink-link-text
+      like remote-object-id
+      like native-undefined
+    lock free
+  take arguments, name <arguments>
+    like sink-link-text
+      like list-link-text
+        like call-argument
+      like native-undefined
+    lock free
+  take silent, name <silent>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take return-by-value
+    name <returnByValue>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take generate-preview
+    name <generatePreview>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take user-gesture, name <userGesture>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take await-promise
+    name <awaitPromise>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take execution-context-id
+    name <executionContextId>
+    like sink-link-text
+      like execution-context-id
+      like native-undefined
+    lock free
+  take object-group, name <objectGroup>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free

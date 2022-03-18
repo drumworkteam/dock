@@ -1,0 +1,36 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-never
+  take form native-never
+
+load @drumwork/land/code/javascript/base/p
+  take form p
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/test
+  take form test
+    save form test-link-text
+
+form parameters, name <Parameters>
+  head t, like like-link-text
+    base task
+      take args, like native-any
+        rest take
+      free seed, like native-any
+
+  like test-link-text
+    stem roll
+      like t
+      like task
+        take args, name p
+          rest take
+        free seed, like native-any
+      hook take
+        like p
+      hook free
+        like native-never

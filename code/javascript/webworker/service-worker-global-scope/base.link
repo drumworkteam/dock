@@ -1,0 +1,235 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+load @drumwork/land/code/javascript/webworker/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/webworker/clients
+  take form clients
+
+load @drumwork/land/code/javascript/webworker/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/webworker/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/webworker/extendable-event
+  take form extendable-event
+
+load @drumwork/land/code/javascript/webworker/extendable-message-event
+  take form extendable-message-event
+
+load @drumwork/land/code/javascript/webworker/fetch-event
+  take form fetch-event
+
+load @drumwork/land/code/javascript/webworker/message-event
+  take form message-event
+
+load @drumwork/land/code/javascript/webworker/notification-event
+  take form notification-event
+
+load @drumwork/land/code/javascript/webworker/push-event
+  take form push-event
+
+load @drumwork/land/code/javascript/webworker/service-worker
+  take form service-worker
+
+load @drumwork/land/code/javascript/webworker/service-worker-global-scope-event-map
+  take form service-worker-global-scope-event-map
+
+load @drumwork/land/code/javascript/webworker/service-worker-registration
+  take form service-worker-registration
+
+load @drumwork/land/code/javascript/webworker/sync-event
+  take form sync-event
+
+load @drumwork/land/code/javascript/webworker/worker-global-scope
+  take form worker-global-scope
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form service-worker-global-scope
+  name <ServiceWorkerGlobalScope>
+  base worker-global-scope
+
+  take clients, name <clients>
+    like clients
+  take onactivate, name <onactivate>
+    like sink-link-text
+      like task
+        take this, like service-worker-global-scope
+        take ev, like extendable-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onfetch, name <onfetch>
+    like sink-link-text
+      like task
+        take this, like service-worker-global-scope
+        take ev, like fetch-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take oninstall, name <oninstall>
+    like sink-link-text
+      like task
+        take this, like service-worker-global-scope
+        take ev, like extendable-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onmessage, name <onmessage>
+    like sink-link-text
+      like task
+        take this, like service-worker-global-scope
+        take ev, like extendable-message-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onmessageerror
+    name <onmessageerror>
+    like sink-link-text
+      like task
+        take this, like service-worker-global-scope
+        take ev, like message-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onnotificationclick
+    name <onnotificationclick>
+    like sink-link-text
+      like task
+        take this, like service-worker-global-scope
+        take ev, like notification-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onnotificationclose
+    name <onnotificationclose>
+    like sink-link-text
+      like task
+        take this, like service-worker-global-scope
+        take ev, like notification-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onpush, name <onpush>
+    like sink-link-text
+      like task
+        take this, like service-worker-global-scope
+        take ev, like push-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onsync, name <onsync>
+    like sink-link-text
+      like task
+        take this, like service-worker-global-scope
+        take ev, like sync-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take registration, name <registration>
+    like service-worker-registration
+  take service-worker
+    name <serviceWorker>
+    like service-worker
+
+  task skip-waiting, name <skipWaiting>
+    free seed
+      like promise
+        like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like service-worker-global-scope-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like service-worker-global-scope
+        take ev
+          like form-link-link-text
+            like service-worker-global-scope-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like service-worker-global-scope-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like service-worker-global-scope
+        take ev
+          like form-link-link-text
+            like service-worker-global-scope-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void

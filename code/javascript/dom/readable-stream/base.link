@@ -1,0 +1,98 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/readable-stream-default-reader
+  take form readable-stream-default-reader
+
+load @drumwork/land/code/javascript/dom/readable-writable-pair
+  take form readable-writable-pair
+
+load @drumwork/land/code/javascript/dom/stream-pipe-options
+  take form stream-pipe-options
+
+load @drumwork/land/code/javascript/dom/writable-stream
+  take form writable-stream
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+load @drumwork/seed/code/form/band
+  take form band
+    save form band-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+form readable-stream
+  name <ReadableStream>
+  head r, like like-link-text
+    back native-any
+
+  take locked, name <locked>
+    like native-boolean
+
+  task cancel, name <cancel>
+    take reason, like native-any
+      void take
+    free seed
+      like promise
+        like native-void
+
+  task get-reader, name <getReader>
+    free seed
+      like readable-stream-default-reader
+        like r
+
+  task pipe-through, name <pipeThrough>
+    head t, like like-link-text
+    take transform
+      like readable-writable-pair
+        like t
+        like r
+    take options, like stream-pipe-options
+      void take
+    free seed
+      like readable-stream
+        like t
+
+  task pipe-to, name <pipeTo>
+    take destination
+      like writable-stream
+        like r
+    take options, like stream-pipe-options
+      void take
+    free seed
+      like promise
+        like native-void
+
+  task tee, name <tee>
+    free seed
+      like band-link-text
+        like readable-stream
+          like r
+        like readable-stream
+          like r
+
+  task for-each, name <forEach>
+    take callbackfn
+      like task
+        take value, like native-any
+        take key, like native-number
+        take parent
+          like readable-stream
+            like r
+        free seed, like native-void
+    take this-arg, like native-any
+      void take
+    free seed, like native-void

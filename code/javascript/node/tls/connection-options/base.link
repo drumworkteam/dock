@@ -1,0 +1,101 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/net-lookup-function
+  take form net-lookup-function
+
+load @drumwork/land/code/javascript/base/stream-duplex
+  take form stream-duplex
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/tls/common-connection-options
+  take form common-connection-options
+
+load @drumwork/land/code/javascript/node/tls/psk-callback-negotation
+  take form psk-callback-negotation
+
+load @drumwork/land/code/javascript/node/tls/secure-context-options
+  take form secure-context-options
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form connection-options
+  name <ConnectionOptions>
+  base secure-context-options
+  base common-connection-options
+
+  take host, name <host>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take port, name <port>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take path, name <path>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take socket, name <socket>
+    like sink-link-text
+      like stream-duplex
+      like native-undefined
+    lock free
+  take check-server-identity
+    name <checkServerIdentity>
+    like sink-link-text
+      like check-server-identity
+      like native-undefined
+    lock free
+  take servername, name <servername>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take session, name <session>
+    like sink-link-text
+      like buffer
+      like native-undefined
+    lock free
+  take min-dh-size, name <minDHSize>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take lookup, name <lookup>
+    like sink-link-text
+      like net-lookup-function
+      like native-undefined
+    lock free
+  take timeout, name <timeout>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+
+  task psk-callback, name <pskCallback>
+    take hint
+      like sink-link-text
+        like native-string
+        like native-null
+    free seed
+      like sink-link-text
+        like psk-callback-negotation
+        like native-null

@@ -1,0 +1,34 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/land/code/javascript/base/uint8-array
+  take form uint8-array
+
+load @drumwork/land/code/javascript/node/fs/path-or-file-descriptor
+  take form path-or-file-descriptor
+
+load @drumwork/land/code/javascript/node/fs/write-file-options
+  take form write-file-options
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+task promisify, name <__promisify__>
+  take file, like path-or-file-descriptor
+  take data
+    like sink-link-text
+      like native-string
+      like uint8-array
+  take options, like write-file-options
+    void take
+  free seed
+    like promise
+      like native-void

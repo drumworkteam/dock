@@ -1,0 +1,48 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/net-server
+  take form net-server
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/tls/common-connection-options
+  take form common-connection-options
+
+load @drumwork/land/code/javascript/node/tls/secure-context-options
+  take form secure-context-options
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form tls-socket-options
+  name <TLSSocketOptions>
+  base secure-context-options
+  base common-connection-options
+
+  take is-server, name <isServer>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take server, name <server>
+    like sink-link-text
+      like net-server
+      like native-undefined
+    lock free
+  take session, name <session>
+    like sink-link-text
+      like buffer
+      like native-undefined
+    lock free
+  take request-ocsp, name <requestOCSP>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free

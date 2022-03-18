@@ -1,0 +1,33 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/scripthost/date
+  take form date
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form date, name <Date>
+  task loan symbol/to-primitive
+    take hint, text <default>
+    free seed, like native-string
+
+  task loan symbol/to-primitive
+    take hint, text <string>
+    free seed, like native-string
+
+  task loan symbol/to-primitive
+    take hint, text <number>
+    free seed, like native-number
+
+  task loan symbol/to-primitive
+    take hint, like native-string
+    free seed
+      like sink-link-text
+        like native-string
+        like native-number

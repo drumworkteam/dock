@@ -1,0 +1,37 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/es2015/iterable/int32-array
+  take form int32-array
+
+load @drumwork/land/code/javascript/es2015/iterable/iterable
+  take form iterable
+
+load @drumwork/land/code/javascript/es5/int32-array-constructor
+  take form int32-array-constructor
+
+form int32-array-constructor
+  name <Int32ArrayConstructor>
+  task from, name <from>
+    take array-like
+      like iterable
+        like native-number
+    take mapfn
+      like task
+        take v, like native-number
+        take k, like native-number
+        free seed, like native-number
+      void take
+    take this-arg, like native-any
+      void take
+    free seed, like int32-array
+
+  hook make
+    take elements
+      like iterable
+        like native-number
+    free seed, like int32-array

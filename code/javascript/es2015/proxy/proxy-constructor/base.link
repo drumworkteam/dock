@@ -1,0 +1,45 @@
+
+load @drumwork/land/code/javascript/base/native-object
+  take form native-object
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/es2015/proxy/proxy-handler
+  take form proxy-handler
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+form proxy-constructor
+  name <ProxyConstructor>
+  task revocable, name <revocable>
+    head t, like like-link-text
+      base native-object
+    take target, like t
+    take handler
+      like proxy-handler
+        like t
+    free seed
+      like form-link-text
+        take proxy, name <proxy>
+          like t
+          lock free
+        take revoke, name <revoke>
+          like task
+            free seed, like native-void
+          lock free
+
+  hook make
+    head t, like like-link-text
+      base native-object
+    take target, like t
+    take handler
+      like proxy-handler
+        like t
+    free seed, like t

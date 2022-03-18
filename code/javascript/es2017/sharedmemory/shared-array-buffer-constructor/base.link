@@ -1,0 +1,15 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/es2017/sharedmemory/shared-array-buffer
+  take form shared-array-buffer
+
+form shared-array-buffer-constructor
+  name <SharedArrayBufferConstructor>
+  take prototype, name <prototype>
+    like shared-array-buffer
+
+  hook make
+    take byte-length, like native-number
+    free seed, like shared-array-buffer

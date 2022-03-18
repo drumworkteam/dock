@@ -1,0 +1,85 @@
+
+load @drumwork/land/code/javascript/base/inner-arr
+  take form inner-arr
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/es2019/array/readonly-array
+  take form readonly-array
+
+load @drumwork/seed/code/form/band
+  take form band
+    save form band-link-text
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/test
+  take form test
+    save form test-link-text
+
+form flat-array, name <FlatArray>
+  head arr, like like-link-text
+  head depth, like like-link-text
+    base native-number
+
+  like form-link-link-text
+    like form-link-text
+      take done, name <done>
+        like arr
+        lock free
+      take recur, name <recur>
+        like test-link-text
+          stem roll
+            like arr
+            like readonly-array
+              name inner-arr
+            hook take
+              like flat-array
+                like inner-arr
+                like form-link-link-text
+                  like band-link-text
+                    text <undefined>
+                    text <0>
+                    text <1>
+                    text <2>
+                    text <3>
+                    text <4>
+                    text <5>
+                    text <6>
+                    text <7>
+                    text <8>
+                    text <9>
+                    text <10>
+                    text <11>
+                    text <12>
+                    text <13>
+                    text <14>
+                    text <15>
+                    text <16>
+                    text <17>
+                    text <18>
+                    text <19>
+                    text <20>
+                  like depth
+            hook free
+              like arr
+        lock free
+    like test-link-text
+      stem roll
+        like depth
+        text <undefined>
+        hook take
+          text <done>
+        hook free
+          text <recur>

@@ -1,0 +1,69 @@
+
+load @drumwork/land/code/javascript/base/child-process
+  take form child-process
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/readable
+  take form readable
+
+load @drumwork/land/code/javascript/base/writable
+  take form writable
+
+load @drumwork/seed/code/form/band
+  take form band
+    save form band-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form child-process-by-stdio
+  name <ChildProcessByStdio>
+  base child-process
+
+  head i, like like-link-text
+    base sink-link-text
+      like native-null
+      like writable
+  head o, like like-link-text
+    base sink-link-text
+      like native-null
+      like readable
+  head e, like like-link-text
+    base sink-link-text
+      like native-null
+      like readable
+
+  take stdin, name <stdin>
+    like i
+    lock free
+  take stdout, name <stdout>
+    like o
+    lock free
+  take stderr, name <stderr>
+    like e
+    lock free
+  take stdio, name <stdio>
+    like band-link-text
+      like i
+      like o
+      like e
+      like sink-link-text
+        like readable
+        like writable
+        like native-null
+        like native-undefined
+      like sink-link-text
+        like readable
+        like writable
+        like native-null
+        like native-undefined

@@ -1,0 +1,58 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/net/connect-opts
+  take form connect-opts
+
+load @drumwork/land/code/javascript/node/net/lookup-function
+  take form lookup-function
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form tcp-socket-connect-opts
+  name <TcpSocketConnectOpts>
+  base connect-opts
+
+  take port, name <port>
+    like native-number
+    lock free
+  take host, name <host>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take local-address
+    name <localAddress>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take local-port, name <localPort>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take hints, name <hints>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take family, name <family>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take lookup, name <lookup>
+    like sink-link-text
+      like lookup-function
+      like native-undefined
+    lock free

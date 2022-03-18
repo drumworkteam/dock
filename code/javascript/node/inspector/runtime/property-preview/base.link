@@ -1,0 +1,38 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/inspector/runtime/object-preview
+  take form object-preview
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form property-preview
+  name <PropertyPreview>
+  take name, name <name>
+    like native-string
+    lock free
+  take type, name <type>
+    like native-string
+    lock free
+  take value, name <value>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take value-preview
+    name <valuePreview>
+    like sink-link-text
+      like object-preview
+      like native-undefined
+    lock free
+  take subtype, name <subtype>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free

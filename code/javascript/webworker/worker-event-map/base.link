@@ -1,0 +1,20 @@
+
+load @drumwork/land/code/javascript/dom/worker-event-map
+  take form worker-event-map
+
+load @drumwork/land/code/javascript/webworker/abstract-worker-event-map
+  take form abstract-worker-event-map
+
+load @drumwork/land/code/javascript/webworker/message-event
+  take form message-event
+
+form worker-event-map
+  name <WorkerEventMap>
+  base abstract-worker-event-map
+
+  take message, name <message>
+    like message-event
+    lock free
+  take messageerror, name <messageerror>
+    like message-event
+    lock free

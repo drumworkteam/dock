@@ -1,0 +1,27 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/dom/authenticator-response
+  take form authenticator-response
+
+load @drumwork/land/code/javascript/es5/array-buffer
+  take form array-buffer
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form authenticator-assertion-response
+  name <AuthenticatorAssertionResponse>
+  base authenticator-response
+
+  take authenticator-data
+    name <authenticatorData>
+    like array-buffer
+  take signature, name <signature>
+    like array-buffer
+  take user-handle, name <userHandle>
+    like sink-link-text
+      like array-buffer
+      like native-null

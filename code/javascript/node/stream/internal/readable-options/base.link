@@ -1,0 +1,37 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/readable
+  take form readable
+
+load @drumwork/land/code/javascript/node/buffer/buffer-encoding
+  take form buffer-encoding
+
+load @drumwork/land/code/javascript/node/stream/internal/stream-options
+  take form stream-options
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form readable-options
+  name <ReadableOptions>
+  base stream-options
+
+  take encoding, name <encoding>
+    like sink-link-text
+      like buffer-encoding
+      like native-undefined
+    lock free
+
+  task read, name <read>
+    take this, like readable
+    take size, like native-number
+    free seed, like native-void

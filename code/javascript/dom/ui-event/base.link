@@ -1,0 +1,52 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/event
+  take form event
+
+load @drumwork/land/code/javascript/dom/window
+  take form window
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form ui-event, name <UIEvent>
+  base event
+
+  take detail, name <detail>
+    like native-number
+  take view, name <view>
+    like sink-link-text
+      like window
+      like native-null
+  take which, name <which>
+    like native-number
+
+  task init-ui-event, name <initUIEvent>
+    take type-arg, like native-string
+    take bubbles-arg, like native-boolean
+      void take
+    take cancelable-arg, like native-boolean
+      void take
+    take view-arg
+      like sink-link-text
+        like window
+        like native-null
+      void take
+    take detail-arg, like native-number
+      void take
+    free seed, like native-void

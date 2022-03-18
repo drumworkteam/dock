@@ -1,0 +1,90 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/audio-param
+  take form audio-param
+
+load @drumwork/land/code/javascript/dom/base-audio-context
+  take form base-audio-context
+
+load @drumwork/land/code/javascript/dom/channel-count-mode
+  take form channel-count-mode
+
+load @drumwork/land/code/javascript/dom/channel-interpretation
+  take form channel-interpretation
+
+load @drumwork/land/code/javascript/dom/event-target
+  take form event-target
+
+form audio-node, name <AudioNode>
+  base event-target
+
+  take channel-count
+    name <channelCount>
+    like native-number
+    lock free
+  take channel-count-mode
+    name <channelCountMode>
+    like channel-count-mode
+    lock free
+  take channel-interpretation
+    name <channelInterpretation>
+    like channel-interpretation
+    lock free
+  take context, name <context>
+    like base-audio-context
+  take number-of-inputs
+    name <numberOfInputs>
+    like native-number
+  take number-of-outputs
+    name <numberOfOutputs>
+    like native-number
+
+  task connect, name <connect>
+    take destination-node, like audio-node
+    take output, like native-number
+      void take
+    take input, like native-number
+      void take
+    free seed, like audio-node
+
+  task connect, name <connect>
+    take destination-param, like audio-param
+    take output, like native-number
+      void take
+    free seed, like native-void
+
+  task disconnect, name <disconnect>
+    free seed, like native-void
+
+  task disconnect, name <disconnect>
+    take output, like native-number
+    free seed, like native-void
+
+  task disconnect, name <disconnect>
+    take destination-node, like audio-node
+    free seed, like native-void
+
+  task disconnect, name <disconnect>
+    take destination-node, like audio-node
+    take output, like native-number
+    free seed, like native-void
+
+  task disconnect, name <disconnect>
+    take destination-node, like audio-node
+    take output, like native-number
+    take input, like native-number
+    free seed, like native-void
+
+  task disconnect, name <disconnect>
+    take destination-param, like audio-param
+    free seed, like native-void
+
+  task disconnect, name <disconnect>
+    take destination-param, like audio-param
+    take output, like native-number
+    free seed, like native-void

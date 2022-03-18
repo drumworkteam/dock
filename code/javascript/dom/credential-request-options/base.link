@@ -1,0 +1,21 @@
+
+load @drumwork/land/code/javascript/dom/abort-signal
+  take form abort-signal
+
+load @drumwork/land/code/javascript/dom/credential-mediation-requirement
+  take form credential-mediation-requirement
+
+load @drumwork/land/code/javascript/dom/public-key-credential-request-options
+  take form public-key-credential-request-options
+
+form credential-request-options
+  name <CredentialRequestOptions>
+  take mediation, name <mediation>
+    like credential-mediation-requirement
+    lock free
+  take public-key, name <publicKey>
+    like public-key-credential-request-options
+    lock free
+  take signal, name <signal>
+    like abort-signal
+    lock free

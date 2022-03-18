@@ -1,0 +1,32 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/es2015/generator/generator
+  take form generator
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form generator-function
+  name <GeneratorFunction>
+  take length, name <length>
+    like native-number
+  take name, name <name>
+    like native-string
+  take prototype, name <prototype>
+    like generator
+
+  hook make
+    take args
+      like list-link-text
+        like native-any
+      rest take
+    free seed, like generator

@@ -1,0 +1,36 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+form cpu-info, name <CpuInfo>
+  take model, name <model>
+    like native-string
+    lock free
+  take speed, name <speed>
+    like native-number
+    lock free
+  take times, name <times>
+    like form-link-text
+      take user, name <user>
+        like native-number
+        lock free
+      take nice, name <nice>
+        like native-number
+        lock free
+      take sys, name <sys>
+        like native-number
+        lock free
+      take idle, name <idle>
+        like native-number
+        lock free
+      take irq, name <irq>
+        like native-number
+        lock free
+    lock free

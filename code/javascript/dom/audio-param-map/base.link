@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/audio-param
+  take form audio-param
+
+form audio-param-map
+  name <AudioParamMap>
+  task for-each, name <forEach>
+    take callbackfn
+      like task
+        take value, like audio-param
+        take key, like native-string
+        take parent, like audio-param-map
+        free seed, like native-void
+    take this-arg, like native-any
+      void take
+    free seed, like native-void

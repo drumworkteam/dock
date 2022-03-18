@@ -1,0 +1,40 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/webworker/client-types
+  take form client-types
+
+load @drumwork/land/code/javascript/webworker/frame-type
+  take form frame-type
+
+load @drumwork/land/code/javascript/webworker/transferable
+  take form transferable
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form client, name <Client>
+  take frame-type, name <frameType>
+    like frame-type
+  take id, name <id>
+    like native-string
+  take type, name <type>
+    like client-types
+  take url, name <url>
+    like native-string
+
+  task post-message, name <postMessage>
+    take message, like native-any
+    take transfer
+      like list-link-text
+        like transferable
+      void take
+    free seed, like native-void

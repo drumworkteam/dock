@@ -1,0 +1,230 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/blob
+  take form blob
+
+load @drumwork/land/code/javascript/dom/dom-exception
+  take form dom-exception
+
+load @drumwork/land/code/javascript/dom/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/event-target
+  take form event-target
+
+load @drumwork/land/code/javascript/dom/file-reader-event-map
+  take form file-reader-event-map
+
+load @drumwork/land/code/javascript/dom/progress-event
+  take form progress-event
+
+load @drumwork/land/code/javascript/es5/array-buffer
+  take form array-buffer
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form file-reader, name <FileReader>
+  base event-target
+
+  take error, name <error>
+    like sink-link-text
+      like dom-exception
+      like native-null
+  take onabort, name <onabort>
+    like sink-link-text
+      like task
+        take this, like file-reader
+        take ev
+          like progress-event
+            like file-reader
+        free seed, like native-any
+      like native-null
+    lock free
+  take onerror, name <onerror>
+    like sink-link-text
+      like task
+        take this, like file-reader
+        take ev
+          like progress-event
+            like file-reader
+        free seed, like native-any
+      like native-null
+    lock free
+  take onload, name <onload>
+    like sink-link-text
+      like task
+        take this, like file-reader
+        take ev
+          like progress-event
+            like file-reader
+        free seed, like native-any
+      like native-null
+    lock free
+  take onloadend, name <onloadend>
+    like sink-link-text
+      like task
+        take this, like file-reader
+        take ev
+          like progress-event
+            like file-reader
+        free seed, like native-any
+      like native-null
+    lock free
+  take onloadstart, name <onloadstart>
+    like sink-link-text
+      like task
+        take this, like file-reader
+        take ev
+          like progress-event
+            like file-reader
+        free seed, like native-any
+      like native-null
+    lock free
+  take onprogress, name <onprogress>
+    like sink-link-text
+      like task
+        take this, like file-reader
+        take ev
+          like progress-event
+            like file-reader
+        free seed, like native-any
+      like native-null
+    lock free
+  take ready-state, name <readyState>
+    like native-number
+  take result, name <result>
+    like sink-link-text
+      like native-string
+      like array-buffer
+      like native-null
+  take done, name <DONE>
+    like native-number
+  take empty, name <EMPTY>
+    like native-number
+  take loading, name <LOADING>
+    like native-number
+
+  task abort, name <abort>
+    free seed, like native-void
+
+  task read-as-array-buffer
+    name <readAsArrayBuffer>
+    take blob, like blob
+    free seed, like native-void
+
+  task read-as-binary-string
+    name <readAsBinaryString>
+    take blob, like blob
+    free seed, like native-void
+
+  task read-as-data-url
+    name <readAsDataURL>
+    take blob, like blob
+    free seed, like native-void
+
+  task read-as-text, name <readAsText>
+    take blob, like blob
+    take encoding, like native-string
+      void take
+    free seed, like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like file-reader-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like file-reader
+        take ev
+          like form-link-link-text
+            like file-reader-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like file-reader-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like file-reader
+        take ev
+          like form-link-link-text
+            like file-reader-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void

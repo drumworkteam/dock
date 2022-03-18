@@ -1,0 +1,20 @@
+
+load @drumwork/land/code/javascript/base/runtime-script-id
+  take form runtime-script-id
+
+load @drumwork/land/code/javascript/node/inspector/debugger/script-position
+  take form script-position
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form set-blackboxed-ranges-parameter-type
+  name <SetBlackboxedRangesParameterType>
+  take script-id, name <scriptId>
+    like runtime-script-id
+    lock free
+  take positions, name <positions>
+    like list-link-text
+      like script-position
+    lock free

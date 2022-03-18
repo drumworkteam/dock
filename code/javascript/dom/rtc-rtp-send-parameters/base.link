@@ -1,0 +1,33 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/rtc-degradation-preference
+  take form rtc-degradation-preference
+
+load @drumwork/land/code/javascript/dom/rtc-rtp-encoding-parameters
+  take form rtc-rtp-encoding-parameters
+
+load @drumwork/land/code/javascript/dom/rtc-rtp-parameters
+  take form rtc-rtp-parameters
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form rtc-rtp-send-parameters
+  name <RTCRtpSendParameters>
+  base rtc-rtp-parameters
+
+  take degradation-preference
+    name <degradationPreference>
+    like rtc-degradation-preference
+    lock free
+  take encodings, name <encodings>
+    like list-link-text
+      like rtc-rtp-encoding-parameters
+    lock free
+  take transaction-id
+    name <transactionId>
+    like native-string
+    lock free

@@ -1,0 +1,43 @@
+
+load @drumwork/land/code/javascript/dom/device-motion-event
+  take form device-motion-event
+
+load @drumwork/land/code/javascript/dom/device-orientation-event
+  take form device-orientation-event
+
+load @drumwork/land/code/javascript/dom/event
+  take form event
+
+load @drumwork/land/code/javascript/dom/gamepad-event
+  take form gamepad-event
+
+load @drumwork/land/code/javascript/dom/global-event-handlers-event-map
+  take form global-event-handlers-event-map
+
+load @drumwork/land/code/javascript/dom/window-event-handlers-event-map
+  take form window-event-handlers-event-map
+
+form window-event-map
+  name <WindowEventMap>
+  base global-event-handlers-event-map
+  base window-event-handlers-event-map
+
+  take devicemotion, name <devicemotion>
+    like device-motion-event
+    lock free
+  take deviceorientation
+    name <deviceorientation>
+    like device-orientation-event
+    lock free
+  take gamepadconnected
+    name <gamepadconnected>
+    like gamepad-event
+    lock free
+  take gamepaddisconnected
+    name <gamepaddisconnected>
+    like gamepad-event
+    lock free
+  take orientationchange
+    name <orientationchange>
+    like event
+    lock free

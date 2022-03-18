@@ -1,0 +1,40 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form console-message
+  name <ConsoleMessage>
+  take source, name <source>
+    like native-string
+    lock free
+  take level, name <level>
+    like native-string
+    lock free
+  take text, name <text>
+    like native-string
+    lock free
+  take url, name <url>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take line, name <line>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take column, name <column>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free

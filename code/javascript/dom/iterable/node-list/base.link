@@ -1,0 +1,39 @@
+
+load @drumwork/land/code/javascript/base/iterable-iterator
+  take form iterable-iterator
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/node
+  take form node
+
+load @drumwork/land/code/javascript/dom/node-list
+  take form node-list
+
+load @drumwork/seed/code/form/band
+  take form band
+    save form band-link-text
+
+form node-list, name <NodeList>
+  task loan symbol/iterator
+    free seed
+      like iterable-iterator
+        like node
+
+  task entries, name <entries>
+    free seed
+      like iterable-iterator
+        like band-link-text
+          like native-number
+          like node
+
+  task keys, name <keys>
+    free seed
+      like iterable-iterator
+        like native-number
+
+  task values, name <values>
+    free seed
+      like iterable-iterator
+        like node

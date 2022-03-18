@@ -1,0 +1,38 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-object
+  take form native-object
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+form hook-callbacks
+  name <HookCallbacks>
+  task init, name <init>
+    take async-id, like native-number
+    take type, like native-string
+    take trigger-async-id, like native-number
+    take resource, like native-object
+    free seed, like native-void
+
+  task before, name <before>
+    take async-id, like native-number
+    free seed, like native-void
+
+  task after, name <after>
+    take async-id, like native-number
+    free seed, like native-void
+
+  task promise-resolve
+    name <promiseResolve>
+    take async-id, like native-number
+    free seed, like native-void
+
+  task destroy, name <destroy>
+    take async-id, like native-number
+    free seed, like native-void

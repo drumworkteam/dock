@@ -1,0 +1,99 @@
+
+load @drumwork/land/code/javascript/base/interface
+  take form interface
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/node-js-readable-stream
+  take form node-js-readable-stream
+
+load @drumwork/land/code/javascript/base/node-js-writable-stream
+  take form node-js-writable-stream
+
+load @drumwork/land/code/javascript/node/readline/async-completer
+  take form async-completer
+
+load @drumwork/land/code/javascript/node/readline/completer
+  take form completer
+
+load @drumwork/land/code/javascript/node/readline/direction
+  take form direction
+
+load @drumwork/land/code/javascript/node/readline/read-line-options
+  take form read-line-options
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+task create-interface
+  name <createInterface>
+  take input, like node-js-readable-stream
+  take output, like node-js-writable-stream
+    void take
+  take completer
+    like sink-link-text
+      like completer
+      like async-completer
+    void take
+  take terminal, like native-boolean
+    void take
+  free seed, like interface
+
+task create-interface
+  name <createInterface>
+  take options, like read-line-options
+  free seed, like interface
+
+task emit-keypress-events
+  name <emitKeypressEvents>
+  take stream, like node-js-readable-stream
+  take readline-interface, like interface
+    void take
+  free seed, like native-void
+
+task clear-line, name <clearLine>
+  take stream, like node-js-writable-stream
+  take dir, like direction
+  take callback
+    like task
+      free seed, like native-void
+    void take
+  free seed, like native-boolean
+
+task clear-screen-down
+  name <clearScreenDown>
+  take stream, like node-js-writable-stream
+  take callback
+    like task
+      free seed, like native-void
+    void take
+  free seed, like native-boolean
+
+task cursor-to, name <cursorTo>
+  take stream, like node-js-writable-stream
+  take x, like native-number
+  take y, like native-number
+    void take
+  take callback
+    like task
+      free seed, like native-void
+    void take
+  free seed, like native-boolean
+
+task move-cursor, name <moveCursor>
+  take stream, like node-js-writable-stream
+  take dx, like native-number
+  take dy, like native-number
+  take callback
+    like task
+      free seed, like native-void
+    void take
+  free seed, like native-boolean

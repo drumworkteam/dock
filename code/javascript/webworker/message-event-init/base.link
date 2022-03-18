@@ -1,0 +1,59 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/message-event-init
+  take form message-event-init
+
+load @drumwork/land/code/javascript/webworker/event-init
+  take form event-init
+
+load @drumwork/land/code/javascript/webworker/message-event-source
+  take form message-event-source
+
+load @drumwork/land/code/javascript/webworker/message-port
+  take form message-port
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form message-event-init
+  name <MessageEventInit>
+  base event-init
+
+  head t, like like-link-text
+    back native-any
+
+  take data, name <data>
+    like t
+    lock free
+  take last-event-id, name <lastEventId>
+    like native-string
+    lock free
+  take origin, name <origin>
+    like native-string
+    lock free
+  take ports, name <ports>
+    like list-link-text
+      like message-port
+    lock free
+  take source, name <source>
+    like sink-link-text
+      like message-event-source
+      like native-null
+    lock free

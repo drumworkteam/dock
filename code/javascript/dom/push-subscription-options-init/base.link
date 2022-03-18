@@ -1,0 +1,30 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/buffer-source
+  take form buffer-source
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form push-subscription-options-init
+  name <PushSubscriptionOptionsInit>
+  take application-server-key
+    name <applicationServerKey>
+    like sink-link-text
+      like buffer-source
+      like native-string
+      like native-null
+    lock free
+  take user-visible-only
+    name <userVisibleOnly>
+    like native-boolean
+    lock free

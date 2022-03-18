@@ -1,0 +1,21 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/es5/error-constructor
+  take form error-constructor
+
+load @drumwork/land/code/javascript/es5/uri-error
+  take form uri-error
+
+form uri-error-constructor
+  name <URIErrorConstructor>
+  base error-constructor
+
+  take prototype, name <prototype>
+    like uri-error
+
+  hook make
+    take message, like native-string
+      void take
+    free seed, like uri-error

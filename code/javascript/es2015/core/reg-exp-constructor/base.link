@@ -1,0 +1,24 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/es2015/core/reg-exp
+  take form reg-exp
+
+load @drumwork/land/code/javascript/es5/reg-exp-constructor
+  take form reg-exp-constructor
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form reg-exp-constructor
+  name <RegExpConstructor>
+  hook make
+    take pattern
+      like sink-link-text
+        like reg-exp
+        like native-string
+    take flags, like native-string
+      void take
+    free seed, like reg-exp

@@ -1,0 +1,199 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/event
+  take form event
+
+load @drumwork/land/code/javascript/dom/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/event-target
+  take form event-target
+
+load @drumwork/land/code/javascript/dom/get-notification-options
+  take form get-notification-options
+
+load @drumwork/land/code/javascript/dom/notification
+  take form notification
+
+load @drumwork/land/code/javascript/dom/notification-options
+  take form notification-options
+
+load @drumwork/land/code/javascript/dom/push-manager
+  take form push-manager
+
+load @drumwork/land/code/javascript/dom/service-worker
+  take form service-worker
+
+load @drumwork/land/code/javascript/dom/service-worker-registration-event-map
+  take form service-worker-registration-event-map
+
+load @drumwork/land/code/javascript/dom/service-worker-update-via-cache
+  take form service-worker-update-via-cache
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form service-worker-registration
+  name <ServiceWorkerRegistration>
+  base event-target
+
+  take active, name <active>
+    like sink-link-text
+      like service-worker
+      like native-null
+  take installing, name <installing>
+    like sink-link-text
+      like service-worker
+      like native-null
+  take onupdatefound
+    name <onupdatefound>
+    like sink-link-text
+      like task
+        take this, like service-worker-registration
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take push-manager, name <pushManager>
+    like push-manager
+  take scope, name <scope>
+    like native-string
+  take update-via-cache
+    name <updateViaCache>
+    like service-worker-update-via-cache
+  take waiting, name <waiting>
+    like sink-link-text
+      like service-worker
+      like native-null
+
+  task get-notifications
+    name <getNotifications>
+    take filter, like get-notification-options
+      void take
+    free seed
+      like promise
+        like list-link-text
+          like notification
+
+  task show-notification
+    name <showNotification>
+    take title, like native-string
+    take options, like notification-options
+      void take
+    free seed
+      like promise
+        like native-void
+
+  task unregister, name <unregister>
+    free seed
+      like promise
+        like native-boolean
+
+  task update, name <update>
+    free seed
+      like promise
+        like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like service-worker-registration-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like service-worker-registration
+        take ev
+          like form-link-link-text
+            like service-worker-registration-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like service-worker-registration-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like service-worker-registration
+        take ev
+          like form-link-link-text
+            like service-worker-registration-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void

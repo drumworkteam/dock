@@ -1,0 +1,24 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/inspector/heap-profiler/heap-snapshot-object-id
+  take form heap-snapshot-object-id
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form get-object-by-heap-object-id-parameter-type
+  name <GetObjectByHeapObjectIdParameterType>
+  take object-id, name <objectId>
+    like heap-snapshot-object-id
+    lock free
+  take object-group, name <objectGroup>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free

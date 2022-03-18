@@ -1,0 +1,170 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/audio-timestamp
+  take form audio-timestamp
+
+load @drumwork/land/code/javascript/dom/base-audio-context
+  take form base-audio-context
+
+load @drumwork/land/code/javascript/dom/base-audio-context-event-map
+  take form base-audio-context-event-map
+
+load @drumwork/land/code/javascript/dom/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/html-media-element
+  take form html-media-element
+
+load @drumwork/land/code/javascript/dom/media-element-audio-source-node
+  take form media-element-audio-source-node
+
+load @drumwork/land/code/javascript/dom/media-stream
+  take form media-stream
+
+load @drumwork/land/code/javascript/dom/media-stream-audio-destination-node
+  take form media-stream-audio-destination-node
+
+load @drumwork/land/code/javascript/dom/media-stream-audio-source-node
+  take form media-stream-audio-source-node
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form audio-context, name <AudioContext>
+  base base-audio-context
+
+  take base-latency, name <baseLatency>
+    like native-number
+
+  task close, name <close>
+    free seed
+      like promise
+        like native-void
+
+  task create-media-element-source
+    name <createMediaElementSource>
+    take media-element, like html-media-element
+    free seed, like media-element-audio-source-node
+
+  task create-media-stream-destination
+    name <createMediaStreamDestination>
+    free seed, like media-stream-audio-destination-node
+
+  task create-media-stream-source
+    name <createMediaStreamSource>
+    take media-stream, like media-stream
+    free seed, like media-stream-audio-source-node
+
+  task get-output-timestamp
+    name <getOutputTimestamp>
+    free seed, like audio-timestamp
+
+  task resume, name <resume>
+    free seed
+      like promise
+        like native-void
+
+  task suspend, name <suspend>
+    free seed
+      like promise
+        like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like base-audio-context-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like audio-context
+        take ev
+          like form-link-link-text
+            like base-audio-context-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like base-audio-context-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like audio-context
+        take ev
+          like form-link-link-text
+            like base-audio-context-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void

@@ -1,0 +1,52 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/buffer-source
+  take form buffer-source
+
+load @drumwork/land/code/javascript/dom/media-key-status
+  take form media-key-status
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form media-key-status-map
+  name <MediaKeyStatusMap>
+  take size, name <size>
+    like native-number
+
+  task get, name <get>
+    take key-id, like buffer-source
+    free seed
+      like sink-link-text
+        like media-key-status
+        like native-undefined
+
+  task has, name <has>
+    take key-id, like buffer-source
+    free seed, like native-boolean
+
+  task for-each, name <forEach>
+    take callbackfn
+      like task
+        take value, like media-key-status
+        take key, like buffer-source
+        take parent, like media-key-status-map
+        free seed, like native-void
+    take this-arg, like native-any
+      void take
+    free seed, like native-void

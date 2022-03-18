@@ -1,0 +1,33 @@
+
+load @drumwork/land/code/javascript/base/debugger-location
+  take form debugger-location
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/inspector/profiler/profile
+  take form profile
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form console-profile-finished-event-data-type
+  name <ConsoleProfileFinishedEventDataType>
+  take id, name <id>
+    like native-string
+    lock free
+  take location, name <location>
+    like debugger-location
+    lock free
+  take profile, name <profile>
+    like profile
+    lock free
+  take title, name <title>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free

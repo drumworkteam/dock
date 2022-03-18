@@ -1,0 +1,28 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/trace-events/create-tracing-options
+  take form create-tracing-options
+
+load @drumwork/land/code/javascript/node/trace-events/tracing
+  take form tracing
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+task create-tracing
+  name <createTracing>
+  take options, like create-tracing-options
+  free seed, like tracing
+
+task get-enabled-categories
+  name <getEnabledCategories>
+  free seed
+    like sink-link-text
+      like native-string
+      like native-undefined

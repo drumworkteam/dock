@@ -1,0 +1,62 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/runtime-remote-object
+  take form runtime-remote-object
+
+load @drumwork/land/code/javascript/node/inspector/debugger/call-frame
+  take form call-frame
+
+load @drumwork/land/code/javascript/node/inspector/debugger/call-frame-id
+  take form call-frame-id
+
+load @drumwork/land/code/javascript/node/inspector/debugger/location
+  take form location
+
+load @drumwork/land/code/javascript/node/inspector/debugger/scope
+  take form scope
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form call-frame, name <CallFrame>
+  take call-frame-id, name <callFrameId>
+    like call-frame-id
+    lock free
+  take function-name
+    name <functionName>
+    like native-string
+    lock free
+  take function-location
+    name <functionLocation>
+    like sink-link-text
+      like location
+      like native-undefined
+    lock free
+  take location, name <location>
+    like location
+    lock free
+  take url, name <url>
+    like native-string
+    lock free
+  take scope-chain, name <scopeChain>
+    like list-link-text
+      like scope
+    lock free
+  take this, name <this>
+    like runtime-remote-object
+    lock free
+  take return-value, name <returnValue>
+    like sink-link-text
+      like runtime-remote-object
+      like native-undefined
+    lock free

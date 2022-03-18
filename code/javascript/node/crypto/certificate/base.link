@@ -1,0 +1,32 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/node-js-array-buffer-view
+  take form node-js-array-buffer-view
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/crypto/binary-like
+  take form binary-like
+
+form certificate, name <Certificate>
+  task export-challenge
+    name <exportChallenge>
+    take spkac, like binary-like
+    free seed, like buffer
+
+  task export-public-key
+    name <exportPublicKey>
+    take spkac, like binary-like
+    take encoding, like native-string
+      void take
+    free seed, like buffer
+
+  task verify-spkac, name <verifySpkac>
+    take spkac, like node-js-array-buffer-view
+    free seed, like native-boolean

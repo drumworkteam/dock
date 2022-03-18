@@ -1,0 +1,91 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/rtc-ice-candidate-init
+  take form rtc-ice-candidate-init
+
+load @drumwork/land/code/javascript/dom/rtc-ice-candidate-type
+  take form rtc-ice-candidate-type
+
+load @drumwork/land/code/javascript/dom/rtc-ice-component
+  take form rtc-ice-component
+
+load @drumwork/land/code/javascript/dom/rtc-ice-protocol
+  take form rtc-ice-protocol
+
+load @drumwork/land/code/javascript/dom/rtc-ice-tcp-candidate-type
+  take form rtc-ice-tcp-candidate-type
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form rtc-ice-candidate
+  name <RTCIceCandidate>
+  take address, name <address>
+    like sink-link-text
+      like native-string
+      like native-null
+  take candidate, name <candidate>
+    like native-string
+  take component, name <component>
+    like sink-link-text
+      like rtc-ice-component
+      like native-null
+  take foundation, name <foundation>
+    like sink-link-text
+      like native-string
+      like native-null
+  take port, name <port>
+    like sink-link-text
+      like native-number
+      like native-null
+  take priority, name <priority>
+    like sink-link-text
+      like native-number
+      like native-null
+  take protocol, name <protocol>
+    like sink-link-text
+      like rtc-ice-protocol
+      like native-null
+  take related-address
+    name <relatedAddress>
+    like sink-link-text
+      like native-string
+      like native-null
+  take related-port, name <relatedPort>
+    like sink-link-text
+      like native-number
+      like native-null
+  take sdp-m-line-index
+    name <sdpMLineIndex>
+    like sink-link-text
+      like native-number
+      like native-null
+  take sdp-mid, name <sdpMid>
+    like sink-link-text
+      like native-string
+      like native-null
+  take tcp-type, name <tcpType>
+    like sink-link-text
+      like rtc-ice-tcp-candidate-type
+      like native-null
+  take type, name <type>
+    like sink-link-text
+      like rtc-ice-candidate-type
+      like native-null
+  take username-fragment
+    name <usernameFragment>
+    like sink-link-text
+      like native-string
+      like native-null
+
+  task to-json, name <toJSON>
+    free seed, like rtc-ice-candidate-init

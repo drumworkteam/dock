@@ -1,0 +1,29 @@
+
+load @drumwork/land/code/javascript/dom/event-modifier-init
+  take form event-modifier-init
+
+load @drumwork/land/code/javascript/dom/touch
+  take form touch
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form touch-event-init
+  name <TouchEventInit>
+  base event-modifier-init
+
+  take changed-touches
+    name <changedTouches>
+    like list-link-text
+      like touch
+    lock free
+  take target-touches
+    name <targetTouches>
+    like list-link-text
+      like touch
+    lock free
+  take touches, name <touches>
+    like list-link-text
+      like touch
+    lock free

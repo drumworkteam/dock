@@ -1,0 +1,226 @@
+
+load @drumwork/land/code/javascript/base/array-buffer
+  take form array-buffer
+
+load @drumwork/land/code/javascript/base/async-generator-function
+  take form async-generator-function
+
+load @drumwork/land/code/javascript/base/async-iterable
+  take form async-iterable
+
+load @drumwork/land/code/javascript/base/blob
+  take form blob
+
+load @drumwork/land/code/javascript/base/duplex
+  take form duplex
+
+load @drumwork/land/code/javascript/base/error
+  take form error
+
+load @drumwork/land/code/javascript/base/iterable
+  take form iterable
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-this
+  take form native-this
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/object
+  take form object
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/land/code/javascript/base/stream
+  take form stream
+
+load @drumwork/land/code/javascript/node/buffer/buffer-encoding
+  take form buffer-encoding
+
+load @drumwork/land/code/javascript/node/globals/array
+  take form array
+
+load @drumwork/land/code/javascript/node/stream/internal/duplex-options
+  take form duplex-options
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form duplex, name <Duplex>
+  base readable
+  take writable, name <writable>, like native-boolean
+  take writable-ended, name <writableEnded>, like native-boolean
+  take writable-finished, name <writableFinished>, like native-boolean
+  take writable-high-water-mark, name <writableHighWaterMark>, like native-number
+  take writable-length, name <writableLength>, like native-number
+  take writable-object-mode, name <writableObjectMode>, like native-boolean
+  take writable-corked, name <writableCorked>, like native-number
+  take allow-half-open, name <allowHalfOpen>, like native-boolean
+
+  task write, name <_write>
+    take chunk, like native-any
+    take encoding, like buffer-encoding
+    take callback
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+          void take
+        free seed, like native-void
+    free seed, like native-void
+
+  task writev, name <_writev>
+    take chunks
+      like array
+        like form-link-text
+          take chunk, name <chunk>
+            like native-any
+            lock free
+          take encoding, name <encoding>
+            like buffer-encoding
+            lock free
+    take callback
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+          void take
+        free seed, like native-void
+    free seed, like native-void
+
+  task destroy, name <_destroy>
+    take error
+      like sink-link-text
+        like error
+        like native-null
+    take callback
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+        free seed, like native-void
+    free seed, like native-void
+
+  task final, name <_final>
+    take callback
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+          void take
+        free seed, like native-void
+    free seed, like native-void
+
+  task write, name <write>
+    take chunk, like native-any
+    take encoding, like buffer-encoding
+      void take
+    take cb
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+            like native-undefined
+        free seed, like native-void
+      void take
+    free seed, like native-boolean
+
+  task write, name <write>
+    take chunk, like native-any
+    take cb
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+            like native-undefined
+        free seed, like native-void
+      void take
+    free seed, like native-boolean
+
+  task set-default-encoding
+    name <setDefaultEncoding>
+    take encoding, like buffer-encoding
+    free seed, like native-this
+
+  task end, name <end>
+    take cb
+      like task
+        free seed, like native-void
+      void take
+    free seed, like native-this
+
+  task end, name <end>
+    take chunk, like native-any
+    take cb
+      like task
+        free seed, like native-void
+      void take
+    free seed, like native-this
+
+  task end, name <end>
+    take chunk, like native-any
+    take encoding, like buffer-encoding
+      void take
+    take cb
+      like task
+        free seed, like native-void
+      void take
+    free seed, like native-this
+
+  task cork, name <cork>
+    free seed, like native-void
+
+  task uncork, name <uncork>
+    free seed, like native-void
+
+form duplex-constructor
+  hook make
+    take opts, like duplex-options
+      void take
+
+  task from, name <from>
+    take src
+      like sink-link-text
+        like stream
+        like blob
+        like array-buffer
+        like native-string
+        like iterable
+          like native-any
+        like async-iterable
+          like native-any
+        like async-generator-function
+        like promise
+          like native-any
+        like object
+    free seed, like duplex

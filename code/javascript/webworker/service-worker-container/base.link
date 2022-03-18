@@ -1,0 +1,210 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/service-worker-container
+  take form service-worker-container
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+load @drumwork/land/code/javascript/es5/readonly-array
+  take form readonly-array
+
+load @drumwork/land/code/javascript/webworker/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/webworker/event
+  take form event
+
+load @drumwork/land/code/javascript/webworker/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/webworker/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/webworker/event-target
+  take form event-target
+
+load @drumwork/land/code/javascript/webworker/message-event
+  take form message-event
+
+load @drumwork/land/code/javascript/webworker/registration-options
+  take form registration-options
+
+load @drumwork/land/code/javascript/webworker/service-worker
+  take form service-worker
+
+load @drumwork/land/code/javascript/webworker/service-worker-container-event-map
+  take form service-worker-container-event-map
+
+load @drumwork/land/code/javascript/webworker/service-worker-registration
+  take form service-worker-registration
+
+load @drumwork/land/code/javascript/webworker/url
+  take form url
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form service-worker-container
+  name <ServiceWorkerContainer>
+  base event-target
+
+  take controller, name <controller>
+    like sink-link-text
+      like service-worker
+      like native-null
+  take oncontrollerchange
+    name <oncontrollerchange>
+    like sink-link-text
+      like task
+        take this, like service-worker-container
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onmessage, name <onmessage>
+    like sink-link-text
+      like task
+        take this, like service-worker-container
+        take ev, like message-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onmessageerror
+    name <onmessageerror>
+    like sink-link-text
+      like task
+        take this, like service-worker-container
+        take ev, like message-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take ready, name <ready>
+    like promise
+      like service-worker-registration
+
+  task get-registration
+    name <getRegistration>
+    take client-url, like native-string
+      void take
+    free seed
+      like promise
+        like sink-link-text
+          like service-worker-registration
+          like native-undefined
+
+  task get-registrations
+    name <getRegistrations>
+    free seed
+      like promise
+        like readonly-array
+          like service-worker-registration
+
+  task register, name <register>
+    take script-url
+      like sink-link-text
+        like native-string
+        like url
+    take options, like registration-options
+      void take
+    free seed
+      like promise
+        like service-worker-registration
+
+  task start-messages
+    name <startMessages>
+    free seed, like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like service-worker-container-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like service-worker-container
+        take ev
+          like form-link-link-text
+            like service-worker-container-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like service-worker-container-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like service-worker-container
+        take ev
+          like form-link-link-text
+            like service-worker-container-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void

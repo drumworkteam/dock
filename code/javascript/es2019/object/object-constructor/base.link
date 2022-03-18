@@ -1,0 +1,53 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/es2015/iterable/iterable
+  take form iterable
+
+load @drumwork/land/code/javascript/es2017/object/object-constructor
+  take form object-constructor
+
+load @drumwork/land/code/javascript/es5/property-key
+  take form property-key
+
+load @drumwork/seed/code/form/band
+  take form band
+    save form band-link-text
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form object-constructor
+  name <ObjectConstructor>
+  task from-entries, name <fromEntries>
+    head t, like like-link-text
+      back native-any
+    take entries
+      like iterable
+        like band-link-text
+          like property-key
+          like t
+    free seed
+      like form-link-text
+        cite k, like native-string
+          like t
+
+  task from-entries, name <fromEntries>
+    take entries
+      like iterable
+        like list-link-text
+          like native-any
+    free seed, like native-any

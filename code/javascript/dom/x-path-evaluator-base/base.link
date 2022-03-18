@@ -1,0 +1,59 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/node
+  take form node
+
+load @drumwork/land/code/javascript/dom/x-path-expression
+  take form x-path-expression
+
+load @drumwork/land/code/javascript/dom/x-path-ns-resolver
+  take form x-path-ns-resolver
+
+load @drumwork/land/code/javascript/dom/x-path-result
+  take form x-path-result
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form x-path-evaluator-base
+  name <XPathEvaluatorBase>
+  task create-expression
+    name <createExpression>
+    take expression, like native-string
+    take resolver
+      like sink-link-text
+        like x-path-ns-resolver
+        like native-null
+      void take
+    free seed, like x-path-expression
+
+  task create-ns-resolver
+    name <createNSResolver>
+    take node-resolver, like node
+    free seed, like x-path-ns-resolver
+
+  task evaluate, name <evaluate>
+    take expression, like native-string
+    take context-node, like node
+    take resolver
+      like sink-link-text
+        like x-path-ns-resolver
+        like native-null
+      void take
+    take type, like native-number
+      void take
+    take result
+      like sink-link-text
+        like x-path-result
+        like native-null
+      void take
+    free seed, like x-path-result

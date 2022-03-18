@@ -1,0 +1,165 @@
+
+load @drumwork/land/code/javascript/base/duplex
+  take form duplex
+
+load @drumwork/land/code/javascript/base/error
+  take form error
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/node/buffer/buffer-encoding
+  take form buffer-encoding
+
+load @drumwork/land/code/javascript/node/globals/array
+  take form array
+
+load @drumwork/land/code/javascript/node/stream/internal/readable-options
+  take form readable-options
+
+load @drumwork/land/code/javascript/node/stream/internal/writable-options
+  take form writable-options
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form duplex-options
+  name <DuplexOptions>
+  base readable-options
+  base writable-options
+
+  take allow-half-open
+    name <allowHalfOpen>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take readable-object-mode
+    name <readableObjectMode>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take writable-object-mode
+    name <writableObjectMode>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take readable-high-water-mark
+    name <readableHighWaterMark>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take writable-high-water-mark
+    name <writableHighWaterMark>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take writable-corked
+    name <writableCorked>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+
+  task construct, name <construct>
+    take this, like duplex
+    take callback
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+          void take
+        free seed, like native-void
+    free seed, like native-void
+
+  task read, name <read>
+    take this, like duplex
+    take size, like native-number
+    free seed, like native-void
+
+  task write, name <write>
+    take this, like duplex
+    take chunk, like native-any
+    take encoding, like buffer-encoding
+    take callback
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+          void take
+        free seed, like native-void
+    free seed, like native-void
+
+  task writev, name <writev>
+    take this, like duplex
+    take chunks
+      like array
+        like form-link-text
+          take chunk, name <chunk>
+            like native-any
+            lock free
+          take encoding, name <encoding>
+            like buffer-encoding
+            lock free
+    take callback
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+          void take
+        free seed, like native-void
+    free seed, like native-void
+
+  task final, name <final>
+    take this, like duplex
+    take callback
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+          void take
+        free seed, like native-void
+    free seed, like native-void
+
+  task destroy, name <destroy>
+    take this, like duplex
+    take error
+      like sink-link-text
+        like error
+        like native-null
+    take callback
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+        free seed, like native-void
+    free seed, like native-void

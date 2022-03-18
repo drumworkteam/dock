@@ -1,0 +1,38 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/iterable/dom-string-list
+  take form dom-string-list
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form dom-string-list
+  name <DOMStringList>
+  take length, name <length>
+    like native-number
+
+  task contains, name <contains>
+    take string, like native-string
+    free seed, like native-boolean
+
+  task item, name <item>
+    take index, like native-number
+    free seed
+      like sink-link-text
+        like native-string
+        like native-null
+
+  cite index, like native-number
+    like native-string

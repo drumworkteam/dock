@@ -1,0 +1,74 @@
+
+load @drumwork/land/code/javascript/base/console
+  take form console
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/node-js-process
+  take form node-js-process
+
+load @drumwork/land/code/javascript/node/globals/abort-controller
+  take form abort-controller
+
+load @drumwork/land/code/javascript/node/globals/abort-signal
+  take form abort-signal
+
+load @drumwork/land/code/javascript/node/globals/node-module
+  take form node-module
+
+load @drumwork/land/code/javascript/node/globals/node-require
+  take form node-require
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+host process, name <process>
+  like node-js-process
+host console, name <console>
+  like console
+host filename, name <__filename>
+  like native-string
+host dirname, name <__dirname>
+  like native-string
+host require, name <require>
+  like node-require
+host module, name <module>
+  like node-module
+host exports, name <exports>
+  like native-any
+host gc, name <gc>
+  like sink-link-text
+    like native-undefined
+    like task
+      free seed, like native-void
+host abort-controller
+  name <AbortController>
+  like form-link-text
+    take prototype, name <prototype>
+      like abort-controller
+      lock free
+    hook make
+      free seed, like abort-controller
+
+host abort-signal, name <AbortSignal>
+  like form-link-text
+    take prototype, name <prototype>
+      like abort-signal
+      lock free
+    hook make
+      free seed, like abort-signal

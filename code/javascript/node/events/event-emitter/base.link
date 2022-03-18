@@ -1,0 +1,139 @@
+
+load @drumwork/land/code/javascript/base/array
+  take form array
+
+load @drumwork/land/code/javascript/base/async-iterable-iterator
+  take form async-iterable-iterator
+
+load @drumwork/land/code/javascript/base/function
+  take form function
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-symbol
+  take form native-symbol
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/node-js-event-emitter
+  take form node-js-event-emitter
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/land/code/javascript/node/events/dom-event-target
+  take form dom-event-target
+
+load @drumwork/land/code/javascript/node/events/event-emitter-options
+  take form event-emitter-options
+
+load @drumwork/land/code/javascript/node/events/node-event-target
+  take form node-event-target
+
+load @drumwork/land/code/javascript/node/events/static-event-emitter-options
+  take form static-event-emitter-options
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form event-emitter, name <EventEmitter>
+  base node-js-event-emitter
+
+form event-emitter, name <EventEmitter>
+
+form event-emitter-constructor
+  take error-monitor, name <errorMonitor>
+    like native-symbol
+      cool take
+  take capture-rejection-symbol, name <captureRejectionSymbol>
+    like native-symbol
+      cool take
+  take capture-rejections, name <captureRejections>, like native-boolean
+  take default-max-listeners, name <defaultMaxListeners>, like native-number
+
+  hook make
+    take options, like event-emitter-options
+      void take
+
+  task once, name <once>
+    take emitter, like node-event-target
+    take event-name
+      like sink-link-text
+        like native-string
+        like native-symbol
+    take options, like static-event-emitter-options
+      void take
+    free seed
+      like promise
+        like list-link-text
+          like native-any
+
+  task once, name <once>
+    take emitter, like dom-event-target
+    take event-name, like native-string
+    take options, like static-event-emitter-options
+      void take
+    free seed
+      like promise
+        like list-link-text
+          like native-any
+
+  task on, name <on>
+    take emitter, like node-js-event-emitter
+    take event-name, like native-string
+    take options, like static-event-emitter-options
+      void take
+    free seed
+      like async-iterable-iterator
+        like native-any
+
+  task listener-count
+    name <listenerCount>
+    take emitter, like node-js-event-emitter
+    take event-name
+      like sink-link-text
+        like native-string
+        like native-symbol
+    free seed, like native-number
+
+  task get-event-listeners
+    name <getEventListeners>
+    take emitter
+      like sink-link-text
+        like dom-event-target
+        like node-js-event-emitter
+    take name
+      like sink-link-text
+        like native-string
+        like native-symbol
+    free seed
+      like list-link-text
+        like function
+
+  task set-max-listeners
+    name <setMaxListeners>
+    take n, like native-number
+      void take
+    take event-targets
+      like array
+        like sink-link-text
+          like dom-event-target
+          like node-js-event-emitter
+      rest take
+    free seed, like native-void

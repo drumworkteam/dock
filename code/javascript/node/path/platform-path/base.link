@@ -1,0 +1,80 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/node/path/format-input-path-object
+  take form format-input-path-object
+
+load @drumwork/land/code/javascript/node/path/parsed-path
+  take form parsed-path
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form platform-path, name <PlatformPath>
+  take sep, name <sep>
+    like native-string
+  take delimiter, name <delimiter>
+    like native-string
+  take posix, name <posix>
+    like platform-path
+  take win32, name <win32>
+    like platform-path
+
+  task normalize, name <normalize>
+    take p, like native-string
+    free seed, like native-string
+
+  task join, name <join>
+    take paths
+      like list-link-text
+        like native-string
+      rest take
+    free seed, like native-string
+
+  task resolve, name <resolve>
+    take path-segments
+      like list-link-text
+        like native-string
+      rest take
+    free seed, like native-string
+
+  task is-absolute, name <isAbsolute>
+    take p, like native-string
+    free seed, like native-boolean
+
+  task relative, name <relative>
+    take from, like native-string
+    take to, like native-string
+    free seed, like native-string
+
+  task dirname, name <dirname>
+    take p, like native-string
+    free seed, like native-string
+
+  task basename, name <basename>
+    take p, like native-string
+    take ext, like native-string
+      void take
+    free seed, like native-string
+
+  task extname, name <extname>
+    take p, like native-string
+    free seed, like native-string
+
+  task parse, name <parse>
+    take p, like native-string
+    free seed, like parsed-path
+
+  task format, name <format>
+    take p-p, like format-input-path-object
+    free seed, like native-string
+
+  task to-namespaced-path
+    name <toNamespacedPath>
+    take path, like native-string
+    free seed, like native-string

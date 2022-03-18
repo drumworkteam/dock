@@ -1,0 +1,28 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/node/stream/internal/pipeline-source
+  take form pipeline-source
+
+load @drumwork/land/code/javascript/node/stream/internal/pipeline-transform
+  take form pipeline-transform
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form pipeline-transform-source
+  name <PipelineTransformSource>
+  head t, like like-link-text
+
+  like sink-link-text
+    like pipeline-source
+      like t
+    like pipeline-transform
+      like native-any
+      like t

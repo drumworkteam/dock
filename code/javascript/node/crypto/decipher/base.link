@@ -1,0 +1,70 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-this
+  take form native-this
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/node-js-array-buffer-view
+  take form node-js-array-buffer-view
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/buffer/buffer-encoding
+  take form buffer-encoding
+
+load @drumwork/land/code/javascript/node/crypto/encoding
+  take form encoding
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form decipher, name <Decipher>
+  base stream-transform
+  task update, name <update>
+    take data, like node-js-array-buffer-view
+    free seed, like buffer
+
+  task update, name <update>
+    take data, like native-string
+    take input-encoding, like encoding
+    free seed, like buffer
+
+  task update, name <update>
+    take data, like node-js-array-buffer-view
+    take input-encoding, like native-undefined
+    take output-encoding, like encoding
+    free seed, like native-string
+
+  task update, name <update>
+    take data, like native-string
+    take input-encoding
+      like sink-link-text
+        like encoding
+        like native-undefined
+    take output-encoding, like encoding
+    free seed, like native-string
+
+  task final, name <final>
+    free seed, like buffer
+
+  task final, name <final>
+    take output-encoding, like buffer-encoding
+    free seed, like native-string
+
+  task set-auto-padding
+    name <setAutoPadding>
+    take auto-padding, like native-boolean
+      void take
+    free seed, like native-this
+
+form decipher-constructor
+  hook make

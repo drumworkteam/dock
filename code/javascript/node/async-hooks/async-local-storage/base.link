@@ -1,0 +1,68 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/t
+  take form t
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form async-local-storage
+  name <AsyncLocalStorage>
+  task disable, name <disable>
+    free seed, like native-void
+
+  task get-store, name <getStore>
+    free seed
+      like sink-link-text
+        like t
+        like native-undefined
+
+  task run, name <run>
+    head r, like like-link-text
+    head t-args, like like-link-text
+      base list-link-text
+        like native-any
+    take store, like t
+    take callback
+      like task
+        take args, like t-args
+          rest take
+        free seed, like r
+    take args, like t-args
+      rest take
+    free seed, like r
+
+  task exit, name <exit>
+    head r, like like-link-text
+    head t-args, like like-link-text
+      base list-link-text
+        like native-any
+    take callback
+      like task
+        take args, like t-args
+          rest take
+        free seed, like r
+    take args, like t-args
+      rest take
+    free seed, like r
+
+  task enter-with, name <enterWith>
+    take store, like t
+    free seed, like native-void

@@ -1,0 +1,76 @@
+
+load @drumwork/land/code/javascript/base/async-iterable-iterator
+  take form async-iterable-iterator
+
+load @drumwork/land/code/javascript/base/dirent
+  take form dirent
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/node-js-errno-exception
+  take form node-js-errno-exception
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/land/code/javascript/node/fs/no-param-callback
+  take form no-param-callback
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form dir, name <Dir>
+  take path, name <path>, like native-string
+
+  task loan symbol/async-iterator
+    name <Symbol.asyncIterator>
+    free seed
+      like async-iterable-iterator
+        like dirent
+
+  task close, name <close>
+    free seed
+      like promise
+        like native-void
+
+  task close, name <close>
+    take cb, like no-param-callback
+    free seed, like native-void
+
+  task close-sync, name <closeSync>
+    free seed, like native-void
+
+  task read, name <read>
+    free seed
+      like promise
+        like sink-link-text
+          like dirent
+          like native-null
+
+  task read, name <read>
+    take cb
+      like task
+        take err
+          like sink-link-text
+            like node-js-errno-exception
+            like native-null
+        take dir-ent
+          like sink-link-text
+            like dirent
+            like native-null
+        free seed, like native-void
+    free seed, like native-void
+
+  task read-sync, name <readSync>
+    free seed
+      like sink-link-text
+        like dirent
+        like native-null

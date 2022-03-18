@@ -1,0 +1,308 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-symbol
+  take form native-symbol
+
+load @drumwork/land/code/javascript/base/native-this
+  take form native-this
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/net-socket
+  take form net-socket
+
+load @drumwork/land/code/javascript/base/tls-tls-socket
+  take form tls-tls-socket
+
+load @drumwork/land/code/javascript/base/url-url
+  take form url-url
+
+load @drumwork/land/code/javascript/node/globals/array
+  take form array
+
+load @drumwork/land/code/javascript/node/http2/alternative-service-options
+  take form alternative-service-options
+
+load @drumwork/land/code/javascript/node/http2/http2-secure-server
+  take form http2-secure-server
+
+load @drumwork/land/code/javascript/node/http2/http2-server
+  take form http2-server
+
+load @drumwork/land/code/javascript/node/http2/http2-session
+  take form http2-session
+
+load @drumwork/land/code/javascript/node/http2/incoming-http-headers
+  take form incoming-http-headers
+
+load @drumwork/land/code/javascript/node/http2/server-http2-stream
+  take form server-http2-stream
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form server-http2-session
+  name <ServerHttp2Session>
+  base http2-session
+
+  take server, name <server>
+    like sink-link-text
+      like http2-server
+      like http2-secure-server
+
+  task altsvc, name <altsvc>
+    take alt, like native-string
+    take origin-or-stream
+      like sink-link-text
+        like native-number
+        like native-string
+        like url-url
+        like alternative-service-options
+    free seed, like native-void
+
+  task origin, name <origin>
+    take origins
+      like array
+        like sink-link-text
+          like native-string
+          like url-url
+          like form-link-text
+            take origin, name <origin>
+              like native-string
+              lock free
+      rest take
+    free seed, like native-void
+
+  task add-listener, name <addListener>
+    take event, text <connect>
+    take listener
+      like task
+        take session, like server-http2-session
+        take socket
+          like sink-link-text
+            like net-socket
+            like tls-tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event, text <stream>
+    take listener
+      like task
+        take stream, like server-http2-stream
+        take headers, like incoming-http-headers
+        take flags, like native-number
+        free seed, like native-void
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event
+      like sink-link-text
+        like native-string
+        like native-symbol
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+  task emit, name <emit>
+    take event, text <connect>
+    take session, like server-http2-session
+    take socket
+      like sink-link-text
+        like net-socket
+        like tls-tls-socket
+    free seed, like native-boolean
+
+  task emit, name <emit>
+    take event, text <stream>
+    take stream, like server-http2-stream
+    take headers, like incoming-http-headers
+    take flags, like native-number
+    free seed, like native-boolean
+
+  task emit, name <emit>
+    take event
+      like sink-link-text
+        like native-string
+        like native-symbol
+    take args
+      like list-link-text
+        like native-any
+      rest take
+    free seed, like native-boolean
+
+  task on, name <on>
+    take event, text <connect>
+    take listener
+      like task
+        take session, like server-http2-session
+        take socket
+          like sink-link-text
+            like net-socket
+            like tls-tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task on, name <on>
+    take event, text <stream>
+    take listener
+      like task
+        take stream, like server-http2-stream
+        take headers, like incoming-http-headers
+        take flags, like native-number
+        free seed, like native-void
+    free seed, like native-this
+
+  task on, name <on>
+    take event
+      like sink-link-text
+        like native-string
+        like native-symbol
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, text <connect>
+    take listener
+      like task
+        take session, like server-http2-session
+        take socket
+          like sink-link-text
+            like net-socket
+            like tls-tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, text <stream>
+    take listener
+      like task
+        take stream, like server-http2-stream
+        take headers, like incoming-http-headers
+        take flags, like native-number
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event
+      like sink-link-text
+        like native-string
+        like native-symbol
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, text <connect>
+    take listener
+      like task
+        take session, like server-http2-session
+        take socket
+          like sink-link-text
+            like net-socket
+            like tls-tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, text <stream>
+    take listener
+      like task
+        take stream, like server-http2-stream
+        take headers, like incoming-http-headers
+        take flags, like native-number
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event
+      like sink-link-text
+        like native-string
+        like native-symbol
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, text <connect>
+    take listener
+      like task
+        take session, like server-http2-session
+        take socket
+          like sink-link-text
+            like net-socket
+            like tls-tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, text <stream>
+    take listener
+      like task
+        take stream, like server-http2-stream
+        take headers, like incoming-http-headers
+        take flags, like native-number
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event
+      like sink-link-text
+        like native-string
+        like native-symbol
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this

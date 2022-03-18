@@ -1,0 +1,65 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/document
+  take form document
+
+load @drumwork/land/code/javascript/dom/document-type
+  take form document-type
+
+load @drumwork/land/code/javascript/dom/xml-document
+  take form xml-document
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form dom-implementation
+  name <DOMImplementation>
+  task create-document
+    name <createDocument>
+    take namespace
+      like sink-link-text
+        like native-string
+        like native-null
+    take qualified-name
+      like sink-link-text
+        like native-string
+        like native-null
+    take doctype
+      like sink-link-text
+        like document-type
+        like native-null
+      void take
+    free seed, like xml-document
+
+  task create-document-type
+    name <createDocumentType>
+    take qualified-name, like native-string
+    take public-id, like native-string
+    take system-id, like native-string
+    free seed, like document-type
+
+  task create-html-document
+    name <createHTMLDocument>
+    take title, like native-string
+      void take
+    free seed, like document
+
+  task has-feature, name <hasFeature>
+    take args
+      like list-link-text
+        like native-any
+      rest take
+    free seed, text <true>

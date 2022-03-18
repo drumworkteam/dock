@@ -1,0 +1,47 @@
+
+load @drumwork/land/code/javascript/base/error
+  take form error
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/node-js-signals
+  take form node-js-signals
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form exec-exception
+  name <ExecException>
+  base error
+
+  take cmd, name <cmd>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take killed, name <killed>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take code, name <code>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take signal, name <signal>
+    like sink-link-text
+      like node-js-signals
+      like native-undefined
+    lock free

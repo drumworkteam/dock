@@ -1,0 +1,67 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/runtime-stack-trace
+  take form runtime-stack-trace
+
+load @drumwork/land/code/javascript/base/runtime-stack-trace-id
+  take form runtime-stack-trace-id
+
+load @drumwork/land/code/javascript/node/inspector/debugger/call-frame
+  take form call-frame
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form paused-event-data-type
+  name <PausedEventDataType>
+  take call-frames, name <callFrames>
+    like list-link-text
+      like call-frame
+    lock free
+  take reason, name <reason>
+    like native-string
+    lock free
+  take data, name <data>
+    like sink-link-text
+      like form-link-text
+      like native-undefined
+    lock free
+  take hit-breakpoints
+    name <hitBreakpoints>
+    like sink-link-text
+      like list-link-text
+        like native-string
+      like native-undefined
+    lock free
+  take async-stack-trace
+    name <asyncStackTrace>
+    like sink-link-text
+      like runtime-stack-trace
+      like native-undefined
+    lock free
+  take async-stack-trace-id
+    name <asyncStackTraceId>
+    like sink-link-text
+      like runtime-stack-trace-id
+      like native-undefined
+    lock free
+  take async-call-stack-trace-id
+    name <asyncCallStackTraceId>
+    like sink-link-text
+      like runtime-stack-trace-id
+      like native-undefined
+    lock free

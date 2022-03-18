@@ -1,0 +1,40 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form server-options
+  name <ServerOptions>
+  take incoming-message
+    name <IncomingMessage>
+    like sink-link-text
+      like incoming-message
+      like native-undefined
+    lock free
+  take server-response
+    name <ServerResponse>
+    like sink-link-text
+      like server-response
+      like native-undefined
+    lock free
+  take max-header-size
+    name <maxHeaderSize>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take insecure-http-parser
+    name <insecureHTTPParser>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free

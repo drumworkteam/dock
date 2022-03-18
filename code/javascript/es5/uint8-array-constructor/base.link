@@ -1,0 +1,82 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/es5/array-buffer-like
+  take form array-buffer-like
+
+load @drumwork/land/code/javascript/es5/array-like
+  take form array-like
+
+load @drumwork/land/code/javascript/es5/uint8-array
+  take form uint8-array
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form uint8-array-constructor
+  name <Uint8ArrayConstructor>
+  take prototype, name <prototype>
+    like uint8-array
+  take bytes-per-element
+    name <BYTES_PER_ELEMENT>
+    like native-number
+
+  task of, name <of>
+    take items
+      like list-link-text
+        like native-number
+      rest take
+    free seed, like uint8-array
+
+  task from, name <from>
+    take array-like
+      like array-like
+        like native-number
+    free seed, like uint8-array
+
+  task from, name <from>
+    head t, like like-link-text
+    take array-like
+      like array-like
+        like t
+    take mapfn
+      like task
+        take v, like t
+        take k, like native-number
+        free seed, like native-number
+    take this-arg, like native-any
+      void take
+    free seed, like uint8-array
+
+  hook make
+    take length, like native-number
+    free seed, like uint8-array
+
+  hook make
+    take array
+      like sink-link-text
+        like array-like
+          like native-number
+        like array-buffer-like
+    free seed, like uint8-array
+
+  hook make
+    take buffer, like array-buffer-like
+    take byte-offset, like native-number
+      void take
+    take length, like native-number
+      void take
+    free seed, like uint8-array

@@ -1,0 +1,85 @@
+
+load @drumwork/land/code/javascript/base/array
+  take form array
+
+load @drumwork/land/code/javascript/base/event-emitter
+  take form event-emitter
+
+load @drumwork/land/code/javascript/base/function
+  take form function
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/node-js-timer
+  take form node-js-timer
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form domain, name <Domain>
+  base event-emitter
+  take members, name <members>
+    like array
+      like sink-link-text
+        like event-emitter
+        like node-js-timer
+
+  task enter, name <enter>
+    free seed, like native-void
+
+  task exit, name <exit>
+    free seed, like native-void
+
+  task run, name <run>
+    head t, like like-link-text
+    take fn
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like t
+    take args
+      like list-link-text
+        like native-any
+      rest take
+    free seed, like t
+
+  task add, name <add>
+    take emitter
+      like sink-link-text
+        like event-emitter
+        like node-js-timer
+    free seed, like native-void
+
+  task remove, name <remove>
+    take emitter
+      like sink-link-text
+        like event-emitter
+        like node-js-timer
+    free seed, like native-void
+
+  task bind, name <bind>
+    head t, like like-link-text
+      base function
+    take callback, like t
+    free seed, like t
+
+  task intercept, name <intercept>
+    head t, like like-link-text
+      base function
+    take callback, like t
+    free seed, like t

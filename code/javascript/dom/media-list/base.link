@@ -1,0 +1,46 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form media-list, name <MediaList>
+  take length, name <length>
+    like native-number
+  take media-text, name <mediaText>
+    like native-string
+    lock free
+
+  task to-string, name <toString>
+    free seed, like native-string
+
+  task append-medium
+    name <appendMedium>
+    take medium, like native-string
+    free seed, like native-void
+
+  task delete-medium
+    name <deleteMedium>
+    take medium, like native-string
+    free seed, like native-void
+
+  task item, name <item>
+    take index, like native-number
+    free seed
+      like sink-link-text
+        like native-string
+        like native-null
+
+  cite index, like native-number
+    like native-string

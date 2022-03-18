@@ -1,0 +1,483 @@
+
+load @drumwork/land/code/javascript/base/error
+  take form error
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-symbol
+  take form native-symbol
+
+load @drumwork/land/code/javascript/base/native-this
+  take form native-this
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/net-socket
+  take form net-socket
+
+load @drumwork/land/code/javascript/base/readonly-array
+  take form readonly-array
+
+load @drumwork/land/code/javascript/base/stream-readable-options
+  take form stream-readable-options
+
+load @drumwork/land/code/javascript/base/tls-tls-socket
+  take form tls-tls-socket
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/http2/incoming-http-headers
+  take form incoming-http-headers
+
+load @drumwork/land/code/javascript/node/http2/server-http2-stream
+  take form server-http2-stream
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form http2-server-request
+  name <Http2ServerRequest>
+  base stream-readable
+  take aborted, name <aborted>, like native-boolean
+  take authority, name <authority>, like native-string
+  take connection, name <connection>
+    like sink-link-text
+      like net-socket
+      like tls-tls-socket
+  take complete, name <complete>, like native-boolean
+  take headers, name <headers>, like incoming-http-headers
+  take http-version, name <httpVersion>, like native-string
+  take http-version-minor, name <httpVersionMinor>, like native-number
+  take http-version-major, name <httpVersionMajor>, like native-number
+  take method, name <method>, like native-string
+  take raw-headers, name <rawHeaders>
+    like list-link-text
+      like native-string
+  take raw-trailers, name <rawTrailers>
+    like list-link-text
+      like native-string
+  take scheme, name <scheme>, like native-string
+  take socket, name <socket>
+    like sink-link-text
+      like net-socket
+      like tls-tls-socket
+  take stream, name <stream>, like server-http2-stream
+  take trailers, name <trailers>, like incoming-http-headers
+  take url, name <url>, like native-string
+
+  task set-timeout, name <setTimeout>
+    take msecs, like native-number
+    take callback
+      like task
+        free seed, like native-void
+      void take
+    free seed, like native-void
+
+  task read, name <read>
+    take size, like native-number
+      void take
+    free seed
+      like sink-link-text
+        like buffer
+        like native-string
+        like native-null
+
+  task add-listener, name <addListener>
+    take event, text <aborted>
+    take listener
+      like task
+        take had-error, like native-boolean
+        take code, like native-number
+        free seed, like native-void
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event, text <close>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event, text <data>
+    take listener
+      like task
+        take chunk
+          like sink-link-text
+            like buffer
+            like native-string
+        free seed, like native-void
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event, text <end>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event, text <readable>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event, text <error>
+    take listener
+      like task
+        take err, like error
+        free seed, like native-void
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event
+      like sink-link-text
+        like native-string
+        like native-symbol
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+  task emit, name <emit>
+    take event, text <aborted>
+    take had-error, like native-boolean
+    take code, like native-number
+    free seed, like native-boolean
+
+  task emit, name <emit>
+    take event, text <close>
+    free seed, like native-boolean
+
+  task emit, name <emit>
+    take event, text <data>
+    take chunk
+      like sink-link-text
+        like buffer
+        like native-string
+    free seed, like native-boolean
+
+  task emit, name <emit>
+    take event, text <end>
+    free seed, like native-boolean
+
+  task emit, name <emit>
+    take event, text <readable>
+    free seed, like native-boolean
+
+  task emit, name <emit>
+    take event, text <error>
+    take err, like error
+    free seed, like native-boolean
+
+  task emit, name <emit>
+    take event
+      like sink-link-text
+        like native-string
+        like native-symbol
+    take args
+      like list-link-text
+        like native-any
+      rest take
+    free seed, like native-boolean
+
+  task on, name <on>
+    take event, text <aborted>
+    take listener
+      like task
+        take had-error, like native-boolean
+        take code, like native-number
+        free seed, like native-void
+    free seed, like native-this
+
+  task on, name <on>
+    take event, text <close>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task on, name <on>
+    take event, text <data>
+    take listener
+      like task
+        take chunk
+          like sink-link-text
+            like buffer
+            like native-string
+        free seed, like native-void
+    free seed, like native-this
+
+  task on, name <on>
+    take event, text <end>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task on, name <on>
+    take event, text <readable>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task on, name <on>
+    take event, text <error>
+    take listener
+      like task
+        take err, like error
+        free seed, like native-void
+    free seed, like native-this
+
+  task on, name <on>
+    take event
+      like sink-link-text
+        like native-string
+        like native-symbol
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, text <aborted>
+    take listener
+      like task
+        take had-error, like native-boolean
+        take code, like native-number
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, text <close>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, text <data>
+    take listener
+      like task
+        take chunk
+          like sink-link-text
+            like buffer
+            like native-string
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, text <end>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, text <readable>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, text <error>
+    take listener
+      like task
+        take err, like error
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event
+      like sink-link-text
+        like native-string
+        like native-symbol
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, text <aborted>
+    take listener
+      like task
+        take had-error, like native-boolean
+        take code, like native-number
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, text <close>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, text <data>
+    take listener
+      like task
+        take chunk
+          like sink-link-text
+            like buffer
+            like native-string
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, text <end>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, text <readable>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, text <error>
+    take listener
+      like task
+        take err, like error
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event
+      like sink-link-text
+        like native-string
+        like native-symbol
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, text <aborted>
+    take listener
+      like task
+        take had-error, like native-boolean
+        take code, like native-number
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, text <close>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, text <data>
+    take listener
+      like task
+        take chunk
+          like sink-link-text
+            like buffer
+            like native-string
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, text <end>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, text <readable>
+    take listener
+      like task
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, text <error>
+    take listener
+      like task
+        take err, like error
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event
+      like sink-link-text
+        like native-string
+        like native-symbol
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+form http2-server-request-constructor
+  hook make
+    take stream, like server-http2-stream
+    take headers, like incoming-http-headers
+    take options, like stream-readable-options
+    take raw-headers
+      like readonly-array
+        like native-string

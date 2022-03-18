@@ -1,0 +1,30 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/es5/date
+  take form date
+
+load @drumwork/land/code/javascript/es5/resolved-date-time-format-options
+  take form resolved-date-time-format-options
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form date-time-format
+  name <DateTimeFormat>
+  task format, name <format>
+    take date
+      like sink-link-text
+        like date
+        like native-number
+      void take
+    free seed, like native-string
+
+  task resolved-options
+    name <resolvedOptions>
+    free seed, like resolved-date-time-format-options

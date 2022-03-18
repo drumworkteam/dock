@@ -1,0 +1,87 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/stream-duplex
+  take form stream-duplex
+
+load @drumwork/land/code/javascript/base/url-url
+  take form url-url
+
+load @drumwork/land/code/javascript/node/http2/settings
+  take form settings
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form session-options
+  name <SessionOptions>
+  take max-deflate-dynamic-table-size
+    name <maxDeflateDynamicTableSize>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take max-session-memory
+    name <maxSessionMemory>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take max-header-list-pairs
+    name <maxHeaderListPairs>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take max-outstanding-pings
+    name <maxOutstandingPings>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take max-send-header-block-length
+    name <maxSendHeaderBlockLength>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take padding-strategy
+    name <paddingStrategy>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take peer-max-concurrent-streams
+    name <peerMaxConcurrentStreams>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take settings, name <settings>
+    like sink-link-text
+      like settings
+      like native-undefined
+    lock free
+  take unknown-protocol-timeout
+    name <unknownProtocolTimeout>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+
+  task select-padding
+    name <selectPadding>
+    take frame-len, like native-number
+    take max-frame-len, like native-number
+    free seed, like native-number
+
+  task create-connection
+    name <createConnection>
+    take authority, like url-url
+    take option, like session-options
+    free seed, like stream-duplex

@@ -1,0 +1,23 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/runtime-call-frame
+  take form runtime-call-frame
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form sampling-heap-profile-node
+  name <SamplingHeapProfileNode>
+  take call-frame, name <callFrame>
+    like runtime-call-frame
+    lock free
+  take self-size, name <selfSize>
+    like native-number
+    lock free
+  take children, name <children>
+    like list-link-text
+      like sampling-heap-profile-node
+    lock free

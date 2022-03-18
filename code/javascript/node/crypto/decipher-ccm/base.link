@@ -1,0 +1,33 @@
+
+load @drumwork/land/code/javascript/base/decipher
+  take form decipher
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-this
+  take form native-this
+
+load @drumwork/land/code/javascript/base/node-js-array-buffer-view
+  take form node-js-array-buffer-view
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+form decipher-ccm, name <DecipherCCM>
+  base decipher
+
+  task set-auth-tag, name <setAuthTag>
+    take buffer, like node-js-array-buffer-view
+    free seed, like native-this
+
+  task set-aad, name <setAAD>
+    take buffer, like node-js-array-buffer-view
+    take options
+      like form-link-text
+        take plaintext-length
+          name <plaintextLength>
+          like native-number
+          lock free
+    free seed, like native-this

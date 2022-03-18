@@ -1,0 +1,32 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/image-bitmap-rendering-context
+  take form image-bitmap-rendering-context
+
+load @drumwork/land/code/javascript/webworker/image-bitmap
+  take form image-bitmap
+
+load @drumwork/land/code/javascript/webworker/offscreen-canvas
+  take form offscreen-canvas
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form image-bitmap-rendering-context
+  name <ImageBitmapRenderingContext>
+  take canvas, name <canvas>
+    like offscreen-canvas
+
+  task transfer-from-image-bitmap
+    name <transferFromImageBitmap>
+    take bitmap
+      like sink-link-text
+        like image-bitmap
+        like native-null
+    free seed, like native-void

@@ -1,0 +1,563 @@
+
+load @drumwork/land/code/javascript/base/error
+  take form error
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-symbol
+  take form native-symbol
+
+load @drumwork/land/code/javascript/base/native-this
+  take form native-this
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/tls-socket
+  take form tls-socket
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/tls/secure-context-options
+  take form secure-context-options
+
+load @drumwork/land/code/javascript/node/tls/tls-options
+  take form tls-options
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form server, name <Server>
+  base net-server
+  task add-context, name <addContext>
+    take hostname, like native-string
+    take context, like secure-context-options
+    free seed, like native-void
+
+  task get-ticket-keys
+    name <getTicketKeys>
+    free seed, like buffer
+
+  task set-secure-context
+    name <setSecureContext>
+    take options, like secure-context-options
+    free seed, like native-void
+
+  task set-ticket-keys
+    name <setTicketKeys>
+    take keys, like buffer
+    free seed, like native-void
+
+  task add-listener, name <addListener>
+    take event, like native-string
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event, text <tlsClientError>
+    take listener
+      like task
+        take err, like error
+        take tls-socket, like tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event, text <newSession>
+    take listener
+      like task
+        take session-id, like buffer
+        take session-data, like buffer
+        take callback
+          like task
+            take err, like error
+            take resp, like buffer
+            free seed, like native-void
+        free seed, like native-void
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event, text <OCSPRequest>
+    take listener
+      like task
+        take certificate, like buffer
+        take issuer, like buffer
+        take callback
+          like task
+            take err
+              like sink-link-text
+                like error
+                like native-null
+            take resp, like buffer
+            free seed, like native-void
+        free seed, like native-void
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event, text <resumeSession>
+    take listener
+      like task
+        take session-id, like buffer
+        take callback
+          like task
+            take err, like error
+            take session-data, like buffer
+            free seed, like native-void
+        free seed, like native-void
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event, text <secureConnection>
+    take listener
+      like task
+        take tls-socket, like tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task add-listener, name <addListener>
+    take event, text <keylog>
+    take listener
+      like task
+        take line, like buffer
+        take tls-socket, like tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task emit, name <emit>
+    take event
+      like sink-link-text
+        like native-string
+        like native-symbol
+    take args
+      like list-link-text
+        like native-any
+      rest take
+    free seed, like native-boolean
+
+  task emit, name <emit>
+    take event, text <tlsClientError>
+    take err, like error
+    take tls-socket, like tls-socket
+    free seed, like native-boolean
+
+  task emit, name <emit>
+    take event, text <newSession>
+    take session-id, like buffer
+    take session-data, like buffer
+    take callback
+      like task
+        take err, like error
+        take resp, like buffer
+        free seed, like native-void
+    free seed, like native-boolean
+
+  task emit, name <emit>
+    take event, text <OCSPRequest>
+    take certificate, like buffer
+    take issuer, like buffer
+    take callback
+      like task
+        take err
+          like sink-link-text
+            like error
+            like native-null
+        take resp, like buffer
+        free seed, like native-void
+    free seed, like native-boolean
+
+  task emit, name <emit>
+    take event, text <resumeSession>
+    take session-id, like buffer
+    take callback
+      like task
+        take err, like error
+        take session-data, like buffer
+        free seed, like native-void
+    free seed, like native-boolean
+
+  task emit, name <emit>
+    take event, text <secureConnection>
+    take tls-socket, like tls-socket
+    free seed, like native-boolean
+
+  task emit, name <emit>
+    take event, text <keylog>
+    take line, like buffer
+    take tls-socket, like tls-socket
+    free seed, like native-boolean
+
+  task on, name <on>
+    take event, like native-string
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+  task on, name <on>
+    take event, text <tlsClientError>
+    take listener
+      like task
+        take err, like error
+        take tls-socket, like tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task on, name <on>
+    take event, text <newSession>
+    take listener
+      like task
+        take session-id, like buffer
+        take session-data, like buffer
+        take callback
+          like task
+            take err, like error
+            take resp, like buffer
+            free seed, like native-void
+        free seed, like native-void
+    free seed, like native-this
+
+  task on, name <on>
+    take event, text <OCSPRequest>
+    take listener
+      like task
+        take certificate, like buffer
+        take issuer, like buffer
+        take callback
+          like task
+            take err
+              like sink-link-text
+                like error
+                like native-null
+            take resp, like buffer
+            free seed, like native-void
+        free seed, like native-void
+    free seed, like native-this
+
+  task on, name <on>
+    take event, text <resumeSession>
+    take listener
+      like task
+        take session-id, like buffer
+        take callback
+          like task
+            take err, like error
+            take session-data, like buffer
+            free seed, like native-void
+        free seed, like native-void
+    free seed, like native-this
+
+  task on, name <on>
+    take event, text <secureConnection>
+    take listener
+      like task
+        take tls-socket, like tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task on, name <on>
+    take event, text <keylog>
+    take listener
+      like task
+        take line, like buffer
+        take tls-socket, like tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, like native-string
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, text <tlsClientError>
+    take listener
+      like task
+        take err, like error
+        take tls-socket, like tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, text <newSession>
+    take listener
+      like task
+        take session-id, like buffer
+        take session-data, like buffer
+        take callback
+          like task
+            take err, like error
+            take resp, like buffer
+            free seed, like native-void
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, text <OCSPRequest>
+    take listener
+      like task
+        take certificate, like buffer
+        take issuer, like buffer
+        take callback
+          like task
+            take err
+              like sink-link-text
+                like error
+                like native-null
+            take resp, like buffer
+            free seed, like native-void
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, text <resumeSession>
+    take listener
+      like task
+        take session-id, like buffer
+        take callback
+          like task
+            take err, like error
+            take session-data, like buffer
+            free seed, like native-void
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, text <secureConnection>
+    take listener
+      like task
+        take tls-socket, like tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task once, name <once>
+    take event, text <keylog>
+    take listener
+      like task
+        take line, like buffer
+        take tls-socket, like tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, like native-string
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, text <tlsClientError>
+    take listener
+      like task
+        take err, like error
+        take tls-socket, like tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, text <newSession>
+    take listener
+      like task
+        take session-id, like buffer
+        take session-data, like buffer
+        take callback
+          like task
+            take err, like error
+            take resp, like buffer
+            free seed, like native-void
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, text <OCSPRequest>
+    take listener
+      like task
+        take certificate, like buffer
+        take issuer, like buffer
+        take callback
+          like task
+            take err
+              like sink-link-text
+                like error
+                like native-null
+            take resp, like buffer
+            free seed, like native-void
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, text <resumeSession>
+    take listener
+      like task
+        take session-id, like buffer
+        take callback
+          like task
+            take err, like error
+            take session-data, like buffer
+            free seed, like native-void
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, text <secureConnection>
+    take listener
+      like task
+        take tls-socket, like tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-listener
+    name <prependListener>
+    take event, text <keylog>
+    take listener
+      like task
+        take line, like buffer
+        take tls-socket, like tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, like native-string
+    take listener
+      like task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, text <tlsClientError>
+    take listener
+      like task
+        take err, like error
+        take tls-socket, like tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, text <newSession>
+    take listener
+      like task
+        take session-id, like buffer
+        take session-data, like buffer
+        take callback
+          like task
+            take err, like error
+            take resp, like buffer
+            free seed, like native-void
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, text <OCSPRequest>
+    take listener
+      like task
+        take certificate, like buffer
+        take issuer, like buffer
+        take callback
+          like task
+            take err
+              like sink-link-text
+                like error
+                like native-null
+            take resp, like buffer
+            free seed, like native-void
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, text <resumeSession>
+    take listener
+      like task
+        take session-id, like buffer
+        take callback
+          like task
+            take err, like error
+            take session-data, like buffer
+            free seed, like native-void
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, text <secureConnection>
+    take listener
+      like task
+        take tls-socket, like tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+  task prepend-once-listener
+    name <prependOnceListener>
+    take event, text <keylog>
+    take listener
+      like task
+        take line, like buffer
+        take tls-socket, like tls-socket
+        free seed, like native-void
+    free seed, like native-this
+
+form server-constructor
+  hook make
+    take secure-connection-listener
+      like task
+        take socket, like tls-socket
+        free seed, like native-void
+      void take
+
+  hook make
+    take options, like tls-options
+    take secure-connection-listener
+      like task
+        take socket, like tls-socket
+        free seed, like native-void
+      void take

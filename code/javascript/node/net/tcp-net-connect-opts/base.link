@@ -1,0 +1,27 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/net/socket-constructor-opts
+  take form socket-constructor-opts
+
+load @drumwork/land/code/javascript/node/net/tcp-socket-connect-opts
+  take form tcp-socket-connect-opts
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form tcp-net-connect-opts
+  name <TcpNetConnectOpts>
+  base tcp-socket-connect-opts
+  base socket-constructor-opts
+
+  take timeout, name <timeout>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free

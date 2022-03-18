@@ -1,0 +1,42 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/crypto/key-format
+  take form key-format
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form private-key-input
+  name <PrivateKeyInput>
+  take key, name <key>
+    like sink-link-text
+      like native-string
+      like buffer
+    lock free
+  take format, name <format>
+    like sink-link-text
+      like key-format
+      like native-undefined
+    lock free
+  take type, name <type>
+    like sink-link-text
+      text <pkcs1>
+      text <pkcs8>
+      text <sec1>
+      like native-undefined
+    lock free
+  take passphrase, name <passphrase>
+    like sink-link-text
+      like native-string
+      like buffer
+      like native-undefined
+    lock free

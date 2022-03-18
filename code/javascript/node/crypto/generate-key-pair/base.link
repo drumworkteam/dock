@@ -1,0 +1,636 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/crypto/dsa-key-pair-key-object-options
+  take form dsa-key-pair-key-object-options
+
+load @drumwork/land/code/javascript/node/crypto/dsa-key-pair-options
+  take form dsa-key-pair-options
+
+load @drumwork/land/code/javascript/node/crypto/ec-key-pair-key-object-options
+  take form ec-key-pair-key-object-options
+
+load @drumwork/land/code/javascript/node/crypto/ec-key-pair-options
+  take form ec-key-pair-options
+
+load @drumwork/land/code/javascript/node/crypto/ed25519-key-pair-key-object-options
+  take form ed25519-key-pair-key-object-options
+
+load @drumwork/land/code/javascript/node/crypto/ed25519-key-pair-options
+  take form ed25519-key-pair-options
+
+load @drumwork/land/code/javascript/node/crypto/ed448-key-pair-key-object-options
+  take form ed448-key-pair-key-object-options
+
+load @drumwork/land/code/javascript/node/crypto/ed448-key-pair-options
+  take form ed448-key-pair-options
+
+load @drumwork/land/code/javascript/node/crypto/key-pair-key-object-result
+  take form key-pair-key-object-result
+
+load @drumwork/land/code/javascript/node/crypto/rsa-key-pair-key-object-options
+  take form rsa-key-pair-key-object-options
+
+load @drumwork/land/code/javascript/node/crypto/rsa-key-pair-options
+  take form rsa-key-pair-options
+
+load @drumwork/land/code/javascript/node/crypto/rsapss-key-pair-key-object-options
+  take form rsapss-key-pair-key-object-options
+
+load @drumwork/land/code/javascript/node/crypto/rsapss-key-pair-options
+  take form rsapss-key-pair-options
+
+load @drumwork/land/code/javascript/node/crypto/x25519-key-pair-key-object-options
+  take form x25519-key-pair-key-object-options
+
+load @drumwork/land/code/javascript/node/crypto/x25519-key-pair-options
+  take form x25519-key-pair-options
+
+load @drumwork/land/code/javascript/node/crypto/x448-key-pair-key-object-options
+  take form x448-key-pair-key-object-options
+
+load @drumwork/land/code/javascript/node/crypto/x448-key-pair-options
+  take form x448-key-pair-options
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+task promisify, name <__promisify__>
+  take type, text <rsa>
+  take options
+    like rsa-key-pair-options
+      text <pem>
+      text <pem>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like native-string
+          lock free
+        take private-key, name <privateKey>
+          like native-string
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <rsa>
+  take options
+    like rsa-key-pair-options
+      text <pem>
+      text <der>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like native-string
+          lock free
+        take private-key, name <privateKey>
+          like buffer
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <rsa>
+  take options
+    like rsa-key-pair-options
+      text <der>
+      text <pem>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like buffer
+          lock free
+        take private-key, name <privateKey>
+          like native-string
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <rsa>
+  take options
+    like rsa-key-pair-options
+      text <der>
+      text <der>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like buffer
+          lock free
+        take private-key, name <privateKey>
+          like buffer
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <rsa>
+  take options, like rsa-key-pair-key-object-options
+  free seed
+    like promise
+      like key-pair-key-object-result
+
+task promisify, name <__promisify__>
+  take type, text <rsa-pss>
+  take options
+    like rsapss-key-pair-options
+      text <pem>
+      text <pem>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like native-string
+          lock free
+        take private-key, name <privateKey>
+          like native-string
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <rsa-pss>
+  take options
+    like rsapss-key-pair-options
+      text <pem>
+      text <der>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like native-string
+          lock free
+        take private-key, name <privateKey>
+          like buffer
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <rsa-pss>
+  take options
+    like rsapss-key-pair-options
+      text <der>
+      text <pem>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like buffer
+          lock free
+        take private-key, name <privateKey>
+          like native-string
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <rsa-pss>
+  take options
+    like rsapss-key-pair-options
+      text <der>
+      text <der>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like buffer
+          lock free
+        take private-key, name <privateKey>
+          like buffer
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <rsa-pss>
+  take options, like rsapss-key-pair-key-object-options
+  free seed
+    like promise
+      like key-pair-key-object-result
+
+task promisify, name <__promisify__>
+  take type, text <dsa>
+  take options
+    like dsa-key-pair-options
+      text <pem>
+      text <pem>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like native-string
+          lock free
+        take private-key, name <privateKey>
+          like native-string
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <dsa>
+  take options
+    like dsa-key-pair-options
+      text <pem>
+      text <der>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like native-string
+          lock free
+        take private-key, name <privateKey>
+          like buffer
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <dsa>
+  take options
+    like dsa-key-pair-options
+      text <der>
+      text <pem>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like buffer
+          lock free
+        take private-key, name <privateKey>
+          like native-string
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <dsa>
+  take options
+    like dsa-key-pair-options
+      text <der>
+      text <der>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like buffer
+          lock free
+        take private-key, name <privateKey>
+          like buffer
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <dsa>
+  take options, like dsa-key-pair-key-object-options
+  free seed
+    like promise
+      like key-pair-key-object-result
+
+task promisify, name <__promisify__>
+  take type, text <ec>
+  take options
+    like ec-key-pair-options
+      text <pem>
+      text <pem>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like native-string
+          lock free
+        take private-key, name <privateKey>
+          like native-string
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <ec>
+  take options
+    like ec-key-pair-options
+      text <pem>
+      text <der>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like native-string
+          lock free
+        take private-key, name <privateKey>
+          like buffer
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <ec>
+  take options
+    like ec-key-pair-options
+      text <der>
+      text <pem>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like buffer
+          lock free
+        take private-key, name <privateKey>
+          like native-string
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <ec>
+  take options
+    like ec-key-pair-options
+      text <der>
+      text <der>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like buffer
+          lock free
+        take private-key, name <privateKey>
+          like buffer
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <ec>
+  take options, like ec-key-pair-key-object-options
+  free seed
+    like promise
+      like key-pair-key-object-result
+
+task promisify, name <__promisify__>
+  take type, text <ed25519>
+  take options
+    like ed25519-key-pair-options
+      text <pem>
+      text <pem>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like native-string
+          lock free
+        take private-key, name <privateKey>
+          like native-string
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <ed25519>
+  take options
+    like ed25519-key-pair-options
+      text <pem>
+      text <der>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like native-string
+          lock free
+        take private-key, name <privateKey>
+          like buffer
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <ed25519>
+  take options
+    like ed25519-key-pair-options
+      text <der>
+      text <pem>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like buffer
+          lock free
+        take private-key, name <privateKey>
+          like native-string
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <ed25519>
+  take options
+    like ed25519-key-pair-options
+      text <der>
+      text <der>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like buffer
+          lock free
+        take private-key, name <privateKey>
+          like buffer
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <ed25519>
+  take options, like ed25519-key-pair-key-object-options
+    void take
+  free seed
+    like promise
+      like key-pair-key-object-result
+
+task promisify, name <__promisify__>
+  take type, text <ed448>
+  take options
+    like ed448-key-pair-options
+      text <pem>
+      text <pem>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like native-string
+          lock free
+        take private-key, name <privateKey>
+          like native-string
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <ed448>
+  take options
+    like ed448-key-pair-options
+      text <pem>
+      text <der>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like native-string
+          lock free
+        take private-key, name <privateKey>
+          like buffer
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <ed448>
+  take options
+    like ed448-key-pair-options
+      text <der>
+      text <pem>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like buffer
+          lock free
+        take private-key, name <privateKey>
+          like native-string
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <ed448>
+  take options
+    like ed448-key-pair-options
+      text <der>
+      text <der>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like buffer
+          lock free
+        take private-key, name <privateKey>
+          like buffer
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <ed448>
+  take options, like ed448-key-pair-key-object-options
+    void take
+  free seed
+    like promise
+      like key-pair-key-object-result
+
+task promisify, name <__promisify__>
+  take type, text <x25519>
+  take options
+    like x25519-key-pair-options
+      text <pem>
+      text <pem>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like native-string
+          lock free
+        take private-key, name <privateKey>
+          like native-string
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <x25519>
+  take options
+    like x25519-key-pair-options
+      text <pem>
+      text <der>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like native-string
+          lock free
+        take private-key, name <privateKey>
+          like buffer
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <x25519>
+  take options
+    like x25519-key-pair-options
+      text <der>
+      text <pem>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like buffer
+          lock free
+        take private-key, name <privateKey>
+          like native-string
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <x25519>
+  take options
+    like x25519-key-pair-options
+      text <der>
+      text <der>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like buffer
+          lock free
+        take private-key, name <privateKey>
+          like buffer
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <x25519>
+  take options, like x25519-key-pair-key-object-options
+    void take
+  free seed
+    like promise
+      like key-pair-key-object-result
+
+task promisify, name <__promisify__>
+  take type, text <x448>
+  take options
+    like x448-key-pair-options
+      text <pem>
+      text <pem>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like native-string
+          lock free
+        take private-key, name <privateKey>
+          like native-string
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <x448>
+  take options
+    like x448-key-pair-options
+      text <pem>
+      text <der>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like native-string
+          lock free
+        take private-key, name <privateKey>
+          like buffer
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <x448>
+  take options
+    like x448-key-pair-options
+      text <der>
+      text <pem>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like buffer
+          lock free
+        take private-key, name <privateKey>
+          like native-string
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <x448>
+  take options
+    like x448-key-pair-options
+      text <der>
+      text <der>
+  free seed
+    like promise
+      like form-link-text
+        take public-key, name <publicKey>
+          like buffer
+          lock free
+        take private-key, name <privateKey>
+          like buffer
+          lock free
+
+task promisify, name <__promisify__>
+  take type, text <x448>
+  take options, like x448-key-pair-key-object-options
+    void take
+  free seed
+    like promise
+      like key-pair-key-object-result

@@ -1,0 +1,36 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/buffer/buffer-encoding
+  take form buffer-encoding
+
+load @drumwork/land/code/javascript/node/events/event-emitter/abortable
+  take form abortable
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form watch-options, name <WatchOptions>
+  base abortable
+
+  take encoding, name <encoding>
+    like sink-link-text
+      like buffer-encoding
+      text <buffer>
+      like native-undefined
+    lock free
+  take persistent, name <persistent>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take recursive, name <recursive>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free

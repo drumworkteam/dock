@@ -1,0 +1,26 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form sync-manager, name <SyncManager>
+  task get-tags, name <getTags>
+    free seed
+      like promise
+        like list-link-text
+          like native-string
+
+  task register, name <register>
+    take tag, like native-string
+    free seed
+      like promise
+        like native-void

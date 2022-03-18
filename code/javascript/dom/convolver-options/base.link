@@ -1,0 +1,30 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/dom/audio-buffer
+  take form audio-buffer
+
+load @drumwork/land/code/javascript/dom/audio-node-options
+  take form audio-node-options
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form convolver-options
+  name <ConvolverOptions>
+  base audio-node-options
+
+  take buffer, name <buffer>
+    like sink-link-text
+      like audio-buffer
+      like native-null
+    lock free
+  take disable-normalization
+    name <disableNormalization>
+    like native-boolean
+    lock free

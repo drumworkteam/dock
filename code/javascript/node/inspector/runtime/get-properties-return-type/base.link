@@ -1,0 +1,40 @@
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/inspector/runtime/exception-details
+  take form exception-details
+
+load @drumwork/land/code/javascript/node/inspector/runtime/internal-property-descriptor
+  take form internal-property-descriptor
+
+load @drumwork/land/code/javascript/node/inspector/runtime/property-descriptor
+  take form property-descriptor
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form get-properties-return-type
+  name <GetPropertiesReturnType>
+  take result, name <result>
+    like list-link-text
+      like property-descriptor
+    lock free
+  take internal-properties
+    name <internalProperties>
+    like sink-link-text
+      like list-link-text
+        like internal-property-descriptor
+      like native-undefined
+    lock free
+  take exception-details
+    name <exceptionDetails>
+    like sink-link-text
+      like exception-details
+      like native-undefined
+    lock free

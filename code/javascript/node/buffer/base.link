@@ -1,0 +1,87 @@
+
+load @drumwork/land/code/javascript/base/blob
+  take form blob
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/uint8-array
+  take form uint8-array
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/buffer/buffer-constructor
+  take form buffer-constructor
+
+load @drumwork/land/code/javascript/node/buffer/transcode-encoding
+  take form transcode-encoding
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+host buffer, name <Buffer>
+  home take
+  like buffer-constructor
+
+task atob, name <atob>
+  home take
+  take data, like native-string
+  free seed, like native-string
+
+task btoa, name <btoa>
+  home take
+  take data, like native-string
+  free seed, like native-string
+
+host inspect-max-bytes
+  name <INSPECT_MAX_BYTES>
+  like native-number
+host k-max-length, name <kMaxLength>
+  like native-number
+host k-string-max-length
+  name <kStringMaxLength>
+  like native-number
+host constants, name <constants>
+  like form-link-text
+    take max-length, name <MAX_LENGTH>
+      like native-number
+      lock free
+    take max-string-length
+      name <MAX_STRING_LENGTH>
+      like native-number
+      lock free
+host slow-buffer, name <SlowBuffer>
+  like form-link-text
+    hook make
+      take size, like native-number
+      free seed, like buffer
+
+    take prototype, name <prototype>
+      like buffer
+      lock free
+
+task transcode, name <transcode>
+  take source, like uint8-array
+  take from-enc, like transcode-encoding
+  take to-enc, like transcode-encoding
+  free seed, like buffer
+
+task resolve-object-url
+  name <resolveObjectURL>
+  take id, like native-string
+  free seed
+    like sink-link-text
+      like blob
+      like native-undefined

@@ -1,0 +1,67 @@
+
+load @drumwork/land/code/javascript/base/array
+  take form array
+
+load @drumwork/land/code/javascript/base/array-buffer
+  take form array-buffer
+
+load @drumwork/land/code/javascript/base/binary-like
+  take form binary-like
+
+load @drumwork/land/code/javascript/base/blob
+  take form blob
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-unknown
+  take form native-unknown
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/land/code/javascript/node/buffer/blob-options
+  take form blob-options
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form blob, name <Blob>
+  take size, name <size>, like native-number
+  take type, name <type>, like native-string
+
+  task array-buffer, name <arrayBuffer>
+    free seed
+      like promise
+        like array-buffer
+
+  task slice, name <slice>
+    take start, like native-number
+      void take
+    take end, like native-number
+      void take
+    take type, like native-string
+      void take
+    free seed, like blob
+
+  task text, name <text>
+    free seed
+      like promise
+        like native-string
+
+  task stream, name <stream>
+    free seed, like native-unknown
+
+form blob-constructor
+  hook make
+    take sources
+      like array
+        like sink-link-text
+          like binary-like
+          like blob
+    take options, like blob-options
+      void take

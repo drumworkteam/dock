@@ -1,0 +1,23 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/inspector/runtime/unique-debugger-id
+  take form unique-debugger-id
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form stack-trace-id, name <StackTraceId>
+  take id, name <id>
+    like native-string
+    lock free
+  take debugger-id, name <debuggerId>
+    like sink-link-text
+      like unique-debugger-id
+      like native-undefined
+    lock free

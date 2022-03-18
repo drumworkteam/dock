@@ -1,0 +1,38 @@
+
+load @drumwork/land/code/javascript/base/dns-lookup-one-options
+  take form dns-lookup-one-options
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/node-js-errno-exception
+  take form node-js-errno-exception
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form lookup-function
+  name <LookupFunction>
+  like task
+    take hostname, like native-string
+    take options, like dns-lookup-one-options
+    take callback
+      like task
+        take err
+          like sink-link-text
+            like node-js-errno-exception
+            like native-null
+        take address, like native-string
+        take family, like native-number
+        free seed, like native-void
+    free seed, like native-void

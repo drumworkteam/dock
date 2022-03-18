@@ -1,0 +1,70 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/dom/cache-storage
+  take form cache-storage
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+load @drumwork/land/code/javascript/webworker/cache
+  take form cache
+
+load @drumwork/land/code/javascript/webworker/multi-cache-query-options
+  take form multi-cache-query-options
+
+load @drumwork/land/code/javascript/webworker/request-info
+  take form request-info
+
+load @drumwork/land/code/javascript/webworker/response
+  take form response
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form cache-storage, name <CacheStorage>
+  task delete, name <delete>
+    take cache-name, like native-string
+    free seed
+      like promise
+        like native-boolean
+
+  task has, name <has>
+    take cache-name, like native-string
+    free seed
+      like promise
+        like native-boolean
+
+  task keys, name <keys>
+    free seed
+      like promise
+        like list-link-text
+          like native-string
+
+  task match, name <match>
+    take request, like request-info
+    take options, like multi-cache-query-options
+      void take
+    free seed
+      like promise
+        like sink-link-text
+          like response
+          like native-undefined
+
+  task open, name <open>
+    take cache-name, like native-string
+    free seed
+      like promise
+        like cache

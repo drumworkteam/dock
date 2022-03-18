@@ -1,0 +1,113 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/land/code/javascript/node/dns/any-record
+  take form any-record
+
+load @drumwork/land/code/javascript/node/dns/mx-record
+  take form mx-record
+
+load @drumwork/land/code/javascript/node/dns/naptr-record
+  take form naptr-record
+
+load @drumwork/land/code/javascript/node/dns/soa-record
+  take form soa-record
+
+load @drumwork/land/code/javascript/node/dns/srv-record
+  take form srv-record
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+task promisify, name <__promisify__>
+  take hostname, like native-string
+  take rrtype
+    like sink-link-text
+      text <A>
+      text <AAAA>
+      text <CNAME>
+      text <NS>
+      text <PTR>
+    void take
+  free seed
+    like promise
+      like list-link-text
+        like native-string
+
+task promisify, name <__promisify__>
+  take hostname, like native-string
+  take rrtype, text <ANY>
+  free seed
+    like promise
+      like list-link-text
+        like any-record
+
+task promisify, name <__promisify__>
+  take hostname, like native-string
+  take rrtype, text <MX>
+  free seed
+    like promise
+      like list-link-text
+        like mx-record
+
+task promisify, name <__promisify__>
+  take hostname, like native-string
+  take rrtype, text <NAPTR>
+  free seed
+    like promise
+      like list-link-text
+        like naptr-record
+
+task promisify, name <__promisify__>
+  take hostname, like native-string
+  take rrtype, text <SOA>
+  free seed
+    like promise
+      like soa-record
+
+task promisify, name <__promisify__>
+  take hostname, like native-string
+  take rrtype, text <SRV>
+  free seed
+    like promise
+      like list-link-text
+        like srv-record
+
+task promisify, name <__promisify__>
+  take hostname, like native-string
+  take rrtype, text <TXT>
+  free seed
+    like promise
+      like list-link-text
+        like list-link-text
+          like native-string
+
+task promisify, name <__promisify__>
+  take hostname, like native-string
+  take rrtype, like native-string
+  free seed
+    like promise
+      like sink-link-text
+        like list-link-text
+          like native-string
+        like list-link-text
+          like mx-record
+        like list-link-text
+          like naptr-record
+        like soa-record
+        like list-link-text
+          like srv-record
+        like list-link-text
+          like list-link-text
+            like native-string
+        like list-link-text
+          like any-record

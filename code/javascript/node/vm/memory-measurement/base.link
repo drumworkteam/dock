@@ -1,0 +1,27 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/seed/code/form/band
+  take form band
+    save form band-link-text
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+form memory-measurement
+  name <MemoryMeasurement>
+  take total, name <total>
+    like form-link-text
+      take js-memory-estimate
+        name <jsMemoryEstimate>
+        like native-number
+        lock free
+      take js-memory-range
+        name <jsMemoryRange>
+        like band-link-text
+          like native-number
+          like native-number
+        lock free
+    lock free

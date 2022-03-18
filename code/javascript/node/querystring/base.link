@@ -1,0 +1,49 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/node/querystring/parse-options
+  take form parse-options
+
+load @drumwork/land/code/javascript/node/querystring/parsed-url-query
+  take form parsed-url-query
+
+load @drumwork/land/code/javascript/node/querystring/parsed-url-query-input
+  take form parsed-url-query-input
+
+load @drumwork/land/code/javascript/node/querystring/stringify-options
+  take form stringify-options
+
+host encode, name <encode>
+  like stringify
+host decode, name <decode>
+  like parse
+
+task stringify, name <stringify>
+  take obj, like parsed-url-query-input
+    void take
+  take sep, like native-string
+    void take
+  take eq, like native-string
+    void take
+  take options, like stringify-options
+    void take
+  free seed, like native-string
+
+task parse, name <parse>
+  take str, like native-string
+  take sep, like native-string
+    void take
+  take eq, like native-string
+    void take
+  take options, like parse-options
+    void take
+  free seed, like parsed-url-query
+
+task escape, name <escape>
+  take str, like native-string
+  free seed, like native-string
+
+task unescape, name <unescape>
+  take str, like native-string
+  free seed, like native-string

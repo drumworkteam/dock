@@ -1,0 +1,64 @@
+
+load @drumwork/land/code/javascript/base/function
+  take form function
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-unknown
+  take form native-unknown
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form assertion-error
+  name <AssertionError>
+  base error
+  take actual, name <actual>, like native-unknown
+  take expected, name <expected>, like native-unknown
+  take operator, name <operator>, like native-string
+  take generated-message, name <generatedMessage>, like native-boolean
+  take code, name <code>, text <ERR_ASSERTION>
+
+form assertion-error-constructor
+  hook make
+    take options
+      like form-link-text
+        take message, name <message>
+          like sink-link-text
+            like native-string
+            like native-undefined
+          lock free
+        take actual, name <actual>
+          like sink-link-text
+            like native-unknown
+            like native-undefined
+          lock free
+        take expected, name <expected>
+          like sink-link-text
+            like native-unknown
+            like native-undefined
+          lock free
+        take operator, name <operator>
+          like sink-link-text
+            like native-string
+            like native-undefined
+          lock free
+        take stack-start-fn
+          name <stackStartFn>
+          like sink-link-text
+            like function
+            like native-undefined
+          lock free
+      void take

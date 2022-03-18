@@ -1,0 +1,24 @@
+
+load @drumwork/land/code/javascript/dom/close-event
+  take form close-event
+
+load @drumwork/land/code/javascript/dom/event
+  take form event
+
+load @drumwork/land/code/javascript/dom/message-event
+  take form message-event
+
+form web-socket-event-map
+  name <WebSocketEventMap>
+  take close, name <close>
+    like close-event
+    lock free
+  take error, name <error>
+    like event
+    lock free
+  take message, name <message>
+    like message-event
+    lock free
+  take open, name <open>
+    like event
+    lock free

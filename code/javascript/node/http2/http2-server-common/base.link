@@ -1,0 +1,28 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-this
+  take form native-this
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/node/http2/settings
+  take form settings
+
+form http2-server-common
+  name <HTTP2ServerCommon>
+  task set-timeout, name <setTimeout>
+    take msec, like native-number
+      void take
+    take callback
+      like task
+        free seed, like native-void
+      void take
+    free seed, like native-this
+
+  task update-settings
+    name <updateSettings>
+    take settings, like settings
+    free seed, like native-void

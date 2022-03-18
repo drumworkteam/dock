@@ -1,0 +1,41 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-symbol
+  take form native-symbol
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/es5/object
+  take form object
+
+load @drumwork/land/code/javascript/es5/typed-property-descriptor
+  take form typed-property-descriptor
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form method-decorator
+  name <MethodDecorator>
+  like task
+    head t, like like-link-text
+    take target, like object
+    take property-key
+      like sink-link-text
+        like native-string
+        like native-symbol
+    take descriptor
+      like typed-property-descriptor
+        like t
+    free seed
+      like sink-link-text
+        like typed-property-descriptor
+          like t
+        like native-void

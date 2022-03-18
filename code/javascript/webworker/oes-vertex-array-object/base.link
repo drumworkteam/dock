@@ -1,0 +1,59 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/oes-vertex-array-object
+  take form oes-vertex-array-object
+
+load @drumwork/land/code/javascript/webworker/g-lboolean
+  take form g-lboolean
+
+load @drumwork/land/code/javascript/webworker/g-lenum
+  take form g-lenum
+
+load @drumwork/land/code/javascript/webworker/web-gl-vertex-array-object-oes
+  take form web-gl-vertex-array-object-oes
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form oes-vertex-array-object
+  name <OES_vertex_array_object>
+  take vertex-array-binding-oes
+    name <VERTEX_ARRAY_BINDING_OES>
+    like g-lenum
+
+  task bind-vertex-array-oes
+    name <bindVertexArrayOES>
+    take array-object
+      like sink-link-text
+        like web-gl-vertex-array-object-oes
+        like native-null
+    free seed, like native-void
+
+  task create-vertex-array-oes
+    name <createVertexArrayOES>
+    free seed
+      like sink-link-text
+        like web-gl-vertex-array-object-oes
+        like native-null
+
+  task delete-vertex-array-oes
+    name <deleteVertexArrayOES>
+    take array-object
+      like sink-link-text
+        like web-gl-vertex-array-object-oes
+        like native-null
+    free seed, like native-void
+
+  task is-vertex-array-oes
+    name <isVertexArrayOES>
+    take array-object
+      like sink-link-text
+        like web-gl-vertex-array-object-oes
+        like native-null
+    free seed, like g-lboolean

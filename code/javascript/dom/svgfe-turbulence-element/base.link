@@ -1,0 +1,160 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/svg-animated-enumeration
+  take form svg-animated-enumeration
+
+load @drumwork/land/code/javascript/dom/svg-animated-integer
+  take form svg-animated-integer
+
+load @drumwork/land/code/javascript/dom/svg-animated-number
+  take form svg-animated-number
+
+load @drumwork/land/code/javascript/dom/svg-element
+  take form svg-element
+
+load @drumwork/land/code/javascript/dom/svg-element-event-map
+  take form svg-element-event-map
+
+load @drumwork/land/code/javascript/dom/svg-filter-primitive-standard-attributes
+  take form svg-filter-primitive-standard-attributes
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form svgfe-turbulence-element
+  name <SVGFETurbulenceElement>
+  base svg-element
+  base svg-filter-primitive-standard-attributes
+
+  take base-frequency-x
+    name <baseFrequencyX>
+    like svg-animated-number
+  take base-frequency-y
+    name <baseFrequencyY>
+    like svg-animated-number
+  take num-octaves, name <numOctaves>
+    like svg-animated-integer
+  take seed, name <seed>
+    like svg-animated-number
+  take stitch-tiles, name <stitchTiles>
+    like svg-animated-enumeration
+  take type, name <type>
+    like svg-animated-enumeration
+  take svg-stitchtype-nostitch
+    name <SVG_STITCHTYPE_NOSTITCH>
+    like native-number
+  take svg-stitchtype-stitch
+    name <SVG_STITCHTYPE_STITCH>
+    like native-number
+  take svg-stitchtype-unknown
+    name <SVG_STITCHTYPE_UNKNOWN>
+    like native-number
+  take svg-turbulence-type-fractalnoise
+    name <SVG_TURBULENCE_TYPE_FRACTALNOISE>
+    like native-number
+  take svg-turbulence-type-turbulence
+    name <SVG_TURBULENCE_TYPE_TURBULENCE>
+    like native-number
+  take svg-turbulence-type-unknown
+    name <SVG_TURBULENCE_TYPE_UNKNOWN>
+    like native-number
+
+  task add-event-listener
+    name <addEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like svg-element-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like svgfe-turbulence-element
+        take ev
+          like form-link-link-text
+            like svg-element-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like svg-element-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like svgfe-turbulence-element
+        take ev
+          like form-link-link-text
+            like svg-element-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void

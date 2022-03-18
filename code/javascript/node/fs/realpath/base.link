@@ -1,0 +1,110 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/node-js-errno-exception
+  take form node-js-errno-exception
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/fs/buffer-encoding-option
+  take form buffer-encoding-option
+
+load @drumwork/land/code/javascript/node/fs/encoding-option
+  take form encoding-option
+
+load @drumwork/land/code/javascript/node/fs/path-like
+  take form path-like
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+task promisify, name <__promisify__>
+  take path, like path-like
+  take options, like encoding-option
+    void take
+  free seed
+    like promise
+      like native-string
+
+task promisify, name <__promisify__>
+  take path, like path-like
+  take options, like buffer-encoding-option
+  free seed
+    like promise
+      like buffer
+
+task promisify, name <__promisify__>
+  take path, like path-like
+  take options, like encoding-option
+    void take
+  free seed
+    like promise
+      like sink-link-text
+        like native-string
+        like buffer
+
+task native, name <native>
+  take path, like path-like
+  take options, like encoding-option
+  take callback
+    like task
+      take err
+        like sink-link-text
+          like node-js-errno-exception
+          like native-null
+      take resolved-path, like native-string
+      free seed, like native-void
+  free seed, like native-void
+
+task native, name <native>
+  take path, like path-like
+  take options, like buffer-encoding-option
+  take callback
+    like task
+      take err
+        like sink-link-text
+          like node-js-errno-exception
+          like native-null
+      take resolved-path, like buffer
+      free seed, like native-void
+  free seed, like native-void
+
+task native, name <native>
+  take path, like path-like
+  take options, like encoding-option
+  take callback
+    like task
+      take err
+        like sink-link-text
+          like node-js-errno-exception
+          like native-null
+      take resolved-path
+        like sink-link-text
+          like native-string
+          like buffer
+      free seed, like native-void
+  free seed, like native-void
+
+task native, name <native>
+  take path, like path-like
+  take callback
+    like task
+      take err
+        like sink-link-text
+          like node-js-errno-exception
+          like native-null
+      take resolved-path, like native-string
+      free seed, like native-void
+  free seed, like native-void

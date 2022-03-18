@@ -1,0 +1,22 @@
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/error-callback
+  take form error-callback
+
+load @drumwork/land/code/javascript/dom/file-callback
+  take form file-callback
+
+load @drumwork/land/code/javascript/dom/file-system-entry
+  take form file-system-entry
+
+form file-system-file-entry
+  name <FileSystemFileEntry>
+  base file-system-entry
+
+  task file, name <file>
+    take success-callback, like file-callback
+    take error-callback, like error-callback
+      void take
+    free seed, like native-void

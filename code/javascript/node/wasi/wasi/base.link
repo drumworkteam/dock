@@ -1,0 +1,33 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-object
+  take form native-object
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/node-js-dict
+  take form node-js-dict
+
+load @drumwork/land/code/javascript/node/wasi/wasi-options
+  take form wasi-options
+
+form wasi, name <WASI>
+  take wasi-import, name <wasiImport>
+    like node-js-dict
+      like native-any
+
+  task start, name <start>
+    take instance, like native-object
+    free seed, like native-void
+
+  task initialize, name <initialize>
+    take instance, like native-object
+    free seed, like native-void
+
+form wasi-constructor
+  hook make
+    take options, like wasi-options
+      void take

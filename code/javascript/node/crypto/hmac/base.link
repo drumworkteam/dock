@@ -1,0 +1,39 @@
+
+load @drumwork/land/code/javascript/base/hmac
+  take form hmac
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/crypto/binary-like
+  take form binary-like
+
+load @drumwork/land/code/javascript/node/crypto/binary-to-text-encoding
+  take form binary-to-text-encoding
+
+load @drumwork/land/code/javascript/node/crypto/encoding
+  take form encoding
+
+form hmac, name <Hmac>
+  base stream-transform
+  task update, name <update>
+    take data, like binary-like
+    free seed, like hmac
+
+  task update, name <update>
+    take data, like native-string
+    take input-encoding, like encoding
+    free seed, like hmac
+
+  task digest, name <digest>
+    free seed, like buffer
+
+  task digest, name <digest>
+    take encoding, like binary-to-text-encoding
+    free seed, like native-string
+
+form hmac-constructor
+  hook make

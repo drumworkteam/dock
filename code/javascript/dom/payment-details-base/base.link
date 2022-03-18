@@ -1,0 +1,22 @@
+
+load @drumwork/land/code/javascript/dom/payment-details-modifier
+  take form payment-details-modifier
+
+load @drumwork/land/code/javascript/dom/payment-item
+  take form payment-item
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form payment-details-base
+  name <PaymentDetailsBase>
+  take display-items
+    name <displayItems>
+    like list-link-text
+      like payment-item
+    lock free
+  take modifiers, name <modifiers>
+    like list-link-text
+      like payment-details-modifier
+    lock free

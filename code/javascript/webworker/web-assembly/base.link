@@ -1,0 +1,191 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/es5/array-buffer
+  take form array-buffer
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+load @drumwork/land/code/javascript/es5/promise-like
+  take form promise-like
+
+load @drumwork/land/code/javascript/webworker/buffer-source
+  take form buffer-source
+
+load @drumwork/land/code/javascript/webworker/global
+  take form global
+
+load @drumwork/land/code/javascript/webworker/global-descriptor
+  take form global-descriptor
+
+load @drumwork/land/code/javascript/webworker/imports
+  take form imports
+
+load @drumwork/land/code/javascript/webworker/instance
+  take form instance
+
+load @drumwork/land/code/javascript/webworker/memory
+  take form memory
+
+load @drumwork/land/code/javascript/webworker/memory-descriptor
+  take form memory-descriptor
+
+load @drumwork/land/code/javascript/webworker/module
+  take form module
+
+load @drumwork/land/code/javascript/webworker/module-export-descriptor
+  take form module-export-descriptor
+
+load @drumwork/land/code/javascript/webworker/module-import-descriptor
+  take form module-import-descriptor
+
+load @drumwork/land/code/javascript/webworker/response
+  take form response
+
+load @drumwork/land/code/javascript/webworker/table
+  take form table
+
+load @drumwork/land/code/javascript/webworker/table-descriptor
+  take form table-descriptor
+
+load @drumwork/land/code/javascript/webworker/web-assembly-instantiated-source
+  take form web-assembly-instantiated-source
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+host global, name <Global>
+  like form-link-text
+    take prototype, name <prototype>
+      like global
+      lock free
+    hook make
+      take descriptor, like global-descriptor
+      take v, like native-any
+        void take
+      free seed, like global
+
+host instance, name <Instance>
+  like form-link-text
+    take prototype, name <prototype>
+      like instance
+      lock free
+    hook make
+      take module, like module
+      take import-object, like imports
+        void take
+      free seed, like instance
+
+host memory, name <Memory>
+  like form-link-text
+    take prototype, name <prototype>
+      like memory
+      lock free
+    hook make
+      take descriptor, like memory-descriptor
+      free seed, like memory
+
+host module, name <Module>
+  like form-link-text
+    take prototype, name <prototype>
+      like module
+      lock free
+    hook make
+      take bytes, like buffer-source
+      free seed, like module
+
+    task custom-sections
+      name <customSections>
+      take module-object, like module
+      take section-name, like native-string
+      free seed
+        like list-link-text
+          like array-buffer
+
+    task exports, name <exports>
+      take module-object, like module
+      free seed
+        like list-link-text
+          like module-export-descriptor
+
+    task imports, name <imports>
+      take module-object, like module
+      free seed
+        like list-link-text
+          like module-import-descriptor
+
+host table, name <Table>
+  like form-link-text
+    take prototype, name <prototype>
+      like table
+      lock free
+    hook make
+      take descriptor, like table-descriptor
+      free seed, like table
+
+task compile, name <compile>
+  take bytes, like buffer-source
+  free seed
+    like promise
+      like module
+
+task compile-streaming
+  name <compileStreaming>
+  take source
+    like sink-link-text
+      like response
+      like promise
+        like response
+  free seed
+    like promise
+      like module
+
+task instantiate, name <instantiate>
+  take bytes, like buffer-source
+  take import-object, like imports
+    void take
+  free seed
+    like promise
+      like web-assembly-instantiated-source
+
+task instantiate, name <instantiate>
+  take module-object, like module
+  take import-object, like imports
+    void take
+  free seed
+    like promise
+      like instance
+
+task instantiate-streaming
+  name <instantiateStreaming>
+  take response
+    like sink-link-text
+      like response
+      like promise-like
+        like response
+  take import-object, like imports
+    void take
+  free seed
+    like promise
+      like web-assembly-instantiated-source
+
+task validate, name <validate>
+  take bytes, like buffer-source
+  free seed, like native-boolean

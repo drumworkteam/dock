@@ -1,0 +1,182 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/svg-animated-enumeration
+  take form svg-animated-enumeration
+
+load @drumwork/land/code/javascript/dom/svg-animated-string
+  take form svg-animated-string
+
+load @drumwork/land/code/javascript/dom/svg-element
+  take form svg-element
+
+load @drumwork/land/code/javascript/dom/svg-element-event-map
+  take form svg-element-event-map
+
+load @drumwork/land/code/javascript/dom/svg-filter-primitive-standard-attributes
+  take form svg-filter-primitive-standard-attributes
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form svgfe-blend-element
+  name <SVGFEBlendElement>
+  base svg-element
+  base svg-filter-primitive-standard-attributes
+
+  take in1, name <in1>
+    like svg-animated-string
+  take in2, name <in2>
+    like svg-animated-string
+  take mode, name <mode>
+    like svg-animated-enumeration
+  take svg-feblend-mode-color
+    name <SVG_FEBLEND_MODE_COLOR>
+    like native-number
+  take svg-feblend-mode-color-burn
+    name <SVG_FEBLEND_MODE_COLOR_BURN>
+    like native-number
+  take svg-feblend-mode-color-dodge
+    name <SVG_FEBLEND_MODE_COLOR_DODGE>
+    like native-number
+  take svg-feblend-mode-darken
+    name <SVG_FEBLEND_MODE_DARKEN>
+    like native-number
+  take svg-feblend-mode-difference
+    name <SVG_FEBLEND_MODE_DIFFERENCE>
+    like native-number
+  take svg-feblend-mode-exclusion
+    name <SVG_FEBLEND_MODE_EXCLUSION>
+    like native-number
+  take svg-feblend-mode-hard-light
+    name <SVG_FEBLEND_MODE_HARD_LIGHT>
+    like native-number
+  take svg-feblend-mode-hue
+    name <SVG_FEBLEND_MODE_HUE>
+    like native-number
+  take svg-feblend-mode-lighten
+    name <SVG_FEBLEND_MODE_LIGHTEN>
+    like native-number
+  take svg-feblend-mode-luminosity
+    name <SVG_FEBLEND_MODE_LUMINOSITY>
+    like native-number
+  take svg-feblend-mode-multiply
+    name <SVG_FEBLEND_MODE_MULTIPLY>
+    like native-number
+  take svg-feblend-mode-normal
+    name <SVG_FEBLEND_MODE_NORMAL>
+    like native-number
+  take svg-feblend-mode-overlay
+    name <SVG_FEBLEND_MODE_OVERLAY>
+    like native-number
+  take svg-feblend-mode-saturation
+    name <SVG_FEBLEND_MODE_SATURATION>
+    like native-number
+  take svg-feblend-mode-screen
+    name <SVG_FEBLEND_MODE_SCREEN>
+    like native-number
+  take svg-feblend-mode-soft-light
+    name <SVG_FEBLEND_MODE_SOFT_LIGHT>
+    like native-number
+  take svg-feblend-mode-unknown
+    name <SVG_FEBLEND_MODE_UNKNOWN>
+    like native-number
+
+  task add-event-listener
+    name <addEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like svg-element-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like svgfe-blend-element
+        take ev
+          like form-link-link-text
+            like svg-element-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like svg-element-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like svgfe-blend-element
+        take ev
+          like form-link-link-text
+            like svg-element-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void

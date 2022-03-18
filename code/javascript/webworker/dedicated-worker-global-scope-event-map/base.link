@@ -1,0 +1,17 @@
+
+load @drumwork/land/code/javascript/webworker/message-event
+  take form message-event
+
+load @drumwork/land/code/javascript/webworker/worker-global-scope-event-map
+  take form worker-global-scope-event-map
+
+form dedicated-worker-global-scope-event-map
+  name <DedicatedWorkerGlobalScopeEventMap>
+  base worker-global-scope-event-map
+
+  take message, name <message>
+    like message-event
+    lock free
+  take messageerror, name <messageerror>
+    like message-event
+    lock free

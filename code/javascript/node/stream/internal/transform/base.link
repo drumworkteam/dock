@@ -1,0 +1,32 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/node/buffer/buffer-encoding
+  take form buffer-encoding
+
+load @drumwork/land/code/javascript/node/stream/internal/transform-callback
+  take form transform-callback
+
+load @drumwork/land/code/javascript/node/stream/internal/transform-options
+  take form transform-options
+
+form transform, name <Transform>
+  base duplex
+  task transform, name <_transform>
+    take chunk, like native-any
+    take encoding, like buffer-encoding
+    take callback, like transform-callback
+    free seed, like native-void
+
+  task flush, name <_flush>
+    take callback, like transform-callback
+    free seed, like native-void
+
+form transform-constructor
+  hook make
+    take opts, like transform-options
+      void take

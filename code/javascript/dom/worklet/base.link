@@ -1,0 +1,31 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/url
+  take form url
+
+load @drumwork/land/code/javascript/dom/worklet-options
+  take form worklet-options
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form worklet, name <Worklet>
+  task add-module, name <addModule>
+    take module-url
+      like sink-link-text
+        like native-string
+        like url
+    take options, like worklet-options
+      void take
+    free seed
+      like promise
+        like native-void

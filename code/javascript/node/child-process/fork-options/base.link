@@ -1,0 +1,67 @@
+
+load @drumwork/land/code/javascript/base/abortable
+  take form abortable
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/child-process/messaging-options
+  take form messaging-options
+
+load @drumwork/land/code/javascript/node/child-process/process-env-options
+  take form process-env-options
+
+load @drumwork/land/code/javascript/node/child-process/stdio-options
+  take form stdio-options
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form fork-options, name <ForkOptions>
+  base process-env-options
+  base messaging-options
+  base abortable
+
+  take exec-path, name <execPath>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take exec-argv, name <execArgv>
+    like sink-link-text
+      like list-link-text
+        like native-string
+      like native-undefined
+    lock free
+  take silent, name <silent>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take stdio, name <stdio>
+    like sink-link-text
+      like stdio-options
+      like native-undefined
+    lock free
+  take detached, name <detached>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take windows-verbatim-arguments
+    name <windowsVerbatimArguments>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free

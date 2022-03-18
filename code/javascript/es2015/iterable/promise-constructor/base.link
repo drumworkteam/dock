@@ -1,0 +1,72 @@
+
+load @drumwork/land/code/javascript/base/u
+  take form u
+
+load @drumwork/land/code/javascript/es2015/iterable/iterable
+  take form iterable
+
+load @drumwork/land/code/javascript/es2015/iterable/promise
+  take form promise
+
+load @drumwork/land/code/javascript/es5/promise-like
+  take form promise-like
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+load @drumwork/seed/code/form/test
+  take form test
+    save form test-link-text
+
+form promise-constructor
+  name <PromiseConstructor>
+  task all, name <all>
+    head t, like like-link-text
+    take values
+      like iterable
+        like sink-link-text
+          like t
+          like promise-like
+            like t
+    free seed
+      like promise
+        like list-link-text
+          like t
+
+  task race, name <race>
+    head t, like like-link-text
+    take values
+      like iterable
+        like t
+    free seed
+      like promise
+        like test-link-text
+          stem roll
+            like t
+            like promise-like
+              name u
+            hook take
+              like u
+            hook free
+              like t
+
+  task race, name <race>
+    head t, like like-link-text
+    take values
+      like iterable
+        like sink-link-text
+          like t
+          like promise-like
+            like t
+    free seed
+      like promise
+        like t

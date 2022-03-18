@@ -1,0 +1,40 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/device-motion-event-acceleration
+  take form device-motion-event-acceleration
+
+load @drumwork/land/code/javascript/dom/device-motion-event-rotation-rate
+  take form device-motion-event-rotation-rate
+
+load @drumwork/land/code/javascript/dom/event
+  take form event
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form device-motion-event
+  name <DeviceMotionEvent>
+  base event
+
+  take acceleration, name <acceleration>
+    like sink-link-text
+      like device-motion-event-acceleration
+      like native-null
+  take acceleration-including-gravity
+    name <accelerationIncludingGravity>
+    like sink-link-text
+      like device-motion-event-acceleration
+      like native-null
+  take interval, name <interval>
+    like native-number
+  take rotation-rate
+    name <rotationRate>
+    like sink-link-text
+      like device-motion-event-rotation-rate
+      like native-null

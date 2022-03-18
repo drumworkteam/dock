@@ -1,0 +1,47 @@
+
+load @drumwork/land/code/javascript/base/incoming-message
+  take form incoming-message
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/node-js-read-only-dict
+  take form node-js-read-only-dict
+
+load @drumwork/land/code/javascript/base/socket
+  take form socket
+
+load @drumwork/land/code/javascript/node/http/agent-options
+  take form agent-options
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form agent, name <Agent>
+  take max-free-sockets, name <maxFreeSockets>, like native-number
+  take max-sockets, name <maxSockets>, like native-number
+  take max-total-sockets, name <maxTotalSockets>, like native-number
+  take free-sockets, name <freeSockets>
+    like node-js-read-only-dict
+      like list-link-text
+        like socket
+  take sockets, name <sockets>
+    like node-js-read-only-dict
+      like list-link-text
+        like socket
+  take requests, name <requests>
+    like node-js-read-only-dict
+      like list-link-text
+        like incoming-message
+
+  task destroy, name <destroy>
+    free seed, like native-void
+
+form agent-constructor
+  hook make
+    take opts, like agent-options
+      void take

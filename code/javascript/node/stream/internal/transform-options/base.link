@@ -1,0 +1,133 @@
+
+load @drumwork/land/code/javascript/base/error
+  take form error
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/transform
+  take form transform
+
+load @drumwork/land/code/javascript/node/buffer/buffer-encoding
+  take form buffer-encoding
+
+load @drumwork/land/code/javascript/node/globals/array
+  take form array
+
+load @drumwork/land/code/javascript/node/stream/internal/duplex-options
+  take form duplex-options
+
+load @drumwork/land/code/javascript/node/stream/internal/transform-callback
+  take form transform-callback
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form transform-options
+  name <TransformOptions>
+  base duplex-options
+
+  task construct, name <construct>
+    take this, like transform
+    take callback
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+          void take
+        free seed, like native-void
+    free seed, like native-void
+
+  task read, name <read>
+    take this, like transform
+    take size, like native-number
+    free seed, like native-void
+
+  task write, name <write>
+    take this, like transform
+    take chunk, like native-any
+    take encoding, like buffer-encoding
+    take callback
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+          void take
+        free seed, like native-void
+    free seed, like native-void
+
+  task writev, name <writev>
+    take this, like transform
+    take chunks
+      like array
+        like form-link-text
+          take chunk, name <chunk>
+            like native-any
+            lock free
+          take encoding, name <encoding>
+            like buffer-encoding
+            lock free
+    take callback
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+          void take
+        free seed, like native-void
+    free seed, like native-void
+
+  task final, name <final>
+    take this, like transform
+    take callback
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+          void take
+        free seed, like native-void
+    free seed, like native-void
+
+  task destroy, name <destroy>
+    take this, like transform
+    take error
+      like sink-link-text
+        like error
+        like native-null
+    take callback
+      like task
+        take error
+          like sink-link-text
+            like error
+            like native-null
+        free seed, like native-void
+    free seed, like native-void
+
+  task transform, name <transform>
+    take this, like transform
+    take chunk, like native-any
+    take encoding, like buffer-encoding
+    take callback, like transform-callback
+    free seed, like native-void
+
+  task flush, name <flush>
+    take this, like transform
+    take callback, like transform-callback
+    free seed, like native-void

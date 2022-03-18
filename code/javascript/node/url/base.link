@@ -1,0 +1,154 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/http/client-request-args
+  take form client-request-args
+
+load @drumwork/land/code/javascript/node/url/url
+  take form url
+
+load @drumwork/land/code/javascript/node/url/url-format-options
+  take form url-format-options
+
+load @drumwork/land/code/javascript/node/url/url-object
+  take form url-object
+
+load @drumwork/land/code/javascript/node/url/url-search-params
+  take form url-search-params
+
+load @drumwork/land/code/javascript/node/url/url-with-parsed-query
+  take form url-with-parsed-query
+
+load @drumwork/land/code/javascript/node/url/url-with-string-query
+  take form url-with-string-query
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+load @drumwork/seed/code/form/test
+  take form test
+    save form test-link-text
+
+host url, name <URL>
+  home take
+  like test-link-text
+    stem roll
+      like global-this
+      like form-link-text
+        take onmessage, name <onmessage>
+          like native-any
+          lock free
+        take url, name <URL>
+          name url
+          lock free
+      hook take
+        like url
+      hook free
+        like url
+host url-search-params
+  name <URLSearchParams>
+  home take
+  like test-link-text
+    stem roll
+      like global-this
+      like form-link-text
+        take onmessage, name <onmessage>
+          like native-any
+          lock free
+        take url-search-params
+          name <URLSearchParams>
+          name url-search-params
+          lock free
+      hook take
+        like url-search-params
+      hook free
+        like url-search-params
+
+task parse, name <parse>
+  take url-string, like native-string
+  free seed, like url-with-string-query
+
+task parse, name <parse>
+  take url-string, like native-string
+  take parse-query-string
+    like sink-link-text
+      text <false>
+      like native-undefined
+  take slashes-denote-host, like native-boolean
+    void take
+  free seed, like url-with-string-query
+
+task parse, name <parse>
+  take url-string, like native-string
+  take parse-query-string, text <true>
+  take slashes-denote-host, like native-boolean
+    void take
+  free seed, like url-with-parsed-query
+
+task parse, name <parse>
+  take url-string, like native-string
+  take parse-query-string, like native-boolean
+  take slashes-denote-host, like native-boolean
+    void take
+  free seed, like url
+
+task format, name <format>
+  take url-object, like url
+  take options, like url-format-options
+    void take
+  free seed, like native-string
+
+task format, name <format>
+  take url-object
+    like sink-link-text
+      like url-object
+      like native-string
+  free seed, like native-string
+
+task resolve, name <resolve>
+  take from, like native-string
+  take to, like native-string
+  free seed, like native-string
+
+task domain-to-ascii
+  name <domainToASCII>
+  take domain, like native-string
+  free seed, like native-string
+
+task domain-to-unicode
+  name <domainToUnicode>
+  take domain, like native-string
+  free seed, like native-string
+
+task file-url-to-path
+  name <fileURLToPath>
+  take url
+    like sink-link-text
+      like native-string
+      like url
+  free seed, like native-string
+
+task path-to-file-url
+  name <pathToFileURL>
+  take path, like native-string
+  free seed, like url
+
+task url-to-http-options
+  name <urlToHttpOptions>
+  take url, like url
+  free seed, like client-request-args

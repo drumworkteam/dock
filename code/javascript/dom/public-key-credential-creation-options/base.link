@@ -1,0 +1,66 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/attestation-conveyance-preference
+  take form attestation-conveyance-preference
+
+load @drumwork/land/code/javascript/dom/authentication-extensions-client-inputs
+  take form authentication-extensions-client-inputs
+
+load @drumwork/land/code/javascript/dom/authenticator-selection-criteria
+  take form authenticator-selection-criteria
+
+load @drumwork/land/code/javascript/dom/buffer-source
+  take form buffer-source
+
+load @drumwork/land/code/javascript/dom/public-key-credential-descriptor
+  take form public-key-credential-descriptor
+
+load @drumwork/land/code/javascript/dom/public-key-credential-parameters
+  take form public-key-credential-parameters
+
+load @drumwork/land/code/javascript/dom/public-key-credential-rp-entity
+  take form public-key-credential-rp-entity
+
+load @drumwork/land/code/javascript/dom/public-key-credential-user-entity
+  take form public-key-credential-user-entity
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form public-key-credential-creation-options
+  name <PublicKeyCredentialCreationOptions>
+  take attestation, name <attestation>
+    like attestation-conveyance-preference
+    lock free
+  take authenticator-selection
+    name <authenticatorSelection>
+    like authenticator-selection-criteria
+    lock free
+  take challenge, name <challenge>
+    like buffer-source
+    lock free
+  take exclude-credentials
+    name <excludeCredentials>
+    like list-link-text
+      like public-key-credential-descriptor
+    lock free
+  take extensions, name <extensions>
+    like authentication-extensions-client-inputs
+    lock free
+  take pub-key-cred-params
+    name <pubKeyCredParams>
+    like list-link-text
+      like public-key-credential-parameters
+    lock free
+  take rp, name <rp>
+    like public-key-credential-rp-entity
+    lock free
+  take timeout, name <timeout>
+    like native-number
+    lock free
+  take user, name <user>
+    like public-key-credential-user-entity
+    lock free

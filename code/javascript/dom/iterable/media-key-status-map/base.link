@@ -1,0 +1,42 @@
+
+load @drumwork/land/code/javascript/base/iterable-iterator
+  take form iterable-iterator
+
+load @drumwork/land/code/javascript/dom/buffer-source
+  take form buffer-source
+
+load @drumwork/land/code/javascript/dom/media-key-status
+  take form media-key-status
+
+load @drumwork/land/code/javascript/dom/media-key-status-map
+  take form media-key-status-map
+
+load @drumwork/seed/code/form/band
+  take form band
+    save form band-link-text
+
+form media-key-status-map
+  name <MediaKeyStatusMap>
+  task loan symbol/iterator
+    free seed
+      like iterable-iterator
+        like band-link-text
+          like buffer-source
+          like media-key-status
+
+  task entries, name <entries>
+    free seed
+      like iterable-iterator
+        like band-link-text
+          like buffer-source
+          like media-key-status
+
+  task keys, name <keys>
+    free seed
+      like iterable-iterator
+        like buffer-source
+
+  task values, name <values>
+    free seed
+      like iterable-iterator
+        like media-key-status

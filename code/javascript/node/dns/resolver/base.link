@@ -1,0 +1,42 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/node/dns/resolver-options
+  take form resolver-options
+
+form resolver, name <Resolver>
+  take get-servers, name <getServers>, like get-servers
+  take resolve, name <resolve>, like resolve
+  take resolve4, name <resolve4>, like resolve4
+  take resolve6, name <resolve6>, like resolve6
+  take resolve-any, name <resolveAny>, like resolve-any
+  take resolve-cname, name <resolveCname>, like resolve-cname
+  take resolve-mx, name <resolveMx>, like resolve-mx
+  take resolve-naptr, name <resolveNaptr>, like resolve-naptr
+  take resolve-ns, name <resolveNs>, like resolve-ns
+  take resolve-ptr, name <resolvePtr>, like resolve-ptr
+  take resolve-soa, name <resolveSoa>, like resolve-soa
+  take resolve-srv, name <resolveSrv>, like resolve-srv
+  take resolve-txt, name <resolveTxt>, like resolve-txt
+  take reverse, name <reverse>, like reverse
+  take set-servers, name <setServers>, like set-servers
+
+  task cancel, name <cancel>
+    free seed, like native-void
+
+  task set-local-address
+    name <setLocalAddress>
+    take ipv4, like native-string
+      void take
+    take ipv6, like native-string
+      void take
+    free seed, like native-void
+
+form resolver-constructor
+  hook make
+    take options, like resolver-options
+      void take

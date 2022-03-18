@@ -1,0 +1,32 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/inspector/runtime/remote-object-id
+  take form remote-object-id
+
+load @drumwork/land/code/javascript/node/inspector/runtime/unserializable-value
+  take form unserializable-value
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form call-argument, name <CallArgument>
+  take value, name <value>
+    like native-any
+    lock free
+  take unserializable-value
+    name <unserializableValue>
+    like sink-link-text
+      like unserializable-value
+      like native-undefined
+    lock free
+  take object-id, name <objectId>
+    like sink-link-text
+      like remote-object-id
+      like native-undefined
+    lock free

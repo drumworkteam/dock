@@ -1,0 +1,32 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/es5/array-buffer
+  take form array-buffer
+
+load @drumwork/land/code/javascript/webworker/blob
+  take form blob
+
+form file-reader-sync
+  name <FileReaderSync>
+  task read-as-array-buffer
+    name <readAsArrayBuffer>
+    take blob, like blob
+    free seed, like array-buffer
+
+  task read-as-binary-string
+    name <readAsBinaryString>
+    take blob, like blob
+    free seed, like native-string
+
+  task read-as-data-url
+    name <readAsDataURL>
+    take blob, like blob
+    free seed, like native-string
+
+  task read-as-text, name <readAsText>
+    take blob, like blob
+    take encoding, like native-string
+      void take
+    free seed, like native-string

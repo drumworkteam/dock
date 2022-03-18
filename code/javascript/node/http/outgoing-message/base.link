@@ -1,0 +1,127 @@
+
+load @drumwork/land/code/javascript/base/incoming-message
+  take form incoming-message
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-this
+  take form native-this
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/readonly-array
+  take form readonly-array
+
+load @drumwork/land/code/javascript/base/socket
+  take form socket
+
+load @drumwork/land/code/javascript/node/http/outgoing-http-headers
+  take form outgoing-http-headers
+
+load @drumwork/seed/code/form/band
+  take form band
+    save form band-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form outgoing-message
+  name <OutgoingMessage>
+  base stream-writable
+  take req, name <req>, like incoming-message
+  take chunked-encoding, name <chunkedEncoding>, like native-boolean
+  take should-keep-alive, name <shouldKeepAlive>, like native-boolean
+  take use-chunked-encoding-by-default, name <useChunkedEncodingByDefault>, like native-boolean
+  take send-date, name <sendDate>, like native-boolean
+  take finished, name <finished>, like native-boolean
+  take headers-sent, name <headersSent>, like native-boolean
+  take connection, name <connection>
+    like sink-link-text
+      like socket
+      like native-null
+  take socket, name <socket>
+    like sink-link-text
+      like socket
+      like native-null
+
+  task set-timeout, name <setTimeout>
+    take msecs, like native-number
+    take callback
+      like task
+        free seed, like native-void
+      void take
+    free seed, like native-this
+
+  task set-header, name <setHeader>
+    take name, like native-string
+    take value
+      like sink-link-text
+        like native-number
+        like native-string
+        like readonly-array
+          like native-string
+    free seed, like native-this
+
+  task get-header, name <getHeader>
+    take name, like native-string
+    free seed
+      like sink-link-text
+        like native-number
+        like native-string
+        like list-link-text
+          like native-string
+        like native-undefined
+
+  task get-headers, name <getHeaders>
+    free seed, like outgoing-http-headers
+
+  task get-header-names
+    name <getHeaderNames>
+    free seed
+      like list-link-text
+        like native-string
+
+  task has-header, name <hasHeader>
+    take name, like native-string
+    free seed, like native-boolean
+
+  task remove-header
+    name <removeHeader>
+    take name, like native-string
+    free seed, like native-void
+
+  task add-trailers, name <addTrailers>
+    take headers
+      like sink-link-text
+        like outgoing-http-headers
+        like readonly-array
+          like band-link-text
+            like native-string
+            like native-string
+    free seed, like native-void
+
+  task flush-headers
+    name <flushHeaders>
+    free seed, like native-void
+
+form outgoing-message-constructor
+  hook make

@@ -1,0 +1,138 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/node-js-dict
+  take form node-js-dict
+
+load @drumwork/land/code/javascript/base/node-js-platform
+  take form node-js-platform
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/buffer/buffer-encoding
+  take form buffer-encoding
+
+load @drumwork/land/code/javascript/node/os/cpu-info
+  take form cpu-info
+
+load @drumwork/land/code/javascript/node/os/network-interface-info
+  take form network-interface-info
+
+load @drumwork/land/code/javascript/node/os/user-info
+  take form user-info
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+host dev-null, name <devNull>
+  like native-string
+host eol, name <EOL>
+  like native-string
+
+task hostname, name <hostname>
+  free seed, like native-string
+
+task loadavg, name <loadavg>
+  free seed
+    like list-link-text
+      like native-number
+
+task uptime, name <uptime>
+  free seed, like native-number
+
+task freemem, name <freemem>
+  free seed, like native-number
+
+task totalmem, name <totalmem>
+  free seed, like native-number
+
+task cpus, name <cpus>
+  free seed
+    like list-link-text
+      like cpu-info
+
+task type, name <type>
+  free seed, like native-string
+
+task release, name <release>
+  free seed, like native-string
+
+task network-interfaces
+  name <networkInterfaces>
+  free seed
+    like node-js-dict
+      like list-link-text
+        like network-interface-info
+
+task homedir, name <homedir>
+  free seed, like native-string
+
+task user-info, name <userInfo>
+  take options
+    like form-link-text
+      take encoding, name <encoding>
+        text <buffer>
+        lock free
+  free seed
+    like user-info
+      like buffer
+
+task user-info, name <userInfo>
+  take options
+    like form-link-text
+      take encoding, name <encoding>
+        like buffer-encoding
+        lock free
+    void take
+  free seed
+    like user-info
+      like native-string
+
+task arch, name <arch>
+  free seed, like native-string
+
+task version, name <version>
+  free seed, like native-string
+
+task platform, name <platform>
+  free seed, like node-js-platform
+
+task tmpdir, name <tmpdir>
+  free seed, like native-string
+
+task endianness, name <endianness>
+  free seed
+    like sink-link-text
+      text <BE>
+      text <LE>
+
+task get-priority, name <getPriority>
+  take pid, like native-number
+    void take
+  free seed, like native-number
+
+task set-priority, name <setPriority>
+  take priority, like native-number
+  free seed, like native-void
+
+task set-priority, name <setPriority>
+  take pid, like native-number
+  take priority, like native-number
+  free seed, like native-void

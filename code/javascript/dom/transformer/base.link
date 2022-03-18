@@ -1,0 +1,47 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/dom/transformer-flush-callback
+  take form transformer-flush-callback
+
+load @drumwork/land/code/javascript/dom/transformer-start-callback
+  take form transformer-start-callback
+
+load @drumwork/land/code/javascript/dom/transformer-transform-callback
+  take form transformer-transform-callback
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+form transformer, name <Transformer>
+  head i, like like-link-text
+    back native-any
+  head o, like like-link-text
+    back native-any
+
+  take flush, name <flush>
+    like transformer-flush-callback
+      like o
+    lock free
+  take readable-type
+    name <readableType>
+    like native-undefined
+    lock free
+  take start, name <start>
+    like transformer-start-callback
+      like o
+    lock free
+  take transform, name <transform>
+    like transformer-transform-callback
+      like i
+      like o
+    lock free
+  take writable-type
+    name <writableType>
+    like native-undefined
+    lock free

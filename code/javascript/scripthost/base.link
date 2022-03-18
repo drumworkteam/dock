@@ -1,0 +1,130 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/scripthost/active-x-object
+  take form active-x-object
+
+load @drumwork/land/code/javascript/scripthost/enumerator-constructor
+  take form enumerator-constructor
+
+load @drumwork/land/code/javascript/scripthost/text-stream-reader
+  take form text-stream-reader
+
+load @drumwork/land/code/javascript/scripthost/text-stream-writer
+  take form text-stream-writer
+
+load @drumwork/land/code/javascript/scripthost/vb-array-constructor
+  take form vb-array-constructor
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+host active-x-object
+  name <ActiveXObject>
+  like active-x-object
+host w-script, name <WScript>
+  like form-link-text
+    task echo, name <Echo>
+      take s, like native-any
+      free seed, like native-void
+
+    take std-err, name <StdErr>
+      like text-stream-writer
+      lock free
+    take std-out, name <StdOut>
+      like text-stream-writer
+      lock free
+    take arguments, name <Arguments>
+      like form-link-text
+        take length, name <length>
+          like native-number
+          lock free
+        task item, name <Item>
+          take n, like native-number
+          free seed, like native-string
+
+      lock free
+    take script-full-name
+      name <ScriptFullName>
+      like native-string
+      lock free
+    task quit, name <Quit>
+      take exit-code, like native-number
+        void take
+      free seed, like native-number
+
+    take build-version
+      name <BuildVersion>
+      like native-number
+      lock free
+    take full-name, name <FullName>
+      like native-string
+      lock free
+    take interactive, name <Interactive>
+      like native-boolean
+      lock free
+    take name, name <Name>
+      like native-string
+      lock free
+    take path, name <Path>
+      like native-string
+      lock free
+    take script-name, name <ScriptName>
+      like native-string
+      lock free
+    take std-in, name <StdIn>
+      like text-stream-reader
+      lock free
+    take version, name <Version>
+      like native-string
+      lock free
+    task connect-object
+      name <ConnectObject>
+      take obj-event-source, like native-any
+      take str-prefix, like native-string
+      free seed, like native-void
+
+    task create-object
+      name <CreateObject>
+      take str-prog-id, like native-string
+      take str-prefix, like native-string
+        void take
+      free seed, like native-any
+
+    task disconnect-object
+      name <DisconnectObject>
+      take obj, like native-any
+      free seed, like native-void
+
+    task get-object, name <GetObject>
+      take str-pathname, like native-string
+      take str-prog-id, like native-string
+        void take
+      take str-prefix, like native-string
+        void take
+      free seed, like native-any
+
+    task sleep, name <Sleep>
+      take int-time, like native-number
+      free seed, like native-void
+
+host wsh, name <WSH>
+  like w-script
+host enumerator, name <Enumerator>
+  like enumerator-constructor
+host vb-array, name <VBArray>
+  like vb-array-constructor

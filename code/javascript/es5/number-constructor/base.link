@@ -1,0 +1,31 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/es5/number
+  take form number
+
+form number-constructor
+  name <NumberConstructor>
+  take prototype, name <prototype>
+    like number
+  take max-value, name <MAX_VALUE>
+    like native-number
+  take min-value, name <MIN_VALUE>
+    like native-number
+  take na-n, name <NaN>
+    like native-number
+  take negative-infinity
+    name <NEGATIVE_INFINITY>
+    like native-number
+  take positive-infinity
+    name <POSITIVE_INFINITY>
+    like native-number
+
+  hook make
+    take value, like native-any
+      void take
+    free seed, like number

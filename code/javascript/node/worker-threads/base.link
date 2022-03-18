@@ -1,0 +1,94 @@
+
+load @drumwork/land/code/javascript/base/message-port
+  take form message-port
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-object
+  take form native-object
+
+load @drumwork/land/code/javascript/base/native-symbol
+  take form native-symbol
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/node/vm/context
+  take form context
+
+load @drumwork/land/code/javascript/node/worker-threads/resource-limits
+  take form resource-limits
+
+load @drumwork/land/code/javascript/node/worker-threads/serializable
+  take form serializable
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+host is-main-thread, name <isMainThread>
+  like native-boolean
+host parent-port, name <parentPort>
+  like sink-link-text
+    like native-null
+    like message-port
+host resource-limits
+  name <resourceLimits>
+  like resource-limits
+host share-env, name <SHARE_ENV>
+  like native-symbol
+    cool take
+host thread-id, name <threadId>
+  like native-number
+host worker-data, name <workerData>
+  like native-any
+
+task mark-as-untransferable
+  name <markAsUntransferable>
+  take object, like native-object
+  free seed, like native-void
+
+task move-message-port-to-context
+  name <moveMessagePortToContext>
+  take port, like message-port
+  take contextified-sandbox, like context
+  free seed, like message-port
+
+task receive-message-on-port
+  name <receiveMessageOnPort>
+  take port, like message-port
+  free seed
+    like sink-link-text
+      like form-link-text
+        take message, name <message>
+          like native-any
+          lock free
+      like native-undefined
+
+task get-environment-data
+  name <getEnvironmentData>
+  take key, like serializable
+  free seed, like serializable
+
+task set-environment-data
+  name <setEnvironmentData>
+  take key, like serializable
+  take value, like serializable
+  free seed, like native-void

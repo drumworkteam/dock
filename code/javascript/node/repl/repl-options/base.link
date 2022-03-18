@@ -1,0 +1,102 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/node-js-readable-stream
+  take form node-js-readable-stream
+
+load @drumwork/land/code/javascript/base/node-js-writable-stream
+  take form node-js-writable-stream
+
+load @drumwork/land/code/javascript/node/readline/async-completer
+  take form async-completer
+
+load @drumwork/land/code/javascript/node/readline/completer
+  take form completer
+
+load @drumwork/land/code/javascript/node/repl/repl-eval
+  take form repl-eval
+
+load @drumwork/land/code/javascript/node/repl/repl-writer
+  take form repl-writer
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form repl-options, name <ReplOptions>
+  take prompt, name <prompt>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take input, name <input>
+    like sink-link-text
+      like node-js-readable-stream
+      like native-undefined
+    lock free
+  take output, name <output>
+    like sink-link-text
+      like node-js-writable-stream
+      like native-undefined
+    lock free
+  take terminal, name <terminal>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take eval, name <eval>
+    like sink-link-text
+      like repl-eval
+      like native-undefined
+    lock free
+  take preview, name <preview>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take use-colors, name <useColors>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take use-global, name <useGlobal>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take ignore-undefined
+    name <ignoreUndefined>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take writer, name <writer>
+    like sink-link-text
+      like repl-writer
+      like native-undefined
+    lock free
+  take completer, name <completer>
+    like sink-link-text
+      like completer
+      like async-completer
+      like native-undefined
+    lock free
+  take repl-mode, name <replMode>
+    like sink-link-text
+      like repl-mode-sloppy
+      like repl-mode-strict
+      like native-undefined
+    lock free
+  take break-eval-on-sigint
+    name <breakEvalOnSigint>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free

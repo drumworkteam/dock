@@ -1,0 +1,27 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/file
+  take form file
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form file-list, name <FileList>
+  take length, name <length>
+    like native-number
+
+  task item, name <item>
+    take index, like native-number
+    free seed
+      like sink-link-text
+        like file
+        like native-null
+
+  cite index, like native-number
+    like file

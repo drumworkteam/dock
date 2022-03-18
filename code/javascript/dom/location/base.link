@@ -1,0 +1,67 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/dom-string-list
+  take form dom-string-list
+
+load @drumwork/land/code/javascript/dom/url
+  take form url
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form location, name <Location>
+  take ancestor-origins
+    name <ancestorOrigins>
+    like dom-string-list
+  take hash, name <hash>
+    like native-string
+    lock free
+  take host, name <host>
+    like native-string
+    lock free
+  take hostname, name <hostname>
+    like native-string
+    lock free
+  take href, name <href>
+    like native-string
+    lock free
+  take origin, name <origin>
+    like native-string
+  take pathname, name <pathname>
+    like native-string
+    lock free
+  take port, name <port>
+    like native-string
+    lock free
+  take protocol, name <protocol>
+    like native-string
+    lock free
+  take search, name <search>
+    like native-string
+    lock free
+
+  task to-string, name <toString>
+    free seed, like native-string
+
+  task assign, name <assign>
+    take url
+      like sink-link-text
+        like native-string
+        like url
+    free seed, like native-void
+
+  task reload, name <reload>
+    free seed, like native-void
+
+  task replace, name <replace>
+    take url
+      like sink-link-text
+        like native-string
+        like url
+    free seed, like native-void

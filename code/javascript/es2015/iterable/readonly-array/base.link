@@ -1,0 +1,43 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/es2015/core/readonly-array
+  take form readonly-array
+
+load @drumwork/land/code/javascript/es2015/iterable/iterable-iterator
+  take form iterable-iterator
+
+load @drumwork/seed/code/form/band
+  take form band
+    save form band-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+form readonly-array
+  name <ReadonlyArray>
+  head t, like like-link-text
+
+  task loan symbol/iterator
+    free seed
+      like iterable-iterator
+        like t
+
+  task entries, name <entries>
+    free seed
+      like iterable-iterator
+        like band-link-text
+          like native-number
+          like t
+
+  task keys, name <keys>
+    free seed
+      like iterable-iterator
+        like native-number
+
+  task values, name <values>
+    free seed
+      like iterable-iterator
+        like t

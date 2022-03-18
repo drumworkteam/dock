@@ -1,0 +1,52 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/css-style-sheet
+  take form css-style-sheet
+
+load @drumwork/land/code/javascript/dom/element
+  take form element
+
+load @drumwork/land/code/javascript/dom/media-list
+  take form media-list
+
+load @drumwork/land/code/javascript/dom/processing-instruction
+  take form processing-instruction
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form style-sheet, name <StyleSheet>
+  take disabled, name <disabled>
+    like native-boolean
+    lock free
+  take href, name <href>
+    like sink-link-text
+      like native-string
+      like native-null
+  take media, name <media>
+    like media-list
+  take owner-node, name <ownerNode>
+    like sink-link-text
+      like element
+      like processing-instruction
+      like native-null
+  take parent-style-sheet
+    name <parentStyleSheet>
+    like sink-link-text
+      like css-style-sheet
+      like native-null
+  take title, name <title>
+    like sink-link-text
+      like native-string
+      like native-null
+  take type, name <type>
+    like native-string

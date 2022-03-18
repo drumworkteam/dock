@@ -1,0 +1,34 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/es5/string
+  take form string
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form string-constructor
+  name <StringConstructor>
+  take prototype, name <prototype>
+    like string
+
+  task from-char-code
+    name <fromCharCode>
+    take codes
+      like list-link-text
+        like native-number
+      rest take
+    free seed, like native-string
+
+  hook make
+    take value, like native-any
+      void take
+    free seed, like string

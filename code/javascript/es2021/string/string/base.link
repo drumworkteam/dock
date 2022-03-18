@@ -1,0 +1,44 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/es2020/string/string
+  take form string
+
+load @drumwork/land/code/javascript/es2020/symbol/wellknown/reg-exp
+  take form reg-exp
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form string, name <String>
+  task replace-all, name <replaceAll>
+    take search-value
+      like sink-link-text
+        like native-string
+        like reg-exp
+    take replace-value, like native-string
+    free seed, like native-string
+
+  task replace-all, name <replaceAll>
+    take search-value
+      like sink-link-text
+        like native-string
+        like reg-exp
+    take replacer
+      like task
+        take substring, like native-string
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-string
+    free seed, like native-string

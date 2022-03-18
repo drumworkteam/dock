@@ -1,0 +1,151 @@
+
+load @drumwork/land/code/javascript/base/iterable
+  take form iterable
+
+load @drumwork/land/code/javascript/base/iterable-iterator
+  take form iterable-iterator
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-this
+  take form native-this
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/readonly-array
+  take form readonly-array
+
+load @drumwork/land/code/javascript/base/record
+  take form record
+
+load @drumwork/land/code/javascript/node/url/url-search-params
+  take form url-search-params
+
+load @drumwork/seed/code/form/band
+  take form band
+    save form band-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form url-search-params
+  name <URLSearchParams>
+  task append, name <append>
+    take name, like native-string
+    take value, like native-string
+    free seed, like native-void
+
+  task delete, name <delete>
+    take name, like native-string
+    free seed, like native-void
+
+  task entries, name <entries>
+    free seed
+      like iterable-iterator
+        like band-link-text
+          like native-string
+          like native-string
+
+  task for-each, name <forEach>
+    head t-this, like like-link-text
+      back native-this
+    take callback
+      like task
+        take this, like t-this
+        take value, like native-string
+        take name, like native-string
+        take search-params, like url-search-params
+        free seed, like native-void
+    take this-arg, like t-this
+      void take
+    free seed, like native-void
+
+  task get, name <get>
+    take name, like native-string
+    free seed
+      like sink-link-text
+        like native-string
+        like native-null
+
+  task get-all, name <getAll>
+    take name, like native-string
+    free seed
+      like list-link-text
+        like native-string
+
+  task has, name <has>
+    take name, like native-string
+    free seed, like native-boolean
+
+  task keys, name <keys>
+    free seed
+      like iterable-iterator
+        like native-string
+
+  task set, name <set>
+    take name, like native-string
+    take value, like native-string
+    free seed, like native-void
+
+  task sort, name <sort>
+    free seed, like native-void
+
+  task to-string, name <toString>
+    free seed, like native-string
+
+  task values, name <values>
+    free seed
+      like iterable-iterator
+        like native-string
+
+  task loan symbol/iterator
+    name <Symbol.iterator>
+    free seed
+      like iterable-iterator
+        like band-link-text
+          like native-string
+          like native-string
+
+form url-search-params-constructor
+  hook make
+    take init
+      like sink-link-text
+        like url-search-params
+        like native-string
+        like record
+          like native-string
+          like sink-link-text
+            like native-string
+            like readonly-array
+              like native-string
+        like iterable
+          like band-link-text
+            like native-string
+            like native-string
+        like readonly-array
+          like band-link-text
+            like native-string
+            like native-string
+      void take
+
+form url-search-params
+  name <URLSearchParams>
+  home take
+  base url-search-params

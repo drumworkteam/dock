@@ -1,0 +1,29 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/es2018/asyncgenerator/async-generator-function
+  take form async-generator-function
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form async-generator-function-constructor
+  name <AsyncGeneratorFunctionConstructor>
+  take length, name <length>
+    like native-number
+  take name, name <name>
+    like native-string
+  take prototype, name <prototype>
+    like async-generator-function
+
+  hook make
+    take args
+      like list-link-text
+        like native-string
+      rest take
+    free seed, like async-generator-function

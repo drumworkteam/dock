@@ -1,0 +1,100 @@
+
+load @drumwork/land/code/javascript/base/agent
+  take form agent
+
+load @drumwork/land/code/javascript/base/http-client-request
+  take form http-client-request
+
+load @drumwork/land/code/javascript/base/http-incoming-message
+  take form http-incoming-message
+
+load @drumwork/land/code/javascript/base/http-request-listener
+  take form http-request-listener
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/url
+  take form url
+
+load @drumwork/land/code/javascript/node/https/request-options
+  take form request-options
+
+load @drumwork/land/code/javascript/node/https/server
+  take form server
+
+load @drumwork/land/code/javascript/node/https/server-options
+  take form server-options
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+host global-agent, name <globalAgent>
+  like agent
+
+task create-server, name <createServer>
+  take request-listener, like http-request-listener
+    void take
+  free seed, like server
+
+task create-server, name <createServer>
+  take options, like server-options
+  take request-listener, like http-request-listener
+    void take
+  free seed, like server
+
+task request, name <request>
+  take options
+    like sink-link-text
+      like request-options
+      like native-string
+      like url
+  take callback
+    like task
+      take res, like http-incoming-message
+      free seed, like native-void
+    void take
+  free seed, like http-client-request
+
+task request, name <request>
+  take url
+    like sink-link-text
+      like native-string
+      like url
+  take options, like request-options
+  take callback
+    like task
+      take res, like http-incoming-message
+      free seed, like native-void
+    void take
+  free seed, like http-client-request
+
+task get, name <get>
+  take options
+    like sink-link-text
+      like request-options
+      like native-string
+      like url
+  take callback
+    like task
+      take res, like http-incoming-message
+      free seed, like native-void
+    void take
+  free seed, like http-client-request
+
+task get, name <get>
+  take url
+    like sink-link-text
+      like native-string
+      like url
+  take options, like request-options
+  take callback
+    like task
+      take res, like http-incoming-message
+      free seed, like native-void
+    void take
+  free seed, like http-client-request

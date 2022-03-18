@@ -1,0 +1,25 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/safe-array
+  take form safe-array
+
+load @drumwork/land/code/javascript/scripthost/vb-array
+  take form vb-array
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+form vb-array-constructor
+  name <VBArrayConstructor>
+  hook make
+    head t, like like-link-text
+      back native-any
+    take safe-array
+      like safe-array
+        like t
+    free seed
+      like vb-array
+        like t

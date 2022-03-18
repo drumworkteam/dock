@@ -1,0 +1,73 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/node
+  take form node
+
+load @drumwork/land/code/javascript/dom/node-filter
+  take form node-filter
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form tree-walker, name <TreeWalker>
+  take current-node, name <currentNode>
+    like node
+    lock free
+  take filter, name <filter>
+    like sink-link-text
+      like node-filter
+      like native-null
+  take root, name <root>
+    like node
+  take what-to-show, name <whatToShow>
+    like native-number
+
+  task first-child, name <firstChild>
+    free seed
+      like sink-link-text
+        like node
+        like native-null
+
+  task last-child, name <lastChild>
+    free seed
+      like sink-link-text
+        like node
+        like native-null
+
+  task next-node, name <nextNode>
+    free seed
+      like sink-link-text
+        like node
+        like native-null
+
+  task next-sibling, name <nextSibling>
+    free seed
+      like sink-link-text
+        like node
+        like native-null
+
+  task parent-node, name <parentNode>
+    free seed
+      like sink-link-text
+        like node
+        like native-null
+
+  task previous-node
+    name <previousNode>
+    free seed
+      like sink-link-text
+        like node
+        like native-null
+
+  task previous-sibling
+    name <previousSibling>
+    free seed
+      like sink-link-text
+        like node
+        like native-null

@@ -1,0 +1,53 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-unknown
+  take form native-unknown
+
+load @drumwork/land/code/javascript/es5/number-constructor
+  take form number-constructor
+
+form number-constructor
+  name <NumberConstructor>
+  take epsilon, name <EPSILON>
+    like native-number
+  take max-safe-integer
+    name <MAX_SAFE_INTEGER>
+    like native-number
+  take min-safe-integer
+    name <MIN_SAFE_INTEGER>
+    like native-number
+
+  task is-finite, name <isFinite>
+    take number, like native-unknown
+    free seed, like native-boolean
+
+  task is-integer, name <isInteger>
+    take number, like native-unknown
+    free seed, like native-boolean
+
+  task is-na-n, name <isNaN>
+    take number, like native-unknown
+    free seed, like native-boolean
+
+  task is-safe-integer
+    name <isSafeInteger>
+    take number, like native-unknown
+    free seed, like native-boolean
+
+  task parse-float, name <parseFloat>
+    take string, like native-string
+    free seed, like native-number
+
+  task parse-int, name <parseInt>
+    take string, like native-string
+    take radix, like native-number
+      void take
+    free seed, like native-number

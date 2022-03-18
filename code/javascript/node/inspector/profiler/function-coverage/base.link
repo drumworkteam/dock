@@ -1,0 +1,28 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/node/inspector/profiler/coverage-range
+  take form coverage-range
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form function-coverage
+  name <FunctionCoverage>
+  take function-name
+    name <functionName>
+    like native-string
+    lock free
+  take ranges, name <ranges>
+    like list-link-text
+      like coverage-range
+    lock free
+  take is-block-coverage
+    name <isBlockCoverage>
+    like native-boolean
+    lock free

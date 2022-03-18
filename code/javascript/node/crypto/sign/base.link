@@ -1,0 +1,62 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-this
+  take form native-this
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/crypto/binary-like
+  take form binary-like
+
+load @drumwork/land/code/javascript/node/crypto/binary-to-text-encoding
+  take form binary-to-text-encoding
+
+load @drumwork/land/code/javascript/node/crypto/encoding
+  take form encoding
+
+load @drumwork/land/code/javascript/node/crypto/key-like
+  take form key-like
+
+load @drumwork/land/code/javascript/node/crypto/sign-key-object-input
+  take form sign-key-object-input
+
+load @drumwork/land/code/javascript/node/crypto/sign-private-key-input
+  take form sign-private-key-input
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form sign, name <Sign>
+  base stream-writable
+  task update, name <update>
+    take data, like binary-like
+    free seed, like native-this
+
+  task update, name <update>
+    take data, like native-string
+    take input-encoding, like encoding
+    free seed, like native-this
+
+  task sign, name <sign>
+    take private-key
+      like sink-link-text
+        like key-like
+        like sign-key-object-input
+        like sign-private-key-input
+    free seed, like buffer
+
+  task sign, name <sign>
+    take private-key
+      like sink-link-text
+        like key-like
+        like sign-key-object-input
+        like sign-private-key-input
+    take output-format, like binary-to-text-encoding
+    free seed, like native-string
+
+form sign-constructor
+  hook make

@@ -1,0 +1,17 @@
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/node-js-errno-exception
+  take form node-js-errno-exception
+
+load @drumwork/land/code/javascript/node/http2/server-stream-file-response-options
+  take form server-stream-file-response-options
+
+form server-stream-file-response-options-with-error
+  name <ServerStreamFileResponseOptionsWithError>
+  base server-stream-file-response-options
+
+  task on-error, name <onError>
+    take err, like node-js-errno-exception
+    free seed, like native-void

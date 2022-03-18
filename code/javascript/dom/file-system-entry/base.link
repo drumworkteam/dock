@@ -1,0 +1,38 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/error-callback
+  take form error-callback
+
+load @drumwork/land/code/javascript/dom/file-system
+  take form file-system
+
+load @drumwork/land/code/javascript/dom/file-system-entry-callback
+  take form file-system-entry-callback
+
+form file-system-entry
+  name <FileSystemEntry>
+  take filesystem, name <filesystem>
+    like file-system
+  take full-path, name <fullPath>
+    like native-string
+  take is-directory, name <isDirectory>
+    like native-boolean
+  take is-file, name <isFile>
+    like native-boolean
+  take name, name <name>
+    like native-string
+
+  task get-parent, name <getParent>
+    take success-callback, like file-system-entry-callback
+      void take
+    take error-callback, like error-callback
+      void take
+    free seed, like native-void

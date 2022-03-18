@@ -1,0 +1,80 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/attr
+  take form attr
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form named-node-map, name <NamedNodeMap>
+  take length, name <length>
+    like native-number
+
+  task get-named-item
+    name <getNamedItem>
+    take qualified-name, like native-string
+    free seed
+      like sink-link-text
+        like attr
+        like native-null
+
+  task get-named-item-ns
+    name <getNamedItemNS>
+    take namespace
+      like sink-link-text
+        like native-string
+        like native-null
+    take local-name, like native-string
+    free seed
+      like sink-link-text
+        like attr
+        like native-null
+
+  task item, name <item>
+    take index, like native-number
+    free seed
+      like sink-link-text
+        like attr
+        like native-null
+
+  task remove-named-item
+    name <removeNamedItem>
+    take qualified-name, like native-string
+    free seed, like attr
+
+  task remove-named-item-ns
+    name <removeNamedItemNS>
+    take namespace
+      like sink-link-text
+        like native-string
+        like native-null
+    take local-name, like native-string
+    free seed, like attr
+
+  task set-named-item
+    name <setNamedItem>
+    take attr, like attr
+    free seed
+      like sink-link-text
+        like attr
+        like native-null
+
+  task set-named-item-ns
+    name <setNamedItemNS>
+    take attr, like attr
+    free seed
+      like sink-link-text
+        like attr
+        like native-null
+
+  cite index, like native-number
+    like attr

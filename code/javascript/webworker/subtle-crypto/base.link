@@ -1,0 +1,546 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/iterable/subtle-crypto
+  take form subtle-crypto
+
+load @drumwork/land/code/javascript/es5/array-buffer
+  take form array-buffer
+
+load @drumwork/land/code/javascript/es5/data-view
+  take form data-view
+
+load @drumwork/land/code/javascript/es5/float32-array
+  take form float32-array
+
+load @drumwork/land/code/javascript/es5/float64-array
+  take form float64-array
+
+load @drumwork/land/code/javascript/es5/int16-array
+  take form int16-array
+
+load @drumwork/land/code/javascript/es5/int32-array
+  take form int32-array
+
+load @drumwork/land/code/javascript/es5/int8-array
+  take form int8-array
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+load @drumwork/land/code/javascript/es5/uint16-array
+  take form uint16-array
+
+load @drumwork/land/code/javascript/es5/uint32-array
+  take form uint32-array
+
+load @drumwork/land/code/javascript/es5/uint8-array
+  take form uint8-array
+
+load @drumwork/land/code/javascript/es5/uint8-clamped-array
+  take form uint8-clamped-array
+
+load @drumwork/land/code/javascript/webworker/aes-cbc-params
+  take form aes-cbc-params
+
+load @drumwork/land/code/javascript/webworker/aes-cfb-params
+  take form aes-cfb-params
+
+load @drumwork/land/code/javascript/webworker/aes-cmac-params
+  take form aes-cmac-params
+
+load @drumwork/land/code/javascript/webworker/aes-ctr-params
+  take form aes-ctr-params
+
+load @drumwork/land/code/javascript/webworker/aes-derived-key-params
+  take form aes-derived-key-params
+
+load @drumwork/land/code/javascript/webworker/aes-gcm-params
+  take form aes-gcm-params
+
+load @drumwork/land/code/javascript/webworker/aes-key-algorithm
+  take form aes-key-algorithm
+
+load @drumwork/land/code/javascript/webworker/aes-key-gen-params
+  take form aes-key-gen-params
+
+load @drumwork/land/code/javascript/webworker/algorithm-identifier
+  take form algorithm-identifier
+
+load @drumwork/land/code/javascript/webworker/concat-params
+  take form concat-params
+
+load @drumwork/land/code/javascript/webworker/crypto-key
+  take form crypto-key
+
+load @drumwork/land/code/javascript/webworker/crypto-key-pair
+  take form crypto-key-pair
+
+load @drumwork/land/code/javascript/webworker/dh-import-key-params
+  take form dh-import-key-params
+
+load @drumwork/land/code/javascript/webworker/dh-key-derive-params
+  take form dh-key-derive-params
+
+load @drumwork/land/code/javascript/webworker/dh-key-gen-params
+  take form dh-key-gen-params
+
+load @drumwork/land/code/javascript/webworker/ec-key-gen-params
+  take form ec-key-gen-params
+
+load @drumwork/land/code/javascript/webworker/ec-key-import-params
+  take form ec-key-import-params
+
+load @drumwork/land/code/javascript/webworker/ecdh-key-derive-params
+  take form ecdh-key-derive-params
+
+load @drumwork/land/code/javascript/webworker/ecdsa-params
+  take form ecdsa-params
+
+load @drumwork/land/code/javascript/webworker/hkdf-params
+  take form hkdf-params
+
+load @drumwork/land/code/javascript/webworker/hmac-import-params
+  take form hmac-import-params
+
+load @drumwork/land/code/javascript/webworker/hmac-key-gen-params
+  take form hmac-key-gen-params
+
+load @drumwork/land/code/javascript/webworker/json-web-key
+  take form json-web-key
+
+load @drumwork/land/code/javascript/webworker/key-usage
+  take form key-usage
+
+load @drumwork/land/code/javascript/webworker/pbkdf2-params
+  take form pbkdf2-params
+
+load @drumwork/land/code/javascript/webworker/rsa-hashed-import-params
+  take form rsa-hashed-import-params
+
+load @drumwork/land/code/javascript/webworker/rsa-hashed-key-gen-params
+  take form rsa-hashed-key-gen-params
+
+load @drumwork/land/code/javascript/webworker/rsa-oaep-params
+  take form rsa-oaep-params
+
+load @drumwork/land/code/javascript/webworker/rsa-pss-params
+  take form rsa-pss-params
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form subtle-crypto, name <SubtleCrypto>
+  task decrypt, name <decrypt>
+    take algorithm
+      like sink-link-text
+        like algorithm-identifier
+        like rsa-oaep-params
+        like aes-ctr-params
+        like aes-cbc-params
+        like aes-cmac-params
+        like aes-gcm-params
+        like aes-cfb-params
+    take key, like crypto-key
+    take data
+      like sink-link-text
+        like int8-array
+        like int16-array
+        like int32-array
+        like uint8-array
+        like uint16-array
+        like uint32-array
+        like uint8-clamped-array
+        like float32-array
+        like float64-array
+        like data-view
+        like array-buffer
+    free seed
+      like promise
+        like array-buffer
+
+  task derive-bits, name <deriveBits>
+    take algorithm
+      like sink-link-text
+        like algorithm-identifier
+        like ecdh-key-derive-params
+        like dh-key-derive-params
+        like concat-params
+        like hkdf-params
+        like pbkdf2-params
+    take base-key, like crypto-key
+    take length, like native-number
+    free seed
+      like promise
+        like array-buffer
+
+  task derive-key, name <deriveKey>
+    take algorithm
+      like sink-link-text
+        like algorithm-identifier
+        like ecdh-key-derive-params
+        like dh-key-derive-params
+        like concat-params
+        like hkdf-params
+        like pbkdf2-params
+    take base-key, like crypto-key
+    take derived-key-type
+      like sink-link-text
+        like native-string
+        like aes-derived-key-params
+        like hmac-import-params
+        like concat-params
+        like hkdf-params
+        like pbkdf2-params
+    take extractable, like native-boolean
+    take key-usages
+      like list-link-text
+        like key-usage
+    free seed
+      like promise
+        like crypto-key
+
+  task digest, name <digest>
+    take algorithm, like algorithm-identifier
+    take data
+      like sink-link-text
+        like int8-array
+        like int16-array
+        like int32-array
+        like uint8-array
+        like uint16-array
+        like uint32-array
+        like uint8-clamped-array
+        like float32-array
+        like float64-array
+        like data-view
+        like array-buffer
+    free seed
+      like promise
+        like array-buffer
+
+  task encrypt, name <encrypt>
+    take algorithm
+      like sink-link-text
+        like algorithm-identifier
+        like rsa-oaep-params
+        like aes-ctr-params
+        like aes-cbc-params
+        like aes-cmac-params
+        like aes-gcm-params
+        like aes-cfb-params
+    take key, like crypto-key
+    take data
+      like sink-link-text
+        like int8-array
+        like int16-array
+        like int32-array
+        like uint8-array
+        like uint16-array
+        like uint32-array
+        like uint8-clamped-array
+        like float32-array
+        like float64-array
+        like data-view
+        like array-buffer
+    free seed
+      like promise
+        like array-buffer
+
+  task export-key, name <exportKey>
+    take format, text <jwk>
+    take key, like crypto-key
+    free seed
+      like promise
+        like json-web-key
+
+  task export-key, name <exportKey>
+    take format
+      like sink-link-text
+        text <raw>
+        text <pkcs8>
+        text <spki>
+    take key, like crypto-key
+    free seed
+      like promise
+        like array-buffer
+
+  task export-key, name <exportKey>
+    take format, like native-string
+    take key, like crypto-key
+    free seed
+      like promise
+        like sink-link-text
+          like json-web-key
+          like array-buffer
+
+  task generate-key, name <generateKey>
+    take algorithm
+      like sink-link-text
+        like rsa-hashed-key-gen-params
+        like ec-key-gen-params
+        like dh-key-gen-params
+    take extractable, like native-boolean
+    take key-usages
+      like list-link-text
+        like key-usage
+    free seed
+      like promise
+        like crypto-key-pair
+
+  task generate-key, name <generateKey>
+    take algorithm
+      like sink-link-text
+        like aes-key-gen-params
+        like hmac-key-gen-params
+        like pbkdf2-params
+    take extractable, like native-boolean
+    take key-usages
+      like list-link-text
+        like key-usage
+    free seed
+      like promise
+        like crypto-key
+
+  task generate-key, name <generateKey>
+    take algorithm, like algorithm-identifier
+    take extractable, like native-boolean
+    take key-usages
+      like list-link-text
+        like key-usage
+    free seed
+      like promise
+        like sink-link-text
+          like crypto-key-pair
+          like crypto-key
+
+  task import-key, name <importKey>
+    take format, text <jwk>
+    take key-data, like json-web-key
+    take algorithm
+      like sink-link-text
+        like algorithm-identifier
+        like rsa-hashed-import-params
+        like ec-key-import-params
+        like hmac-import-params
+        like dh-import-key-params
+        like aes-key-algorithm
+    take extractable, like native-boolean
+    take key-usages
+      like list-link-text
+        like key-usage
+    free seed
+      like promise
+        like crypto-key
+
+  task import-key, name <importKey>
+    take format
+      like sink-link-text
+        text <raw>
+        text <pkcs8>
+        text <spki>
+    take key-data
+      like sink-link-text
+        like int8-array
+        like int16-array
+        like int32-array
+        like uint8-array
+        like uint16-array
+        like uint32-array
+        like uint8-clamped-array
+        like float32-array
+        like float64-array
+        like data-view
+        like array-buffer
+    take algorithm
+      like sink-link-text
+        like algorithm-identifier
+        like rsa-hashed-import-params
+        like ec-key-import-params
+        like hmac-import-params
+        like dh-import-key-params
+        like aes-key-algorithm
+    take extractable, like native-boolean
+    take key-usages
+      like list-link-text
+        like key-usage
+    free seed
+      like promise
+        like crypto-key
+
+  task import-key, name <importKey>
+    take format, like native-string
+    take key-data
+      like sink-link-text
+        like json-web-key
+        like int8-array
+        like int16-array
+        like int32-array
+        like uint8-array
+        like uint16-array
+        like uint32-array
+        like uint8-clamped-array
+        like float32-array
+        like float64-array
+        like data-view
+        like array-buffer
+    take algorithm
+      like sink-link-text
+        like algorithm-identifier
+        like rsa-hashed-import-params
+        like ec-key-import-params
+        like hmac-import-params
+        like dh-import-key-params
+        like aes-key-algorithm
+    take extractable, like native-boolean
+    take key-usages
+      like list-link-text
+        like key-usage
+    free seed
+      like promise
+        like crypto-key
+
+  task sign, name <sign>
+    take algorithm
+      like sink-link-text
+        like algorithm-identifier
+        like rsa-pss-params
+        like ecdsa-params
+        like aes-cmac-params
+    take key, like crypto-key
+    take data
+      like sink-link-text
+        like int8-array
+        like int16-array
+        like int32-array
+        like uint8-array
+        like uint16-array
+        like uint32-array
+        like uint8-clamped-array
+        like float32-array
+        like float64-array
+        like data-view
+        like array-buffer
+    free seed
+      like promise
+        like array-buffer
+
+  task unwrap-key, name <unwrapKey>
+    take format
+      like sink-link-text
+        text <raw>
+        text <pkcs8>
+        text <spki>
+        text <jwk>
+        like native-string
+    take wrapped-key
+      like sink-link-text
+        like int8-array
+        like int16-array
+        like int32-array
+        like uint8-array
+        like uint16-array
+        like uint32-array
+        like uint8-clamped-array
+        like float32-array
+        like float64-array
+        like data-view
+        like array-buffer
+    take unwrapping-key, like crypto-key
+    take unwrap-algorithm
+      like sink-link-text
+        like algorithm-identifier
+        like rsa-oaep-params
+        like aes-ctr-params
+        like aes-cbc-params
+        like aes-cmac-params
+        like aes-gcm-params
+        like aes-cfb-params
+    take unwrapped-key-algorithm
+      like sink-link-text
+        like algorithm-identifier
+        like rsa-hashed-import-params
+        like ec-key-import-params
+        like hmac-import-params
+        like dh-import-key-params
+        like aes-key-algorithm
+    take extractable, like native-boolean
+    take key-usages
+      like list-link-text
+        like key-usage
+    free seed
+      like promise
+        like crypto-key
+
+  task verify, name <verify>
+    take algorithm
+      like sink-link-text
+        like algorithm-identifier
+        like rsa-pss-params
+        like ecdsa-params
+        like aes-cmac-params
+    take key, like crypto-key
+    take signature
+      like sink-link-text
+        like int8-array
+        like int16-array
+        like int32-array
+        like uint8-array
+        like uint16-array
+        like uint32-array
+        like uint8-clamped-array
+        like float32-array
+        like float64-array
+        like data-view
+        like array-buffer
+    take data
+      like sink-link-text
+        like int8-array
+        like int16-array
+        like int32-array
+        like uint8-array
+        like uint16-array
+        like uint32-array
+        like uint8-clamped-array
+        like float32-array
+        like float64-array
+        like data-view
+        like array-buffer
+    free seed
+      like promise
+        like native-boolean
+
+  task wrap-key, name <wrapKey>
+    take format
+      like sink-link-text
+        text <raw>
+        text <pkcs8>
+        text <spki>
+        text <jwk>
+        like native-string
+    take key, like crypto-key
+    take wrapping-key, like crypto-key
+    take wrap-algorithm
+      like sink-link-text
+        like algorithm-identifier
+        like rsa-oaep-params
+        like aes-ctr-params
+        like aes-cbc-params
+        like aes-cmac-params
+        like aes-gcm-params
+        like aes-cfb-params
+    free seed
+      like promise
+        like array-buffer

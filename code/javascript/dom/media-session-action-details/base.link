@@ -1,0 +1,37 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/media-session-action
+  take form media-session-action
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form media-session-action-details
+  name <MediaSessionActionDetails>
+  take action, name <action>
+    like media-session-action
+    lock free
+  take fast-seek, name <fastSeek>
+    like sink-link-text
+      like native-boolean
+      like native-null
+    lock free
+  take seek-offset, name <seekOffset>
+    like sink-link-text
+      like native-number
+      like native-null
+    lock free
+  take seek-time, name <seekTime>
+    like sink-link-text
+      like native-number
+      like native-null
+    lock free

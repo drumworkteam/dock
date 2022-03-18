@@ -1,0 +1,151 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/event
+  take form event
+
+load @drumwork/land/code/javascript/dom/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/event-target
+  take form event-target
+
+load @drumwork/land/code/javascript/dom/visual-viewport-event-map
+  take form visual-viewport-event-map
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form visual-viewport
+  name <VisualViewport>
+  base event-target
+
+  take height, name <height>
+    like native-number
+  take offset-left, name <offsetLeft>
+    like native-number
+  take offset-top, name <offsetTop>
+    like native-number
+  take onresize, name <onresize>
+    like sink-link-text
+      like task
+        take this, like visual-viewport
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onscroll, name <onscroll>
+    like sink-link-text
+      like task
+        take this, like visual-viewport
+        take ev, like event
+        free seed, like native-any
+      like native-null
+    lock free
+  take page-left, name <pageLeft>
+    like native-number
+  take page-top, name <pageTop>
+    like native-number
+  take scale, name <scale>
+    like native-number
+  take width, name <width>
+    like native-number
+
+  task add-event-listener
+    name <addEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like visual-viewport-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like visual-viewport
+        take ev
+          like form-link-link-text
+            like visual-viewport-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like visual-viewport-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like visual-viewport
+        take ev
+          like form-link-link-text
+            like visual-viewport-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void

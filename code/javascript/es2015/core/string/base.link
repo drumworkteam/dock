@@ -1,0 +1,110 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/es5/string
+  take form string
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form string, name <String>
+  task code-point-at, name <codePointAt>
+    take pos, like native-number
+    free seed
+      like sink-link-text
+        like native-number
+        like native-undefined
+
+  task includes, name <includes>
+    take search-string, like native-string
+    take position, like native-number
+      void take
+    free seed, like native-boolean
+
+  task ends-with, name <endsWith>
+    take search-string, like native-string
+    take end-position, like native-number
+      void take
+    free seed, like native-boolean
+
+  task normalize, name <normalize>
+    take form
+      like sink-link-text
+        text <NFC>
+        text <NFD>
+        text <NFKC>
+        text <NFKD>
+    free seed, like native-string
+
+  task normalize, name <normalize>
+    take form, like native-string
+      void take
+    free seed, like native-string
+
+  task repeat, name <repeat>
+    take count, like native-number
+    free seed, like native-string
+
+  task starts-with, name <startsWith>
+    take search-string, like native-string
+    take position, like native-number
+      void take
+    free seed, like native-boolean
+
+  task anchor, name <anchor>
+    take name, like native-string
+    free seed, like native-string
+
+  task big, name <big>
+    free seed, like native-string
+
+  task blink, name <blink>
+    free seed, like native-string
+
+  task bold, name <bold>
+    free seed, like native-string
+
+  task fixed, name <fixed>
+    free seed, like native-string
+
+  task fontcolor, name <fontcolor>
+    take color, like native-string
+    free seed, like native-string
+
+  task fontsize, name <fontsize>
+    take size, like native-number
+    free seed, like native-string
+
+  task fontsize, name <fontsize>
+    take size, like native-string
+    free seed, like native-string
+
+  task italics, name <italics>
+    free seed, like native-string
+
+  task link, name <link>
+    take url, like native-string
+    free seed, like native-string
+
+  task small, name <small>
+    free seed, like native-string
+
+  task strike, name <strike>
+    free seed, like native-string
+
+  task sub, name <sub>
+    free seed, like native-string
+
+  task sup, name <sup>
+    free seed, like native-string

@@ -1,0 +1,92 @@
+
+load @drumwork/land/code/javascript/base/date
+  take form date
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+form stats-base, name <StatsBase>
+  head t, like like-link-text
+
+  take dev, name <dev>
+    like t
+    lock free
+  take ino, name <ino>
+    like t
+    lock free
+  take mode, name <mode>
+    like t
+    lock free
+  take nlink, name <nlink>
+    like t
+    lock free
+  take uid, name <uid>
+    like t
+    lock free
+  take gid, name <gid>
+    like t
+    lock free
+  take rdev, name <rdev>
+    like t
+    lock free
+  take size, name <size>
+    like t
+    lock free
+  take blksize, name <blksize>
+    like t
+    lock free
+  take blocks, name <blocks>
+    like t
+    lock free
+  take atime-ms, name <atimeMs>
+    like t
+    lock free
+  take mtime-ms, name <mtimeMs>
+    like t
+    lock free
+  take ctime-ms, name <ctimeMs>
+    like t
+    lock free
+  take birthtime-ms, name <birthtimeMs>
+    like t
+    lock free
+  take atime, name <atime>
+    like date
+    lock free
+  take mtime, name <mtime>
+    like date
+    lock free
+  take ctime, name <ctime>
+    like date
+    lock free
+  take birthtime, name <birthtime>
+    like date
+    lock free
+
+  task is-file, name <isFile>
+    free seed, like native-boolean
+
+  task is-directory, name <isDirectory>
+    free seed, like native-boolean
+
+  task is-block-device
+    name <isBlockDevice>
+    free seed, like native-boolean
+
+  task is-character-device
+    name <isCharacterDevice>
+    free seed, like native-boolean
+
+  task is-symbolic-link
+    name <isSymbolicLink>
+    free seed, like native-boolean
+
+  task is-fifo, name <isFIFO>
+    free seed, like native-boolean
+
+  task is-socket, name <isSocket>
+    free seed, like native-boolean

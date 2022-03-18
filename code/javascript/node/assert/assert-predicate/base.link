@@ -1,0 +1,29 @@
+
+load @drumwork/land/code/javascript/base/error
+  take form error
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-object
+  take form native-object
+
+load @drumwork/land/code/javascript/base/native-unknown
+  take form native-unknown
+
+load @drumwork/land/code/javascript/base/reg-exp
+  take form reg-exp
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form assert-predicate
+  name <AssertPredicate>
+  like sink-link-text
+    like reg-exp
+    like task
+      take thrown, like native-unknown
+      free seed, like native-boolean
+    like native-object
+    like error

@@ -1,0 +1,43 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/event
+  take form event
+
+load @drumwork/land/code/javascript/dom/event-target
+  take form event-target
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form progress-event
+  name <ProgressEvent>
+  base event
+
+  head t, like like-link-text
+    base event-target
+    back event-target
+
+  take length-computable
+    name <lengthComputable>
+    like native-boolean
+  take loaded, name <loaded>
+    like native-number
+  take target, name <target>
+    like sink-link-text
+      like t
+      like native-null
+  take total, name <total>
+    like native-number

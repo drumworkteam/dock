@@ -1,0 +1,21 @@
+
+load @drumwork/land/code/javascript/dom/event
+  take form event
+
+load @drumwork/land/code/javascript/dom/idb-request-event-map
+  take form idb-request-event-map
+
+load @drumwork/land/code/javascript/dom/idb-version-change-event
+  take form idb-version-change-event
+
+form idb-open-db-request-event-map
+  name <IDBOpenDBRequestEventMap>
+  base idb-request-event-map
+
+  take blocked, name <blocked>
+    like event
+    lock free
+  take upgradeneeded
+    name <upgradeneeded>
+    like idb-version-change-event
+    lock free

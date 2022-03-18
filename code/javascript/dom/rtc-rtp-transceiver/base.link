@@ -1,0 +1,44 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/rtc-rtp-receiver
+  take form rtc-rtp-receiver
+
+load @drumwork/land/code/javascript/dom/rtc-rtp-sender
+  take form rtc-rtp-sender
+
+load @drumwork/land/code/javascript/dom/rtc-rtp-transceiver-direction
+  take form rtc-rtp-transceiver-direction
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form rtc-rtp-transceiver
+  name <RTCRtpTransceiver>
+  take current-direction
+    name <currentDirection>
+    like sink-link-text
+      like rtc-rtp-transceiver-direction
+      like native-null
+  take direction, name <direction>
+    like rtc-rtp-transceiver-direction
+    lock free
+  take mid, name <mid>
+    like sink-link-text
+      like native-string
+      like native-null
+  take receiver, name <receiver>
+    like rtc-rtp-receiver
+  take sender, name <sender>
+    like rtc-rtp-sender
+
+  task stop, name <stop>
+    free seed, like native-void

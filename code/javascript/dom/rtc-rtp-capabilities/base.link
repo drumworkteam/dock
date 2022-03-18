@@ -1,0 +1,22 @@
+
+load @drumwork/land/code/javascript/dom/rtc-rtp-codec-capability
+  take form rtc-rtp-codec-capability
+
+load @drumwork/land/code/javascript/dom/rtc-rtp-header-extension-capability
+  take form rtc-rtp-header-extension-capability
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form rtc-rtp-capabilities
+  name <RTCRtpCapabilities>
+  take codecs, name <codecs>
+    like list-link-text
+      like rtc-rtp-codec-capability
+    lock free
+  take header-extensions
+    name <headerExtensions>
+    like list-link-text
+      like rtc-rtp-header-extension-capability
+    lock free

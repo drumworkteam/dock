@@ -1,0 +1,185 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/element
+  take form element
+
+load @drumwork/land/code/javascript/dom/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/html-element
+  take form html-element
+
+load @drumwork/land/code/javascript/dom/html-element-event-map
+  take form html-element-event-map
+
+load @drumwork/land/code/javascript/dom/html-form-controls-collection
+  take form html-form-controls-collection
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form html-form-element
+  name <HTMLFormElement>
+  base html-element
+
+  take accept-charset
+    name <acceptCharset>
+    like native-string
+    lock free
+  take action, name <action>
+    like native-string
+    lock free
+  take autocomplete, name <autocomplete>
+    like native-string
+    lock free
+  take elements, name <elements>
+    like html-form-controls-collection
+  take encoding, name <encoding>
+    like native-string
+    lock free
+  take enctype, name <enctype>
+    like native-string
+    lock free
+  take length, name <length>
+    like native-number
+  take method, name <method>
+    like native-string
+    lock free
+  take name, name <name>
+    like native-string
+    lock free
+  take no-validate, name <noValidate>
+    like native-boolean
+    lock free
+  take target, name <target>
+    like native-string
+    lock free
+
+  task check-validity
+    name <checkValidity>
+    free seed, like native-boolean
+
+  task report-validity
+    name <reportValidity>
+    free seed, like native-boolean
+
+  task request-submit
+    name <requestSubmit>
+    take submitter
+      like sink-link-text
+        like html-element
+        like native-null
+      void take
+    free seed, like native-void
+
+  task reset, name <reset>
+    free seed, like native-void
+
+  task submit, name <submit>
+    free seed, like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like html-element-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like html-form-element
+        take ev
+          like form-link-link-text
+            like html-element-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like html-element-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like html-form-element
+        take ev
+          like form-link-link-text
+            like html-element-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void
+
+  cite index, like native-number
+    like element
+
+  cite name, like native-string
+    like native-any

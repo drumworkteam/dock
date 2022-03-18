@@ -1,0 +1,37 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-unknown
+  take form native-unknown
+
+load @drumwork/land/code/javascript/node/perf-hooks/entry-type
+  take form entry-type
+
+load @drumwork/land/code/javascript/node/perf-hooks/node-gc-performance-detail
+  take form node-gc-performance-detail
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form performance-entry
+  name <PerformanceEntry>
+  take duration, name <duration>, like native-number
+  take name, name <name>, like native-string
+  take start-time, name <startTime>, like native-number
+  take entry-type, name <entryType>, like entry-type
+  take detail, name <detail>
+    like sink-link-text
+      like node-gc-performance-detail
+      like native-unknown
+      like native-undefined
+
+form performance-entry-constructor
+  hook make

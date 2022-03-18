@@ -1,0 +1,126 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/offscreen-canvas
+  take form offscreen-canvas
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+load @drumwork/land/code/javascript/webworker/blob
+  take form blob
+
+load @drumwork/land/code/javascript/webworker/canvas-rendering-context2-d-settings
+  take form canvas-rendering-context2-d-settings
+
+load @drumwork/land/code/javascript/webworker/event-target
+  take form event-target
+
+load @drumwork/land/code/javascript/webworker/image-bitmap
+  take form image-bitmap
+
+load @drumwork/land/code/javascript/webworker/image-bitmap-rendering-context
+  take form image-bitmap-rendering-context
+
+load @drumwork/land/code/javascript/webworker/image-bitmap-rendering-context-settings
+  take form image-bitmap-rendering-context-settings
+
+load @drumwork/land/code/javascript/webworker/image-encode-options
+  take form image-encode-options
+
+load @drumwork/land/code/javascript/webworker/offscreen-canvas-rendering-context2-d
+  take form offscreen-canvas-rendering-context2-d
+
+load @drumwork/land/code/javascript/webworker/offscreen-rendering-context
+  take form offscreen-rendering-context
+
+load @drumwork/land/code/javascript/webworker/offscreen-rendering-context-id
+  take form offscreen-rendering-context-id
+
+load @drumwork/land/code/javascript/webworker/web-gl-context-attributes
+  take form web-gl-context-attributes
+
+load @drumwork/land/code/javascript/webworker/web-gl-rendering-context
+  take form web-gl-rendering-context
+
+load @drumwork/land/code/javascript/webworker/web-gl2-rendering-context
+  take form web-gl2-rendering-context
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form offscreen-canvas
+  name <OffscreenCanvas>
+  base event-target
+
+  take height, name <height>
+    like native-number
+    lock free
+  take width, name <width>
+    like native-number
+    lock free
+
+  task convert-to-blob
+    name <convertToBlob>
+    take options, like image-encode-options
+      void take
+    free seed
+      like promise
+        like blob
+
+  task get-context, name <getContext>
+    take context-id, text <2d>
+    take options, like canvas-rendering-context2-d-settings
+      void take
+    free seed
+      like sink-link-text
+        like offscreen-canvas-rendering-context2-d
+        like native-null
+
+  task get-context, name <getContext>
+    take context-id, text <bitmaprenderer>
+    take options, like image-bitmap-rendering-context-settings
+      void take
+    free seed
+      like sink-link-text
+        like image-bitmap-rendering-context
+        like native-null
+
+  task get-context, name <getContext>
+    take context-id, text <webgl>
+    take options, like web-gl-context-attributes
+      void take
+    free seed
+      like sink-link-text
+        like web-gl-rendering-context
+        like native-null
+
+  task get-context, name <getContext>
+    take context-id, text <webgl2>
+    take options, like web-gl-context-attributes
+      void take
+    free seed
+      like sink-link-text
+        like web-gl2-rendering-context
+        like native-null
+
+  task get-context, name <getContext>
+    take context-id, like offscreen-rendering-context-id
+    take options, like native-any
+      void take
+    free seed
+      like sink-link-text
+        like offscreen-rendering-context
+        like native-null
+
+  task transfer-to-image-bitmap
+    name <transferToImageBitmap>
+    free seed, like image-bitmap

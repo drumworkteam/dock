@@ -1,0 +1,52 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form storage, name <Storage>
+  take length, name <length>
+    like native-number
+
+  task clear, name <clear>
+    free seed, like native-void
+
+  task get-item, name <getItem>
+    take key, like native-string
+    free seed
+      like sink-link-text
+        like native-string
+        like native-null
+
+  task key, name <key>
+    take index, like native-number
+    free seed
+      like sink-link-text
+        like native-string
+        like native-null
+
+  task remove-item, name <removeItem>
+    take key, like native-string
+    free seed, like native-void
+
+  task set-item, name <setItem>
+    take key, like native-string
+    take value, like native-string
+    free seed, like native-void
+
+  cite name, like native-string
+    like native-any

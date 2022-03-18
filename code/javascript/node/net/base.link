@@ -1,0 +1,109 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/socket
+  take form socket
+
+load @drumwork/land/code/javascript/node/https/server
+  take form server
+
+load @drumwork/land/code/javascript/node/net/net-connect-opts
+  take form net-connect-opts
+
+load @drumwork/land/code/javascript/node/net/server-opts
+  take form server-opts
+
+task create-server, name <createServer>
+  take connection-listener
+    like task
+      take socket, like socket
+      free seed, like native-void
+    void take
+  free seed, like server
+
+task create-server, name <createServer>
+  take options, like server-opts
+    void take
+  take connection-listener
+    like task
+      take socket, like socket
+      free seed, like native-void
+    void take
+  free seed, like server
+
+task connect, name <connect>
+  take options, like net-connect-opts
+  take connection-listener
+    like task
+      free seed, like native-void
+    void take
+  free seed, like socket
+
+task connect, name <connect>
+  take port, like native-number
+  take host, like native-string
+    void take
+  take connection-listener
+    like task
+      free seed, like native-void
+    void take
+  free seed, like socket
+
+task connect, name <connect>
+  take path, like native-string
+  take connection-listener
+    like task
+      free seed, like native-void
+    void take
+  free seed, like socket
+
+task create-connection
+  name <createConnection>
+  take options, like net-connect-opts
+  take connection-listener
+    like task
+      free seed, like native-void
+    void take
+  free seed, like socket
+
+task create-connection
+  name <createConnection>
+  take port, like native-number
+  take host, like native-string
+    void take
+  take connection-listener
+    like task
+      free seed, like native-void
+    void take
+  free seed, like socket
+
+task create-connection
+  name <createConnection>
+  take path, like native-string
+  take connection-listener
+    like task
+      free seed, like native-void
+    void take
+  free seed, like socket
+
+task is-ip, name <isIP>
+  take input, like native-string
+  free seed, like native-number
+
+task is-i-pv4, name <isIPv4>
+  take input, like native-string
+  free seed, like native-boolean
+
+task is-i-pv6, name <isIPv6>
+  take input, like native-string
+  free seed, like native-boolean

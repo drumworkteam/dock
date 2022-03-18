@@ -1,0 +1,29 @@
+
+load @drumwork/land/code/javascript/base/native-object
+  take form native-object
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+form finalization-registry
+  name <FinalizationRegistry>
+  head t, like like-link-text
+
+  take loan symbol/to-string-tag
+    text <FinalizationRegistry>
+    read take
+
+  task register, name <register>
+    take target, like native-object
+    take held-value, like t
+    take unregister-token, like native-object
+      void take
+    free seed, like native-void
+
+  task unregister, name <unregister>
+    take unregister-token, like native-object
+    free seed, like native-void

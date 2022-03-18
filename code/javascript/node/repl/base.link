@@ -1,0 +1,50 @@
+
+load @drumwork/land/code/javascript/base/inspect-options
+  take form inspect-options
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-symbol
+  take form native-symbol
+
+load @drumwork/land/code/javascript/base/repl-server
+  take form repl-server
+
+load @drumwork/land/code/javascript/node/repl/repl-options
+  take form repl-options
+
+load @drumwork/land/code/javascript/node/repl/repl-writer
+  take form repl-writer
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+host writer, name <writer>
+  like link
+    like repl-writer
+    like form-link-text
+      take options, name <options>
+        like inspect-options
+        lock free
+host repl-mode-sloppy
+  name <REPL_MODE_SLOPPY>
+  like native-symbol
+    cool take
+host repl-mode-strict
+  name <REPL_MODE_STRICT>
+  like native-symbol
+    cool take
+
+task start, name <start>
+  take options
+    like sink-link-text
+      like native-string
+      like repl-options
+    void take
+  free seed, like repl-server

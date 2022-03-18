@@ -1,0 +1,47 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/audio-node-options
+  take form audio-node-options
+
+load @drumwork/land/code/javascript/es5/record
+  take form record
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form audio-worklet-node-options
+  name <AudioWorkletNodeOptions>
+  base audio-node-options
+
+  take number-of-inputs
+    name <numberOfInputs>
+    like native-number
+    lock free
+  take number-of-outputs
+    name <numberOfOutputs>
+    like native-number
+    lock free
+  take output-channel-count
+    name <outputChannelCount>
+    like list-link-text
+      like native-number
+    lock free
+  take parameter-data
+    name <parameterData>
+    like record
+      like native-string
+      like native-number
+    lock free
+  take processor-options
+    name <processorOptions>
+    like native-any
+    lock free

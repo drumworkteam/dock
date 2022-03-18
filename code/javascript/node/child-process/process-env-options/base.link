@@ -1,0 +1,43 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/node-js-process-env
+  take form node-js-process-env
+
+load @drumwork/land/code/javascript/base/url
+  take form url
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form process-env-options
+  name <ProcessEnvOptions>
+  take uid, name <uid>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take gid, name <gid>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take cwd, name <cwd>
+    like sink-link-text
+      like native-string
+      like url
+      like native-undefined
+    lock free
+  take env, name <env>
+    like sink-link-text
+      like node-js-process-env
+      like native-undefined
+    lock free

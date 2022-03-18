@@ -1,0 +1,41 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+task open, name <open>
+  take port, like native-number
+    void take
+  take host, like native-string
+    void take
+  take wait, like native-boolean
+    void take
+  free seed, like native-void
+
+task close, name <close>
+  free seed, like native-void
+
+task url, name <url>
+  free seed
+    like sink-link-text
+      like native-string
+      like native-undefined
+
+task wait-for-debugger
+  name <waitForDebugger>
+  free seed, like native-void

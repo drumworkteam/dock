@@ -1,0 +1,52 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/rtc-dtls-transport-state
+  take form rtc-dtls-transport-state
+
+load @drumwork/land/code/javascript/dom/rtc-stats
+  take form rtc-stats
+
+form rtc-transport-stats
+  name <RTCTransportStats>
+  base rtc-stats
+
+  take bytes-received
+    name <bytesReceived>
+    like native-number
+    lock free
+  take bytes-sent, name <bytesSent>
+    like native-number
+    lock free
+  take dtls-cipher, name <dtlsCipher>
+    like native-string
+    lock free
+  take dtls-state, name <dtlsState>
+    like rtc-dtls-transport-state
+    lock free
+  take local-certificate-id
+    name <localCertificateId>
+    like native-string
+    lock free
+  take remote-certificate-id
+    name <remoteCertificateId>
+    like native-string
+    lock free
+  take rtcp-transport-stats-id
+    name <rtcpTransportStatsId>
+    like native-string
+    lock free
+  take selected-candidate-pair-id
+    name <selectedCandidatePairId>
+    like native-string
+    lock free
+  take srtp-cipher, name <srtpCipher>
+    like native-string
+    lock free
+  take tls-version, name <tlsVersion>
+    like native-string
+    lock free

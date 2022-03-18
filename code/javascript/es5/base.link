@@ -1,0 +1,215 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/es5/array-buffer-constructor
+  take form array-buffer-constructor
+
+load @drumwork/land/code/javascript/es5/array-constructor
+  take form array-constructor
+
+load @drumwork/land/code/javascript/es5/boolean-constructor
+  take form boolean-constructor
+
+load @drumwork/land/code/javascript/es5/data-view-constructor
+  take form data-view-constructor
+
+load @drumwork/land/code/javascript/es5/date-constructor
+  take form date-constructor
+
+load @drumwork/land/code/javascript/es5/error-constructor
+  take form error-constructor
+
+load @drumwork/land/code/javascript/es5/eval-error-constructor
+  take form eval-error-constructor
+
+load @drumwork/land/code/javascript/es5/float32-array-constructor
+  take form float32-array-constructor
+
+load @drumwork/land/code/javascript/es5/float64-array-constructor
+  take form float64-array-constructor
+
+load @drumwork/land/code/javascript/es5/function-constructor
+  take form function-constructor
+
+load @drumwork/land/code/javascript/es5/int16-array-constructor
+  take form int16-array-constructor
+
+load @drumwork/land/code/javascript/es5/int32-array-constructor
+  take form int32-array-constructor
+
+load @drumwork/land/code/javascript/es5/int8-array-constructor
+  take form int8-array-constructor
+
+load @drumwork/land/code/javascript/es5/json
+  take form json
+
+load @drumwork/land/code/javascript/es5/math
+  take form math
+
+load @drumwork/land/code/javascript/es5/number-constructor
+  take form number-constructor
+
+load @drumwork/land/code/javascript/es5/object-constructor
+  take form object-constructor
+
+load @drumwork/land/code/javascript/es5/range-error-constructor
+  take form range-error-constructor
+
+load @drumwork/land/code/javascript/es5/reference-error-constructor
+  take form reference-error-constructor
+
+load @drumwork/land/code/javascript/es5/reg-exp-constructor
+  take form reg-exp-constructor
+
+load @drumwork/land/code/javascript/es5/string-constructor
+  take form string-constructor
+
+load @drumwork/land/code/javascript/es5/syntax-error-constructor
+  take form syntax-error-constructor
+
+load @drumwork/land/code/javascript/es5/type-error-constructor
+  take form type-error-constructor
+
+load @drumwork/land/code/javascript/es5/uint16-array-constructor
+  take form uint16-array-constructor
+
+load @drumwork/land/code/javascript/es5/uint32-array-constructor
+  take form uint32-array-constructor
+
+load @drumwork/land/code/javascript/es5/uint8-array-constructor
+  take form uint8-array-constructor
+
+load @drumwork/land/code/javascript/es5/uint8-clamped-array-constructor
+  take form uint8-clamped-array-constructor
+
+load @drumwork/land/code/javascript/es5/uri-error-constructor
+  take form uri-error-constructor
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+host nan, name <NaN>
+  like native-number
+host infinity, name <Infinity>
+  like native-number
+host object, name <Object>
+  like object-constructor
+host function, name <Function>
+  like function-constructor
+host string, name <String>
+  like string-constructor
+host boolean, name <Boolean>
+  like boolean-constructor
+host number, name <Number>
+  like number-constructor
+host math, name <Math>
+  like math
+host date, name <Date>
+  like date-constructor
+host reg-exp, name <RegExp>
+  like reg-exp-constructor
+host error, name <Error>
+  like error-constructor
+host eval-error, name <EvalError>
+  like eval-error-constructor
+host range-error, name <RangeError>
+  like range-error-constructor
+host reference-error
+  name <ReferenceError>
+  like reference-error-constructor
+host syntax-error, name <SyntaxError>
+  like syntax-error-constructor
+host type-error, name <TypeError>
+  like type-error-constructor
+host uri-error, name <URIError>
+  like uri-error-constructor
+host json, name <JSON>
+  like json
+host array, name <Array>
+  like array-constructor
+host array-buffer, name <ArrayBuffer>
+  like array-buffer-constructor
+host data-view, name <DataView>
+  like data-view-constructor
+host int8-array, name <Int8Array>
+  like int8-array-constructor
+host uint8-array, name <Uint8Array>
+  like uint8-array-constructor
+host uint8-clamped-array
+  name <Uint8ClampedArray>
+  like uint8-clamped-array-constructor
+host int16-array, name <Int16Array>
+  like int16-array-constructor
+host uint16-array, name <Uint16Array>
+  like uint16-array-constructor
+host int32-array, name <Int32Array>
+  like int32-array-constructor
+host uint32-array, name <Uint32Array>
+  like uint32-array-constructor
+host float32-array, name <Float32Array>
+  like float32-array-constructor
+host float64-array, name <Float64Array>
+  like float64-array-constructor
+
+task eval, name <eval>
+  take x, like native-string
+  free seed, like native-any
+
+task parse-int, name <parseInt>
+  take string, like native-string
+  take radix, like native-number
+    void take
+  free seed, like native-number
+
+task parse-float, name <parseFloat>
+  take string, like native-string
+  free seed, like native-number
+
+task is-na-n, name <isNaN>
+  take number, like native-number
+  free seed, like native-boolean
+
+task is-finite, name <isFinite>
+  take number, like native-number
+  free seed, like native-boolean
+
+task decode-uri, name <decodeURI>
+  take encoded-uri, like native-string
+  free seed, like native-string
+
+task decode-uri-component
+  name <decodeURIComponent>
+  take encoded-uri-component, like native-string
+  free seed, like native-string
+
+task encode-uri, name <encodeURI>
+  take uri, like native-string
+  free seed, like native-string
+
+task encode-uri-component
+  name <encodeURIComponent>
+  take uri-component
+    like sink-link-text
+      like native-string
+      like native-number
+      like native-boolean
+  free seed, like native-string
+
+task escape, name <escape>
+  take string, like native-string
+  free seed, like native-string
+
+task unescape, name <unescape>
+  take string, like native-string
+  free seed, like native-string

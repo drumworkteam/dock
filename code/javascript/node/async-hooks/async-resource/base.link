@@ -1,0 +1,120 @@
+
+load @drumwork/land/code/javascript/base/async-resource
+  take form async-resource
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-this
+  take form native-this
+
+load @drumwork/land/code/javascript/base/this-arg
+  take form this-arg
+
+load @drumwork/land/code/javascript/node/async-hooks/async-resource-options
+  take form async-resource-options
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form async-resource
+  name <AsyncResource>
+  task bind, name <bind>
+    head func, like like-link-text
+      base task
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-any
+    take fn, like func
+    free seed
+      like link
+        like func
+        like form-link-text
+          take async-resource
+            name <asyncResource>
+            like async-resource
+            lock free
+
+  task run-in-async-scope
+    name <runInAsyncScope>
+    head this, like like-link-text
+    head result, like like-link-text
+    take fn
+      like task
+        take this, like this
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like result
+    take this-arg, like this
+      void take
+    take args
+      like list-link-text
+        like native-any
+      rest take
+    free seed, like result
+
+  task emit-destroy, name <emitDestroy>
+    free seed, like native-this
+
+  task async-id, name <asyncId>
+    free seed, like native-number
+
+  task trigger-async-id
+    name <triggerAsyncId>
+    free seed, like native-number
+
+form async-resource-constructor
+  hook make
+    take type, like native-string
+    take trigger-async-id
+      like sink-link-text
+        like native-number
+        like async-resource-options
+      void take
+
+  task bind, name <bind>
+    head func, like like-link-text
+      base task
+        take this, like this-arg
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-any
+    head this-arg, like like-link-text
+    take fn, like func
+    take type, like native-string
+      void take
+    take this-arg, like this-arg
+      void take
+    free seed
+      like link
+        like func
+        like form-link-text
+          take async-resource
+            name <asyncResource>
+            like async-resource
+            lock free

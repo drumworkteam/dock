@@ -1,0 +1,63 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/es2015/core/reg-exp
+  take form reg-exp
+
+load @drumwork/land/code/javascript/es5/reg-exp-match-array
+  take form reg-exp-match-array
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form reg-exp, name <RegExp>
+  task loan symbol/match
+    take string, like native-string
+    free seed
+      like sink-link-text
+        like reg-exp-match-array
+        like native-null
+
+  task loan symbol/replace
+    take string, like native-string
+    take replace-value, like native-string
+    free seed, like native-string
+
+  task loan symbol/replace
+    take string, like native-string
+    take replacer
+      like task
+        take substring, like native-string
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-string
+    free seed, like native-string
+
+  task loan symbol/search
+    take string, like native-string
+    free seed, like native-number
+
+  task loan symbol/split
+    take string, like native-string
+    take limit, like native-number
+      void take
+    free seed
+      like list-link-text
+        like native-string

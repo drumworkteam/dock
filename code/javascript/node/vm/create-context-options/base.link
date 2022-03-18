@@ -1,0 +1,52 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form create-context-options
+  name <CreateContextOptions>
+  take name, name <name>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take origin, name <origin>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take code-generation
+    name <codeGeneration>
+    like sink-link-text
+      like form-link-text
+        take strings, name <strings>
+          like sink-link-text
+            like native-boolean
+            like native-undefined
+          lock free
+        take wasm, name <wasm>
+          like sink-link-text
+            like native-boolean
+            like native-undefined
+          lock free
+      like native-undefined
+    lock free
+  take microtask-mode
+    name <microtaskMode>
+    like sink-link-text
+      text <afterEvaluate>
+      like native-undefined
+    lock free

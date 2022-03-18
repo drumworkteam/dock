@@ -1,0 +1,45 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/node-js-typed-array
+  take form node-js-typed-array
+
+load @drumwork/land/code/javascript/node/crypto/key-like
+  take form key-like
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form rsa-private-key
+  name <RsaPrivateKey>
+  take key, name <key>
+    like key-like
+    lock free
+  take passphrase, name <passphrase>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take oaep-hash, name <oaepHash>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take oaep-label, name <oaepLabel>
+    like sink-link-text
+      like node-js-typed-array
+      like native-undefined
+    lock free
+  take padding, name <padding>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free

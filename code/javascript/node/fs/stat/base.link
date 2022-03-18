@@ -1,0 +1,65 @@
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/land/code/javascript/node/fs/big-int-stats
+  take form big-int-stats
+
+load @drumwork/land/code/javascript/node/fs/path-like
+  take form path-like
+
+load @drumwork/land/code/javascript/node/fs/stat-options
+  take form stat-options
+
+load @drumwork/land/code/javascript/node/fs/stats
+  take form stats
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+task promisify, name <__promisify__>
+  take path, like path-like
+  take options
+    like link
+      like stat-options
+      like form-link-text
+        take bigint, name <bigint>
+          like sink-link-text
+            text <false>
+            like native-undefined
+          lock free
+    void take
+  free seed
+    like promise
+      like stats
+
+task promisify, name <__promisify__>
+  take path, like path-like
+  take options
+    like link
+      like stat-options
+      like form-link-text
+        take bigint, name <bigint>
+          text <true>
+          lock free
+  free seed
+    like promise
+      like big-int-stats
+
+task promisify, name <__promisify__>
+  take path, like path-like
+  take options, like stat-options
+    void take
+  free seed
+    like promise
+      like sink-link-text
+        like stats
+        like big-int-stats

@@ -1,0 +1,67 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/inspector/runtime/execution-context-id
+  take form execution-context-id
+
+load @drumwork/land/code/javascript/node/inspector/runtime/remote-object
+  take form remote-object
+
+load @drumwork/land/code/javascript/node/inspector/runtime/script-id
+  take form script-id
+
+load @drumwork/land/code/javascript/node/inspector/runtime/stack-trace
+  take form stack-trace
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form exception-details
+  name <ExceptionDetails>
+  take exception-id, name <exceptionId>
+    like native-number
+    lock free
+  take text, name <text>
+    like native-string
+    lock free
+  take line-number, name <lineNumber>
+    like native-number
+    lock free
+  take column-number
+    name <columnNumber>
+    like native-number
+    lock free
+  take script-id, name <scriptId>
+    like sink-link-text
+      like script-id
+      like native-undefined
+    lock free
+  take url, name <url>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take stack-trace, name <stackTrace>
+    like sink-link-text
+      like stack-trace
+      like native-undefined
+    lock free
+  take exception, name <exception>
+    like sink-link-text
+      like remote-object
+      like native-undefined
+    lock free
+  take execution-context-id
+    name <executionContextId>
+    like sink-link-text
+      like execution-context-id
+      like native-undefined
+    lock free

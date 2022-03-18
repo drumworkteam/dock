@@ -1,0 +1,34 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/es2015/collection/set-constructor
+  take form set-constructor
+
+load @drumwork/land/code/javascript/es2015/iterable/iterable
+  take form iterable
+
+load @drumwork/land/code/javascript/es2015/iterable/set
+  take form set
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form set-constructor
+  name <SetConstructor>
+  hook make
+    head t, like like-link-text
+    take iterable
+      like sink-link-text
+        like iterable
+          like t
+        like native-null
+      void take
+    free seed
+      like set
+        like t

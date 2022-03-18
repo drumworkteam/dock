@@ -1,0 +1,53 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/data-transfer
+  take form data-transfer
+
+load @drumwork/land/code/javascript/dom/static-range
+  take form static-range
+
+load @drumwork/land/code/javascript/dom/ui-event-init
+  take form ui-event-init
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form input-event-init
+  name <InputEventInit>
+  base ui-event-init
+
+  take data, name <data>
+    like sink-link-text
+      like native-string
+      like native-null
+    lock free
+  take data-transfer
+    name <dataTransfer>
+    like sink-link-text
+      like data-transfer
+      like native-null
+    lock free
+  take input-type, name <inputType>
+    like native-string
+    lock free
+  take is-composing, name <isComposing>
+    like native-boolean
+    lock free
+  take target-ranges
+    name <targetRanges>
+    like list-link-text
+      like static-range
+    lock free

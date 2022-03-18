@@ -1,0 +1,203 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/add-event-listener-options
+  take form add-event-listener-options
+
+load @drumwork/land/code/javascript/dom/event-listener-options
+  take form event-listener-options
+
+load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+  take form event-listener-or-event-listener-object
+
+load @drumwork/land/code/javascript/dom/event-target
+  take form event-target
+
+load @drumwork/land/code/javascript/dom/speech-synthesis-error-event
+  take form speech-synthesis-error-event
+
+load @drumwork/land/code/javascript/dom/speech-synthesis-event
+  take form speech-synthesis-event
+
+load @drumwork/land/code/javascript/dom/speech-synthesis-utterance-event-map
+  take form speech-synthesis-utterance-event-map
+
+load @drumwork/land/code/javascript/dom/speech-synthesis-voice
+  take form speech-synthesis-voice
+
+load @drumwork/seed/code/form/form/link
+  take form form-link
+    save form form-link-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/link/read
+  take form link-read
+    save form link-read-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form speech-synthesis-utterance
+  name <SpeechSynthesisUtterance>
+  base event-target
+
+  take lang, name <lang>
+    like native-string
+    lock free
+  take onboundary, name <onboundary>
+    like sink-link-text
+      like task
+        take this, like speech-synthesis-utterance
+        take ev, like speech-synthesis-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onend, name <onend>
+    like sink-link-text
+      like task
+        take this, like speech-synthesis-utterance
+        take ev, like speech-synthesis-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onerror, name <onerror>
+    like sink-link-text
+      like task
+        take this, like speech-synthesis-utterance
+        take ev, like speech-synthesis-error-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onmark, name <onmark>
+    like sink-link-text
+      like task
+        take this, like speech-synthesis-utterance
+        take ev, like speech-synthesis-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onpause, name <onpause>
+    like sink-link-text
+      like task
+        take this, like speech-synthesis-utterance
+        take ev, like speech-synthesis-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onresume, name <onresume>
+    like sink-link-text
+      like task
+        take this, like speech-synthesis-utterance
+        take ev, like speech-synthesis-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take onstart, name <onstart>
+    like sink-link-text
+      like task
+        take this, like speech-synthesis-utterance
+        take ev, like speech-synthesis-event
+        free seed, like native-any
+      like native-null
+    lock free
+  take pitch, name <pitch>
+    like native-number
+    lock free
+  take rate, name <rate>
+    like native-number
+    lock free
+  take text, name <text>
+    like native-string
+    lock free
+  take voice, name <voice>
+    like sink-link-text
+      like speech-synthesis-voice
+      like native-null
+    lock free
+  take volume, name <volume>
+    like native-number
+    lock free
+
+  task add-event-listener
+    name <addEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like speech-synthesis-utterance-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like speech-synthesis-utterance
+        take ev
+          like form-link-link-text
+            like speech-synthesis-utterance-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task add-event-listener
+    name <addEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like add-event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    head k, like like-link-text
+      base link-read-link-text
+        like speech-synthesis-utterance-event-map
+    take type, like k
+    take listener
+      like task
+        take this, like speech-synthesis-utterance
+        take ev
+          like form-link-link-text
+            like speech-synthesis-utterance-event-map
+            like k
+        free seed, like native-any
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void
+
+  task remove-event-listener
+    name <removeEventListener>
+    take type, like native-string
+    take listener, like event-listener-or-event-listener-object
+    take options
+      like sink-link-text
+        like native-boolean
+        like event-listener-options
+      void take
+    free seed, like native-void

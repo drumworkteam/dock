@@ -1,0 +1,80 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/land/code/javascript/node/fs/make-directory-options
+  take form make-directory-options
+
+load @drumwork/land/code/javascript/node/fs/mode
+  take form mode
+
+load @drumwork/land/code/javascript/node/fs/path-like
+  take form path-like
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+task promisify, name <__promisify__>
+  take path, like path-like
+  take options
+    like link
+      like make-directory-options
+      like form-link-text
+        take recursive, name <recursive>
+          text <true>
+          lock free
+  free seed
+    like promise
+      like sink-link-text
+        like native-string
+        like native-undefined
+
+task promisify, name <__promisify__>
+  take path, like path-like
+  take options
+    like sink-link-text
+      like mode
+      like link
+        like make-directory-options
+        like form-link-text
+          take recursive, name <recursive>
+            like sink-link-text
+              text <false>
+              like native-undefined
+            lock free
+      like native-null
+    void take
+  free seed
+    like promise
+      like native-void
+
+task promisify, name <__promisify__>
+  take path, like path-like
+  take options
+    like sink-link-text
+      like mode
+      like make-directory-options
+      like native-null
+    void take
+  free seed
+    like promise
+      like sink-link-text
+        like native-string
+        like native-undefined

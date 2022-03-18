@@ -1,0 +1,41 @@
+
+load @drumwork/land/code/javascript/base/context
+  take form context
+
+load @drumwork/land/code/javascript/base/error
+  take form error
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/repl-server
+  take form repl-server
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form repl-eval, name <REPLEval>
+  like task
+    take this, like repl-server
+    take eval-cmd, like native-string
+    take context, like context
+    take file, like native-string
+    take cb
+      like task
+        take err
+          like sink-link-text
+            like error
+            like native-null
+        take result, like native-any
+        free seed, like native-void
+    free seed, like native-void

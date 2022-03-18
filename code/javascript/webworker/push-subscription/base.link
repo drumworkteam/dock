@@ -1,0 +1,61 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/push-subscription
+  take form push-subscription
+
+load @drumwork/land/code/javascript/es5/array-buffer
+  take form array-buffer
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+load @drumwork/land/code/javascript/webworker/push-encryption-key-name
+  take form push-encryption-key-name
+
+load @drumwork/land/code/javascript/webworker/push-subscription-json
+  take form push-subscription-json
+
+load @drumwork/land/code/javascript/webworker/push-subscription-options
+  take form push-subscription-options
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form push-subscription
+  name <PushSubscription>
+  take endpoint, name <endpoint>
+    like native-string
+  take expiration-time
+    name <expirationTime>
+    like sink-link-text
+      like native-number
+      like native-null
+  take options, name <options>
+    like push-subscription-options
+
+  task get-key, name <getKey>
+    take name, like push-encryption-key-name
+    free seed
+      like sink-link-text
+        like array-buffer
+        like native-null
+
+  task to-json, name <toJSON>
+    free seed, like push-subscription-json
+
+  task unsubscribe, name <unsubscribe>
+    free seed
+      like promise
+        like native-boolean

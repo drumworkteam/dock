@@ -1,0 +1,36 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/push-subscription-json
+  take form push-subscription-json
+
+load @drumwork/land/code/javascript/es5/record
+  take form record
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form push-subscription-json
+  name <PushSubscriptionJSON>
+  take endpoint, name <endpoint>
+    like native-string
+    lock free
+  take expiration-time
+    name <expirationTime>
+    like sink-link-text
+      like native-number
+      like native-null
+    lock free
+  take keys, name <keys>
+    like record
+      like native-string
+      like native-string
+    lock free

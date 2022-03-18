@@ -1,0 +1,80 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/node-js-array-buffer-view
+  take form node-js-array-buffer-view
+
+load @drumwork/land/code/javascript/base/promise
+  take form promise
+
+load @drumwork/land/code/javascript/node/buffer/buffer-encoding
+  take form buffer-encoding
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+task promisify, name <__promisify__>
+  head t-buffer, like like-link-text
+    base node-js-array-buffer-view
+  take fd, like native-number
+  take buffer, like t-buffer
+    void take
+  take offset, like native-number
+    void take
+  take length, like native-number
+    void take
+  take position
+    like sink-link-text
+      like native-number
+      like native-null
+    void take
+  free seed
+    like promise
+      like form-link-text
+        take bytes-written
+          name <bytesWritten>
+          like native-number
+          lock free
+        take buffer, name <buffer>
+          like t-buffer
+          lock free
+
+task promisify, name <__promisify__>
+  take fd, like native-number
+  take string, like native-string
+  take position
+    like sink-link-text
+      like native-number
+      like native-null
+    void take
+  take encoding
+    like sink-link-text
+      like buffer-encoding
+      like native-null
+    void take
+  free seed
+    like promise
+      like form-link-text
+        take bytes-written
+          name <bytesWritten>
+          like native-number
+          lock free
+        take buffer, name <buffer>
+          like native-string
+          lock free

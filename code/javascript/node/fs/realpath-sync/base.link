@@ -1,0 +1,39 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/fs/buffer-encoding-option
+  take form buffer-encoding-option
+
+load @drumwork/land/code/javascript/node/fs/encoding-option
+  take form encoding-option
+
+load @drumwork/land/code/javascript/node/fs/path-like
+  take form path-like
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+task native, name <native>
+  take path, like path-like
+  take options, like encoding-option
+    void take
+  free seed, like native-string
+
+task native, name <native>
+  take path, like path-like
+  take options, like buffer-encoding-option
+  free seed, like buffer
+
+task native, name <native>
+  take path, like path-like
+  take options, like encoding-option
+    void take
+  free seed
+    like sink-link-text
+      like native-string
+      like buffer

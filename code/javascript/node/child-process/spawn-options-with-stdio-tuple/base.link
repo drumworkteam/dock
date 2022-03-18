@@ -1,0 +1,45 @@
+
+load @drumwork/land/code/javascript/node/child-process/spawn-options
+  take form spawn-options
+
+load @drumwork/land/code/javascript/node/child-process/stdio-null
+  take form stdio-null
+
+load @drumwork/land/code/javascript/node/child-process/stdio-pipe
+  take form stdio-pipe
+
+load @drumwork/seed/code/form/band
+  take form band
+    save form band-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form spawn-options-with-stdio-tuple
+  name <SpawnOptionsWithStdioTuple>
+  base spawn-options
+
+  head stdin, like like-link-text
+    base sink-link-text
+      like stdio-null
+      like stdio-pipe
+  head stdout, like like-link-text
+    base sink-link-text
+      like stdio-null
+      like stdio-pipe
+  head stderr, like like-link-text
+    base sink-link-text
+      like stdio-null
+      like stdio-pipe
+
+  take stdio, name <stdio>
+    like band-link-text
+      like stdin
+      like stdout
+      like stderr
+    lock free

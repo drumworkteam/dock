@@ -1,0 +1,65 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/base/node-js-array-buffer-view
+  take form node-js-array-buffer-view
+
+load @drumwork/land/code/javascript/base/node-js-signals
+  take form node-js-signals
+
+load @drumwork/land/code/javascript/node/buffer/buffer-encoding
+  take form buffer-encoding
+
+load @drumwork/land/code/javascript/node/child-process/common-options
+  take form common-options
+
+load @drumwork/land/code/javascript/node/child-process/stdio-options
+  take form stdio-options
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form common-exec-options
+  name <CommonExecOptions>
+  base common-options
+
+  take input, name <input>
+    like sink-link-text
+      like native-string
+      like node-js-array-buffer-view
+      like native-undefined
+    lock free
+  take stdio, name <stdio>
+    like sink-link-text
+      like stdio-options
+      like native-undefined
+    lock free
+  take kill-signal, name <killSignal>
+    like sink-link-text
+      like node-js-signals
+      like native-number
+      like native-undefined
+    lock free
+  take max-buffer, name <maxBuffer>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take encoding, name <encoding>
+    like sink-link-text
+      like buffer-encoding
+      text <buffer>
+      like native-null
+      like native-undefined
+    lock free

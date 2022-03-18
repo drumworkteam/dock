@@ -1,0 +1,41 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/inspector/debugger/call-frame
+  take form call-frame
+
+load @drumwork/land/code/javascript/node/inspector/runtime/stack-trace-id
+  take form stack-trace-id
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form stack-trace, name <StackTrace>
+  take description, name <description>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take call-frames, name <callFrames>
+    like list-link-text
+      like call-frame
+    lock free
+  take parent, name <parent>
+    like sink-link-text
+      like stack-trace
+      like native-undefined
+    lock free
+  take parent-id, name <parentId>
+    like sink-link-text
+      like stack-trace-id
+      like native-undefined
+    lock free

@@ -1,0 +1,31 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/event-init
+  take form event-init
+
+load @drumwork/land/code/javascript/dom/rtc-ice-candidate
+  take form rtc-ice-candidate
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form rtc-peer-connection-ice-event-init
+  name <RTCPeerConnectionIceEventInit>
+  base event-init
+
+  take candidate, name <candidate>
+    like sink-link-text
+      like rtc-ice-candidate
+      like native-null
+    lock free
+  take url, name <url>
+    like sink-link-text
+      like native-string
+      like native-null
+    lock free

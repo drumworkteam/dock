@@ -1,0 +1,23 @@
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form with-implicit-coercion
+  name <WithImplicitCoercion>
+  home take
+  head t, like like-link-text
+
+  like sink-link-text
+    like t
+    like form-link-text
+      task value-of, name <valueOf>
+        free seed, like t

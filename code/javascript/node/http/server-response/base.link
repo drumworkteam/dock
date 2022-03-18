@@ -1,0 +1,86 @@
+
+load @drumwork/land/code/javascript/base/incoming-message
+  take form incoming-message
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-this
+  take form native-this
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/socket
+  take form socket
+
+load @drumwork/land/code/javascript/node/http/outgoing-http-header
+  take form outgoing-http-header
+
+load @drumwork/land/code/javascript/node/http/outgoing-http-headers
+  take form outgoing-http-headers
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form server-response
+  name <ServerResponse>
+  base outgoing-message
+  take status-code, name <statusCode>, like native-number
+  take status-message, name <statusMessage>, like native-string
+
+  task assign-socket
+    name <assignSocket>
+    take socket, like socket
+    free seed, like native-void
+
+  task detach-socket
+    name <detachSocket>
+    take socket, like socket
+    free seed, like native-void
+
+  task write-continue
+    name <writeContinue>
+    take callback
+      like task
+        free seed, like native-void
+      void take
+    free seed, like native-void
+
+  task write-head, name <writeHead>
+    take status-code, like native-number
+    take status-message, like native-string
+      void take
+    take headers
+      like sink-link-text
+        like outgoing-http-headers
+        like list-link-text
+          like outgoing-http-header
+      void take
+    free seed, like native-this
+
+  task write-head, name <writeHead>
+    take status-code, like native-number
+    take headers
+      like sink-link-text
+        like outgoing-http-headers
+        like list-link-text
+          like outgoing-http-header
+      void take
+    free seed, like native-this
+
+  task write-processing
+    name <writeProcessing>
+    free seed, like native-void
+
+form server-response-constructor
+  hook make
+    take req, like incoming-message

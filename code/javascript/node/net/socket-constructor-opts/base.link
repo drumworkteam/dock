@@ -1,0 +1,43 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/globals/abort-signal
+  take form abort-signal
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form socket-constructor-opts
+  name <SocketConstructorOpts>
+  take fd, name <fd>
+    like sink-link-text
+      like native-number
+      like native-undefined
+    lock free
+  take allow-half-open
+    name <allowHalfOpen>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take readable, name <readable>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take writable, name <writable>
+    like sink-link-text
+      like native-boolean
+      like native-undefined
+    lock free
+  take signal, name <signal>
+    like abort-signal
+    lock free

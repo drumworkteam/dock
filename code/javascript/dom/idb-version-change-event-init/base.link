@@ -1,0 +1,26 @@
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/dom/event-init
+  take form event-init
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form idb-version-change-event-init
+  name <IDBVersionChangeEventInit>
+  base event-init
+
+  take new-version, name <newVersion>
+    like sink-link-text
+      like native-number
+      like native-null
+    lock free
+  take old-version, name <oldVersion>
+    like native-number
+    lock free

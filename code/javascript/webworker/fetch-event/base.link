@@ -1,0 +1,48 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+load @drumwork/land/code/javascript/webworker/extendable-event
+  take form extendable-event
+
+load @drumwork/land/code/javascript/webworker/request
+  take form request
+
+load @drumwork/land/code/javascript/webworker/response
+  take form response
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form fetch-event, name <FetchEvent>
+  base extendable-event
+
+  take client-id, name <clientId>
+    like native-string
+  take preload-response
+    name <preloadResponse>
+    like promise
+      like native-any
+  take request, name <request>
+    like request
+  take resulting-client-id
+    name <resultingClientId>
+    like native-string
+
+  task respond-with, name <respondWith>
+    take r
+      like sink-link-text
+        like response
+        like promise
+          like response
+    free seed, like native-void

@@ -1,0 +1,70 @@
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/event
+  take form event
+
+load @drumwork/land/code/javascript/dom/node
+  take form node
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form mutation-event
+  name <MutationEvent>
+  base event
+
+  take attr-change, name <attrChange>
+    like native-number
+  take attr-name, name <attrName>
+    like native-string
+  take new-value, name <newValue>
+    like native-string
+  take prev-value, name <prevValue>
+    like native-string
+  take related-node, name <relatedNode>
+    like sink-link-text
+      like node
+      like native-null
+  take addition, name <ADDITION>
+    like native-number
+  take modification, name <MODIFICATION>
+    like native-number
+  take removal, name <REMOVAL>
+    like native-number
+
+  task init-mutation-event
+    name <initMutationEvent>
+    take type-arg, like native-string
+    take bubbles-arg, like native-boolean
+      void take
+    take cancelable-arg, like native-boolean
+      void take
+    take related-node-arg
+      like sink-link-text
+        like node
+        like native-null
+      void take
+    take prev-value-arg, like native-string
+      void take
+    take new-value-arg, like native-string
+      void take
+    take attr-name-arg, like native-string
+      void take
+    take attr-change-arg, like native-number
+      void take
+    free seed, like native-void

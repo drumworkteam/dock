@@ -1,0 +1,68 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/blob
+  take form blob
+
+load @drumwork/land/code/javascript/dom/form-data
+  take form form-data
+
+load @drumwork/land/code/javascript/dom/readable-stream
+  take form readable-stream
+
+load @drumwork/land/code/javascript/es5/array-buffer
+  take form array-buffer
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+load @drumwork/land/code/javascript/es5/uint8-array
+  take form uint8-array
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form body, name <Body>
+  take body, name <body>
+    like sink-link-text
+      like readable-stream
+        like uint8-array
+      like native-null
+  take body-used, name <bodyUsed>
+    like native-boolean
+
+  task array-buffer, name <arrayBuffer>
+    free seed
+      like promise
+        like array-buffer
+
+  task blob, name <blob>
+    free seed
+      like promise
+        like blob
+
+  task form-data, name <formData>
+    free seed
+      like promise
+        like form-data
+
+  task json, name <json>
+    free seed
+      like promise
+        like native-any
+
+  task text, name <text>
+    free seed
+      like promise
+        like native-string

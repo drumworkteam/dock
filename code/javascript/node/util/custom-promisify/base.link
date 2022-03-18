@@ -1,0 +1,28 @@
+
+load @drumwork/land/code/javascript/base/function
+  take form function
+
+load @drumwork/land/code/javascript/node/util/custom-promisify-legacy
+  take form custom-promisify-legacy
+
+load @drumwork/land/code/javascript/node/util/custom-promisify-symbol
+  take form custom-promisify-symbol
+
+load @drumwork/seed/code/form/like
+  take form like
+    save form like-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form custom-promisify
+  name <CustomPromisify>
+  head t-custom, like like-link-text
+    base function
+
+  like sink-link-text
+    like custom-promisify-symbol
+      like t-custom
+    like custom-promisify-legacy
+      like t-custom

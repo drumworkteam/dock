@@ -1,0 +1,190 @@
+
+load @drumwork/land/code/javascript/base/intl-collator-options
+  take form intl-collator-options
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/es5/reg-exp
+  take form reg-exp
+
+load @drumwork/land/code/javascript/es5/reg-exp-match-array
+  take form reg-exp-match-array
+
+load @drumwork/land/code/javascript/es5/string
+  take form string
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form string, name <String>
+  take length, name <length>
+    like native-number
+
+  task to-string, name <toString>
+    free seed, like native-string
+
+  task char-at, name <charAt>
+    take pos, like native-number
+    free seed, like native-string
+
+  task char-code-at, name <charCodeAt>
+    take index, like native-number
+    free seed, like native-number
+
+  task concat, name <concat>
+    take strings
+      like list-link-text
+        like native-string
+      rest take
+    free seed, like native-string
+
+  task index-of, name <indexOf>
+    take search-string, like native-string
+    take position, like native-number
+      void take
+    free seed, like native-number
+
+  task last-index-of, name <lastIndexOf>
+    take search-string, like native-string
+    take position, like native-number
+      void take
+    free seed, like native-number
+
+  task locale-compare
+    name <localeCompare>
+    take that, like native-string
+    free seed, like native-number
+
+  task match, name <match>
+    take regexp
+      like sink-link-text
+        like native-string
+        like reg-exp
+    free seed
+      like sink-link-text
+        like reg-exp-match-array
+        like native-null
+
+  task replace, name <replace>
+    take search-value
+      like sink-link-text
+        like native-string
+        like reg-exp
+    take replace-value, like native-string
+    free seed, like native-string
+
+  task replace, name <replace>
+    take search-value
+      like sink-link-text
+        like native-string
+        like reg-exp
+    take replacer
+      like task
+        take substring, like native-string
+        take args
+          like list-link-text
+            like native-any
+          rest take
+        free seed, like native-string
+    free seed, like native-string
+
+  task search, name <search>
+    take regexp
+      like sink-link-text
+        like native-string
+        like reg-exp
+    free seed, like native-number
+
+  task slice, name <slice>
+    take start, like native-number
+      void take
+    take end, like native-number
+      void take
+    free seed, like native-string
+
+  task split, name <split>
+    take separator
+      like sink-link-text
+        like native-string
+        like reg-exp
+    take limit, like native-number
+      void take
+    free seed
+      like list-link-text
+        like native-string
+
+  task substring, name <substring>
+    take start, like native-number
+    take end, like native-number
+      void take
+    free seed, like native-string
+
+  task to-lower-case, name <toLowerCase>
+    free seed, like native-string
+
+  task to-locale-lower-case
+    name <toLocaleLowerCase>
+    take locales
+      like sink-link-text
+        like native-string
+        like list-link-text
+          like native-string
+      void take
+    free seed, like native-string
+
+  task to-upper-case, name <toUpperCase>
+    free seed, like native-string
+
+  task to-locale-upper-case
+    name <toLocaleUpperCase>
+    take locales
+      like sink-link-text
+        like native-string
+        like list-link-text
+          like native-string
+      void take
+    free seed, like native-string
+
+  task trim, name <trim>
+    free seed, like native-string
+
+  task substr, name <substr>
+    take from, like native-number
+    take length, like native-number
+      void take
+    free seed, like native-string
+
+  task value-of, name <valueOf>
+    free seed, like native-string
+
+  cite index, like native-number
+    like native-string
+
+form string, name <String>
+  task locale-compare
+    name <localeCompare>
+    take that, like native-string
+    take locales
+      like sink-link-text
+        like native-string
+        like list-link-text
+          like native-string
+      void take
+    take options, like intl-collator-options
+      void take
+    free seed, like native-number

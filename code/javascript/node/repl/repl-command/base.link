@@ -1,0 +1,23 @@
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/land/code/javascript/node/repl/repl-command-action
+  take form repl-command-action
+
+load @drumwork/seed/code/form/sink
+  take form sink
+    save form sink-link-text
+
+form repl-command, name <REPLCommand>
+  take help, name <help>
+    like sink-link-text
+      like native-string
+      like native-undefined
+    lock free
+  take action, name <action>
+    like repl-command-action
+    lock free

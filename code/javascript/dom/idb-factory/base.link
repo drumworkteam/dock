@@ -1,0 +1,45 @@
+
+load @drumwork/land/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/dom/idb-database-info
+  take form idb-database-info
+
+load @drumwork/land/code/javascript/dom/idb-open-db-request
+  take form idb-open-db-request
+
+load @drumwork/land/code/javascript/es5/promise
+  take form promise
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form idb-factory, name <IDBFactory>
+  task cmp, name <cmp>
+    take first, like native-any
+    take second, like native-any
+    free seed, like native-number
+
+  task databases, name <databases>
+    free seed
+      like promise
+        like list-link-text
+          like idb-database-info
+
+  task delete-database
+    name <deleteDatabase>
+    take name, like native-string
+    free seed, like idb-open-db-request
+
+  task open, name <open>
+    take name, like native-string
+    take version, like native-number
+      void take
+    free seed, like idb-open-db-request

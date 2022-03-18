@@ -1,0 +1,38 @@
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/base/socket
+  take form socket
+
+load @drumwork/land/code/javascript/node/buffer/buffer
+  take form buffer
+
+load @drumwork/land/code/javascript/node/dgram/remote-info
+  take form remote-info
+
+load @drumwork/land/code/javascript/node/dgram/socket-options
+  take form socket-options
+
+load @drumwork/land/code/javascript/node/dgram/socket-type
+  take form socket-type
+
+task create-socket, name <createSocket>
+  take type, like socket-type
+  take callback
+    like task
+      take msg, like buffer
+      take rinfo, like remote-info
+      free seed, like native-void
+    void take
+  free seed, like socket
+
+task create-socket, name <createSocket>
+  take options, like socket-options
+  take callback
+    like task
+      take msg, like buffer
+      take rinfo, like remote-info
+      free seed, like native-void
+    void take
+  free seed, like socket

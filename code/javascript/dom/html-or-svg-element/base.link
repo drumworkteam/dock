@@ -1,0 +1,34 @@
+
+load @drumwork/land/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/land/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/land/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/land/code/javascript/dom/dom-string-map
+  take form dom-string-map
+
+load @drumwork/land/code/javascript/dom/focus-options
+  take form focus-options
+
+form html-or-svg-element
+  name <HTMLOrSVGElement>
+  take dataset, name <dataset>
+    like dom-string-map
+  take nonce, name <nonce>
+    like native-string
+    lock free
+  take tab-index, name <tabIndex>
+    like native-number
+    lock free
+
+  task blur, name <blur>
+    free seed, like native-void
+
+  task focus, name <focus>
+    take options, like focus-options
+      void take
+    free seed, like native-void
