@@ -20,6 +20,10 @@
 <br/>
 <br/>
 
+### Welcome
+
+This `moon` project is a collection of low-level environment APIs, such as those for JavaScript, Node.js, Rust, Swift, etc.. They are simply the type definitions for most of the useful features of the environment, for use in code. We use them to generate the appropriate environment code in the `base` compiler.
+
 ### License
 
 Copyright 2021-2022 <a href='https://drum.work'>DrumWork</a>
