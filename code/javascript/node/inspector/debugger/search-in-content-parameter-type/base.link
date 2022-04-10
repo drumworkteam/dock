@@ -11,26 +11,24 @@ load @drumwork/moon/code/javascript/base/native-undefined
 load @drumwork/moon/code/javascript/base/runtime-script-id
   take form runtime-script-id
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form search-in-content-parameter-type
-  name <SearchInContentParameterType>
+form search-in-content-parameter-type, name <SearchInContentParameterType>
   take script-id, name <scriptId>
     like runtime-script-id
-    lock free
+    lock false
   take query, name <query>
     like native-string
-    lock free
-  take case-sensitive
-    name <caseSensitive>
-    like sink-link-text
+    lock false
+  take case-sensitive, name <caseSensitive>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false
   take is-regex, name <isRegex>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false

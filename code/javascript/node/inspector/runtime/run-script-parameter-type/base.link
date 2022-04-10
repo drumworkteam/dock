@@ -14,52 +14,46 @@ load @drumwork/moon/code/javascript/node/inspector/runtime/execution-context-id
 load @drumwork/moon/code/javascript/node/inspector/runtime/script-id
   take form script-id
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form run-script-parameter-type
-  name <RunScriptParameterType>
+form run-script-parameter-type, name <RunScriptParameterType>
   take script-id, name <scriptId>
     like script-id
-    lock free
-  take execution-context-id
-    name <executionContextId>
-    like sink-link-text
+    lock false
+  take execution-context-id, name <executionContextId>
+    like or-link-text
       like execution-context-id
       like native-undefined
-    lock free
+    lock false
   take object-group, name <objectGroup>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-undefined
-    lock free
+    lock false
   take silent, name <silent>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
-  take include-command-line-api
-    name <includeCommandLineAPI>
-    like sink-link-text
+    lock false
+  take include-command-line-api, name <includeCommandLineAPI>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
-  take return-by-value
-    name <returnByValue>
-    like sink-link-text
+    lock false
+  take return-by-value, name <returnByValue>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
-  take generate-preview
-    name <generatePreview>
-    like sink-link-text
+    lock false
+  take generate-preview, name <generatePreview>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
-  take await-promise
-    name <awaitPromise>
-    like sink-link-text
+    lock false
+  take await-promise, name <awaitPromise>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false

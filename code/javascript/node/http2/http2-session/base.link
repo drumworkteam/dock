@@ -5,6 +5,9 @@ load @drumwork/moon/code/javascript/base/error
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -50,20 +53,19 @@ load @drumwork/moon/code/javascript/node/http2/session-state
 load @drumwork/moon/code/javascript/node/http2/settings
   take form settings
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form http2-session, name <Http2Session>
   base event-emitter
 
-  take alpn-protocol
-    name <alpnProtocol>
-    like sink-link-text
+  take alpn-protocol, name <alpnProtocol>
+    like or-link-text
       like native-string
       like native-undefined
   take closed, name <closed>
@@ -73,25 +75,22 @@ form http2-session, name <Http2Session>
   take destroyed, name <destroyed>
     like native-boolean
   take encrypted, name <encrypted>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-  take local-settings
-    name <localSettings>
+  take local-settings, name <localSettings>
     like settings
   take origin-set, name <originSet>
-    like sink-link-text
-      like list-link-text
+    like or-link-text
+      like native-array
         like native-string
       like native-undefined
-  take pending-settings-ack
-    name <pendingSettingsAck>
+  take pending-settings-ack, name <pendingSettingsAck>
     like native-boolean
-  take remote-settings
-    name <remoteSettings>
+  take remote-settings, name <remoteSettings>
     like settings
   take socket, name <socket>
-    like sink-link-text
+    like or-link-text
       like net-socket
       like tls-tls-socket
   take state, name <state>
@@ -101,32 +100,32 @@ form http2-session, name <Http2Session>
 
   task close, name <close>
     take callback
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task destroy, name <destroy>
     take error, like error
-      void take
+      void true
     take code, like native-number
-      void take
+      void true
     free seed, like native-void
 
   task goaway, name <goaway>
     take code, like native-number
-      void take
+      void true
     take last-stream-id, like native-number
-      void take
+      void true
     take opaque-data, like node-js-array-buffer-view
-      void take
+      void true
     free seed, like native-void
 
   task ping, name <ping>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take duration, like native-number
@@ -137,9 +136,9 @@ form http2-session, name <Http2Session>
   task ping, name <ping>
     take payload, like node-js-array-buffer-view
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take duration, like native-number
@@ -150,17 +149,16 @@ form http2-session, name <Http2Session>
   task ref, name <ref>
     free seed, like native-void
 
-  task set-local-window-size
-    name <setLocalWindowSize>
+  task set-local-window-size, name <setLocalWindowSize>
     take window-size, like native-number
     free seed, like native-void
 
   task set-timeout, name <setTimeout>
     take msecs, like native-number
     take callback
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task settings, name <settings>
@@ -173,14 +171,14 @@ form http2-session, name <Http2Session>
   task add-listener, name <addListener>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
@@ -188,7 +186,7 @@ form http2-session, name <Http2Session>
   task add-listener, name <addListener>
     take event, text <frameError>
     take listener
-      like task
+      like task-link-text
         take frame-type, like native-number
         take error-code, like native-number
         take stream-id, like native-number
@@ -198,7 +196,7 @@ form http2-session, name <Http2Session>
   task add-listener, name <addListener>
     take event, text <goaway>
     take listener
-      like task
+      like task-link-text
         take error-code, like native-number
         take last-stream-id, like native-number
         take opaque-data, like buffer
@@ -208,7 +206,7 @@ form http2-session, name <Http2Session>
   task add-listener, name <addListener>
     take event, text <localSettings>
     take listener
-      like task
+      like task-link-text
         take settings, like settings
         free seed, like native-void
     free seed, like native-this
@@ -216,14 +214,14 @@ form http2-session, name <Http2Session>
   task add-listener, name <addListener>
     take event, text <ping>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <remoteSettings>
     take listener
-      like task
+      like task-link-text
         take settings, like settings
         free seed, like native-void
     free seed, like native-this
@@ -231,21 +229,21 @@ form http2-session, name <Http2Session>
   task add-listener, name <addListener>
     take event, text <timeout>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
@@ -292,26 +290,26 @@ form http2-session, name <Http2Session>
 
   task emit, name <emit>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take args
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-boolean
 
   task on, name <on>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
@@ -319,7 +317,7 @@ form http2-session, name <Http2Session>
   task on, name <on>
     take event, text <frameError>
     take listener
-      like task
+      like task-link-text
         take frame-type, like native-number
         take error-code, like native-number
         take stream-id, like native-number
@@ -329,7 +327,7 @@ form http2-session, name <Http2Session>
   task on, name <on>
     take event, text <goaway>
     take listener
-      like task
+      like task-link-text
         take error-code, like native-number
         take last-stream-id, like native-number
         take opaque-data, like buffer
@@ -339,7 +337,7 @@ form http2-session, name <Http2Session>
   task on, name <on>
     take event, text <localSettings>
     take listener
-      like task
+      like task-link-text
         take settings, like settings
         free seed, like native-void
     free seed, like native-this
@@ -347,14 +345,14 @@ form http2-session, name <Http2Session>
   task on, name <on>
     take event, text <ping>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <remoteSettings>
     take listener
-      like task
+      like task-link-text
         take settings, like settings
         free seed, like native-void
     free seed, like native-this
@@ -362,35 +360,35 @@ form http2-session, name <Http2Session>
   task on, name <on>
     take event, text <timeout>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
@@ -398,7 +396,7 @@ form http2-session, name <Http2Session>
   task once, name <once>
     take event, text <frameError>
     take listener
-      like task
+      like task-link-text
         take frame-type, like native-number
         take error-code, like native-number
         take stream-id, like native-number
@@ -408,7 +406,7 @@ form http2-session, name <Http2Session>
   task once, name <once>
     take event, text <goaway>
     take listener
-      like task
+      like task-link-text
         take error-code, like native-number
         take last-stream-id, like native-number
         take opaque-data, like buffer
@@ -418,7 +416,7 @@ form http2-session, name <Http2Session>
   task once, name <once>
     take event, text <localSettings>
     take listener
-      like task
+      like task-link-text
         take settings, like settings
         free seed, like native-void
     free seed, like native-this
@@ -426,14 +424,14 @@ form http2-session, name <Http2Session>
   task once, name <once>
     take event, text <ping>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <remoteSettings>
     take listener
-      like task
+      like task-link-text
         take settings, like settings
         free seed, like native-void
     free seed, like native-this
@@ -441,196 +439,178 @@ form http2-session, name <Http2Session>
   task once, name <once>
     take event, text <timeout>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <frameError>
     take listener
-      like task
+      like task-link-text
         take frame-type, like native-number
         take error-code, like native-number
         take stream-id, like native-number
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <goaway>
     take listener
-      like task
+      like task-link-text
         take error-code, like native-number
         take last-stream-id, like native-number
         take opaque-data, like buffer
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <localSettings>
     take listener
-      like task
+      like task-link-text
         take settings, like settings
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <ping>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <remoteSettings>
     take listener
-      like task
+      like task-link-text
         take settings, like settings
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <timeout>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <frameError>
     take listener
-      like task
+      like task-link-text
         take frame-type, like native-number
         take error-code, like native-number
         take stream-id, like native-number
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <goaway>
     take listener
-      like task
+      like task-link-text
         take error-code, like native-number
         take last-stream-id, like native-number
         take opaque-data, like buffer
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <localSettings>
     take listener
-      like task
+      like task-link-text
         take settings, like settings
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <ping>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <remoteSettings>
     take listener
-      like task
+      like task-link-text
         take settings, like settings
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <timeout>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this

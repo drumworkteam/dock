@@ -1,4 +1,7 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -11,26 +14,21 @@ load @drumwork/moon/code/javascript/base/native-undefined
 load @drumwork/moon/code/javascript/node/http2/secure-server-session-options
   take form secure-server-session-options
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form secure-server-options
-  name <SecureServerOptions>
+form secure-server-options, name <SecureServerOptions>
   base secure-server-session-options
 
   take allow-http1, name <allowHTTP1>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false
   take origins, name <origins>
-    like sink-link-text
-      like list-link-text
+    like or-link-text
+      like native-array
         like native-string
       like native-undefined
-    lock free
+    lock false

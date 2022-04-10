@@ -1,20 +1,18 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
 load @drumwork/moon/code/javascript/node/inspector/profiler/type-object
   take form type-object
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-form type-profile-entry
-  name <TypeProfileEntry>
+form type-profile-entry, name <TypeProfileEntry>
   take offset, name <offset>
     like native-number
-    lock free
+    lock false
   take types, name <types>
-    like list-link-text
+    like native-array
       like type-object
-    lock free
+    lock false

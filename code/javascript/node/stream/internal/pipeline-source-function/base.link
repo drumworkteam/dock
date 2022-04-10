@@ -9,17 +9,20 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form pipeline-source-function
-  name <PipelineSourceFunction>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form pipeline-source-function, name <PipelineSourceFunction>
   head t, like like-link-text
 
-  like task
+  like task-link-text
     free seed
-      like sink-link-text
+      like or-link-text
         like iterable
           like t
         like async-iterable

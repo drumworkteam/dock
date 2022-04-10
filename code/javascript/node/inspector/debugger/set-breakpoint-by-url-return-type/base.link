@@ -1,21 +1,18 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/node/inspector/debugger/breakpoint-id
   take form breakpoint-id
 
 load @drumwork/moon/code/javascript/node/inspector/debugger/location
   take form location
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-form set-breakpoint-by-url-return-type
-  name <SetBreakpointByUrlReturnType>
-  take breakpoint-id
-    name <breakpointId>
+form set-breakpoint-by-url-return-type, name <SetBreakpointByUrlReturnType>
+  take breakpoint-id, name <breakpointId>
     like breakpoint-id
-    lock free
+    lock false
   take locations, name <locations>
-    like list-link-text
+    like native-array
       like location
-    lock free
+    lock false

@@ -26,40 +26,39 @@ load @drumwork/moon/code/javascript/node/child-process/common-options
 load @drumwork/moon/code/javascript/node/child-process/stdio-options
   take form stdio-options
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form common-exec-options
-  name <CommonExecOptions>
+form common-exec-options, name <CommonExecOptions>
   base common-options
 
   take input, name <input>
-    like sink-link-text
+    like or-link-text
       like native-string
       like node-js-array-buffer-view
       like native-undefined
-    lock free
+    lock false
   take stdio, name <stdio>
-    like sink-link-text
+    like or-link-text
       like stdio-options
       like native-undefined
-    lock free
+    lock false
   take kill-signal, name <killSignal>
-    like sink-link-text
+    like or-link-text
       like node-js-signals
       like native-number
       like native-undefined
-    lock free
+    lock false
   take max-buffer, name <maxBuffer>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
   take encoding, name <encoding>
-    like sink-link-text
+    like or-link-text
       like buffer-encoding
       text <buffer>
       like native-null
       like native-undefined
-    lock free
+    lock false

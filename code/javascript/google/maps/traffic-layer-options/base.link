@@ -1,0 +1,25 @@
+
+load @drumwork/moon/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/moon/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/moon/code/javascript/google/maps/map
+  take form map
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+form traffic-layer-options, name <google.maps.TrafficLayerOptions>
+  take auto-refresh, name <autoRefresh>
+    like or-link-text
+      like native-boolean
+      like native-null
+    lock false
+  take map, name <map>
+    like or-link-text
+      like map
+      like native-null
+    lock false

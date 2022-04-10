@@ -5,6 +5,9 @@ load @drumwork/moon/code/javascript/base/async-resource
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
@@ -20,6 +23,10 @@ load @drumwork/moon/code/javascript/base/this-arg
 load @drumwork/moon/code/javascript/node/async-hooks/async-resource-options
   take form async-resource-options
 
+load @drumwork/seed/code/form/and
+  take form and
+    save form and-link-text
+
 load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
@@ -28,52 +35,49 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
-form async-resource
-  name <AsyncResource>
+form async-resource, name <AsyncResource>
   task bind, name <bind>
     head func, like like-link-text
-      base task
+      base task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-any
     take fn, like func
     free seed
-      like link
+      like and-link-text
         like func
         like form-link-text
-          take async-resource
-            name <asyncResource>
+          take async-resource, name <asyncResource>
             like async-resource
-            lock free
+            lock false
 
-  task run-in-async-scope
-    name <runInAsyncScope>
+  task run-in-async-scope, name <runInAsyncScope>
     head this, like like-link-text
     head result, like like-link-text
     take fn
-      like task
+      like task-link-text
         take this, like this
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like result
     take this-arg, like this
-      void take
+      void true
     take args
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like result
 
   task emit-destroy, name <emitDestroy>
@@ -82,39 +86,37 @@ form async-resource
   task async-id, name <asyncId>
     free seed, like native-number
 
-  task trigger-async-id
-    name <triggerAsyncId>
+  task trigger-async-id, name <triggerAsyncId>
     free seed, like native-number
 
 form async-resource-constructor
   hook make
     take type, like native-string
     take trigger-async-id
-      like sink-link-text
+      like or-link-text
         like native-number
         like async-resource-options
-      void take
+      void true
 
   task bind, name <bind>
     head func, like like-link-text
-      base task
+      base task-link-text
         take this, like this-arg
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-any
     head this-arg, like like-link-text
     take fn, like func
     take type, like native-string
-      void take
+      void true
     take this-arg, like this-arg
-      void take
+      void true
     free seed
-      like link
+      like and-link-text
         like func
         like form-link-text
-          take async-resource
-            name <asyncResource>
+          take async-resource, name <asyncResource>
             like async-resource
-            lock free
+            lock false

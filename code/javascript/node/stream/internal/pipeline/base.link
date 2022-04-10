@@ -42,9 +42,9 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 task promisify, name <__promisify__>
   head a, like like-link-text
@@ -57,7 +57,7 @@ task promisify, name <__promisify__>
   take source, like a
   take destination, like b
   take options, like pipeline-options
-    void take
+    void true
   free seed
     like pipeline-promise
       like b
@@ -78,7 +78,7 @@ task promisify, name <__promisify__>
   take transform1, like t1
   take destination, like b
   take options, like pipeline-options
-    void take
+    void true
   free seed
     like pipeline-promise
       like b
@@ -104,7 +104,7 @@ task promisify, name <__promisify__>
   take transform2, like t2
   take destination, like b
   take options, like pipeline-options
-    void take
+    void true
   free seed
     like pipeline-promise
       like b
@@ -135,7 +135,7 @@ task promisify, name <__promisify__>
   take transform3, like t3
   take destination, like b
   take options, like pipeline-options
-    void take
+    void true
   free seed
     like pipeline-promise
       like b
@@ -171,7 +171,7 @@ task promisify, name <__promisify__>
   take transform4, like t4
   take destination, like b
   take options, like pipeline-options
-    void take
+    void true
   free seed
     like pipeline-promise
       like b
@@ -179,12 +179,12 @@ task promisify, name <__promisify__>
 task promisify, name <__promisify__>
   take streams
     like readonly-array
-      like sink-link-text
+      like or-link-text
         like node-js-readable-stream
         like node-js-writable-stream
         like node-js-read-write-stream
   take options, like pipeline-options
-    void take
+    void true
   free seed
     like promise
       like native-void
@@ -192,16 +192,16 @@ task promisify, name <__promisify__>
 task promisify, name <__promisify__>
   take stream1, like node-js-readable-stream
   take stream2
-    like sink-link-text
+    like or-link-text
       like node-js-read-write-stream
       like node-js-writable-stream
   take streams
     like array
-      like sink-link-text
+      like or-link-text
         like node-js-read-write-stream
         like node-js-writable-stream
         like pipeline-options
-    rest take
+    rest true
   free seed
     like promise
       like native-void

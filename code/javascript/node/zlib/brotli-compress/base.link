@@ -14,15 +14,14 @@ load @drumwork/moon/code/javascript/node/zlib/input-type
 load @drumwork/moon/code/javascript/node/zlib/zlib
   take form zlib
 
-form brotli-compress
-  name <BrotliCompress>
+form brotli-compress, name <BrotliCompress>
   base stream-transform
   base zlib
 
 task promisify, name <__promisify__>
   take buffer, like input-type
   take options, like brotli-options
-    void take
+    void true
   free seed
     like promise
       like buffer

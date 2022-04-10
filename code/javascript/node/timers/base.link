@@ -1,6 +1,11 @@
 
+bear @drumwork/moon/code/javascript/node/timers/timer-options
+
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
+
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
 
 load @drumwork/moon/code/javascript/base/native-number
   take form native-number
@@ -21,132 +26,132 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 host promisify, name <__promisify__>
-  home take
+  home true
   like set-timeout-promise
 
 host promisify, name <__promisify__>
-  home take
+  home true
   like set-interval-promise
 
 host promisify, name <__promisify__>
-  home take
+  home true
   like set-immediate-promise
 
 task set-timeout, name <setTimeout>
-  home take
+  home true
   head t-args, like like-link-text
-    base list-link-text
+    base native-array
       like native-any
   take callback
-    like task
+    like task-link-text
       take args, like t-args
-        rest take
+        rest true
       free seed, like native-void
   take ms, like native-number
-    void take
+    void true
   take args, like t-args
-    rest take
+    rest true
   free seed, like node-js-timeout
 
 task set-timeout, name <setTimeout>
-  home take
+  home true
   take callback
-    like task
+    like task-link-text
       take args, like native-void
       free seed, like native-void
   take ms, like native-number
-    void take
+    void true
   free seed, like node-js-timeout
 
 task clear-timeout, name <clearTimeout>
-  home take
+  home true
   take timeout-id, like node-js-timeout
   free seed, like native-void
 
 task set-interval, name <setInterval>
-  home take
+  home true
   head t-args, like like-link-text
-    base list-link-text
+    base native-array
       like native-any
   take callback
-    like task
+    like task-link-text
       take args, like t-args
-        rest take
+        rest true
       free seed, like native-void
   take ms, like native-number
-    void take
+    void true
   take args, like t-args
-    rest take
+    rest true
   free seed, like node-js-timer
 
 task set-interval, name <setInterval>
-  home take
+  home true
   take callback
-    like task
+    like task-link-text
       take args, like native-void
       free seed, like native-void
   take ms, like native-number
-    void take
+    void true
   free seed, like node-js-timer
 
-task clear-interval
-  name <clearInterval>
-  home take
+task clear-interval, name <clearInterval>
+  home true
   take interval-id, like node-js-timeout
   free seed, like native-void
 
 task set-immediate, name <setImmediate>
-  home take
+  home true
   head t-args, like like-link-text
-    base list-link-text
+    base native-array
       like native-any
   take callback
-    like task
+    like task-link-text
       take args, like t-args
-        rest take
+        rest true
       free seed, like native-void
   take args, like t-args
-    rest take
+    rest true
   free seed, like node-js-immediate
 
 task set-immediate, name <setImmediate>
-  home take
+  home true
   take callback
-    like task
+    like task-link-text
       take args, like native-void
       free seed, like native-void
   free seed, like node-js-immediate
 
-task clear-immediate
-  name <clearImmediate>
-  home take
+task clear-immediate, name <clearImmediate>
+  home true
   take immediate-id, like node-js-immediate
   free seed, like native-void
 
-task queue-microtask
-  name <queueMicrotask>
-  home take
+task queue-microtask, name <queueMicrotask>
+  home true
   take callback
-    like task
+    like task-link-text
       free seed, like native-void
   free seed, like native-void
 
 host set-timeout, name <setTimeout>
   like global-set-timeout
+
 host clear-timeout, name <clearTimeout>
   like global-clear-timeout
+
 host set-interval, name <setInterval>
   like global-set-interval
-host clear-interval
-  name <clearInterval>
+
+host clear-interval, name <clearInterval>
   like global-clear-interval
+
 host set-immediate, name <setImmediate>
   like global-set-immediate
-host clear-immediate
-  name <clearImmediate>
+
+host clear-immediate, name <clearImmediate>
   like global-clear-immediate

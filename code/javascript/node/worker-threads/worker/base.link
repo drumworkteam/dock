@@ -5,6 +5,9 @@ load @drumwork/moon/code/javascript/base/error
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -56,25 +59,25 @@ load @drumwork/moon/code/javascript/node/worker-threads/worker-options
 load @drumwork/moon/code/javascript/node/worker-threads/worker-performance
   take form worker-performance
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form worker, name <Worker>
   base event-emitter
   take stdin, name <stdin>
-    like sink-link-text
+    like or-link-text
       like writable
       like native-null
   take stdout, name <stdout>, like readable
   take stderr, name <stderr>, like readable
   take thread-id, name <threadId>, like native-number
   take resource-limits, name <resourceLimits>
-    like sink-link-text
+    like or-link-text
       like resource-limits
       like native-undefined
   take performance, name <performance>, like worker-performance
@@ -84,7 +87,7 @@ form worker, name <Worker>
     take transfer-list
       like readonly-array
         like transfer-list-item
-      void take
+      void true
     free seed, like native-void
 
   task ref, name <ref>
@@ -98,8 +101,7 @@ form worker, name <Worker>
       like promise
         like native-number
 
-  task get-heap-snapshot
-    name <getHeapSnapshot>
+  task get-heap-snapshot, name <getHeapSnapshot>
     free seed
       like promise
         like readable
@@ -107,7 +109,7 @@ form worker, name <Worker>
   task add-listener, name <addListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
@@ -115,7 +117,7 @@ form worker, name <Worker>
   task add-listener, name <addListener>
     take event, text <exit>
     take listener
-      like task
+      like task-link-text
         take exit-code, like native-number
         free seed, like native-void
     free seed, like native-this
@@ -123,7 +125,7 @@ form worker, name <Worker>
   task add-listener, name <addListener>
     take event, text <message>
     take listener
-      like task
+      like task-link-text
         take value, like native-any
         free seed, like native-void
     free seed, like native-this
@@ -131,7 +133,7 @@ form worker, name <Worker>
   task add-listener, name <addListener>
     take event, text <messageerror>
     take listener
-      like task
+      like task-link-text
         take error, like error
         free seed, like native-void
     free seed, like native-this
@@ -139,21 +141,21 @@ form worker, name <Worker>
   task add-listener, name <addListener>
     take event, text <online>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
@@ -183,19 +185,19 @@ form worker, name <Worker>
 
   task emit, name <emit>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take args
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-boolean
 
   task on, name <on>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
@@ -203,7 +205,7 @@ form worker, name <Worker>
   task on, name <on>
     take event, text <exit>
     take listener
-      like task
+      like task-link-text
         take exit-code, like native-number
         free seed, like native-void
     free seed, like native-this
@@ -211,7 +213,7 @@ form worker, name <Worker>
   task on, name <on>
     take event, text <message>
     take listener
-      like task
+      like task-link-text
         take value, like native-any
         free seed, like native-void
     free seed, like native-this
@@ -219,7 +221,7 @@ form worker, name <Worker>
   task on, name <on>
     take event, text <messageerror>
     take listener
-      like task
+      like task-link-text
         take error, like error
         free seed, like native-void
     free seed, like native-this
@@ -227,28 +229,28 @@ form worker, name <Worker>
   task on, name <on>
     take event, text <online>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
@@ -256,7 +258,7 @@ form worker, name <Worker>
   task once, name <once>
     take event, text <exit>
     take listener
-      like task
+      like task-link-text
         take exit-code, like native-number
         free seed, like native-void
     free seed, like native-this
@@ -264,7 +266,7 @@ form worker, name <Worker>
   task once, name <once>
     take event, text <message>
     take listener
-      like task
+      like task-link-text
         take value, like native-any
         free seed, like native-void
     free seed, like native-this
@@ -272,7 +274,7 @@ form worker, name <Worker>
   task once, name <once>
     take event, text <messageerror>
     take listener
-      like task
+      like task-link-text
         take error, like error
         free seed, like native-void
     free seed, like native-this
@@ -280,205 +282,187 @@ form worker, name <Worker>
   task once, name <once>
     take event, text <online>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <exit>
     take listener
-      like task
+      like task-link-text
         take exit-code, like native-number
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <message>
     take listener
-      like task
+      like task-link-text
         take value, like native-any
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <messageerror>
     take listener
-      like task
+      like task-link-text
         take error, like error
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <online>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <exit>
     take listener
-      like task
+      like task-link-text
         take exit-code, like native-number
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <message>
     take listener
-      like task
+      like task-link-text
         take value, like native-any
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <messageerror>
     take listener
-      like task
+      like task-link-text
         take error, like error
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <online>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task remove-listener
-    name <removeListener>
+  task remove-listener, name <removeListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
 
-  task remove-listener
-    name <removeListener>
+  task remove-listener, name <removeListener>
     take event, text <exit>
     take listener
-      like task
+      like task-link-text
         take exit-code, like native-number
         free seed, like native-void
     free seed, like native-this
 
-  task remove-listener
-    name <removeListener>
+  task remove-listener, name <removeListener>
     take event, text <message>
     take listener
-      like task
+      like task-link-text
         take value, like native-any
         free seed, like native-void
     free seed, like native-this
 
-  task remove-listener
-    name <removeListener>
+  task remove-listener, name <removeListener>
     take event, text <messageerror>
     take listener
-      like task
+      like task-link-text
         take error, like error
         free seed, like native-void
     free seed, like native-this
 
-  task remove-listener
-    name <removeListener>
+  task remove-listener, name <removeListener>
     take event, text <online>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task remove-listener
-    name <removeListener>
+  task remove-listener, name <removeListener>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task off, name <off>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
@@ -486,7 +470,7 @@ form worker, name <Worker>
   task off, name <off>
     take event, text <exit>
     take listener
-      like task
+      like task-link-text
         take exit-code, like native-number
         free seed, like native-void
     free seed, like native-this
@@ -494,7 +478,7 @@ form worker, name <Worker>
   task off, name <off>
     take event, text <message>
     take listener
-      like task
+      like task-link-text
         take value, like native-any
         free seed, like native-void
     free seed, like native-this
@@ -502,7 +486,7 @@ form worker, name <Worker>
   task off, name <off>
     take event, text <messageerror>
     take listener
-      like task
+      like task-link-text
         take error, like error
         free seed, like native-void
     free seed, like native-this
@@ -510,29 +494,29 @@ form worker, name <Worker>
   task off, name <off>
     take event, text <online>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task off, name <off>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
 form worker-constructor
   hook make
     take filename
-      like sink-link-text
+      like or-link-text
         like native-string
         like url
     take options, like worker-options
-      void take
+      void true

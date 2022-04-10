@@ -1,23 +1,21 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
 load @drumwork/moon/code/javascript/base/runtime-call-frame
   take form runtime-call-frame
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-form sampling-heap-profile-node
-  name <SamplingHeapProfileNode>
+form sampling-heap-profile-node, name <SamplingHeapProfileNode>
   take call-frame, name <callFrame>
     like runtime-call-frame
-    lock free
+    lock false
   take self-size, name <selfSize>
     like native-number
-    lock free
+    lock false
   take children, name <children>
-    like list-link-text
+    like native-array
       like sampling-heap-profile-node
-    lock free
+    lock false

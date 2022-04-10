@@ -23,70 +23,70 @@ load @drumwork/moon/code/javascript/node/url/url
 load @drumwork/moon/code/javascript/node/url/url-search-params
   take form url-search-params
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form url-base, name <Url>
+form url, name <Url>
   take auth, name <auth>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
-    lock free
+    lock false
   take hash, name <hash>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
-    lock free
+    lock false
   take host, name <host>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
-    lock free
+    lock false
   take hostname, name <hostname>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
-    lock free
+    lock false
   take href, name <href>
     like native-string
-    lock free
+    lock false
   take path, name <path>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
-    lock free
+    lock false
   take pathname, name <pathname>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
-    lock free
+    lock false
   take protocol, name <protocol>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
-    lock free
+    lock false
   take search, name <search>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
-    lock free
+    lock false
   take slashes, name <slashes>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-null
-    lock free
+    lock false
   take port, name <port>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
-    lock free
+    lock false
   take query, name <query>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
       like parsed-url-query
-    lock free
+    lock false
 
 form url, name <URL>
   take hash, name <hash>, like native-string
@@ -109,24 +109,22 @@ form url, name <URL>
     free seed, like native-string
 
 form url-constructor
-  task create-object-url
-    name <createObjectURL>
+  task create-object-url, name <createObjectURL>
     take blob, like blob
     free seed, like native-string
 
-  task revoke-object-url
-    name <revokeObjectURL>
+  task revoke-object-url, name <revokeObjectURL>
     take object-url, like native-string
     free seed, like native-void
 
   hook make
     take input, like native-string
     take base
-      like sink-link-text
+      like or-link-text
         like native-string
         like url
-      void take
+      void true
 
 form url, name <URL>
-  home take
+  home true
   base url

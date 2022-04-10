@@ -14,22 +14,25 @@ load @drumwork/moon/code/javascript/base/native-void
 load @drumwork/moon/code/javascript/node/readline/completer-result
   take form completer-result
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form async-completer
-  name <AsyncCompleter>
-  like task
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form async-completer, name <AsyncCompleter>
+  like task-link-text
     take line, like native-string
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like native-null
             like error
-          void take
+          void true
         take result, like completer-result
-          void take
+          void true
         free seed, like native-void
     free seed, like native-void

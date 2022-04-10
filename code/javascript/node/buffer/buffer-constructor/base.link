@@ -5,6 +5,9 @@ load @drumwork/moon/code/javascript/base/array-buffer
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -39,36 +42,31 @@ load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form buffer-constructor
-  name <BufferConstructor>
-  home take
+form buffer-constructor, name <BufferConstructor>
+  home true
   take pool-size, name <poolSize>
     like native-number
-    lock free
+    lock false
 
   task from, name <from>
     take array-buffer
       like with-implicit-coercion
-        like sink-link-text
+        like or-link-text
           like array-buffer
           like shared-array-buffer
     take byte-offset, like native-number
-      void take
+      void true
     take length, like native-number
-      void take
+      void true
     free seed, like buffer
 
   task from, name <from>
     take data
-      like sink-link-text
+      like or-link-text
         like uint8-array
         like readonly-array
           like native-number
@@ -77,7 +75,7 @@ form buffer-constructor
   task from, name <from>
     take data
       like with-implicit-coercion
-        like sink-link-text
+        like or-link-text
           like uint8-array
           like readonly-array
             like native-number
@@ -86,7 +84,7 @@ form buffer-constructor
 
   task from, name <from>
     take str
-      like sink-link-text
+      like or-link-text
         like with-implicit-coercion
           like native-string
         like form-link-text
@@ -95,37 +93,37 @@ form buffer-constructor
             free seed, like native-string
 
     take encoding, like buffer-encoding
-      void take
+      void true
     free seed, like buffer
 
   task of, name <of>
     take items
-      like list-link-text
+      like native-array
         like native-number
-      rest take
+      rest true
     free seed, like buffer
 
   task is-buffer, name <isBuffer>
     take obj, like native-any
     free seed
-      free seed, like native-boolean
+      like native-boolean
       rank obj, like buffer
 
   task is-encoding, name <isEncoding>
     take encoding, like native-string
     free seed
-      free seed, like native-boolean
+      like native-boolean
       rank encoding, like buffer-encoding
 
   task byte-length, name <byteLength>
     take string
-      like sink-link-text
+      like or-link-text
         like native-string
         like node-js-array-buffer-view
         like array-buffer
         like shared-array-buffer
     take encoding, like buffer-encoding
-      void take
+      void true
     free seed, like native-number
 
   task concat, name <concat>
@@ -133,14 +131,14 @@ form buffer-constructor
       like readonly-array
         like uint8-array
     take total-length, like native-number
-      void take
+      void true
     free seed, like buffer
 
   task compare, name <compare>
     take buf1, like uint8-array
     take buf2, like uint8-array
     free seed
-      like sink-link-text
+      like or-link-text
         text <undefined>
         text <0>
         text <1>
@@ -148,28 +146,27 @@ form buffer-constructor
   task alloc, name <alloc>
     take size, like native-number
     take fill
-      like sink-link-text
+      like or-link-text
         like native-string
         like buffer
         like native-number
-      void take
+      void true
     take encoding, like buffer-encoding
-      void take
+      void true
     free seed, like buffer
 
   task alloc-unsafe, name <allocUnsafe>
     take size, like native-number
     free seed, like buffer
 
-  task alloc-unsafe-slow
-    name <allocUnsafeSlow>
+  task alloc-unsafe-slow, name <allocUnsafeSlow>
     take size, like native-number
     free seed, like buffer
 
   hook make
     take str, like native-string
     take encoding, like buffer-encoding
-      void take
+      void true
     free seed, like buffer
 
   hook make
@@ -182,7 +179,7 @@ form buffer-constructor
 
   hook make
     take array-buffer
-      like sink-link-text
+      like or-link-text
         like array-buffer
         like shared-array-buffer
     free seed, like buffer

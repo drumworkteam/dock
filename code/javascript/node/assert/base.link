@@ -1,4 +1,9 @@
 
+bear @drumwork/moon/code/javascript/node/assert/assertion-error
+bear @drumwork/moon/code/javascript/node/assert/call-tracker
+bear @drumwork/moon/code/javascript/node/assert/call-tracker-report-information
+bear @drumwork/moon/code/javascript/node/assert/assert-predicate
+
 load @drumwork/moon/code/javascript/base/error
   take form error
 
@@ -38,6 +43,10 @@ load @drumwork/moon/code/javascript/base/reg-exp
 load @drumwork/moon/code/javascript/node/assert/assert-predicate
   take form assert-predicate
 
+load @drumwork/seed/code/form/and
+  take form and
+    save form and-link-text
+
 load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
@@ -46,15 +55,19 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 host strict, name <strict>
-  like link
+  like and-link-text
     like omit
       like assert
-      like sink-link-text
+      like or-link-text
         text <equal>
         text <notEqual>
         text <deepEqual>
@@ -67,105 +80,103 @@ host strict, name <strict>
     like form-link-text
       take equal, name <equal>
         like strict-equal
-        lock free
+        lock false
       take not-equal, name <notEqual>
         like not-strict-equal
-        lock free
+        lock false
       take deep-equal, name <deepEqual>
         like deep-strict-equal
-        lock free
-      take not-deep-equal
-        name <notDeepEqual>
+        lock false
+      take not-deep-equal, name <notDeepEqual>
         like not-deep-strict-equal
-        lock free
+        lock false
       take ok, name <ok>
         like ok
-        lock free
+        lock false
       take strict-equal, name <strictEqual>
         like strict-equal
-        lock free
-      take deep-strict-equal
-        name <deepStrictEqual>
+        lock false
+      take deep-strict-equal, name <deepStrictEqual>
         like deep-strict-equal
-        lock free
+        lock false
       take if-error, name <ifError>
         like if-error
-        lock free
+        lock false
       take strict, name <strict>
         like strict
-        lock free
+        lock false
 
 task fail, name <fail>
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed, like native-never
 
 task fail, name <fail>
   take actual, like native-unknown
   take expected, like native-unknown
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   take operator, like native-string
-    void take
+    void true
   take stack-start-fn, like function
-    void take
+    void true
   free seed, like native-never
 
 task ok, name <ok>
   take value, like native-unknown
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank value
 
 task equal, name <equal>
   take actual, like native-unknown
   take expected, like native-unknown
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed, like native-void
 
 task not-equal, name <notEqual>
   take actual, like native-unknown
   take expected, like native-unknown
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed, like native-void
 
 task deep-equal, name <deepEqual>
   take actual, like native-unknown
   take expected, like native-unknown
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed, like native-void
 
 task not-deep-equal, name <notDeepEqual>
   take actual, like native-unknown
   take expected, like native-unknown
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed, like native-void
 
 task strict-equal, name <strictEqual>
@@ -173,127 +184,124 @@ task strict-equal, name <strictEqual>
   take actual, like native-unknown
   take expected, like t
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank actual, like t
 
-task not-strict-equal
-  name <notStrictEqual>
+task not-strict-equal, name <notStrictEqual>
   take actual, like native-unknown
   take expected, like native-unknown
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed, like native-void
 
-task deep-strict-equal
-  name <deepStrictEqual>
+task deep-strict-equal, name <deepStrictEqual>
   head t, like like-link-text
   take actual, like native-unknown
   take expected, like t
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank actual, like t
 
-task not-deep-strict-equal
-  name <notDeepStrictEqual>
+task not-deep-strict-equal, name <notDeepStrictEqual>
   take actual, like native-unknown
   take expected, like native-unknown
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed, like native-void
 
 task throws, name <throws>
   take block
-    like task
+    like task-link-text
       free seed, like native-unknown
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed, like native-void
 
 task throws, name <throws>
   take block
-    like task
+    like task-link-text
       free seed, like native-unknown
   take error, like assert-predicate
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed, like native-void
 
 task does-not-throw, name <doesNotThrow>
   take block
-    like task
+    like task-link-text
       free seed, like native-unknown
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed, like native-void
 
 task does-not-throw, name <doesNotThrow>
   take block
-    like task
+    like task-link-text
       free seed, like native-unknown
   take error, like assert-predicate
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed, like native-void
 
 task if-error, name <ifError>
   take value, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank value
-      like sink-link-text
+      like or-link-text
         like native-null
         like native-undefined
 
 task rejects, name <rejects>
   take block
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         free seed
           like promise
             like native-unknown
       like promise
         like native-unknown
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed
     like promise
       like native-void
 
 task rejects, name <rejects>
   take block
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         free seed
           like promise
             like native-unknown
@@ -301,38 +309,36 @@ task rejects, name <rejects>
         like native-unknown
   take error, like assert-predicate
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed
     like promise
       like native-void
 
-task does-not-reject
-  name <doesNotReject>
+task does-not-reject, name <doesNotReject>
   take block
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         free seed
           like promise
             like native-unknown
       like promise
         like native-unknown
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed
     like promise
       like native-void
 
-task does-not-reject
-  name <doesNotReject>
+task does-not-reject, name <doesNotReject>
   take block
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         free seed
           like promise
             like native-unknown
@@ -340,10 +346,10 @@ task does-not-reject
         like native-unknown
   take error, like assert-predicate
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed
     like promise
       like native-void
@@ -352,29 +358,29 @@ task match, name <match>
   take value, like native-string
   take reg-exp, like reg-exp
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed, like native-void
 
 task does-not-match, name <doesNotMatch>
   take value, like native-string
   take reg-exp, like reg-exp
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed, like native-void
 
 task assert, name <assert>
   take value, like native-unknown
   take message
-    like sink-link-text
+    like or-link-text
       like native-string
       like error
-    void take
+    void true
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank value

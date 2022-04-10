@@ -133,75 +133,66 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 load @drumwork/seed/code/form/test
   take form test
     save form test-link-text
 
-task is-any-array-buffer
-  name <isAnyArrayBuffer>
+task is-any-array-buffer, name <isAnyArrayBuffer>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like array-buffer-like
 
-task is-arguments-object
-  name <isArgumentsObject>
+task is-arguments-object, name <isArgumentsObject>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like i-arguments
 
-task is-array-buffer
-  name <isArrayBuffer>
+task is-array-buffer, name <isArrayBuffer>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like array-buffer
 
-task is-array-buffer-view
-  name <isArrayBufferView>
+task is-array-buffer-view, name <isArrayBufferView>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like node-js-array-buffer-view
 
-task is-async-function
-  name <isAsyncFunction>
+task is-async-function, name <isAsyncFunction>
   take object, like native-unknown
   free seed, like native-boolean
 
-task is-big-int64-array
-  name <isBigInt64Array>
+task is-big-int64-array, name <isBigInt64Array>
   take value, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank value, like big-int64-array
 
-task is-big-uint64-array
-  name <isBigUint64Array>
+task is-big-uint64-array, name <isBigUint64Array>
   take value, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank value, like big-uint64-array
 
-task is-boolean-object
-  name <isBooleanObject>
+task is-boolean-object, name <isBooleanObject>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like boolean
 
-task is-boxed-primitive
-  name <isBoxedPrimitive>
+task is-boxed-primitive, name <isBoxedPrimitive>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object
-      like sink-link-text
+      like or-link-text
         like string
         like number
         like big-int
@@ -211,73 +202,69 @@ task is-boxed-primitive
 task is-data-view, name <isDataView>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like data-view
 
 task is-date, name <isDate>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like date
 
 task is-external, name <isExternal>
   take object, like native-unknown
   free seed, like native-boolean
 
-task is-float32-array
-  name <isFloat32Array>
+task is-float32-array, name <isFloat32Array>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like float32-array
 
-task is-float64-array
-  name <isFloat64Array>
+task is-float64-array, name <isFloat64Array>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like float64-array
 
-task is-generator-function
-  name <isGeneratorFunction>
+task is-generator-function, name <isGeneratorFunction>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like generator-function
 
-task is-generator-object
-  name <isGeneratorObject>
+task is-generator-object, name <isGeneratorObject>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like generator
 
 task is-int8-array, name <isInt8Array>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like int8-array
 
 task is-int16-array, name <isInt16Array>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like int16-array
 
 task is-int32-array, name <isInt32Array>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like int32-array
 
 task is-map, name <isMap>
   head t, like like-link-text
   take object
-    like sink-link-text
+    like or-link-text
       like t
       like form-link-text
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object
       like test-link-text
         stem roll
@@ -285,50 +272,46 @@ task is-map, name <isMap>
           like readonly-map
             like native-any
             like native-any
-          hook take
+          hook true
             like test-link-text
               stem roll
                 like native-unknown
                 like t
-                hook take
+                hook true
                   like native-never
-                hook free
+                hook false
                   like readonly-map
                     like native-any
                     like native-any
-          hook free
+          hook false
             like map
               like native-unknown
               like native-unknown
 
-task is-map-iterator
-  name <isMapIterator>
+task is-map-iterator, name <isMapIterator>
   take object, like native-unknown
   free seed, like native-boolean
 
-task is-module-namespace-object
-  name <isModuleNamespaceObject>
+task is-module-namespace-object, name <isModuleNamespaceObject>
   take value, like native-unknown
   free seed, like native-boolean
 
-task is-native-error
-  name <isNativeError>
+task is-native-error, name <isNativeError>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like error
 
-task is-number-object
-  name <isNumberObject>
+task is-number-object, name <isNumberObject>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like number
 
 task is-promise, name <isPromise>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object
       like promise
         like native-unknown
@@ -340,100 +323,93 @@ task is-proxy, name <isProxy>
 task is-reg-exp, name <isRegExp>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like reg-exp
 
 task is-set, name <isSet>
   head t, like like-link-text
   take object
-    like sink-link-text
+    like or-link-text
       like t
       like form-link-text
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object
       like test-link-text
         stem roll
           like t
           like readonly-set
             like native-any
-          hook take
+          hook true
             like test-link-text
               stem roll
                 like native-unknown
                 like t
-                hook take
+                hook true
                   like native-never
-                hook free
+                hook false
                   like readonly-set
                     like native-any
-          hook free
+          hook false
             like set
               like native-unknown
 
-task is-set-iterator
-  name <isSetIterator>
+task is-set-iterator, name <isSetIterator>
   take object, like native-unknown
   free seed, like native-boolean
 
-task is-shared-array-buffer
-  name <isSharedArrayBuffer>
+task is-shared-array-buffer, name <isSharedArrayBuffer>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like shared-array-buffer
 
-task is-string-object
-  name <isStringObject>
+task is-string-object, name <isStringObject>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like string
 
-task is-symbol-object
-  name <isSymbolObject>
+task is-symbol-object, name <isSymbolObject>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like symbol
 
 task is-typed-array, name <isTypedArray>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like node-js-typed-array
 
 task is-uint8-array, name <isUint8Array>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like uint8-array
 
-task is-uint8-clamped-array
-  name <isUint8ClampedArray>
+task is-uint8-clamped-array, name <isUint8ClampedArray>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like uint8-clamped-array
 
-task is-uint16-array
-  name <isUint16Array>
+task is-uint16-array, name <isUint16Array>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like uint16-array
 
-task is-uint32-array
-  name <isUint32Array>
+task is-uint32-array, name <isUint32Array>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like uint32-array
 
 task is-weak-map, name <isWeakMap>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object
       like weak-map
         like native-object
@@ -442,7 +418,7 @@ task is-weak-map, name <isWeakMap>
 task is-weak-set, name <isWeakSet>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object
       like weak-set
         like native-object
@@ -450,11 +426,11 @@ task is-weak-set, name <isWeakSet>
 task is-key-object, name <isKeyObject>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like key-object
 
 task is-crypto-key, name <isCryptoKey>
   take object, like native-unknown
   free seed
-    free seed, like native-boolean
+    like native-boolean
     rank object, like webcrypto-crypto-key

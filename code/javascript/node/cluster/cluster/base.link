@@ -5,6 +5,9 @@ load @drumwork/moon/code/javascript/base/event-emitter
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -44,13 +47,13 @@ load @drumwork/moon/code/javascript/node/cluster/address
 load @drumwork/moon/code/javascript/node/cluster/cluster-settings
   take form cluster-settings
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form cluster, name <Cluster>
   base event-emitter
@@ -61,18 +64,17 @@ form cluster, name <Cluster>
     like native-boolean
   take is-worker, name <isWorker>
     like native-boolean
-  take scheduling-policy
-    name <schedulingPolicy>
+  take scheduling-policy, name <schedulingPolicy>
     like native-number
-    lock free
+    lock false
   take settings, name <settings>
     like cluster-settings
   take worker, name <worker>
-    like sink-link-text
+    like or-link-text
       like worker
       like native-undefined
   take workers, name <workers>
-    like sink-link-text
+    like or-link-text
       like node-js-dict
         like worker
       like native-undefined
@@ -83,42 +85,41 @@ form cluster, name <Cluster>
 
   task disconnect, name <disconnect>
     take callback
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task fork, name <fork>
     take env, like native-any
-      void take
+      void true
     free seed, like worker
 
   task setup-master, name <setupMaster>
     take settings, like cluster-settings
-      void take
+      void true
     free seed, like native-void
 
-  task setup-primary
-    name <setupPrimary>
+  task setup-primary, name <setupPrimary>
     take settings, like cluster-settings
-      void take
+      void true
     free seed, like native-void
 
   task add-listener, name <addListener>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <disconnect>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         free seed, like native-void
     free seed, like native-this
@@ -126,7 +127,7 @@ form cluster, name <Cluster>
   task add-listener, name <addListener>
     take event, text <exit>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         take code, like native-number
         take signal, like native-string
@@ -136,7 +137,7 @@ form cluster, name <Cluster>
   task add-listener, name <addListener>
     take event, text <fork>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         free seed, like native-void
     free seed, like native-this
@@ -144,7 +145,7 @@ form cluster, name <Cluster>
   task add-listener, name <addListener>
     take event, text <listening>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         take address, like address
         free seed, like native-void
@@ -153,11 +154,11 @@ form cluster, name <Cluster>
   task add-listener, name <addListener>
     take event, text <message>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         take message, like native-any
         take handle
-          like sink-link-text
+          like or-link-text
             like net-socket
             like net-server
         free seed, like native-void
@@ -166,7 +167,7 @@ form cluster, name <Cluster>
   task add-listener, name <addListener>
     take event, text <online>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         free seed, like native-void
     free seed, like native-this
@@ -174,20 +175,20 @@ form cluster, name <Cluster>
   task add-listener, name <addListener>
     take event, text <setup>
     take listener
-      like task
+      like task-link-text
         take settings, like cluster-settings
         free seed, like native-void
     free seed, like native-this
 
   task emit, name <emit>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take args
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-boolean
 
   task emit, name <emit>
@@ -218,7 +219,7 @@ form cluster, name <Cluster>
     take worker, like worker
     take message, like native-any
     take handle
-      like sink-link-text
+      like or-link-text
         like net-socket
         like net-server
     free seed, like native-boolean
@@ -236,18 +237,18 @@ form cluster, name <Cluster>
   task on, name <on>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <disconnect>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         free seed, like native-void
     free seed, like native-this
@@ -255,7 +256,7 @@ form cluster, name <Cluster>
   task on, name <on>
     take event, text <exit>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         take code, like native-number
         take signal, like native-string
@@ -265,7 +266,7 @@ form cluster, name <Cluster>
   task on, name <on>
     take event, text <fork>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         free seed, like native-void
     free seed, like native-this
@@ -273,7 +274,7 @@ form cluster, name <Cluster>
   task on, name <on>
     take event, text <listening>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         take address, like address
         free seed, like native-void
@@ -282,11 +283,11 @@ form cluster, name <Cluster>
   task on, name <on>
     take event, text <message>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         take message, like native-any
         take handle
-          like sink-link-text
+          like or-link-text
             like net-socket
             like net-server
         free seed, like native-void
@@ -295,7 +296,7 @@ form cluster, name <Cluster>
   task on, name <on>
     take event, text <online>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         free seed, like native-void
     free seed, like native-this
@@ -303,7 +304,7 @@ form cluster, name <Cluster>
   task on, name <on>
     take event, text <setup>
     take listener
-      like task
+      like task-link-text
         take settings, like cluster-settings
         free seed, like native-void
     free seed, like native-this
@@ -311,18 +312,18 @@ form cluster, name <Cluster>
   task once, name <once>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <disconnect>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         free seed, like native-void
     free seed, like native-this
@@ -330,7 +331,7 @@ form cluster, name <Cluster>
   task once, name <once>
     take event, text <exit>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         take code, like native-number
         take signal, like native-string
@@ -340,7 +341,7 @@ form cluster, name <Cluster>
   task once, name <once>
     take event, text <fork>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         free seed, like native-void
     free seed, like native-this
@@ -348,7 +349,7 @@ form cluster, name <Cluster>
   task once, name <once>
     take event, text <listening>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         take address, like address
         free seed, like native-void
@@ -357,11 +358,11 @@ form cluster, name <Cluster>
   task once, name <once>
     take event, text <message>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         take message, like native-any
         take handle
-          like sink-link-text
+          like or-link-text
             like net-socket
             like net-server
         free seed, like native-void
@@ -370,7 +371,7 @@ form cluster, name <Cluster>
   task once, name <once>
     take event, text <online>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         free seed, like native-void
     free seed, like native-this
@@ -378,174 +379,158 @@ form cluster, name <Cluster>
   task once, name <once>
     take event, text <setup>
     take listener
-      like task
+      like task-link-text
         take settings, like cluster-settings
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <disconnect>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <exit>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         take code, like native-number
         take signal, like native-string
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <fork>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <listening>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         take address, like address
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <message>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         take message, like native-any
         take handle
-          like sink-link-text
+          like or-link-text
             like net-socket
             like net-server
-          void take
+          void true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <online>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <setup>
     take listener
-      like task
+      like task-link-text
         take settings, like cluster-settings
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <disconnect>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <exit>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         take code, like native-number
         take signal, like native-string
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <fork>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <listening>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         take address, like address
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <message>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         take message, like native-any
         take handle
-          like sink-link-text
+          like or-link-text
             like net-socket
             like net-server
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <online>
     take listener
-      like task
+      like task-link-text
         take worker, like worker
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <setup>
     take listener
-      like task
+      like task-link-text
         take settings, like cluster-settings
         free seed, like native-void
     free seed, like native-this

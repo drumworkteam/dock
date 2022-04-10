@@ -1,0 +1,233 @@
+
+bear @drumwork/moon/code/javascript/google/maps/data/add-feature-event
+bear @drumwork/moon/code/javascript/google/maps/data/data-options
+bear @drumwork/moon/code/javascript/google/maps/data/feature
+bear @drumwork/moon/code/javascript/google/maps/data/feature-options
+bear @drumwork/moon/code/javascript/google/maps/data/geo-json-options
+bear @drumwork/moon/code/javascript/google/maps/data/geometry
+bear @drumwork/moon/code/javascript/google/maps/data/geometry-collection
+bear @drumwork/moon/code/javascript/google/maps/data/line-string
+bear @drumwork/moon/code/javascript/google/maps/data/linear-ring
+bear @drumwork/moon/code/javascript/google/maps/data/mouse-event
+bear @drumwork/moon/code/javascript/google/maps/data/multi-line-string
+bear @drumwork/moon/code/javascript/google/maps/data/multi-point
+bear @drumwork/moon/code/javascript/google/maps/data/multi-polygon
+bear @drumwork/moon/code/javascript/google/maps/data/point
+bear @drumwork/moon/code/javascript/google/maps/data/polygon
+bear @drumwork/moon/code/javascript/google/maps/data/remove-feature-event
+bear @drumwork/moon/code/javascript/google/maps/data/remove-property-event
+bear @drumwork/moon/code/javascript/google/maps/data/set-geometry-event
+bear @drumwork/moon/code/javascript/google/maps/data/set-property-event
+bear @drumwork/moon/code/javascript/google/maps/data/style-options
+bear @drumwork/moon/code/javascript/google/maps/data/styling-function
+
+load @drumwork/moon/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/moon/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/moon/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/moon/code/javascript/base/native-object
+  take form native-object
+
+load @drumwork/moon/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/moon/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/moon/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/moon/code/javascript/google/maps/control-position
+  take form control-position
+
+load @drumwork/moon/code/javascript/google/maps/data/data-options
+  take form data-options
+
+load @drumwork/moon/code/javascript/google/maps/data/feature
+  take form feature
+
+load @drumwork/moon/code/javascript/google/maps/data/feature-options
+  take form feature-options
+
+load @drumwork/moon/code/javascript/google/maps/data/geo-json-options
+  take form geo-json-options
+
+load @drumwork/moon/code/javascript/google/maps/data/style-options
+  take form style-options
+
+load @drumwork/moon/code/javascript/google/maps/data/styling-function
+  take form styling-function
+
+load @drumwork/moon/code/javascript/google/maps/map
+  take form map
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form data, name <google.maps.Data>
+  base google-maps-mvc-object
+  task add, name <add>
+    take feature
+      like or-link-text
+        like data-feature
+        like native-null
+        like data-feature-options
+      void true
+    free seed, like data-feature
+
+  task add-geo-json, name <addGeoJson>
+    take geo-json, like native-object
+    take options
+      like or-link-text
+        like data-geo-json-options
+        like native-null
+      void true
+    free seed
+      like list-link-text
+        like data-feature
+
+  task contains, name <contains>
+    take feature, like data-feature
+    free seed, like native-boolean
+
+  task for-each, name <forEach>
+    take callback
+      like task-link-text
+        take a, like data-feature
+        free seed, like native-void
+    free seed, like native-void
+
+  task get-control-position, name <getControlPosition>
+    free seed, like control-position
+
+  task get-controls, name <getControls>
+    free seed
+      like or-link-text
+        like list-link-text
+          like native-string
+        like native-null
+
+  task get-drawing-mode, name <getDrawingMode>
+    free seed
+      like or-link-text
+        like native-string
+        like native-null
+
+  task get-feature-by-id, name <getFeatureById>
+    take id
+      like or-link-text
+        like native-number
+        like native-string
+    free seed
+      like or-link-text
+        like data-feature
+        like native-undefined
+
+  task get-map, name <getMap>
+    free seed
+      like or-link-text
+        like map
+        like native-null
+
+  task get-style, name <getStyle>
+    free seed
+      like or-link-text
+        like data-styling-function
+        like data-style-options
+        like native-null
+
+  task load-geo-json, name <loadGeoJson>
+    take url, like native-string
+    take options
+      like or-link-text
+        like data-geo-json-options
+        like native-null
+      void true
+    take callback
+      like task-link-text
+        take a
+          like list-link-text
+            like data-feature
+        free seed, like native-void
+      void true
+    free seed, like native-void
+
+  task override-style, name <overrideStyle>
+    take feature, like data-feature
+    take style, like data-style-options
+    free seed, like native-void
+
+  task remove, name <remove>
+    take feature, like data-feature
+    free seed, like native-void
+
+  task revert-style, name <revertStyle>
+    take feature
+      like or-link-text
+        like data-feature
+        like native-null
+      void true
+    free seed, like native-void
+
+  task set-control-position, name <setControlPosition>
+    take control-position, like control-position
+    free seed, like native-void
+
+  task set-controls, name <setControls>
+    take controls
+      like or-link-text
+        like list-link-text
+          like native-string
+        like native-null
+    free seed, like native-void
+
+  task set-drawing-mode, name <setDrawingMode>
+    take drawing-mode
+      like or-link-text
+        like native-string
+        like native-null
+    free seed, like native-void
+
+  task set-map, name <setMap>
+    take map
+      like or-link-text
+        like map
+        like native-null
+    free seed, like native-void
+
+  task set-style, name <setStyle>
+    take style
+      like or-link-text
+        like data-styling-function
+        like data-style-options
+        like native-null
+    free seed, like native-void
+
+  task to-geo-json, name <toGeoJson>
+    take callback
+      like task-link-text
+        take a, like native-object
+        free seed, like native-void
+    free seed, like native-void
+
+form data-constructor
+  hook make
+    take options
+      like or-link-text
+        like data-data-options
+        like native-null
+      void true

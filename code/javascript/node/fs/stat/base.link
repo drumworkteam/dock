@@ -17,26 +17,30 @@ load @drumwork/moon/code/javascript/node/fs/stat-options
 load @drumwork/moon/code/javascript/node/fs/stats
   take form stats
 
+load @drumwork/seed/code/form/and
+  take form and
+    save form and-link-text
+
 load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 task promisify, name <__promisify__>
   take path, like path-like
   take options
-    like link
+    like and-link-text
       like stat-options
       like form-link-text
         take bigint, name <bigint>
-          like sink-link-text
+          like or-link-text
             text <false>
             like native-undefined
-          lock free
-    void take
+          lock false
+    void true
   free seed
     like promise
       like stats
@@ -44,12 +48,12 @@ task promisify, name <__promisify__>
 task promisify, name <__promisify__>
   take path, like path-like
   take options
-    like link
+    like and-link-text
       like stat-options
       like form-link-text
         take bigint, name <bigint>
           text <true>
-          lock free
+          lock false
   free seed
     like promise
       like big-int-stats
@@ -57,9 +61,9 @@ task promisify, name <__promisify__>
 task promisify, name <__promisify__>
   take path, like path-like
   take options, like stat-options
-    void take
+    void true
   free seed
     like promise
-      like sink-link-text
+      like or-link-text
         like stats
         like big-int-stats

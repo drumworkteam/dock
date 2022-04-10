@@ -23,9 +23,9 @@ load @drumwork/moon/code/javascript/node/buffer/buffer-encoding
 load @drumwork/moon/code/javascript/node/crypto/encoding
   take form encoding
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form decipher, name <Decipher>
   base stream-transform
@@ -47,7 +47,7 @@ form decipher, name <Decipher>
   task update, name <update>
     take data, like native-string
     take input-encoding
-      like sink-link-text
+      like or-link-text
         like encoding
         like native-undefined
     take output-encoding, like encoding
@@ -60,10 +60,9 @@ form decipher, name <Decipher>
     take output-encoding, like buffer-encoding
     free seed, like native-string
 
-  task set-auto-padding
-    name <setAutoPadding>
+  task set-auto-padding, name <setAutoPadding>
     take auto-padding, like native-boolean
-      void take
+      void true
     free seed, like native-this
 
 form decipher-constructor

@@ -1,4 +1,12 @@
 
+bear @drumwork/moon/code/javascript/node/url/url-object
+bear @drumwork/moon/code/javascript/node/url/url
+bear @drumwork/moon/code/javascript/node/url/url-with-parsed-query
+bear @drumwork/moon/code/javascript/node/url/url-with-string-query
+bear @drumwork/moon/code/javascript/node/url/url-format-options
+bear @drumwork/moon/code/javascript/node/url/url-search-params
+bear @drumwork/moon/code/javascript/node/url/global
+
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
@@ -36,47 +44,46 @@ load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 load @drumwork/seed/code/form/test
   take form test
     save form test-link-text
 
 host url, name <URL>
-  home take
+  home true
   like test-link-text
     stem roll
       like global-this
       like form-link-text
         take onmessage, name <onmessage>
           like native-any
-          lock free
+          lock false
         take url, name <URL>
           name url
-          lock free
-      hook take
+          lock false
+      hook true
         like url
-      hook free
+      hook false
         like url
-host url-search-params
-  name <URLSearchParams>
-  home take
+
+host url-search-params, name <URLSearchParams>
+  home true
   like test-link-text
     stem roll
       like global-this
       like form-link-text
         take onmessage, name <onmessage>
           like native-any
-          lock free
-        take url-search-params
-          name <URLSearchParams>
+          lock false
+        take url-search-params, name <URLSearchParams>
           name url-search-params
-          lock free
-      hook take
+          lock false
+      hook true
         like url-search-params
-      hook free
+      hook false
         like url-search-params
 
 task parse, name <parse>
@@ -86,36 +93,36 @@ task parse, name <parse>
 task parse, name <parse>
   take url-string, like native-string
   take parse-query-string
-    like sink-link-text
+    like or-link-text
       text <false>
       like native-undefined
   take slashes-denote-host, like native-boolean
-    void take
+    void true
   free seed, like url-with-string-query
 
 task parse, name <parse>
   take url-string, like native-string
   take parse-query-string, text <true>
   take slashes-denote-host, like native-boolean
-    void take
+    void true
   free seed, like url-with-parsed-query
 
 task parse, name <parse>
   take url-string, like native-string
   take parse-query-string, like native-boolean
   take slashes-denote-host, like native-boolean
-    void take
+    void true
   free seed, like url
 
 task format, name <format>
   take url-object, like url
   take options, like url-format-options
-    void take
+    void true
   free seed, like native-string
 
 task format, name <format>
   take url-object
-    like sink-link-text
+    like or-link-text
       like url-object
       like native-string
   free seed, like native-string
@@ -125,30 +132,25 @@ task resolve, name <resolve>
   take to, like native-string
   free seed, like native-string
 
-task domain-to-ascii
-  name <domainToASCII>
+task domain-to-ascii, name <domainToASCII>
   take domain, like native-string
   free seed, like native-string
 
-task domain-to-unicode
-  name <domainToUnicode>
+task domain-to-unicode, name <domainToUnicode>
   take domain, like native-string
   free seed, like native-string
 
-task file-url-to-path
-  name <fileURLToPath>
+task file-url-to-path, name <fileURLToPath>
   take url
-    like sink-link-text
+    like or-link-text
       like native-string
       like url
   free seed, like native-string
 
-task path-to-file-url
-  name <pathToFileURL>
+task path-to-file-url, name <pathToFileURL>
   take path, like native-string
   free seed, like url
 
-task url-to-http-options
-  name <urlToHttpOptions>
+task url-to-http-options, name <urlToHttpOptions>
   take url, like url
   free seed, like client-request-args

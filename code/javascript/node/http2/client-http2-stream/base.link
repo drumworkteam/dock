@@ -2,6 +2,9 @@
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -29,35 +32,38 @@ load @drumwork/moon/code/javascript/node/http2/incoming-http-headers
 load @drumwork/moon/code/javascript/node/http2/incoming-http-status-header
   take form incoming-http-status-header
 
+load @drumwork/seed/code/form/and
+  take form and
+    save form and-link-text
+
 load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
-form client-http2-stream
-  name <ClientHttp2Stream>
+form client-http2-stream, name <ClientHttp2Stream>
   base http2-stream
 
   task add-listener, name <addListener>
     take event, text <continue>
     take listener
-      like task
+      like task-link-text
         free seed, like form-link-text
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <headers>
     take listener
-      like task
+      like task-link-text
         take headers
-          like link
+          like and-link-text
             like incoming-http-headers
             like incoming-http-status-header
         take flags, like native-number
@@ -67,7 +73,7 @@ form client-http2-stream
   task add-listener, name <addListener>
     take event, text <push>
     take listener
-      like task
+      like task-link-text
         take headers, like incoming-http-headers
         take flags, like native-number
         free seed, like native-void
@@ -76,9 +82,9 @@ form client-http2-stream
   task add-listener, name <addListener>
     take event, text <response>
     take listener
-      like task
+      like task-link-text
         take headers
-          like link
+          like and-link-text
             like incoming-http-headers
             like incoming-http-status-header
         take flags, like native-number
@@ -87,15 +93,15 @@ form client-http2-stream
 
   task add-listener, name <addListener>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
@@ -106,7 +112,7 @@ form client-http2-stream
   task emit, name <emit>
     take event, text <headers>
     take headers
-      like link
+      like and-link-text
         like incoming-http-headers
         like incoming-http-status-header
     take flags, like native-number
@@ -121,7 +127,7 @@ form client-http2-stream
   task emit, name <emit>
     take event, text <response>
     take headers
-      like link
+      like and-link-text
         like incoming-http-headers
         like incoming-http-status-header
     take flags, like native-number
@@ -129,28 +135,28 @@ form client-http2-stream
 
   task emit, name <emit>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take args
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-boolean
 
   task on, name <on>
     take event, text <continue>
     take listener
-      like task
+      like task-link-text
         free seed, like form-link-text
     free seed, like native-this
 
   task on, name <on>
     take event, text <headers>
     take listener
-      like task
+      like task-link-text
         take headers
-          like link
+          like and-link-text
             like incoming-http-headers
             like incoming-http-status-header
         take flags, like native-number
@@ -160,7 +166,7 @@ form client-http2-stream
   task on, name <on>
     take event, text <push>
     take listener
-      like task
+      like task-link-text
         take headers, like incoming-http-headers
         take flags, like native-number
         free seed, like native-void
@@ -169,9 +175,9 @@ form client-http2-stream
   task on, name <on>
     take event, text <response>
     take listener
-      like task
+      like task-link-text
         take headers
-          like link
+          like and-link-text
             like incoming-http-headers
             like incoming-http-status-header
         take flags, like native-number
@@ -180,31 +186,31 @@ form client-http2-stream
 
   task on, name <on>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <continue>
     take listener
-      like task
+      like task-link-text
         free seed, like form-link-text
     free seed, like native-this
 
   task once, name <once>
     take event, text <headers>
     take listener
-      like task
+      like task-link-text
         take headers
-          like link
+          like and-link-text
             like incoming-http-headers
             like incoming-http-status-header
         take flags, like native-number
@@ -214,7 +220,7 @@ form client-http2-stream
   task once, name <once>
     take event, text <push>
     take listener
-      like task
+      like task-link-text
         take headers, like incoming-http-headers
         take flags, like native-number
         free seed, like native-void
@@ -223,9 +229,9 @@ form client-http2-stream
   task once, name <once>
     take event, text <response>
     take listener
-      like task
+      like task-link-text
         take headers
-          like link
+          like and-link-text
             like incoming-http-headers
             like incoming-http-status-header
         take flags, like native-number
@@ -234,132 +240,122 @@ form client-http2-stream
 
   task once, name <once>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <continue>
     take listener
-      like task
+      like task-link-text
         free seed, like form-link-text
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <headers>
     take listener
-      like task
+      like task-link-text
         take headers
-          like link
+          like and-link-text
             like incoming-http-headers
             like incoming-http-status-header
         take flags, like native-number
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <push>
     take listener
-      like task
+      like task-link-text
         take headers, like incoming-http-headers
         take flags, like native-number
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <response>
     take listener
-      like task
+      like task-link-text
         take headers
-          like link
+          like and-link-text
             like incoming-http-headers
             like incoming-http-status-header
         take flags, like native-number
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <continue>
     take listener
-      like task
+      like task-link-text
         free seed, like form-link-text
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <headers>
     take listener
-      like task
+      like task-link-text
         take headers
-          like link
+          like and-link-text
             like incoming-http-headers
             like incoming-http-status-header
         take flags, like native-number
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <push>
     take listener
-      like task
+      like task-link-text
         take headers, like incoming-http-headers
         take flags, like native-number
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <response>
     take listener
-      like task
+      like task-link-text
         take headers
-          like link
+          like and-link-text
             like incoming-http-headers
             like incoming-http-status-header
         take flags, like native-number
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this

@@ -5,15 +5,13 @@ load @drumwork/moon/code/javascript/base/native-boolean
 load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form start-tracking-heap-objects-parameter-type
-  name <StartTrackingHeapObjectsParameterType>
-  take track-allocations
-    name <trackAllocations>
-    like sink-link-text
+form start-tracking-heap-objects-parameter-type, name <StartTrackingHeapObjectsParameterType>
+  take track-allocations, name <trackAllocations>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false

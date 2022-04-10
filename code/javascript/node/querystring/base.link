@@ -1,4 +1,9 @@
 
+bear @drumwork/moon/code/javascript/node/querystring/stringify-options
+bear @drumwork/moon/code/javascript/node/querystring/parse-options
+bear @drumwork/moon/code/javascript/node/querystring/parsed-url-query
+bear @drumwork/moon/code/javascript/node/querystring/parsed-url-query-input
+
 load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
@@ -16,28 +21,29 @@ load @drumwork/moon/code/javascript/node/querystring/stringify-options
 
 host encode, name <encode>
   like stringify
+
 host decode, name <decode>
   like parse
 
 task stringify, name <stringify>
   take obj, like parsed-url-query-input
-    void take
+    void true
   take sep, like native-string
-    void take
+    void true
   take eq, like native-string
-    void take
+    void true
   take options, like stringify-options
-    void take
+    void true
   free seed, like native-string
 
 task parse, name <parse>
   take str, like native-string
   take sep, like native-string
-    void take
+    void true
   take eq, like native-string
-    void take
+    void true
   take options, like parse-options
-    void take
+    void true
   free seed, like parsed-url-query
 
 task escape, name <escape>

@@ -1,0 +1,66 @@
+
+load @drumwork/moon/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/moon/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/moon/code/javascript/google/maps/directions-step
+  take form directions-step
+
+load @drumwork/moon/code/javascript/google/maps/distance
+  take form distance
+
+load @drumwork/moon/code/javascript/google/maps/duration
+  take form duration
+
+load @drumwork/moon/code/javascript/google/maps/lat-lng
+  take form lat-lng
+
+load @drumwork/moon/code/javascript/google/maps/time
+  take form time
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form directions-leg, name <google.maps.DirectionsLeg>
+  take arrival-time, name <arrival_time>
+    like time
+    lock false
+  take departure-time, name <departure_time>
+    like time
+    lock false
+  take distance, name <distance>
+    like distance
+    lock false
+  take duration, name <duration>
+    like duration
+    lock false
+  take duration-in-traffic, name <duration_in_traffic>
+    like duration
+    lock false
+  take end-address, name <end_address>
+    like native-string
+    lock false
+  take end-location, name <end_location>
+    like lat-lng
+    lock false
+  take start-address, name <start_address>
+    like native-string
+    lock false
+  take start-location, name <start_location>
+    like lat-lng
+    lock false
+  take steps, name <steps>
+    like list-link-text
+      like directions-step
+    lock false
+  take traffic-speed-entry, name <traffic_speed_entry>
+    like list-link-text
+      like native-any
+    lock false
+  take via-waypoints, name <via_waypoints>
+    like list-link-text
+      like lat-lng
+    lock false

@@ -39,61 +39,58 @@ load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form duplex-options
-  name <DuplexOptions>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form duplex-options, name <DuplexOptions>
   base readable-options
   base writable-options
 
-  take allow-half-open
-    name <allowHalfOpen>
-    like sink-link-text
+  take allow-half-open, name <allowHalfOpen>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
-  take readable-object-mode
-    name <readableObjectMode>
-    like sink-link-text
+    lock false
+  take readable-object-mode, name <readableObjectMode>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
-  take writable-object-mode
-    name <writableObjectMode>
-    like sink-link-text
+    lock false
+  take writable-object-mode, name <writableObjectMode>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
-  take readable-high-water-mark
-    name <readableHighWaterMark>
-    like sink-link-text
+    lock false
+  take readable-high-water-mark, name <readableHighWaterMark>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
-  take writable-high-water-mark
-    name <writableHighWaterMark>
-    like sink-link-text
+    lock false
+  take writable-high-water-mark, name <writableHighWaterMark>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
-  take writable-corked
-    name <writableCorked>
-    like sink-link-text
+    lock false
+  take writable-corked, name <writableCorked>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
 
   task construct, name <construct>
     take this, like duplex
     take callback
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
-          void take
+          void true
         free seed, like native-void
     free seed, like native-void
 
@@ -107,12 +104,12 @@ form duplex-options
     take chunk, like native-any
     take encoding, like buffer-encoding
     take callback
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
-          void take
+          void true
         free seed, like native-void
     free seed, like native-void
 
@@ -123,42 +120,42 @@ form duplex-options
         like form-link-text
           take chunk, name <chunk>
             like native-any
-            lock free
+            lock false
           take encoding, name <encoding>
             like buffer-encoding
-            lock free
+            lock false
     take callback
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
-          void take
+          void true
         free seed, like native-void
     free seed, like native-void
 
   task final, name <final>
     take this, like duplex
     take callback
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
-          void take
+          void true
         free seed, like native-void
     free seed, like native-void
 
   task destroy, name <destroy>
     take this, like duplex
     take error
-      like sink-link-text
+      like or-link-text
         like error
         like native-null
     take callback
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void

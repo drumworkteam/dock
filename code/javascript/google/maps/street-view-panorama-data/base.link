@@ -1,0 +1,34 @@
+
+load @drumwork/moon/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/moon/code/javascript/google/maps/street-view-link
+  take form street-view-link
+
+load @drumwork/moon/code/javascript/google/maps/street-view-location
+  take form street-view-location
+
+load @drumwork/moon/code/javascript/google/maps/street-view-tile-data
+  take form street-view-tile-data
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form street-view-panorama-data, name <google.maps.StreetViewPanoramaData>
+  take copyright, name <copyright>
+    like native-string
+    lock false
+  take image-date, name <imageDate>
+    like native-string
+    lock false
+  take links, name <links>
+    like list-link-text
+      like street-view-link
+    lock false
+  take location, name <location>
+    like street-view-location
+    lock false
+  take tiles, name <tiles>
+    like street-view-tile-data
+    lock false

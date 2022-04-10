@@ -2,6 +2,9 @@
 load @drumwork/moon/code/javascript/base/dirent
   take form dirent
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
@@ -26,97 +29,93 @@ load @drumwork/moon/code/javascript/node/fs/object-encoding-options
 load @drumwork/moon/code/javascript/node/fs/path-like
   take form path-like
 
+load @drumwork/seed/code/form/and
+  take form and
+    save form and-link-text
+
 load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 task promisify, name <__promisify__>
   take path, like path-like
   take options
-    like sink-link-text
+    like or-link-text
       like form-link-text
         take encoding, name <encoding>
-          like sink-link-text
+          like or-link-text
             like buffer-encoding
             like native-null
-          lock free
-        take with-file-types
-          name <withFileTypes>
-          like sink-link-text
+          lock false
+        take with-file-types, name <withFileTypes>
+          like or-link-text
             text <false>
             like native-undefined
-          lock free
+          lock false
       like buffer-encoding
       like native-null
-    void take
+    void true
   free seed
     like promise
-      like list-link-text
+      like native-array
         like native-string
 
 task promisify, name <__promisify__>
   take path, like path-like
   take options
-    like sink-link-text
+    like or-link-text
       text <buffer>
       like form-link-text
         take encoding, name <encoding>
           text <buffer>
-          lock free
-        take with-file-types
-          name <withFileTypes>
-          like sink-link-text
+          lock false
+        take with-file-types, name <withFileTypes>
+          like or-link-text
             text <false>
             like native-undefined
-          lock free
+          lock false
   free seed
     like promise
-      like list-link-text
+      like native-array
         like buffer
 
 task promisify, name <__promisify__>
   take path, like path-like
   take options
-    like sink-link-text
-      like link
+    like or-link-text
+      like and-link-text
         like object-encoding-options
         like form-link-text
-          take with-file-types
-            name <withFileTypes>
-            like sink-link-text
+          take with-file-types, name <withFileTypes>
+            like or-link-text
               text <false>
               like native-undefined
-            lock free
+            lock false
       like buffer-encoding
       like native-null
-    void take
+    void true
   free seed
     like promise
-      like sink-link-text
-        like list-link-text
+      like or-link-text
+        like native-array
           like native-string
-        like list-link-text
+        like native-array
           like buffer
 
 task promisify, name <__promisify__>
   take path, like path-like
   take options
-    like link
+    like and-link-text
       like object-encoding-options
       like form-link-text
-        take with-file-types
-          name <withFileTypes>
+        take with-file-types, name <withFileTypes>
           text <true>
-          lock free
+          lock false
   free seed
     like promise
-      like list-link-text
+      like native-array
         like dirent

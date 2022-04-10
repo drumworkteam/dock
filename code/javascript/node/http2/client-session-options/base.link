@@ -14,32 +14,33 @@ load @drumwork/moon/code/javascript/base/url-url
 load @drumwork/moon/code/javascript/node/http2/session-options
   take form session-options
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form client-session-options
-  name <ClientSessionOptions>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form client-session-options, name <ClientSessionOptions>
   base session-options
 
-  take max-reserved-remote-streams
-    name <maxReservedRemoteStreams>
-    like sink-link-text
+  take max-reserved-remote-streams, name <maxReservedRemoteStreams>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
-  take create-connection
-    name <createConnection>
-    like sink-link-text
-      like task
+    lock false
+  take create-connection, name <createConnection>
+    like or-link-text
+      like task-link-text
         take authority, like url-url
         take option, like session-options
         free seed, like stream-duplex
       like native-undefined
-    lock free
+    lock false
   take protocol, name <protocol>
-    like sink-link-text
+    like or-link-text
       text <http:>
       text <https:>
       like native-undefined
-    lock free
+    lock false

@@ -5,6 +5,10 @@ load @drumwork/moon/code/javascript/node/crypto/base-private-key-encoding-option
 load @drumwork/moon/code/javascript/node/crypto/key-format
   take form key-format
 
+load @drumwork/seed/code/form/and
+  take form and
+    save form and-link-text
+
 load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
@@ -13,30 +17,27 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-form ed448-key-pair-options
-  name <ED448KeyPairOptions>
+form ed448-key-pair-options, name <ED448KeyPairOptions>
   head pub-f, like like-link-text
     base key-format
   head priv-f, like like-link-text
     base key-format
 
-  take public-key-encoding
-    name <publicKeyEncoding>
+  take public-key-encoding, name <publicKeyEncoding>
     like form-link-text
       take type, name <type>
         text <spki>
-        lock free
+        lock false
       take format, name <format>
         like pub-f
-        lock free
-    lock free
-  take private-key-encoding
-    name <privateKeyEncoding>
-    like link
+        lock false
+    lock false
+  take private-key-encoding, name <privateKeyEncoding>
+    like and-link-text
       like base-private-key-encoding-options
         like priv-f
       like form-link-text
         take type, name <type>
           text <pkcs8>
-          lock free
-    lock free
+          lock false
+    lock false

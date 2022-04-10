@@ -8,6 +8,9 @@ load @drumwork/moon/code/javascript/base/function
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
@@ -23,35 +26,31 @@ load @drumwork/moon/code/javascript/base/native-void
 load @drumwork/moon/code/javascript/base/node-js-call-site
   take form node-js-call-site
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
-form error-constructor
-  name <ErrorConstructor>
-  take prepare-stack-trace
-    name <prepareStackTrace>
-    like sink-link-text
-      like task
+form error-constructor, name <ErrorConstructor>
+  take prepare-stack-trace, name <prepareStackTrace>
+    like or-link-text
+      like task-link-text
         take err, like error
         take stack-traces
-          like list-link-text
+          like native-array
             like node-js-call-site
         free seed, like native-any
       like native-undefined
-    lock free
-  take stack-trace-limit
-    name <stackTraceLimit>
+    lock false
+  take stack-trace-limit, name <stackTraceLimit>
     like native-number
-    lock free
+    lock false
 
-  task capture-stack-trace
-    name <captureStackTrace>
+  task capture-stack-trace, name <captureStackTrace>
     take target-object, like native-object
     take constructor-opt, like function
-      void take
+      void true
     free seed, like native-void

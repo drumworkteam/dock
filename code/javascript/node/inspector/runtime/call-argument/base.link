@@ -11,22 +11,21 @@ load @drumwork/moon/code/javascript/node/inspector/runtime/remote-object-id
 load @drumwork/moon/code/javascript/node/inspector/runtime/unserializable-value
   take form unserializable-value
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form call-argument, name <CallArgument>
   take value, name <value>
     like native-any
-    lock free
-  take unserializable-value
-    name <unserializableValue>
-    like sink-link-text
+    lock false
+  take unserializable-value, name <unserializableValue>
+    like or-link-text
       like unserializable-value
       like native-undefined
-    lock free
+    lock false
   take object-id, name <objectId>
-    like sink-link-text
+    like or-link-text
       like remote-object-id
       like native-undefined
-    lock free
+    lock false

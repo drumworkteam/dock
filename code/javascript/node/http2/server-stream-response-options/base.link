@@ -5,20 +5,18 @@ load @drumwork/moon/code/javascript/base/native-boolean
 load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form server-stream-response-options
-  name <ServerStreamResponseOptions>
+form server-stream-response-options, name <ServerStreamResponseOptions>
   take end-stream, name <endStream>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
-  take wait-for-trailers
-    name <waitForTrailers>
-    like sink-link-text
+    lock false
+  take wait-for-trailers, name <waitForTrailers>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false

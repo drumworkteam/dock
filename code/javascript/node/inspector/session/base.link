@@ -158,6 +158,9 @@ load @drumwork/moon/code/javascript/base/heap-profiler-take-heap-snapshot-parame
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -315,21 +318,20 @@ load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form session, name <Session>
   base event-emitter
   task connect, name <connect>
     free seed, like native-void
 
-  task connect-to-main-thread
-    name <connectToMainThread>
+  task connect-to-main-thread, name <connectToMainThread>
     free seed, like native-void
 
   task disconnect, name <disconnect>
@@ -338,1687 +340,1687 @@ form session, name <Session>
   task post, name <post>
     take method, like native-string
     take params, like form-link-text
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like form-link-text
-          void take
+          void true
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, like native-string
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like form-link-text
-          void take
+          void true
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Schema.getDomains>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like schema-get-domains-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.evaluate>
     take params, like runtime-evaluate-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like runtime-evaluate-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.evaluate>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like runtime-evaluate-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.awaitPromise>
     take params, like runtime-await-promise-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like runtime-await-promise-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.awaitPromise>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like runtime-await-promise-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.callFunctionOn>
     take params, like runtime-call-function-on-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like runtime-call-function-on-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.callFunctionOn>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like runtime-call-function-on-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.getProperties>
     take params, like runtime-get-properties-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like runtime-get-properties-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.getProperties>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like runtime-get-properties-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.releaseObject>
     take params, like runtime-release-object-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.releaseObject>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.releaseObjectGroup>
     take params, like runtime-release-object-group-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.releaseObjectGroup>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.runIfWaitingForDebugger>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.enable>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.disable>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.discardConsoleEntries>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.setCustomObjectFormatterEnabled>
     take params, like runtime-set-custom-object-formatter-enabled-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.setCustomObjectFormatterEnabled>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.compileScript>
     take params, like runtime-compile-script-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like runtime-compile-script-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.compileScript>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like runtime-compile-script-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.runScript>
     take params, like runtime-run-script-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like runtime-run-script-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.runScript>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like runtime-run-script-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.queryObjects>
     take params, like runtime-query-objects-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like runtime-query-objects-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.queryObjects>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like runtime-query-objects-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.globalLexicalScopeNames>
     take params, like runtime-global-lexical-scope-names-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like runtime-global-lexical-scope-names-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Runtime.globalLexicalScopeNames>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like runtime-global-lexical-scope-names-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.enable>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-enable-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.disable>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setBreakpointsActive>
     take params, like debugger-set-breakpoints-active-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setBreakpointsActive>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setSkipAllPauses>
     take params, like debugger-set-skip-all-pauses-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setSkipAllPauses>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setBreakpointByUrl>
     take params, like debugger-set-breakpoint-by-url-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-set-breakpoint-by-url-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setBreakpointByUrl>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-set-breakpoint-by-url-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setBreakpoint>
     take params, like debugger-set-breakpoint-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-set-breakpoint-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setBreakpoint>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-set-breakpoint-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.removeBreakpoint>
     take params, like debugger-remove-breakpoint-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.removeBreakpoint>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.getPossibleBreakpoints>
     take params, like debugger-get-possible-breakpoints-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-get-possible-breakpoints-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.getPossibleBreakpoints>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-get-possible-breakpoints-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.continueToLocation>
     take params, like debugger-continue-to-location-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.continueToLocation>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.pauseOnAsyncCall>
     take params, like debugger-pause-on-async-call-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.pauseOnAsyncCall>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.stepOver>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.stepInto>
     take params, like debugger-step-into-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.stepInto>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.stepOut>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.pause>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.scheduleStepIntoAsync>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.resume>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.getStackTrace>
     take params, like debugger-get-stack-trace-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-get-stack-trace-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.getStackTrace>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-get-stack-trace-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.searchInContent>
     take params, like debugger-search-in-content-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-search-in-content-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.searchInContent>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-search-in-content-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setScriptSource>
     take params, like debugger-set-script-source-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-set-script-source-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setScriptSource>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-set-script-source-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.restartFrame>
     take params, like debugger-restart-frame-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-restart-frame-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.restartFrame>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-restart-frame-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.getScriptSource>
     take params, like debugger-get-script-source-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-get-script-source-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.getScriptSource>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-get-script-source-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setPauseOnExceptions>
     take params, like debugger-set-pause-on-exceptions-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setPauseOnExceptions>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.evaluateOnCallFrame>
     take params, like debugger-evaluate-on-call-frame-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-evaluate-on-call-frame-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.evaluateOnCallFrame>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like debugger-evaluate-on-call-frame-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setVariableValue>
     take params, like debugger-set-variable-value-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setVariableValue>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setReturnValue>
     take params, like debugger-set-return-value-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setReturnValue>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setAsyncCallStackDepth>
     take params, like debugger-set-async-call-stack-depth-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setAsyncCallStackDepth>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setBlackboxPatterns>
     take params, like debugger-set-blackbox-patterns-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setBlackboxPatterns>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setBlackboxedRanges>
     take params, like debugger-set-blackboxed-ranges-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Debugger.setBlackboxedRanges>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Console.enable>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Console.disable>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Console.clearMessages>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Profiler.enable>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Profiler.disable>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Profiler.setSamplingInterval>
     take params, like profiler-set-sampling-interval-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Profiler.setSamplingInterval>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Profiler.start>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Profiler.stop>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like profiler-stop-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Profiler.startPreciseCoverage>
     take params, like profiler-start-precise-coverage-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Profiler.startPreciseCoverage>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Profiler.stopPreciseCoverage>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Profiler.takePreciseCoverage>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like profiler-take-precise-coverage-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Profiler.getBestEffortCoverage>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like profiler-get-best-effort-coverage-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Profiler.startTypeProfile>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Profiler.stopTypeProfile>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <Profiler.takeTypeProfile>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like profiler-take-type-profile-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.enable>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.disable>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.startTrackingHeapObjects>
     take params, like heap-profiler-start-tracking-heap-objects-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.startTrackingHeapObjects>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.stopTrackingHeapObjects>
     take params, like heap-profiler-stop-tracking-heap-objects-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.stopTrackingHeapObjects>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.takeHeapSnapshot>
     take params, like heap-profiler-take-heap-snapshot-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.takeHeapSnapshot>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.collectGarbage>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.getObjectByHeapObjectId>
     take params, like heap-profiler-get-object-by-heap-object-id-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like heap-profiler-get-object-by-heap-object-id-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.getObjectByHeapObjectId>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like heap-profiler-get-object-by-heap-object-id-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.addInspectedHeapObject>
     take params, like heap-profiler-add-inspected-heap-object-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.addInspectedHeapObject>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.getHeapObjectId>
     take params, like heap-profiler-get-heap-object-id-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like heap-profiler-get-heap-object-id-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.getHeapObjectId>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like heap-profiler-get-heap-object-id-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.startSampling>
     take params, like heap-profiler-start-sampling-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.startSampling>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.stopSampling>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like heap-profiler-stop-sampling-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <HeapProfiler.getSamplingProfile>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like heap-profiler-get-sampling-profile-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <NodeTracing.getCategories>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take params, like node-tracing-get-categories-return-type
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <NodeTracing.start>
     take params, like node-tracing-start-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <NodeTracing.start>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <NodeTracing.stop>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <NodeWorker.sendMessageToWorker>
     take params, like node-worker-send-message-to-worker-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <NodeWorker.sendMessageToWorker>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <NodeWorker.enable>
     take params, like node-worker-enable-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <NodeWorker.enable>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <NodeWorker.disable>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <NodeWorker.detach>
     take params, like node-worker-detach-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <NodeWorker.detach>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <NodeRuntime.notifyWhenWaitingForDisconnect>
     take params, like node-runtime-notify-when-waiting-for-disconnect-parameter-type
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task post, name <post>
     take method, text <NodeRuntime.notifyWhenWaitingForDisconnect>
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task add-listener, name <addListener>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <inspectorNotification>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like form-link-text
@@ -2028,7 +2030,7 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <Runtime.executionContextCreated>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-execution-context-created-event-data-type
@@ -2038,7 +2040,7 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <Runtime.executionContextDestroyed>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-execution-context-destroyed-event-data-type
@@ -2048,14 +2050,14 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <Runtime.executionContextsCleared>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <Runtime.exceptionThrown>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-exception-thrown-event-data-type
@@ -2065,7 +2067,7 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <Runtime.exceptionRevoked>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-exception-revoked-event-data-type
@@ -2075,7 +2077,7 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <Runtime.consoleAPICalled>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-console-api-called-event-data-type
@@ -2085,7 +2087,7 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <Runtime.inspectRequested>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-inspect-requested-event-data-type
@@ -2095,7 +2097,7 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <Debugger.scriptParsed>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-script-parsed-event-data-type
@@ -2105,7 +2107,7 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <Debugger.scriptFailedToParse>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-script-failed-to-parse-event-data-type
@@ -2115,7 +2117,7 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <Debugger.breakpointResolved>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-breakpoint-resolved-event-data-type
@@ -2125,7 +2127,7 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <Debugger.paused>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-paused-event-data-type
@@ -2135,14 +2137,14 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <Debugger.resumed>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <Console.messageAdded>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like console-message-added-event-data-type
@@ -2152,7 +2154,7 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <Profiler.consoleProfileStarted>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like profiler-console-profile-started-event-data-type
@@ -2162,7 +2164,7 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <Profiler.consoleProfileFinished>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like profiler-console-profile-finished-event-data-type
@@ -2172,7 +2174,7 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <HeapProfiler.addHeapSnapshotChunk>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-add-heap-snapshot-chunk-event-data-type
@@ -2182,14 +2184,14 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <HeapProfiler.resetProfiles>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <HeapProfiler.reportHeapSnapshotProgress>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-report-heap-snapshot-progress-event-data-type
@@ -2199,7 +2201,7 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <HeapProfiler.lastSeenObjectId>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-last-seen-object-id-event-data-type
@@ -2209,7 +2211,7 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <HeapProfiler.heapStatsUpdate>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-heap-stats-update-event-data-type
@@ -2219,7 +2221,7 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <NodeTracing.dataCollected>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-tracing-data-collected-event-data-type
@@ -2229,14 +2231,14 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <NodeTracing.tracingComplete>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <NodeWorker.attachedToWorker>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-worker-attached-to-worker-event-data-type
@@ -2246,7 +2248,7 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <NodeWorker.detachedFromWorker>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-worker-detached-from-worker-event-data-type
@@ -2256,7 +2258,7 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <NodeWorker.receivedMessageFromWorker>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-worker-received-message-from-worker-event-data-type
@@ -2266,19 +2268,19 @@ form session, name <Session>
   task add-listener, name <addListener>
     take event, text <NodeRuntime.waitingForDisconnect>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task emit, name <emit>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take args
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-boolean
 
   task emit, name <emit>
@@ -2458,18 +2460,18 @@ form session, name <Session>
   task on, name <on>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <inspectorNotification>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like form-link-text
@@ -2479,7 +2481,7 @@ form session, name <Session>
   task on, name <on>
     take event, text <Runtime.executionContextCreated>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-execution-context-created-event-data-type
@@ -2489,7 +2491,7 @@ form session, name <Session>
   task on, name <on>
     take event, text <Runtime.executionContextDestroyed>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-execution-context-destroyed-event-data-type
@@ -2499,14 +2501,14 @@ form session, name <Session>
   task on, name <on>
     take event, text <Runtime.executionContextsCleared>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <Runtime.exceptionThrown>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-exception-thrown-event-data-type
@@ -2516,7 +2518,7 @@ form session, name <Session>
   task on, name <on>
     take event, text <Runtime.exceptionRevoked>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-exception-revoked-event-data-type
@@ -2526,7 +2528,7 @@ form session, name <Session>
   task on, name <on>
     take event, text <Runtime.consoleAPICalled>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-console-api-called-event-data-type
@@ -2536,7 +2538,7 @@ form session, name <Session>
   task on, name <on>
     take event, text <Runtime.inspectRequested>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-inspect-requested-event-data-type
@@ -2546,7 +2548,7 @@ form session, name <Session>
   task on, name <on>
     take event, text <Debugger.scriptParsed>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-script-parsed-event-data-type
@@ -2556,7 +2558,7 @@ form session, name <Session>
   task on, name <on>
     take event, text <Debugger.scriptFailedToParse>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-script-failed-to-parse-event-data-type
@@ -2566,7 +2568,7 @@ form session, name <Session>
   task on, name <on>
     take event, text <Debugger.breakpointResolved>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-breakpoint-resolved-event-data-type
@@ -2576,7 +2578,7 @@ form session, name <Session>
   task on, name <on>
     take event, text <Debugger.paused>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-paused-event-data-type
@@ -2586,14 +2588,14 @@ form session, name <Session>
   task on, name <on>
     take event, text <Debugger.resumed>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <Console.messageAdded>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like console-message-added-event-data-type
@@ -2603,7 +2605,7 @@ form session, name <Session>
   task on, name <on>
     take event, text <Profiler.consoleProfileStarted>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like profiler-console-profile-started-event-data-type
@@ -2613,7 +2615,7 @@ form session, name <Session>
   task on, name <on>
     take event, text <Profiler.consoleProfileFinished>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like profiler-console-profile-finished-event-data-type
@@ -2623,7 +2625,7 @@ form session, name <Session>
   task on, name <on>
     take event, text <HeapProfiler.addHeapSnapshotChunk>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-add-heap-snapshot-chunk-event-data-type
@@ -2633,14 +2635,14 @@ form session, name <Session>
   task on, name <on>
     take event, text <HeapProfiler.resetProfiles>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <HeapProfiler.reportHeapSnapshotProgress>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-report-heap-snapshot-progress-event-data-type
@@ -2650,7 +2652,7 @@ form session, name <Session>
   task on, name <on>
     take event, text <HeapProfiler.lastSeenObjectId>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-last-seen-object-id-event-data-type
@@ -2660,7 +2662,7 @@ form session, name <Session>
   task on, name <on>
     take event, text <HeapProfiler.heapStatsUpdate>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-heap-stats-update-event-data-type
@@ -2670,7 +2672,7 @@ form session, name <Session>
   task on, name <on>
     take event, text <NodeTracing.dataCollected>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-tracing-data-collected-event-data-type
@@ -2680,14 +2682,14 @@ form session, name <Session>
   task on, name <on>
     take event, text <NodeTracing.tracingComplete>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <NodeWorker.attachedToWorker>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-worker-attached-to-worker-event-data-type
@@ -2697,7 +2699,7 @@ form session, name <Session>
   task on, name <on>
     take event, text <NodeWorker.detachedFromWorker>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-worker-detached-from-worker-event-data-type
@@ -2707,7 +2709,7 @@ form session, name <Session>
   task on, name <on>
     take event, text <NodeWorker.receivedMessageFromWorker>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-worker-received-message-from-worker-event-data-type
@@ -2717,25 +2719,25 @@ form session, name <Session>
   task on, name <on>
     take event, text <NodeRuntime.waitingForDisconnect>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <inspectorNotification>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like form-link-text
@@ -2745,7 +2747,7 @@ form session, name <Session>
   task once, name <once>
     take event, text <Runtime.executionContextCreated>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-execution-context-created-event-data-type
@@ -2755,7 +2757,7 @@ form session, name <Session>
   task once, name <once>
     take event, text <Runtime.executionContextDestroyed>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-execution-context-destroyed-event-data-type
@@ -2765,14 +2767,14 @@ form session, name <Session>
   task once, name <once>
     take event, text <Runtime.executionContextsCleared>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <Runtime.exceptionThrown>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-exception-thrown-event-data-type
@@ -2782,7 +2784,7 @@ form session, name <Session>
   task once, name <once>
     take event, text <Runtime.exceptionRevoked>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-exception-revoked-event-data-type
@@ -2792,7 +2794,7 @@ form session, name <Session>
   task once, name <once>
     take event, text <Runtime.consoleAPICalled>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-console-api-called-event-data-type
@@ -2802,7 +2804,7 @@ form session, name <Session>
   task once, name <once>
     take event, text <Runtime.inspectRequested>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-inspect-requested-event-data-type
@@ -2812,7 +2814,7 @@ form session, name <Session>
   task once, name <once>
     take event, text <Debugger.scriptParsed>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-script-parsed-event-data-type
@@ -2822,7 +2824,7 @@ form session, name <Session>
   task once, name <once>
     take event, text <Debugger.scriptFailedToParse>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-script-failed-to-parse-event-data-type
@@ -2832,7 +2834,7 @@ form session, name <Session>
   task once, name <once>
     take event, text <Debugger.breakpointResolved>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-breakpoint-resolved-event-data-type
@@ -2842,7 +2844,7 @@ form session, name <Session>
   task once, name <once>
     take event, text <Debugger.paused>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-paused-event-data-type
@@ -2852,14 +2854,14 @@ form session, name <Session>
   task once, name <once>
     take event, text <Debugger.resumed>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <Console.messageAdded>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like console-message-added-event-data-type
@@ -2869,7 +2871,7 @@ form session, name <Session>
   task once, name <once>
     take event, text <Profiler.consoleProfileStarted>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like profiler-console-profile-started-event-data-type
@@ -2879,7 +2881,7 @@ form session, name <Session>
   task once, name <once>
     take event, text <Profiler.consoleProfileFinished>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like profiler-console-profile-finished-event-data-type
@@ -2889,7 +2891,7 @@ form session, name <Session>
   task once, name <once>
     take event, text <HeapProfiler.addHeapSnapshotChunk>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-add-heap-snapshot-chunk-event-data-type
@@ -2899,14 +2901,14 @@ form session, name <Session>
   task once, name <once>
     take event, text <HeapProfiler.resetProfiles>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <HeapProfiler.reportHeapSnapshotProgress>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-report-heap-snapshot-progress-event-data-type
@@ -2916,7 +2918,7 @@ form session, name <Session>
   task once, name <once>
     take event, text <HeapProfiler.lastSeenObjectId>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-last-seen-object-id-event-data-type
@@ -2926,7 +2928,7 @@ form session, name <Session>
   task once, name <once>
     take event, text <HeapProfiler.heapStatsUpdate>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-heap-stats-update-event-data-type
@@ -2936,7 +2938,7 @@ form session, name <Session>
   task once, name <once>
     take event, text <NodeTracing.dataCollected>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-tracing-data-collected-event-data-type
@@ -2946,14 +2948,14 @@ form session, name <Session>
   task once, name <once>
     take event, text <NodeTracing.tracingComplete>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <NodeWorker.attachedToWorker>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-worker-attached-to-worker-event-data-type
@@ -2963,7 +2965,7 @@ form session, name <Session>
   task once, name <once>
     take event, text <NodeWorker.detachedFromWorker>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-worker-detached-from-worker-event-data-type
@@ -2973,7 +2975,7 @@ form session, name <Session>
   task once, name <once>
     take event, text <NodeWorker.receivedMessageFromWorker>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-worker-received-message-from-worker-event-data-type
@@ -2983,595 +2985,539 @@ form session, name <Session>
   task once, name <once>
     take event, text <NodeRuntime.waitingForDisconnect>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <inspectorNotification>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like form-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <Runtime.executionContextCreated>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-execution-context-created-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <Runtime.executionContextDestroyed>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-execution-context-destroyed-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <Runtime.executionContextsCleared>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <Runtime.exceptionThrown>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-exception-thrown-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <Runtime.exceptionRevoked>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-exception-revoked-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <Runtime.consoleAPICalled>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-console-api-called-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <Runtime.inspectRequested>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-inspect-requested-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <Debugger.scriptParsed>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-script-parsed-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <Debugger.scriptFailedToParse>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-script-failed-to-parse-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <Debugger.breakpointResolved>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-breakpoint-resolved-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <Debugger.paused>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-paused-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <Debugger.resumed>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <Console.messageAdded>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like console-message-added-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <Profiler.consoleProfileStarted>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like profiler-console-profile-started-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <Profiler.consoleProfileFinished>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like profiler-console-profile-finished-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <HeapProfiler.addHeapSnapshotChunk>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-add-heap-snapshot-chunk-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <HeapProfiler.resetProfiles>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <HeapProfiler.reportHeapSnapshotProgress>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-report-heap-snapshot-progress-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <HeapProfiler.lastSeenObjectId>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-last-seen-object-id-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <HeapProfiler.heapStatsUpdate>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-heap-stats-update-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <NodeTracing.dataCollected>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-tracing-data-collected-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <NodeTracing.tracingComplete>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <NodeWorker.attachedToWorker>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-worker-attached-to-worker-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <NodeWorker.detachedFromWorker>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-worker-detached-from-worker-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <NodeWorker.receivedMessageFromWorker>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-worker-received-message-from-worker-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <NodeRuntime.waitingForDisconnect>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <inspectorNotification>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like form-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <Runtime.executionContextCreated>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-execution-context-created-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <Runtime.executionContextDestroyed>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-execution-context-destroyed-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <Runtime.executionContextsCleared>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <Runtime.exceptionThrown>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-exception-thrown-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <Runtime.exceptionRevoked>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-exception-revoked-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <Runtime.consoleAPICalled>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-console-api-called-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <Runtime.inspectRequested>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like runtime-inspect-requested-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <Debugger.scriptParsed>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-script-parsed-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <Debugger.scriptFailedToParse>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-script-failed-to-parse-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <Debugger.breakpointResolved>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-breakpoint-resolved-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <Debugger.paused>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like debugger-paused-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <Debugger.resumed>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <Console.messageAdded>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like console-message-added-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <Profiler.consoleProfileStarted>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like profiler-console-profile-started-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <Profiler.consoleProfileFinished>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like profiler-console-profile-finished-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <HeapProfiler.addHeapSnapshotChunk>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-add-heap-snapshot-chunk-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <HeapProfiler.resetProfiles>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <HeapProfiler.reportHeapSnapshotProgress>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-report-heap-snapshot-progress-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <HeapProfiler.lastSeenObjectId>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-last-seen-object-id-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <HeapProfiler.heapStatsUpdate>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like heap-profiler-heap-stats-update-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <NodeTracing.dataCollected>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-tracing-data-collected-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <NodeTracing.tracingComplete>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <NodeWorker.attachedToWorker>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-worker-attached-to-worker-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <NodeWorker.detachedFromWorker>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-worker-detached-from-worker-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <NodeWorker.receivedMessageFromWorker>
     take listener
-      like task
+      like task-link-text
         take message
           like inspector-notification
             like node-worker-received-message-from-worker-event-data-type
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <NodeRuntime.waitingForDisconnect>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 

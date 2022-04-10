@@ -8,9 +8,12 @@ load @drumwork/moon/code/javascript/base/native-void
 load @drumwork/moon/code/javascript/base/repl-server
   take form repl-server
 
-form repl-command-action
-  name <REPLCommandAction>
-  like task
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form repl-command-action, name <REPLCommandAction>
+  like task-link-text
     take this, like repl-server
     take text, like native-string
     free seed, like native-void

@@ -8,33 +8,28 @@ load @drumwork/moon/code/javascript/base/native-number
 load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form server-options
-  name <ServerOptions>
-  take incoming-message
-    name <IncomingMessage>
-    like sink-link-text
+form server-options, name <ServerOptions>
+  take incoming-message, name <IncomingMessage>
+    like or-link-text
       like incoming-message
       like native-undefined
-    lock free
-  take server-response
-    name <ServerResponse>
-    like sink-link-text
+    lock false
+  take server-response, name <ServerResponse>
+    like or-link-text
       like server-response
       like native-undefined
-    lock free
-  take max-header-size
-    name <maxHeaderSize>
-    like sink-link-text
+    lock false
+  take max-header-size, name <maxHeaderSize>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
-  take insecure-http-parser
-    name <insecureHTTPParser>
-    like sink-link-text
+    lock false
+  take insecure-http-parser, name <insecureHTTPParser>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false

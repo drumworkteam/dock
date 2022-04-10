@@ -1,4 +1,16 @@
 
+bear @drumwork/moon/code/javascript/node/os/cpu-info
+bear @drumwork/moon/code/javascript/node/os/network-interface-base
+bear @drumwork/moon/code/javascript/node/os/network-interface-info-i-pv4
+bear @drumwork/moon/code/javascript/node/os/network-interface-info-i-pv6
+bear @drumwork/moon/code/javascript/node/os/user-info
+bear @drumwork/moon/code/javascript/node/os/network-interface-info
+bear @drumwork/moon/code/javascript/node/os/signal-constants
+bear @drumwork/moon/code/javascript/node/os/constants
+
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
@@ -33,16 +45,13 @@ load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 host dev-null, name <devNull>
   like native-string
+
 host eol, name <EOL>
   like native-string
 
@@ -51,7 +60,7 @@ task hostname, name <hostname>
 
 task loadavg, name <loadavg>
   free seed
-    like list-link-text
+    like native-array
       like native-number
 
 task uptime, name <uptime>
@@ -65,7 +74,7 @@ task totalmem, name <totalmem>
 
 task cpus, name <cpus>
   free seed
-    like list-link-text
+    like native-array
       like cpu-info
 
 task type, name <type>
@@ -74,11 +83,10 @@ task type, name <type>
 task release, name <release>
   free seed, like native-string
 
-task network-interfaces
-  name <networkInterfaces>
+task network-interfaces, name <networkInterfaces>
   free seed
     like node-js-dict
-      like list-link-text
+      like native-array
         like network-interface-info
 
 task homedir, name <homedir>
@@ -89,7 +97,7 @@ task user-info, name <userInfo>
     like form-link-text
       take encoding, name <encoding>
         text <buffer>
-        lock free
+        lock false
   free seed
     like user-info
       like buffer
@@ -99,8 +107,8 @@ task user-info, name <userInfo>
     like form-link-text
       take encoding, name <encoding>
         like buffer-encoding
-        lock free
-    void take
+        lock false
+    void true
   free seed
     like user-info
       like native-string
@@ -119,13 +127,13 @@ task tmpdir, name <tmpdir>
 
 task endianness, name <endianness>
   free seed
-    like sink-link-text
+    like or-link-text
       text <BE>
       text <LE>
 
 task get-priority, name <getPriority>
   take pid, like native-number
-    void take
+    void true
   free seed, like native-number
 
 task set-priority, name <setPriority>

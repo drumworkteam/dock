@@ -11,33 +11,31 @@ load @drumwork/moon/code/javascript/base/native-undefined
 load @drumwork/moon/code/javascript/node/globals/abort-signal
   take form abort-signal
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form socket-constructor-opts
-  name <SocketConstructorOpts>
+form socket-constructor-opts, name <SocketConstructorOpts>
   take fd, name <fd>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
-  take allow-half-open
-    name <allowHalfOpen>
-    like sink-link-text
+    lock false
+  take allow-half-open, name <allowHalfOpen>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false
   take readable, name <readable>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false
   take writable, name <writable>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false
   take signal, name <signal>
     like abort-signal
-    lock free
+    lock false

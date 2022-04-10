@@ -1,0 +1,101 @@
+
+load @drumwork/moon/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/moon/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/moon/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/moon/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/moon/code/javascript/base/token
+  take form token
+
+load @drumwork/moon/code/javascript/stripe/customer/customer
+  take form customer
+
+load @drumwork/moon/code/javascript/stripe/source/mandate
+  take form mandate
+
+load @drumwork/moon/code/javascript/stripe/source/payment-options
+  take form payment-options
+
+load @drumwork/moon/code/javascript/stripe/source/receiver
+  take form receiver
+
+load @drumwork/moon/code/javascript/stripe/source/redirect
+  take form redirect
+
+load @drumwork/seed/code/form/form
+  take form form
+    save form form-link-text
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+form source-data, name <SourceData>
+  take type, name <type>
+    like payment-options
+    lock false
+  take amount, name <amount>
+    like native-number
+    lock false
+  take currency, name <currency>
+    like native-string
+    lock false
+  take flow, name <flow>
+    like or-link-text
+      text <redirect>
+      text <receiver>
+      text <code_verification>
+      text <none>
+    lock false
+  take usage, name <usage>
+    like or-link-text
+      text <reusable>
+      text <single_use>
+    lock false
+  take mandate, name <mandate>
+    like or-link-text
+      like mandate
+      like native-undefined
+    lock false
+  take metadata, name <metadata>
+    like or-link-text
+      like form-link-text
+        mesh key, like native-string
+          like native-string
+      like native-undefined
+    lock false
+  take owner, name <owner>
+    like or-link-text
+      like customer
+      like native-undefined
+    lock false
+  take receiver, name <receiver>
+    like or-link-text
+      like receiver
+      like native-undefined
+    lock false
+  take redirect, name <redirect>
+    like or-link-text
+      like redirect
+      like native-undefined
+    lock false
+  take statement-descriptor, name <statement_descriptor>
+    like or-link-text
+      like native-string
+      like native-undefined
+    lock false
+  take three-d-secure-2-eap, name <three_d_secure_2_eap>
+    like native-any
+    lock false
+  take token, name <token>
+    like or-link-text
+      like token
+      like native-undefined
+    lock false

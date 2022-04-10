@@ -20,20 +20,24 @@ load @drumwork/moon/code/javascript/base/native-void
 load @drumwork/moon/code/javascript/base/repl-server
   take form repl-server
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form repl-eval, name <REPLEval>
-  like task
+  like task-link-text
     take this, like repl-server
     take eval-cmd, like native-string
     take context, like context
     take file, like native-string
     take cb
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take result, like native-any

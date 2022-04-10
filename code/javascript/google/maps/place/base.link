@@ -1,0 +1,30 @@
+
+load @drumwork/moon/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/moon/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/moon/code/javascript/google/maps/lat-lng
+  take form lat-lng
+
+load @drumwork/moon/code/javascript/google/maps/lat-lng-literal
+  take form lat-lng-literal
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+form place, name <google.maps.Place>
+  take location, name <location>
+    like or-link-text
+      like lat-lng
+      like native-null
+      like lat-lng-literal
+    lock false
+  take place-id, name <placeId>
+    like native-string
+    lock false
+  take query, name <query>
+    like native-string
+    lock false

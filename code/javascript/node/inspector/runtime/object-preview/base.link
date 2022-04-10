@@ -1,4 +1,7 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -14,39 +17,34 @@ load @drumwork/moon/code/javascript/node/inspector/runtime/entry-preview
 load @drumwork/moon/code/javascript/node/inspector/runtime/property-preview
   take form property-preview
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form object-preview
-  name <ObjectPreview>
+form object-preview, name <ObjectPreview>
   take type, name <type>
     like native-string
-    lock free
+    lock false
   take subtype, name <subtype>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-undefined
-    lock free
+    lock false
   take description, name <description>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-undefined
-    lock free
+    lock false
   take overflow, name <overflow>
     like native-boolean
-    lock free
+    lock false
   take properties, name <properties>
-    like list-link-text
+    like native-array
       like property-preview
-    lock free
+    lock false
   take entries, name <entries>
-    like sink-link-text
-      like list-link-text
+    like or-link-text
+      like native-array
         like entry-preview
       like native-undefined
-    lock free
+    lock false

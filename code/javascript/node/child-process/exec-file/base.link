@@ -32,13 +32,17 @@ load @drumwork/moon/code/javascript/node/child-process/exec-file-options-with-st
 load @drumwork/moon/code/javascript/node/child-process/promise-with-child
   take form promise-with-child
 
+load @drumwork/seed/code/form/and
+  take form and
+    save form and-link-text
+
 load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 task promisify, name <__promisify__>
   take file, like native-string
@@ -47,15 +51,15 @@ task promisify, name <__promisify__>
       like form-link-text
         take stdout, name <stdout>
           like native-string
-          lock free
+          lock false
         take stderr, name <stderr>
           like native-string
-          lock free
+          lock false
 
 task promisify, name <__promisify__>
   take file, like native-string
   take args
-    like sink-link-text
+    like or-link-text
       like readonly-array
         like native-string
       like native-undefined
@@ -65,10 +69,10 @@ task promisify, name <__promisify__>
       like form-link-text
         take stdout, name <stdout>
           like native-string
-          lock free
+          lock false
         take stderr, name <stderr>
           like native-string
-          lock free
+          lock false
 
 task promisify, name <__promisify__>
   take file, like native-string
@@ -78,15 +82,15 @@ task promisify, name <__promisify__>
       like form-link-text
         take stdout, name <stdout>
           like buffer
-          lock free
+          lock false
         take stderr, name <stderr>
           like buffer
-          lock free
+          lock false
 
 task promisify, name <__promisify__>
   take file, like native-string
   take args
-    like sink-link-text
+    like or-link-text
       like readonly-array
         like native-string
       like native-undefined
@@ -97,10 +101,10 @@ task promisify, name <__promisify__>
       like form-link-text
         take stdout, name <stdout>
           like buffer
-          lock free
+          lock false
         take stderr, name <stderr>
           like buffer
-          lock free
+          lock false
 
 task promisify, name <__promisify__>
   take file, like native-string
@@ -110,15 +114,15 @@ task promisify, name <__promisify__>
       like form-link-text
         take stdout, name <stdout>
           like native-string
-          lock free
+          lock false
         take stderr, name <stderr>
           like native-string
-          lock free
+          lock false
 
 task promisify, name <__promisify__>
   take file, like native-string
   take args
-    like sink-link-text
+    like or-link-text
       like readonly-array
         like native-string
       like native-undefined
@@ -129,10 +133,10 @@ task promisify, name <__promisify__>
       like form-link-text
         take stdout, name <stdout>
           like native-string
-          lock free
+          lock false
         take stderr, name <stderr>
           like native-string
-          lock free
+          lock false
 
 task promisify, name <__promisify__>
   take file, like native-string
@@ -141,20 +145,20 @@ task promisify, name <__promisify__>
     like promise-with-child
       like form-link-text
         take stdout, name <stdout>
-          like sink-link-text
+          like or-link-text
             like native-string
             like buffer
-          lock free
+          lock false
         take stderr, name <stderr>
-          like sink-link-text
+          like or-link-text
             like native-string
             like buffer
-          lock free
+          lock false
 
 task promisify, name <__promisify__>
   take file, like native-string
   take args
-    like sink-link-text
+    like or-link-text
       like readonly-array
         like native-string
       like native-undefined
@@ -164,15 +168,15 @@ task promisify, name <__promisify__>
     like promise-with-child
       like form-link-text
         take stdout, name <stdout>
-          like sink-link-text
+          like or-link-text
             like native-string
             like buffer
-          lock free
+          lock false
         take stderr, name <stderr>
-          like sink-link-text
+          like or-link-text
             like native-string
             like buffer
-          lock free
+          lock false
 
 task promisify, name <__promisify__>
   take file, like native-string
@@ -182,15 +186,15 @@ task promisify, name <__promisify__>
       like form-link-text
         take stdout, name <stdout>
           like native-string
-          lock free
+          lock false
         take stderr, name <stderr>
           like native-string
-          lock free
+          lock false
 
 task promisify, name <__promisify__>
   take file, like native-string
   take args
-    like sink-link-text
+    like or-link-text
       like readonly-array
         like native-string
       like native-undefined
@@ -201,16 +205,16 @@ task promisify, name <__promisify__>
       like form-link-text
         take stdout, name <stdout>
           like native-string
-          lock free
+          lock false
         take stderr, name <stderr>
           like native-string
-          lock free
+          lock false
 
 task promisify, name <__promisify__>
   take file, like native-string
   take options
-    like sink-link-text
-      like link
+    like or-link-text
+      like and-link-text
         like object-encoding-options
         like exec-file-options
       like native-undefined
@@ -219,27 +223,27 @@ task promisify, name <__promisify__>
     like promise-with-child
       like form-link-text
         take stdout, name <stdout>
-          like sink-link-text
+          like or-link-text
             like native-string
             like buffer
-          lock free
+          lock false
         take stderr, name <stderr>
-          like sink-link-text
+          like or-link-text
             like native-string
             like buffer
-          lock free
+          lock false
 
 task promisify, name <__promisify__>
   take file, like native-string
   take args
-    like sink-link-text
+    like or-link-text
       like readonly-array
         like native-string
       like native-undefined
       like native-null
   take options
-    like sink-link-text
-      like link
+    like or-link-text
+      like and-link-text
         like object-encoding-options
         like exec-file-options
       like native-undefined
@@ -248,12 +252,12 @@ task promisify, name <__promisify__>
     like promise-with-child
       like form-link-text
         take stdout, name <stdout>
-          like sink-link-text
+          like or-link-text
             like native-string
             like buffer
-          lock free
+          lock false
         take stderr, name <stderr>
-          like sink-link-text
+          like or-link-text
             like native-string
             like buffer
-          lock free
+          lock false

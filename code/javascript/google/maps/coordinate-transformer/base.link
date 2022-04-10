@@ -1,0 +1,34 @@
+
+load @drumwork/moon/code/javascript/base/float32-array
+  take form float32-array
+
+load @drumwork/moon/code/javascript/base/float64-array
+  take form float64-array
+
+load @drumwork/moon/code/javascript/google/maps/camera-params
+  take form camera-params
+
+load @drumwork/moon/code/javascript/google/maps/lat-lng-altitude
+  take form lat-lng-altitude
+
+load @drumwork/moon/code/javascript/google/maps/lat-lng-altitude-literal
+  take form lat-lng-altitude-literal
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+form coordinate-transformer, name <google.maps.CoordinateTransformer>
+  task from-lat-lng-altitude, name <fromLatLngAltitude>
+    take lat-lng-altitude
+      like or-link-text
+        like lat-lng-altitude
+        like lat-lng-altitude-literal
+    take rotations, like float32-array
+      void true
+    take scale, like float32-array
+      void true
+    free seed, like float64-array
+
+  task get-camera-params, name <getCameraParams>
+    free seed, like camera-params

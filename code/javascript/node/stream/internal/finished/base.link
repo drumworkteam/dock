@@ -17,18 +17,18 @@ load @drumwork/moon/code/javascript/base/promise
 load @drumwork/moon/code/javascript/node/stream/internal/finished-options
   take form finished-options
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 task promisify, name <__promisify__>
   take stream
-    like sink-link-text
+    like or-link-text
       like node-js-readable-stream
       like node-js-writable-stream
       like node-js-read-write-stream
   take options, like finished-options
-    void take
+    void true
   free seed
     like promise
       like native-void

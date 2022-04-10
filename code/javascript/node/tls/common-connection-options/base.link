@@ -2,6 +2,9 @@
 load @drumwork/moon/code/javascript/base/error
   take form error
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -23,61 +26,57 @@ load @drumwork/moon/code/javascript/node/globals/uint8-array
 load @drumwork/moon/code/javascript/node/tls/secure-context
   take form secure-context
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
-form common-connection-options
-  name <CommonConnectionOptions>
-  take secure-context
-    name <secureContext>
-    like sink-link-text
+form common-connection-options, name <CommonConnectionOptions>
+  take secure-context, name <secureContext>
+    like or-link-text
       like secure-context
       like native-undefined
-    lock free
+    lock false
   take enable-trace, name <enableTrace>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false
   take request-cert, name <requestCert>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
-  take alpn-protocols
-    name <ALPNProtocols>
-    like sink-link-text
-      like list-link-text
+    lock false
+  take alpn-protocols, name <ALPNProtocols>
+    like or-link-text
+      like native-array
         like native-string
-      like list-link-text
+      like native-array
         like uint8-array
       like uint8-array
       like native-undefined
-    lock free
+    lock false
   take sni-callback, name <SNICallback>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take servername, like native-string
         take cb
-          like task
+          like task-link-text
             take err
-              like sink-link-text
+              like or-link-text
                 like error
                 like native-null
             take ctx, like secure-context
-              void take
+              void true
             free seed, like native-void
         free seed, like native-void
       like native-undefined
-    lock free
-  take reject-unauthorized
-    name <rejectUnauthorized>
-    like sink-link-text
+    lock false
+  take reject-unauthorized, name <rejectUnauthorized>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false

@@ -1,0 +1,43 @@
+
+load @drumwork/moon/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/moon/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/moon/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/moon/code/javascript/stripe/payment/update-options
+  take form update-options
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+form stripe-payment-options, name <StripePaymentOptions>
+  base update-options
+
+  take country, name <country>
+    like native-string
+    lock false
+  take request-payer-name, name <requestPayerName>
+    like or-link-text
+      like native-boolean
+      like native-undefined
+    lock false
+  take request-payer-email, name <requestPayerEmail>
+    like or-link-text
+      like native-boolean
+      like native-undefined
+    lock false
+  take request-payer-phone, name <requestPayerPhone>
+    like or-link-text
+      like native-boolean
+      like native-undefined
+    lock false
+  take request-shipping, name <requestShipping>
+    like or-link-text
+      like native-boolean
+      like native-undefined
+    lock false

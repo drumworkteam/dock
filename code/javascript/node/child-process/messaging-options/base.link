@@ -14,28 +14,26 @@ load @drumwork/moon/code/javascript/base/node-js-signals
 load @drumwork/moon/code/javascript/node/child-process/serialization-type
   take form serialization-type
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form messaging-options
-  name <MessagingOptions>
+form messaging-options, name <MessagingOptions>
   base abortable
 
-  take serialization
-    name <serialization>
-    like sink-link-text
+  take serialization, name <serialization>
+    like or-link-text
       like serialization-type
       like native-undefined
-    lock free
+    lock false
   take kill-signal, name <killSignal>
-    like sink-link-text
+    like or-link-text
       like node-js-signals
       like native-number
       like native-undefined
-    lock free
+    lock false
   take timeout, name <timeout>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false

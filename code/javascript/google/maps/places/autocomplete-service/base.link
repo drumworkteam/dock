@@ -1,0 +1,69 @@
+
+load @drumwork/moon/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/moon/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/moon/code/javascript/base/promise
+  take form promise
+
+load @drumwork/moon/code/javascript/google/maps/places/autocomplete-prediction
+  take form autocomplete-prediction
+
+load @drumwork/moon/code/javascript/google/maps/places/autocomplete-response
+  take form autocomplete-response
+
+load @drumwork/moon/code/javascript/google/maps/places/autocompletion-request
+  take form autocompletion-request
+
+load @drumwork/moon/code/javascript/google/maps/places/places-service-status
+  take form places-service-status
+
+load @drumwork/moon/code/javascript/google/maps/places/query-autocomplete-prediction
+  take form query-autocomplete-prediction
+
+load @drumwork/moon/code/javascript/google/maps/places/query-autocompletion-request
+  take form query-autocompletion-request
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form autocomplete-service, name <google.maps.places.AutocompleteService>
+  task get-place-predictions, name <getPlacePredictions>
+    take request, like places-autocompletion-request
+    take callback
+      like task-link-text
+        take a
+          like or-link-text
+            like list-link-text
+              like places-autocomplete-prediction
+            like native-null
+        take b, like places-places-service-status
+        free seed, like native-void
+      void true
+    free seed
+      like promise
+        like places-autocomplete-response
+
+  task get-query-predictions, name <getQueryPredictions>
+    take request, like places-query-autocompletion-request
+    take callback
+      like task-link-text
+        take a
+          like or-link-text
+            like list-link-text
+              like places-query-autocomplete-prediction
+            like native-null
+        take b, like places-places-service-status
+        free seed, like native-void
+    free seed, like native-void

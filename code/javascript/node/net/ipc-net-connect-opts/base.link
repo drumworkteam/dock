@@ -11,17 +11,16 @@ load @drumwork/moon/code/javascript/node/net/ipc-socket-connect-opts
 load @drumwork/moon/code/javascript/node/net/socket-constructor-opts
   take form socket-constructor-opts
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form ipc-net-connect-opts
-  name <IpcNetConnectOpts>
+form ipc-net-connect-opts, name <IpcNetConnectOpts>
   base ipc-socket-connect-opts
   base socket-constructor-opts
 
   take timeout, name <timeout>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false

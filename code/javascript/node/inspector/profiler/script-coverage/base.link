@@ -1,4 +1,7 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
@@ -8,19 +11,14 @@ load @drumwork/moon/code/javascript/base/runtime-script-id
 load @drumwork/moon/code/javascript/node/inspector/profiler/function-coverage
   take form function-coverage
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-form script-coverage
-  name <ScriptCoverage>
+form script-coverage, name <ScriptCoverage>
   take script-id, name <scriptId>
     like runtime-script-id
-    lock free
+    lock false
   take url, name <url>
     like native-string
-    lock free
+    lock false
   take functions, name <functions>
-    like list-link-text
+    like native-array
       like function-coverage
-    lock free
+    lock false

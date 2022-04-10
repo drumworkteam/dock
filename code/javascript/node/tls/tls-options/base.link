@@ -29,44 +29,41 @@ load @drumwork/moon/code/javascript/node/tls/common-connection-options
 load @drumwork/moon/code/javascript/node/tls/secure-context-options
   take form secure-context-options
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form tls-options, name <TlsOptions>
   base secure-context-options
   base common-connection-options
   base net-server-opts
 
-  take handshake-timeout
-    name <handshakeTimeout>
-    like sink-link-text
+  take handshake-timeout, name <handshakeTimeout>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
-  take session-timeout
-    name <sessionTimeout>
-    like sink-link-text
+    lock false
+  take session-timeout, name <sessionTimeout>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
   take ticket-keys, name <ticketKeys>
-    like sink-link-text
+    like or-link-text
       like buffer
       like native-undefined
-    lock free
-  take psk-identity-hint
-    name <pskIdentityHint>
-    like sink-link-text
+    lock false
+  take psk-identity-hint, name <pskIdentityHint>
+    like or-link-text
       like native-string
       like native-undefined
-    lock free
+    lock false
 
   task psk-callback, name <pskCallback>
     take socket, like tls-socket
     take identity, like native-string
     free seed
-      like sink-link-text
+      like or-link-text
         like data-view
         like node-js-typed-array
         like native-null

@@ -1,4 +1,10 @@
 
+bear @drumwork/moon/code/javascript/node/https/server-options
+bear @drumwork/moon/code/javascript/node/https/request-options
+bear @drumwork/moon/code/javascript/node/https/agent-options
+bear @drumwork/moon/code/javascript/node/https/agent
+bear @drumwork/moon/code/javascript/node/https/server
+
 load @drumwork/moon/code/javascript/base/agent
   take form agent
 
@@ -29,72 +35,76 @@ load @drumwork/moon/code/javascript/node/https/server
 load @drumwork/moon/code/javascript/node/https/server-options
   take form server-options
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 host global-agent, name <globalAgent>
   like agent
 
 task create-server, name <createServer>
   take request-listener, like http-request-listener
-    void take
+    void true
   free seed, like server
 
 task create-server, name <createServer>
   take options, like server-options
   take request-listener, like http-request-listener
-    void take
+    void true
   free seed, like server
 
 task request, name <request>
   take options
-    like sink-link-text
+    like or-link-text
       like request-options
       like native-string
       like url
   take callback
-    like task
+    like task-link-text
       take res, like http-incoming-message
       free seed, like native-void
-    void take
+    void true
   free seed, like http-client-request
 
 task request, name <request>
   take url
-    like sink-link-text
+    like or-link-text
       like native-string
       like url
   take options, like request-options
   take callback
-    like task
+    like task-link-text
       take res, like http-incoming-message
       free seed, like native-void
-    void take
+    void true
   free seed, like http-client-request
 
 task get, name <get>
   take options
-    like sink-link-text
+    like or-link-text
       like request-options
       like native-string
       like url
   take callback
-    like task
+    like task-link-text
       take res, like http-incoming-message
       free seed, like native-void
-    void take
+    void true
   free seed, like http-client-request
 
 task get, name <get>
   take url
-    like sink-link-text
+    like or-link-text
       like native-string
       like url
   take options, like request-options
   take callback
-    like task
+    like task-link-text
       take res, like http-incoming-message
       free seed, like native-void
-    void take
+    void true
   free seed, like http-client-request

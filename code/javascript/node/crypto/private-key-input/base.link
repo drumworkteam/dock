@@ -11,32 +11,31 @@ load @drumwork/moon/code/javascript/node/buffer/buffer
 load @drumwork/moon/code/javascript/node/crypto/key-format
   take form key-format
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form private-key-input
-  name <PrivateKeyInput>
+form private-key-input, name <PrivateKeyInput>
   take key, name <key>
-    like sink-link-text
+    like or-link-text
       like native-string
       like buffer
-    lock free
+    lock false
   take format, name <format>
-    like sink-link-text
+    like or-link-text
       like key-format
       like native-undefined
-    lock free
+    lock false
   take type, name <type>
-    like sink-link-text
+    like or-link-text
       text <pkcs1>
       text <pkcs8>
       text <sec1>
       like native-undefined
-    lock free
+    lock false
   take passphrase, name <passphrase>
-    like sink-link-text
+    like or-link-text
       like native-string
       like buffer
       like native-undefined
-    lock free
+    lock false

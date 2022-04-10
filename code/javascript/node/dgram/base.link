@@ -1,4 +1,10 @@
 
+bear @drumwork/moon/code/javascript/node/dgram/remote-info
+bear @drumwork/moon/code/javascript/node/dgram/bind-options
+bear @drumwork/moon/code/javascript/node/dgram/socket-type
+bear @drumwork/moon/code/javascript/node/dgram/socket-options
+bear @drumwork/moon/code/javascript/node/dgram/socket
+
 load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
@@ -17,22 +23,26 @@ load @drumwork/moon/code/javascript/node/dgram/socket-options
 load @drumwork/moon/code/javascript/node/dgram/socket-type
   take form socket-type
 
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
 task create-socket, name <createSocket>
   take type, like socket-type
   take callback
-    like task
+    like task-link-text
       take msg, like buffer
       take rinfo, like remote-info
       free seed, like native-void
-    void take
+    void true
   free seed, like socket
 
 task create-socket, name <createSocket>
   take options, like socket-options
   take callback
-    like task
+    like task-link-text
       take msg, like buffer
       take rinfo, like remote-info
       free seed, like native-void
-    void take
+    void true
   free seed, like socket

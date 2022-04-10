@@ -21,9 +21,9 @@ load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form text-decoder, name <TextDecoder>
   take encoding, name <encoding>, like native-string
@@ -32,35 +32,35 @@ form text-decoder, name <TextDecoder>
 
   task decode, name <decode>
     take input
-      like sink-link-text
+      like or-link-text
         like node-js-array-buffer-view
         like array-buffer
         like native-null
-      void take
+      void true
     take options
       like form-link-text
         take stream, name <stream>
-          like sink-link-text
+          like or-link-text
             like native-boolean
             like native-undefined
-          lock free
-      void take
+          lock false
+      void true
     free seed, like native-string
 
 form text-decoder-constructor
   hook make
     take encoding, like native-string
-      void take
+      void true
     take options
       like form-link-text
         take fatal, name <fatal>
-          like sink-link-text
+          like or-link-text
             like native-boolean
             like native-undefined
-          lock free
+          lock false
         take ignore-bom, name <ignoreBOM>
-          like sink-link-text
+          like or-link-text
             like native-boolean
             like native-undefined
-          lock free
-      void take
+          lock false
+      void true

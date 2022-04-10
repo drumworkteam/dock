@@ -2,6 +2,9 @@
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -30,13 +33,13 @@ load @drumwork/seed/code/form/band
   take form band
     save form band-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form write-stream, name <WriteStream>
   base net-socket
@@ -47,30 +50,30 @@ form write-stream, name <WriteStream>
   task add-listener, name <addListener>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <resize>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task emit, name <emit>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take args
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-boolean
 
   task emit, name <emit>
@@ -80,109 +83,104 @@ form write-stream, name <WriteStream>
   task on, name <on>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <resize>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <resize>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <resize>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <resize>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task clear-line, name <clearLine>
     take dir, like direction
     take callback
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-boolean
 
-  task clear-screen-down
-    name <clearScreenDown>
+  task clear-screen-down, name <clearScreenDown>
     take callback
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-boolean
 
   task cursor-to, name <cursorTo>
     take x, like native-number
     take y, like native-number
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-boolean
 
   task cursor-to, name <cursorTo>
     take x, like native-number
     take callback
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-boolean
 
@@ -190,35 +188,33 @@ form write-stream, name <WriteStream>
     take dx, like native-number
     take dy, like native-number
     take callback
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-boolean
 
-  task get-color-depth
-    name <getColorDepth>
+  task get-color-depth, name <getColorDepth>
     take env, like native-object
-      void take
+      void true
     free seed, like native-number
 
   task has-colors, name <hasColors>
     take count, like native-number
-      void take
+      void true
     free seed, like native-boolean
 
   task has-colors, name <hasColors>
     take env, like native-object
-      void take
+      void true
     free seed, like native-boolean
 
   task has-colors, name <hasColors>
     take count, like native-number
     take env, like native-object
-      void take
+      void true
     free seed, like native-boolean
 
-  task get-window-size
-    name <getWindowSize>
+  task get-window-size, name <getWindowSize>
     free seed
       like band-link-text
         like native-number

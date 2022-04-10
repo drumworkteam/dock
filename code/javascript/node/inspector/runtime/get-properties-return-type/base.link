@@ -1,4 +1,7 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
@@ -11,30 +14,23 @@ load @drumwork/moon/code/javascript/node/inspector/runtime/internal-property-des
 load @drumwork/moon/code/javascript/node/inspector/runtime/property-descriptor
   take form property-descriptor
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form get-properties-return-type
-  name <GetPropertiesReturnType>
+form get-properties-return-type, name <GetPropertiesReturnType>
   take result, name <result>
-    like list-link-text
+    like native-array
       like property-descriptor
-    lock free
-  take internal-properties
-    name <internalProperties>
-    like sink-link-text
-      like list-link-text
+    lock false
+  take internal-properties, name <internalProperties>
+    like or-link-text
+      like native-array
         like internal-property-descriptor
       like native-undefined
-    lock free
-  take exception-details
-    name <exceptionDetails>
-    like sink-link-text
+    lock false
+  take exception-details, name <exceptionDetails>
+    like or-link-text
       like exception-details
       like native-undefined
-    lock free
+    lock false

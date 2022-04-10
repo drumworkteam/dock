@@ -8,18 +8,17 @@ load @drumwork/moon/code/javascript/node/buffer/buffer
 load @drumwork/moon/code/javascript/node/buffer/buffer-encoding
   take form buffer-encoding
 
-form string-decoder
-  name <StringDecoder>
+form string-decoder, name <StringDecoder>
   task write, name <write>
     take buffer, like buffer
     free seed, like native-string
 
   task end, name <end>
     take buffer, like buffer
-      void take
+      void true
     free seed, like native-string
 
 form string-decoder-constructor
   hook make
     take encoding, like buffer-encoding
-      void take
+      void true

@@ -1,0 +1,70 @@
+
+load @drumwork/moon/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/moon/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/moon/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/moon/code/javascript/google/maps/data/linear-ring
+  take form linear-ring
+
+load @drumwork/moon/code/javascript/google/maps/data/polygon
+  take form polygon
+
+load @drumwork/moon/code/javascript/google/maps/lat-lng
+  take form lat-lng
+
+load @drumwork/moon/code/javascript/google/maps/lat-lng-literal
+  take form lat-lng-literal
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form multi-polygon, name <google.maps.Data.MultiPolygon>
+  task for-each-lat-lng, name <forEachLatLng>
+    take callback
+      like task-link-text
+        take a, like lat-lng
+        free seed, like native-void
+    free seed, like native-void
+
+  task get-array, name <getArray>
+    free seed
+      like list-link-text
+        like data-polygon
+
+  task get-at, name <getAt>
+    take n, like native-number
+    free seed, like data-polygon
+
+  task get-length, name <getLength>
+    free seed, like native-number
+
+  task get-type, name <getType>
+    free seed, like native-string
+
+form multi-polygon-constructor
+  hook make
+    take elements
+      like list-link-text
+        like or-link-text
+          like data-polygon
+          like list-link-text
+            like or-link-text
+              like data-linear-ring
+              like list-link-text
+                like or-link-text
+                  like lat-lng
+                  like lat-lng-literal

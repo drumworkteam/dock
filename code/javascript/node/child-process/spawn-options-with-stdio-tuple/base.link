@@ -16,24 +16,23 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form spawn-options-with-stdio-tuple
-  name <SpawnOptionsWithStdioTuple>
+form spawn-options-with-stdio-tuple, name <SpawnOptionsWithStdioTuple>
   base spawn-options
 
   head stdin, like like-link-text
-    base sink-link-text
+    base or-link-text
       like stdio-null
       like stdio-pipe
   head stdout, like like-link-text
-    base sink-link-text
+    base or-link-text
       like stdio-null
       like stdio-pipe
   head stderr, like like-link-text
-    base sink-link-text
+    base or-link-text
       like stdio-null
       like stdio-pipe
 
@@ -42,4 +41,4 @@ form spawn-options-with-stdio-tuple
       like stdin
       like stdout
       like stderr
-    lock free
+    lock false

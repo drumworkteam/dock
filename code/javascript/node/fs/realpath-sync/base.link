@@ -14,14 +14,14 @@ load @drumwork/moon/code/javascript/node/fs/encoding-option
 load @drumwork/moon/code/javascript/node/fs/path-like
   take form path-like
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 task native, name <native>
   take path, like path-like
   take options, like encoding-option
-    void take
+    void true
   free seed, like native-string
 
 task native, name <native>
@@ -32,8 +32,8 @@ task native, name <native>
 task native, name <native>
   take path, like path-like
   take options, like encoding-option
-    void take
+    void true
   free seed
-    like sink-link-text
+    like or-link-text
       like native-string
       like buffer

@@ -11,18 +11,20 @@ load @drumwork/moon/code/javascript/base/native-void
 load @drumwork/moon/code/javascript/node/http2/settings
   take form settings
 
-form http2-server-common
-  name <HTTP2ServerCommon>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form http2-server-common, name <HTTP2ServerCommon>
   task set-timeout, name <setTimeout>
     take msec, like native-number
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-this
 
-  task update-settings
-    name <updateSettings>
+  task update-settings, name <updateSettings>
     take settings, like settings
     free seed, like native-void

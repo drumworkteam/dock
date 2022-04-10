@@ -1,4 +1,24 @@
 
+bear @drumwork/moon/code/javascript/node/net/lookup-function
+bear @drumwork/moon/code/javascript/node/net/address-info
+bear @drumwork/moon/code/javascript/node/net/socket-constructor-opts
+bear @drumwork/moon/code/javascript/node/net/on-read-opts
+bear @drumwork/moon/code/javascript/node/net/connect-opts
+bear @drumwork/moon/code/javascript/node/net/tcp-socket-connect-opts
+bear @drumwork/moon/code/javascript/node/net/ipc-socket-connect-opts
+bear @drumwork/moon/code/javascript/node/net/socket-connect-opts
+bear @drumwork/moon/code/javascript/node/net/socket
+bear @drumwork/moon/code/javascript/node/net/listen-options
+bear @drumwork/moon/code/javascript/node/net/server-opts
+bear @drumwork/moon/code/javascript/node/net/server
+bear @drumwork/moon/code/javascript/node/net/ip-version
+bear @drumwork/moon/code/javascript/node/net/block-list
+bear @drumwork/moon/code/javascript/node/net/tcp-net-connect-opts
+bear @drumwork/moon/code/javascript/node/net/ipc-net-connect-opts
+bear @drumwork/moon/code/javascript/node/net/net-connect-opts
+bear @drumwork/moon/code/javascript/node/net/socket-address-init-options
+bear @drumwork/moon/code/javascript/node/net/socket-address
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -23,77 +43,78 @@ load @drumwork/moon/code/javascript/node/net/net-connect-opts
 load @drumwork/moon/code/javascript/node/net/server-opts
   take form server-opts
 
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
 task create-server, name <createServer>
   take connection-listener
-    like task
+    like task-link-text
       take socket, like socket
       free seed, like native-void
-    void take
+    void true
   free seed, like server
 
 task create-server, name <createServer>
   take options, like server-opts
-    void take
+    void true
   take connection-listener
-    like task
+    like task-link-text
       take socket, like socket
       free seed, like native-void
-    void take
+    void true
   free seed, like server
 
 task connect, name <connect>
   take options, like net-connect-opts
   take connection-listener
-    like task
+    like task-link-text
       free seed, like native-void
-    void take
+    void true
   free seed, like socket
 
 task connect, name <connect>
   take port, like native-number
   take host, like native-string
-    void take
+    void true
   take connection-listener
-    like task
+    like task-link-text
       free seed, like native-void
-    void take
+    void true
   free seed, like socket
 
 task connect, name <connect>
   take path, like native-string
   take connection-listener
-    like task
+    like task-link-text
       free seed, like native-void
-    void take
+    void true
   free seed, like socket
 
-task create-connection
-  name <createConnection>
+task create-connection, name <createConnection>
   take options, like net-connect-opts
   take connection-listener
-    like task
+    like task-link-text
       free seed, like native-void
-    void take
+    void true
   free seed, like socket
 
-task create-connection
-  name <createConnection>
+task create-connection, name <createConnection>
   take port, like native-number
   take host, like native-string
-    void take
+    void true
   take connection-listener
-    like task
+    like task-link-text
       free seed, like native-void
-    void take
+    void true
   free seed, like socket
 
-task create-connection
-  name <createConnection>
+task create-connection, name <createConnection>
   take path, like native-string
   take connection-listener
-    like task
+    like task-link-text
       free seed, like native-void
-    void take
+    void true
   free seed, like socket
 
 task is-ip, name <isIP>

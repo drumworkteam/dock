@@ -8,18 +8,16 @@ load @drumwork/moon/code/javascript/node/inspector/runtime/exception-details
 load @drumwork/moon/code/javascript/node/inspector/runtime/remote-object
   take form remote-object
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form run-script-return-type
-  name <RunScriptReturnType>
+form run-script-return-type, name <RunScriptReturnType>
   take result, name <result>
     like remote-object
-    lock free
-  take exception-details
-    name <exceptionDetails>
-    like sink-link-text
+    lock false
+  take exception-details, name <exceptionDetails>
+    like or-link-text
       like exception-details
       like native-undefined
-    lock free
+    lock false

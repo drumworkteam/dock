@@ -1,4 +1,12 @@
 
+bear @drumwork/moon/code/javascript/node/buffer/transcode-encoding
+bear @drumwork/moon/code/javascript/node/buffer/blob-options
+bear @drumwork/moon/code/javascript/node/buffer/blob
+bear @drumwork/moon/code/javascript/node/buffer/buffer-encoding
+bear @drumwork/moon/code/javascript/node/buffer/with-implicit-coercion
+bear @drumwork/moon/code/javascript/node/buffer/buffer-constructor
+bear @drumwork/moon/code/javascript/node/buffer/buffer
+
 load @drumwork/moon/code/javascript/base/blob
   take form blob
 
@@ -27,41 +35,42 @@ load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 host buffer, name <Buffer>
-  home take
+  home true
   like buffer-constructor
 
 task atob, name <atob>
-  home take
+  home true
   take data, like native-string
   free seed, like native-string
 
 task btoa, name <btoa>
-  home take
+  home true
   take data, like native-string
   free seed, like native-string
 
-host inspect-max-bytes
-  name <INSPECT_MAX_BYTES>
+host inspect-max-bytes, name <INSPECT_MAX_BYTES>
   like native-number
+
 host k-max-length, name <kMaxLength>
   like native-number
-host k-string-max-length
-  name <kStringMaxLength>
+
+host k-string-max-length, name <kStringMaxLength>
   like native-number
+
 host constants, name <constants>
   like form-link-text
     take max-length, name <MAX_LENGTH>
       like native-number
-      lock free
-    take max-string-length
-      name <MAX_STRING_LENGTH>
+      lock false
+    take max-string-length, name <MAX_STRING_LENGTH>
       like native-number
-      lock free
+      lock false
+
 host slow-buffer, name <SlowBuffer>
   like form-link-text
     hook make
@@ -70,7 +79,7 @@ host slow-buffer, name <SlowBuffer>
 
     take prototype, name <prototype>
       like buffer
-      lock free
+      lock false
 
 task transcode, name <transcode>
   take source, like uint8-array
@@ -78,10 +87,9 @@ task transcode, name <transcode>
   take to-enc, like transcode-encoding
   free seed, like buffer
 
-task resolve-object-url
-  name <resolveObjectURL>
+task resolve-object-url, name <resolveObjectURL>
   take id, like native-string
   free seed
-    like sink-link-text
+    like or-link-text
       like blob
       like native-undefined

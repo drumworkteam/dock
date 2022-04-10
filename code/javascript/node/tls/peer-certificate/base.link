@@ -1,4 +1,7 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
@@ -11,55 +14,46 @@ load @drumwork/moon/code/javascript/node/buffer/buffer
 load @drumwork/moon/code/javascript/node/tls/certificate
   take form certificate
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-form peer-certificate
-  name <PeerCertificate>
+form peer-certificate, name <PeerCertificate>
   take subject, name <subject>
     like certificate
-    lock free
+    lock false
   take issuer, name <issuer>
     like certificate
-    lock free
-  take subjectaltname
-    name <subjectaltname>
+    lock false
+  take subjectaltname, name <subjectaltname>
     like native-string
-    lock free
+    lock false
   take info-access, name <infoAccess>
     like node-js-dict
-      like list-link-text
+      like native-array
         like native-string
-    lock free
+    lock false
   take modulus, name <modulus>
     like native-string
-    lock free
+    lock false
   take exponent, name <exponent>
     like native-string
-    lock free
+    lock false
   take valid-from, name <valid_from>
     like native-string
-    lock free
+    lock false
   take valid-to, name <valid_to>
     like native-string
-    lock free
+    lock false
   take fingerprint, name <fingerprint>
     like native-string
-    lock free
-  take fingerprint256
-    name <fingerprint256>
+    lock false
+  take fingerprint256, name <fingerprint256>
     like native-string
-    lock free
-  take ext-key-usage
-    name <ext_key_usage>
-    like list-link-text
+    lock false
+  take ext-key-usage, name <ext_key_usage>
+    like native-array
       like native-string
-    lock free
-  take serial-number
-    name <serialNumber>
+    lock false
+  take serial-number, name <serialNumber>
     like native-string
-    lock free
+    lock false
   take raw, name <raw>
     like buffer
-    lock free
+    lock false

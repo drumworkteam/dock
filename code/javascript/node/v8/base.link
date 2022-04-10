@@ -1,6 +1,18 @@
 
+bear @drumwork/moon/code/javascript/node/v8/heap-space-info
+bear @drumwork/moon/code/javascript/node/v8/does-zap-code-space-flag
+bear @drumwork/moon/code/javascript/node/v8/heap-info
+bear @drumwork/moon/code/javascript/node/v8/heap-code-statistics
+bear @drumwork/moon/code/javascript/node/v8/serializer
+bear @drumwork/moon/code/javascript/node/v8/default-serializer
+bear @drumwork/moon/code/javascript/node/v8/deserializer
+bear @drumwork/moon/code/javascript/node/v8/default-deserializer
+
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
+
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
 
 load @drumwork/moon/code/javascript/base/native-number
   take form native-number
@@ -29,41 +41,30 @@ load @drumwork/moon/code/javascript/node/v8/heap-info
 load @drumwork/moon/code/javascript/node/v8/heap-space-info
   take form heap-space-info
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-task cached-data-version-tag
-  name <cachedDataVersionTag>
+task cached-data-version-tag, name <cachedDataVersionTag>
   free seed, like native-number
 
-task get-heap-statistics
-  name <getHeapStatistics>
+task get-heap-statistics, name <getHeapStatistics>
   free seed, like heap-info
 
-task get-heap-space-statistics
-  name <getHeapSpaceStatistics>
+task get-heap-space-statistics, name <getHeapSpaceStatistics>
   free seed
-    like list-link-text
+    like native-array
       like heap-space-info
 
-task set-flags-from-string
-  name <setFlagsFromString>
+task set-flags-from-string, name <setFlagsFromString>
   take flags, like native-string
   free seed, like native-void
 
-task get-heap-snapshot
-  name <getHeapSnapshot>
+task get-heap-snapshot, name <getHeapSnapshot>
   free seed, like readable
 
-task write-heap-snapshot
-  name <writeHeapSnapshot>
+task write-heap-snapshot, name <writeHeapSnapshot>
   take filename, like native-string
-    void take
+    void true
   free seed, like native-string
 
-task get-heap-code-statistics
-  name <getHeapCodeStatistics>
+task get-heap-code-statistics, name <getHeapCodeStatistics>
   free seed, like heap-code-statistics
 
 task serialize, name <serialize>

@@ -30,61 +30,63 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form stream-options
-  name <StreamOptions>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form stream-options, name <StreamOptions>
   base abortable
 
   head t, like like-link-text
     base stream
 
   take emit-close, name <emitClose>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
-  take high-water-mark
-    name <highWaterMark>
-    like sink-link-text
+    lock false
+  take high-water-mark, name <highWaterMark>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
   take object-mode, name <objectMode>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false
   take auto-destroy, name <autoDestroy>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false
 
   task construct, name <construct>
     take this, like t
     take callback
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
-          void take
+          void true
         free seed, like native-void
     free seed, like native-void
 
   task destroy, name <destroy>
     take this, like t
     take error
-      like sink-link-text
+      like or-link-text
         like error
         like native-null
     take callback
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void

@@ -1,4 +1,14 @@
 
+bear @drumwork/moon/code/javascript/node/worker-threads/message-channel
+bear @drumwork/moon/code/javascript/node/worker-threads/worker-performance
+bear @drumwork/moon/code/javascript/node/worker-threads/transfer-list-item
+bear @drumwork/moon/code/javascript/node/worker-threads/message-port
+bear @drumwork/moon/code/javascript/node/worker-threads/worker-options
+bear @drumwork/moon/code/javascript/node/worker-threads/resource-limits
+bear @drumwork/moon/code/javascript/node/worker-threads/worker
+bear @drumwork/moon/code/javascript/node/worker-threads/broadcast-channel
+bear @drumwork/moon/code/javascript/node/worker-threads/serializable
+
 load @drumwork/moon/code/javascript/base/message-port
   take form message-port
 
@@ -39,56 +49,55 @@ load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 host is-main-thread, name <isMainThread>
   like native-boolean
+
 host parent-port, name <parentPort>
-  like sink-link-text
+  like or-link-text
     like native-null
     like message-port
-host resource-limits
-  name <resourceLimits>
+
+host resource-limits, name <resourceLimits>
   like resource-limits
+
 host share-env, name <SHARE_ENV>
   like native-symbol
-    cool take
+    cool true
+
 host thread-id, name <threadId>
   like native-number
+
 host worker-data, name <workerData>
   like native-any
 
-task mark-as-untransferable
-  name <markAsUntransferable>
+task mark-as-untransferable, name <markAsUntransferable>
   take object, like native-object
   free seed, like native-void
 
-task move-message-port-to-context
-  name <moveMessagePortToContext>
+task move-message-port-to-context, name <moveMessagePortToContext>
   take port, like message-port
   take contextified-sandbox, like context
   free seed, like message-port
 
-task receive-message-on-port
-  name <receiveMessageOnPort>
+task receive-message-on-port, name <receiveMessageOnPort>
   take port, like message-port
   free seed
-    like sink-link-text
+    like or-link-text
       like form-link-text
         take message, name <message>
           like native-any
-          lock free
+          lock false
       like native-undefined
 
-task get-environment-data
-  name <getEnvironmentData>
+task get-environment-data, name <getEnvironmentData>
   take key, like serializable
   free seed, like serializable
 
-task set-environment-data
-  name <setEnvironmentData>
+task set-environment-data, name <setEnvironmentData>
   take key, like serializable
   take value, like serializable
   free seed, like native-void

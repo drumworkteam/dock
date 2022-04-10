@@ -1,0 +1,37 @@
+
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/moon/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/moon/code/javascript/stripe/element/base-options
+  take form base-options
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+form iban-element-options, name <IBANElementOptions>
+  base base-options
+
+  take supported-countries, name <supportedCountries>
+    like or-link-text
+      like native-array
+        like native-string
+      like native-undefined
+    lock false
+  take placeholder-country, name <placeholderCountry>
+    like or-link-text
+      like native-string
+      like native-undefined
+    lock false
+  take icon-style, name <iconStyle>
+    like or-link-text
+      text <solid>
+      text <default>
+      like native-undefined
+    lock false

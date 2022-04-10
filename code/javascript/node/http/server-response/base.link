@@ -2,6 +2,9 @@
 load @drumwork/moon/code/javascript/base/incoming-message
   take form incoming-message
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
@@ -23,62 +26,57 @@ load @drumwork/moon/code/javascript/node/http/outgoing-http-header
 load @drumwork/moon/code/javascript/node/http/outgoing-http-headers
   take form outgoing-http-headers
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
-form server-response
-  name <ServerResponse>
+form server-response, name <ServerResponse>
   base outgoing-message
   take status-code, name <statusCode>, like native-number
   take status-message, name <statusMessage>, like native-string
 
-  task assign-socket
-    name <assignSocket>
+  task assign-socket, name <assignSocket>
     take socket, like socket
     free seed, like native-void
 
-  task detach-socket
-    name <detachSocket>
+  task detach-socket, name <detachSocket>
     take socket, like socket
     free seed, like native-void
 
-  task write-continue
-    name <writeContinue>
+  task write-continue, name <writeContinue>
     take callback
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task write-head, name <writeHead>
     take status-code, like native-number
     take status-message, like native-string
-      void take
+      void true
     take headers
-      like sink-link-text
+      like or-link-text
         like outgoing-http-headers
-        like list-link-text
+        like native-array
           like outgoing-http-header
-      void take
+      void true
     free seed, like native-this
 
   task write-head, name <writeHead>
     take status-code, like native-number
     take headers
-      like sink-link-text
+      like or-link-text
         like outgoing-http-headers
-        like list-link-text
+        like native-array
           like outgoing-http-header
-      void take
+      void true
     free seed, like native-this
 
-  task write-processing
-    name <writeProcessing>
+  task write-processing, name <writeProcessing>
     free seed, like native-void
 
 form server-response-constructor

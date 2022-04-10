@@ -1,4 +1,12 @@
 
+bear @drumwork/moon/code/javascript/node/repl/repl-options
+bear @drumwork/moon/code/javascript/node/repl/repl-eval
+bear @drumwork/moon/code/javascript/node/repl/repl-writer
+bear @drumwork/moon/code/javascript/node/repl/repl-command-action
+bear @drumwork/moon/code/javascript/node/repl/repl-command
+bear @drumwork/moon/code/javascript/node/repl/repl-server
+bear @drumwork/moon/code/javascript/node/repl/recoverable
+
 load @drumwork/moon/code/javascript/base/inspect-options
   take form inspect-options
 
@@ -17,34 +25,38 @@ load @drumwork/moon/code/javascript/node/repl/repl-options
 load @drumwork/moon/code/javascript/node/repl/repl-writer
   take form repl-writer
 
+load @drumwork/seed/code/form/and
+  take form and
+    save form and-link-text
+
 load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 host writer, name <writer>
-  like link
+  like and-link-text
     like repl-writer
     like form-link-text
       take options, name <options>
         like inspect-options
-        lock free
-host repl-mode-sloppy
-  name <REPL_MODE_SLOPPY>
+        lock false
+
+host repl-mode-sloppy, name <REPL_MODE_SLOPPY>
   like native-symbol
-    cool take
-host repl-mode-strict
-  name <REPL_MODE_STRICT>
+    cool true
+
+host repl-mode-strict, name <REPL_MODE_STRICT>
   like native-symbol
-    cool take
+    cool true
 
 task start, name <start>
   take options
-    like sink-link-text
+    like or-link-text
       like native-string
       like repl-options
-    void take
+    void true
   free seed, like repl-server

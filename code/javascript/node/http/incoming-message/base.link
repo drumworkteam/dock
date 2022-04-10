@@ -2,6 +2,9 @@
 load @drumwork/moon/code/javascript/base/error
   take form error
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -29,16 +32,15 @@ load @drumwork/moon/code/javascript/base/socket
 load @drumwork/moon/code/javascript/node/http/incoming-http-headers
   take form incoming-http-headers
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
-form incoming-message
-  name <IncomingMessage>
+form incoming-message, name <IncomingMessage>
   base stream-readable
   take aborted, name <aborted>, like native-boolean
   take http-version, name <httpVersion>, like native-string
@@ -49,42 +51,42 @@ form incoming-message
   take socket, name <socket>, like socket
   take headers, name <headers>, like incoming-http-headers
   take raw-headers, name <rawHeaders>
-    like list-link-text
+    like native-array
       like native-string
   take trailers, name <trailers>
     like node-js-dict
       like native-string
   take raw-trailers, name <rawTrailers>
-    like list-link-text
+    like native-array
       like native-string
   take method, name <method>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-undefined
   take url, name <url>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-undefined
   take status-code, name <statusCode>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
   take status-message, name <statusMessage>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-undefined
 
   task set-timeout, name <setTimeout>
     take msecs, like native-number
     take callback
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-this
 
   task destroy, name <destroy>
     take error, like error
-      void take
+      void true
     free seed, like native-this
 
 form incoming-message-constructor

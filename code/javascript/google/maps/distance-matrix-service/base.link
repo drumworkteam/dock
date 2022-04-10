@@ -1,0 +1,42 @@
+
+load @drumwork/moon/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/moon/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/moon/code/javascript/base/promise
+  take form promise
+
+load @drumwork/moon/code/javascript/google/maps/distance-matrix-request
+  take form distance-matrix-request
+
+load @drumwork/moon/code/javascript/google/maps/distance-matrix-response
+  take form distance-matrix-response
+
+load @drumwork/moon/code/javascript/google/maps/distance-matrix-status
+  take form distance-matrix-status
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form distance-matrix-service, name <google.maps.DistanceMatrixService>
+  task get-distance-matrix, name <getDistanceMatrix>
+    take request, like distance-matrix-request
+    take callback
+      like task-link-text
+        take a
+          like or-link-text
+            like distance-matrix-response
+            like native-null
+        take b, like distance-matrix-status
+        free seed, like native-void
+      void true
+    free seed
+      like promise
+        like distance-matrix-response

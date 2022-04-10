@@ -33,38 +33,39 @@ load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form writable-options
-  name <WritableOptions>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form writable-options, name <WritableOptions>
   base stream-options
 
-  take decode-strings
-    name <decodeStrings>
-    like sink-link-text
+  take decode-strings, name <decodeStrings>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
-  take default-encoding
-    name <defaultEncoding>
-    like sink-link-text
+    lock false
+  take default-encoding, name <defaultEncoding>
+    like or-link-text
       like buffer-encoding
       like native-undefined
-    lock free
+    lock false
 
   task write, name <write>
     take this, like writable
     take chunk, like native-any
     take encoding, like buffer-encoding
     take callback
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
-          void take
+          void true
         free seed, like native-void
     free seed, like native-void
 
@@ -75,28 +76,28 @@ form writable-options
         like form-link-text
           take chunk, name <chunk>
             like native-any
-            lock free
+            lock false
           take encoding, name <encoding>
             like buffer-encoding
-            lock free
+            lock false
     take callback
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
-          void take
+          void true
         free seed, like native-void
     free seed, like native-void
 
   task final, name <final>
     take this, like writable
     take callback
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
-          void take
+          void true
         free seed, like native-void
     free seed, like native-void

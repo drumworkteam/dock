@@ -1,4 +1,26 @@
 
+bear @drumwork/moon/code/javascript/node/globals/error-constructor
+bear @drumwork/moon/code/javascript/node/globals/node-require
+bear @drumwork/moon/code/javascript/node/globals/require-resolve
+bear @drumwork/moon/code/javascript/node/globals/node-module
+bear @drumwork/moon/code/javascript/node/globals/abort-controller
+bear @drumwork/moon/code/javascript/node/globals/abort-signal
+bear @drumwork/moon/code/javascript/node/globals/relative-indexable
+bear @drumwork/moon/code/javascript/node/globals/string
+bear @drumwork/moon/code/javascript/node/globals/array
+bear @drumwork/moon/code/javascript/node/globals/int8-array
+bear @drumwork/moon/code/javascript/node/globals/uint8-array
+bear @drumwork/moon/code/javascript/node/globals/uint8-clamped-array
+bear @drumwork/moon/code/javascript/node/globals/int16-array
+bear @drumwork/moon/code/javascript/node/globals/uint16-array
+bear @drumwork/moon/code/javascript/node/globals/int32-array
+bear @drumwork/moon/code/javascript/node/globals/uint32-array
+bear @drumwork/moon/code/javascript/node/globals/float32-array
+bear @drumwork/moon/code/javascript/node/globals/float64-array
+bear @drumwork/moon/code/javascript/node/globals/big-int64-array
+bear @drumwork/moon/code/javascript/node/globals/big-uint64-array
+bear @drumwork/moon/code/javascript/node/globals/global
+
 load @drumwork/moon/code/javascript/base/console
   take form console
 
@@ -33,35 +55,46 @@ load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 host process, name <process>
   like node-js-process
+
 host console, name <console>
   like console
+
 host filename, name <__filename>
   like native-string
+
 host dirname, name <__dirname>
   like native-string
+
 host require, name <require>
   like node-require
+
 host module, name <module>
   like node-module
+
 host exports, name <exports>
   like native-any
+
 host gc, name <gc>
-  like sink-link-text
+  like or-link-text
     like native-undefined
-    like task
+    like task-link-text
       free seed, like native-void
-host abort-controller
-  name <AbortController>
+
+host abort-controller, name <AbortController>
   like form-link-text
     take prototype, name <prototype>
       like abort-controller
-      lock free
+      lock false
     hook make
       free seed, like abort-controller
 
@@ -69,6 +102,6 @@ host abort-signal, name <AbortSignal>
   like form-link-text
     take prototype, name <prototype>
       like abort-signal
-      lock free
+      lock false
     hook make
       free seed, like abort-signal

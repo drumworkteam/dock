@@ -1,0 +1,42 @@
+
+load @drumwork/moon/code/javascript/base/native-any
+  take form native-any
+
+load @drumwork/moon/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/moon/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/moon/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/moon/code/javascript/stripe/element/base-options
+  take form base-options
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+form card-element-options, name <CardElementOptions>
+  base base-options
+
+  take value, name <value>
+    like native-any
+    lock false
+  take hide-postal-code, name <hidePostalCode>
+    like or-link-text
+      like native-boolean
+      like native-undefined
+    lock false
+  take icon-style, name <iconStyle>
+    like or-link-text
+      text <solid>
+      text <default>
+      like native-undefined
+    lock false
+  take placeholder, name <placeholder>
+    like or-link-text
+      like native-string
+      like native-undefined
+    lock false

@@ -8,19 +8,21 @@ load @drumwork/moon/code/javascript/base/native-unknown
 load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-form broadcast-channel
-  name <BroadcastChannel>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form broadcast-channel, name <BroadcastChannel>
   base node-js-ref-counted
 
-form broadcast-channel
-  name <BroadcastChannel>
+form broadcast-channel, name <BroadcastChannel>
   take name, name <name>, like native-string
   take onmessage, name <onmessage>
-    like task
+    like task-link-text
       take message, like native-unknown
       free seed, like native-void
   take onmessageerror, name <onmessageerror>
-    like task
+    like task-link-text
       take message, like native-unknown
       free seed, like native-void
 

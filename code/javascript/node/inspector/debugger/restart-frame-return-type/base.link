@@ -1,4 +1,7 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
@@ -11,29 +14,22 @@ load @drumwork/moon/code/javascript/base/runtime-stack-trace-id
 load @drumwork/moon/code/javascript/node/inspector/debugger/call-frame
   take form call-frame
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form restart-frame-return-type
-  name <RestartFrameReturnType>
+form restart-frame-return-type, name <RestartFrameReturnType>
   take call-frames, name <callFrames>
-    like list-link-text
+    like native-array
       like call-frame
-    lock free
-  take async-stack-trace
-    name <asyncStackTrace>
-    like sink-link-text
+    lock false
+  take async-stack-trace, name <asyncStackTrace>
+    like or-link-text
       like runtime-stack-trace
       like native-undefined
-    lock free
-  take async-stack-trace-id
-    name <asyncStackTraceId>
-    like sink-link-text
+    lock false
+  take async-stack-trace-id, name <asyncStackTraceId>
+    like or-link-text
       like runtime-stack-trace-id
       like native-undefined
-    lock free
+    lock false

@@ -12,39 +12,37 @@ load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form brotli-options
-  name <BrotliOptions>
+form brotli-options, name <BrotliOptions>
   take flush, name <flush>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
   take finish-flush, name <finishFlush>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
   take chunk-size, name <chunkSize>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
   take params, name <params>
-    like sink-link-text
+    like or-link-text
       like form-link-text
-        cite key, like native-number
-          like sink-link-text
+        mesh key, like native-number
+          like or-link-text
             like native-boolean
             like native-number
       like native-undefined
-    lock free
-  take max-output-length
-    name <maxOutputLength>
-    like sink-link-text
+    lock false
+  take max-output-length, name <maxOutputLength>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false

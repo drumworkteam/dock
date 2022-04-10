@@ -18,34 +18,33 @@ load @drumwork/seed/code/form/band
   take form band
     save form band-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form child-process-without-null-streams
-  name <ChildProcessWithoutNullStreams>
+form child-process-without-null-streams, name <ChildProcessWithoutNullStreams>
   base child-process
 
   take stdin, name <stdin>
     like writable
-    lock free
+    lock false
   take stdout, name <stdout>
     like readable
-    lock free
+    lock false
   take stderr, name <stderr>
     like readable
-    lock free
+    lock false
   take stdio, name <stdio>
     like band-link-text
       like writable
       like readable
       like readable
-      like sink-link-text
+      like or-link-text
         like readable
         like writable
         like native-null
         like native-undefined
-      like sink-link-text
+      like or-link-text
         like readable
         like writable
         like native-null

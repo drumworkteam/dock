@@ -35,129 +35,128 @@ load @drumwork/moon/code/javascript/node/globals/abort-signal
 load @drumwork/moon/code/javascript/node/http/outgoing-http-headers
   take form outgoing-http-headers
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form client-request-args
-  name <ClientRequestArgs>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form client-request-args, name <ClientRequestArgs>
   take signal, name <signal>
-    like sink-link-text
+    like or-link-text
       like abort-signal
       like native-undefined
-    lock free
+    lock false
   take protocol, name <protocol>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
       like native-undefined
-    lock free
+    lock false
   take host, name <host>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
       like native-undefined
-    lock free
+    lock false
   take hostname, name <hostname>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
       like native-undefined
-    lock free
+    lock false
   take family, name <family>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
   take port, name <port>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-string
       like native-null
       like native-undefined
-    lock free
+    lock false
   take default-port, name <defaultPort>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-string
       like native-undefined
-    lock free
-  take local-address
-    name <localAddress>
-    like sink-link-text
+    lock false
+  take local-address, name <localAddress>
+    like or-link-text
       like native-string
       like native-undefined
-    lock free
+    lock false
   take socket-path, name <socketPath>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-undefined
-    lock free
-  take max-header-size
-    name <maxHeaderSize>
-    like sink-link-text
+    lock false
+  take max-header-size, name <maxHeaderSize>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
   take method, name <method>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-undefined
-    lock free
+    lock false
   take path, name <path>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
       like native-undefined
-    lock free
+    lock false
   take headers, name <headers>
-    like sink-link-text
+    like or-link-text
       like outgoing-http-headers
       like native-undefined
-    lock free
+    lock false
   take auth, name <auth>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
       like native-undefined
-    lock free
+    lock false
   take agent, name <agent>
-    like sink-link-text
+    like or-link-text
       like agent
       like native-boolean
       like native-undefined
-    lock free
-  take default-agent
-    name <_defaultAgent>
-    like sink-link-text
+    lock false
+  take default-agent, name <_defaultAgent>
+    like or-link-text
       like agent
       like native-undefined
-    lock free
+    lock false
   take timeout, name <timeout>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
   take set-host, name <setHost>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
-  take create-connection
-    name <createConnection>
-    like sink-link-text
-      like task
+    lock false
+  take create-connection, name <createConnection>
+    like or-link-text
+      like task-link-text
         take options, like client-request-args
         take oncreate
-          like task
+          like task-link-text
             take err, like error
             take socket, like socket
             free seed, like native-void
         free seed, like socket
       like native-undefined
-    lock free
+    lock false
   take lookup, name <lookup>
-    like sink-link-text
+    like or-link-text
       like lookup-function
       like native-undefined
-    lock free
+    lock false

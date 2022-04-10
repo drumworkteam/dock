@@ -20,34 +20,32 @@ load @drumwork/moon/code/javascript/node/http/outgoing-http-headers
 load @drumwork/moon/code/javascript/node/http2/stat-options
   take form stat-options
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form server-stream-file-response-options
-  name <ServerStreamFileResponseOptions>
-  take wait-for-trailers
-    name <waitForTrailers>
-    like sink-link-text
+form server-stream-file-response-options, name <ServerStreamFileResponseOptions>
+  take wait-for-trailers, name <waitForTrailers>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false
   take offset, name <offset>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
   take length, name <length>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
 
   task stat-check, name <statCheck>
     take stats, like fs-stats
     take headers, like outgoing-http-headers
     take stat-options, like stat-options
     free seed
-      like sink-link-text
+      like or-link-text
         like native-void
         like native-boolean

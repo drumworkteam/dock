@@ -14,32 +14,31 @@ load @drumwork/moon/code/javascript/base/node-js-typed-array
 load @drumwork/moon/code/javascript/node/crypto/key-like
   take form key-like
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form rsa-private-key
-  name <RsaPrivateKey>
+form rsa-private-key, name <RsaPrivateKey>
   take key, name <key>
     like key-like
-    lock free
+    lock false
   take passphrase, name <passphrase>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-undefined
-    lock free
+    lock false
   take oaep-hash, name <oaepHash>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-undefined
-    lock free
+    lock false
   take oaep-label, name <oaepLabel>
-    like sink-link-text
+    like or-link-text
       like node-js-typed-array
       like native-undefined
-    lock free
+    lock false
   take padding, name <padding>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false

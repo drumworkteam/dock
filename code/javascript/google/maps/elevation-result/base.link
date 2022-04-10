@@ -1,0 +1,26 @@
+
+load @drumwork/moon/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/moon/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/moon/code/javascript/google/maps/lat-lng
+  take form lat-lng
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+form elevation-result, name <google.maps.ElevationResult>
+  take elevation, name <elevation>
+    like native-number
+    lock false
+  take location, name <location>
+    like or-link-text
+      like lat-lng
+      like native-null
+    lock false
+  take resolution, name <resolution>
+    like native-number
+    lock false

@@ -8,9 +8,12 @@ load @drumwork/moon/code/javascript/base/native-void
 load @drumwork/moon/code/javascript/base/server-response
   take form server-response
 
-form request-listener
-  name <RequestListener>
-  like task
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form request-listener, name <RequestListener>
+  like task-link-text
     take req, like incoming-message
     take res, like server-response
     free seed, like native-void

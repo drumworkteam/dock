@@ -1,4 +1,7 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
@@ -11,31 +14,27 @@ load @drumwork/moon/code/javascript/node/inspector/debugger/call-frame
 load @drumwork/moon/code/javascript/node/inspector/runtime/stack-trace-id
   take form stack-trace-id
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form stack-trace, name <StackTrace>
   take description, name <description>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-undefined
-    lock free
+    lock false
   take call-frames, name <callFrames>
-    like list-link-text
+    like native-array
       like call-frame
-    lock free
+    lock false
   take parent, name <parent>
-    like sink-link-text
+    like or-link-text
       like stack-trace
       like native-undefined
-    lock free
+    lock false
   take parent-id, name <parentId>
-    like sink-link-text
+    like or-link-text
       like stack-trace-id
       like native-undefined
-    lock free
+    lock false

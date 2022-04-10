@@ -8,23 +8,21 @@ load @drumwork/moon/code/javascript/base/native-undefined
 load @drumwork/moon/code/javascript/node/inspector/debugger/location
   take form location
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form get-possible-breakpoints-parameter-type
-  name <GetPossibleBreakpointsParameterType>
+form get-possible-breakpoints-parameter-type, name <GetPossibleBreakpointsParameterType>
   take start, name <start>
     like location
-    lock free
+    lock false
   take end, name <end>
-    like sink-link-text
+    like or-link-text
       like location
       like native-undefined
-    lock free
-  take restrict-to-function
-    name <restrictToFunction>
-    like sink-link-text
+    lock false
+  take restrict-to-function, name <restrictToFunction>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false

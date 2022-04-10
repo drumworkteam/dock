@@ -35,25 +35,25 @@ load @drumwork/moon/code/javascript/node/crypto/key-object-type
 load @drumwork/moon/code/javascript/node/crypto/key-type
   take form key-type
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form key-object, name <KeyObject>
   take asymmetric-key-type, name <asymmetricKeyType>
-    like sink-link-text
+    like or-link-text
       like key-type
       like native-undefined
   take asymmetric-key-size, name <asymmetricKeySize>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
   take asymmetric-key-details, name <asymmetricKeyDetails>
-    like sink-link-text
+    like or-link-text
       like asymmetric-key-details
       like native-undefined
   take symmetric-key-size, name <symmetricKeySize>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
   take type, name <type>, like key-object-type
@@ -63,7 +63,7 @@ form key-object, name <KeyObject>
       like key-export-options
         text <pem>
     free seed
-      like sink-link-text
+      like or-link-text
         like native-string
         like buffer
 
@@ -71,12 +71,12 @@ form key-object, name <KeyObject>
     take options
       like key-export-options
         text <der>
-      void take
+      void true
     free seed, like buffer
 
   task export, name <export>
     take options, like jwk-key-export-options
-      void take
+      void true
     free seed, like json-web-key
 
 form key-object-constructor

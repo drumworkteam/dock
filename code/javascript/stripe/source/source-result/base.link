@@ -1,0 +1,23 @@
+
+load @drumwork/moon/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/moon/code/javascript/stripe/source/source
+  take form source
+
+load @drumwork/moon/code/javascript/stripe/stripe-error
+  take form stripe-error
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+form source-result, name <SourceResult>
+  take source, name <source>
+    like source
+    lock false
+  take error, name <error>
+    like or-link-text
+      like stripe-error
+      like native-undefined
+    lock false

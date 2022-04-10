@@ -1,4 +1,7 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
@@ -20,29 +23,25 @@ load @drumwork/moon/code/javascript/node/dns/lookup-one-options
 load @drumwork/moon/code/javascript/node/dns/lookup-options
   take form lookup-options
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 task promisify, name <__promisify__>
   take hostname, like native-string
   take options, like lookup-all-options
   free seed
     like promise
-      like list-link-text
+      like native-array
         like lookup-address
 
 task promisify, name <__promisify__>
   take hostname, like native-string
   take options
-    like sink-link-text
+    like or-link-text
       like lookup-one-options
       like native-number
-    void take
+    void true
   free seed
     like promise
       like lookup-address
@@ -52,7 +51,7 @@ task promisify, name <__promisify__>
   take options, like lookup-options
   free seed
     like promise
-      like sink-link-text
+      like or-link-text
         like lookup-address
-        like list-link-text
+        like native-array
           like lookup-address

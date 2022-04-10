@@ -38,12 +38,15 @@ load @drumwork/moon/code/javascript/node/http2/server-stream-response-options
 load @drumwork/moon/code/javascript/node/http2/stream-priority-options
   take form stream-priority-options
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form server-http2-stream
-  name <ServerHttp2Stream>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form server-http2-stream, name <ServerHttp2Stream>
   base http2-stream
 
   take headers-sent, name <headersSent>
@@ -51,65 +54,62 @@ form server-http2-stream
   take push-allowed, name <pushAllowed>
     like native-boolean
 
-  task additional-headers
-    name <additionalHeaders>
+  task additional-headers, name <additionalHeaders>
     take headers, like outgoing-http-headers
     free seed, like native-void
 
   task push-stream, name <pushStream>
     take headers, like outgoing-http-headers
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take push-stream, like server-http2-stream
         take headers, like outgoing-http-headers
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task push-stream, name <pushStream>
     take headers, like outgoing-http-headers
     take options, like stream-priority-options
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         take push-stream, like server-http2-stream
         take headers, like outgoing-http-headers
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task respond, name <respond>
     take headers, like outgoing-http-headers
-      void take
+      void true
     take options, like server-stream-response-options
-      void take
+      void true
     free seed, like native-void
 
-  task respond-with-fd
-    name <respondWithFD>
+  task respond-with-fd, name <respondWithFD>
     take fd
-      like sink-link-text
+      like or-link-text
         like native-number
         like fs-promises-file-handle
     take headers, like outgoing-http-headers
-      void take
+      void true
     take options, like server-stream-file-response-options
-      void take
+      void true
     free seed, like native-void
 
-  task respond-with-file
-    name <respondWithFile>
+  task respond-with-file, name <respondWithFile>
     take path, like native-string
     take headers, like outgoing-http-headers
-      void take
+      void true
     take options, like server-stream-file-response-options-with-error
-      void take
+      void true
     free seed, like native-void

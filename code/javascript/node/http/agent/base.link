@@ -2,6 +2,9 @@
 load @drumwork/moon/code/javascript/base/incoming-message
   take form incoming-message
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
@@ -17,25 +20,21 @@ load @drumwork/moon/code/javascript/base/socket
 load @drumwork/moon/code/javascript/node/http/agent-options
   take form agent-options
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
 form agent, name <Agent>
   take max-free-sockets, name <maxFreeSockets>, like native-number
   take max-sockets, name <maxSockets>, like native-number
   take max-total-sockets, name <maxTotalSockets>, like native-number
   take free-sockets, name <freeSockets>
     like node-js-read-only-dict
-      like list-link-text
+      like native-array
         like socket
   take sockets, name <sockets>
     like node-js-read-only-dict
-      like list-link-text
+      like native-array
         like socket
   take requests, name <requests>
     like node-js-read-only-dict
-      like list-link-text
+      like native-array
         like incoming-message
 
   task destroy, name <destroy>
@@ -44,4 +43,4 @@ form agent, name <Agent>
 form agent-constructor
   hook make
     take opts, like agent-options
-      void take
+      void true

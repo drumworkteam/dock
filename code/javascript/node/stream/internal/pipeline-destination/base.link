@@ -24,16 +24,15 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 load @drumwork/seed/code/form/test
   take form test
     save form test-link-text
 
-form pipeline-destination
-  name <PipelineDestination>
+form pipeline-destination, name <PipelineDestination>
   head s, like like-link-text
     base pipeline-transform-source
       like native-any
@@ -44,13 +43,13 @@ form pipeline-destination
       like s
       like pipeline-transform-source
         name st
-      hook take
-        like sink-link-text
+      hook true
+        like or-link-text
           like node-js-writable-stream
           like pipeline-destination-iterable-function
             like st
           like pipeline-destination-promise-function
             like st
             like p
-      hook free
+      hook false
         like native-never

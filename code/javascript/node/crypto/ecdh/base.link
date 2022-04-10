@@ -20,73 +20,61 @@ load @drumwork/moon/code/javascript/node/crypto/binary-to-text-encoding
 load @drumwork/moon/code/javascript/node/crypto/ecdh-key-format
   take form ecdh-key-format
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form ecdh, name <ECDH>
-  task generate-keys
-    name <generateKeys>
+  task generate-keys, name <generateKeys>
     free seed, like buffer
 
-  task generate-keys
-    name <generateKeys>
+  task generate-keys, name <generateKeys>
     take encoding, like binary-to-text-encoding
     take format, like ecdh-key-format
-      void take
+      void true
     free seed, like native-string
 
-  task compute-secret
-    name <computeSecret>
+  task compute-secret, name <computeSecret>
     take other-public-key, like node-js-array-buffer-view
     free seed, like buffer
 
-  task compute-secret
-    name <computeSecret>
+  task compute-secret, name <computeSecret>
     take other-public-key, like native-string
     take input-encoding, like binary-to-text-encoding
     free seed, like buffer
 
-  task compute-secret
-    name <computeSecret>
+  task compute-secret, name <computeSecret>
     take other-public-key, like node-js-array-buffer-view
     take output-encoding, like binary-to-text-encoding
     free seed, like native-string
 
-  task compute-secret
-    name <computeSecret>
+  task compute-secret, name <computeSecret>
     take other-public-key, like native-string
     take input-encoding, like binary-to-text-encoding
     take output-encoding, like binary-to-text-encoding
     free seed, like native-string
 
-  task get-private-key
-    name <getPrivateKey>
+  task get-private-key, name <getPrivateKey>
     free seed, like buffer
 
-  task get-private-key
-    name <getPrivateKey>
+  task get-private-key, name <getPrivateKey>
     take encoding, like binary-to-text-encoding
     free seed, like native-string
 
-  task get-public-key
-    name <getPublicKey>
+  task get-public-key, name <getPublicKey>
     free seed, like buffer
 
-  task get-public-key
-    name <getPublicKey>
+  task get-public-key, name <getPublicKey>
     take encoding, like binary-to-text-encoding
     take format, like ecdh-key-format
-      void take
+      void true
     free seed, like native-string
 
-  task set-private-key
-    name <setPrivateKey>
+  task set-private-key, name <setPrivateKey>
     take private-key, like node-js-array-buffer-view
     free seed, like native-void
 
-  task set-private-key
-    name <setPrivateKey>
+  task set-private-key, name <setPrivateKey>
     take private-key, like native-string
     take encoding, like binary-to-text-encoding
     free seed, like native-void
@@ -98,21 +86,21 @@ form ecdh-constructor
     take key, like binary-like
     take curve, like native-string
     take input-encoding, like binary-to-text-encoding
-      void take
+      void true
     take output-encoding
-      like sink-link-text
+      like or-link-text
         text <latin1>
         text <hex>
         text <base64>
         text <base64url>
-      void take
+      void true
     take format
-      like sink-link-text
+      like or-link-text
         text <uncompressed>
         text <compressed>
         text <hybrid>
-      void take
+      void true
     free seed
-      like sink-link-text
+      like or-link-text
         like buffer
         like native-string

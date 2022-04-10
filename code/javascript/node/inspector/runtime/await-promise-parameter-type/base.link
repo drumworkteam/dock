@@ -8,25 +8,21 @@ load @drumwork/moon/code/javascript/base/native-undefined
 load @drumwork/moon/code/javascript/node/inspector/runtime/remote-object-id
   take form remote-object-id
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form await-promise-parameter-type
-  name <AwaitPromiseParameterType>
-  take promise-object-id
-    name <promiseObjectId>
+form await-promise-parameter-type, name <AwaitPromiseParameterType>
+  take promise-object-id, name <promiseObjectId>
     like remote-object-id
-    lock free
-  take return-by-value
-    name <returnByValue>
-    like sink-link-text
+    lock false
+  take return-by-value, name <returnByValue>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
-  take generate-preview
-    name <generatePreview>
-    like sink-link-text
+    lock false
+  take generate-preview, name <generatePreview>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false

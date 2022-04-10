@@ -17,18 +17,18 @@ load @drumwork/moon/code/javascript/node/fs/path-or-file-descriptor
 load @drumwork/moon/code/javascript/node/fs/write-file-options
   take form write-file-options
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 task promisify, name <__promisify__>
   take file, like path-or-file-descriptor
   take data
-    like sink-link-text
+    like or-link-text
       like native-string
       like uint8-array
   take options, like write-file-options
-    void take
+    void true
   free seed
     like promise
       like native-void

@@ -1,4 +1,7 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
@@ -8,34 +11,30 @@ load @drumwork/moon/code/javascript/base/native-undefined
 load @drumwork/moon/code/javascript/node/inspector/profiler/profile-node
   take form profile-node
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form profile, name <Profile>
   take nodes, name <nodes>
-    like list-link-text
+    like native-array
       like profile-node
-    lock free
+    lock false
   take start-time, name <startTime>
     like native-number
-    lock free
+    lock false
   take end-time, name <endTime>
     like native-number
-    lock free
+    lock false
   take samples, name <samples>
-    like sink-link-text
-      like list-link-text
+    like or-link-text
+      like native-array
         like native-number
       like native-undefined
-    lock free
+    lock false
   take time-deltas, name <timeDeltas>
-    like sink-link-text
-      like list-link-text
+    like or-link-text
+      like native-array
         like native-number
       like native-undefined
-    lock free
+    lock false

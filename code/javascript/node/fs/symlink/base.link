@@ -1,4 +1,6 @@
 
+bear @drumwork/moon/code/javascript/node/fs/symlink/type
+
 load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
@@ -14,18 +16,18 @@ load @drumwork/moon/code/javascript/base/promise
 load @drumwork/moon/code/javascript/node/fs/path-like
   take form path-like
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 task promisify, name <__promisify__>
   take target, like path-like
   take path, like path-like
   take type
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
-    void take
+    void true
   free seed
     like promise
       like native-void

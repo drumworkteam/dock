@@ -1,20 +1,18 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/runtime-script-id
   take form runtime-script-id
 
 load @drumwork/moon/code/javascript/node/inspector/debugger/script-position
   take form script-position
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-form set-blackboxed-ranges-parameter-type
-  name <SetBlackboxedRangesParameterType>
+form set-blackboxed-ranges-parameter-type, name <SetBlackboxedRangesParameterType>
   take script-id, name <scriptId>
     like runtime-script-id
-    lock free
+    lock false
   take positions, name <positions>
-    like list-link-text
+    like native-array
       like script-position
-    lock free
+    lock false

@@ -22,47 +22,46 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form child-process-by-stdio
-  name <ChildProcessByStdio>
+form child-process-by-stdio, name <ChildProcessByStdio>
   base child-process
 
   head i, like like-link-text
-    base sink-link-text
+    base or-link-text
       like native-null
       like writable
   head o, like like-link-text
-    base sink-link-text
+    base or-link-text
       like native-null
       like readable
   head e, like like-link-text
-    base sink-link-text
+    base or-link-text
       like native-null
       like readable
 
   take stdin, name <stdin>
     like i
-    lock free
+    lock false
   take stdout, name <stdout>
     like o
-    lock free
+    lock false
   take stderr, name <stderr>
     like e
-    lock free
+    lock false
   take stdio, name <stdio>
     like band-link-text
       like i
       like o
       like e
-      like sink-link-text
+      like or-link-text
         like readable
         like writable
         like native-null
         like native-undefined
-      like sink-link-text
+      like or-link-text
         like readable
         like writable
         like native-null

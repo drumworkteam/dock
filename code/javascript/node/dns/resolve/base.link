@@ -1,4 +1,7 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
@@ -20,27 +23,23 @@ load @drumwork/moon/code/javascript/node/dns/soa-record
 load @drumwork/moon/code/javascript/node/dns/srv-record
   take form srv-record
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 task promisify, name <__promisify__>
   take hostname, like native-string
   take rrtype
-    like sink-link-text
+    like or-link-text
       text <A>
       text <AAAA>
       text <CNAME>
       text <NS>
       text <PTR>
-    void take
+    void true
   free seed
     like promise
-      like list-link-text
+      like native-array
         like native-string
 
 task promisify, name <__promisify__>
@@ -48,7 +47,7 @@ task promisify, name <__promisify__>
   take rrtype, text <ANY>
   free seed
     like promise
-      like list-link-text
+      like native-array
         like any-record
 
 task promisify, name <__promisify__>
@@ -56,7 +55,7 @@ task promisify, name <__promisify__>
   take rrtype, text <MX>
   free seed
     like promise
-      like list-link-text
+      like native-array
         like mx-record
 
 task promisify, name <__promisify__>
@@ -64,7 +63,7 @@ task promisify, name <__promisify__>
   take rrtype, text <NAPTR>
   free seed
     like promise
-      like list-link-text
+      like native-array
         like naptr-record
 
 task promisify, name <__promisify__>
@@ -79,7 +78,7 @@ task promisify, name <__promisify__>
   take rrtype, text <SRV>
   free seed
     like promise
-      like list-link-text
+      like native-array
         like srv-record
 
 task promisify, name <__promisify__>
@@ -87,8 +86,8 @@ task promisify, name <__promisify__>
   take rrtype, text <TXT>
   free seed
     like promise
-      like list-link-text
-        like list-link-text
+      like native-array
+        like native-array
           like native-string
 
 task promisify, name <__promisify__>
@@ -96,18 +95,18 @@ task promisify, name <__promisify__>
   take rrtype, like native-string
   free seed
     like promise
-      like sink-link-text
-        like list-link-text
+      like or-link-text
+        like native-array
           like native-string
-        like list-link-text
+        like native-array
           like mx-record
-        like list-link-text
+        like native-array
           like naptr-record
         like soa-record
-        like list-link-text
+        like native-array
           like srv-record
-        like list-link-text
-          like list-link-text
+        like native-array
+          like native-array
             like native-string
-        like list-link-text
+        like native-array
           like any-record

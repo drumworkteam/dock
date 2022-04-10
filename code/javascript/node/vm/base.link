@@ -1,4 +1,15 @@
 
+bear @drumwork/moon/code/javascript/node/vm/context
+bear @drumwork/moon/code/javascript/node/vm/base-options
+bear @drumwork/moon/code/javascript/node/vm/script-options
+bear @drumwork/moon/code/javascript/node/vm/running-script-options
+bear @drumwork/moon/code/javascript/node/vm/compile-function-options
+bear @drumwork/moon/code/javascript/node/vm/create-context-options
+bear @drumwork/moon/code/javascript/node/vm/measure-memory-mode
+bear @drumwork/moon/code/javascript/node/vm/measure-memory-options
+bear @drumwork/moon/code/javascript/node/vm/memory-measurement
+bear @drumwork/moon/code/javascript/node/vm/script
+
 load @drumwork/moon/code/javascript/base/function
   take form function
 
@@ -35,16 +46,15 @@ load @drumwork/moon/code/javascript/node/vm/memory-measurement
 load @drumwork/moon/code/javascript/node/vm/running-script-options
   take form running-script-options
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-task create-context
-  name <createContext>
+task create-context, name <createContext>
   take sandbox, like context
-    void take
+    void true
   take options, like create-context-options
-    void take
+    void true
   free seed, like context
 
 task is-context, name <isContext>
@@ -55,49 +65,45 @@ task run-in-context, name <runInContext>
   take code, like native-string
   take contextified-object, like context
   take options
-    like sink-link-text
+    like or-link-text
       like running-script-options
       like native-string
-    void take
+    void true
   free seed, like native-any
 
-task run-in-new-context
-  name <runInNewContext>
+task run-in-new-context, name <runInNewContext>
   take code, like native-string
   take context-object, like context
-    void take
+    void true
   take options
-    like sink-link-text
+    like or-link-text
       like running-script-options
       like native-string
-    void take
+    void true
   free seed, like native-any
 
-task run-in-this-context
-  name <runInThisContext>
+task run-in-this-context, name <runInThisContext>
   take code, like native-string
   take options
-    like sink-link-text
+    like or-link-text
       like running-script-options
       like native-string
-    void take
+    void true
   free seed, like native-any
 
-task compile-function
-  name <compileFunction>
+task compile-function, name <compileFunction>
   take code, like native-string
   take params
     like readonly-array
       like native-string
-    void take
+    void true
   take options, like compile-function-options
-    void take
+    void true
   free seed, like function
 
-task measure-memory
-  name <measureMemory>
+task measure-memory, name <measureMemory>
   take options, like measure-memory-options
-    void take
+    void true
   free seed
     like promise
       like memory-measurement

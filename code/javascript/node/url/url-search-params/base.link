@@ -5,6 +5,9 @@ load @drumwork/moon/code/javascript/base/iterable
 load @drumwork/moon/code/javascript/base/iterable-iterator
   take form iterable-iterator
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -37,16 +40,15 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
-form url-search-params
-  name <URLSearchParams>
+form url-search-params, name <URLSearchParams>
   task append, name <append>
     take name, like native-string
     take value, like native-string
@@ -67,27 +69,27 @@ form url-search-params
     head t-this, like like-link-text
       back native-this
     take callback
-      like task
+      like task-link-text
         take this, like t-this
         take value, like native-string
         take name, like native-string
         take search-params, like url-search-params
         free seed, like native-void
     take this-arg, like t-this
-      void take
+      void true
     free seed, like native-void
 
   task get, name <get>
     take name, like native-string
     free seed
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-null
 
   task get-all, name <getAll>
     take name, like native-string
     free seed
-      like list-link-text
+      like native-array
         like native-string
 
   task has, name <has>
@@ -126,12 +128,12 @@ form url-search-params
 form url-search-params-constructor
   hook make
     take init
-      like sink-link-text
+      like or-link-text
         like url-search-params
         like native-string
         like record
           like native-string
-          like sink-link-text
+          like or-link-text
             like native-string
             like readonly-array
               like native-string
@@ -143,9 +145,8 @@ form url-search-params-constructor
           like band-link-text
             like native-string
             like native-string
-      void take
+      void true
 
-form url-search-params
-  name <URLSearchParams>
-  home take
+form url-search-params, name <URLSearchParams>
+  home true
   base url-search-params

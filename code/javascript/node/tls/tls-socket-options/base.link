@@ -17,32 +17,31 @@ load @drumwork/moon/code/javascript/node/tls/common-connection-options
 load @drumwork/moon/code/javascript/node/tls/secure-context-options
   take form secure-context-options
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form tls-socket-options
-  name <TLSSocketOptions>
+form tls-socket-options, name <TLSSocketOptions>
   base secure-context-options
   base common-connection-options
 
   take is-server, name <isServer>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false
   take server, name <server>
-    like sink-link-text
+    like or-link-text
       like net-server
       like native-undefined
-    lock free
+    lock false
   take session, name <session>
-    like sink-link-text
+    like or-link-text
       like buffer
       like native-undefined
-    lock free
+    lock false
   take request-ocsp, name <requestOCSP>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false

@@ -11,34 +11,30 @@ load @drumwork/moon/code/javascript/base/native-undefined
 load @drumwork/moon/code/javascript/node/vm/base-options
   take form base-options
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form running-script-options
-  name <RunningScriptOptions>
+form running-script-options, name <RunningScriptOptions>
   base base-options
 
-  take display-errors
-    name <displayErrors>
-    like sink-link-text
+  take display-errors, name <displayErrors>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false
   take timeout, name <timeout>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
-  take break-on-sigint
-    name <breakOnSigint>
-    like sink-link-text
+    lock false
+  take break-on-sigint, name <breakOnSigint>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
-  take microtask-mode
-    name <microtaskMode>
-    like sink-link-text
+    lock false
+  take microtask-mode, name <microtaskMode>
+    like or-link-text
       text <afterEvaluate>
       like native-undefined
-    lock free
+    lock false

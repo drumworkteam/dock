@@ -18,12 +18,11 @@ load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form assertion-error
-  name <AssertionError>
+form assertion-error, name <AssertionError>
   base error
   take actual, name <actual>, like native-unknown
   take expected, name <expected>, like native-unknown
@@ -36,29 +35,28 @@ form assertion-error-constructor
     take options
       like form-link-text
         take message, name <message>
-          like sink-link-text
+          like or-link-text
             like native-string
             like native-undefined
-          lock free
+          lock false
         take actual, name <actual>
-          like sink-link-text
+          like or-link-text
             like native-unknown
             like native-undefined
-          lock free
+          lock false
         take expected, name <expected>
-          like sink-link-text
+          like or-link-text
             like native-unknown
             like native-undefined
-          lock free
+          lock false
         take operator, name <operator>
-          like sink-link-text
+          like or-link-text
             like native-string
             like native-undefined
-          lock free
-        take stack-start-fn
-          name <stackStartFn>
-          like sink-link-text
+          lock false
+        take stack-start-fn, name <stackStartFn>
+          like or-link-text
             like function
             like native-undefined
-          lock free
-      void take
+          lock false
+      void true

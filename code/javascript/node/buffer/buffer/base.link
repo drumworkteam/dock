@@ -2,6 +2,9 @@
 load @drumwork/moon/code/javascript/base/iterable-iterator
   take form iterable-iterator
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-bigint
   take form native-bigint
 
@@ -31,29 +34,25 @@ load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form buffer, name <Buffer>
-  home take
+  home true
   base uint8-array
 
   task write, name <write>
     take string, like native-string
     take encoding, like buffer-encoding
-      void take
+      void true
     free seed, like native-number
 
   task write, name <write>
     take string, like native-string
     take offset, like native-number
     take encoding, like buffer-encoding
-      void take
+      void true
     free seed, like native-number
 
   task write, name <write>
@@ -61,16 +60,16 @@ form buffer, name <Buffer>
     take offset, like native-number
     take length, like native-number
     take encoding, like buffer-encoding
-      void take
+      void true
     free seed, like native-number
 
   task to-string, name <toString>
     take encoding, like buffer-encoding
-      void take
+      void true
     take start, like native-number
-      void take
+      void true
     take end, like native-number
-      void take
+      void true
     free seed, like native-string
 
   task to-json, name <toJSON>
@@ -78,11 +77,11 @@ form buffer, name <Buffer>
       like form-link-text
         take type, name <type>
           text <Buffer>
-          lock free
+          lock false
         take data, name <data>
-          like list-link-text
+          like native-array
             like native-number
-          lock free
+          lock false
 
   task equals, name <equals>
     take other-buffer, like uint8-array
@@ -91,15 +90,15 @@ form buffer, name <Buffer>
   task compare, name <compare>
     take target, like uint8-array
     take target-start, like native-number
-      void take
+      void true
     take target-end, like native-number
-      void take
+      void true
     take source-start, like native-number
-      void take
+      void true
     take source-end, like native-number
-      void take
+      void true
     free seed
-      like sink-link-text
+      like or-link-text
         text <undefined>
         text <0>
         text <1>
@@ -107,71 +106,64 @@ form buffer, name <Buffer>
   task copy, name <copy>
     take target, like uint8-array
     take target-start, like native-number
-      void take
+      void true
     take source-start, like native-number
-      void take
+      void true
     take source-end, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task slice, name <slice>
     take start, like native-number
-      void take
+      void true
     take end, like native-number
-      void take
+      void true
     free seed, like buffer
 
   task subarray, name <subarray>
     take start, like native-number
-      void take
+      void true
     take end, like native-number
-      void take
+      void true
     free seed, like buffer
 
-  task write-big-int64-be
-    name <writeBigInt64BE>
+  task write-big-int64-be, name <writeBigInt64BE>
     take value, like native-bigint
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-big-int64-le
-    name <writeBigInt64LE>
+  task write-big-int64-le, name <writeBigInt64LE>
     take value, like native-bigint
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-big-u-int64-be
-    name <writeBigUInt64BE>
+  task write-big-u-int64-be, name <writeBigUInt64BE>
     take value, like native-bigint
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-big-uint64-be
-    name <writeBigUint64BE>
+  task write-big-uint64-be, name <writeBigUint64BE>
     take value, like native-bigint
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-big-u-int64-le
-    name <writeBigUInt64LE>
+  task write-big-u-int64-le, name <writeBigUInt64LE>
     take value, like native-bigint
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-big-uint64-le
-    name <writeBigUint64LE>
+  task write-big-uint64-le, name <writeBigUint64LE>
     take value, like native-bigint
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-u-int-le
-    name <writeUIntLE>
+  task write-u-int-le, name <writeUIntLE>
     take value, like native-number
     take offset, like native-number
     take byte-length, like native-number
@@ -183,8 +175,7 @@ form buffer, name <Buffer>
     take byte-length, like native-number
     free seed, like native-number
 
-  task write-u-int-be
-    name <writeUIntBE>
+  task write-u-int-be, name <writeUIntBE>
     take value, like native-number
     take offset, like native-number
     take byte-length, like native-number
@@ -208,40 +199,34 @@ form buffer, name <Buffer>
     take byte-length, like native-number
     free seed, like native-number
 
-  task read-big-u-int64-be
-    name <readBigUInt64BE>
+  task read-big-u-int64-be, name <readBigUInt64BE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-bigint
 
-  task read-big-uint64-be
-    name <readBigUint64BE>
+  task read-big-uint64-be, name <readBigUint64BE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-bigint
 
-  task read-big-u-int64-le
-    name <readBigUInt64LE>
+  task read-big-u-int64-le, name <readBigUInt64LE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-bigint
 
-  task read-big-uint64-le
-    name <readBigUint64LE>
+  task read-big-uint64-le, name <readBigUint64LE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-bigint
 
-  task read-big-int64-be
-    name <readBigInt64BE>
+  task read-big-int64-be, name <readBigInt64BE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-bigint
 
-  task read-big-int64-le
-    name <readBigInt64LE>
+  task read-big-int64-le, name <readBigInt64LE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-bigint
 
   task read-u-int-le, name <readUIntLE>
@@ -276,107 +261,97 @@ form buffer, name <Buffer>
 
   task read-u-int8, name <readUInt8>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task read-uint8, name <readUint8>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task read-u-int16-le
-    name <readUInt16LE>
+  task read-u-int16-le, name <readUInt16LE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task read-uint16-le
-    name <readUint16LE>
+  task read-uint16-le, name <readUint16LE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task read-u-int16-be
-    name <readUInt16BE>
+  task read-u-int16-be, name <readUInt16BE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task read-uint16-be
-    name <readUint16BE>
+  task read-uint16-be, name <readUint16BE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task read-u-int32-le
-    name <readUInt32LE>
+  task read-u-int32-le, name <readUInt32LE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task read-uint32-le
-    name <readUint32LE>
+  task read-uint32-le, name <readUint32LE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task read-u-int32-be
-    name <readUInt32BE>
+  task read-u-int32-be, name <readUInt32BE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task read-uint32-be
-    name <readUint32BE>
+  task read-uint32-be, name <readUint32BE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task read-int8, name <readInt8>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task read-int16-le, name <readInt16LE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task read-int16-be, name <readInt16BE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task read-int32-le, name <readInt32LE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task read-int32-be, name <readInt32BE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task read-float-le, name <readFloatLE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task read-float-be, name <readFloatBE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task read-double-le
-    name <readDoubleLE>
+  task read-double-le, name <readDoubleLE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task read-double-be
-    name <readDoubleBE>
+  task read-double-be, name <readDoubleBE>
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task reverse, name <reverse>
@@ -394,169 +369,153 @@ form buffer, name <Buffer>
   task write-u-int8, name <writeUInt8>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task write-uint8, name <writeUint8>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-u-int16-le
-    name <writeUInt16LE>
+  task write-u-int16-le, name <writeUInt16LE>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-uint16-le
-    name <writeUint16LE>
+  task write-uint16-le, name <writeUint16LE>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-u-int16-be
-    name <writeUInt16BE>
+  task write-u-int16-be, name <writeUInt16BE>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-uint16-be
-    name <writeUint16BE>
+  task write-uint16-be, name <writeUint16BE>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-u-int32-le
-    name <writeUInt32LE>
+  task write-u-int32-le, name <writeUInt32LE>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-uint32-le
-    name <writeUint32LE>
+  task write-uint32-le, name <writeUint32LE>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-u-int32-be
-    name <writeUInt32BE>
+  task write-u-int32-be, name <writeUInt32BE>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-uint32-be
-    name <writeUint32BE>
+  task write-uint32-be, name <writeUint32BE>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task write-int8, name <writeInt8>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-int16-le
-    name <writeInt16LE>
+  task write-int16-le, name <writeInt16LE>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-int16-be
-    name <writeInt16BE>
+  task write-int16-be, name <writeInt16BE>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-int32-le
-    name <writeInt32LE>
+  task write-int32-le, name <writeInt32LE>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-int32-be
-    name <writeInt32BE>
+  task write-int32-be, name <writeInt32BE>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-float-le
-    name <writeFloatLE>
+  task write-float-le, name <writeFloatLE>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-float-be
-    name <writeFloatBE>
+  task write-float-be, name <writeFloatBE>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-double-le
-    name <writeDoubleLE>
+  task write-double-le, name <writeDoubleLE>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task write-double-be
-    name <writeDoubleBE>
+  task write-double-be, name <writeDoubleBE>
     take value, like native-number
     take offset, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task fill, name <fill>
     take value
-      like sink-link-text
+      like or-link-text
         like native-string
         like uint8-array
         like native-number
     take offset, like native-number
-      void take
+      void true
     take end, like native-number
-      void take
+      void true
     take encoding, like buffer-encoding
-      void take
+      void true
     free seed, like native-this
 
   task index-of, name <indexOf>
     take value
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-number
         like uint8-array
     take byte-offset, like native-number
-      void take
+      void true
     take encoding, like buffer-encoding
-      void take
+      void true
     free seed, like native-number
 
   task last-index-of, name <lastIndexOf>
     take value
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-number
         like uint8-array
     take byte-offset, like native-number
-      void take
+      void true
     take encoding, like buffer-encoding
-      void take
+      void true
     free seed, like native-number
 
   task entries, name <entries>
@@ -568,14 +527,14 @@ form buffer, name <Buffer>
 
   task includes, name <includes>
     take value
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-number
         like buffer
     take byte-offset, like native-number
-      void take
+      void true
     take encoding, like buffer-encoding
-      void take
+      void true
     free seed, like native-boolean
 
   task keys, name <keys>

@@ -1,0 +1,39 @@
+
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/moon/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/moon/code/javascript/base/shipping-option
+  take form shipping-option
+
+load @drumwork/moon/code/javascript/stripe/payment/payment-item
+  take form payment-item
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+form update-options, name <UpdateOptions>
+  take currency, name <currency>
+    like native-string
+    lock false
+  take total, name <total>
+    like payment-item
+    lock false
+  take display-items, name <displayItems>
+    like or-link-text
+      like native-array
+        like payment-item
+      like native-undefined
+    lock false
+  take shipping-options, name <shippingOptions>
+    like or-link-text
+      like native-array
+        like shipping-option
+      like native-undefined
+    lock false

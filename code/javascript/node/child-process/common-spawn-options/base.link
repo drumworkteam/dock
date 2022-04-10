@@ -20,35 +20,33 @@ load @drumwork/moon/code/javascript/node/child-process/messaging-options
 load @drumwork/moon/code/javascript/node/child-process/stdio-options
   take form stdio-options
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form common-spawn-options
-  name <CommonSpawnOptions>
+form common-spawn-options, name <CommonSpawnOptions>
   base common-options
   base messaging-options
   base abortable
 
   take argv0, name <argv0>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-undefined
-    lock free
+    lock false
   take stdio, name <stdio>
-    like sink-link-text
+    like or-link-text
       like stdio-options
       like native-undefined
-    lock free
+    lock false
   take shell, name <shell>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-string
       like native-undefined
-    lock free
-  take windows-verbatim-arguments
-    name <windowsVerbatimArguments>
-    like sink-link-text
+    lock false
+  take windows-verbatim-arguments, name <windowsVerbatimArguments>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false

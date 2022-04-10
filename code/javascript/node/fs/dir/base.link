@@ -23,9 +23,13 @@ load @drumwork/moon/code/javascript/base/promise
 load @drumwork/moon/code/javascript/node/fs/no-param-callback
   take form no-param-callback
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form dir, name <Dir>
   take path, name <path>, like native-string
@@ -51,19 +55,19 @@ form dir, name <Dir>
   task read, name <read>
     free seed
       like promise
-        like sink-link-text
+        like or-link-text
           like dirent
           like native-null
 
   task read, name <read>
     take cb
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like node-js-errno-exception
             like native-null
         take dir-ent
-          like sink-link-text
+          like or-link-text
             like dirent
             like native-null
         free seed, like native-void
@@ -71,6 +75,6 @@ form dir, name <Dir>
 
   task read-sync, name <readSync>
     free seed
-      like sink-link-text
+      like or-link-text
         like dirent
         like native-null

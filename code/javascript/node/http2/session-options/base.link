@@ -14,74 +14,63 @@ load @drumwork/moon/code/javascript/base/url-url
 load @drumwork/moon/code/javascript/node/http2/settings
   take form settings
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form session-options
-  name <SessionOptions>
-  take max-deflate-dynamic-table-size
-    name <maxDeflateDynamicTableSize>
-    like sink-link-text
+form session-options, name <SessionOptions>
+  take max-deflate-dynamic-table-size, name <maxDeflateDynamicTableSize>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
-  take max-session-memory
-    name <maxSessionMemory>
-    like sink-link-text
+    lock false
+  take max-session-memory, name <maxSessionMemory>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
-  take max-header-list-pairs
-    name <maxHeaderListPairs>
-    like sink-link-text
+    lock false
+  take max-header-list-pairs, name <maxHeaderListPairs>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
-  take max-outstanding-pings
-    name <maxOutstandingPings>
-    like sink-link-text
+    lock false
+  take max-outstanding-pings, name <maxOutstandingPings>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
-  take max-send-header-block-length
-    name <maxSendHeaderBlockLength>
-    like sink-link-text
+    lock false
+  take max-send-header-block-length, name <maxSendHeaderBlockLength>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
-  take padding-strategy
-    name <paddingStrategy>
-    like sink-link-text
+    lock false
+  take padding-strategy, name <paddingStrategy>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
-  take peer-max-concurrent-streams
-    name <peerMaxConcurrentStreams>
-    like sink-link-text
+    lock false
+  take peer-max-concurrent-streams, name <peerMaxConcurrentStreams>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
   take settings, name <settings>
-    like sink-link-text
+    like or-link-text
       like settings
       like native-undefined
-    lock free
-  take unknown-protocol-timeout
-    name <unknownProtocolTimeout>
-    like sink-link-text
+    lock false
+  take unknown-protocol-timeout, name <unknownProtocolTimeout>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
 
-  task select-padding
-    name <selectPadding>
+  task select-padding, name <selectPadding>
     take frame-len, like native-number
     take max-frame-len, like native-number
     free seed, like native-number
 
-  task create-connection
-    name <createConnection>
+  task create-connection, name <createConnection>
     take authority, like url-url
     take option, like session-options
     free seed, like stream-duplex

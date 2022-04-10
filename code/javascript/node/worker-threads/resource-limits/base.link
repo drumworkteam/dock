@@ -5,32 +5,28 @@ load @drumwork/moon/code/javascript/base/native-number
 load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form resource-limits
-  name <ResourceLimits>
-  take max-young-generation-size-mb
-    name <maxYoungGenerationSizeMb>
-    like sink-link-text
+form resource-limits, name <ResourceLimits>
+  take max-young-generation-size-mb, name <maxYoungGenerationSizeMb>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
-  take max-old-generation-size-mb
-    name <maxOldGenerationSizeMb>
-    like sink-link-text
+    lock false
+  take max-old-generation-size-mb, name <maxOldGenerationSizeMb>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
-  take code-range-size-mb
-    name <codeRangeSizeMb>
-    like sink-link-text
+    lock false
+  take code-range-size-mb, name <codeRangeSizeMb>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
   take stack-size-mb, name <stackSizeMb>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false

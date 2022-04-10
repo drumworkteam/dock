@@ -5,6 +5,9 @@ load @drumwork/moon/code/javascript/base/error
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -47,13 +50,13 @@ load @drumwork/moon/code/javascript/node/http2/stream-priority-options
 load @drumwork/moon/code/javascript/node/http2/stream-state
   take form stream-state
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form http2-stream, name <Http2Stream>
   base stream-duplex
@@ -66,11 +69,10 @@ form http2-stream, name <Http2Stream>
     like native-boolean
   take destroyed, name <destroyed>
     like native-boolean
-  take end-after-headers
-    name <endAfterHeaders>
+  take end-after-headers, name <endAfterHeaders>
     like native-boolean
   take id, name <id>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
   take pending, name <pending>
@@ -79,15 +81,13 @@ form http2-stream, name <Http2Stream>
     like native-number
   take sent-headers, name <sentHeaders>
     like outgoing-http-headers
-  take sent-info-headers
-    name <sentInfoHeaders>
-    like sink-link-text
-      like list-link-text
+  take sent-info-headers, name <sentInfoHeaders>
+    like or-link-text
+      like native-array
         like outgoing-http-headers
       like native-undefined
-  take sent-trailers
-    name <sentTrailers>
-    like sink-link-text
+  take sent-trailers, name <sentTrailers>
+    like or-link-text
       like outgoing-http-headers
       like native-undefined
   take session, name <session>
@@ -97,11 +97,11 @@ form http2-stream, name <Http2Stream>
 
   task close, name <close>
     take code, like native-number
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task priority, name <priority>
@@ -111,36 +111,35 @@ form http2-stream, name <Http2Stream>
   task set-timeout, name <setTimeout>
     take msecs, like native-number
     take callback
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
-  task send-trailers
-    name <sendTrailers>
+  task send-trailers, name <sendTrailers>
     take headers, like outgoing-http-headers
     free seed, like native-void
 
   task add-listener, name <addListener>
     take event, text <aborted>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <data>
     take listener
-      like task
+      like task-link-text
         take chunk
-          like sink-link-text
+          like or-link-text
             like buffer
             like native-string
         free seed, like native-void
@@ -149,21 +148,21 @@ form http2-stream, name <Http2Stream>
   task add-listener, name <addListener>
     take event, text <drain>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <end>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
@@ -171,14 +170,14 @@ form http2-stream, name <Http2Stream>
   task add-listener, name <addListener>
     take event, text <finish>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <frameError>
     take listener
-      like task
+      like task-link-text
         take frame-type, like native-number
         take error-code, like native-number
         free seed, like native-void
@@ -187,7 +186,7 @@ form http2-stream, name <Http2Stream>
   task add-listener, name <addListener>
     take event, text <pipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
@@ -195,7 +194,7 @@ form http2-stream, name <Http2Stream>
   task add-listener, name <addListener>
     take event, text <unpipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
@@ -203,7 +202,7 @@ form http2-stream, name <Http2Stream>
   task add-listener, name <addListener>
     take event, text <streamClosed>
     take listener
-      like task
+      like task-link-text
         take code, like native-number
         free seed, like native-void
     free seed, like native-this
@@ -211,14 +210,14 @@ form http2-stream, name <Http2Stream>
   task add-listener, name <addListener>
     take event, text <timeout>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <trailers>
     take listener
-      like task
+      like task-link-text
         take trailers, like incoming-http-headers
         take flags, like native-number
         free seed, like native-void
@@ -227,21 +226,21 @@ form http2-stream, name <Http2Stream>
   task add-listener, name <addListener>
     take event, text <wantTrailers>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
@@ -256,7 +255,7 @@ form http2-stream, name <Http2Stream>
   task emit, name <emit>
     take event, text <data>
     take chunk
-      like sink-link-text
+      like or-link-text
         like buffer
         like native-string
     free seed, like native-boolean
@@ -315,35 +314,35 @@ form http2-stream, name <Http2Stream>
 
   task emit, name <emit>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take args
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-boolean
 
   task on, name <on>
     take event, text <aborted>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <data>
     take listener
-      like task
+      like task-link-text
         take chunk
-          like sink-link-text
+          like or-link-text
             like buffer
             like native-string
         free seed, like native-void
@@ -352,21 +351,21 @@ form http2-stream, name <Http2Stream>
   task on, name <on>
     take event, text <drain>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <end>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
@@ -374,14 +373,14 @@ form http2-stream, name <Http2Stream>
   task on, name <on>
     take event, text <finish>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <frameError>
     take listener
-      like task
+      like task-link-text
         take frame-type, like native-number
         take error-code, like native-number
         free seed, like native-void
@@ -390,7 +389,7 @@ form http2-stream, name <Http2Stream>
   task on, name <on>
     take event, text <pipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
@@ -398,7 +397,7 @@ form http2-stream, name <Http2Stream>
   task on, name <on>
     take event, text <unpipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
@@ -406,7 +405,7 @@ form http2-stream, name <Http2Stream>
   task on, name <on>
     take event, text <streamClosed>
     take listener
-      like task
+      like task-link-text
         take code, like native-number
         free seed, like native-void
     free seed, like native-this
@@ -414,14 +413,14 @@ form http2-stream, name <Http2Stream>
   task on, name <on>
     take event, text <timeout>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <trailers>
     take listener
-      like task
+      like task-link-text
         take trailers, like incoming-http-headers
         take flags, like native-number
         free seed, like native-void
@@ -430,44 +429,44 @@ form http2-stream, name <Http2Stream>
   task on, name <on>
     take event, text <wantTrailers>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <aborted>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <data>
     take listener
-      like task
+      like task-link-text
         take chunk
-          like sink-link-text
+          like or-link-text
             like buffer
             like native-string
         free seed, like native-void
@@ -476,21 +475,21 @@ form http2-stream, name <Http2Stream>
   task once, name <once>
     take event, text <drain>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <end>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
@@ -498,14 +497,14 @@ form http2-stream, name <Http2Stream>
   task once, name <once>
     take event, text <finish>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <frameError>
     take listener
-      like task
+      like task-link-text
         take frame-type, like native-number
         take error-code, like native-number
         free seed, like native-void
@@ -514,7 +513,7 @@ form http2-stream, name <Http2Stream>
   task once, name <once>
     take event, text <pipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
@@ -522,7 +521,7 @@ form http2-stream, name <Http2Stream>
   task once, name <once>
     take event, text <unpipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
@@ -530,7 +529,7 @@ form http2-stream, name <Http2Stream>
   task once, name <once>
     take event, text <streamClosed>
     take listener
-      like task
+      like task-link-text
         take code, like native-number
         free seed, like native-void
     free seed, like native-this
@@ -538,14 +537,14 @@ form http2-stream, name <Http2Stream>
   task once, name <once>
     take event, text <timeout>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <trailers>
     take listener
-      like task
+      like task-link-text
         take trailers, like incoming-http-headers
         take flags, like native-number
         free seed, like native-void
@@ -554,298 +553,268 @@ form http2-stream, name <Http2Stream>
   task once, name <once>
     take event, text <wantTrailers>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <aborted>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <data>
     take listener
-      like task
+      like task-link-text
         take chunk
-          like sink-link-text
+          like or-link-text
             like buffer
             like native-string
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <drain>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <end>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <finish>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <frameError>
     take listener
-      like task
+      like task-link-text
         take frame-type, like native-number
         take error-code, like native-number
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <pipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <unpipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <streamClosed>
     take listener
-      like task
+      like task-link-text
         take code, like native-number
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <timeout>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <trailers>
     take listener
-      like task
+      like task-link-text
         take trailers, like incoming-http-headers
         take flags, like native-number
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <wantTrailers>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <aborted>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <data>
     take listener
-      like task
+      like task-link-text
         take chunk
-          like sink-link-text
+          like or-link-text
             like buffer
             like native-string
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <drain>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <end>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <finish>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <frameError>
     take listener
-      like task
+      like task-link-text
         take frame-type, like native-number
         take error-code, like native-number
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <pipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <unpipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <streamClosed>
     take listener
-      like task
+      like task-link-text
         take code, like native-number
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <timeout>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <trailers>
     take listener
-      like task
+      like task-link-text
         take trailers, like incoming-http-headers
         take flags, like native-number
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <wantTrailers>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this

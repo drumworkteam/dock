@@ -5,15 +5,13 @@ load @drumwork/moon/code/javascript/base/native-undefined
 load @drumwork/moon/code/javascript/node/inspector/runtime/execution-context-id
   take form execution-context-id
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form global-lexical-scope-names-parameter-type
-  name <GlobalLexicalScopeNamesParameterType>
-  take execution-context-id
-    name <executionContextId>
-    like sink-link-text
+form global-lexical-scope-names-parameter-type, name <GlobalLexicalScopeNamesParameterType>
+  take execution-context-id, name <executionContextId>
+    like or-link-text
       like execution-context-id
       like native-undefined
-    lock free
+    lock false

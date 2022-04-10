@@ -11,18 +11,21 @@ load @drumwork/moon/code/javascript/base/native-null
 load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form transform-callback
-  name <TransformCallback>
-  like task
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form transform-callback, name <TransformCallback>
+  like task-link-text
     take error
-      like sink-link-text
+      like or-link-text
         like error
         like native-null
-      void take
+      void true
     take data, like native-any
-      void take
+      void true
     free seed, like native-void

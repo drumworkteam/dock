@@ -2,6 +2,9 @@
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -15,26 +18,24 @@ load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
-form dom-event-target
-  name <DOMEventTarget>
-  task add-event-listener
-    name <addEventListener>
+form dom-event-target, name <DOMEventTarget>
+  task add-event-listener, name <addEventListener>
     take event-name, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     take opts
       like form-link-text
         take once, name <once>
           like native-boolean
-          lock free
-      void take
+          lock false
+      void true
     free seed, like native-any

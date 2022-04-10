@@ -2,6 +2,9 @@
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -20,74 +23,66 @@ load @drumwork/moon/code/javascript/node/worker-threads/resource-limits
 load @drumwork/moon/code/javascript/node/worker-threads/transfer-list-item
   take form transfer-list-item
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form worker-options
-  name <WorkerOptions>
+form worker-options, name <WorkerOptions>
   take argv, name <argv>
-    like sink-link-text
-      like list-link-text
+    like or-link-text
+      like native-array
         like native-any
       like native-undefined
-    lock free
+    lock false
   take env, name <env>
-    like sink-link-text
+    like or-link-text
       like node-js-dict
         like native-string
       like share-env
       like native-undefined
-    lock free
+    lock false
   take eval, name <eval>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false
   take worker-data, name <workerData>
     like native-any
-    lock free
+    lock false
   take stdin, name <stdin>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false
   take stdout, name <stdout>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false
   take stderr, name <stderr>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false
   take exec-argv, name <execArgv>
-    like sink-link-text
-      like list-link-text
+    like or-link-text
+      like native-array
         like native-string
       like native-undefined
-    lock free
-  take resource-limits
-    name <resourceLimits>
-    like sink-link-text
+    lock false
+  take resource-limits, name <resourceLimits>
+    like or-link-text
       like resource-limits
       like native-undefined
-    lock free
-  take transfer-list
-    name <transferList>
-    like sink-link-text
-      like list-link-text
+    lock false
+  take transfer-list, name <transferList>
+    like or-link-text
+      like native-array
         like transfer-list-item
       like native-undefined
-    lock free
-  take track-unmanaged-fds
-    name <trackUnmanagedFds>
-    like sink-link-text
+    lock false
+  take track-unmanaged-fds, name <trackUnmanagedFds>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false

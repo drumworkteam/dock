@@ -1,0 +1,25 @@
+
+load @drumwork/moon/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/moon/code/javascript/google/maps/local-context/place-chooser-layout-mode
+  take form place-chooser-layout-mode
+
+load @drumwork/moon/code/javascript/google/maps/local-context/place-chooser-position
+  take form place-chooser-position
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+form place-chooser-view-setup-options, name <google.maps.localContext.PlaceChooserViewSetupOptions>
+  take layout-mode, name <layoutMode>
+    like or-link-text
+      like local-context-place-chooser-layout-mode
+      like native-null
+    lock false
+  take position, name <position>
+    like or-link-text
+      like local-context-place-chooser-position
+      like native-null
+    lock false

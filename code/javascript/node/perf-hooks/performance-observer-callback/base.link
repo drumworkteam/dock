@@ -8,9 +8,12 @@ load @drumwork/moon/code/javascript/base/performance-observer
 load @drumwork/moon/code/javascript/node/perf-hooks/performance-observer-entry-list
   take form performance-observer-entry-list
 
-form performance-observer-callback
-  name <PerformanceObserverCallback>
-  like task
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form performance-observer-callback, name <PerformanceObserverCallback>
+  like task-link-text
     take list, like performance-observer-entry-list
     take observer, like performance-observer
     free seed, like native-void

@@ -1,4 +1,7 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -17,43 +20,34 @@ load @drumwork/moon/code/javascript/base/runtime-stack-trace-id
 load @drumwork/moon/code/javascript/node/inspector/debugger/call-frame
   take form call-frame
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form set-script-source-return-type
-  name <SetScriptSourceReturnType>
+form set-script-source-return-type, name <SetScriptSourceReturnType>
   take call-frames, name <callFrames>
-    like sink-link-text
-      like list-link-text
+    like or-link-text
+      like native-array
         like call-frame
       like native-undefined
-    lock free
-  take stack-changed
-    name <stackChanged>
-    like sink-link-text
+    lock false
+  take stack-changed, name <stackChanged>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
-  take async-stack-trace
-    name <asyncStackTrace>
-    like sink-link-text
+    lock false
+  take async-stack-trace, name <asyncStackTrace>
+    like or-link-text
       like runtime-stack-trace
       like native-undefined
-    lock free
-  take async-stack-trace-id
-    name <asyncStackTraceId>
-    like sink-link-text
+    lock false
+  take async-stack-trace-id, name <asyncStackTraceId>
+    like or-link-text
       like runtime-stack-trace-id
       like native-undefined
-    lock free
-  take exception-details
-    name <exceptionDetails>
-    like sink-link-text
+    lock false
+  take exception-details, name <exceptionDetails>
+    like or-link-text
       like runtime-exception-details
       like native-undefined
-    lock free
+    lock false

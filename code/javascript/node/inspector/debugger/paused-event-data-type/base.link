@@ -1,4 +1,7 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
@@ -18,50 +21,41 @@ load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form paused-event-data-type
-  name <PausedEventDataType>
+form paused-event-data-type, name <PausedEventDataType>
   take call-frames, name <callFrames>
-    like list-link-text
+    like native-array
       like call-frame
-    lock free
+    lock false
   take reason, name <reason>
     like native-string
-    lock free
+    lock false
   take data, name <data>
-    like sink-link-text
+    like or-link-text
       like form-link-text
       like native-undefined
-    lock free
-  take hit-breakpoints
-    name <hitBreakpoints>
-    like sink-link-text
-      like list-link-text
+    lock false
+  take hit-breakpoints, name <hitBreakpoints>
+    like or-link-text
+      like native-array
         like native-string
       like native-undefined
-    lock free
-  take async-stack-trace
-    name <asyncStackTrace>
-    like sink-link-text
+    lock false
+  take async-stack-trace, name <asyncStackTrace>
+    like or-link-text
       like runtime-stack-trace
       like native-undefined
-    lock free
-  take async-stack-trace-id
-    name <asyncStackTraceId>
-    like sink-link-text
+    lock false
+  take async-stack-trace-id, name <asyncStackTraceId>
+    like or-link-text
       like runtime-stack-trace-id
       like native-undefined
-    lock free
-  take async-call-stack-trace-id
-    name <asyncCallStackTraceId>
-    like sink-link-text
+    lock false
+  take async-call-stack-trace-id, name <asyncCallStackTraceId>
+    like or-link-text
       like runtime-stack-trace-id
       like native-undefined
-    lock free
+    lock false

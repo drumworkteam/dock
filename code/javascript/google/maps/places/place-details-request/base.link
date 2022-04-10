@@ -1,0 +1,22 @@
+
+load @drumwork/moon/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/moon/code/javascript/google/maps/places/autocomplete-session-token
+  take form autocomplete-session-token
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form place-details-request, name <google.maps.places.PlaceDetailsRequest>
+  take fields, name <fields>
+    like list-link-text
+      like native-string
+    lock false
+  take place-id, name <placeId>
+    like native-string
+    lock false
+  take session-token, name <sessionToken>
+    like places-autocomplete-session-token
+    lock false

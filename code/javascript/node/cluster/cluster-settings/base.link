@@ -2,6 +2,9 @@
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -14,58 +17,57 @@ load @drumwork/moon/code/javascript/base/native-string
 load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
-form cluster-settings
-  name <ClusterSettings>
+form cluster-settings, name <ClusterSettings>
   take exec-argv, name <execArgv>
-    like sink-link-text
-      like list-link-text
+    like or-link-text
+      like native-array
         like native-string
       like native-undefined
-    lock free
+    lock false
   take exec, name <exec>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-undefined
-    lock free
+    lock false
   take args, name <args>
-    like sink-link-text
-      like list-link-text
+    like or-link-text
+      like native-array
         like native-string
       like native-undefined
-    lock free
+    lock false
   take silent, name <silent>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false
   take stdio, name <stdio>
-    like sink-link-text
-      like list-link-text
+    like or-link-text
+      like native-array
         like native-any
       like native-undefined
-    lock free
+    lock false
   take uid, name <uid>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
   take gid, name <gid>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
   take inspect-port, name <inspectPort>
-    like sink-link-text
+    like or-link-text
       like native-number
-      like task
+      like task-link-text
         free seed, like native-number
       like native-undefined
-    lock free
+    lock false

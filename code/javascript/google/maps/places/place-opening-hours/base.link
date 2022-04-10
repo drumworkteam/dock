@@ -1,0 +1,44 @@
+
+load @drumwork/moon/code/javascript/base/date
+  take form date
+
+load @drumwork/moon/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/moon/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/moon/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/moon/code/javascript/google/maps/places/place-opening-hours-period
+  take form place-opening-hours-period
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+form place-opening-hours, name <google.maps.places.PlaceOpeningHours>
+  take open-now, name <open_now>
+    like native-boolean
+    lock false
+  take periods, name <periods>
+    like list-link-text
+      like places-place-opening-hours-period
+    lock false
+  take weekday-text, name <weekday_text>
+    like list-link-text
+      like native-string
+    lock false
+
+  task is-open, name <isOpen>
+    take date, like date
+      void true
+    free seed
+      like or-link-text
+        like native-boolean
+        like native-undefined

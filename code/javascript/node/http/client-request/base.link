@@ -8,6 +8,9 @@ load @drumwork/moon/code/javascript/base/incoming-message
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -44,16 +47,15 @@ load @drumwork/moon/code/javascript/node/http/client-request-args
 load @drumwork/moon/code/javascript/node/http/information-event
   take form information-event
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
-form client-request
-  name <ClientRequest>
+form client-request, name <ClientRequest>
   base outgoing-message
   take aborted, name <aborted>, like native-boolean
   take host, name <host>, like native-string
@@ -73,41 +75,39 @@ form client-request
   task set-timeout, name <setTimeout>
     take timeout, like native-number
     take callback
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-this
 
   task set-no-delay, name <setNoDelay>
     take no-delay, like native-boolean
-      void take
+      void true
     free seed, like native-void
 
-  task set-socket-keep-alive
-    name <setSocketKeepAlive>
+  task set-socket-keep-alive, name <setSocketKeepAlive>
     take enable, like native-boolean
-      void take
+      void true
     take initial-delay, like native-number
-      void take
+      void true
     free seed, like native-void
 
-  task get-raw-header-names
-    name <getRawHeaderNames>
+  task get-raw-header-names, name <getRawHeaderNames>
     free seed
-      like list-link-text
+      like native-array
         like native-string
 
   task add-listener, name <addListener>
     take event, text <abort>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <connect>
     take listener
-      like task
+      like task-link-text
         take response, like incoming-message
         take socket, like socket
         take head, like buffer
@@ -117,14 +117,14 @@ form client-request
   task add-listener, name <addListener>
     take event, text <continue>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <information>
     take listener
-      like task
+      like task-link-text
         take info, like information-event
         free seed, like native-void
     free seed, like native-this
@@ -132,7 +132,7 @@ form client-request
   task add-listener, name <addListener>
     take event, text <response>
     take listener
-      like task
+      like task-link-text
         take response, like incoming-message
         free seed, like native-void
     free seed, like native-this
@@ -140,7 +140,7 @@ form client-request
   task add-listener, name <addListener>
     take event, text <socket>
     take listener
-      like task
+      like task-link-text
         take socket, like socket
         free seed, like native-void
     free seed, like native-this
@@ -148,14 +148,14 @@ form client-request
   task add-listener, name <addListener>
     take event, text <timeout>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <upgrade>
     take listener
-      like task
+      like task-link-text
         take response, like incoming-message
         take socket, like socket
         take head, like buffer
@@ -165,21 +165,21 @@ form client-request
   task add-listener, name <addListener>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <drain>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
@@ -187,14 +187,14 @@ form client-request
   task add-listener, name <addListener>
     take event, text <finish>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <pipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
@@ -202,36 +202,36 @@ form client-request
   task add-listener, name <addListener>
     take event, text <unpipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <abort>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <connect>
     take listener
-      like task
+      like task-link-text
         take response, like incoming-message
         take socket, like socket
         take head, like buffer
@@ -241,14 +241,14 @@ form client-request
   task on, name <on>
     take event, text <continue>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <information>
     take listener
-      like task
+      like task-link-text
         take info, like information-event
         free seed, like native-void
     free seed, like native-this
@@ -256,7 +256,7 @@ form client-request
   task on, name <on>
     take event, text <response>
     take listener
-      like task
+      like task-link-text
         take response, like incoming-message
         free seed, like native-void
     free seed, like native-this
@@ -264,7 +264,7 @@ form client-request
   task on, name <on>
     take event, text <socket>
     take listener
-      like task
+      like task-link-text
         take socket, like socket
         free seed, like native-void
     free seed, like native-this
@@ -272,14 +272,14 @@ form client-request
   task on, name <on>
     take event, text <timeout>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <upgrade>
     take listener
-      like task
+      like task-link-text
         take response, like incoming-message
         take socket, like socket
         take head, like buffer
@@ -289,21 +289,21 @@ form client-request
   task on, name <on>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <drain>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
@@ -311,14 +311,14 @@ form client-request
   task on, name <on>
     take event, text <finish>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <pipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
@@ -326,36 +326,36 @@ form client-request
   task on, name <on>
     take event, text <unpipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <abort>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <connect>
     take listener
-      like task
+      like task-link-text
         take response, like incoming-message
         take socket, like socket
         take head, like buffer
@@ -365,14 +365,14 @@ form client-request
   task once, name <once>
     take event, text <continue>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <information>
     take listener
-      like task
+      like task-link-text
         take info, like information-event
         free seed, like native-void
     free seed, like native-this
@@ -380,7 +380,7 @@ form client-request
   task once, name <once>
     take event, text <response>
     take listener
-      like task
+      like task-link-text
         take response, like incoming-message
         free seed, like native-void
     free seed, like native-this
@@ -388,7 +388,7 @@ form client-request
   task once, name <once>
     take event, text <socket>
     take listener
-      like task
+      like task-link-text
         take socket, like socket
         free seed, like native-void
     free seed, like native-this
@@ -396,14 +396,14 @@ form client-request
   task once, name <once>
     take event, text <timeout>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <upgrade>
     take listener
-      like task
+      like task-link-text
         take response, like incoming-message
         take socket, like socket
         take head, like buffer
@@ -413,21 +413,21 @@ form client-request
   task once, name <once>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <drain>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
@@ -435,14 +435,14 @@ form client-request
   task once, name <once>
     take event, text <finish>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <pipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
@@ -450,312 +450,282 @@ form client-request
   task once, name <once>
     take event, text <unpipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <abort>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <connect>
     take listener
-      like task
+      like task-link-text
         take response, like incoming-message
         take socket, like socket
         take head, like buffer
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <continue>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <information>
     take listener
-      like task
+      like task-link-text
         take info, like information-event
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <response>
     take listener
-      like task
+      like task-link-text
         take response, like incoming-message
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <socket>
     take listener
-      like task
+      like task-link-text
         take socket, like socket
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <timeout>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <upgrade>
     take listener
-      like task
+      like task-link-text
         take response, like incoming-message
         take socket, like socket
         take head, like buffer
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <drain>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <finish>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <pipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <unpipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <abort>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <connect>
     take listener
-      like task
+      like task-link-text
         take response, like incoming-message
         take socket, like socket
         take head, like buffer
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <continue>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <information>
     take listener
-      like task
+      like task-link-text
         take info, like information-event
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <response>
     take listener
-      like task
+      like task-link-text
         take response, like incoming-message
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <socket>
     take listener
-      like task
+      like task-link-text
         take socket, like socket
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <timeout>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <upgrade>
     take listener
-      like task
+      like task-link-text
         take response, like incoming-message
         take socket, like socket
         take head, like buffer
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <drain>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <finish>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <pipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <unpipe>
     take listener
-      like task
+      like task-link-text
         take src, like stream-readable
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
 form client-request-constructor
   hook make
     take url
-      like sink-link-text
+      like or-link-text
         like native-string
         like url
         like client-request-args
     take cb
-      like task
+      like task-link-text
         take res, like incoming-message
         free seed, like native-void
-      void take
+      void true

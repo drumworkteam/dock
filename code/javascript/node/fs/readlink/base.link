@@ -17,14 +17,14 @@ load @drumwork/moon/code/javascript/node/fs/encoding-option
 load @drumwork/moon/code/javascript/node/fs/path-like
   take form path-like
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 task promisify, name <__promisify__>
   take path, like path-like
   take options, like encoding-option
-    void take
+    void true
   free seed
     like promise
       like native-string
@@ -39,9 +39,9 @@ task promisify, name <__promisify__>
 task promisify, name <__promisify__>
   take path, like path-like
   take options, like encoding-option
-    void take
+    void true
   free seed
     like promise
-      like sink-link-text
+      like or-link-text
         like native-string
         like buffer

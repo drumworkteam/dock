@@ -1,0 +1,251 @@
+
+load @drumwork/moon/code/javascript/base/native-boolean
+  take form native-boolean
+
+load @drumwork/moon/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/moon/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/moon/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/moon/code/javascript/base/native-undefined
+  take form native-undefined
+
+load @drumwork/moon/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/moon/code/javascript/google/maps/animation
+  take form animation
+
+load @drumwork/moon/code/javascript/google/maps/icon
+  take form icon
+
+load @drumwork/moon/code/javascript/google/maps/lat-lng
+  take form lat-lng
+
+load @drumwork/moon/code/javascript/google/maps/lat-lng-literal
+  take form lat-lng-literal
+
+load @drumwork/moon/code/javascript/google/maps/map
+  take form map
+
+load @drumwork/moon/code/javascript/google/maps/marker-label
+  take form marker-label
+
+load @drumwork/moon/code/javascript/google/maps/marker-options
+  take form marker-options
+
+load @drumwork/moon/code/javascript/google/maps/marker-shape
+  take form marker-shape
+
+load @drumwork/moon/code/javascript/google/maps/street-view-panorama
+  take form street-view-panorama
+
+load @drumwork/moon/code/javascript/google/maps/symbol
+  take form symbol
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+form marker, name <google.maps.Marker>
+  base google-maps-mvc-object
+  task get-animation, name <getAnimation>
+    free seed
+      like or-link-text
+        like animation
+        like native-null
+        like native-undefined
+
+  task get-clickable, name <getClickable>
+    free seed, like native-boolean
+
+  task get-cursor, name <getCursor>
+    free seed
+      like or-link-text
+        like native-string
+        like native-null
+        like native-undefined
+
+  task get-draggable, name <getDraggable>
+    free seed, like native-boolean
+
+  task get-icon, name <getIcon>
+    free seed
+      like or-link-text
+        like native-string
+        like icon
+        like native-null
+        like symbol
+        like native-undefined
+
+  task get-label, name <getLabel>
+    free seed
+      like or-link-text
+        like marker-label
+        like native-null
+        like native-undefined
+
+  task get-map, name <getMap>
+    free seed
+      like or-link-text
+        like map
+        like native-null
+        like street-view-panorama
+
+  task get-opacity, name <getOpacity>
+    free seed
+      like or-link-text
+        like native-number
+        like native-null
+        like native-undefined
+
+  task get-position, name <getPosition>
+    free seed
+      like or-link-text
+        like lat-lng
+        like native-null
+        like native-undefined
+
+  task get-shape, name <getShape>
+    free seed
+      like or-link-text
+        like marker-shape
+        like native-null
+        like native-undefined
+
+  task get-title, name <getTitle>
+    free seed
+      like or-link-text
+        like native-string
+        like native-null
+        like native-undefined
+
+  task get-visible, name <getVisible>
+    free seed, like native-boolean
+
+  task get-z-index, name <getZIndex>
+    free seed
+      like or-link-text
+        like native-number
+        like native-null
+        like native-undefined
+
+  task set-animation, name <setAnimation>
+    take animation
+      like or-link-text
+        like animation
+        like native-null
+      void true
+    free seed, like native-void
+
+  task set-clickable, name <setClickable>
+    take flag, like native-boolean
+    free seed, like native-void
+
+  task set-cursor, name <setCursor>
+    take cursor
+      like or-link-text
+        like native-string
+        like native-null
+      void true
+    free seed, like native-void
+
+  task set-draggable, name <setDraggable>
+    take flag
+      like or-link-text
+        like native-boolean
+        like native-null
+    free seed, like native-void
+
+  task set-icon, name <setIcon>
+    take icon
+      like or-link-text
+        like native-string
+        like icon
+        like native-null
+        like symbol
+      void true
+    free seed, like native-void
+
+  task set-label, name <setLabel>
+    take label
+      like or-link-text
+        like native-string
+        like marker-label
+        like native-null
+      void true
+    free seed, like native-void
+
+  task set-map, name <setMap>
+    take map
+      like or-link-text
+        like map
+        like native-null
+        like street-view-panorama
+    free seed, like native-void
+
+  task set-opacity, name <setOpacity>
+    take opacity
+      like or-link-text
+        like native-number
+        like native-null
+      void true
+    free seed, like native-void
+
+  task set-options, name <setOptions>
+    take options
+      like or-link-text
+        like marker-options
+        like native-null
+    free seed, like native-void
+
+  task set-position, name <setPosition>
+    take latlng
+      like or-link-text
+        like lat-lng
+        like native-null
+        like lat-lng-literal
+      void true
+    free seed, like native-void
+
+  task set-shape, name <setShape>
+    take shape
+      like or-link-text
+        like marker-shape
+        like native-null
+      void true
+    free seed, like native-void
+
+  task set-title, name <setTitle>
+    take title
+      like or-link-text
+        like native-string
+        like native-null
+      void true
+    free seed, like native-void
+
+  task set-visible, name <setVisible>
+    take visible, like native-boolean
+    free seed, like native-void
+
+  task set-z-index, name <setZIndex>
+    take z-index
+      like or-link-text
+        like native-number
+        like native-null
+      void true
+    free seed, like native-void
+
+form marker-constructor
+  take max-zindex, like native-number
+
+  hook make
+    take opts
+      like or-link-text
+        like marker-options
+        like native-null
+      void true

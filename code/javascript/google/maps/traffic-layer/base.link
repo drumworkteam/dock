@@ -1,0 +1,46 @@
+
+load @drumwork/moon/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/moon/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/moon/code/javascript/google/maps/map
+  take form map
+
+load @drumwork/moon/code/javascript/google/maps/traffic-layer-options
+  take form traffic-layer-options
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+form traffic-layer, name <google.maps.TrafficLayer>
+  base google-maps-mvc-object
+  task get-map, name <getMap>
+    free seed
+      like or-link-text
+        like map
+        like native-null
+
+  task set-map, name <setMap>
+    take map
+      like or-link-text
+        like map
+        like native-null
+    free seed, like native-void
+
+  task set-options, name <setOptions>
+    take options
+      like or-link-text
+        like traffic-layer-options
+        like native-null
+    free seed, like native-void
+
+form traffic-layer-constructor
+  hook make
+    take opts
+      like or-link-text
+        like traffic-layer-options
+        like native-null
+      void true

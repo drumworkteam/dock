@@ -11,23 +11,21 @@ load @drumwork/moon/code/javascript/base/native-undefined
 load @drumwork/moon/code/javascript/node/http/agent-options
   take form agent-options
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form agent-options, name <AgentOptions>
   base http-agent-options
   base tls-connection-options
 
-  take reject-unauthorized
-    name <rejectUnauthorized>
-    like sink-link-text
+  take reject-unauthorized, name <rejectUnauthorized>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
-  take max-cached-sessions
-    name <maxCachedSessions>
-    like sink-link-text
+    lock false
+  take max-cached-sessions, name <maxCachedSessions>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false

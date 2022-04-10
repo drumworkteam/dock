@@ -1,4 +1,7 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
@@ -14,19 +17,15 @@ load @drumwork/moon/code/javascript/node/dns/resolve-options
 load @drumwork/moon/code/javascript/node/dns/resolve-with-ttl-options
   take form resolve-with-ttl-options
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 task promisify, name <__promisify__>
   take hostname, like native-string
   free seed
     like promise
-      like list-link-text
+      like native-array
         like native-string
 
 task promisify, name <__promisify__>
@@ -34,17 +33,17 @@ task promisify, name <__promisify__>
   take options, like resolve-with-ttl-options
   free seed
     like promise
-      like list-link-text
+      like native-array
         like record-with-ttl
 
 task promisify, name <__promisify__>
   take hostname, like native-string
   take options, like resolve-options
-    void take
+    void true
   free seed
     like promise
-      like sink-link-text
-        like list-link-text
+      like or-link-text
+        like native-array
           like native-string
-        like list-link-text
+        like native-array
           like record-with-ttl

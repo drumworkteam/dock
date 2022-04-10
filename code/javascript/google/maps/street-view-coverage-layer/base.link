@@ -1,0 +1,28 @@
+
+load @drumwork/moon/code/javascript/base/native-null
+  take form native-null
+
+load @drumwork/moon/code/javascript/base/native-void
+  take form native-void
+
+load @drumwork/moon/code/javascript/google/maps/map
+  take form map
+
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+form street-view-coverage-layer, name <google.maps.StreetViewCoverageLayer>
+  base google-maps-mvc-object
+  task get-map, name <getMap>
+    free seed
+      like or-link-text
+        like map
+        like native-null
+
+  task set-map, name <setMap>
+    take map
+      like or-link-text
+        like map
+        like native-null
+    free seed, like native-void

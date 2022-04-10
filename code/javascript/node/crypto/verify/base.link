@@ -29,9 +29,9 @@ load @drumwork/moon/code/javascript/node/crypto/verify-key-object-input
 load @drumwork/moon/code/javascript/node/crypto/verify-public-key-input
   take form verify-public-key-input
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form verify, name <Verify>
   base stream-writable
@@ -46,7 +46,7 @@ form verify, name <Verify>
 
   task verify, name <verify>
     take object
-      like sink-link-text
+      like or-link-text
         like key-like
         like verify-key-object-input
         like verify-public-key-input
@@ -55,13 +55,13 @@ form verify, name <Verify>
 
   task verify, name <verify>
     take object
-      like sink-link-text
+      like or-link-text
         like key-like
         like verify-key-object-input
         like verify-public-key-input
     take signature, like native-string
     take signature-format, like binary-to-text-encoding
-      void take
+      void true
     free seed, like native-boolean
 
 form verify-constructor

@@ -14,33 +14,30 @@ load @drumwork/moon/code/javascript/node/buffer/buffer
 load @drumwork/moon/code/javascript/node/vm/base-options
   take form base-options
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form script-options
-  name <ScriptOptions>
+form script-options, name <ScriptOptions>
   base base-options
 
-  take display-errors
-    name <displayErrors>
-    like sink-link-text
+  take display-errors, name <displayErrors>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false
   take timeout, name <timeout>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
   take cached-data, name <cachedData>
-    like sink-link-text
+    like or-link-text
       like buffer
       like native-undefined
-    lock free
-  take produce-cached-data
-    name <produceCachedData>
-    like sink-link-text
+    lock false
+  take produce-cached-data, name <produceCachedData>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false

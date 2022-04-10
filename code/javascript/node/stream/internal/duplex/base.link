@@ -66,9 +66,13 @@ load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form duplex, name <Duplex>
   base readable
@@ -85,12 +89,12 @@ form duplex, name <Duplex>
     take chunk, like native-any
     take encoding, like buffer-encoding
     take callback
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
-          void take
+          void true
         free seed, like native-void
     free seed, like native-void
 
@@ -100,29 +104,29 @@ form duplex, name <Duplex>
         like form-link-text
           take chunk, name <chunk>
             like native-any
-            lock free
+            lock false
           take encoding, name <encoding>
             like buffer-encoding
-            lock free
+            lock false
     take callback
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
-          void take
+          void true
         free seed, like native-void
     free seed, like native-void
 
   task destroy, name <_destroy>
     take error
-      like sink-link-text
+      like or-link-text
         like error
         like native-null
     take callback
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
@@ -130,71 +134,70 @@ form duplex, name <Duplex>
 
   task final, name <_final>
     take callback
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
-          void take
+          void true
         free seed, like native-void
     free seed, like native-void
 
   task write, name <write>
     take chunk, like native-any
     take encoding, like buffer-encoding
-      void take
+      void true
     take cb
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
             like native-undefined
         free seed, like native-void
-      void take
+      void true
     free seed, like native-boolean
 
   task write, name <write>
     take chunk, like native-any
     take cb
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
             like native-undefined
         free seed, like native-void
-      void take
+      void true
     free seed, like native-boolean
 
-  task set-default-encoding
-    name <setDefaultEncoding>
+  task set-default-encoding, name <setDefaultEncoding>
     take encoding, like buffer-encoding
     free seed, like native-this
 
   task end, name <end>
     take cb
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-this
 
   task end, name <end>
     take chunk, like native-any
     take cb
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-this
 
   task end, name <end>
     take chunk, like native-any
     take encoding, like buffer-encoding
-      void take
+      void true
     take cb
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-this
 
   task cork, name <cork>
@@ -206,11 +209,11 @@ form duplex, name <Duplex>
 form duplex-constructor
   hook make
     take opts, like duplex-options
-      void take
+      void true
 
   task from, name <from>
     take src
-      like sink-link-text
+      like or-link-text
         like stream
         like blob
         like array-buffer

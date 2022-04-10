@@ -5,6 +5,9 @@ load @drumwork/moon/code/javascript/base/error
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -54,121 +57,121 @@ load @drumwork/seed/code/form/band
   take form band
     save form band-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form child-process, name <ChildProcess>
   base event-emitter
   take stdin, name <stdin>
-    like sink-link-text
+    like or-link-text
       like writable
       like native-null
   take stdout, name <stdout>
-    like sink-link-text
+    like or-link-text
       like readable
       like native-null
   take stderr, name <stderr>
-    like sink-link-text
+    like or-link-text
       like readable
       like native-null
   take channel, name <channel>
-    like sink-link-text
+    like or-link-text
       like pipe
       like native-null
       like native-undefined
   take stdio, name <stdio>
     like band-link-text
-      like sink-link-text
+      like or-link-text
         like writable
         like native-null
-      like sink-link-text
+      like or-link-text
         like readable
         like native-null
-      like sink-link-text
+      like or-link-text
         like readable
         like native-null
-      like sink-link-text
+      like or-link-text
         like readable
         like writable
         like native-null
         like native-undefined
-      like sink-link-text
+      like or-link-text
         like readable
         like writable
         like native-null
         like native-undefined
   take killed, name <killed>, like native-boolean
   take pid, name <pid>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
   take connected, name <connected>, like native-boolean
   take exit-code, name <exitCode>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-null
   take signal-code, name <signalCode>
-    like sink-link-text
+    like or-link-text
       like node-js-signals
       like native-null
   take spawnargs, name <spawnargs>
-    like list-link-text
+    like native-array
       like native-string
   take spawnfile, name <spawnfile>, like native-string
 
   task kill, name <kill>
     take signal
-      like sink-link-text
+      like or-link-text
         like node-js-signals
         like native-number
-      void take
+      void true
     free seed, like native-boolean
 
   task send, name <send>
     take message, like serializable
     take callback
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-boolean
 
   task send, name <send>
     take message, like serializable
     take send-handle, like send-handle
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-boolean
 
   task send, name <send>
     take message, like serializable
     take send-handle, like send-handle
-      void take
+      void true
     take options, like message-options
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like error
             like native-null
         free seed, like native-void
-      void take
+      void true
     free seed, like native-boolean
 
   task disconnect, name <disconnect>
@@ -183,24 +186,24 @@ form child-process, name <ChildProcess>
   task add-listener, name <addListener>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         take code
-          like sink-link-text
+          like or-link-text
             like native-number
             like native-null
         take signal
-          like sink-link-text
+          like or-link-text
             like node-js-signals
             like native-null
         free seed, like native-void
@@ -209,14 +212,14 @@ form child-process, name <ChildProcess>
   task add-listener, name <addListener>
     take event, text <disconnect>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
@@ -224,13 +227,13 @@ form child-process, name <ChildProcess>
   task add-listener, name <addListener>
     take event, text <exit>
     take listener
-      like task
+      like task-link-text
         take code
-          like sink-link-text
+          like or-link-text
             like native-number
             like native-null
         take signal
-          like sink-link-text
+          like or-link-text
             like node-js-signals
             like native-null
         free seed, like native-void
@@ -239,7 +242,7 @@ form child-process, name <ChildProcess>
   task add-listener, name <addListener>
     take event, text <message>
     take listener
-      like task
+      like task-link-text
         take message, like serializable
         take send-handle, like send-handle
         free seed, like native-void
@@ -248,29 +251,29 @@ form child-process, name <ChildProcess>
   task add-listener, name <addListener>
     take event, text <spawn>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task emit, name <emit>
     take event
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-symbol
     take args
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-boolean
 
   task emit, name <emit>
     take event, text <close>
     take code
-      like sink-link-text
+      like or-link-text
         like native-number
         like native-null
     take signal
-      like sink-link-text
+      like or-link-text
         like node-js-signals
         like native-null
     free seed, like native-boolean
@@ -287,11 +290,11 @@ form child-process, name <ChildProcess>
   task emit, name <emit>
     take event, text <exit>
     take code
-      like sink-link-text
+      like or-link-text
         like native-number
         like native-null
     take signal
-      like sink-link-text
+      like or-link-text
         like node-js-signals
         like native-null
     free seed, like native-boolean
@@ -305,31 +308,31 @@ form child-process, name <ChildProcess>
   task emit, name <emit>
     take event, text <spawn>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-boolean
 
   task on, name <on>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         take code
-          like sink-link-text
+          like or-link-text
             like native-number
             like native-null
         take signal
-          like sink-link-text
+          like or-link-text
             like node-js-signals
             like native-null
         free seed, like native-void
@@ -338,14 +341,14 @@ form child-process, name <ChildProcess>
   task on, name <on>
     take event, text <disconnect>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
@@ -353,13 +356,13 @@ form child-process, name <ChildProcess>
   task on, name <on>
     take event, text <exit>
     take listener
-      like task
+      like task-link-text
         take code
-          like sink-link-text
+          like or-link-text
             like native-number
             like native-null
         take signal
-          like sink-link-text
+          like or-link-text
             like node-js-signals
             like native-null
         free seed, like native-void
@@ -368,7 +371,7 @@ form child-process, name <ChildProcess>
   task on, name <on>
     take event, text <message>
     take listener
-      like task
+      like task-link-text
         take message, like serializable
         take send-handle, like send-handle
         free seed, like native-void
@@ -377,31 +380,31 @@ form child-process, name <ChildProcess>
   task on, name <on>
     take event, text <spawn>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         take code
-          like sink-link-text
+          like or-link-text
             like native-number
             like native-null
         take signal
-          like sink-link-text
+          like or-link-text
             like node-js-signals
             like native-null
         free seed, like native-void
@@ -410,14 +413,14 @@ form child-process, name <ChildProcess>
   task once, name <once>
     take event, text <disconnect>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
@@ -425,13 +428,13 @@ form child-process, name <ChildProcess>
   task once, name <once>
     take event, text <exit>
     take listener
-      like task
+      like task-link-text
         take code
-          like sink-link-text
+          like or-link-text
             like native-number
             like native-null
         take signal
-          like sink-link-text
+          like or-link-text
             like node-js-signals
             like native-null
         free seed, like native-void
@@ -440,7 +443,7 @@ form child-process, name <ChildProcess>
   task once, name <once>
     take event, text <message>
     take listener
-      like task
+      like task-link-text
         take message, like serializable
         take send-handle, like send-handle
         free seed, like native-void
@@ -449,164 +452,150 @@ form child-process, name <ChildProcess>
   task once, name <once>
     take event, text <spawn>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         take code
-          like sink-link-text
+          like or-link-text
             like native-number
             like native-null
         take signal
-          like sink-link-text
+          like or-link-text
             like node-js-signals
             like native-null
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <disconnect>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <exit>
     take listener
-      like task
+      like task-link-text
         take code
-          like sink-link-text
+          like or-link-text
             like native-number
             like native-null
         take signal
-          like sink-link-text
+          like or-link-text
             like node-js-signals
             like native-null
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <message>
     take listener
-      like task
+      like task-link-text
         take message, like serializable
         take send-handle, like send-handle
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <spawn>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         take code
-          like sink-link-text
+          like or-link-text
             like native-number
             like native-null
         take signal
-          like sink-link-text
+          like or-link-text
             like node-js-signals
             like native-null
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <disconnect>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take err, like error
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <exit>
     take listener
-      like task
+      like task-link-text
         take code
-          like sink-link-text
+          like or-link-text
             like native-number
             like native-null
         take signal
-          like sink-link-text
+          like or-link-text
             like node-js-signals
             like native-null
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <message>
     take listener
-      like task
+      like task-link-text
         take message, like serializable
         take send-handle, like send-handle
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <spawn>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this

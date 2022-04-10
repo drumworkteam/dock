@@ -8,17 +8,21 @@ load @drumwork/moon/code/javascript/base/native-number
 load @drumwork/moon/code/javascript/node/globals/uint8-array
   take form uint8-array
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form on-read-opts, name <OnReadOpts>
   take buffer, name <buffer>
-    like sink-link-text
+    like or-link-text
       like uint8-array
-      like task
+      like task-link-text
         free seed, like uint8-array
-    lock free
+    lock false
 
   task callback, name <callback>
     take bytes-written, like native-number

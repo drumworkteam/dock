@@ -29,48 +29,49 @@ load @drumwork/moon/code/javascript/base/node-js-errno-exception
 load @drumwork/moon/code/javascript/node/dgram/socket-type
   take form socket-type
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form socket-options
-  name <SocketOptions>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form socket-options, name <SocketOptions>
   base abortable
 
   take type, name <type>
     like socket-type
-    lock free
+    lock false
   take reuse-addr, name <reuseAddr>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
+    lock false
   take ipv6-only, name <ipv6Only>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
-  take recv-buffer-size
-    name <recvBufferSize>
-    like sink-link-text
+    lock false
+  take recv-buffer-size, name <recvBufferSize>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
-  take send-buffer-size
-    name <sendBufferSize>
-    like sink-link-text
+    lock false
+  take send-buffer-size, name <sendBufferSize>
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
+    lock false
   take lookup, name <lookup>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take hostname, like native-string
         take options, like dns-lookup-one-options
         take callback
-          like task
+          like task-link-text
             take err
-              like sink-link-text
+              like or-link-text
                 like node-js-errno-exception
                 like native-null
             take address, like native-string
@@ -78,4 +79,4 @@ form socket-options
             free seed, like native-void
         free seed, like native-void
       like native-undefined
-    lock free
+    lock false

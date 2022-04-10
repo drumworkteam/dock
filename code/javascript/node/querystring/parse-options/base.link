@@ -8,21 +8,24 @@ load @drumwork/moon/code/javascript/base/native-string
 load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form parse-options, name <ParseOptions>
   take max-keys, name <maxKeys>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-undefined
-    lock free
-  take decode-uri-component
-    name <decodeURIComponent>
-    like sink-link-text
-      like task
+    lock false
+  take decode-uri-component, name <decodeURIComponent>
+    like or-link-text
+      like task-link-text
         take str, like native-string
         free seed, like native-string
       like native-undefined
-    lock free
+    lock false

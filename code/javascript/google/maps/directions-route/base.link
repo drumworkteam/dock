@@ -1,0 +1,55 @@
+
+load @drumwork/moon/code/javascript/base/native-number
+  take form native-number
+
+load @drumwork/moon/code/javascript/base/native-string
+  take form native-string
+
+load @drumwork/moon/code/javascript/google/maps/directions-leg
+  take form directions-leg
+
+load @drumwork/moon/code/javascript/google/maps/lat-lng
+  take form lat-lng
+
+load @drumwork/moon/code/javascript/google/maps/lat-lng-bounds
+  take form lat-lng-bounds
+
+load @drumwork/moon/code/javascript/google/maps/transit-fare
+  take form transit-fare
+
+load @drumwork/seed/code/form/list
+  take form list
+    save form list-link-text
+
+form directions-route, name <google.maps.DirectionsRoute>
+  take bounds, name <bounds>
+    like lat-lng-bounds
+    lock false
+  take copyrights, name <copyrights>
+    like native-string
+    lock false
+  take fare, name <fare>
+    like transit-fare
+    lock false
+  take legs, name <legs>
+    like list-link-text
+      like directions-leg
+    lock false
+  take overview-path, name <overview_path>
+    like list-link-text
+      like lat-lng
+    lock false
+  take overview-polyline, name <overview_polyline>
+    like native-string
+    lock false
+  take summary, name <summary>
+    like native-string
+    lock false
+  take warnings, name <warnings>
+    like list-link-text
+      like native-string
+    lock false
+  take waypoint-order, name <waypoint_order>
+    like list-link-text
+      like native-number
+    lock false

@@ -17,19 +17,22 @@ load @drumwork/moon/code/javascript/base/native-void
 load @drumwork/moon/code/javascript/base/node-js-errno-exception
   take form node-js-errno-exception
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form lookup-function
-  name <LookupFunction>
-  like task
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form lookup-function, name <LookupFunction>
+  like task-link-text
     take hostname, like native-string
     take options, like dns-lookup-one-options
     take callback
-      like task
+      like task-link-text
         take err
-          like sink-link-text
+          like or-link-text
             like node-js-errno-exception
             like native-null
         take address, like native-string

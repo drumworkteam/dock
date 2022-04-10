@@ -8,18 +8,16 @@ load @drumwork/moon/code/javascript/base/native-undefined
 load @drumwork/moon/code/javascript/node/inspector/debugger/location
   take form location
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form continue-to-location-parameter-type
-  name <ContinueToLocationParameterType>
+form continue-to-location-parameter-type, name <ContinueToLocationParameterType>
   take location, name <location>
     like location
-    lock free
-  take target-call-frames
-    name <targetCallFrames>
-    like sink-link-text
+    lock false
+  take target-call-frames, name <targetCallFrames>
+    like or-link-text
       like native-string
       like native-undefined
-    lock free
+    lock false

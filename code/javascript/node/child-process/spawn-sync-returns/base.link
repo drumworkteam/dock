@@ -21,41 +21,40 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form spawn-sync-returns
-  name <SpawnSyncReturns>
+form spawn-sync-returns, name <SpawnSyncReturns>
   head t, like like-link-text
 
   take pid, name <pid>
     like native-number
-    lock free
+    lock false
   take output, name <output>
     like array
-      like sink-link-text
+      like or-link-text
         like t
         like native-null
-    lock free
+    lock false
   take stdout, name <stdout>
     like t
-    lock free
+    lock false
   take stderr, name <stderr>
     like t
-    lock free
+    lock false
   take status, name <status>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-null
-    lock free
+    lock false
   take signal, name <signal>
-    like sink-link-text
+    like or-link-text
       like node-js-signals
       like native-null
-    lock free
+    lock false
   take error, name <error>
-    like sink-link-text
+    like or-link-text
       like error
       like native-undefined
-    lock free
+    lock false

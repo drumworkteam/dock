@@ -5,6 +5,9 @@ load @drumwork/moon/code/javascript/base/error
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
@@ -20,13 +23,13 @@ load @drumwork/moon/code/javascript/node/buffer/buffer
 load @drumwork/moon/code/javascript/node/events/event-emitter
   take form event-emitter
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form fs-watcher, name <FSWatcher>
   base event-emitter
@@ -37,21 +40,21 @@ form fs-watcher, name <FSWatcher>
   task add-listener, name <addListener>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <change>
     take listener
-      like task
+      like task-link-text
         take event-type, like native-string
         take filename
-          like sink-link-text
+          like or-link-text
             like native-string
             like buffer
         free seed, like native-void
@@ -60,7 +63,7 @@ form fs-watcher, name <FSWatcher>
   task add-listener, name <addListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take error, like error
         free seed, like native-void
     free seed, like native-this
@@ -68,28 +71,28 @@ form fs-watcher, name <FSWatcher>
   task add-listener, name <addListener>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <change>
     take listener
-      like task
+      like task-link-text
         take event-type, like native-string
         take filename
-          like sink-link-text
+          like or-link-text
             like native-string
             like buffer
         free seed, like native-void
@@ -98,7 +101,7 @@ form fs-watcher, name <FSWatcher>
   task on, name <on>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take error, like error
         free seed, like native-void
     free seed, like native-this
@@ -106,28 +109,28 @@ form fs-watcher, name <FSWatcher>
   task on, name <on>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <change>
     take listener
-      like task
+      like task-link-text
         take event-type, like native-string
         take filename
-          like sink-link-text
+          like or-link-text
             like native-string
             like buffer
         free seed, like native-void
@@ -136,7 +139,7 @@ form fs-watcher, name <FSWatcher>
   task once, name <once>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take error, like error
         free seed, like native-void
     free seed, like native-this
@@ -144,90 +147,82 @@ form fs-watcher, name <FSWatcher>
   task once, name <once>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <change>
     take listener
-      like task
+      like task-link-text
         take event-type, like native-string
         take filename
-          like sink-link-text
+          like or-link-text
             like native-string
             like buffer
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take error, like error
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-listener
-    name <prependListener>
+  task prepend-listener, name <prependListener>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, like native-string
     take listener
-      like task
+      like task-link-text
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <change>
     take listener
-      like task
+      like task-link-text
         take event-type, like native-string
         take filename
-          like sink-link-text
+          like or-link-text
             like native-string
             like buffer
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <error>
     take listener
-      like task
+      like task-link-text
         take error, like error
         free seed, like native-void
     free seed, like native-this
 
-  task prepend-once-listener
-    name <prependOnceListener>
+  task prepend-once-listener, name <prependOnceListener>
     take event, text <close>
     take listener
-      like task
+      like task-link-text
         free seed, like native-void
     free seed, like native-this

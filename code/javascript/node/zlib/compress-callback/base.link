@@ -11,15 +11,18 @@ load @drumwork/moon/code/javascript/base/native-void
 load @drumwork/moon/code/javascript/node/buffer/buffer
   take form buffer
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form compress-callback
-  name <CompressCallback>
-  like task
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form compress-callback, name <CompressCallback>
+  like task-link-text
     take error
-      like sink-link-text
+      like or-link-text
         like error
         like native-null
     take result, like buffer

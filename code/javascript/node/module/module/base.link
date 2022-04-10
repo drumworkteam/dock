@@ -1,4 +1,7 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
@@ -17,13 +20,9 @@ load @drumwork/moon/code/javascript/node/globals/node-require
 load @drumwork/moon/code/javascript/node/module/module
   take form module
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form module, name <Module>
   base node-module
@@ -32,7 +31,7 @@ form module, name <Module>
 
 form module-constructor
   take builtin-modules, name <builtinModules>
-    like list-link-text
+    like native-array
       like native-string
   take module, name <Module>, like module
 
@@ -43,10 +42,9 @@ form module-constructor
     take code, like native-string
     free seed, like native-string
 
-  task create-require
-    name <createRequire>
+  task create-require, name <createRequire>
     take path
-      like sink-link-text
+      like or-link-text
         like native-string
         like url
     free seed, like node-require
@@ -54,4 +52,4 @@ form module-constructor
   hook make
     take id, like native-string
     take parent, like module
-      void take
+      void true

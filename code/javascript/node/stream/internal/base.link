@@ -1,4 +1,31 @@
 
+bear @drumwork/moon/code/javascript/node/stream/internal/stream
+bear @drumwork/moon/code/javascript/node/stream/internal/stream-options
+bear @drumwork/moon/code/javascript/node/stream/internal/readable-options
+bear @drumwork/moon/code/javascript/node/stream/internal/readable
+bear @drumwork/moon/code/javascript/node/stream/internal/writable-options
+bear @drumwork/moon/code/javascript/node/stream/internal/writable
+bear @drumwork/moon/code/javascript/node/stream/internal/duplex-options
+bear @drumwork/moon/code/javascript/node/stream/internal/duplex
+bear @drumwork/moon/code/javascript/node/stream/internal/transform-callback
+bear @drumwork/moon/code/javascript/node/stream/internal/transform-options
+bear @drumwork/moon/code/javascript/node/stream/internal/transform
+bear @drumwork/moon/code/javascript/node/stream/internal/pass-through
+bear @drumwork/moon/code/javascript/node/stream/internal/finished-options
+bear @drumwork/moon/code/javascript/node/stream/internal/finished
+bear @drumwork/moon/code/javascript/node/stream/internal/pipeline-source-function
+bear @drumwork/moon/code/javascript/node/stream/internal/pipeline-source
+bear @drumwork/moon/code/javascript/node/stream/internal/pipeline-transform
+bear @drumwork/moon/code/javascript/node/stream/internal/pipeline-transform-source
+bear @drumwork/moon/code/javascript/node/stream/internal/pipeline-destination-iterable-function
+bear @drumwork/moon/code/javascript/node/stream/internal/pipeline-destination-promise-function
+bear @drumwork/moon/code/javascript/node/stream/internal/pipeline-destination
+bear @drumwork/moon/code/javascript/node/stream/internal/pipeline-callback
+bear @drumwork/moon/code/javascript/node/stream/internal/pipeline-promise
+bear @drumwork/moon/code/javascript/node/stream/internal/pipeline-options
+bear @drumwork/moon/code/javascript/node/stream/internal/pipeline
+bear @drumwork/moon/code/javascript/node/stream/internal/pipe
+
 load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
@@ -61,9 +88,13 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 load @drumwork/seed/code/form/test
   take form test
@@ -78,20 +109,20 @@ form internal, name <internal>
     take options
       like form-link-text
         take end, name <end>
-          like sink-link-text
+          like or-link-text
             like native-boolean
             like native-undefined
-          lock free
-      void take
+          lock false
+      void true
     free seed, like t
 
 host promises, name <promises>
   like stream-promises
+
 host consumers, name <consumers>
   like stream-consumers
 
-task add-abort-signal
-  name <addAbortSignal>
+task add-abort-signal, name <addAbortSignal>
   head t, like like-link-text
     base stream
   take signal, like abort-signal
@@ -100,39 +131,39 @@ task add-abort-signal
 
 task finished, name <finished>
   take stream
-    like sink-link-text
+    like or-link-text
       like node-js-readable-stream
       like node-js-writable-stream
       like node-js-read-write-stream
   take options, like finished-options
   take callback
-    like task
+    like task-link-text
       take err
-        like sink-link-text
+        like or-link-text
           like node-js-errno-exception
           like native-null
-        void take
+        void true
       free seed, like native-void
   free seed
-    like task
+    like task-link-text
       free seed, like native-void
 
 task finished, name <finished>
   take stream
-    like sink-link-text
+    like or-link-text
       like node-js-readable-stream
       like node-js-writable-stream
       like node-js-read-write-stream
   take callback
-    like task
+    like task-link-text
       take err
-        like sink-link-text
+        like or-link-text
           like node-js-errno-exception
           like native-null
-        void take
+        void true
       free seed, like native-void
   free seed
-    like task
+    like task-link-text
       free seed, like native-void
 
 task pipeline, name <pipeline>
@@ -148,15 +179,15 @@ task pipeline, name <pipeline>
   take callback
     like pipeline-callback
       like b
-    void take
+    void true
   free seed
     like test-link-text
       stem roll
         like b
         like node-js-writable-stream
-        hook take
+        hook true
           like b
-        hook free
+        hook false
           like node-js-writable-stream
 
 task pipeline, name <pipeline>
@@ -177,15 +208,15 @@ task pipeline, name <pipeline>
   take callback
     like pipeline-callback
       like b
-    void take
+    void true
   free seed
     like test-link-text
       stem roll
         like b
         like node-js-writable-stream
-        hook take
+        hook true
           like b
-        hook free
+        hook false
           like node-js-writable-stream
 
 task pipeline, name <pipeline>
@@ -211,15 +242,15 @@ task pipeline, name <pipeline>
   take callback
     like pipeline-callback
       like b
-    void take
+    void true
   free seed
     like test-link-text
       stem roll
         like b
         like node-js-writable-stream
-        hook take
+        hook true
           like b
-        hook free
+        hook false
           like node-js-writable-stream
 
 task pipeline, name <pipeline>
@@ -250,15 +281,15 @@ task pipeline, name <pipeline>
   take callback
     like pipeline-callback
       like b
-    void take
+    void true
   free seed
     like test-link-text
       stem roll
         like b
         like node-js-writable-stream
-        hook take
+        hook true
           like b
-        hook free
+        hook false
           like node-js-writable-stream
 
 task pipeline, name <pipeline>
@@ -294,50 +325,50 @@ task pipeline, name <pipeline>
   take callback
     like pipeline-callback
       like b
-    void take
+    void true
   free seed
     like test-link-text
       stem roll
         like b
         like node-js-writable-stream
-        hook take
+        hook true
           like b
-        hook free
+        hook false
           like node-js-writable-stream
 
 task pipeline, name <pipeline>
   take streams
     like readonly-array
-      like sink-link-text
+      like or-link-text
         like node-js-readable-stream
         like node-js-writable-stream
         like node-js-read-write-stream
   take callback
-    like task
+    like task-link-text
       take err
-        like sink-link-text
+        like or-link-text
           like node-js-errno-exception
           like native-null
       free seed, like native-void
-    void take
+    void true
   free seed, like node-js-writable-stream
 
 task pipeline, name <pipeline>
   take stream1, like node-js-readable-stream
   take stream2
-    like sink-link-text
+    like or-link-text
       like node-js-read-write-stream
       like node-js-writable-stream
   take streams
     like array
-      like sink-link-text
+      like or-link-text
         like node-js-read-write-stream
         like node-js-writable-stream
-        like task
+        like task-link-text
           take err
-            like sink-link-text
+            like or-link-text
               like node-js-errno-exception
               like native-null
           free seed, like native-void
-    rest take
+    rest true
   free seed, like node-js-writable-stream

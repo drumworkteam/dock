@@ -1,4 +1,7 @@
 
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
 load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
@@ -17,39 +20,31 @@ load @drumwork/moon/code/javascript/node/vm/base-options
 load @drumwork/moon/code/javascript/node/vm/context
   take form context
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form compile-function-options
-  name <CompileFunctionOptions>
+form compile-function-options, name <CompileFunctionOptions>
   base base-options
 
   take cached-data, name <cachedData>
-    like sink-link-text
+    like or-link-text
       like buffer
       like native-undefined
-    lock free
-  take produce-cached-data
-    name <produceCachedData>
-    like sink-link-text
+    lock false
+  take produce-cached-data, name <produceCachedData>
+    like or-link-text
       like native-boolean
       like native-undefined
-    lock free
-  take parsing-context
-    name <parsingContext>
-    like sink-link-text
+    lock false
+  take parsing-context, name <parsingContext>
+    like or-link-text
       like context
       like native-undefined
-    lock free
-  take context-extensions
-    name <contextExtensions>
-    like sink-link-text
-      like list-link-text
+    lock false
+  take context-extensions, name <contextExtensions>
+    like or-link-text
+      like native-array
         like object
       like native-undefined
-    lock free
+    lock false

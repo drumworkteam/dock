@@ -23,44 +23,48 @@ load @drumwork/moon/code/javascript/node/fs/mode
 load @drumwork/moon/code/javascript/node/fs/path-like
   take form path-like
 
+load @drumwork/seed/code/form/and
+  take form and
+    save form and-link-text
+
 load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 task promisify, name <__promisify__>
   take path, like path-like
   take options
-    like link
+    like and-link-text
       like make-directory-options
       like form-link-text
         take recursive, name <recursive>
           text <true>
-          lock free
+          lock false
   free seed
     like promise
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-undefined
 
 task promisify, name <__promisify__>
   take path, like path-like
   take options
-    like sink-link-text
+    like or-link-text
       like mode
-      like link
+      like and-link-text
         like make-directory-options
         like form-link-text
           take recursive, name <recursive>
-            like sink-link-text
+            like or-link-text
               text <false>
               like native-undefined
-            lock free
+            lock false
       like native-null
-    void take
+    void true
   free seed
     like promise
       like native-void
@@ -68,13 +72,13 @@ task promisify, name <__promisify__>
 task promisify, name <__promisify__>
   take path, like path-like
   take options
-    like sink-link-text
+    like or-link-text
       like mode
       like make-directory-options
       like native-null
-    void take
+    void true
   free seed
     like promise
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-undefined

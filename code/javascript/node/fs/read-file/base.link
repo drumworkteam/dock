@@ -23,31 +23,35 @@ load @drumwork/moon/code/javascript/node/fs/object-encoding-options
 load @drumwork/moon/code/javascript/node/fs/path-or-file-descriptor
   take form path-or-file-descriptor
 
+load @drumwork/seed/code/form/and
+  take form and
+    save form and-link-text
+
 load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 task promisify, name <__promisify__>
   take path, like path-or-file-descriptor
   take options
-    like sink-link-text
+    like or-link-text
       like form-link-text
         take encoding, name <encoding>
-          like sink-link-text
+          like or-link-text
             like native-null
             like native-undefined
-          lock free
+          lock false
         take flag, name <flag>
-          like sink-link-text
+          like or-link-text
             like native-string
             like native-undefined
-          lock free
+          lock false
       like native-null
-    void take
+    void true
   free seed
     like promise
       like buffer
@@ -55,16 +59,16 @@ task promisify, name <__promisify__>
 task promisify, name <__promisify__>
   take path, like path-or-file-descriptor
   take options
-    like sink-link-text
+    like or-link-text
       like form-link-text
         take encoding, name <encoding>
           like buffer-encoding
-          lock free
+          lock false
         take flag, name <flag>
-          like sink-link-text
+          like or-link-text
             like native-string
             like native-undefined
-          lock free
+          lock false
       like buffer-encoding
   free seed
     like promise
@@ -73,20 +77,20 @@ task promisify, name <__promisify__>
 task promisify, name <__promisify__>
   take path, like path-or-file-descriptor
   take options
-    like sink-link-text
-      like link
+    like or-link-text
+      like and-link-text
         like object-encoding-options
         like form-link-text
           take flag, name <flag>
-            like sink-link-text
+            like or-link-text
               like native-string
               like native-undefined
-            lock free
+            lock false
       like buffer-encoding
       like native-null
-    void take
+    void true
   free seed
     like promise
-      like sink-link-text
+      like or-link-text
         like native-string
         like buffer

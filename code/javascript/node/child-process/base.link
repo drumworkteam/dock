@@ -1,4 +1,48 @@
 
+bear @drumwork/moon/code/javascript/node/child-process/serializable
+bear @drumwork/moon/code/javascript/node/child-process/send-handle
+bear @drumwork/moon/code/javascript/node/child-process/child-process
+bear @drumwork/moon/code/javascript/node/child-process/child-process-without-null-streams
+bear @drumwork/moon/code/javascript/node/child-process/child-process-by-stdio
+bear @drumwork/moon/code/javascript/node/child-process/message-options
+bear @drumwork/moon/code/javascript/node/child-process/io-type
+bear @drumwork/moon/code/javascript/node/child-process/stdio-options
+bear @drumwork/moon/code/javascript/node/child-process/serialization-type
+bear @drumwork/moon/code/javascript/node/child-process/messaging-options
+bear @drumwork/moon/code/javascript/node/child-process/process-env-options
+bear @drumwork/moon/code/javascript/node/child-process/common-options
+bear @drumwork/moon/code/javascript/node/child-process/common-spawn-options
+bear @drumwork/moon/code/javascript/node/child-process/spawn-options
+bear @drumwork/moon/code/javascript/node/child-process/spawn-options-without-stdio
+bear @drumwork/moon/code/javascript/node/child-process/stdio-null
+bear @drumwork/moon/code/javascript/node/child-process/stdio-pipe-named
+bear @drumwork/moon/code/javascript/node/child-process/stdio-pipe
+bear @drumwork/moon/code/javascript/node/child-process/spawn-options-with-stdio-tuple
+bear @drumwork/moon/code/javascript/node/child-process/exec-options
+bear @drumwork/moon/code/javascript/node/child-process/exec-options-with-string-encoding
+bear @drumwork/moon/code/javascript/node/child-process/exec-options-with-buffer-encoding
+bear @drumwork/moon/code/javascript/node/child-process/exec-exception
+bear @drumwork/moon/code/javascript/node/child-process/promise-with-child
+bear @drumwork/moon/code/javascript/node/child-process/exec
+bear @drumwork/moon/code/javascript/node/child-process/exec-file-options
+bear @drumwork/moon/code/javascript/node/child-process/exec-file-options-with-string-encoding
+bear @drumwork/moon/code/javascript/node/child-process/exec-file-options-with-buffer-encoding
+bear @drumwork/moon/code/javascript/node/child-process/exec-file-options-with-other-encoding
+bear @drumwork/moon/code/javascript/node/child-process/exec-file-exception
+bear @drumwork/moon/code/javascript/node/child-process/exec-file
+bear @drumwork/moon/code/javascript/node/child-process/fork-options
+bear @drumwork/moon/code/javascript/node/child-process/spawn-sync-options
+bear @drumwork/moon/code/javascript/node/child-process/spawn-sync-options-with-string-encoding
+bear @drumwork/moon/code/javascript/node/child-process/spawn-sync-options-with-buffer-encoding
+bear @drumwork/moon/code/javascript/node/child-process/spawn-sync-returns
+bear @drumwork/moon/code/javascript/node/child-process/common-exec-options
+bear @drumwork/moon/code/javascript/node/child-process/exec-sync-options
+bear @drumwork/moon/code/javascript/node/child-process/exec-sync-options-with-string-encoding
+bear @drumwork/moon/code/javascript/node/child-process/exec-sync-options-with-buffer-encoding
+bear @drumwork/moon/code/javascript/node/child-process/exec-file-sync-options
+bear @drumwork/moon/code/javascript/node/child-process/exec-file-sync-options-with-string-encoding
+bear @drumwork/moon/code/javascript/node/child-process/exec-file-sync-options-with-buffer-encoding
+
 load @drumwork/moon/code/javascript/base/child-process
   take form child-process
 
@@ -107,18 +151,26 @@ load @drumwork/moon/code/javascript/node/child-process/stdio-null
 load @drumwork/moon/code/javascript/node/child-process/stdio-pipe
   take form stdio-pipe
 
+load @drumwork/seed/code/form/and
+  take form and
+    save form and-link-text
+
 load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 task spawn, name <spawn>
   take command, like native-string
   take options, like spawn-options-without-stdio
-    void take
+    void true
   free seed, like child-process-without-null-streams
 
 task spawn, name <spawn>
@@ -235,9 +287,9 @@ task spawn, name <spawn>
   take args
     like readonly-array
       like native-string
-    void take
+    void true
   take options, like spawn-options-without-stdio
-    void take
+    void true
   free seed, like child-process-without-null-streams
 
 task spawn, name <spawn>
@@ -379,128 +431,128 @@ task spawn, name <spawn>
 task exec, name <exec>
   take command, like native-string
   take callback
-    like task
+    like task-link-text
       take error
-        like sink-link-text
+        like or-link-text
           like exec-exception
           like native-null
       take stdout, like native-string
       take stderr, like native-string
       free seed, like native-void
-    void take
+    void true
   free seed, like child-process
 
 task exec, name <exec>
   take command, like native-string
   take options
-    like link
+    like and-link-text
       like form-link-text
         take encoding, name <encoding>
-          like sink-link-text
+          like or-link-text
             text <buffer>
             like native-null
-          lock free
+          lock false
       like exec-options
   take callback
-    like task
+    like task-link-text
       take error
-        like sink-link-text
+        like or-link-text
           like exec-exception
           like native-null
       take stdout, like buffer
       take stderr, like buffer
       free seed, like native-void
-    void take
+    void true
   free seed, like child-process
 
 task exec, name <exec>
   take command, like native-string
   take options
-    like link
+    like and-link-text
       like form-link-text
         take encoding, name <encoding>
           like buffer-encoding
-          lock free
+          lock false
       like exec-options
   take callback
-    like task
+    like task-link-text
       take error
-        like sink-link-text
+        like or-link-text
           like exec-exception
           like native-null
       take stdout, like native-string
       take stderr, like native-string
       free seed, like native-void
-    void take
+    void true
   free seed, like child-process
 
 task exec, name <exec>
   take command, like native-string
   take options
-    like link
+    like and-link-text
       like form-link-text
         take encoding, name <encoding>
           like buffer-encoding
-          lock free
+          lock false
       like exec-options
   take callback
-    like task
+    like task-link-text
       take error
-        like sink-link-text
+        like or-link-text
           like exec-exception
           like native-null
       take stdout
-        like sink-link-text
+        like or-link-text
           like native-string
           like buffer
       take stderr
-        like sink-link-text
+        like or-link-text
           like native-string
           like buffer
       free seed, like native-void
-    void take
+    void true
   free seed, like child-process
 
 task exec, name <exec>
   take command, like native-string
   take options, like exec-options
   take callback
-    like task
+    like task-link-text
       take error
-        like sink-link-text
+        like or-link-text
           like exec-exception
           like native-null
       take stdout, like native-string
       take stderr, like native-string
       free seed, like native-void
-    void take
+    void true
   free seed, like child-process
 
 task exec, name <exec>
   take command, like native-string
   take options
-    like sink-link-text
-      like link
+    like or-link-text
+      like and-link-text
         like object-encoding-options
         like exec-options
       like native-undefined
       like native-null
   take callback
-    like task
+    like task-link-text
       take error
-        like sink-link-text
+        like or-link-text
           like exec-exception
           like native-null
       take stdout
-        like sink-link-text
+        like or-link-text
           like native-string
           like buffer
       take stderr
-        like sink-link-text
+        like or-link-text
           like native-string
           like buffer
       free seed, like native-void
-    void take
+    void true
   free seed, like child-process
 
 task exec-file, name <execFile>
@@ -510,8 +562,8 @@ task exec-file, name <execFile>
 task exec-file, name <execFile>
   take file, like native-string
   take options
-    like sink-link-text
-      like link
+    like or-link-text
+      like and-link-text
         like object-encoding-options
         like exec-file-options
       like native-undefined
@@ -521,24 +573,24 @@ task exec-file, name <execFile>
 task exec-file, name <execFile>
   take file, like native-string
   take args
-    like sink-link-text
+    like or-link-text
       like readonly-array
         like native-string
       like native-null
-    void take
+    void true
   free seed, like child-process
 
 task exec-file, name <execFile>
   take file, like native-string
   take args
-    like sink-link-text
+    like or-link-text
       like readonly-array
         like native-string
       like native-undefined
       like native-null
   take options
-    like sink-link-text
-      like link
+    like or-link-text
+      like and-link-text
         like object-encoding-options
         like exec-file-options
       like native-undefined
@@ -548,9 +600,9 @@ task exec-file, name <execFile>
 task exec-file, name <execFile>
   take file, like native-string
   take callback
-    like task
+    like task-link-text
       take error
-        like sink-link-text
+        like or-link-text
           like exec-file-exception
           like native-null
       take stdout, like native-string
@@ -561,15 +613,15 @@ task exec-file, name <execFile>
 task exec-file, name <execFile>
   take file, like native-string
   take args
-    like sink-link-text
+    like or-link-text
       like readonly-array
         like native-string
       like native-undefined
       like native-null
   take callback
-    like task
+    like task-link-text
       take error
-        like sink-link-text
+        like or-link-text
           like exec-file-exception
           like native-null
       take stdout, like native-string
@@ -581,9 +633,9 @@ task exec-file, name <execFile>
   take file, like native-string
   take options, like exec-file-options-with-buffer-encoding
   take callback
-    like task
+    like task-link-text
       take error
-        like sink-link-text
+        like or-link-text
           like exec-file-exception
           like native-null
       take stdout, like buffer
@@ -594,16 +646,16 @@ task exec-file, name <execFile>
 task exec-file, name <execFile>
   take file, like native-string
   take args
-    like sink-link-text
+    like or-link-text
       like readonly-array
         like native-string
       like native-undefined
       like native-null
   take options, like exec-file-options-with-buffer-encoding
   take callback
-    like task
+    like task-link-text
       take error
-        like sink-link-text
+        like or-link-text
           like exec-file-exception
           like native-null
       take stdout, like buffer
@@ -615,9 +667,9 @@ task exec-file, name <execFile>
   take file, like native-string
   take options, like exec-file-options-with-string-encoding
   take callback
-    like task
+    like task-link-text
       take error
-        like sink-link-text
+        like or-link-text
           like exec-file-exception
           like native-null
       take stdout, like native-string
@@ -628,16 +680,16 @@ task exec-file, name <execFile>
 task exec-file, name <execFile>
   take file, like native-string
   take args
-    like sink-link-text
+    like or-link-text
       like readonly-array
         like native-string
       like native-undefined
       like native-null
   take options, like exec-file-options-with-string-encoding
   take callback
-    like task
+    like task-link-text
       take error
-        like sink-link-text
+        like or-link-text
           like exec-file-exception
           like native-null
       take stdout, like native-string
@@ -649,17 +701,17 @@ task exec-file, name <execFile>
   take file, like native-string
   take options, like exec-file-options-with-other-encoding
   take callback
-    like task
+    like task-link-text
       take error
-        like sink-link-text
+        like or-link-text
           like exec-file-exception
           like native-null
       take stdout
-        like sink-link-text
+        like or-link-text
           like native-string
           like buffer
       take stderr
-        like sink-link-text
+        like or-link-text
           like native-string
           like buffer
       free seed, like native-void
@@ -668,24 +720,24 @@ task exec-file, name <execFile>
 task exec-file, name <execFile>
   take file, like native-string
   take args
-    like sink-link-text
+    like or-link-text
       like readonly-array
         like native-string
       like native-undefined
       like native-null
   take options, like exec-file-options-with-other-encoding
   take callback
-    like task
+    like task-link-text
       take error
-        like sink-link-text
+        like or-link-text
           like exec-file-exception
           like native-null
       take stdout
-        like sink-link-text
+        like or-link-text
           like native-string
           like buffer
       take stderr
-        like sink-link-text
+        like or-link-text
           like native-string
           like buffer
       free seed, like native-void
@@ -695,9 +747,9 @@ task exec-file, name <execFile>
   take file, like native-string
   take options, like exec-file-options
   take callback
-    like task
+    like task-link-text
       take error
-        like sink-link-text
+        like or-link-text
           like exec-file-exception
           like native-null
       take stdout, like native-string
@@ -708,16 +760,16 @@ task exec-file, name <execFile>
 task exec-file, name <execFile>
   take file, like native-string
   take args
-    like sink-link-text
+    like or-link-text
       like readonly-array
         like native-string
       like native-undefined
       like native-null
   take options, like exec-file-options
   take callback
-    like task
+    like task-link-text
       take error
-        like sink-link-text
+        like or-link-text
           like exec-file-exception
           like native-null
       take stdout, like native-string
@@ -728,25 +780,25 @@ task exec-file, name <execFile>
 task exec-file, name <execFile>
   take file, like native-string
   take options
-    like sink-link-text
-      like link
+    like or-link-text
+      like and-link-text
         like object-encoding-options
         like exec-file-options
       like native-undefined
       like native-null
   take callback
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like exec-file-exception
             like native-null
         take stdout
-          like sink-link-text
+          like or-link-text
             like native-string
             like buffer
         take stderr
-          like sink-link-text
+          like or-link-text
             like native-string
             like buffer
         free seed, like native-void
@@ -757,31 +809,31 @@ task exec-file, name <execFile>
 task exec-file, name <execFile>
   take file, like native-string
   take args
-    like sink-link-text
+    like or-link-text
       like readonly-array
         like native-string
       like native-undefined
       like native-null
   take options
-    like sink-link-text
-      like link
+    like or-link-text
+      like and-link-text
         like object-encoding-options
         like exec-file-options
       like native-undefined
       like native-null
   take callback
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take error
-          like sink-link-text
+          like or-link-text
             like exec-file-exception
             like native-null
         take stdout
-          like sink-link-text
+          like or-link-text
             like native-string
             like buffer
         take stderr
-          like sink-link-text
+          like or-link-text
             like native-string
             like buffer
         free seed, like native-void
@@ -792,7 +844,7 @@ task exec-file, name <execFile>
 task fork, name <fork>
   take module-path, like native-string
   take options, like fork-options
-    void take
+    void true
   free seed, like child-process
 
 task fork, name <fork>
@@ -800,9 +852,9 @@ task fork, name <fork>
   take args
     like readonly-array
       like native-string
-    void take
+    void true
   take options, like fork-options
-    void take
+    void true
   free seed, like child-process
 
 task spawn-sync, name <spawnSync>
@@ -828,10 +880,10 @@ task spawn-sync, name <spawnSync>
 task spawn-sync, name <spawnSync>
   take command, like native-string
   take options, like spawn-sync-options
-    void take
+    void true
   free seed
     like spawn-sync-returns
-      like sink-link-text
+      like or-link-text
         like native-string
         like buffer
 
@@ -869,12 +921,12 @@ task spawn-sync, name <spawnSync>
   take args
     like readonly-array
       like native-string
-    void take
+    void true
   take options, like spawn-sync-options
-    void take
+    void true
   free seed
     like spawn-sync-returns
-      like sink-link-text
+      like or-link-text
         like native-string
         like buffer
 
@@ -895,9 +947,9 @@ task exec-sync, name <execSync>
 task exec-sync, name <execSync>
   take command, like native-string
   take options, like exec-sync-options
-    void take
+    void true
   free seed
-    like sink-link-text
+    like or-link-text
       like native-string
       like buffer
 
@@ -918,9 +970,9 @@ task exec-file-sync, name <execFileSync>
 task exec-file-sync, name <execFileSync>
   take file, like native-string
   take options, like exec-file-sync-options
-    void take
+    void true
   free seed
-    like sink-link-text
+    like or-link-text
       like native-string
       like buffer
 
@@ -952,10 +1004,10 @@ task exec-file-sync, name <execFileSync>
   take args
     like readonly-array
       like native-string
-    void take
+    void true
   take options, like exec-file-sync-options
-    void take
+    void true
   free seed
-    like sink-link-text
+    like or-link-text
       like native-string
       like buffer

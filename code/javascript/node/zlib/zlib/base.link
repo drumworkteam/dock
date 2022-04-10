@@ -14,42 +14,45 @@ load @drumwork/moon/code/javascript/base/native-undefined
 load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form zlib, name <Zlib>
   take bytes-read, name <bytesRead>
     like native-number
-  take bytes-written
-    name <bytesWritten>
+  take bytes-written, name <bytesWritten>
     like native-number
   take shell, name <shell>
-    like sink-link-text
+    like or-link-text
       like native-boolean
       like native-string
       like native-undefined
-    lock free
+    lock false
 
   task close, name <close>
     take callback
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task flush, name <flush>
     take kind, like native-number
-      void take
+      void true
     take callback
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void
 
   task flush, name <flush>
     take callback
-      like task
+      like task-link-text
         free seed, like native-void
-      void take
+      void true
     free seed, like native-void

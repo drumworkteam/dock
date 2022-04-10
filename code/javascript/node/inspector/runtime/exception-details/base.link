@@ -20,48 +20,45 @@ load @drumwork/moon/code/javascript/node/inspector/runtime/script-id
 load @drumwork/moon/code/javascript/node/inspector/runtime/stack-trace
   take form stack-trace
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form exception-details
-  name <ExceptionDetails>
+form exception-details, name <ExceptionDetails>
   take exception-id, name <exceptionId>
     like native-number
-    lock free
+    lock false
   take text, name <text>
     like native-string
-    lock free
+    lock false
   take line-number, name <lineNumber>
     like native-number
-    lock free
-  take column-number
-    name <columnNumber>
+    lock false
+  take column-number, name <columnNumber>
     like native-number
-    lock free
+    lock false
   take script-id, name <scriptId>
-    like sink-link-text
+    like or-link-text
       like script-id
       like native-undefined
-    lock free
+    lock false
   take url, name <url>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-undefined
-    lock free
+    lock false
   take stack-trace, name <stackTrace>
-    like sink-link-text
+    like or-link-text
       like stack-trace
       like native-undefined
-    lock free
+    lock false
   take exception, name <exception>
-    like sink-link-text
+    like or-link-text
       like remote-object
       like native-undefined
-    lock free
-  take execution-context-id
-    name <executionContextId>
-    like sink-link-text
+    lock false
+  take execution-context-id, name <executionContextId>
+    like or-link-text
       like execution-context-id
       like native-undefined
-    lock free
+    lock false

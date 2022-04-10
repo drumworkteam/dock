@@ -26,14 +26,18 @@ load @drumwork/moon/code/javascript/node/fs/encoding-option
 load @drumwork/moon/code/javascript/node/fs/path-like
   take form path-like
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 task promisify, name <__promisify__>
   take path, like path-like
   take options, like encoding-option
-    void take
+    void true
   free seed
     like promise
       like native-string
@@ -48,10 +52,10 @@ task promisify, name <__promisify__>
 task promisify, name <__promisify__>
   take path, like path-like
   take options, like encoding-option
-    void take
+    void true
   free seed
     like promise
-      like sink-link-text
+      like or-link-text
         like native-string
         like buffer
 
@@ -59,9 +63,9 @@ task native, name <native>
   take path, like path-like
   take options, like encoding-option
   take callback
-    like task
+    like task-link-text
       take err
-        like sink-link-text
+        like or-link-text
           like node-js-errno-exception
           like native-null
       take resolved-path, like native-string
@@ -72,9 +76,9 @@ task native, name <native>
   take path, like path-like
   take options, like buffer-encoding-option
   take callback
-    like task
+    like task-link-text
       take err
-        like sink-link-text
+        like or-link-text
           like node-js-errno-exception
           like native-null
       take resolved-path, like buffer
@@ -85,13 +89,13 @@ task native, name <native>
   take path, like path-like
   take options, like encoding-option
   take callback
-    like task
+    like task-link-text
       take err
-        like sink-link-text
+        like or-link-text
           like node-js-errno-exception
           like native-null
       take resolved-path
-        like sink-link-text
+        like or-link-text
           like native-string
           like buffer
       free seed, like native-void
@@ -100,9 +104,9 @@ task native, name <native>
 task native, name <native>
   take path, like path-like
   take callback
-    like task
+    like task-link-text
       take err
-        like sink-link-text
+        like or-link-text
           like node-js-errno-exception
           like native-null
       take resolved-path, like native-string

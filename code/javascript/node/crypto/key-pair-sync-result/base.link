@@ -9,24 +9,23 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form key-pair-sync-result
-  name <KeyPairSyncResult>
+form key-pair-sync-result, name <KeyPairSyncResult>
   head t1, like like-link-text
-    base sink-link-text
+    base or-link-text
       like native-string
       like buffer
   head t2, like like-link-text
-    base sink-link-text
+    base or-link-text
       like native-string
       like buffer
 
   take public-key, name <publicKey>
     like t1
-    lock free
+    lock false
   take private-key, name <privateKey>
     like t2
-    lock free
+    lock false
