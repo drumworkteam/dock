@@ -1,19 +1,17 @@
 
-load @drumwork/land/code/javascript/dom/event
+load @drumwork/moon/code/javascript/dom/event
   take form event
 
-load @drumwork/land/code/javascript/dom/message-event
+load @drumwork/moon/code/javascript/dom/message-event
   take form message-event
 
-form service-worker-container-event-map
-  name <ServiceWorkerContainerEventMap>
-  take controllerchange
-    name <controllerchange>
+form service-worker-container-event-map, name <ServiceWorkerContainerEventMap>
+  take controllerchange, name <controllerchange>
     like event
-    lock free
+    lock false
   take message, name <message>
     like message-event
-    lock free
+    lock false
   take messageerror, name <messageerror>
     like message-event
-    lock free
+    lock false

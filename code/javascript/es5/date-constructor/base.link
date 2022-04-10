@@ -1,19 +1,18 @@
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/es5/date
+load @drumwork/moon/code/javascript/es5/date
   take form date
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form date-constructor
-  name <DateConstructor>
+form date-constructor, name <DateConstructor>
   take prototype, name <prototype>
     like date
 
@@ -25,15 +24,15 @@ form date-constructor
     take year, like native-number
     take month, like native-number
     take date, like native-number
-      void take
+      void true
     take hours, like native-number
-      void take
+      void true
     take minutes, like native-number
-      void take
+      void true
     take seconds, like native-number
-      void take
+      void true
     take ms, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task now, name <now>
@@ -44,7 +43,7 @@ form date-constructor
 
   hook make
     take value
-      like sink-link-text
+      like or-link-text
         like native-number
         like native-string
     free seed, like date
@@ -53,13 +52,13 @@ form date-constructor
     take year, like native-number
     take month, like native-number
     take date, like native-number
-      void take
+      void true
     take hours, like native-number
-      void take
+      void true
     take minutes, like native-number
-      void take
+      void true
     take seconds, like native-number
-      void take
+      void true
     take ms, like native-number
-      void take
+      void true
     free seed, like date

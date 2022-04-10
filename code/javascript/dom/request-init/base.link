@@ -1,86 +1,85 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/dom/abort-signal
+load @drumwork/moon/code/javascript/dom/abort-signal
   take form abort-signal
 
-load @drumwork/land/code/javascript/dom/body-init
+load @drumwork/moon/code/javascript/dom/body-init
   take form body-init
 
-load @drumwork/land/code/javascript/dom/headers-init
+load @drumwork/moon/code/javascript/dom/headers-init
   take form headers-init
 
-load @drumwork/land/code/javascript/dom/referrer-policy
+load @drumwork/moon/code/javascript/dom/referrer-policy
   take form referrer-policy
 
-load @drumwork/land/code/javascript/dom/request-cache
+load @drumwork/moon/code/javascript/dom/request-cache
   take form request-cache
 
-load @drumwork/land/code/javascript/dom/request-credentials
+load @drumwork/moon/code/javascript/dom/request-credentials
   take form request-credentials
 
-load @drumwork/land/code/javascript/dom/request-mode
+load @drumwork/moon/code/javascript/dom/request-mode
   take form request-mode
 
-load @drumwork/land/code/javascript/dom/request-redirect
+load @drumwork/moon/code/javascript/dom/request-redirect
   take form request-redirect
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form request-init, name <RequestInit>
   take body, name <body>
-    like sink-link-text
+    like or-link-text
       like body-init
       like native-null
-    lock free
+    lock false
   take cache, name <cache>
     like request-cache
-    lock free
+    lock false
   take credentials, name <credentials>
     like request-credentials
-    lock free
+    lock false
   take headers, name <headers>
     like headers-init
-    lock free
+    lock false
   take integrity, name <integrity>
     like native-string
-    lock free
+    lock false
   take keepalive, name <keepalive>
     like native-boolean
-    lock free
+    lock false
   take method, name <method>
     like native-string
-    lock free
+    lock false
   take mode, name <mode>
     like request-mode
-    lock free
+    lock false
   take redirect, name <redirect>
     like request-redirect
-    lock free
+    lock false
   take referrer, name <referrer>
     like native-string
-    lock free
-  take referrer-policy
-    name <referrerPolicy>
+    lock false
+  take referrer-policy, name <referrerPolicy>
     like referrer-policy
-    lock free
+    lock false
   take signal, name <signal>
-    like sink-link-text
+    like or-link-text
       like abort-signal
       like native-null
-    lock free
+    lock false
   take window, name <window>
     like native-any
-    lock free
+    lock false

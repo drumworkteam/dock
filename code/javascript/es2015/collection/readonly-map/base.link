@@ -1,26 +1,30 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-undefined
+load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form readonly-map, name <ReadonlyMap>
   head k, like like-link-text
@@ -31,7 +35,7 @@ form readonly-map, name <ReadonlyMap>
 
   task for-each, name <forEach>
     take callbackfn
-      like task
+      like task-link-text
         take value, like v
         take key, like k
         take map
@@ -40,13 +44,13 @@ form readonly-map, name <ReadonlyMap>
             like v
         free seed, like native-void
     take this-arg, like native-any
-      void take
+      void true
     free seed, like native-void
 
   task get, name <get>
     take key, like k
     free seed
-      like sink-link-text
+      like or-link-text
         like v
         like native-undefined
 

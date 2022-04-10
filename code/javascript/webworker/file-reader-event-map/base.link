@@ -1,36 +1,35 @@
 
-load @drumwork/land/code/javascript/dom/file-reader-event-map
+load @drumwork/moon/code/javascript/dom/file-reader-event-map
   take form file-reader-event-map
 
-load @drumwork/land/code/javascript/webworker/file-reader
+load @drumwork/moon/code/javascript/webworker/file-reader
   take form file-reader
 
-load @drumwork/land/code/javascript/webworker/progress-event
+load @drumwork/moon/code/javascript/webworker/progress-event
   take form progress-event
 
-form file-reader-event-map
-  name <FileReaderEventMap>
+form file-reader-event-map, name <FileReaderEventMap>
   take abort, name <abort>
     like progress-event
       like file-reader
-    lock free
+    lock false
   take error, name <error>
     like progress-event
       like file-reader
-    lock free
+    lock false
   take load, name <load>
     like progress-event
       like file-reader
-    lock free
+    lock false
   take loadend, name <loadend>
     like progress-event
       like file-reader
-    lock free
+    lock false
   take loadstart, name <loadstart>
     like progress-event
       like file-reader
-    lock free
+    lock false
   take progress, name <progress>
     like progress-event
       like file-reader
-    lock free
+    lock false

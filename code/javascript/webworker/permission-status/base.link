@@ -1,41 +1,41 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/permission-status
+load @drumwork/moon/code/javascript/dom/permission-status
   take form permission-status
 
-load @drumwork/land/code/javascript/webworker/add-event-listener-options
+load @drumwork/moon/code/javascript/webworker/add-event-listener-options
   take form add-event-listener-options
 
-load @drumwork/land/code/javascript/webworker/event
+load @drumwork/moon/code/javascript/webworker/event
   take form event
 
-load @drumwork/land/code/javascript/webworker/event-listener-options
+load @drumwork/moon/code/javascript/webworker/event-listener-options
   take form event-listener-options
 
-load @drumwork/land/code/javascript/webworker/event-listener-or-event-listener-object
+load @drumwork/moon/code/javascript/webworker/event-listener-or-event-listener-object
   take form event-listener-or-event-listener-object
 
-load @drumwork/land/code/javascript/webworker/event-target
+load @drumwork/moon/code/javascript/webworker/event-target
   take form event-target
 
-load @drumwork/land/code/javascript/webworker/permission-state
+load @drumwork/moon/code/javascript/webworker/permission-state
   take form permission-state
 
-load @drumwork/land/code/javascript/webworker/permission-status-event-map
+load @drumwork/moon/code/javascript/webworker/permission-status-event-map
   take form permission-status-event-map
 
 load @drumwork/seed/code/form/form/link
@@ -50,33 +50,35 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form permission-status
-  name <PermissionStatus>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form permission-status, name <PermissionStatus>
   base event-target
 
   take onchange, name <onchange>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like permission-status
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take state, name <state>
     like permission-state
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     head k, like like-link-text
       base link-read-link-text
         like permission-status-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like permission-status
         take ev
           like form-link-link-text
@@ -84,31 +86,29 @@ form permission-status
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     head k, like like-link-text
       base link-read-link-text
         like permission-status-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like permission-status
         take ev
           like form-link-link-text
@@ -116,19 +116,18 @@ form permission-status
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void

@@ -1,31 +1,28 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form idb-object-store-parameters
-  name <IDBObjectStoreParameters>
-  take auto-increment
-    name <autoIncrement>
+form idb-object-store-parameters, name <IDBObjectStoreParameters>
+  take auto-increment, name <autoIncrement>
     like native-boolean
-    lock free
+    lock false
   take key-path, name <keyPath>
-    like sink-link-text
+    like or-link-text
       like native-string
-      like list-link-text
+      like native-array
         like native-string
       like native-null
-    lock free
+    lock false

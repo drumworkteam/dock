@@ -1,27 +1,23 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/dom/stream-pipe-options
+load @drumwork/moon/code/javascript/dom/stream-pipe-options
   take form stream-pipe-options
 
-load @drumwork/land/code/javascript/webworker/abort-signal
+load @drumwork/moon/code/javascript/webworker/abort-signal
   take form abort-signal
 
-form stream-pipe-options
-  name <StreamPipeOptions>
-  take prevent-abort
-    name <preventAbort>
+form stream-pipe-options, name <StreamPipeOptions>
+  take prevent-abort, name <preventAbort>
     like native-boolean
-    lock free
-  take prevent-cancel
-    name <preventCancel>
+    lock false
+  take prevent-cancel, name <preventCancel>
     like native-boolean
-    lock free
-  take prevent-close
-    name <preventClose>
+    lock false
+  take prevent-close, name <preventClose>
     like native-boolean
-    lock free
+    lock false
   take signal, name <signal>
     like abort-signal
-    lock free
+    lock false

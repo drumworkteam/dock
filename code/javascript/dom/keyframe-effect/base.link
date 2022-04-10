@@ -1,76 +1,70 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/animation-effect
+load @drumwork/moon/code/javascript/dom/animation-effect
   take form animation-effect
 
-load @drumwork/land/code/javascript/dom/composite-operation
+load @drumwork/moon/code/javascript/dom/composite-operation
   take form composite-operation
 
-load @drumwork/land/code/javascript/dom/computed-keyframe
+load @drumwork/moon/code/javascript/dom/computed-keyframe
   take form computed-keyframe
 
-load @drumwork/land/code/javascript/dom/element
+load @drumwork/moon/code/javascript/dom/element
   take form element
 
-load @drumwork/land/code/javascript/dom/iteration-composite-operation
+load @drumwork/moon/code/javascript/dom/iteration-composite-operation
   take form iteration-composite-operation
 
-load @drumwork/land/code/javascript/dom/keyframe
+load @drumwork/moon/code/javascript/dom/keyframe
   take form keyframe
 
-load @drumwork/land/code/javascript/dom/property-indexed-keyframes
+load @drumwork/moon/code/javascript/dom/property-indexed-keyframes
   take form property-indexed-keyframes
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form keyframe-effect
-  name <KeyframeEffect>
+form keyframe-effect, name <KeyframeEffect>
   base animation-effect
 
   take composite, name <composite>
     like composite-operation
-    lock free
-  take iteration-composite
-    name <iterationComposite>
+    lock false
+  take iteration-composite, name <iterationComposite>
     like iteration-composite-operation
-    lock free
-  take pseudo-element
-    name <pseudoElement>
-    like sink-link-text
+    lock false
+  take pseudo-element, name <pseudoElement>
+    like or-link-text
       like native-string
       like native-null
-    lock free
+    lock false
   take target, name <target>
-    like sink-link-text
+    like or-link-text
       like element
       like native-null
-    lock free
+    lock false
 
-  task get-keyframes
-    name <getKeyframes>
+  task get-keyframes, name <getKeyframes>
     free seed
-      like list-link-text
+      like native-array
         like computed-keyframe
 
-  task set-keyframes
-    name <setKeyframes>
+  task set-keyframes, name <setKeyframes>
     take keyframes
-      like sink-link-text
-        like list-link-text
+      like or-link-text
+        like native-array
           like keyframe
         like property-indexed-keyframes
         like native-null

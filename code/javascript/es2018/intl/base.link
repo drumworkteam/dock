@@ -1,47 +1,51 @@
 
-load @drumwork/land/code/javascript/base/native-string
+bear @drumwork/moon/code/javascript/es2018/intl/ldml-plural-rule
+bear @drumwork/moon/code/javascript/es2018/intl/plural-rule-type
+bear @drumwork/moon/code/javascript/es2018/intl/plural-rules-options
+bear @drumwork/moon/code/javascript/es2018/intl/resolved-plural-rules-options
+bear @drumwork/moon/code/javascript/es2018/intl/plural-rules
+
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/es2018/intl/plural-rules
+load @drumwork/moon/code/javascript/es2018/intl/plural-rules
   take form plural-rules
 
-load @drumwork/land/code/javascript/es2018/intl/plural-rules-options
+load @drumwork/moon/code/javascript/es2018/intl/plural-rules-options
   take form plural-rules-options
 
 load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 host plural-rules, name <PluralRules>
   like form-link-text
     hook make
       take locales
-        like sink-link-text
+        like or-link-text
           like native-string
-          like list-link-text
+          like native-array
             like native-string
-        void take
+        void true
       take options, like plural-rules-options
-        void take
+        void true
       free seed, like plural-rules
 
-    task supported-locales-of
-      name <supportedLocalesOf>
+    task supported-locales-of, name <supportedLocalesOf>
       take locales
-        like sink-link-text
+        like or-link-text
           like native-string
-          like list-link-text
+          like native-array
             like native-string
       take options, like plural-rules-options
-        void take
+        void true
       free seed
-        like list-link-text
+        like native-array
           like native-string

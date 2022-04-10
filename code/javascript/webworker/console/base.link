@@ -1,35 +1,34 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/console
+load @drumwork/moon/code/javascript/dom/console
   take form console
-
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
 
 form console, name <Console>
   take memory, name <memory>
     like native-any
-    lock free
+    lock false
 
   task assert, name <assert>
     take condition, like native-boolean
-      void take
+      void true
     take data
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-void
 
   task clear, name <clear>
@@ -37,64 +36,63 @@ form console, name <Console>
 
   task count, name <count>
     take label, like native-string
-      void take
+      void true
     free seed, like native-void
 
   task count-reset, name <countReset>
     take label, like native-string
-      void take
+      void true
     free seed, like native-void
 
   task debug, name <debug>
     take data
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-void
 
   task dir, name <dir>
     take item, like native-any
-      void take
+      void true
     take options, like native-any
-      void take
+      void true
     free seed, like native-void
 
   task dirxml, name <dirxml>
     take data
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-void
 
   task error, name <error>
     take data
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-void
 
   task exception, name <exception>
     take message, like native-string
-      void take
+      void true
     take optional-params
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-void
 
   task group, name <group>
     take data
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-void
 
-  task group-collapsed
-    name <groupCollapsed>
+  task group-collapsed, name <groupCollapsed>
     take data
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-void
 
   task group-end, name <groupEnd>
@@ -102,61 +100,61 @@ form console, name <Console>
 
   task info, name <info>
     take data
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-void
 
   task log, name <log>
     take data
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-void
 
   task table, name <table>
     take tabular-data, like native-any
-      void take
+      void true
     take properties
-      like list-link-text
+      like native-array
         like native-string
-      void take
+      void true
     free seed, like native-void
 
   task time, name <time>
     take label, like native-string
-      void take
+      void true
     free seed, like native-void
 
   task time-end, name <timeEnd>
     take label, like native-string
-      void take
+      void true
     free seed, like native-void
 
   task time-log, name <timeLog>
     take label, like native-string
-      void take
+      void true
     take data
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-void
 
   task time-stamp, name <timeStamp>
     take label, like native-string
-      void take
+      void true
     free seed, like native-void
 
   task trace, name <trace>
     take data
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-void
 
   task warn, name <warn>
     take data
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-void

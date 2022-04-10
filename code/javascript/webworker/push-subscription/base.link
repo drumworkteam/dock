@@ -1,45 +1,43 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/dom/push-subscription
+load @drumwork/moon/code/javascript/dom/push-subscription
   take form push-subscription
 
-load @drumwork/land/code/javascript/es5/array-buffer
+load @drumwork/moon/code/javascript/es5/array-buffer
   take form array-buffer
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
-load @drumwork/land/code/javascript/webworker/push-encryption-key-name
+load @drumwork/moon/code/javascript/webworker/push-encryption-key-name
   take form push-encryption-key-name
 
-load @drumwork/land/code/javascript/webworker/push-subscription-json
+load @drumwork/moon/code/javascript/webworker/push-subscription-json
   take form push-subscription-json
 
-load @drumwork/land/code/javascript/webworker/push-subscription-options
+load @drumwork/moon/code/javascript/webworker/push-subscription-options
   take form push-subscription-options
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form push-subscription
-  name <PushSubscription>
+form push-subscription, name <PushSubscription>
   take endpoint, name <endpoint>
     like native-string
-  take expiration-time
-    name <expirationTime>
-    like sink-link-text
+  take expiration-time, name <expirationTime>
+    like or-link-text
       like native-number
       like native-null
   take options, name <options>
@@ -48,7 +46,7 @@ form push-subscription
   task get-key, name <getKey>
     take name, like push-encryption-key-name
     free seed
-      like sink-link-text
+      like or-link-text
         like array-buffer
         like native-null
 

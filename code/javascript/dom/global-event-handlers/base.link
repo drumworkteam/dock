@@ -1,71 +1,71 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/add-event-listener-options
+load @drumwork/moon/code/javascript/dom/add-event-listener-options
   take form add-event-listener-options
 
-load @drumwork/land/code/javascript/dom/animation-event
+load @drumwork/moon/code/javascript/dom/animation-event
   take form animation-event
 
-load @drumwork/land/code/javascript/dom/drag-event
+load @drumwork/moon/code/javascript/dom/drag-event
   take form drag-event
 
-load @drumwork/land/code/javascript/dom/event
+load @drumwork/moon/code/javascript/dom/event
   take form event
 
-load @drumwork/land/code/javascript/dom/event-listener-options
+load @drumwork/moon/code/javascript/dom/event-listener-options
   take form event-listener-options
 
-load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+load @drumwork/moon/code/javascript/dom/event-listener-or-event-listener-object
   take form event-listener-or-event-listener-object
 
-load @drumwork/land/code/javascript/dom/focus-event
+load @drumwork/moon/code/javascript/dom/focus-event
   take form focus-event
 
-load @drumwork/land/code/javascript/dom/form-data-event
+load @drumwork/moon/code/javascript/dom/form-data-event
   take form form-data-event
 
-load @drumwork/land/code/javascript/dom/global-event-handlers-event-map
+load @drumwork/moon/code/javascript/dom/global-event-handlers-event-map
   take form global-event-handlers-event-map
 
-load @drumwork/land/code/javascript/dom/keyboard-event
+load @drumwork/moon/code/javascript/dom/keyboard-event
   take form keyboard-event
 
-load @drumwork/land/code/javascript/dom/mouse-event
+load @drumwork/moon/code/javascript/dom/mouse-event
   take form mouse-event
 
-load @drumwork/land/code/javascript/dom/on-error-event-handler
+load @drumwork/moon/code/javascript/dom/on-error-event-handler
   take form on-error-event-handler
 
-load @drumwork/land/code/javascript/dom/pointer-event
+load @drumwork/moon/code/javascript/dom/pointer-event
   take form pointer-event
 
-load @drumwork/land/code/javascript/dom/progress-event
+load @drumwork/moon/code/javascript/dom/progress-event
   take form progress-event
 
-load @drumwork/land/code/javascript/dom/touch-event
+load @drumwork/moon/code/javascript/dom/touch-event
   take form touch-event
 
-load @drumwork/land/code/javascript/dom/transition-event
+load @drumwork/moon/code/javascript/dom/transition-event
   take form transition-event
 
-load @drumwork/land/code/javascript/dom/ui-event
+load @drumwork/moon/code/javascript/dom/ui-event
   take form ui-event
 
-load @drumwork/land/code/javascript/dom/wheel-event
+load @drumwork/moon/code/javascript/dom/wheel-event
   take form wheel-event
 
 load @drumwork/seed/code/form/form/link
@@ -80,740 +80,714 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form global-event-handlers
-  name <GlobalEventHandlers>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form global-event-handlers, name <GlobalEventHandlers>
   take onabort, name <onabort>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like ui-event
         free seed, like native-any
       like native-null
-    lock free
-  take onanimationcancel
-    name <onanimationcancel>
-    like sink-link-text
-      like task
+    lock false
+  take onanimationcancel, name <onanimationcancel>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like animation-event
         free seed, like native-any
       like native-null
-    lock free
-  take onanimationend
-    name <onanimationend>
-    like sink-link-text
-      like task
+    lock false
+  take onanimationend, name <onanimationend>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like animation-event
         free seed, like native-any
       like native-null
-    lock free
-  take onanimationiteration
-    name <onanimationiteration>
-    like sink-link-text
-      like task
+    lock false
+  take onanimationiteration, name <onanimationiteration>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like animation-event
         free seed, like native-any
       like native-null
-    lock free
-  take onanimationstart
-    name <onanimationstart>
-    like sink-link-text
-      like task
+    lock false
+  take onanimationstart, name <onanimationstart>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like animation-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onauxclick, name <onauxclick>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like mouse-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onblur, name <onblur>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like focus-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take oncanplay, name <oncanplay>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
-  take oncanplaythrough
-    name <oncanplaythrough>
-    like sink-link-text
-      like task
+    lock false
+  take oncanplaythrough, name <oncanplaythrough>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onchange, name <onchange>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onclick, name <onclick>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like mouse-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onclose, name <onclose>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
-  take oncontextmenu
-    name <oncontextmenu>
-    like sink-link-text
-      like task
+    lock false
+  take oncontextmenu, name <oncontextmenu>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like mouse-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take oncuechange, name <oncuechange>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take ondblclick, name <ondblclick>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like mouse-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take ondrag, name <ondrag>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like drag-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take ondragend, name <ondragend>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like drag-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take ondragenter, name <ondragenter>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like drag-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take ondragleave, name <ondragleave>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like drag-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take ondragover, name <ondragover>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like drag-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take ondragstart, name <ondragstart>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like drag-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take ondrop, name <ondrop>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like drag-event
         free seed, like native-any
       like native-null
-    lock free
-  take ondurationchange
-    name <ondurationchange>
-    like sink-link-text
-      like task
+    lock false
+  take ondurationchange, name <ondurationchange>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onemptied, name <onemptied>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onended, name <onended>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onerror, name <onerror>
     like on-error-event-handler
-    lock free
+    lock false
   take onfocus, name <onfocus>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like focus-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onformdata, name <onformdata>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like form-data-event
         free seed, like native-any
       like native-null
-    lock free
-  take ongotpointercapture
-    name <ongotpointercapture>
-    like sink-link-text
-      like task
+    lock false
+  take ongotpointercapture, name <ongotpointercapture>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like pointer-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take oninput, name <oninput>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take oninvalid, name <oninvalid>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onkeydown, name <onkeydown>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like keyboard-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onkeypress, name <onkeypress>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like keyboard-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onkeyup, name <onkeyup>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like keyboard-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onload, name <onload>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onloadeddata, name <onloadeddata>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
-  take onloadedmetadata
-    name <onloadedmetadata>
-    like sink-link-text
-      like task
+    lock false
+  take onloadedmetadata, name <onloadedmetadata>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onloadstart, name <onloadstart>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
-  take onlostpointercapture
-    name <onlostpointercapture>
-    like sink-link-text
-      like task
+    lock false
+  take onlostpointercapture, name <onlostpointercapture>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like pointer-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onmousedown, name <onmousedown>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like mouse-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onmouseenter, name <onmouseenter>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like mouse-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onmouseleave, name <onmouseleave>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like mouse-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onmousemove, name <onmousemove>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like mouse-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onmouseout, name <onmouseout>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like mouse-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onmouseover, name <onmouseover>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like mouse-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onmouseup, name <onmouseup>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like mouse-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onpause, name <onpause>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onplay, name <onplay>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onplaying, name <onplaying>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
-  take onpointercancel
-    name <onpointercancel>
-    like sink-link-text
-      like task
+    lock false
+  take onpointercancel, name <onpointercancel>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like pointer-event
         free seed, like native-any
       like native-null
-    lock free
-  take onpointerdown
-    name <onpointerdown>
-    like sink-link-text
-      like task
+    lock false
+  take onpointerdown, name <onpointerdown>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like pointer-event
         free seed, like native-any
       like native-null
-    lock free
-  take onpointerenter
-    name <onpointerenter>
-    like sink-link-text
-      like task
+    lock false
+  take onpointerenter, name <onpointerenter>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like pointer-event
         free seed, like native-any
       like native-null
-    lock free
-  take onpointerleave
-    name <onpointerleave>
-    like sink-link-text
-      like task
+    lock false
+  take onpointerleave, name <onpointerleave>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like pointer-event
         free seed, like native-any
       like native-null
-    lock free
-  take onpointermove
-    name <onpointermove>
-    like sink-link-text
-      like task
+    lock false
+  take onpointermove, name <onpointermove>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like pointer-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onpointerout, name <onpointerout>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like pointer-event
         free seed, like native-any
       like native-null
-    lock free
-  take onpointerover
-    name <onpointerover>
-    like sink-link-text
-      like task
+    lock false
+  take onpointerover, name <onpointerover>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like pointer-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onpointerup, name <onpointerup>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like pointer-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onprogress, name <onprogress>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like progress-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onratechange, name <onratechange>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onreset, name <onreset>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onresize, name <onresize>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like ui-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onscroll, name <onscroll>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onseeked, name <onseeked>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onseeking, name <onseeking>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onselect, name <onselect>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
-  take onselectionchange
-    name <onselectionchange>
-    like sink-link-text
-      like task
+    lock false
+  take onselectionchange, name <onselectionchange>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
-  take onselectstart
-    name <onselectstart>
-    like sink-link-text
-      like task
+    lock false
+  take onselectstart, name <onselectstart>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onstalled, name <onstalled>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onsubmit, name <onsubmit>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onsuspend, name <onsuspend>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take ontimeupdate, name <ontimeupdate>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take ontoggle, name <ontoggle>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
-  take ontouchcancel
-    name <ontouchcancel>
-    like sink-link-text
-      like task
+    lock false
+  take ontouchcancel, name <ontouchcancel>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like touch-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take ontouchend, name <ontouchend>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like touch-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take ontouchmove, name <ontouchmove>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like touch-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take ontouchstart, name <ontouchstart>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like touch-event
         free seed, like native-any
       like native-null
-    lock free
-  take ontransitioncancel
-    name <ontransitioncancel>
-    like sink-link-text
-      like task
+    lock false
+  take ontransitioncancel, name <ontransitioncancel>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like transition-event
         free seed, like native-any
       like native-null
-    lock free
-  take ontransitionend
-    name <ontransitionend>
-    like sink-link-text
-      like task
+    lock false
+  take ontransitionend, name <ontransitionend>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like transition-event
         free seed, like native-any
       like native-null
-    lock free
-  take ontransitionrun
-    name <ontransitionrun>
-    like sink-link-text
-      like task
+    lock false
+  take ontransitionrun, name <ontransitionrun>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like transition-event
         free seed, like native-any
       like native-null
-    lock free
-  take ontransitionstart
-    name <ontransitionstart>
-    like sink-link-text
-      like task
+    lock false
+  take ontransitionstart, name <ontransitionstart>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like transition-event
         free seed, like native-any
       like native-null
-    lock free
-  take onvolumechange
-    name <onvolumechange>
-    like sink-link-text
-      like task
+    lock false
+  take onvolumechange, name <onvolumechange>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onwaiting, name <onwaiting>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
-  take onwebkitanimationend
-    name <onwebkitanimationend>
-    like sink-link-text
-      like task
+    lock false
+  take onwebkitanimationend, name <onwebkitanimationend>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
-  take onwebkitanimationiteration
-    name <onwebkitanimationiteration>
-    like sink-link-text
-      like task
+    lock false
+  take onwebkitanimationiteration, name <onwebkitanimationiteration>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
-  take onwebkitanimationstart
-    name <onwebkitanimationstart>
-    like sink-link-text
-      like task
+    lock false
+  take onwebkitanimationstart, name <onwebkitanimationstart>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
-  take onwebkittransitionend
-    name <onwebkittransitionend>
-    like sink-link-text
-      like task
+    lock false
+  take onwebkittransitionend, name <onwebkittransitionend>
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onwheel, name <onwheel>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like global-event-handlers
         take ev, like wheel-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     head k, like like-link-text
       base link-read-link-text
         like global-event-handlers-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like global-event-handlers
         take ev
           like form-link-link-text
@@ -821,31 +795,29 @@ form global-event-handlers
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     head k, like like-link-text
       base link-read-link-text
         like global-event-handlers-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like global-event-handlers
         take ev
           like form-link-link-text
@@ -853,19 +825,18 @@ form global-event-handlers
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void

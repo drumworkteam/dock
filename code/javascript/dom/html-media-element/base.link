@@ -1,71 +1,71 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/add-event-listener-options
+load @drumwork/moon/code/javascript/dom/add-event-listener-options
   take form add-event-listener-options
 
-load @drumwork/land/code/javascript/dom/can-play-type-result
+load @drumwork/moon/code/javascript/dom/can-play-type-result
   take form can-play-type-result
 
-load @drumwork/land/code/javascript/dom/event
+load @drumwork/moon/code/javascript/dom/event
   take form event
 
-load @drumwork/land/code/javascript/dom/event-listener-options
+load @drumwork/moon/code/javascript/dom/event-listener-options
   take form event-listener-options
 
-load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+load @drumwork/moon/code/javascript/dom/event-listener-or-event-listener-object
   take form event-listener-or-event-listener-object
 
-load @drumwork/land/code/javascript/dom/html-element
+load @drumwork/moon/code/javascript/dom/html-element
   take form html-element
 
-load @drumwork/land/code/javascript/dom/html-media-element-event-map
+load @drumwork/moon/code/javascript/dom/html-media-element-event-map
   take form html-media-element-event-map
 
-load @drumwork/land/code/javascript/dom/media-encrypted-event
+load @drumwork/moon/code/javascript/dom/media-encrypted-event
   take form media-encrypted-event
 
-load @drumwork/land/code/javascript/dom/media-error
+load @drumwork/moon/code/javascript/dom/media-error
   take form media-error
 
-load @drumwork/land/code/javascript/dom/media-keys
+load @drumwork/moon/code/javascript/dom/media-keys
   take form media-keys
 
-load @drumwork/land/code/javascript/dom/media-provider
+load @drumwork/moon/code/javascript/dom/media-provider
   take form media-provider
 
-load @drumwork/land/code/javascript/dom/remote-playback
+load @drumwork/moon/code/javascript/dom/remote-playback
   take form remote-playback
 
-load @drumwork/land/code/javascript/dom/text-track
+load @drumwork/moon/code/javascript/dom/text-track
   take form text-track
 
-load @drumwork/land/code/javascript/dom/text-track-kind
+load @drumwork/moon/code/javascript/dom/text-track-kind
   take form text-track-kind
 
-load @drumwork/land/code/javascript/dom/text-track-list
+load @drumwork/moon/code/javascript/dom/text-track-list
   take form text-track-list
 
-load @drumwork/land/code/javascript/dom/time-ranges
+load @drumwork/moon/code/javascript/dom/time-ranges
   take form time-ranges
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
 load @drumwork/seed/code/form/form/link
@@ -80,93 +80,90 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form html-media-element
-  name <HTMLMediaElement>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form html-media-element, name <HTMLMediaElement>
   base html-element
 
   take autoplay, name <autoplay>
     like native-boolean
-    lock free
+    lock false
   take buffered, name <buffered>
     like time-ranges
   take controls, name <controls>
     like native-boolean
-    lock free
+    lock false
   take cross-origin, name <crossOrigin>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
-    lock free
+    lock false
   take current-src, name <currentSrc>
     like native-string
   take current-time, name <currentTime>
     like native-number
-    lock free
-  take default-muted
-    name <defaultMuted>
+    lock false
+  take default-muted, name <defaultMuted>
     like native-boolean
-    lock free
-  take default-playback-rate
-    name <defaultPlaybackRate>
+    lock false
+  take default-playback-rate, name <defaultPlaybackRate>
     like native-number
-    lock free
-  take disable-remote-playback
-    name <disableRemotePlayback>
+    lock false
+  take disable-remote-playback, name <disableRemotePlayback>
     like native-boolean
-    lock free
+    lock false
   take duration, name <duration>
     like native-number
   take ended, name <ended>
     like native-boolean
   take error, name <error>
-    like sink-link-text
+    like or-link-text
       like media-error
       like native-null
   take loop, name <loop>
     like native-boolean
-    lock free
+    lock false
   take media-keys, name <mediaKeys>
-    like sink-link-text
+    like or-link-text
       like media-keys
       like native-null
   take muted, name <muted>
     like native-boolean
-    lock free
-  take network-state
-    name <networkState>
+    lock false
+  take network-state, name <networkState>
     like native-number
   take onencrypted, name <onencrypted>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like html-media-element
         take ev, like media-encrypted-event
         free seed, like native-any
       like native-null
-    lock free
-  take onwaitingforkey
-    name <onwaitingforkey>
-    like sink-link-text
-      like task
+    lock false
+  take onwaitingforkey, name <onwaitingforkey>
+    like or-link-text
+      like task-link-text
         take this, like html-media-element
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take paused, name <paused>
     like native-boolean
-  take playback-rate
-    name <playbackRate>
+  take playback-rate, name <playbackRate>
     like native-number
-    lock free
+    lock false
   take played, name <played>
     like time-ranges
   take preload, name <preload>
     like native-string
-    lock free
+    lock false
   take ready-state, name <readyState>
     like native-number
   take remote, name <remote>
@@ -177,50 +174,42 @@ form html-media-element
     like native-boolean
   take src, name <src>
     like native-string
-    lock free
+    lock false
   take src-object, name <srcObject>
-    like sink-link-text
+    like or-link-text
       like media-provider
       like native-null
-    lock free
+    lock false
   take text-tracks, name <textTracks>
     like text-track-list
   take volume, name <volume>
     like native-number
-    lock free
-  take have-current-data
-    name <HAVE_CURRENT_DATA>
+    lock false
+  take have-current-data, name <HAVE_CURRENT_DATA>
     like native-number
-  take have-enough-data
-    name <HAVE_ENOUGH_DATA>
+  take have-enough-data, name <HAVE_ENOUGH_DATA>
     like native-number
-  take have-future-data
-    name <HAVE_FUTURE_DATA>
+  take have-future-data, name <HAVE_FUTURE_DATA>
     like native-number
-  take have-metadata
-    name <HAVE_METADATA>
+  take have-metadata, name <HAVE_METADATA>
     like native-number
   take have-nothing, name <HAVE_NOTHING>
     like native-number
-  take network-empty
-    name <NETWORK_EMPTY>
+  take network-empty, name <NETWORK_EMPTY>
     like native-number
   take network-idle, name <NETWORK_IDLE>
     like native-number
-  take network-loading
-    name <NETWORK_LOADING>
+  take network-loading, name <NETWORK_LOADING>
     like native-number
-  take network-no-source
-    name <NETWORK_NO_SOURCE>
+  take network-no-source, name <NETWORK_NO_SOURCE>
     like native-number
 
-  task add-text-track
-    name <addTextTrack>
+  task add-text-track, name <addTextTrack>
     take kind, like text-track-kind
     take label, like native-string
-      void take
+      void true
     take language, like native-string
-      void take
+      void true
     free seed, like text-track
 
   task can-play-type, name <canPlayType>
@@ -242,24 +231,22 @@ form html-media-element
       like promise
         like native-void
 
-  task set-media-keys
-    name <setMediaKeys>
+  task set-media-keys, name <setMediaKeys>
     take media-keys
-      like sink-link-text
+      like or-link-text
         like media-keys
         like native-null
     free seed
       like promise
         like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     head k, like like-link-text
       base link-read-link-text
         like html-media-element-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like html-media-element
         take ev
           like form-link-link-text
@@ -267,31 +254,29 @@ form html-media-element
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     head k, like like-link-text
       base link-read-link-text
         like html-media-element-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like html-media-element
         take ev
           like form-link-link-text
@@ -299,19 +284,18 @@ form html-media-element
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void

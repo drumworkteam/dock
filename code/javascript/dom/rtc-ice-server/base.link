@@ -1,32 +1,30 @@
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/dom/rtc-ice-credential-type
+load @drumwork/moon/code/javascript/dom/rtc-ice-credential-type
   take form rtc-ice-credential-type
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form rtc-ice-server, name <RTCIceServer>
   take credential, name <credential>
     like native-string
-    lock free
-  take credential-type
-    name <credentialType>
+    lock false
+  take credential-type, name <credentialType>
     like rtc-ice-credential-type
-    lock free
+    lock false
   take urls, name <urls>
-    like sink-link-text
+    like or-link-text
       like native-string
-      like list-link-text
+      like native-array
         like native-string
-    lock free
+    lock false
   take username, name <username>
     like native-string
-    lock free
+    lock false

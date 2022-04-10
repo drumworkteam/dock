@@ -1,25 +1,25 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-this
+load @drumwork/moon/code/javascript/base/native-this
   take form native-this
 
-load @drumwork/land/code/javascript/es5/reg-exp-exec-array
+load @drumwork/moon/code/javascript/es5/reg-exp-exec-array
   take form reg-exp-exec-array
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form reg-exp, name <RegExp>
   take source, name <source>
@@ -32,12 +32,12 @@ form reg-exp, name <RegExp>
     like native-boolean
   take last-index, name <lastIndex>
     like native-number
-    lock free
+    lock false
 
   task exec, name <exec>
     take string, like native-string
     free seed
-      like sink-link-text
+      like or-link-text
         like reg-exp-exec-array
         like native-null
 

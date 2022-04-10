@@ -1,30 +1,33 @@
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-undefined
+load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/land/code/javascript/es2016/array/include/array
+load @drumwork/moon/code/javascript/es2016/array/include/array
   take form array
 
-load @drumwork/land/code/javascript/es2019/array/flat-array
+load @drumwork/moon/code/javascript/es2019/array/flat-array
   take form flat-array
 
-load @drumwork/land/code/javascript/es2019/array/readonly-array
+load @drumwork/moon/code/javascript/es2019/array/readonly-array
   take form readonly-array
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form array, name <Array>
   head t, like like-link-text
@@ -34,22 +37,22 @@ form array, name <Array>
     head this, like like-link-text
       back native-undefined
     take callback
-      like task
+      like task-link-text
         take this, like this
         take value, like t
         take index, like native-number
         take array
-          like list-link-text
+          like native-array
             like t
         free seed
-          like sink-link-text
+          like or-link-text
             like u
             like readonly-array
               like u
     take this-arg, like this
-      void take
+      void true
     free seed
-      like list-link-text
+      like native-array
         like u
 
   task flat, name <flat>
@@ -59,9 +62,9 @@ form array, name <Array>
       text <1>
     take this, like a
     take depth, like d
-      void take
+      void true
     free seed
-      like list-link-text
+      like native-array
         like flat-array
           like a
           like d

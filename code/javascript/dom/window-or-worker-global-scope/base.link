@@ -1,75 +1,71 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/cache-storage
+load @drumwork/moon/code/javascript/dom/cache-storage
   take form cache-storage
 
-load @drumwork/land/code/javascript/dom/crypto
+load @drumwork/moon/code/javascript/dom/crypto
   take form crypto
 
-load @drumwork/land/code/javascript/dom/idb-factory
+load @drumwork/moon/code/javascript/dom/idb-factory
   take form idb-factory
 
-load @drumwork/land/code/javascript/dom/image-bitmap
+load @drumwork/moon/code/javascript/dom/image-bitmap
   take form image-bitmap
 
-load @drumwork/land/code/javascript/dom/image-bitmap-options
+load @drumwork/moon/code/javascript/dom/image-bitmap-options
   take form image-bitmap-options
 
-load @drumwork/land/code/javascript/dom/image-bitmap-source
+load @drumwork/moon/code/javascript/dom/image-bitmap-source
   take form image-bitmap-source
 
-load @drumwork/land/code/javascript/dom/performance
+load @drumwork/moon/code/javascript/dom/performance
   take form performance
 
-load @drumwork/land/code/javascript/dom/request-info
+load @drumwork/moon/code/javascript/dom/request-info
   take form request-info
 
-load @drumwork/land/code/javascript/dom/request-init
+load @drumwork/moon/code/javascript/dom/request-init
   take form request-init
 
-load @drumwork/land/code/javascript/dom/response
+load @drumwork/moon/code/javascript/dom/response
   take form response
 
-load @drumwork/land/code/javascript/dom/timer-handler
+load @drumwork/moon/code/javascript/dom/timer-handler
   take form timer-handler
 
-load @drumwork/land/code/javascript/dom/void-function
+load @drumwork/moon/code/javascript/dom/void-function
   take form void-function
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-form window-or-worker-global-scope
-  name <WindowOrWorkerGlobalScope>
+form window-or-worker-global-scope, name <WindowOrWorkerGlobalScope>
   take caches, name <caches>
     like cache-storage
-  take cross-origin-isolated
-    name <crossOriginIsolated>
+  take cross-origin-isolated, name <crossOriginIsolated>
     like native-boolean
   take crypto, name <crypto>
     like crypto
   take indexed-db, name <indexedDB>
     like idb-factory
-  take is-secure-context
-    name <isSecureContext>
+  take is-secure-context, name <isSecureContext>
     like native-boolean
   take origin, name <origin>
     like native-string
@@ -84,36 +80,32 @@ form window-or-worker-global-scope
     take data, like native-string
     free seed, like native-string
 
-  task clear-interval
-    name <clearInterval>
+  task clear-interval, name <clearInterval>
     take handle, like native-number
-      void take
+      void true
     free seed, like native-void
 
-  task clear-timeout
-    name <clearTimeout>
+  task clear-timeout, name <clearTimeout>
     take handle, like native-number
-      void take
+      void true
     free seed, like native-void
 
-  task create-image-bitmap
-    name <createImageBitmap>
+  task create-image-bitmap, name <createImageBitmap>
     take image, like image-bitmap-source
     take options, like image-bitmap-options
-      void take
+      void true
     free seed
       like promise
         like image-bitmap
 
-  task create-image-bitmap
-    name <createImageBitmap>
+  task create-image-bitmap, name <createImageBitmap>
     take image, like image-bitmap-source
     take sx, like native-number
     take sy, like native-number
     take sw, like native-number
     take sh, like native-number
     take options, like image-bitmap-options
-      void take
+      void true
     free seed
       like promise
         like image-bitmap
@@ -121,32 +113,31 @@ form window-or-worker-global-scope
   task fetch, name <fetch>
     take input, like request-info
     take init, like request-init
-      void take
+      void true
     free seed
       like promise
         like response
 
-  task queue-microtask
-    name <queueMicrotask>
+  task queue-microtask, name <queueMicrotask>
     take callback, like void-function
     free seed, like native-void
 
   task set-interval, name <setInterval>
     take handler, like timer-handler
     take timeout, like native-number
-      void take
+      void true
     take arguments
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-number
 
   task set-timeout, name <setTimeout>
     take handler, like timer-handler
     take timeout, like native-number
-      void take
+      void true
     take arguments
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-number

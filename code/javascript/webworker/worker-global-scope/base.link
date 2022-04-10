@@ -1,51 +1,58 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/webworker/add-event-listener-options
+load @drumwork/moon/code/javascript/webworker/add-event-listener-options
   take form add-event-listener-options
 
-load @drumwork/land/code/javascript/webworker/error-event
+load @drumwork/moon/code/javascript/webworker/error-event
   take form error-event
 
-load @drumwork/land/code/javascript/webworker/event
+load @drumwork/moon/code/javascript/webworker/event
   take form event
 
-load @drumwork/land/code/javascript/webworker/event-listener-options
+load @drumwork/moon/code/javascript/webworker/event-listener-options
   take form event-listener-options
 
-load @drumwork/land/code/javascript/webworker/event-listener-or-event-listener-object
+load @drumwork/moon/code/javascript/webworker/event-listener-or-event-listener-object
   take form event-listener-or-event-listener-object
 
-load @drumwork/land/code/javascript/webworker/event-target
+load @drumwork/moon/code/javascript/webworker/event-target
   take form event-target
 
-load @drumwork/land/code/javascript/webworker/promise-rejection-event
+load @drumwork/moon/code/javascript/webworker/promise-rejection-event
   take form promise-rejection-event
 
-load @drumwork/land/code/javascript/webworker/window-or-worker-global-scope
+load @drumwork/moon/code/javascript/webworker/window-or-worker-global-scope
   take form window-or-worker-global-scope
 
-load @drumwork/land/code/javascript/webworker/worker-global-scope-event-map
+load @drumwork/moon/code/javascript/webworker/worker-global-scope-event-map
   take form worker-global-scope-event-map
 
-load @drumwork/land/code/javascript/webworker/worker-location
+load @drumwork/moon/code/javascript/webworker/worker-location
   take form worker-location
 
-load @drumwork/land/code/javascript/webworker/worker-navigator
+load @drumwork/moon/code/javascript/webworker/worker-navigator
   take form worker-navigator
+
+load @drumwork/seed/code/form/and
+  take form and
+    save form and-link-text
 
 load @drumwork/seed/code/form/form/link
   take form form-link
@@ -59,16 +66,15 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
-form worker-global-scope
-  name <WorkerGlobalScope>
+form worker-global-scope, name <WorkerGlobalScope>
   base event-target
   base window-or-worker-global-scope
 
@@ -77,77 +83,72 @@ form worker-global-scope
   take navigator, name <navigator>
     like worker-navigator
   take onerror, name <onerror>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like worker-global-scope
         take ev, like error-event
         free seed, like native-any
       like native-null
-    lock free
-  take onlanguagechange
-    name <onlanguagechange>
-    like sink-link-text
-      like task
+    lock false
+  take onlanguagechange, name <onlanguagechange>
+    like or-link-text
+      like task-link-text
         take this, like worker-global-scope
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onoffline, name <onoffline>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like worker-global-scope
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take ononline, name <ononline>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like worker-global-scope
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
-  take onrejectionhandled
-    name <onrejectionhandled>
-    like sink-link-text
-      like task
+    lock false
+  take onrejectionhandled, name <onrejectionhandled>
+    like or-link-text
+      like task-link-text
         take this, like worker-global-scope
         take ev, like promise-rejection-event
         free seed, like native-any
       like native-null
-    lock free
-  take onunhandledrejection
-    name <onunhandledrejection>
-    like sink-link-text
-      like task
+    lock false
+  take onunhandledrejection, name <onunhandledrejection>
+    like or-link-text
+      like task-link-text
         take this, like worker-global-scope
         take ev, like promise-rejection-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take self, name <self>
-    like link
+    like and-link-text
       like worker-global-scope
       like global-this
 
-  task import-scripts
-    name <importScripts>
+  task import-scripts, name <importScripts>
     take urls
-      like list-link-text
+      like native-array
         like native-string
-      rest take
+      rest true
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     head k, like like-link-text
       base link-read-link-text
         like worker-global-scope-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like worker-global-scope
         take ev
           like form-link-link-text
@@ -155,31 +156,29 @@ form worker-global-scope
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     head k, like like-link-text
       base link-read-link-text
         like worker-global-scope-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like worker-global-scope
         take ev
           like form-link-link-text
@@ -187,19 +186,18 @@ form worker-global-scope
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void

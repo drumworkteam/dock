@@ -1,27 +1,25 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/es2015/collection/set
+load @drumwork/moon/code/javascript/es2015/collection/set
   take form set
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form set-constructor
-  name <SetConstructor>
+form set-constructor, name <SetConstructor>
   take prototype, name <prototype>
     like set
       like native-any
@@ -30,11 +28,11 @@ form set-constructor
     head t, like like-link-text
       back native-any
     take values
-      like sink-link-text
-        like list-link-text
+      like or-link-text
+        like native-array
           like t
         like native-null
-      void take
+      void true
     free seed
       like set
         like t

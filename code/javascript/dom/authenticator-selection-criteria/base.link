@@ -1,30 +1,26 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/dom/authenticator-attachment
+load @drumwork/moon/code/javascript/dom/authenticator-attachment
   take form authenticator-attachment
 
-load @drumwork/land/code/javascript/dom/resident-key-requirement
+load @drumwork/moon/code/javascript/dom/resident-key-requirement
   take form resident-key-requirement
 
-load @drumwork/land/code/javascript/dom/user-verification-requirement
+load @drumwork/moon/code/javascript/dom/user-verification-requirement
   take form user-verification-requirement
 
-form authenticator-selection-criteria
-  name <AuthenticatorSelectionCriteria>
-  take authenticator-attachment
-    name <authenticatorAttachment>
+form authenticator-selection-criteria, name <AuthenticatorSelectionCriteria>
+  take authenticator-attachment, name <authenticatorAttachment>
     like authenticator-attachment
-    lock free
-  take require-resident-key
-    name <requireResidentKey>
+    lock false
+  take require-resident-key, name <requireResidentKey>
     like native-boolean
-    lock free
+    lock false
   take resident-key, name <residentKey>
     like resident-key-requirement
-    lock free
-  take user-verification
-    name <userVerification>
+    lock false
+  take user-verification, name <userVerification>
     like user-verification-requirement
-    lock free
+    lock false

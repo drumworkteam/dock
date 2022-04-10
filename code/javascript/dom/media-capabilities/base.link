@@ -1,30 +1,27 @@
 
-load @drumwork/land/code/javascript/dom/media-capabilities-decoding-info
+load @drumwork/moon/code/javascript/dom/media-capabilities-decoding-info
   take form media-capabilities-decoding-info
 
-load @drumwork/land/code/javascript/dom/media-capabilities-encoding-info
+load @drumwork/moon/code/javascript/dom/media-capabilities-encoding-info
   take form media-capabilities-encoding-info
 
-load @drumwork/land/code/javascript/dom/media-decoding-configuration
+load @drumwork/moon/code/javascript/dom/media-decoding-configuration
   take form media-decoding-configuration
 
-load @drumwork/land/code/javascript/dom/media-encoding-configuration
+load @drumwork/moon/code/javascript/dom/media-encoding-configuration
   take form media-encoding-configuration
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
-form media-capabilities
-  name <MediaCapabilities>
-  task decoding-info
-    name <decodingInfo>
+form media-capabilities, name <MediaCapabilities>
+  task decoding-info, name <decodingInfo>
     take configuration, like media-decoding-configuration
     free seed
       like promise
         like media-capabilities-decoding-info
 
-  task encoding-info
-    name <encodingInfo>
+  task encoding-info, name <encodingInfo>
     take configuration, like media-encoding-configuration
     free seed
       like promise

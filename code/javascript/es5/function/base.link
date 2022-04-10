@@ -1,53 +1,52 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
-
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
 
 form function, name <Function>
   take prototype, name <prototype>
     like native-any
-    lock free
+    lock false
   take length, name <length>
     like native-number
   take arguments, name <arguments>
     like native-any
-    lock free
+    lock false
   take caller, name <caller>
     like function
-    lock free
+    lock false
 
   task apply, name <apply>
     take this, like function
     take this-arg, like native-any
     take arg-array, like native-any
-      void take
+      void true
     free seed, like native-any
 
   task call, name <call>
     take this, like function
     take this-arg, like native-any
     take arg-array
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-any
 
   task bind, name <bind>
     take this, like function
     take this-arg, like native-any
     take arg-array
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-any
 
   task to-string, name <toString>

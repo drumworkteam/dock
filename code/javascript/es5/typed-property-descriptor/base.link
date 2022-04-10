@@ -1,36 +1,39 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-form typed-property-descriptor
-  name <TypedPropertyDescriptor>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form typed-property-descriptor, name <TypedPropertyDescriptor>
   head t, like like-link-text
 
   take enumerable, name <enumerable>
     like native-boolean
-    lock free
+    lock false
   take configurable, name <configurable>
     like native-boolean
-    lock free
+    lock false
   take writable, name <writable>
     like native-boolean
-    lock free
+    lock false
   take value, name <value>
     like t
-    lock free
+    lock false
   take get, name <get>
-    like task
+    like task-link-text
       free seed, like t
-    lock free
+    lock false
   take set, name <set>
-    like task
+    like task-link-text
       take value, like t
       free seed, like native-void
-    lock free
+    lock false

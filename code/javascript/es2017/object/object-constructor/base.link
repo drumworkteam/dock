@@ -1,21 +1,28 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/es2015/core/object-constructor
+load @drumwork/moon/code/javascript/es2015/core/object-constructor
   take form object-constructor
 
-load @drumwork/land/code/javascript/es5/array-like
+load @drumwork/moon/code/javascript/es5/array-like
   take form array-like
 
-load @drumwork/land/code/javascript/es5/property-descriptor
+load @drumwork/moon/code/javascript/es5/property-descriptor
   take form property-descriptor
 
-load @drumwork/land/code/javascript/es5/typed-property-descriptor
+load @drumwork/moon/code/javascript/es5/typed-property-descriptor
   take form typed-property-descriptor
+
+load @drumwork/seed/code/form/and
+  take form and
+    save form and-link-text
 
 load @drumwork/seed/code/form/band
   take form band
@@ -37,46 +44,41 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form object-constructor
-  name <ObjectConstructor>
+form object-constructor, name <ObjectConstructor>
   task values, name <values>
     head t, like like-link-text
     take o
-      like sink-link-text
+      like or-link-text
         like form-link-text
-          cite s, like native-string
+          mesh s, like native-string
             like t
         like array-like
           like t
     free seed
-      like list-link-text
+      like native-array
         like t
 
   task values, name <values>
     take o, like form-link-text
     free seed
-      like list-link-text
+      like native-array
         like native-any
 
   task entries, name <entries>
     head t, like like-link-text
     take o
-      like sink-link-text
+      like or-link-text
         like form-link-text
-          cite s, like native-string
+          mesh s, like native-string
             like t
         like array-like
           like t
     free seed
-      like list-link-text
+      like native-array
         like band-link-text
           like native-string
           like t
@@ -84,17 +86,16 @@ form object-constructor
   task entries, name <entries>
     take o, like form-link-text
     free seed
-      like list-link-text
+      like native-array
         like band-link-text
           like native-string
           like native-any
 
-  task get-own-property-descriptors
-    name <getOwnPropertyDescriptors>
+  task get-own-property-descriptors, name <getOwnPropertyDescriptors>
     head t, like like-link-text
     take o, like t
     free seed
-      like link
+      like and-link-text
         slot self
         walk link-name-like-list
           loan
@@ -102,12 +103,12 @@ form object-constructor
             like t
           take name
           take p
-          tool self
+          beam self
             take loan name
               like typed-property-descriptor
                 like form-link-link-text
                   like t
                   like p
         like form-link-text
-          cite x, like native-string
+          mesh x, like native-string
             like property-descriptor

@@ -1,21 +1,19 @@
 
-load @drumwork/land/code/javascript/dom/event
+load @drumwork/moon/code/javascript/dom/event
   take form event
 
-load @drumwork/land/code/javascript/dom/html-element-event-map
+load @drumwork/moon/code/javascript/dom/html-element-event-map
   take form html-element-event-map
 
-load @drumwork/land/code/javascript/dom/media-encrypted-event
+load @drumwork/moon/code/javascript/dom/media-encrypted-event
   take form media-encrypted-event
 
-form html-media-element-event-map
-  name <HTMLMediaElementEventMap>
+form html-media-element-event-map, name <HTMLMediaElementEventMap>
   base html-element-event-map
 
   take encrypted, name <encrypted>
     like media-encrypted-event
-    lock free
-  take waitingforkey
-    name <waitingforkey>
+    lock false
+  take waitingforkey, name <waitingforkey>
     like event
-    lock free
+    lock false

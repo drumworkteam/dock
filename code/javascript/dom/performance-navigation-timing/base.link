@@ -1,50 +1,41 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/dom/dom-high-res-time-stamp
+load @drumwork/moon/code/javascript/dom/dom-high-res-time-stamp
   take form dom-high-res-time-stamp
 
-load @drumwork/land/code/javascript/dom/navigation-type
+load @drumwork/moon/code/javascript/dom/navigation-type
   take form navigation-type
 
-load @drumwork/land/code/javascript/dom/performance-resource-timing
+load @drumwork/moon/code/javascript/dom/performance-resource-timing
   take form performance-resource-timing
 
-form performance-navigation-timing
-  name <PerformanceNavigationTiming>
+form performance-navigation-timing, name <PerformanceNavigationTiming>
   base performance-resource-timing
 
   take dom-complete, name <domComplete>
     like dom-high-res-time-stamp
-  take dom-content-loaded-event-end
-    name <domContentLoadedEventEnd>
+  take dom-content-loaded-event-end, name <domContentLoadedEventEnd>
     like dom-high-res-time-stamp
-  take dom-content-loaded-event-start
-    name <domContentLoadedEventStart>
+  take dom-content-loaded-event-start, name <domContentLoadedEventStart>
     like dom-high-res-time-stamp
-  take dom-interactive
-    name <domInteractive>
+  take dom-interactive, name <domInteractive>
     like dom-high-res-time-stamp
-  take load-event-end
-    name <loadEventEnd>
+  take load-event-end, name <loadEventEnd>
     like dom-high-res-time-stamp
-  take load-event-start
-    name <loadEventStart>
+  take load-event-start, name <loadEventStart>
     like dom-high-res-time-stamp
-  take redirect-count
-    name <redirectCount>
+  take redirect-count, name <redirectCount>
     like native-number
   take type, name <type>
     like navigation-type
-  take unload-event-end
-    name <unloadEventEnd>
+  take unload-event-end, name <unloadEventEnd>
     like dom-high-res-time-stamp
-  take unload-event-start
-    name <unloadEventStart>
+  take unload-event-start, name <unloadEventStart>
     like dom-high-res-time-stamp
 
   task to-json, name <toJSON>

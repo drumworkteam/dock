@@ -1,50 +1,50 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/add-event-listener-options
+load @drumwork/moon/code/javascript/dom/add-event-listener-options
   take form add-event-listener-options
 
-load @drumwork/land/code/javascript/dom/document-and-element-event-handlers
+load @drumwork/moon/code/javascript/dom/document-and-element-event-handlers
   take form document-and-element-event-handlers
 
-load @drumwork/land/code/javascript/dom/element
+load @drumwork/moon/code/javascript/dom/element
   take form element
 
-load @drumwork/land/code/javascript/dom/element-content-editable
+load @drumwork/moon/code/javascript/dom/element-content-editable
   take form element-content-editable
 
-load @drumwork/land/code/javascript/dom/element-css-inline-style
+load @drumwork/moon/code/javascript/dom/element-css-inline-style
   take form element-css-inline-style
 
-load @drumwork/land/code/javascript/dom/event-listener-options
+load @drumwork/moon/code/javascript/dom/event-listener-options
   take form event-listener-options
 
-load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+load @drumwork/moon/code/javascript/dom/event-listener-or-event-listener-object
   take form event-listener-or-event-listener-object
 
-load @drumwork/land/code/javascript/dom/global-event-handlers
+load @drumwork/moon/code/javascript/dom/global-event-handlers
   take form global-event-handlers
 
-load @drumwork/land/code/javascript/dom/html-element-event-map
+load @drumwork/moon/code/javascript/dom/html-element-event-map
   take form html-element-event-map
 
-load @drumwork/land/code/javascript/dom/html-or-svg-element
+load @drumwork/moon/code/javascript/dom/html-or-svg-element
   take form html-or-svg-element
 
 load @drumwork/seed/code/form/form/link
@@ -59,9 +59,13 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form html-element, name <HTMLElement>
   base element
@@ -74,37 +78,33 @@ form html-element, name <HTMLElement>
 
   take access-key, name <accessKey>
     like native-string
-    lock free
-  take access-key-label
-    name <accessKeyLabel>
+    lock false
+  take access-key-label, name <accessKeyLabel>
     like native-string
-  take autocapitalize
-    name <autocapitalize>
+  take autocapitalize, name <autocapitalize>
     like native-string
-    lock free
+    lock false
   take dir, name <dir>
     like native-string
-    lock free
+    lock false
   take draggable, name <draggable>
     like native-boolean
-    lock free
+    lock false
   take hidden, name <hidden>
     like native-boolean
-    lock free
+    lock false
   take inner-text, name <innerText>
     like native-string
-    lock free
+    lock false
   take lang, name <lang>
     like native-string
-    lock free
-  take offset-height
-    name <offsetHeight>
+    lock false
+  take offset-height, name <offsetHeight>
     like native-number
   take offset-left, name <offsetLeft>
     like native-number
-  take offset-parent
-    name <offsetParent>
-    like sink-link-text
+  take offset-parent, name <offsetParent>
+    like or-link-text
       like element
       like native-null
   take offset-top, name <offsetTop>
@@ -113,28 +113,27 @@ form html-element, name <HTMLElement>
     like native-number
   take outer-text, name <outerText>
     like native-string
-    lock free
+    lock false
   take spellcheck, name <spellcheck>
     like native-boolean
-    lock free
+    lock false
   take title, name <title>
     like native-string
-    lock free
+    lock false
   take translate, name <translate>
     like native-boolean
-    lock free
+    lock false
 
   task click, name <click>
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     head k, like like-link-text
       base link-read-link-text
         like html-element-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like html-element
         take ev
           like form-link-link-text
@@ -142,31 +141,29 @@ form html-element, name <HTMLElement>
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     head k, like like-link-text
       base link-read-link-text
         like html-element-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like html-element
         take ev
           like form-link-link-text
@@ -174,19 +171,18 @@ form html-element, name <HTMLElement>
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void

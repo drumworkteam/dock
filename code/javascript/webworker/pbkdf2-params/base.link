@@ -1,64 +1,64 @@
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/dom/pbkdf2-params
+load @drumwork/moon/code/javascript/dom/pbkdf2-params
   take form pbkdf2-params
 
-load @drumwork/land/code/javascript/es5/array-buffer
+load @drumwork/moon/code/javascript/es5/array-buffer
   take form array-buffer
 
-load @drumwork/land/code/javascript/es5/data-view
+load @drumwork/moon/code/javascript/es5/data-view
   take form data-view
 
-load @drumwork/land/code/javascript/es5/float32-array
+load @drumwork/moon/code/javascript/es5/float32-array
   take form float32-array
 
-load @drumwork/land/code/javascript/es5/float64-array
+load @drumwork/moon/code/javascript/es5/float64-array
   take form float64-array
 
-load @drumwork/land/code/javascript/es5/int16-array
+load @drumwork/moon/code/javascript/es5/int16-array
   take form int16-array
 
-load @drumwork/land/code/javascript/es5/int32-array
+load @drumwork/moon/code/javascript/es5/int32-array
   take form int32-array
 
-load @drumwork/land/code/javascript/es5/int8-array
+load @drumwork/moon/code/javascript/es5/int8-array
   take form int8-array
 
-load @drumwork/land/code/javascript/es5/uint16-array
+load @drumwork/moon/code/javascript/es5/uint16-array
   take form uint16-array
 
-load @drumwork/land/code/javascript/es5/uint32-array
+load @drumwork/moon/code/javascript/es5/uint32-array
   take form uint32-array
 
-load @drumwork/land/code/javascript/es5/uint8-array
+load @drumwork/moon/code/javascript/es5/uint8-array
   take form uint8-array
 
-load @drumwork/land/code/javascript/es5/uint8-clamped-array
+load @drumwork/moon/code/javascript/es5/uint8-clamped-array
   take form uint8-clamped-array
 
-load @drumwork/land/code/javascript/webworker/algorithm
+load @drumwork/moon/code/javascript/webworker/algorithm
   take form algorithm
 
-load @drumwork/land/code/javascript/webworker/hash-algorithm-identifier
+load @drumwork/moon/code/javascript/webworker/hash-algorithm-identifier
   take form hash-algorithm-identifier
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form pbkdf2-params, name <Pbkdf2Params>
   base algorithm
 
   take hash, name <hash>
     like hash-algorithm-identifier
-    lock free
+    lock false
   take iterations, name <iterations>
     like native-number
-    lock free
+    lock false
   take salt, name <salt>
-    like sink-link-text
+    like or-link-text
       like int8-array
       like int16-array
       like int32-array
@@ -70,4 +70,4 @@ form pbkdf2-params, name <Pbkdf2Params>
       like float64-array
       like data-view
       like array-buffer
-    lock free
+    lock false

@@ -1,34 +1,33 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/readable-stream-default-controller
+load @drumwork/moon/code/javascript/dom/readable-stream-default-controller
   take form readable-stream-default-controller
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form readable-stream-default-controller
-  name <ReadableStreamDefaultController>
+form readable-stream-default-controller, name <ReadableStreamDefaultController>
   head r, like like-link-text
     back native-any
 
   take desired-size, name <desiredSize>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-null
 
@@ -41,5 +40,5 @@ form readable-stream-default-controller
 
   task error, name <error>
     take e, like native-any
-      void take
+      void true
     free seed, like native-void

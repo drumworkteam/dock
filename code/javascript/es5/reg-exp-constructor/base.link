@@ -1,52 +1,51 @@
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/es5/reg-exp
+load @drumwork/moon/code/javascript/es5/reg-exp
   take form reg-exp
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form reg-exp-constructor
-  name <RegExpConstructor>
+form reg-exp-constructor, name <RegExpConstructor>
   take prototype, name <prototype>
     like reg-exp
   take 1, name <$1>
     like native-string
-    lock free
+    lock false
   take 2, name <$2>
     like native-string
-    lock free
+    lock false
   take 3, name <$3>
     like native-string
-    lock free
+    lock false
   take 4, name <$4>
     like native-string
-    lock free
+    lock false
   take 5, name <$5>
     like native-string
-    lock free
+    lock false
   take 6, name <$6>
     like native-string
-    lock free
+    lock false
   take 7, name <$7>
     like native-string
-    lock free
+    lock false
   take 8, name <$8>
     like native-string
-    lock free
+    lock false
   take 9, name <$9>
     like native-string
-    lock free
+    lock false
   take last-match, name <lastMatch>
     like native-string
-    lock free
+    lock false
 
   hook make
     take pattern
-      like sink-link-text
+      like or-link-text
         like reg-exp
         like native-string
     free seed, like reg-exp
@@ -54,5 +53,5 @@ form reg-exp-constructor
   hook make
     take pattern, like native-string
     take flags, like native-string
-      void take
+      void true
     free seed, like reg-exp

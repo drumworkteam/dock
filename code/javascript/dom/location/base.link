@@ -1,57 +1,56 @@
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/dom-string-list
+load @drumwork/moon/code/javascript/dom/dom-string-list
   take form dom-string-list
 
-load @drumwork/land/code/javascript/dom/url
+load @drumwork/moon/code/javascript/dom/url
   take form url
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form location, name <Location>
-  take ancestor-origins
-    name <ancestorOrigins>
+  take ancestor-origins, name <ancestorOrigins>
     like dom-string-list
   take hash, name <hash>
     like native-string
-    lock free
+    lock false
   take host, name <host>
     like native-string
-    lock free
+    lock false
   take hostname, name <hostname>
     like native-string
-    lock free
+    lock false
   take href, name <href>
     like native-string
-    lock free
+    lock false
   take origin, name <origin>
     like native-string
   take pathname, name <pathname>
     like native-string
-    lock free
+    lock false
   take port, name <port>
     like native-string
-    lock free
+    lock false
   take protocol, name <protocol>
     like native-string
-    lock free
+    lock false
   take search, name <search>
     like native-string
-    lock free
+    lock false
 
   task to-string, name <toString>
     free seed, like native-string
 
   task assign, name <assign>
     take url
-      like sink-link-text
+      like or-link-text
         like native-string
         like url
     free seed, like native-void
@@ -61,7 +60,7 @@ form location, name <Location>
 
   task replace, name <replace>
     take url
-      like sink-link-text
+      like or-link-text
         like native-string
         like url
     free seed, like native-void

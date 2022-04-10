@@ -1,45 +1,48 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/iterable/form-data
+load @drumwork/moon/code/javascript/dom/iterable/form-data
   take form form-data
 
-load @drumwork/land/code/javascript/webworker/blob
+load @drumwork/moon/code/javascript/webworker/blob
   take form blob
 
-load @drumwork/land/code/javascript/webworker/form-data-entry-value
+load @drumwork/moon/code/javascript/webworker/form-data-entry-value
   take form form-data-entry-value
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form form-data, name <FormData>
   task append, name <append>
     take name, like native-string
     take value
-      like sink-link-text
+      like or-link-text
         like native-string
         like blob
     take file-name, like native-string
-      void take
+      void true
     free seed, like native-void
 
   task delete, name <delete>
@@ -49,14 +52,14 @@ form form-data, name <FormData>
   task get, name <get>
     take name, like native-string
     free seed
-      like sink-link-text
+      like or-link-text
         like form-data-entry-value
         like native-null
 
   task get-all, name <getAll>
     take name, like native-string
     free seed
-      like list-link-text
+      like native-array
         like form-data-entry-value
 
   task has, name <has>
@@ -66,20 +69,20 @@ form form-data, name <FormData>
   task set, name <set>
     take name, like native-string
     take value
-      like sink-link-text
+      like or-link-text
         like native-string
         like blob
     take file-name, like native-string
-      void take
+      void true
     free seed, like native-void
 
   task for-each, name <forEach>
     take callbackfn
-      like task
+      like task-link-text
         take value, like form-data-entry-value
         take key, like native-string
         take parent, like form-data
         free seed, like native-void
     take this-arg, like native-any
-      void take
+      void true
     free seed, like native-void

@@ -1,51 +1,48 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/media-metadata
+load @drumwork/moon/code/javascript/dom/media-metadata
   take form media-metadata
 
-load @drumwork/land/code/javascript/dom/media-position-state
+load @drumwork/moon/code/javascript/dom/media-position-state
   take form media-position-state
 
-load @drumwork/land/code/javascript/dom/media-session-action
+load @drumwork/moon/code/javascript/dom/media-session-action
   take form media-session-action
 
-load @drumwork/land/code/javascript/dom/media-session-action-handler
+load @drumwork/moon/code/javascript/dom/media-session-action-handler
   take form media-session-action-handler
 
-load @drumwork/land/code/javascript/dom/media-session-playback-state
+load @drumwork/moon/code/javascript/dom/media-session-playback-state
   take form media-session-playback-state
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form media-session, name <MediaSession>
   take metadata, name <metadata>
-    like sink-link-text
+    like or-link-text
       like media-metadata
       like native-null
-    lock free
-  take playback-state
-    name <playbackState>
+    lock false
+  take playback-state, name <playbackState>
     like media-session-playback-state
-    lock free
+    lock false
 
-  task set-action-handler
-    name <setActionHandler>
+  task set-action-handler, name <setActionHandler>
     take action, like media-session-action
     take handler
-      like sink-link-text
+      like or-link-text
         like media-session-action-handler
         like native-null
     free seed, like native-void
 
-  task set-position-state
-    name <setPositionState>
+  task set-position-state, name <setPositionState>
     take state, like media-position-state
-      void take
+      void true
     free seed, like native-void

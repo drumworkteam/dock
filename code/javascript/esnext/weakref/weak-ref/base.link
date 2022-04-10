@@ -1,20 +1,20 @@
 
-load @drumwork/land/code/javascript/base/native-object
+load @drumwork/moon/code/javascript/base/native-object
   take form native-object
 
-load @drumwork/land/code/javascript/base/native-undefined
+load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/land/code/javascript/es2021/weakref/weak-ref
+load @drumwork/moon/code/javascript/es2021/weakref/weak-ref
   take form weak-ref
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form weak-ref, name <WeakRef>
   head t, like like-link-text
@@ -22,10 +22,10 @@ form weak-ref, name <WeakRef>
 
   take loan symbol/to-string-tag
     text <WeakRef>
-    read take
+    read true
 
   task deref, name <deref>
     free seed
-      like sink-link-text
+      like or-link-text
         like t
         like native-undefined

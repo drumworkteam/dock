@@ -1,25 +1,23 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-form array-constructor
-  name <ArrayConstructor>
+form array-constructor, name <ArrayConstructor>
   take prototype, name <prototype>
-    like list-link-text
+    like native-array
       like native-any
 
   task is-array, name <isArray>
@@ -27,29 +25,29 @@ form array-constructor
     free seed
       like native-boolean
       rank arg
-        like list-link-text
+        like native-array
           like native-any
 
   hook make
     take array-length, like native-number
-      void take
+      void true
     free seed
-      like list-link-text
+      like native-array
         like native-any
 
   hook make
     head t, like like-link-text
     take array-length, like native-number
     free seed
-      like list-link-text
+      like native-array
         like t
 
   hook make
     head t, like like-link-text
     take items
-      like list-link-text
+      like native-array
         like t
-      rest take
+      rest true
     free seed
-      like list-link-text
+      like native-array
         like t

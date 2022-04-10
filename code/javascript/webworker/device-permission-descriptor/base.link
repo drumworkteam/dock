@@ -1,24 +1,23 @@
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/webworker/permission-descriptor
+load @drumwork/moon/code/javascript/webworker/permission-descriptor
   take form permission-descriptor
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form device-permission-descriptor
-  name <DevicePermissionDescriptor>
+form device-permission-descriptor, name <DevicePermissionDescriptor>
   base permission-descriptor
 
   take device-id, name <deviceId>
     like native-string
-    lock free
+    lock false
   take name, name <name>
-    like sink-link-text
+    like or-link-text
       text <camera>
       text <microphone>
       text <speaker>
-    lock free
+    lock false

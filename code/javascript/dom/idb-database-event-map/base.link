@@ -1,22 +1,20 @@
 
-load @drumwork/land/code/javascript/dom/event
+load @drumwork/moon/code/javascript/dom/event
   take form event
 
-load @drumwork/land/code/javascript/dom/idb-version-change-event
+load @drumwork/moon/code/javascript/dom/idb-version-change-event
   take form idb-version-change-event
 
-form idb-database-event-map
-  name <IDBDatabaseEventMap>
+form idb-database-event-map, name <IDBDatabaseEventMap>
   take abort, name <abort>
     like event
-    lock free
+    lock false
   take close, name <close>
     like event
-    lock free
+    lock false
   take error, name <error>
     like event
-    lock free
-  take versionchange
-    name <versionchange>
+    lock false
+  take versionchange, name <versionchange>
     like idb-version-change-event
-    lock free
+    lock false

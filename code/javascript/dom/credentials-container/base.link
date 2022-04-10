@@ -1,48 +1,46 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/credential
+load @drumwork/moon/code/javascript/dom/credential
   take form credential
 
-load @drumwork/land/code/javascript/dom/credential-creation-options
+load @drumwork/moon/code/javascript/dom/credential-creation-options
   take form credential-creation-options
 
-load @drumwork/land/code/javascript/dom/credential-request-options
+load @drumwork/moon/code/javascript/dom/credential-request-options
   take form credential-request-options
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form credentials-container
-  name <CredentialsContainer>
+form credentials-container, name <CredentialsContainer>
   task create, name <create>
     take options, like credential-creation-options
-      void take
+      void true
     free seed
       like promise
-        like sink-link-text
+        like or-link-text
           like credential
           like native-null
 
   task get, name <get>
     take options, like credential-request-options
-      void take
+      void true
     free seed
       like promise
-        like sink-link-text
+        like or-link-text
           like credential
           like native-null
 
-  task prevent-silent-access
-    name <preventSilentAccess>
+  task prevent-silent-access, name <preventSilentAccess>
     free seed
       like promise
         like native-void

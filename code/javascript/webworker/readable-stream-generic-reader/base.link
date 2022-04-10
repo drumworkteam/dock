@@ -1,28 +1,27 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-undefined
+load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/readable-stream-generic-reader
+load @drumwork/moon/code/javascript/dom/readable-stream-generic-reader
   take form readable-stream-generic-reader
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
-form readable-stream-generic-reader
-  name <ReadableStreamGenericReader>
+form readable-stream-generic-reader, name <ReadableStreamGenericReader>
   take closed, name <closed>
     like promise
       like native-undefined
 
   task cancel, name <cancel>
     take reason, like native-any
-      void take
+      void true
     free seed
       like promise
         like native-void

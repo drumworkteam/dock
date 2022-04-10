@@ -1,46 +1,46 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-undefined
+load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/land/code/javascript/es5/string
+load @drumwork/moon/code/javascript/es5/string
   take form string
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form string, name <String>
   task code-point-at, name <codePointAt>
     take pos, like native-number
     free seed
-      like sink-link-text
+      like or-link-text
         like native-number
         like native-undefined
 
   task includes, name <includes>
     take search-string, like native-string
     take position, like native-number
-      void take
+      void true
     free seed, like native-boolean
 
   task ends-with, name <endsWith>
     take search-string, like native-string
     take end-position, like native-number
-      void take
+      void true
     free seed, like native-boolean
 
   task normalize, name <normalize>
     take form
-      like sink-link-text
+      like or-link-text
         text <NFC>
         text <NFD>
         text <NFKC>
@@ -49,7 +49,7 @@ form string, name <String>
 
   task normalize, name <normalize>
     take form, like native-string
-      void take
+      void true
     free seed, like native-string
 
   task repeat, name <repeat>
@@ -59,7 +59,7 @@ form string, name <String>
   task starts-with, name <startsWith>
     take search-string, like native-string
     take position, like native-number
-      void take
+      void true
     free seed, like native-boolean
 
   task anchor, name <anchor>

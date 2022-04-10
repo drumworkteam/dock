@@ -1,103 +1,122 @@
 
-load @drumwork/land/code/javascript/base/native-any
+bear @drumwork/moon/code/javascript/webworker/web-assembly/global
+bear @drumwork/moon/code/javascript/webworker/web-assembly/instance
+bear @drumwork/moon/code/javascript/webworker/web-assembly/memory
+bear @drumwork/moon/code/javascript/webworker/web-assembly/module
+bear @drumwork/moon/code/javascript/webworker/web-assembly/table
+bear @drumwork/moon/code/javascript/webworker/web-assembly/global-descriptor
+bear @drumwork/moon/code/javascript/webworker/web-assembly/memory-descriptor
+bear @drumwork/moon/code/javascript/webworker/web-assembly/module-export-descriptor
+bear @drumwork/moon/code/javascript/webworker/web-assembly/module-import-descriptor
+bear @drumwork/moon/code/javascript/webworker/web-assembly/table-descriptor
+bear @drumwork/moon/code/javascript/webworker/web-assembly/web-assembly-instantiated-source
+bear @drumwork/moon/code/javascript/webworker/web-assembly/import-export-kind
+bear @drumwork/moon/code/javascript/webworker/web-assembly/table-kind
+bear @drumwork/moon/code/javascript/webworker/web-assembly/value-type
+bear @drumwork/moon/code/javascript/webworker/web-assembly/export-value
+bear @drumwork/moon/code/javascript/webworker/web-assembly/exports
+bear @drumwork/moon/code/javascript/webworker/web-assembly/import-value
+bear @drumwork/moon/code/javascript/webworker/web-assembly/module-imports
+bear @drumwork/moon/code/javascript/webworker/web-assembly/imports
+
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/es5/array-buffer
+load @drumwork/moon/code/javascript/es5/array-buffer
   take form array-buffer
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
-load @drumwork/land/code/javascript/es5/promise-like
+load @drumwork/moon/code/javascript/es5/promise-like
   take form promise-like
 
-load @drumwork/land/code/javascript/webworker/buffer-source
+load @drumwork/moon/code/javascript/webworker/buffer-source
   take form buffer-source
 
-load @drumwork/land/code/javascript/webworker/global
+load @drumwork/moon/code/javascript/webworker/global
   take form global
 
-load @drumwork/land/code/javascript/webworker/global-descriptor
+load @drumwork/moon/code/javascript/webworker/global-descriptor
   take form global-descriptor
 
-load @drumwork/land/code/javascript/webworker/imports
+load @drumwork/moon/code/javascript/webworker/imports
   take form imports
 
-load @drumwork/land/code/javascript/webworker/instance
+load @drumwork/moon/code/javascript/webworker/instance
   take form instance
 
-load @drumwork/land/code/javascript/webworker/memory
+load @drumwork/moon/code/javascript/webworker/memory
   take form memory
 
-load @drumwork/land/code/javascript/webworker/memory-descriptor
+load @drumwork/moon/code/javascript/webworker/memory-descriptor
   take form memory-descriptor
 
-load @drumwork/land/code/javascript/webworker/module
+load @drumwork/moon/code/javascript/webworker/module
   take form module
 
-load @drumwork/land/code/javascript/webworker/module-export-descriptor
+load @drumwork/moon/code/javascript/webworker/module-export-descriptor
   take form module-export-descriptor
 
-load @drumwork/land/code/javascript/webworker/module-import-descriptor
+load @drumwork/moon/code/javascript/webworker/module-import-descriptor
   take form module-import-descriptor
 
-load @drumwork/land/code/javascript/webworker/response
+load @drumwork/moon/code/javascript/webworker/response
   take form response
 
-load @drumwork/land/code/javascript/webworker/table
+load @drumwork/moon/code/javascript/webworker/table
   take form table
 
-load @drumwork/land/code/javascript/webworker/table-descriptor
+load @drumwork/moon/code/javascript/webworker/table-descriptor
   take form table-descriptor
 
-load @drumwork/land/code/javascript/webworker/web-assembly-instantiated-source
+load @drumwork/moon/code/javascript/webworker/web-assembly-instantiated-source
   take form web-assembly-instantiated-source
 
 load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 host global, name <Global>
   like form-link-text
     take prototype, name <prototype>
       like global
-      lock free
+      lock false
     hook make
       take descriptor, like global-descriptor
       take v, like native-any
-        void take
+        void true
       free seed, like global
 
 host instance, name <Instance>
   like form-link-text
     take prototype, name <prototype>
       like instance
-      lock free
+      lock false
     hook make
       take module, like module
       take import-object, like imports
-        void take
+        void true
       free seed, like instance
 
 host memory, name <Memory>
   like form-link-text
     take prototype, name <prototype>
       like memory
-      lock free
+      lock false
     hook make
       take descriptor, like memory-descriptor
       free seed, like memory
@@ -106,36 +125,35 @@ host module, name <Module>
   like form-link-text
     take prototype, name <prototype>
       like module
-      lock free
+      lock false
     hook make
       take bytes, like buffer-source
       free seed, like module
 
-    task custom-sections
-      name <customSections>
+    task custom-sections, name <customSections>
       take module-object, like module
       take section-name, like native-string
       free seed
-        like list-link-text
+        like native-array
           like array-buffer
 
     task exports, name <exports>
       take module-object, like module
       free seed
-        like list-link-text
+        like native-array
           like module-export-descriptor
 
     task imports, name <imports>
       take module-object, like module
       free seed
-        like list-link-text
+        like native-array
           like module-import-descriptor
 
 host table, name <Table>
   like form-link-text
     take prototype, name <prototype>
       like table
-      lock free
+      lock false
     hook make
       take descriptor, like table-descriptor
       free seed, like table
@@ -146,10 +164,9 @@ task compile, name <compile>
     like promise
       like module
 
-task compile-streaming
-  name <compileStreaming>
+task compile-streaming, name <compileStreaming>
   take source
-    like sink-link-text
+    like or-link-text
       like response
       like promise
         like response
@@ -160,7 +177,7 @@ task compile-streaming
 task instantiate, name <instantiate>
   take bytes, like buffer-source
   take import-object, like imports
-    void take
+    void true
   free seed
     like promise
       like web-assembly-instantiated-source
@@ -168,20 +185,19 @@ task instantiate, name <instantiate>
 task instantiate, name <instantiate>
   take module-object, like module
   take import-object, like imports
-    void take
+    void true
   free seed
     like promise
       like instance
 
-task instantiate-streaming
-  name <instantiateStreaming>
+task instantiate-streaming, name <instantiateStreaming>
   take response
-    like sink-link-text
+    like or-link-text
       like response
       like promise-like
         like response
   take import-object, like imports
-    void take
+    void true
   free seed
     like promise
       like web-assembly-instantiated-source

@@ -1,42 +1,41 @@
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-undefined
+load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/custom-element-constructor
+load @drumwork/moon/code/javascript/dom/custom-element-constructor
   take form custom-element-constructor
 
-load @drumwork/land/code/javascript/dom/element-definition-options
+load @drumwork/moon/code/javascript/dom/element-definition-options
   take form element-definition-options
 
-load @drumwork/land/code/javascript/dom/node
+load @drumwork/moon/code/javascript/dom/node
   take form node
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form custom-element-registry
-  name <CustomElementRegistry>
+form custom-element-registry, name <CustomElementRegistry>
   task define, name <define>
     take name, like native-string
     take constructor, like custom-element-constructor
     take options, like element-definition-options
-      void take
+      void true
     free seed, like native-void
 
   task get, name <get>
     take name, like native-string
     free seed
-      like sink-link-text
+      like or-link-text
         like custom-element-constructor
         like native-undefined
 

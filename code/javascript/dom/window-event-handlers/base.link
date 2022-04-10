@@ -1,50 +1,50 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/add-event-listener-options
+load @drumwork/moon/code/javascript/dom/add-event-listener-options
   take form add-event-listener-options
 
-load @drumwork/land/code/javascript/dom/before-unload-event
+load @drumwork/moon/code/javascript/dom/before-unload-event
   take form before-unload-event
 
-load @drumwork/land/code/javascript/dom/event
+load @drumwork/moon/code/javascript/dom/event
   take form event
 
-load @drumwork/land/code/javascript/dom/event-listener-options
+load @drumwork/moon/code/javascript/dom/event-listener-options
   take form event-listener-options
 
-load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+load @drumwork/moon/code/javascript/dom/event-listener-or-event-listener-object
   take form event-listener-or-event-listener-object
 
-load @drumwork/land/code/javascript/dom/message-event
+load @drumwork/moon/code/javascript/dom/message-event
   take form message-event
 
-load @drumwork/land/code/javascript/dom/page-transition-event
+load @drumwork/moon/code/javascript/dom/page-transition-event
   take form page-transition-event
 
-load @drumwork/land/code/javascript/dom/pop-state-event
+load @drumwork/moon/code/javascript/dom/pop-state-event
   take form pop-state-event
 
-load @drumwork/land/code/javascript/dom/promise-rejection-event
+load @drumwork/moon/code/javascript/dom/promise-rejection-event
   take form promise-rejection-event
 
-load @drumwork/land/code/javascript/dom/storage-event
+load @drumwork/moon/code/javascript/dom/storage-event
   take form storage-event
 
-load @drumwork/land/code/javascript/dom/window-event-handlers-event-map
+load @drumwork/moon/code/javascript/dom/window-event-handlers-event-map
   take form window-event-handlers-event-map
 
 load @drumwork/seed/code/form/form/link
@@ -59,173 +59,167 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form window-event-handlers
-  name <WindowEventHandlers>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form window-event-handlers, name <WindowEventHandlers>
   take onafterprint, name <onafterprint>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like window-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
-  take onbeforeprint
-    name <onbeforeprint>
-    like sink-link-text
-      like task
+    lock false
+  take onbeforeprint, name <onbeforeprint>
+    like or-link-text
+      like task-link-text
         take this, like window-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
-  take onbeforeunload
-    name <onbeforeunload>
-    like sink-link-text
-      like task
+    lock false
+  take onbeforeunload, name <onbeforeunload>
+    like or-link-text
+      like task-link-text
         take this, like window-event-handlers
         take ev, like before-unload-event
         free seed, like native-any
       like native-null
-    lock free
-  take ongamepadconnected
-    name <ongamepadconnected>
-    like sink-link-text
-      like task
+    lock false
+  take ongamepadconnected, name <ongamepadconnected>
+    like or-link-text
+      like task-link-text
         take this, like window-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
-  take ongamepaddisconnected
-    name <ongamepaddisconnected>
-    like sink-link-text
-      like task
+    lock false
+  take ongamepaddisconnected, name <ongamepaddisconnected>
+    like or-link-text
+      like task-link-text
         take this, like window-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onhashchange, name <onhashchange>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like window-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
-  take onlanguagechange
-    name <onlanguagechange>
-    like sink-link-text
-      like task
+    lock false
+  take onlanguagechange, name <onlanguagechange>
+    like or-link-text
+      like task-link-text
         take this, like window-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onmessage, name <onmessage>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like window-event-handlers
         take ev, like message-event
         free seed, like native-any
       like native-null
-    lock free
-  take onmessageerror
-    name <onmessageerror>
-    like sink-link-text
-      like task
+    lock false
+  take onmessageerror, name <onmessageerror>
+    like or-link-text
+      like task-link-text
         take this, like window-event-handlers
         take ev, like message-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onoffline, name <onoffline>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like window-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take ononline, name <ononline>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like window-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onpagehide, name <onpagehide>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like window-event-handlers
         take ev, like page-transition-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onpageshow, name <onpageshow>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like window-event-handlers
         take ev, like page-transition-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onpopstate, name <onpopstate>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like window-event-handlers
         take ev, like pop-state-event
         free seed, like native-any
       like native-null
-    lock free
-  take onrejectionhandled
-    name <onrejectionhandled>
-    like sink-link-text
-      like task
+    lock false
+  take onrejectionhandled, name <onrejectionhandled>
+    like or-link-text
+      like task-link-text
         take this, like window-event-handlers
         take ev, like promise-rejection-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onstorage, name <onstorage>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like window-event-handlers
         take ev, like storage-event
         free seed, like native-any
       like native-null
-    lock free
-  take onunhandledrejection
-    name <onunhandledrejection>
-    like sink-link-text
-      like task
+    lock false
+  take onunhandledrejection, name <onunhandledrejection>
+    like or-link-text
+      like task-link-text
         take this, like window-event-handlers
         take ev, like promise-rejection-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onunload, name <onunload>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like window-event-handlers
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     head k, like like-link-text
       base link-read-link-text
         like window-event-handlers-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like window-event-handlers
         take ev
           like form-link-link-text
@@ -233,31 +227,29 @@ form window-event-handlers
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     head k, like like-link-text
       base link-read-link-text
         like window-event-handlers-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like window-event-handlers
         take ev
           like form-link-link-text
@@ -265,19 +257,18 @@ form window-event-handlers
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void

@@ -1,23 +1,26 @@
 
-load @drumwork/land/code/javascript/base/native-unknown
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-unknown
   take form native-unknown
 
-load @drumwork/land/code/javascript/base/u
+load @drumwork/moon/code/javascript/base/u
   take form u
 
-load @drumwork/land/code/javascript/es2015/iterable/iterable
+load @drumwork/moon/code/javascript/es2015/iterable/iterable
   take form iterable
 
-load @drumwork/land/code/javascript/es2015/symbol/wellknown/promise-constructor
+load @drumwork/moon/code/javascript/es2015/symbol/wellknown/promise-constructor
   take form promise-constructor
 
-load @drumwork/land/code/javascript/es2018/promise/promise
+load @drumwork/moon/code/javascript/es2018/promise/promise
   take form promise
 
-load @drumwork/land/code/javascript/es2020/promise/promise-settled-result
+load @drumwork/moon/code/javascript/es2020/promise/promise-settled-result
   take form promise-settled-result
 
-load @drumwork/land/code/javascript/es5/promise-like
+load @drumwork/moon/code/javascript/es5/promise-like
   take form promise-like
 
 load @drumwork/seed/code/form/band
@@ -36,24 +39,19 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 load @drumwork/seed/code/form/test
   take form test
     save form test-link-text
 
-form promise-constructor
-  name <PromiseConstructor>
+form promise-constructor, name <PromiseConstructor>
   task all-settled, name <allSettled>
     head t, like like-link-text
-      base sink-link-text
-        like list-link-text
+      base or-link-text
+        like native-array
           like native-unknown
         like band-link-text
           like native-unknown
@@ -67,7 +65,7 @@ form promise-constructor
             like t
           take name
           take p
-          tool self
+          beam self
             take loan name
               like promise-settled-result
                 like test-link-text
@@ -77,9 +75,9 @@ form promise-constructor
                       like p
                     like promise-like
                       name u
-                    hook take
+                    hook true
                       like u
-                    hook free
+                    hook false
                       like form-link-link-text
                         like t
                         like p
@@ -91,14 +89,14 @@ form promise-constructor
         like t
     free seed
       like promise
-        like list-link-text
+        like native-array
           like promise-settled-result
             like test-link-text
               stem roll
                 like t
                 like promise-like
                   name u
-                hook take
+                hook true
                   like u
-                hook free
+                hook false
                   like t

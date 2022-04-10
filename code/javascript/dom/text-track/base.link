@@ -1,47 +1,47 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/add-event-listener-options
+load @drumwork/moon/code/javascript/dom/add-event-listener-options
   take form add-event-listener-options
 
-load @drumwork/land/code/javascript/dom/event
+load @drumwork/moon/code/javascript/dom/event
   take form event
 
-load @drumwork/land/code/javascript/dom/event-listener-options
+load @drumwork/moon/code/javascript/dom/event-listener-options
   take form event-listener-options
 
-load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+load @drumwork/moon/code/javascript/dom/event-listener-or-event-listener-object
   take form event-listener-or-event-listener-object
 
-load @drumwork/land/code/javascript/dom/event-target
+load @drumwork/moon/code/javascript/dom/event-target
   take form event-target
 
-load @drumwork/land/code/javascript/dom/text-track-cue
+load @drumwork/moon/code/javascript/dom/text-track-cue
   take form text-track-cue
 
-load @drumwork/land/code/javascript/dom/text-track-cue-list
+load @drumwork/moon/code/javascript/dom/text-track-cue-list
   take form text-track-cue-list
 
-load @drumwork/land/code/javascript/dom/text-track-event-map
+load @drumwork/moon/code/javascript/dom/text-track-event-map
   take form text-track-event-map
 
-load @drumwork/land/code/javascript/dom/text-track-kind
+load @drumwork/moon/code/javascript/dom/text-track-kind
   take form text-track-kind
 
-load @drumwork/land/code/javascript/dom/text-track-mode
+load @drumwork/moon/code/javascript/dom/text-track-mode
   take form text-track-mode
 
 load @drumwork/seed/code/form/form/link
@@ -56,25 +56,28 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form text-track, name <TextTrack>
   base event-target
 
   take active-cues, name <activeCues>
-    like sink-link-text
+    like or-link-text
       like text-track-cue-list
       like native-null
   take cues, name <cues>
-    like sink-link-text
+    like or-link-text
       like text-track-cue-list
       like native-null
   take id, name <id>
     like native-string
-  take in-band-metadata-track-dispatch-type
-    name <inBandMetadataTrackDispatchType>
+  take in-band-metadata-track-dispatch-type, name <inBandMetadataTrackDispatchType>
     like native-string
   take kind, name <kind>
     like text-track-kind
@@ -84,15 +87,15 @@ form text-track, name <TextTrack>
     like native-string
   take mode, name <mode>
     like text-track-mode
-    lock free
+    lock false
   take oncuechange, name <oncuechange>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like text-track
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
 
   task add-cue, name <addCue>
     take cue, like text-track-cue
@@ -102,14 +105,13 @@ form text-track, name <TextTrack>
     take cue, like text-track-cue
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     head k, like like-link-text
       base link-read-link-text
         like text-track-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like text-track
         take ev
           like form-link-link-text
@@ -117,31 +119,29 @@ form text-track, name <TextTrack>
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     head k, like like-link-text
       base link-read-link-text
         like text-track-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like text-track
         take ev
           like form-link-link-text
@@ -149,19 +149,18 @@ form text-track, name <TextTrack>
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void

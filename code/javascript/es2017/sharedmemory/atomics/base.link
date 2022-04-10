@@ -1,40 +1,40 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/es2016/array/include/int16-array
+load @drumwork/moon/code/javascript/es2016/array/include/int16-array
   take form int16-array
 
-load @drumwork/land/code/javascript/es2016/array/include/int32-array
+load @drumwork/moon/code/javascript/es2016/array/include/int32-array
   take form int32-array
 
-load @drumwork/land/code/javascript/es2016/array/include/int8-array
+load @drumwork/moon/code/javascript/es2016/array/include/int8-array
   take form int8-array
 
-load @drumwork/land/code/javascript/es2016/array/include/uint16-array
+load @drumwork/moon/code/javascript/es2016/array/include/uint16-array
   take form uint16-array
 
-load @drumwork/land/code/javascript/es2016/array/include/uint32-array
+load @drumwork/moon/code/javascript/es2016/array/include/uint32-array
   take form uint32-array
 
-load @drumwork/land/code/javascript/es2016/array/include/uint8-array
+load @drumwork/moon/code/javascript/es2016/array/include/uint8-array
   take form uint8-array
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form atomics, name <Atomics>
   take loan symbol/to-string-tag
     text <Atomics>
-    read take
+    read true
 
   task add, name <add>
     take typed-array
-      like sink-link-text
+      like or-link-text
         like int8-array
         like uint8-array
         like int16-array
@@ -47,7 +47,7 @@ form atomics, name <Atomics>
 
   task and, name <and>
     take typed-array
-      like sink-link-text
+      like or-link-text
         like int8-array
         like uint8-array
         like int16-array
@@ -58,10 +58,9 @@ form atomics, name <Atomics>
     take value, like native-number
     free seed, like native-number
 
-  task compare-exchange
-    name <compareExchange>
+  task compare-exchange, name <compareExchange>
     take typed-array
-      like sink-link-text
+      like or-link-text
         like int8-array
         like uint8-array
         like int16-array
@@ -75,7 +74,7 @@ form atomics, name <Atomics>
 
   task exchange, name <exchange>
     take typed-array
-      like sink-link-text
+      like or-link-text
         like int8-array
         like uint8-array
         like int16-array
@@ -92,7 +91,7 @@ form atomics, name <Atomics>
 
   task load, name <load>
     take typed-array
-      like sink-link-text
+      like or-link-text
         like int8-array
         like uint8-array
         like int16-array
@@ -104,7 +103,7 @@ form atomics, name <Atomics>
 
   task or, name <or>
     take typed-array
-      like sink-link-text
+      like or-link-text
         like int8-array
         like uint8-array
         like int16-array
@@ -117,7 +116,7 @@ form atomics, name <Atomics>
 
   task store, name <store>
     take typed-array
-      like sink-link-text
+      like or-link-text
         like int8-array
         like uint8-array
         like int16-array
@@ -130,7 +129,7 @@ form atomics, name <Atomics>
 
   task sub, name <sub>
     take typed-array
-      like sink-link-text
+      like or-link-text
         like int8-array
         like uint8-array
         like int16-array
@@ -146,9 +145,9 @@ form atomics, name <Atomics>
     take index, like native-number
     take value, like native-number
     take timeout, like native-number
-      void take
+      void true
     free seed
-      like sink-link-text
+      like or-link-text
         text <ok>
         text <not-equal>
         text <timed-out>
@@ -157,12 +156,12 @@ form atomics, name <Atomics>
     take typed-array, like int32-array
     take index, like native-number
     take count, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task xor, name <xor>
     take typed-array
-      like sink-link-text
+      like or-link-text
         like int8-array
         like uint8-array
         like int16-array

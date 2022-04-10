@@ -1,31 +1,31 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/event-target
+load @drumwork/moon/code/javascript/dom/event-target
   take form event-target
 
-load @drumwork/land/code/javascript/dom/ui-event
+load @drumwork/moon/code/javascript/dom/ui-event
   take form ui-event
 
-load @drumwork/land/code/javascript/dom/window
+load @drumwork/moon/code/javascript/dom/window
   take form window
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form mouse-event, name <MouseEvent>
   base ui-event
@@ -56,9 +56,8 @@ form mouse-event, name <MouseEvent>
     like native-number
   take page-y, name <pageY>
     like native-number
-  take related-target
-    name <relatedTarget>
-    like sink-link-text
+  take related-target, name <relatedTarget>
+    like or-link-text
       like event-target
       like native-null
   take screen-x, name <screenX>
@@ -72,13 +71,11 @@ form mouse-event, name <MouseEvent>
   take y, name <y>
     like native-number
 
-  task get-modifier-state
-    name <getModifierState>
+  task get-modifier-state, name <getModifierState>
     take key-arg, like native-string
     free seed, like native-boolean
 
-  task init-mouse-event
-    name <initMouseEvent>
+  task init-mouse-event, name <initMouseEvent>
     take type-arg, like native-string
     take can-bubble-arg, like native-boolean
     take cancelable-arg, like native-boolean
@@ -94,7 +91,7 @@ form mouse-event, name <MouseEvent>
     take meta-key-arg, like native-boolean
     take button-arg, like native-number
     take related-target-arg
-      like sink-link-text
+      like or-link-text
         like event-target
         like native-null
     free seed, like native-void

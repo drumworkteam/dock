@@ -1,53 +1,48 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/document
+load @drumwork/moon/code/javascript/dom/document
   take form document
 
-load @drumwork/land/code/javascript/dom/document-fragment
+load @drumwork/moon/code/javascript/dom/document-fragment
   take form document-fragment
 
-load @drumwork/land/code/javascript/dom/node
+load @drumwork/moon/code/javascript/dom/node
   take form node
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form xslt-processor
-  name <XSLTProcessor>
-  task clear-parameters
-    name <clearParameters>
+form xslt-processor, name <XSLTProcessor>
+  task clear-parameters, name <clearParameters>
     free seed, like native-void
 
-  task get-parameter
-    name <getParameter>
+  task get-parameter, name <getParameter>
     take namespace-uri
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-null
     take local-name, like native-string
     free seed, like native-any
 
-  task import-stylesheet
-    name <importStylesheet>
+  task import-stylesheet, name <importStylesheet>
     take style, like node
     free seed, like native-void
 
-  task remove-parameter
-    name <removeParameter>
+  task remove-parameter, name <removeParameter>
     take namespace-uri
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-null
     take local-name, like native-string
@@ -56,23 +51,20 @@ form xslt-processor
   task reset, name <reset>
     free seed, like native-void
 
-  task set-parameter
-    name <setParameter>
+  task set-parameter, name <setParameter>
     take namespace-uri
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-null
     take local-name, like native-string
     take value, like native-any
     free seed, like native-void
 
-  task transform-to-document
-    name <transformToDocument>
+  task transform-to-document, name <transformToDocument>
     take source, like node
     free seed, like document
 
-  task transform-to-fragment
-    name <transformToFragment>
+  task transform-to-fragment, name <transformToFragment>
     take source, like node
     take output, like document
     free seed, like document-fragment

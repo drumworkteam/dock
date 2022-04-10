@@ -1,56 +1,56 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/add-event-listener-options
+load @drumwork/moon/code/javascript/dom/add-event-listener-options
   take form add-event-listener-options
 
-load @drumwork/land/code/javascript/dom/binary-type
+load @drumwork/moon/code/javascript/dom/binary-type
   take form binary-type
 
-load @drumwork/land/code/javascript/dom/blob
+load @drumwork/moon/code/javascript/dom/blob
   take form blob
 
-load @drumwork/land/code/javascript/dom/close-event
+load @drumwork/moon/code/javascript/dom/close-event
   take form close-event
 
-load @drumwork/land/code/javascript/dom/event
+load @drumwork/moon/code/javascript/dom/event
   take form event
 
-load @drumwork/land/code/javascript/dom/event-listener-options
+load @drumwork/moon/code/javascript/dom/event-listener-options
   take form event-listener-options
 
-load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+load @drumwork/moon/code/javascript/dom/event-listener-or-event-listener-object
   take form event-listener-or-event-listener-object
 
-load @drumwork/land/code/javascript/dom/event-target
+load @drumwork/moon/code/javascript/dom/event-target
   take form event-target
 
-load @drumwork/land/code/javascript/dom/message-event
+load @drumwork/moon/code/javascript/dom/message-event
   take form message-event
 
-load @drumwork/land/code/javascript/dom/web-socket-event-map
+load @drumwork/moon/code/javascript/dom/web-socket-event-map
   take form web-socket-event-map
 
-load @drumwork/land/code/javascript/es5/array-buffer-like
+load @drumwork/moon/code/javascript/es5/array-buffer-like
   take form array-buffer-like
 
-load @drumwork/land/code/javascript/es5/array-buffer-view
+load @drumwork/moon/code/javascript/es5/array-buffer-view
   take form array-buffer-view
 
 load @drumwork/seed/code/form/form/link
@@ -65,53 +65,56 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form web-socket, name <WebSocket>
   base event-target
 
   take binary-type, name <binaryType>
     like binary-type
-    lock free
-  take buffered-amount
-    name <bufferedAmount>
+    lock false
+  take buffered-amount, name <bufferedAmount>
     like native-number
   take extensions, name <extensions>
     like native-string
   take onclose, name <onclose>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like web-socket
         take ev, like close-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onerror, name <onerror>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like web-socket
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onmessage, name <onmessage>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like web-socket
         take ev, like message-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onopen, name <onopen>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like web-socket
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take protocol, name <protocol>
     like native-string
   take ready-state, name <readyState>
@@ -129,28 +132,27 @@ form web-socket, name <WebSocket>
 
   task close, name <close>
     take code, like native-number
-      void take
+      void true
     take reason, like native-string
-      void take
+      void true
     free seed, like native-void
 
   task send, name <send>
     take data
-      like sink-link-text
+      like or-link-text
         like native-string
         like array-buffer-like
         like blob
         like array-buffer-view
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     head k, like like-link-text
       base link-read-link-text
         like web-socket-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like web-socket
         take ev
           like form-link-link-text
@@ -158,31 +160,29 @@ form web-socket, name <WebSocket>
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     head k, like like-link-text
       base link-read-link-text
         like web-socket-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like web-socket
         take ev
           like form-link-link-text
@@ -190,19 +190,18 @@ form web-socket, name <WebSocket>
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void

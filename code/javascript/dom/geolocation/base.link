@@ -1,51 +1,49 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/position-callback
+load @drumwork/moon/code/javascript/dom/position-callback
   take form position-callback
 
-load @drumwork/land/code/javascript/dom/position-error-callback
+load @drumwork/moon/code/javascript/dom/position-error-callback
   take form position-error-callback
 
-load @drumwork/land/code/javascript/dom/position-options
+load @drumwork/moon/code/javascript/dom/position-options
   take form position-options
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form geolocation, name <Geolocation>
   task clear-watch, name <clearWatch>
     take watch-id, like native-number
     free seed, like native-void
 
-  task get-current-position
-    name <getCurrentPosition>
+  task get-current-position, name <getCurrentPosition>
     take success-callback, like position-callback
     take error-callback
-      like sink-link-text
+      like or-link-text
         like position-error-callback
         like native-null
-      void take
+      void true
     take options, like position-options
-      void take
+      void true
     free seed, like native-void
 
-  task watch-position
-    name <watchPosition>
+  task watch-position, name <watchPosition>
     take success-callback, like position-callback
     take error-callback
-      like sink-link-text
+      like or-link-text
         like position-error-callback
         like native-null
-      void take
+      void true
     take options, like position-options
-      void take
+      void true
     free seed, like native-number

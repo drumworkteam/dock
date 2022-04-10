@@ -1,47 +1,46 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-undefined
+load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/land/code/javascript/dom/underlying-sink
+load @drumwork/moon/code/javascript/dom/underlying-sink
   take form underlying-sink
 
-load @drumwork/land/code/javascript/webworker/underlying-sink-abort-callback
+load @drumwork/moon/code/javascript/webworker/underlying-sink-abort-callback
   take form underlying-sink-abort-callback
 
-load @drumwork/land/code/javascript/webworker/underlying-sink-close-callback
+load @drumwork/moon/code/javascript/webworker/underlying-sink-close-callback
   take form underlying-sink-close-callback
 
-load @drumwork/land/code/javascript/webworker/underlying-sink-start-callback
+load @drumwork/moon/code/javascript/webworker/underlying-sink-start-callback
   take form underlying-sink-start-callback
 
-load @drumwork/land/code/javascript/webworker/underlying-sink-write-callback
+load @drumwork/moon/code/javascript/webworker/underlying-sink-write-callback
   take form underlying-sink-write-callback
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-form underlying-sink
-  name <UnderlyingSink>
+form underlying-sink, name <UnderlyingSink>
   head w, like like-link-text
     back native-any
 
   take abort, name <abort>
     like underlying-sink-abort-callback
-    lock free
+    lock false
   take close, name <close>
     like underlying-sink-close-callback
-    lock free
+    lock false
   take start, name <start>
     like underlying-sink-start-callback
-    lock free
+    lock false
   take type, name <type>
     like native-undefined
-    lock free
+    lock false
   take write, name <write>
     like underlying-sink-write-callback
       like w
-    lock free
+    lock false

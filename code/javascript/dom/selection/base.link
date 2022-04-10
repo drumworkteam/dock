@@ -1,39 +1,38 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/node
+load @drumwork/moon/code/javascript/dom/node
   take form node
 
-load @drumwork/land/code/javascript/dom/range
+load @drumwork/moon/code/javascript/dom/range
   take form range
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form selection, name <Selection>
   take anchor-node, name <anchorNode>
-    like sink-link-text
+    like or-link-text
       like node
       like native-null
-  take anchor-offset
-    name <anchorOffset>
+  take anchor-offset, name <anchorOffset>
     like native-number
   take focus-node, name <focusNode>
-    like sink-link-text
+    like or-link-text
       like node
       like native-null
   take focus-offset, name <focusOffset>
@@ -51,30 +50,26 @@ form selection, name <Selection>
 
   task collapse, name <collapse>
     take node
-      like sink-link-text
+      like or-link-text
         like node
         like native-null
     take offset, like native-number
-      void take
+      void true
     free seed, like native-void
 
-  task collapse-to-end
-    name <collapseToEnd>
+  task collapse-to-end, name <collapseToEnd>
     free seed, like native-void
 
-  task collapse-to-start
-    name <collapseToStart>
+  task collapse-to-start, name <collapseToStart>
     free seed, like native-void
 
-  task contains-node
-    name <containsNode>
+  task contains-node, name <containsNode>
     take node, like node
     take allow-partial-containment, like native-boolean
-      void take
+      void true
     free seed, like native-boolean
 
-  task delete-from-document
-    name <deleteFromDocument>
+  task delete-from-document, name <deleteFromDocument>
     free seed, like native-void
 
   task empty, name <empty>
@@ -83,28 +78,25 @@ form selection, name <Selection>
   task extend, name <extend>
     take node, like node
     take offset, like native-number
-      void take
+      void true
     free seed, like native-void
 
   task get-range-at, name <getRangeAt>
     take index, like native-number
     free seed, like range
 
-  task remove-all-ranges
-    name <removeAllRanges>
+  task remove-all-ranges, name <removeAllRanges>
     free seed, like native-void
 
   task remove-range, name <removeRange>
     take range, like range
     free seed, like native-void
 
-  task select-all-children
-    name <selectAllChildren>
+  task select-all-children, name <selectAllChildren>
     take node, like node
     free seed, like native-void
 
-  task set-base-and-extent
-    name <setBaseAndExtent>
+  task set-base-and-extent, name <setBaseAndExtent>
     take anchor-node, like node
     take anchor-offset, like native-number
     take focus-node, like node
@@ -113,11 +105,11 @@ form selection, name <Selection>
 
   task set-position, name <setPosition>
     take node
-      like sink-link-text
+      like or-link-text
         like node
         like native-null
     take offset, like native-number
-      void take
+      void true
     free seed, like native-void
 
   task to-string, name <toString>

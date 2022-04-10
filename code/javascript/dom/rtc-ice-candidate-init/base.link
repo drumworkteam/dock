@@ -1,36 +1,33 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form rtc-ice-candidate-init
-  name <RTCIceCandidateInit>
+form rtc-ice-candidate-init, name <RTCIceCandidateInit>
   take candidate, name <candidate>
     like native-string
-    lock free
-  take sdp-m-line-index
-    name <sdpMLineIndex>
-    like sink-link-text
+    lock false
+  take sdp-m-line-index, name <sdpMLineIndex>
+    like or-link-text
       like native-number
       like native-null
-    lock free
+    lock false
   take sdp-mid, name <sdpMid>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
-    lock free
-  take username-fragment
-    name <usernameFragment>
-    like sink-link-text
+    lock false
+  take username-fragment, name <usernameFragment>
+    like or-link-text
       like native-string
       like native-null
-    lock free
+    lock false

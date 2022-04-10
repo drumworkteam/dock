@@ -1,22 +1,21 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/dom/readable-writable-pair
+load @drumwork/moon/code/javascript/dom/readable-writable-pair
   take form readable-writable-pair
 
-load @drumwork/land/code/javascript/webworker/readable-stream
+load @drumwork/moon/code/javascript/webworker/readable-stream
   take form readable-stream
 
-load @drumwork/land/code/javascript/webworker/writable-stream
+load @drumwork/moon/code/javascript/webworker/writable-stream
   take form writable-stream
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-form readable-writable-pair
-  name <ReadableWritablePair>
+form readable-writable-pair, name <ReadableWritablePair>
   head r, like like-link-text
     back native-any
   head w, like like-link-text
@@ -25,8 +24,8 @@ form readable-writable-pair
   take readable, name <readable>
     like readable-stream
       like r
-    lock free
+    lock false
   take writable, name <writable>
     like writable-stream
       like w
-    lock free
+    lock false

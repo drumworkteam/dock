@@ -1,43 +1,41 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/dom/push-permission-state
+load @drumwork/moon/code/javascript/dom/push-permission-state
   take form push-permission-state
 
-load @drumwork/land/code/javascript/dom/push-subscription
+load @drumwork/moon/code/javascript/dom/push-subscription
   take form push-subscription
 
-load @drumwork/land/code/javascript/dom/push-subscription-options-init
+load @drumwork/moon/code/javascript/dom/push-subscription-options-init
   take form push-subscription-options-init
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form push-manager, name <PushManager>
-  task get-subscription
-    name <getSubscription>
+  task get-subscription, name <getSubscription>
     free seed
       like promise
-        like sink-link-text
+        like or-link-text
           like push-subscription
           like native-null
 
-  task permission-state
-    name <permissionState>
+  task permission-state, name <permissionState>
     take options, like push-subscription-options-init
-      void take
+      void true
     free seed
       like promise
         like push-permission-state
 
   task subscribe, name <subscribe>
     take options, like push-subscription-options-init
-      void take
+      void true
     free seed
       like promise
         like push-subscription

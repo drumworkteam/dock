@@ -1,38 +1,37 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-undefined
+load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/land/code/javascript/dom/cache-storage
+load @drumwork/moon/code/javascript/dom/cache-storage
   take form cache-storage
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
-load @drumwork/land/code/javascript/webworker/cache
+load @drumwork/moon/code/javascript/webworker/cache
   take form cache
 
-load @drumwork/land/code/javascript/webworker/multi-cache-query-options
+load @drumwork/moon/code/javascript/webworker/multi-cache-query-options
   take form multi-cache-query-options
 
-load @drumwork/land/code/javascript/webworker/request-info
+load @drumwork/moon/code/javascript/webworker/request-info
   take form request-info
 
-load @drumwork/land/code/javascript/webworker/response
+load @drumwork/moon/code/javascript/webworker/response
   take form response
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form cache-storage, name <CacheStorage>
   task delete, name <delete>
@@ -50,16 +49,16 @@ form cache-storage, name <CacheStorage>
   task keys, name <keys>
     free seed
       like promise
-        like list-link-text
+        like native-array
           like native-string
 
   task match, name <match>
     take request, like request-info
     take options, like multi-cache-query-options
-      void take
+      void true
     free seed
       like promise
-        like sink-link-text
+        like or-link-text
           like response
           like native-undefined
 

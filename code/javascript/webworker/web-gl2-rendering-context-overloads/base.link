@@ -1,58 +1,57 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/iterable/web-gl2-rendering-context-overloads
+load @drumwork/moon/code/javascript/dom/iterable/web-gl2-rendering-context-overloads
   take form web-gl2-rendering-context-overloads
 
-load @drumwork/land/code/javascript/es5/array-buffer-view
+load @drumwork/moon/code/javascript/es5/array-buffer-view
   take form array-buffer-view
 
-load @drumwork/land/code/javascript/webworker/buffer-source
+load @drumwork/moon/code/javascript/webworker/buffer-source
   take form buffer-source
 
-load @drumwork/land/code/javascript/webworker/float32-list
+load @drumwork/moon/code/javascript/webworker/float32-list
   take form float32-list
 
-load @drumwork/land/code/javascript/webworker/g-lboolean
+load @drumwork/moon/code/javascript/webworker/g-lboolean
   take form g-lboolean
 
-load @drumwork/land/code/javascript/webworker/g-lenum
+load @drumwork/moon/code/javascript/webworker/g-lenum
   take form g-lenum
 
-load @drumwork/land/code/javascript/webworker/g-lint
+load @drumwork/moon/code/javascript/webworker/g-lint
   take form g-lint
 
-load @drumwork/land/code/javascript/webworker/g-lintptr
+load @drumwork/moon/code/javascript/webworker/g-lintptr
   take form g-lintptr
 
-load @drumwork/land/code/javascript/webworker/g-lsizei
+load @drumwork/moon/code/javascript/webworker/g-lsizei
   take form g-lsizei
 
-load @drumwork/land/code/javascript/webworker/g-lsizeiptr
+load @drumwork/moon/code/javascript/webworker/g-lsizeiptr
   take form g-lsizeiptr
 
-load @drumwork/land/code/javascript/webworker/g-luint
+load @drumwork/moon/code/javascript/webworker/g-luint
   take form g-luint
 
-load @drumwork/land/code/javascript/webworker/int32-list
+load @drumwork/moon/code/javascript/webworker/int32-list
   take form int32-list
 
-load @drumwork/land/code/javascript/webworker/tex-image-source
+load @drumwork/moon/code/javascript/webworker/tex-image-source
   take form tex-image-source
 
-load @drumwork/land/code/javascript/webworker/web-gl-uniform-location
+load @drumwork/moon/code/javascript/webworker/web-gl-uniform-location
   take form web-gl-uniform-location
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form web-gl2-rendering-context-overloads
-  name <WebGL2RenderingContextOverloads>
+form web-gl2-rendering-context-overloads, name <WebGL2RenderingContextOverloads>
   task buffer-data, name <bufferData>
     take target, like g-lenum
     take size, like g-lsizeiptr
@@ -62,7 +61,7 @@ form web-gl2-rendering-context-overloads
   task buffer-data, name <bufferData>
     take target, like g-lenum
     take src-data
-      like sink-link-text
+      like or-link-text
         like buffer-source
         like native-null
     take usage, like g-lenum
@@ -74,28 +73,25 @@ form web-gl2-rendering-context-overloads
     take usage, like g-lenum
     take src-offset, like g-luint
     take length, like g-luint
-      void take
+      void true
     free seed, like native-void
 
-  task buffer-sub-data
-    name <bufferSubData>
+  task buffer-sub-data, name <bufferSubData>
     take target, like g-lenum
     take dst-byte-offset, like g-lintptr
     take src-data, like buffer-source
     free seed, like native-void
 
-  task buffer-sub-data
-    name <bufferSubData>
+  task buffer-sub-data, name <bufferSubData>
     take target, like g-lenum
     take dst-byte-offset, like g-lintptr
     take src-data, like array-buffer-view
     take src-offset, like g-luint
     take length, like g-luint
-      void take
+      void true
     free seed, like native-void
 
-  task compressed-tex-image2-d
-    name <compressedTexImage2D>
+  task compressed-tex-image2-d, name <compressedTexImage2D>
     take target, like g-lenum
     take level, like g-lint
     take internalformat, like g-lenum
@@ -106,8 +102,7 @@ form web-gl2-rendering-context-overloads
     take offset, like g-lintptr
     free seed, like native-void
 
-  task compressed-tex-image2-d
-    name <compressedTexImage2D>
+  task compressed-tex-image2-d, name <compressedTexImage2D>
     take target, like g-lenum
     take level, like g-lint
     take internalformat, like g-lenum
@@ -116,13 +111,12 @@ form web-gl2-rendering-context-overloads
     take border, like g-lint
     take src-data, like array-buffer-view
     take src-offset, like g-luint
-      void take
+      void true
     take src-length-override, like g-luint
-      void take
+      void true
     free seed, like native-void
 
-  task compressed-tex-sub-image2-d
-    name <compressedTexSubImage2D>
+  task compressed-tex-sub-image2-d, name <compressedTexSubImage2D>
     take target, like g-lenum
     take level, like g-lint
     take xoffset, like g-lint
@@ -134,8 +128,7 @@ form web-gl2-rendering-context-overloads
     take offset, like g-lintptr
     free seed, like native-void
 
-  task compressed-tex-sub-image2-d
-    name <compressedTexSubImage2D>
+  task compressed-tex-sub-image2-d, name <compressedTexSubImage2D>
     take target, like g-lenum
     take level, like g-lint
     take xoffset, like g-lint
@@ -145,9 +138,9 @@ form web-gl2-rendering-context-overloads
     take format, like g-lenum
     take src-data, like array-buffer-view
     take src-offset, like g-luint
-      void take
+      void true
     take src-length-override, like g-luint
-      void take
+      void true
     free seed, like native-void
 
   task read-pixels, name <readPixels>
@@ -158,7 +151,7 @@ form web-gl2-rendering-context-overloads
     take format, like g-lenum
     take type, like g-lenum
     take dst-data
-      like sink-link-text
+      like or-link-text
         like array-buffer-view
         like native-null
     free seed, like native-void
@@ -194,7 +187,7 @@ form web-gl2-rendering-context-overloads
     take format, like g-lenum
     take type, like g-lenum
     take pixels
-      like sink-link-text
+      like or-link-text
         like array-buffer-view
         like native-null
     free seed, like native-void
@@ -245,8 +238,7 @@ form web-gl2-rendering-context-overloads
     take src-offset, like g-luint
     free seed, like native-void
 
-  task tex-sub-image2-d
-    name <texSubImage2D>
+  task tex-sub-image2-d, name <texSubImage2D>
     take target, like g-lenum
     take level, like g-lint
     take xoffset, like g-lint
@@ -256,13 +248,12 @@ form web-gl2-rendering-context-overloads
     take format, like g-lenum
     take type, like g-lenum
     take pixels
-      like sink-link-text
+      like or-link-text
         like array-buffer-view
         like native-null
     free seed, like native-void
 
-  task tex-sub-image2-d
-    name <texSubImage2D>
+  task tex-sub-image2-d, name <texSubImage2D>
     take target, like g-lenum
     take level, like g-lint
     take xoffset, like g-lint
@@ -272,8 +263,7 @@ form web-gl2-rendering-context-overloads
     take source, like tex-image-source
     free seed, like native-void
 
-  task tex-sub-image2-d
-    name <texSubImage2D>
+  task tex-sub-image2-d, name <texSubImage2D>
     take target, like g-lenum
     take level, like g-lint
     take xoffset, like g-lint
@@ -285,8 +275,7 @@ form web-gl2-rendering-context-overloads
     take pbo-offset, like g-lintptr
     free seed, like native-void
 
-  task tex-sub-image2-d
-    name <texSubImage2D>
+  task tex-sub-image2-d, name <texSubImage2D>
     take target, like g-lenum
     take level, like g-lint
     take xoffset, like g-lint
@@ -298,8 +287,7 @@ form web-gl2-rendering-context-overloads
     take source, like tex-image-source
     free seed, like native-void
 
-  task tex-sub-image2-d
-    name <texSubImage2D>
+  task tex-sub-image2-d, name <texSubImage2D>
     take target, like g-lenum
     take level, like g-lint
     take xoffset, like g-lint
@@ -314,138 +302,135 @@ form web-gl2-rendering-context-overloads
 
   task uniform1fv, name <uniform1fv>
     take location
-      like sink-link-text
+      like or-link-text
         like web-gl-uniform-location
         like native-null
     take data, like float32-list
     take src-offset, like g-luint
-      void take
+      void true
     take src-length, like g-luint
-      void take
+      void true
     free seed, like native-void
 
   task uniform1iv, name <uniform1iv>
     take location
-      like sink-link-text
+      like or-link-text
         like web-gl-uniform-location
         like native-null
     take data, like int32-list
     take src-offset, like g-luint
-      void take
+      void true
     take src-length, like g-luint
-      void take
+      void true
     free seed, like native-void
 
   task uniform2fv, name <uniform2fv>
     take location
-      like sink-link-text
+      like or-link-text
         like web-gl-uniform-location
         like native-null
     take data, like float32-list
     take src-offset, like g-luint
-      void take
+      void true
     take src-length, like g-luint
-      void take
+      void true
     free seed, like native-void
 
   task uniform2iv, name <uniform2iv>
     take location
-      like sink-link-text
+      like or-link-text
         like web-gl-uniform-location
         like native-null
     take data, like int32-list
     take src-offset, like g-luint
-      void take
+      void true
     take src-length, like g-luint
-      void take
+      void true
     free seed, like native-void
 
   task uniform3fv, name <uniform3fv>
     take location
-      like sink-link-text
+      like or-link-text
         like web-gl-uniform-location
         like native-null
     take data, like float32-list
     take src-offset, like g-luint
-      void take
+      void true
     take src-length, like g-luint
-      void take
+      void true
     free seed, like native-void
 
   task uniform3iv, name <uniform3iv>
     take location
-      like sink-link-text
+      like or-link-text
         like web-gl-uniform-location
         like native-null
     take data, like int32-list
     take src-offset, like g-luint
-      void take
+      void true
     take src-length, like g-luint
-      void take
+      void true
     free seed, like native-void
 
   task uniform4fv, name <uniform4fv>
     take location
-      like sink-link-text
+      like or-link-text
         like web-gl-uniform-location
         like native-null
     take data, like float32-list
     take src-offset, like g-luint
-      void take
+      void true
     take src-length, like g-luint
-      void take
+      void true
     free seed, like native-void
 
   task uniform4iv, name <uniform4iv>
     take location
-      like sink-link-text
+      like or-link-text
         like web-gl-uniform-location
         like native-null
     take data, like int32-list
     take src-offset, like g-luint
-      void take
+      void true
     take src-length, like g-luint
-      void take
+      void true
     free seed, like native-void
 
-  task uniform-matrix2fv
-    name <uniformMatrix2fv>
+  task uniform-matrix2fv, name <uniformMatrix2fv>
     take location
-      like sink-link-text
+      like or-link-text
         like web-gl-uniform-location
         like native-null
     take transpose, like g-lboolean
     take data, like float32-list
     take src-offset, like g-luint
-      void take
+      void true
     take src-length, like g-luint
-      void take
+      void true
     free seed, like native-void
 
-  task uniform-matrix3fv
-    name <uniformMatrix3fv>
+  task uniform-matrix3fv, name <uniformMatrix3fv>
     take location
-      like sink-link-text
+      like or-link-text
         like web-gl-uniform-location
         like native-null
     take transpose, like g-lboolean
     take data, like float32-list
     take src-offset, like g-luint
-      void take
+      void true
     take src-length, like g-luint
-      void take
+      void true
     free seed, like native-void
 
-  task uniform-matrix4fv
-    name <uniformMatrix4fv>
+  task uniform-matrix4fv, name <uniformMatrix4fv>
     take location
-      like sink-link-text
+      like or-link-text
         like web-gl-uniform-location
         like native-null
     take transpose, like g-lboolean
     take data, like float32-list
     take src-offset, like g-luint
-      void take
+      void true
     take src-length, like g-luint
-      void take
+      void true
     free seed, like native-void

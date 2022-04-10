@@ -1,31 +1,28 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/scripthost/text-stream-base
+load @drumwork/moon/code/javascript/scripthost/text-stream-base
   take form text-stream-base
 
-form text-stream-reader
-  name <TextStreamReader>
+form text-stream-reader, name <TextStreamReader>
   base text-stream-base
 
-  take at-end-of-line
-    name <AtEndOfLine>
+  take at-end-of-line, name <AtEndOfLine>
     like native-boolean
-    lock free
-  take at-end-of-stream
-    name <AtEndOfStream>
+    lock false
+  take at-end-of-stream, name <AtEndOfStream>
     like native-boolean
-    lock free
+    lock false
 
   task read, name <Read>
     take characters, like native-number

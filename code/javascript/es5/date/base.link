@@ -1,49 +1,43 @@
 
-load @drumwork/land/code/javascript/base/intl-date-time-format-options
+load @drumwork/moon/code/javascript/base/intl-date-time-format-options
   take form intl-date-time-format-options
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/es5/date
+load @drumwork/moon/code/javascript/es5/date
   take form date
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form date, name <Date>
   task to-string, name <toString>
     free seed, like native-string
 
-  task to-date-string
-    name <toDateString>
+  task to-date-string, name <toDateString>
     free seed, like native-string
 
-  task to-time-string
-    name <toTimeString>
+  task to-time-string, name <toTimeString>
     free seed, like native-string
 
-  task to-locale-string
-    name <toLocaleString>
+  task to-locale-string, name <toLocaleString>
     free seed, like native-string
 
-  task to-locale-date-string
-    name <toLocaleDateString>
+  task to-locale-date-string, name <toLocaleDateString>
     free seed, like native-string
 
-  task to-locale-time-string
-    name <toLocaleTimeString>
+  task to-locale-time-string, name <toLocaleTimeString>
     free seed, like native-string
 
   task value-of, name <valueOf>
@@ -55,8 +49,7 @@ form date, name <Date>
   task get-full-year, name <getFullYear>
     free seed, like native-number
 
-  task get-utc-full-year
-    name <getUTCFullYear>
+  task get-utc-full-year, name <getUTCFullYear>
     free seed, like native-number
 
   task get-month, name <getMonth>
@@ -86,91 +79,82 @@ form date, name <Date>
   task get-minutes, name <getMinutes>
     free seed, like native-number
 
-  task get-utc-minutes
-    name <getUTCMinutes>
+  task get-utc-minutes, name <getUTCMinutes>
     free seed, like native-number
 
   task get-seconds, name <getSeconds>
     free seed, like native-number
 
-  task get-utc-seconds
-    name <getUTCSeconds>
+  task get-utc-seconds, name <getUTCSeconds>
     free seed, like native-number
 
-  task get-milliseconds
-    name <getMilliseconds>
+  task get-milliseconds, name <getMilliseconds>
     free seed, like native-number
 
-  task get-utc-milliseconds
-    name <getUTCMilliseconds>
+  task get-utc-milliseconds, name <getUTCMilliseconds>
     free seed, like native-number
 
-  task get-timezone-offset
-    name <getTimezoneOffset>
+  task get-timezone-offset, name <getTimezoneOffset>
     free seed, like native-number
 
   task set-time, name <setTime>
     take time, like native-number
     free seed, like native-number
 
-  task set-milliseconds
-    name <setMilliseconds>
+  task set-milliseconds, name <setMilliseconds>
     take ms, like native-number
     free seed, like native-number
 
-  task set-utc-milliseconds
-    name <setUTCMilliseconds>
+  task set-utc-milliseconds, name <setUTCMilliseconds>
     take ms, like native-number
     free seed, like native-number
 
   task set-seconds, name <setSeconds>
     take sec, like native-number
     take ms, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task set-utc-seconds
-    name <setUTCSeconds>
+  task set-utc-seconds, name <setUTCSeconds>
     take sec, like native-number
     take ms, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task set-minutes, name <setMinutes>
     take min, like native-number
     take sec, like native-number
-      void take
+      void true
     take ms, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task set-utc-minutes
-    name <setUTCMinutes>
+  task set-utc-minutes, name <setUTCMinutes>
     take min, like native-number
     take sec, like native-number
-      void take
+      void true
     take ms, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task set-hours, name <setHours>
     take hours, like native-number
     take min, like native-number
-      void take
+      void true
     take sec, like native-number
-      void take
+      void true
     take ms, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task set-utc-hours, name <setUTCHours>
     take hours, like native-number
     take min, like native-number
-      void take
+      void true
     take sec, like native-number
-      void take
+      void true
     take ms, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task set-date, name <setDate>
@@ -184,30 +168,29 @@ form date, name <Date>
   task set-month, name <setMonth>
     take month, like native-number
     take date, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task set-utc-month, name <setUTCMonth>
     take month, like native-number
     take date, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task set-full-year, name <setFullYear>
     take year, like native-number
     take month, like native-number
-      void take
+      void true
     take date, like native-number
-      void take
+      void true
     free seed, like native-number
 
-  task set-utc-full-year
-    name <setUTCFullYear>
+  task set-utc-full-year, name <setUTCFullYear>
     take year, like native-number
     take month, like native-number
-      void take
+      void true
     take date, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task to-utc-string, name <toUTCString>
@@ -218,42 +201,39 @@ form date, name <Date>
 
   task to-json, name <toJSON>
     take key, like native-any
-      void take
+      void true
     free seed, like native-string
 
 form date, name <Date>
-  task to-locale-string
-    name <toLocaleString>
+  task to-locale-string, name <toLocaleString>
     take locales
-      like sink-link-text
+      like or-link-text
         like native-string
-        like list-link-text
+        like native-array
           like native-string
-      void take
+      void true
     take options, like intl-date-time-format-options
-      void take
+      void true
     free seed, like native-string
 
-  task to-locale-date-string
-    name <toLocaleDateString>
+  task to-locale-date-string, name <toLocaleDateString>
     take locales
-      like sink-link-text
+      like or-link-text
         like native-string
-        like list-link-text
+        like native-array
           like native-string
-      void take
+      void true
     take options, like intl-date-time-format-options
-      void take
+      void true
     free seed, like native-string
 
-  task to-locale-time-string
-    name <toLocaleTimeString>
+  task to-locale-time-string, name <toLocaleTimeString>
     take locales
-      like sink-link-text
+      like or-link-text
         like native-string
-        like list-link-text
+        like native-array
           like native-string
-      void take
+      void true
     take options, like intl-date-time-format-options
-      void take
+      void true
     free seed, like native-string

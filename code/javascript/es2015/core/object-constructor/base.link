@@ -1,24 +1,31 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-object
+load @drumwork/moon/code/javascript/base/native-object
   take form native-object
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-symbol
+load @drumwork/moon/code/javascript/base/native-symbol
   take form native-symbol
 
-load @drumwork/land/code/javascript/es5/object-constructor
+load @drumwork/moon/code/javascript/es5/object-constructor
   take form object-constructor
+
+load @drumwork/seed/code/form/and
+  take form and
+    save form and-link-text
 
 load @drumwork/seed/code/form/form
   take form form
@@ -28,23 +35,18 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form object-constructor
-  name <ObjectConstructor>
+form object-constructor, name <ObjectConstructor>
   task assign, name <assign>
     head t, like like-link-text
     head u, like like-link-text
     take target, like t
     take source, like u
     free seed
-      like link
+      like and-link-text
         like t
         like u
 
@@ -56,7 +58,7 @@ form object-constructor
     take source1, like u
     take source2, like v
     free seed
-      like link
+      like and-link-text
         like t
         like u
         like v
@@ -71,7 +73,7 @@ form object-constructor
     take source2, like v
     take source3, like w
     free seed
-      like link
+      like and-link-text
         like t
         like u
         like v
@@ -80,22 +82,21 @@ form object-constructor
   task assign, name <assign>
     take target, like native-object
     take sources
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-any
 
-  task get-own-property-symbols
-    name <getOwnPropertySymbols>
+  task get-own-property-symbols, name <getOwnPropertySymbols>
     take o, like native-any
     free seed
-      like list-link-text
+      like native-array
         like native-symbol
 
   task keys, name <keys>
     take o, like form-link-text
     free seed
-      like list-link-text
+      like native-array
         like native-string
 
   task is, name <is>
@@ -103,11 +104,10 @@ form object-constructor
     take value2, like native-any
     free seed, like native-boolean
 
-  task set-prototype-of
-    name <setPrototypeOf>
+  task set-prototype-of, name <setPrototypeOf>
     take o, like native-any
     take proto
-      like sink-link-text
+      like or-link-text
         like native-object
         like native-null
     free seed, like native-any

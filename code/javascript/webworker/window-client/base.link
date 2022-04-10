@@ -1,33 +1,32 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
-load @drumwork/land/code/javascript/webworker/client
+load @drumwork/moon/code/javascript/webworker/client
   take form client
 
-load @drumwork/land/code/javascript/webworker/visibility-state
+load @drumwork/moon/code/javascript/webworker/visibility-state
   take form visibility-state
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form window-client, name <WindowClient>
   base client
 
   take focused, name <focused>
     like native-boolean
-  take visibility-state
-    name <visibilityState>
+  take visibility-state, name <visibilityState>
     like visibility-state
 
   task focus, name <focus>
@@ -39,6 +38,6 @@ form window-client, name <WindowClient>
     take url, like native-string
     free seed
       like promise
-        like sink-link-text
+        like or-link-text
           like window-client
           like native-null

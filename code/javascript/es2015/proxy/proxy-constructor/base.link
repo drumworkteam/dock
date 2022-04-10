@@ -1,11 +1,11 @@
 
-load @drumwork/land/code/javascript/base/native-object
+load @drumwork/moon/code/javascript/base/native-object
   take form native-object
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/es2015/proxy/proxy-handler
+load @drumwork/moon/code/javascript/es2015/proxy/proxy-handler
   take form proxy-handler
 
 load @drumwork/seed/code/form/form
@@ -16,8 +16,11 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-form proxy-constructor
-  name <ProxyConstructor>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form proxy-constructor, name <ProxyConstructor>
   task revocable, name <revocable>
     head t, like like-link-text
       base native-object
@@ -29,11 +32,11 @@ form proxy-constructor
       like form-link-text
         take proxy, name <proxy>
           like t
-          lock free
+          lock false
         take revoke, name <revoke>
-          like task
+          like task-link-text
             free seed, like native-void
-          lock free
+          lock false
 
   hook make
     head t, like like-link-text

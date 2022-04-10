@@ -1,33 +1,31 @@
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/dom/rtc-received-rtp-stream-stats
+load @drumwork/moon/code/javascript/dom/rtc-received-rtp-stream-stats
   take form rtc-received-rtp-stream-stats
 
-form rtc-inbound-rtp-stream-stats
-  name <RTCInboundRtpStreamStats>
+form rtc-inbound-rtp-stream-stats, name <RTCInboundRtpStreamStats>
   base rtc-received-rtp-stream-stats
 
   take fir-count, name <firCount>
     like native-number
-    lock free
-  take frames-decoded
-    name <framesDecoded>
+    lock false
+  take frames-decoded, name <framesDecoded>
     like native-number
-    lock free
+    lock false
   take nack-count, name <nackCount>
     like native-number
-    lock free
+    lock false
   take pli-count, name <pliCount>
     like native-number
-    lock free
+    lock false
   take qp-sum, name <qpSum>
     like native-number
-    lock free
+    lock false
   take remote-id, name <remoteId>
     like native-string
-    lock free
+    lock false

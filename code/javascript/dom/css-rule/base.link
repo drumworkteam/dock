@@ -1,57 +1,51 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/dom/css-style-sheet
+load @drumwork/moon/code/javascript/dom/css-style-sheet
   take form css-style-sheet
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form css-rule, name <CSSRule>
   take css-text, name <cssText>
     like native-string
-    lock free
+    lock false
   take parent-rule, name <parentRule>
-    like sink-link-text
+    like or-link-text
       like css-rule
       like native-null
-  take parent-style-sheet
-    name <parentStyleSheet>
-    like sink-link-text
+  take parent-style-sheet, name <parentStyleSheet>
+    like or-link-text
       like css-style-sheet
       like native-null
   take type, name <type>
     like native-number
   take charset-rule, name <CHARSET_RULE>
     like native-number
-  take font-face-rule
-    name <FONT_FACE_RULE>
+  take font-face-rule, name <FONT_FACE_RULE>
     like native-number
   take import-rule, name <IMPORT_RULE>
     like native-number
-  take keyframes-rule
-    name <KEYFRAMES_RULE>
+  take keyframes-rule, name <KEYFRAMES_RULE>
     like native-number
-  take keyframe-rule
-    name <KEYFRAME_RULE>
+  take keyframe-rule, name <KEYFRAME_RULE>
     like native-number
   take media-rule, name <MEDIA_RULE>
     like native-number
-  take namespace-rule
-    name <NAMESPACE_RULE>
+  take namespace-rule, name <NAMESPACE_RULE>
     like native-number
   take page-rule, name <PAGE_RULE>
     like native-number
   take style-rule, name <STYLE_RULE>
     like native-number
-  take supports-rule
-    name <SUPPORTS_RULE>
+  take supports-rule, name <SUPPORTS_RULE>
     like native-number

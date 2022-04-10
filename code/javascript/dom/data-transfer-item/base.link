@@ -1,28 +1,27 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/file
+load @drumwork/moon/code/javascript/dom/file
   take form file
 
-load @drumwork/land/code/javascript/dom/file-system-entry
+load @drumwork/moon/code/javascript/dom/file-system-entry
   take form file-system-entry
 
-load @drumwork/land/code/javascript/dom/function-string-callback
+load @drumwork/moon/code/javascript/dom/function-string-callback
   take form function-string-callback
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form data-transfer-item
-  name <DataTransferItem>
+form data-transfer-item, name <DataTransferItem>
   take kind, name <kind>
     like native-string
   take type, name <type>
@@ -30,20 +29,19 @@ form data-transfer-item
 
   task get-as-file, name <getAsFile>
     free seed
-      like sink-link-text
+      like or-link-text
         like file
         like native-null
 
   task get-as-string, name <getAsString>
     take callback
-      like sink-link-text
+      like or-link-text
         like function-string-callback
         like native-null
     free seed, like native-void
 
-  task webkit-get-as-entry
-    name <webkitGetAsEntry>
+  task webkit-get-as-entry, name <webkitGetAsEntry>
     free seed
-      like sink-link-text
+      like or-link-text
         like file-system-entry
         like native-null

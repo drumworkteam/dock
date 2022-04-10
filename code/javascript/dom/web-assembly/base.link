@@ -1,90 +1,112 @@
 
-load @drumwork/land/code/javascript/base/native-any
+bear @drumwork/moon/code/javascript/dom/web-assembly/compile-error
+bear @drumwork/moon/code/javascript/dom/web-assembly/global
+bear @drumwork/moon/code/javascript/dom/web-assembly/instance
+bear @drumwork/moon/code/javascript/dom/web-assembly/link-error
+bear @drumwork/moon/code/javascript/dom/web-assembly/memory
+bear @drumwork/moon/code/javascript/dom/web-assembly/module
+bear @drumwork/moon/code/javascript/dom/web-assembly/runtime-error
+bear @drumwork/moon/code/javascript/dom/web-assembly/table
+bear @drumwork/moon/code/javascript/dom/web-assembly/global-descriptor
+bear @drumwork/moon/code/javascript/dom/web-assembly/memory-descriptor
+bear @drumwork/moon/code/javascript/dom/web-assembly/module-export-descriptor
+bear @drumwork/moon/code/javascript/dom/web-assembly/module-import-descriptor
+bear @drumwork/moon/code/javascript/dom/web-assembly/table-descriptor
+bear @drumwork/moon/code/javascript/dom/web-assembly/web-assembly-instantiated-source
+bear @drumwork/moon/code/javascript/dom/web-assembly/import-export-kind
+bear @drumwork/moon/code/javascript/dom/web-assembly/table-kind
+bear @drumwork/moon/code/javascript/dom/web-assembly/value-type
+bear @drumwork/moon/code/javascript/dom/web-assembly/export-value
+bear @drumwork/moon/code/javascript/dom/web-assembly/exports
+bear @drumwork/moon/code/javascript/dom/web-assembly/import-value
+bear @drumwork/moon/code/javascript/dom/web-assembly/imports
+bear @drumwork/moon/code/javascript/dom/web-assembly/module-imports
+
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/dom/buffer-source
+load @drumwork/moon/code/javascript/dom/buffer-source
   take form buffer-source
 
-load @drumwork/land/code/javascript/dom/compile-error
+load @drumwork/moon/code/javascript/dom/compile-error
   take form compile-error
 
-load @drumwork/land/code/javascript/dom/global
+load @drumwork/moon/code/javascript/dom/global
   take form global
 
-load @drumwork/land/code/javascript/dom/global-descriptor
+load @drumwork/moon/code/javascript/dom/global-descriptor
   take form global-descriptor
 
-load @drumwork/land/code/javascript/dom/imports
+load @drumwork/moon/code/javascript/dom/imports
   take form imports
 
-load @drumwork/land/code/javascript/dom/instance
+load @drumwork/moon/code/javascript/dom/instance
   take form instance
 
-load @drumwork/land/code/javascript/dom/link-error
+load @drumwork/moon/code/javascript/dom/link-error
   take form link-error
 
-load @drumwork/land/code/javascript/dom/memory
+load @drumwork/moon/code/javascript/dom/memory
   take form memory
 
-load @drumwork/land/code/javascript/dom/memory-descriptor
+load @drumwork/moon/code/javascript/dom/memory-descriptor
   take form memory-descriptor
 
-load @drumwork/land/code/javascript/dom/module
+load @drumwork/moon/code/javascript/dom/module
   take form module
 
-load @drumwork/land/code/javascript/dom/module-export-descriptor
+load @drumwork/moon/code/javascript/dom/module-export-descriptor
   take form module-export-descriptor
 
-load @drumwork/land/code/javascript/dom/module-import-descriptor
+load @drumwork/moon/code/javascript/dom/module-import-descriptor
   take form module-import-descriptor
 
-load @drumwork/land/code/javascript/dom/response
+load @drumwork/moon/code/javascript/dom/response
   take form response
 
-load @drumwork/land/code/javascript/dom/runtime-error
+load @drumwork/moon/code/javascript/dom/runtime-error
   take form runtime-error
 
-load @drumwork/land/code/javascript/dom/table
+load @drumwork/moon/code/javascript/dom/table
   take form table
 
-load @drumwork/land/code/javascript/dom/table-descriptor
+load @drumwork/moon/code/javascript/dom/table-descriptor
   take form table-descriptor
 
-load @drumwork/land/code/javascript/dom/web-assembly-instantiated-source
+load @drumwork/moon/code/javascript/dom/web-assembly-instantiated-source
   take form web-assembly-instantiated-source
 
-load @drumwork/land/code/javascript/es5/array-buffer
+load @drumwork/moon/code/javascript/es5/array-buffer
   take form array-buffer
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
-load @drumwork/land/code/javascript/es5/promise-like
+load @drumwork/moon/code/javascript/es5/promise-like
   take form promise-like
 
 load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 host compile-error, name <CompileError>
   like form-link-text
     take prototype, name <prototype>
       like compile-error
-      lock free
+      lock false
     hook make
       free seed, like compile-error
 
@@ -92,29 +114,29 @@ host global, name <Global>
   like form-link-text
     take prototype, name <prototype>
       like global
-      lock free
+      lock false
     hook make
       take descriptor, like global-descriptor
       take v, like native-any
-        void take
+        void true
       free seed, like global
 
 host instance, name <Instance>
   like form-link-text
     take prototype, name <prototype>
       like instance
-      lock free
+      lock false
     hook make
       take module, like module
       take import-object, like imports
-        void take
+        void true
       free seed, like instance
 
 host link-error, name <LinkError>
   like form-link-text
     take prototype, name <prototype>
       like link-error
-      lock free
+      lock false
     hook make
       free seed, like link-error
 
@@ -122,7 +144,7 @@ host memory, name <Memory>
   like form-link-text
     take prototype, name <prototype>
       like memory
-      lock free
+      lock false
     hook make
       take descriptor, like memory-descriptor
       free seed, like memory
@@ -131,36 +153,35 @@ host module, name <Module>
   like form-link-text
     take prototype, name <prototype>
       like module
-      lock free
+      lock false
     hook make
       take bytes, like buffer-source
       free seed, like module
 
-    task custom-sections
-      name <customSections>
+    task custom-sections, name <customSections>
       take module-object, like module
       take section-name, like native-string
       free seed
-        like list-link-text
+        like native-array
           like array-buffer
 
     task exports, name <exports>
       take module-object, like module
       free seed
-        like list-link-text
+        like native-array
           like module-export-descriptor
 
     task imports, name <imports>
       take module-object, like module
       free seed
-        like list-link-text
+        like native-array
           like module-import-descriptor
 
 host runtime-error, name <RuntimeError>
   like form-link-text
     take prototype, name <prototype>
       like runtime-error
-      lock free
+      lock false
     hook make
       free seed, like runtime-error
 
@@ -168,11 +189,11 @@ host table, name <Table>
   like form-link-text
     take prototype, name <prototype>
       like table
-      lock free
+      lock false
     hook make
       take descriptor, like table-descriptor
       take value, like native-any
-        void take
+        void true
       free seed, like table
 
 task compile, name <compile>
@@ -181,10 +202,9 @@ task compile, name <compile>
     like promise
       like module
 
-task compile-streaming
-  name <compileStreaming>
+task compile-streaming, name <compileStreaming>
   take source
-    like sink-link-text
+    like or-link-text
       like response
       like promise-like
         like response
@@ -195,7 +215,7 @@ task compile-streaming
 task instantiate, name <instantiate>
   take bytes, like buffer-source
   take import-object, like imports
-    void take
+    void true
   free seed
     like promise
       like web-assembly-instantiated-source
@@ -203,20 +223,19 @@ task instantiate, name <instantiate>
 task instantiate, name <instantiate>
   take module-object, like module
   take import-object, like imports
-    void take
+    void true
   free seed
     like promise
       like instance
 
-task instantiate-streaming
-  name <instantiateStreaming>
+task instantiate-streaming, name <instantiateStreaming>
   take source
-    like sink-link-text
+    like or-link-text
       like response
       like promise-like
         like response
   take import-object, like imports
-    void take
+    void true
   free seed
     like promise
       like web-assembly-instantiated-source

@@ -1,36 +1,34 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/dom/event-init
+load @drumwork/moon/code/javascript/dom/event-init
   take form event-init
 
-load @drumwork/land/code/javascript/dom/message-event-source
+load @drumwork/moon/code/javascript/dom/message-event-source
   take form message-event-source
 
-load @drumwork/land/code/javascript/dom/message-port
+load @drumwork/moon/code/javascript/dom/message-port
   take form message-port
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form message-event-init
-  name <MessageEventInit>
+form message-event-init, name <MessageEventInit>
   base event-init
 
   head t, like like-link-text
@@ -38,19 +36,19 @@ form message-event-init
 
   take data, name <data>
     like t
-    lock free
+    lock false
   take last-event-id, name <lastEventId>
     like native-string
-    lock free
+    lock false
   take origin, name <origin>
     like native-string
-    lock free
+    lock false
   take ports, name <ports>
-    like list-link-text
+    like native-array
       like message-port
-    lock free
+    lock false
   take source, name <source>
-    like sink-link-text
+    like or-link-text
       like message-event-source
       like native-null
-    lock free
+    lock false

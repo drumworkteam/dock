@@ -1,44 +1,45 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/es5/array-buffer-like
+load @drumwork/moon/code/javascript/es5/array-buffer-like
   take form array-buffer-like
 
-load @drumwork/land/code/javascript/es5/array-like
+load @drumwork/moon/code/javascript/es5/array-like
   take form array-like
 
-load @drumwork/land/code/javascript/es5/uint8-array
+load @drumwork/moon/code/javascript/es5/uint8-array
   take form uint8-array
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
-form uint8-array-constructor
-  name <Uint8ArrayConstructor>
+form uint8-array-constructor, name <Uint8ArrayConstructor>
   take prototype, name <prototype>
     like uint8-array
-  take bytes-per-element
-    name <BYTES_PER_ELEMENT>
+  take bytes-per-element, name <BYTES_PER_ELEMENT>
     like native-number
 
   task of, name <of>
     take items
-      like list-link-text
+      like native-array
         like native-number
-      rest take
+      rest true
     free seed, like uint8-array
 
   task from, name <from>
@@ -53,12 +54,12 @@ form uint8-array-constructor
       like array-like
         like t
     take mapfn
-      like task
+      like task-link-text
         take v, like t
         take k, like native-number
         free seed, like native-number
     take this-arg, like native-any
-      void take
+      void true
     free seed, like uint8-array
 
   hook make
@@ -67,7 +68,7 @@ form uint8-array-constructor
 
   hook make
     take array
-      like sink-link-text
+      like or-link-text
         like array-like
           like native-number
         like array-buffer-like
@@ -76,7 +77,7 @@ form uint8-array-constructor
   hook make
     take buffer, like array-buffer-like
     take byte-offset, like native-number
-      void take
+      void true
     take length, like native-number
-      void take
+      void true
     free seed, like uint8-array

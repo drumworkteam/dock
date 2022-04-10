@@ -1,62 +1,62 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/add-event-listener-options
+load @drumwork/moon/code/javascript/dom/add-event-listener-options
   take form add-event-listener-options
 
-load @drumwork/land/code/javascript/dom/dom-high-res-time-stamp
+load @drumwork/moon/code/javascript/dom/dom-high-res-time-stamp
   take form dom-high-res-time-stamp
 
-load @drumwork/land/code/javascript/dom/event
+load @drumwork/moon/code/javascript/dom/event
   take form event
 
-load @drumwork/land/code/javascript/dom/event-listener-options
+load @drumwork/moon/code/javascript/dom/event-listener-options
   take form event-listener-options
 
-load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+load @drumwork/moon/code/javascript/dom/event-listener-or-event-listener-object
   take form event-listener-or-event-listener-object
 
-load @drumwork/land/code/javascript/dom/event-target
+load @drumwork/moon/code/javascript/dom/event-target
   take form event-target
 
-load @drumwork/land/code/javascript/dom/performance-entry-list
+load @drumwork/moon/code/javascript/dom/performance-entry-list
   take form performance-entry-list
 
-load @drumwork/land/code/javascript/dom/performance-event-map
+load @drumwork/moon/code/javascript/dom/performance-event-map
   take form performance-event-map
 
-load @drumwork/land/code/javascript/dom/performance-mark
+load @drumwork/moon/code/javascript/dom/performance-mark
   take form performance-mark
 
-load @drumwork/land/code/javascript/dom/performance-mark-options
+load @drumwork/moon/code/javascript/dom/performance-mark-options
   take form performance-mark-options
 
-load @drumwork/land/code/javascript/dom/performance-measure
+load @drumwork/moon/code/javascript/dom/performance-measure
   take form performance-measure
 
-load @drumwork/land/code/javascript/dom/performance-measure-options
+load @drumwork/moon/code/javascript/dom/performance-measure-options
   take form performance-measure-options
 
-load @drumwork/land/code/javascript/dom/performance-navigation
+load @drumwork/moon/code/javascript/dom/performance-navigation
   take form performance-navigation
 
-load @drumwork/land/code/javascript/dom/performance-timing
+load @drumwork/moon/code/javascript/dom/performance-timing
   take form performance-timing
 
 load @drumwork/seed/code/form/form/link
@@ -71,24 +71,27 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form performance, name <Performance>
   base event-target
 
   take navigation, name <navigation>
     like performance-navigation
-  take onresourcetimingbufferfull
-    name <onresourcetimingbufferfull>
-    like sink-link-text
-      like task
+  take onresourcetimingbufferfull, name <onresourcetimingbufferfull>
+    like or-link-text
+      like task-link-text
         take this, like performance
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take time-origin, name <timeOrigin>
     like dom-high-res-time-stamp
   take timing, name <timing>
@@ -96,70 +99,64 @@ form performance, name <Performance>
 
   task clear-marks, name <clearMarks>
     take mark-name, like native-string
-      void take
+      void true
     free seed, like native-void
 
-  task clear-measures
-    name <clearMeasures>
+  task clear-measures, name <clearMeasures>
     take measure-name, like native-string
-      void take
+      void true
     free seed, like native-void
 
-  task clear-resource-timings
-    name <clearResourceTimings>
+  task clear-resource-timings, name <clearResourceTimings>
     free seed, like native-void
 
   task get-entries, name <getEntries>
     free seed, like performance-entry-list
 
-  task get-entries-by-name
-    name <getEntriesByName>
+  task get-entries-by-name, name <getEntriesByName>
     take name, like native-string
     take type, like native-string
-      void take
+      void true
     free seed, like performance-entry-list
 
-  task get-entries-by-type
-    name <getEntriesByType>
+  task get-entries-by-type, name <getEntriesByType>
     take type, like native-string
     free seed, like performance-entry-list
 
   task mark, name <mark>
     take mark-name, like native-string
     take mark-options, like performance-mark-options
-      void take
+      void true
     free seed, like performance-mark
 
   task measure, name <measure>
     take measure-name, like native-string
     take start-or-measure-options
-      like sink-link-text
+      like or-link-text
         like native-string
         like performance-measure-options
-      void take
+      void true
     take end-mark, like native-string
-      void take
+      void true
     free seed, like performance-measure
 
   task now, name <now>
     free seed, like dom-high-res-time-stamp
 
-  task set-resource-timing-buffer-size
-    name <setResourceTimingBufferSize>
+  task set-resource-timing-buffer-size, name <setResourceTimingBufferSize>
     take max-size, like native-number
     free seed, like native-void
 
   task to-json, name <toJSON>
     free seed, like native-any
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     head k, like like-link-text
       base link-read-link-text
         like performance-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like performance
         take ev
           like form-link-link-text
@@ -167,31 +164,29 @@ form performance, name <Performance>
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     head k, like like-link-text
       base link-read-link-text
         like performance-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like performance
         take ev
           like form-link-link-text
@@ -199,19 +194,18 @@ form performance, name <Performance>
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void

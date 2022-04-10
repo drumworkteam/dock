@@ -1,30 +1,28 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/dom/queuing-strategy
+load @drumwork/moon/code/javascript/dom/queuing-strategy
   take form queuing-strategy
 
-load @drumwork/land/code/javascript/webworker/queuing-strategy-size
+load @drumwork/moon/code/javascript/webworker/queuing-strategy-size
   take form queuing-strategy-size
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-form queuing-strategy
-  name <QueuingStrategy>
+form queuing-strategy, name <QueuingStrategy>
   head t, like like-link-text
     back native-any
 
-  take high-water-mark
-    name <highWaterMark>
+  take high-water-mark, name <highWaterMark>
     like native-number
-    lock free
+    lock false
   take size, name <size>
     like queuing-strategy-size
       like t
-    lock free
+    lock false

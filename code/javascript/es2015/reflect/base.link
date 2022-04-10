@@ -1,44 +1,43 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-object
+load @drumwork/moon/code/javascript/base/native-object
   take form native-object
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-symbol
+load @drumwork/moon/code/javascript/base/native-symbol
   take form native-symbol
 
-load @drumwork/land/code/javascript/base/native-undefined
+load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/land/code/javascript/es2015/core/function
+load @drumwork/moon/code/javascript/es2015/core/function
   take form function
 
-load @drumwork/land/code/javascript/es5/array-like
+load @drumwork/moon/code/javascript/es5/array-like
   take form array-like
 
-load @drumwork/land/code/javascript/es5/property-descriptor
+load @drumwork/moon/code/javascript/es5/property-descriptor
   take form property-descriptor
 
-load @drumwork/land/code/javascript/es5/property-key
+load @drumwork/moon/code/javascript/es5/property-key
   take form property-key
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 task apply, name <apply>
   take target, like function
@@ -54,18 +53,16 @@ task construct, name <construct>
     like array-like
       like native-any
   take new-target, like function
-    void take
+    void true
   free seed, like native-any
 
-task define-property
-  name <defineProperty>
+task define-property, name <defineProperty>
   take target, like native-object
   take property-key, like property-key
   take attributes, like property-descriptor
   free seed, like native-boolean
 
-task delete-property
-  name <deleteProperty>
+task delete-property, name <deleteProperty>
   take target, like native-object
   take property-key, like property-key
   free seed, like native-boolean
@@ -74,23 +71,21 @@ task get, name <get>
   take target, like native-object
   take property-key, like property-key
   take receiver, like native-any
-    void take
+    void true
   free seed, like native-any
 
-task get-own-property-descriptor
-  name <getOwnPropertyDescriptor>
+task get-own-property-descriptor, name <getOwnPropertyDescriptor>
   take target, like native-object
   take property-key, like property-key
   free seed
-    like sink-link-text
+    like or-link-text
       like property-descriptor
       like native-undefined
 
-task get-prototype-of
-  name <getPrototypeOf>
+task get-prototype-of, name <getPrototypeOf>
   take target, like native-object
   free seed
-    like sink-link-text
+    like or-link-text
       like native-object
       like native-null
 
@@ -106,13 +101,12 @@ task is-extensible, name <isExtensible>
 task own-keys, name <ownKeys>
   take target, like native-object
   free seed
-    like list-link-text
-      like sink-link-text
+    like native-array
+      like or-link-text
         like native-string
         like native-symbol
 
-task prevent-extensions
-  name <preventExtensions>
+task prevent-extensions, name <preventExtensions>
   take target, like native-object
   free seed, like native-boolean
 
@@ -121,14 +115,13 @@ task set, name <set>
   take property-key, like property-key
   take value, like native-any
   take receiver, like native-any
-    void take
+    void true
   free seed, like native-boolean
 
-task set-prototype-of
-  name <setPrototypeOf>
+task set-prototype-of, name <setPrototypeOf>
   take target, like native-object
   take proto
-    like sink-link-text
+    like or-link-text
       like native-object
       like native-null
   free seed, like native-boolean

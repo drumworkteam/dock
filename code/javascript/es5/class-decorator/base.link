@@ -1,25 +1,28 @@
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/es5/function
+load @drumwork/moon/code/javascript/es5/function
   take form function
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form class-decorator
-  name <ClassDecorator>
-  like task
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form class-decorator, name <ClassDecorator>
+  like task-link-text
     head t-function, like like-link-text
       base function
     take target, like t-function
     free seed
-      like sink-link-text
+      like or-link-text
         like t-function
         like native-void

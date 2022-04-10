@@ -1,29 +1,25 @@
 
-load @drumwork/land/code/javascript/dom/event-modifier-init
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/dom/event-modifier-init
   take form event-modifier-init
 
-load @drumwork/land/code/javascript/dom/touch
+load @drumwork/moon/code/javascript/dom/touch
   take form touch
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-form touch-event-init
-  name <TouchEventInit>
+form touch-event-init, name <TouchEventInit>
   base event-modifier-init
 
-  take changed-touches
-    name <changedTouches>
-    like list-link-text
+  take changed-touches, name <changedTouches>
+    like native-array
       like touch
-    lock free
-  take target-touches
-    name <targetTouches>
-    like list-link-text
+    lock false
+  take target-touches, name <targetTouches>
+    like native-array
       like touch
-    lock free
+    lock false
   take touches, name <touches>
-    like list-link-text
+    like native-array
       like touch
-    lock free
+    lock false

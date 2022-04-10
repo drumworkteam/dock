@@ -1,31 +1,30 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/event
+load @drumwork/moon/code/javascript/dom/event
   take form event
 
-load @drumwork/land/code/javascript/dom/node
+load @drumwork/moon/code/javascript/dom/node
   take form node
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form mutation-event
-  name <MutationEvent>
+form mutation-event, name <MutationEvent>
   base event
 
   take attr-change, name <attrChange>
@@ -37,7 +36,7 @@ form mutation-event
   take prev-value, name <prevValue>
     like native-string
   take related-node, name <relatedNode>
-    like sink-link-text
+    like or-link-text
       like node
       like native-null
   take addition, name <ADDITION>
@@ -47,24 +46,23 @@ form mutation-event
   take removal, name <REMOVAL>
     like native-number
 
-  task init-mutation-event
-    name <initMutationEvent>
+  task init-mutation-event, name <initMutationEvent>
     take type-arg, like native-string
     take bubbles-arg, like native-boolean
-      void take
+      void true
     take cancelable-arg, like native-boolean
-      void take
+      void true
     take related-node-arg
-      like sink-link-text
+      like or-link-text
         like node
         like native-null
-      void take
+      void true
     take prev-value-arg, like native-string
-      void take
+      void true
     take new-value-arg, like native-string
-      void take
+      void true
     take attr-name-arg, like native-string
-      void take
+      void true
     take attr-change-arg, like native-number
-      void take
+      void true
     free seed, like native-void

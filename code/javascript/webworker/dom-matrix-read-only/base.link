@@ -1,36 +1,35 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/dom/dom-matrix-read-only
+load @drumwork/moon/code/javascript/dom/dom-matrix-read-only
   take form dom-matrix-read-only
 
-load @drumwork/land/code/javascript/es5/float32-array
+load @drumwork/moon/code/javascript/es5/float32-array
   take form float32-array
 
-load @drumwork/land/code/javascript/es5/float64-array
+load @drumwork/moon/code/javascript/es5/float64-array
   take form float64-array
 
-load @drumwork/land/code/javascript/webworker/dom-matrix
+load @drumwork/moon/code/javascript/webworker/dom-matrix
   take form dom-matrix
 
-load @drumwork/land/code/javascript/webworker/dom-matrix-init
+load @drumwork/moon/code/javascript/webworker/dom-matrix-init
   take form dom-matrix-init
 
-load @drumwork/land/code/javascript/webworker/dom-point
+load @drumwork/moon/code/javascript/webworker/dom-point
   take form dom-point
 
-load @drumwork/land/code/javascript/webworker/dom-point-init
+load @drumwork/moon/code/javascript/webworker/dom-point-init
   take form dom-point-init
 
-form dom-matrix-read-only
-  name <DOMMatrixReadOnly>
+form dom-matrix-read-only, name <DOMMatrixReadOnly>
   take a, name <a>
     like native-number
   take b, name <b>
@@ -91,104 +90,98 @@ form dom-matrix-read-only
 
   task multiply, name <multiply>
     take other, like dom-matrix-init
-      void take
+      void true
     free seed, like dom-matrix
 
   task rotate, name <rotate>
     take rot-x, like native-number
-      void take
+      void true
     take rot-y, like native-number
-      void take
+      void true
     take rot-z, like native-number
-      void take
+      void true
     free seed, like dom-matrix
 
-  task rotate-axis-angle
-    name <rotateAxisAngle>
+  task rotate-axis-angle, name <rotateAxisAngle>
     take x, like native-number
-      void take
+      void true
     take y, like native-number
-      void take
+      void true
     take z, like native-number
-      void take
+      void true
     take angle, like native-number
-      void take
+      void true
     free seed, like dom-matrix
 
-  task rotate-from-vector
-    name <rotateFromVector>
+  task rotate-from-vector, name <rotateFromVector>
     take x, like native-number
-      void take
+      void true
     take y, like native-number
-      void take
+      void true
     free seed, like dom-matrix
 
   task scale, name <scale>
     take scale-x, like native-number
-      void take
+      void true
     take scale-y, like native-number
-      void take
+      void true
     take scale-z, like native-number
-      void take
+      void true
     take origin-x, like native-number
-      void take
+      void true
     take origin-y, like native-number
-      void take
+      void true
     take origin-z, like native-number
-      void take
+      void true
     free seed, like dom-matrix
 
   task scale3d, name <scale3d>
     take scale, like native-number
-      void take
+      void true
     take origin-x, like native-number
-      void take
+      void true
     take origin-y, like native-number
-      void take
+      void true
     take origin-z, like native-number
-      void take
+      void true
     free seed, like dom-matrix
 
-  task scale-non-uniform
-    name <scaleNonUniform>
+  task scale-non-uniform, name <scaleNonUniform>
     take scale-x, like native-number
-      void take
+      void true
     take scale-y, like native-number
-      void take
+      void true
     free seed, like dom-matrix
 
   task skew-x, name <skewX>
     take sx, like native-number
-      void take
+      void true
     free seed, like dom-matrix
 
   task skew-y, name <skewY>
     take sy, like native-number
-      void take
+      void true
     free seed, like dom-matrix
 
-  task to-float32-array
-    name <toFloat32Array>
+  task to-float32-array, name <toFloat32Array>
     free seed, like float32-array
 
-  task to-float64-array
-    name <toFloat64Array>
+  task to-float64-array, name <toFloat64Array>
     free seed, like float64-array
 
   task to-json, name <toJSON>
     free seed, like native-any
 
-  task transform-point
-    name <transformPoint>
+  task transform-point, name <transformPoint>
     take point, like dom-point-init
-      void take
+      void true
     free seed, like dom-point
 
   task translate, name <translate>
     take tx, like native-number
-      void take
+      void true
     take ty, like native-number
-      void take
+      void true
     take tz, like native-number
-      void take
+      void true
     free seed, like dom-matrix

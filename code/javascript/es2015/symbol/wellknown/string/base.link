@@ -1,33 +1,36 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/es2015/iterable/string
+load @drumwork/moon/code/javascript/es2015/iterable/string
   take form string
 
-load @drumwork/land/code/javascript/es5/reg-exp-match-array
+load @drumwork/moon/code/javascript/es5/reg-exp-match-array
   take form reg-exp-match-array
 
 load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form string, name <String>
   task match, name <match>
@@ -36,12 +39,12 @@ form string, name <String>
         task loan symbol/match
           take string, like native-string
           free seed
-            like sink-link-text
+            like or-link-text
               like reg-exp-match-array
               like native-null
 
     free seed
-      like sink-link-text
+      like or-link-text
         like reg-exp-match-array
         like native-null
 
@@ -62,22 +65,22 @@ form string, name <String>
         task loan symbol/replace
           take string, like native-string
           take replacer
-            like task
+            like task-link-text
               take substring, like native-string
               take args
-                like list-link-text
+                like native-array
                   like native-any
-                rest take
+                rest true
               free seed, like native-string
           free seed, like native-string
 
     take replacer
-      like task
+      like task-link-text
         take substring, like native-string
         take args
-          like list-link-text
+          like native-array
             like native-any
-          rest take
+          rest true
         free seed, like native-string
     free seed, like native-string
 
@@ -96,13 +99,13 @@ form string, name <String>
         task loan symbol/split
           take string, like native-string
           take limit, like native-number
-            void take
+            void true
           free seed
-            like list-link-text
+            like native-array
               like native-string
 
     take limit, like native-number
-      void take
+      void true
     free seed
-      like list-link-text
+      like native-array
         like native-string

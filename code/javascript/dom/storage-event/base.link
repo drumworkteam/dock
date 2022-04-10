@@ -1,81 +1,80 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/event
+load @drumwork/moon/code/javascript/dom/event
   take form event
 
-load @drumwork/land/code/javascript/dom/storage
+load @drumwork/moon/code/javascript/dom/storage
   take form storage
 
-load @drumwork/land/code/javascript/dom/url
+load @drumwork/moon/code/javascript/dom/url
   take form url
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form storage-event, name <StorageEvent>
   base event
 
   take key, name <key>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
   take new-value, name <newValue>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
   take old-value, name <oldValue>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
   take storage-area, name <storageArea>
-    like sink-link-text
+    like or-link-text
       like storage
       like native-null
   take url, name <url>
     like native-string
 
-  task init-storage-event
-    name <initStorageEvent>
+  task init-storage-event, name <initStorageEvent>
     take type, like native-string
     take bubbles, like native-boolean
-      void take
+      void true
     take cancelable, like native-boolean
-      void take
+      void true
     take key
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-null
-      void take
+      void true
     take old-value
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-null
-      void take
+      void true
     take new-value
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-null
-      void take
+      void true
     take url
-      like sink-link-text
+      like or-link-text
         like native-string
         like url
-      void take
+      void true
     take storage-area
-      like sink-link-text
+      like or-link-text
         like storage
         like native-null
-      void take
+      void true
     free seed, like native-void

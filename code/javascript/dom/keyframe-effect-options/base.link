@@ -1,37 +1,34 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/dom/composite-operation
+load @drumwork/moon/code/javascript/dom/composite-operation
   take form composite-operation
 
-load @drumwork/land/code/javascript/dom/effect-timing
+load @drumwork/moon/code/javascript/dom/effect-timing
   take form effect-timing
 
-load @drumwork/land/code/javascript/dom/iteration-composite-operation
+load @drumwork/moon/code/javascript/dom/iteration-composite-operation
   take form iteration-composite-operation
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form keyframe-effect-options
-  name <KeyframeEffectOptions>
+form keyframe-effect-options, name <KeyframeEffectOptions>
   base effect-timing
 
   take composite, name <composite>
     like composite-operation
-    lock free
-  take iteration-composite
-    name <iterationComposite>
+    lock false
+  take iteration-composite, name <iterationComposite>
     like iteration-composite-operation
-    lock free
-  take pseudo-element
-    name <pseudoElement>
-    like sink-link-text
+    lock false
+  take pseudo-element, name <pseudoElement>
+    like or-link-text
       like native-string
       like native-null
-    lock free
+    lock false

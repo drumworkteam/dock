@@ -1,31 +1,28 @@
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/dom/device-motion-event-acceleration-init
+load @drumwork/moon/code/javascript/dom/device-motion-event-acceleration-init
   take form device-motion-event-acceleration-init
 
-load @drumwork/land/code/javascript/dom/device-motion-event-rotation-rate-init
+load @drumwork/moon/code/javascript/dom/device-motion-event-rotation-rate-init
   take form device-motion-event-rotation-rate-init
 
-load @drumwork/land/code/javascript/dom/event-init
+load @drumwork/moon/code/javascript/dom/event-init
   take form event-init
 
-form device-motion-event-init
-  name <DeviceMotionEventInit>
+form device-motion-event-init, name <DeviceMotionEventInit>
   base event-init
 
   take acceleration, name <acceleration>
     like device-motion-event-acceleration-init
-    lock free
-  take acceleration-including-gravity
-    name <accelerationIncludingGravity>
+    lock false
+  take acceleration-including-gravity, name <accelerationIncludingGravity>
     like device-motion-event-acceleration-init
-    lock free
+    lock false
   take interval, name <interval>
     like native-number
-    lock free
-  take rotation-rate
-    name <rotationRate>
+    lock false
+  take rotation-rate, name <rotationRate>
     like device-motion-event-rotation-rate-init
-    lock free
+    lock false

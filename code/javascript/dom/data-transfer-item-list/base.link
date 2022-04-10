@@ -1,28 +1,27 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/data-transfer-item
+load @drumwork/moon/code/javascript/dom/data-transfer-item
   take form data-transfer-item
 
-load @drumwork/land/code/javascript/dom/file
+load @drumwork/moon/code/javascript/dom/file
   take form file
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form data-transfer-item-list
-  name <DataTransferItemList>
+form data-transfer-item-list, name <DataTransferItemList>
   take length, name <length>
     like native-number
 
@@ -30,14 +29,14 @@ form data-transfer-item-list
     take data, like native-string
     take type, like native-string
     free seed
-      like sink-link-text
+      like or-link-text
         like data-transfer-item
         like native-null
 
   task add, name <add>
     take data, like file
     free seed
-      like sink-link-text
+      like or-link-text
         like data-transfer-item
         like native-null
 
@@ -48,5 +47,5 @@ form data-transfer-item-list
     take index, like native-number
     free seed, like native-void
 
-  cite index, like native-number
+  mesh index, like native-number
     like data-transfer-item

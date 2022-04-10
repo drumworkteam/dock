@@ -1,29 +1,29 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/iterable/readable-stream
+load @drumwork/moon/code/javascript/dom/iterable/readable-stream
   take form readable-stream
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
-load @drumwork/land/code/javascript/webworker/readable-stream-default-reader
+load @drumwork/moon/code/javascript/webworker/readable-stream-default-reader
   take form readable-stream-default-reader
 
-load @drumwork/land/code/javascript/webworker/readable-writable-pair
+load @drumwork/moon/code/javascript/webworker/readable-writable-pair
   take form readable-writable-pair
 
-load @drumwork/land/code/javascript/webworker/stream-pipe-options
+load @drumwork/moon/code/javascript/webworker/stream-pipe-options
   take form stream-pipe-options
 
-load @drumwork/land/code/javascript/webworker/writable-stream
+load @drumwork/moon/code/javascript/webworker/writable-stream
   take form writable-stream
 
 load @drumwork/seed/code/form/band
@@ -34,8 +34,7 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-form readable-stream
-  name <ReadableStream>
+form readable-stream, name <ReadableStream>
   head r, like like-link-text
     back native-any
 
@@ -44,7 +43,7 @@ form readable-stream
 
   task cancel, name <cancel>
     take reason, like native-any
-      void take
+      void true
     free seed
       like promise
         like native-void
@@ -61,7 +60,7 @@ form readable-stream
         like t
         like r
     take options, like stream-pipe-options
-      void take
+      void true
     free seed
       like readable-stream
         like t
@@ -71,7 +70,7 @@ form readable-stream
       like writable-stream
         like r
     take options, like stream-pipe-options
-      void take
+      void true
     free seed
       like promise
         like native-void

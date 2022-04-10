@@ -1,45 +1,43 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/ui-event
+load @drumwork/moon/code/javascript/dom/ui-event
   take form ui-event
 
-load @drumwork/land/code/javascript/dom/window-proxy
+load @drumwork/moon/code/javascript/dom/window-proxy
   take form window-proxy
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form composition-event
-  name <CompositionEvent>
+form composition-event, name <CompositionEvent>
   base ui-event
 
   take data, name <data>
     like native-string
 
-  task init-composition-event
-    name <initCompositionEvent>
+  task init-composition-event, name <initCompositionEvent>
     take type-arg, like native-string
     take bubbles-arg, like native-boolean
-      void take
+      void true
     take cancelable-arg, like native-boolean
-      void take
+      void true
     take view-arg
-      like sink-link-text
+      like or-link-text
         like window-proxy
         like native-null
-      void take
+      void true
     take data-arg, like native-string
-      void take
+      void true
     free seed, like native-void

@@ -1,71 +1,66 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/canvas-fill-rule
+load @drumwork/moon/code/javascript/dom/canvas-fill-rule
   take form canvas-fill-rule
 
-load @drumwork/land/code/javascript/dom/path2-d
+load @drumwork/moon/code/javascript/dom/path2-d
   take form path2-d
 
-form canvas-draw-path
-  name <CanvasDrawPath>
+form canvas-draw-path, name <CanvasDrawPath>
   task begin-path, name <beginPath>
     free seed, like native-void
 
   task clip, name <clip>
     take fill-rule, like canvas-fill-rule
-      void take
+      void true
     free seed, like native-void
 
   task clip, name <clip>
     take path, like path2-d
     take fill-rule, like canvas-fill-rule
-      void take
+      void true
     free seed, like native-void
 
   task fill, name <fill>
     take fill-rule, like canvas-fill-rule
-      void take
+      void true
     free seed, like native-void
 
   task fill, name <fill>
     take path, like path2-d
     take fill-rule, like canvas-fill-rule
-      void take
+      void true
     free seed, like native-void
 
-  task is-point-in-path
-    name <isPointInPath>
+  task is-point-in-path, name <isPointInPath>
     take x, like native-number
     take y, like native-number
     take fill-rule, like canvas-fill-rule
-      void take
+      void true
     free seed, like native-boolean
 
-  task is-point-in-path
-    name <isPointInPath>
+  task is-point-in-path, name <isPointInPath>
     take path, like path2-d
     take x, like native-number
     take y, like native-number
     take fill-rule, like canvas-fill-rule
-      void take
+      void true
     free seed, like native-boolean
 
-  task is-point-in-stroke
-    name <isPointInStroke>
+  task is-point-in-stroke, name <isPointInStroke>
     take x, like native-number
     take y, like native-number
     free seed, like native-boolean
 
-  task is-point-in-stroke
-    name <isPointInStroke>
+  task is-point-in-stroke, name <isPointInStroke>
     take path, like path2-d
     take x, like native-number
     take y, like native-number

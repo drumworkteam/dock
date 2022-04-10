@@ -1,35 +1,39 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-undefined
+load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/es2015/symbol/wellknown/promise
+load @drumwork/moon/code/javascript/es2015/symbol/wellknown/promise
   take form promise
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form promise, name <Promise>
   head t, like like-link-text
 
   task finally, name <finally>
     take onfinally
-      like sink-link-text
-        like task
+      like or-link-text
+        like task-link-text
           free seed, like native-void
         like native-undefined
         like native-null
-      void take
+      void true
     free seed
       like promise
         like t

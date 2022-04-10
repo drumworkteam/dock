@@ -1,65 +1,65 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
-load @drumwork/land/code/javascript/webworker/add-event-listener-options
+load @drumwork/moon/code/javascript/webworker/add-event-listener-options
   take form add-event-listener-options
 
-load @drumwork/land/code/javascript/webworker/clients
+load @drumwork/moon/code/javascript/webworker/clients
   take form clients
 
-load @drumwork/land/code/javascript/webworker/event-listener-options
+load @drumwork/moon/code/javascript/webworker/event-listener-options
   take form event-listener-options
 
-load @drumwork/land/code/javascript/webworker/event-listener-or-event-listener-object
+load @drumwork/moon/code/javascript/webworker/event-listener-or-event-listener-object
   take form event-listener-or-event-listener-object
 
-load @drumwork/land/code/javascript/webworker/extendable-event
+load @drumwork/moon/code/javascript/webworker/extendable-event
   take form extendable-event
 
-load @drumwork/land/code/javascript/webworker/extendable-message-event
+load @drumwork/moon/code/javascript/webworker/extendable-message-event
   take form extendable-message-event
 
-load @drumwork/land/code/javascript/webworker/fetch-event
+load @drumwork/moon/code/javascript/webworker/fetch-event
   take form fetch-event
 
-load @drumwork/land/code/javascript/webworker/message-event
+load @drumwork/moon/code/javascript/webworker/message-event
   take form message-event
 
-load @drumwork/land/code/javascript/webworker/notification-event
+load @drumwork/moon/code/javascript/webworker/notification-event
   take form notification-event
 
-load @drumwork/land/code/javascript/webworker/push-event
+load @drumwork/moon/code/javascript/webworker/push-event
   take form push-event
 
-load @drumwork/land/code/javascript/webworker/service-worker
+load @drumwork/moon/code/javascript/webworker/service-worker
   take form service-worker
 
-load @drumwork/land/code/javascript/webworker/service-worker-global-scope-event-map
+load @drumwork/moon/code/javascript/webworker/service-worker-global-scope-event-map
   take form service-worker-global-scope-event-map
 
-load @drumwork/land/code/javascript/webworker/service-worker-registration
+load @drumwork/moon/code/javascript/webworker/service-worker-registration
   take form service-worker-registration
 
-load @drumwork/land/code/javascript/webworker/sync-event
+load @drumwork/moon/code/javascript/webworker/sync-event
   take form sync-event
 
-load @drumwork/land/code/javascript/webworker/worker-global-scope
+load @drumwork/moon/code/javascript/webworker/worker-global-scope
   take form worker-global-scope
 
 load @drumwork/seed/code/form/form/link
@@ -74,95 +74,94 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form service-worker-global-scope
-  name <ServiceWorkerGlobalScope>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form service-worker-global-scope, name <ServiceWorkerGlobalScope>
   base worker-global-scope
 
   take clients, name <clients>
     like clients
   take onactivate, name <onactivate>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like service-worker-global-scope
         take ev, like extendable-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onfetch, name <onfetch>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like service-worker-global-scope
         take ev, like fetch-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take oninstall, name <oninstall>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like service-worker-global-scope
         take ev, like extendable-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onmessage, name <onmessage>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like service-worker-global-scope
         take ev, like extendable-message-event
         free seed, like native-any
       like native-null
-    lock free
-  take onmessageerror
-    name <onmessageerror>
-    like sink-link-text
-      like task
+    lock false
+  take onmessageerror, name <onmessageerror>
+    like or-link-text
+      like task-link-text
         take this, like service-worker-global-scope
         take ev, like message-event
         free seed, like native-any
       like native-null
-    lock free
-  take onnotificationclick
-    name <onnotificationclick>
-    like sink-link-text
-      like task
+    lock false
+  take onnotificationclick, name <onnotificationclick>
+    like or-link-text
+      like task-link-text
         take this, like service-worker-global-scope
         take ev, like notification-event
         free seed, like native-any
       like native-null
-    lock free
-  take onnotificationclose
-    name <onnotificationclose>
-    like sink-link-text
-      like task
+    lock false
+  take onnotificationclose, name <onnotificationclose>
+    like or-link-text
+      like task-link-text
         take this, like service-worker-global-scope
         take ev, like notification-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onpush, name <onpush>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like service-worker-global-scope
         take ev, like push-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onsync, name <onsync>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like service-worker-global-scope
         take ev, like sync-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take registration, name <registration>
     like service-worker-registration
-  take service-worker
-    name <serviceWorker>
+  take service-worker, name <serviceWorker>
     like service-worker
 
   task skip-waiting, name <skipWaiting>
@@ -170,14 +169,13 @@ form service-worker-global-scope
       like promise
         like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     head k, like like-link-text
       base link-read-link-text
         like service-worker-global-scope-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like service-worker-global-scope
         take ev
           like form-link-link-text
@@ -185,31 +183,29 @@ form service-worker-global-scope
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     head k, like like-link-text
       base link-read-link-text
         like service-worker-global-scope-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like service-worker-global-scope
         take ev
           like form-link-link-text
@@ -217,19 +213,18 @@ form service-worker-global-scope
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void

@@ -1,28 +1,25 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-unknown
+load @drumwork/moon/code/javascript/base/native-unknown
   take form native-unknown
 
-load @drumwork/land/code/javascript/es5/number-constructor
+load @drumwork/moon/code/javascript/es5/number-constructor
   take form number-constructor
 
-form number-constructor
-  name <NumberConstructor>
+form number-constructor, name <NumberConstructor>
   take epsilon, name <EPSILON>
     like native-number
-  take max-safe-integer
-    name <MAX_SAFE_INTEGER>
+  take max-safe-integer, name <MAX_SAFE_INTEGER>
     like native-number
-  take min-safe-integer
-    name <MIN_SAFE_INTEGER>
+  take min-safe-integer, name <MIN_SAFE_INTEGER>
     like native-number
 
   task is-finite, name <isFinite>
@@ -37,8 +34,7 @@ form number-constructor
     take number, like native-unknown
     free seed, like native-boolean
 
-  task is-safe-integer
-    name <isSafeInteger>
+  task is-safe-integer, name <isSafeInteger>
     take number, like native-unknown
     free seed, like native-boolean
 
@@ -49,5 +45,5 @@ form number-constructor
   task parse-int, name <parseInt>
     take string, like native-string
     take radix, like native-number
-      void take
+      void true
     free seed, like native-number

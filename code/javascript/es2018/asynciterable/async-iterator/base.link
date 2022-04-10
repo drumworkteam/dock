@@ -1,17 +1,17 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-undefined
+load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/land/code/javascript/es2015/iterable/iterator-result
+load @drumwork/moon/code/javascript/es2015/iterable/iterator-result
   take form iterator-result
 
-load @drumwork/land/code/javascript/es2015/symbol/wellknown/promise
+load @drumwork/moon/code/javascript/es2015/symbol/wellknown/promise
   take form promise
 
-load @drumwork/land/code/javascript/es5/promise-like
+load @drumwork/moon/code/javascript/es5/promise-like
   take form promise-like
 
 load @drumwork/seed/code/form/band
@@ -22,12 +22,11 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form async-iterator
-  name <AsyncIterator>
+form async-iterator, name <AsyncIterator>
   head t, like like-link-text
   head t-return, like like-link-text
     back native-any
@@ -36,11 +35,11 @@ form async-iterator
 
   task next, name <next>
     take args
-      like sink-link-text
+      like or-link-text
         like band-link-text
         like band-link-text
           like t-next
-      rest take
+      rest true
     free seed
       like promise
         like iterator-result
@@ -49,11 +48,11 @@ form async-iterator
 
   task return, name <return>
     take value
-      like sink-link-text
+      like or-link-text
         like t-return
         like promise-like
           like t-return
-      void take
+      void true
     free seed
       like promise
         like iterator-result
@@ -62,7 +61,7 @@ form async-iterator
 
   task throw, name <throw>
     take e, like native-any
-      void take
+      void true
     free seed
       like promise
         like iterator-result

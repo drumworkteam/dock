@@ -1,47 +1,47 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/add-event-listener-options
+load @drumwork/moon/code/javascript/dom/add-event-listener-options
   take form add-event-listener-options
 
-load @drumwork/land/code/javascript/dom/event-listener-options
+load @drumwork/moon/code/javascript/dom/event-listener-options
   take form event-listener-options
 
-load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+load @drumwork/moon/code/javascript/dom/event-listener-or-event-listener-object
   take form event-listener-or-event-listener-object
 
-load @drumwork/land/code/javascript/dom/html-collection-of
+load @drumwork/moon/code/javascript/dom/html-collection-of
   take form html-collection-of
 
-load @drumwork/land/code/javascript/dom/html-element
+load @drumwork/moon/code/javascript/dom/html-element
   take form html-element
 
-load @drumwork/land/code/javascript/dom/html-element-event-map
+load @drumwork/moon/code/javascript/dom/html-element-event-map
   take form html-element-event-map
 
-load @drumwork/land/code/javascript/dom/html-table-caption-element
+load @drumwork/moon/code/javascript/dom/html-table-caption-element
   take form html-table-caption-element
 
-load @drumwork/land/code/javascript/dom/html-table-row-element
+load @drumwork/moon/code/javascript/dom/html-table-row-element
   take form html-table-row-element
 
-load @drumwork/land/code/javascript/dom/html-table-section-element
+load @drumwork/moon/code/javascript/dom/html-table-section-element
   take form html-table-section-element
 
 load @drumwork/seed/code/form/form/link
@@ -56,65 +56,67 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form html-table-element
-  name <HTMLTableElement>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form html-table-element, name <HTMLTableElement>
   base html-element
 
   take align, name <align>
     like native-string
-    lock free
+    lock false
   take bg-color, name <bgColor>
     like native-string
-    lock free
+    lock false
   take border, name <border>
     like native-string
-    lock free
+    lock false
   take caption, name <caption>
-    like sink-link-text
+    like or-link-text
       like html-table-caption-element
       like native-null
-    lock free
+    lock false
   take cell-padding, name <cellPadding>
     like native-string
-    lock free
+    lock false
   take cell-spacing, name <cellSpacing>
     like native-string
-    lock free
+    lock false
   take frame, name <frame>
     like native-string
-    lock free
+    lock false
   take rows, name <rows>
     like html-collection-of
       like html-table-row-element
   take rules, name <rules>
     like native-string
-    lock free
+    lock false
   take summary, name <summary>
     like native-string
-    lock free
+    lock false
   take t-bodies, name <tBodies>
     like html-collection-of
       like html-table-section-element
   take t-foot, name <tFoot>
-    like sink-link-text
+    like or-link-text
       like html-table-section-element
       like native-null
-    lock free
+    lock false
   take t-head, name <tHead>
-    like sink-link-text
+    like or-link-text
       like html-table-section-element
       like native-null
-    lock free
+    lock false
   take width, name <width>
     like native-string
-    lock free
+    lock false
 
-  task create-caption
-    name <createCaption>
+  task create-caption, name <createCaption>
     free seed, like html-table-caption-element
 
   task create-t-body, name <createTBody>
@@ -126,8 +128,7 @@ form html-table-element
   task create-t-head, name <createTHead>
     free seed, like html-table-section-element
 
-  task delete-caption
-    name <deleteCaption>
+  task delete-caption, name <deleteCaption>
     free seed, like native-void
 
   task delete-row, name <deleteRow>
@@ -142,17 +143,16 @@ form html-table-element
 
   task insert-row, name <insertRow>
     take index, like native-number
-      void take
+      void true
     free seed, like html-table-row-element
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     head k, like like-link-text
       base link-read-link-text
         like html-element-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like html-table-element
         take ev
           like form-link-link-text
@@ -160,31 +160,29 @@ form html-table-element
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     head k, like like-link-text
       base link-read-link-text
         like html-element-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like html-table-element
         take ev
           like form-link-link-text
@@ -192,19 +190,18 @@ form html-table-element
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void

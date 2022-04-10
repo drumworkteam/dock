@@ -1,58 +1,55 @@
 
-load @drumwork/land/code/javascript/webworker/extendable-event
+load @drumwork/moon/code/javascript/webworker/extendable-event
   take form extendable-event
 
-load @drumwork/land/code/javascript/webworker/extendable-message-event
+load @drumwork/moon/code/javascript/webworker/extendable-message-event
   take form extendable-message-event
 
-load @drumwork/land/code/javascript/webworker/fetch-event
+load @drumwork/moon/code/javascript/webworker/fetch-event
   take form fetch-event
 
-load @drumwork/land/code/javascript/webworker/message-event
+load @drumwork/moon/code/javascript/webworker/message-event
   take form message-event
 
-load @drumwork/land/code/javascript/webworker/notification-event
+load @drumwork/moon/code/javascript/webworker/notification-event
   take form notification-event
 
-load @drumwork/land/code/javascript/webworker/push-event
+load @drumwork/moon/code/javascript/webworker/push-event
   take form push-event
 
-load @drumwork/land/code/javascript/webworker/sync-event
+load @drumwork/moon/code/javascript/webworker/sync-event
   take form sync-event
 
-load @drumwork/land/code/javascript/webworker/worker-global-scope-event-map
+load @drumwork/moon/code/javascript/webworker/worker-global-scope-event-map
   take form worker-global-scope-event-map
 
-form service-worker-global-scope-event-map
-  name <ServiceWorkerGlobalScopeEventMap>
+form service-worker-global-scope-event-map, name <ServiceWorkerGlobalScopeEventMap>
   base worker-global-scope-event-map
 
   take activate, name <activate>
     like extendable-event
-    lock free
+    lock false
   take fetch, name <fetch>
     like fetch-event
-    lock free
+    lock false
   take install, name <install>
     like extendable-event
-    lock free
+    lock false
   take message, name <message>
     like extendable-message-event
-    lock free
+    lock false
   take messageerror, name <messageerror>
     like message-event
-    lock free
-  take notificationclick
-    name <notificationclick>
+    lock false
+  take notificationclick, name <notificationclick>
     like notification-event
-    lock free
-  take notificationclose
-    name <notificationclose>
+    lock false
+  take notificationclose, name <notificationclose>
     like notification-event
-    lock free
+    lock false
   take push, name <push>
     like push-event
-    lock free
+    lock false
   take sync, name <sync>
     like sync-event
-    lock free
+    lock false

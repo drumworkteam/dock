@@ -1,32 +1,35 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/element
+load @drumwork/moon/code/javascript/dom/element
   take form element
 
-load @drumwork/land/code/javascript/dom/html-collection
+load @drumwork/moon/code/javascript/dom/html-collection
   take form html-collection
 
-load @drumwork/land/code/javascript/dom/html-element-tag-name-map
+load @drumwork/moon/code/javascript/dom/html-element-tag-name-map
   take form html-element-tag-name-map
 
-load @drumwork/land/code/javascript/dom/node
+load @drumwork/moon/code/javascript/dom/node
   take form node
 
-load @drumwork/land/code/javascript/dom/node-list-of
+load @drumwork/moon/code/javascript/dom/node-list-of
   take form node-list-of
 
-load @drumwork/land/code/javascript/dom/svg-element-tag-name-map
+load @drumwork/moon/code/javascript/dom/svg-element-tag-name-map
   take form svg-element-tag-name-map
 
 load @drumwork/seed/code/form/form/link
@@ -41,88 +44,77 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form parent-node, name <ParentNode>
-  take child-element-count
-    name <childElementCount>
+  take child-element-count, name <childElementCount>
     like native-number
   take children, name <children>
     like html-collection
-  take first-element-child
-    name <firstElementChild>
-    like sink-link-text
+  take first-element-child, name <firstElementChild>
+    like or-link-text
       like element
       like native-null
-  take last-element-child
-    name <lastElementChild>
-    like sink-link-text
+  take last-element-child, name <lastElementChild>
+    like or-link-text
       like element
       like native-null
 
   task append, name <append>
     take nodes
-      like list-link-text
-        like sink-link-text
+      like native-array
+        like or-link-text
           like node
           like native-string
-      rest take
+      rest true
     free seed, like native-void
 
   task prepend, name <prepend>
     take nodes
-      like list-link-text
-        like sink-link-text
+      like native-array
+        like or-link-text
           like node
           like native-string
-      rest take
+      rest true
     free seed, like native-void
 
-  task query-selector
-    name <querySelector>
+  task query-selector, name <querySelector>
     head k, like like-link-text
       base link-read-link-text
         like html-element-tag-name-map
     take selectors, like k
     free seed
-      like sink-link-text
+      like or-link-text
         like form-link-link-text
           like html-element-tag-name-map
           like k
         like native-null
 
-  task query-selector
-    name <querySelector>
+  task query-selector, name <querySelector>
     head k, like like-link-text
       base link-read-link-text
         like svg-element-tag-name-map
     take selectors, like k
     free seed
-      like sink-link-text
+      like or-link-text
         like form-link-link-text
           like svg-element-tag-name-map
           like k
         like native-null
 
-  task query-selector
-    name <querySelector>
+  task query-selector, name <querySelector>
     head e, like like-link-text
       base element
       back element
     take selectors, like native-string
     free seed
-      like sink-link-text
+      like or-link-text
         like e
         like native-null
 
-  task query-selector-all
-    name <querySelectorAll>
+  task query-selector-all, name <querySelectorAll>
     head k, like like-link-text
       base link-read-link-text
         like html-element-tag-name-map
@@ -133,8 +125,7 @@ form parent-node, name <ParentNode>
           like html-element-tag-name-map
           like k
 
-  task query-selector-all
-    name <querySelectorAll>
+  task query-selector-all, name <querySelectorAll>
     head k, like like-link-text
       base link-read-link-text
         like svg-element-tag-name-map
@@ -145,8 +136,7 @@ form parent-node, name <ParentNode>
           like svg-element-tag-name-map
           like k
 
-  task query-selector-all
-    name <querySelectorAll>
+  task query-selector-all, name <querySelectorAll>
     head e, like like-link-text
       base element
       back element
@@ -155,12 +145,11 @@ form parent-node, name <ParentNode>
       like node-list-of
         like e
 
-  task replace-children
-    name <replaceChildren>
+  task replace-children, name <replaceChildren>
     take nodes
-      like list-link-text
-        like sink-link-text
+      like native-array
+        like or-link-text
           like node
           like native-string
-      rest take
+      rest true
     free seed, like native-void

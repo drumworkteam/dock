@@ -1,118 +1,115 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-object
+load @drumwork/moon/code/javascript/base/native-object
   take form native-object
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-undefined
+load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/land/code/javascript/es5/function
+load @drumwork/moon/code/javascript/es5/function
   take form function
 
-load @drumwork/land/code/javascript/es5/object
+load @drumwork/moon/code/javascript/es5/object
   take form object
 
-load @drumwork/land/code/javascript/es5/property-descriptor
+load @drumwork/moon/code/javascript/es5/property-descriptor
   take form property-descriptor
 
-load @drumwork/land/code/javascript/es5/property-descriptor-map
+load @drumwork/moon/code/javascript/es5/property-descriptor-map
   take form property-descriptor-map
 
-load @drumwork/land/code/javascript/es5/property-key
+load @drumwork/moon/code/javascript/es5/property-key
   take form property-key
 
-load @drumwork/land/code/javascript/es5/readonly
+load @drumwork/moon/code/javascript/es5/readonly
   take form readonly
 
-load @drumwork/land/code/javascript/es5/this-type
+load @drumwork/moon/code/javascript/es5/this-type
   take form this-type
+
+load @drumwork/seed/code/form/and
+  take form and
+    save form and-link-text
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form object-constructor
-  name <ObjectConstructor>
+form object-constructor, name <ObjectConstructor>
   take prototype, name <prototype>
     like object
 
-  task get-prototype-of
-    name <getPrototypeOf>
+  task get-prototype-of, name <getPrototypeOf>
     take o, like native-any
     free seed, like native-any
 
-  task get-own-property-descriptor
-    name <getOwnPropertyDescriptor>
+  task get-own-property-descriptor, name <getOwnPropertyDescriptor>
     take o, like native-any
     take p, like property-key
     free seed
-      like sink-link-text
+      like or-link-text
         like property-descriptor
         like native-undefined
 
-  task get-own-property-names
-    name <getOwnPropertyNames>
+  task get-own-property-names, name <getOwnPropertyNames>
     take o, like native-any
     free seed
-      like list-link-text
+      like native-array
         like native-string
 
   task create, name <create>
     take o
-      like sink-link-text
+      like or-link-text
         like native-object
         like native-null
     free seed, like native-any
 
   task create, name <create>
     take o
-      like sink-link-text
+      like or-link-text
         like native-object
         like native-null
     take properties
-      like link
+      like and-link-text
         like property-descriptor-map
         like this-type
           like native-any
     free seed, like native-any
 
-  task define-property
-    name <defineProperty>
+  task define-property, name <defineProperty>
     head t, like like-link-text
     take o, like t
     take p, like property-key
     take attributes
-      like link
+      like and-link-text
         like property-descriptor
         like this-type
           like native-any
     free seed, like t
 
-  task define-properties
-    name <defineProperties>
+  task define-properties, name <defineProperties>
     head t, like like-link-text
     take o, like t
     take properties
-      like link
+      like and-link-text
         like property-descriptor-map
         like this-type
           like native-any
@@ -126,10 +123,10 @@ form object-constructor
   task freeze, name <freeze>
     head t, like like-link-text
     take a
-      like list-link-text
+      like native-array
         like t
     free seed
-      like list-link-text
+      like native-array
         like t
 
   task freeze, name <freeze>
@@ -145,8 +142,7 @@ form object-constructor
       like readonly
         like t
 
-  task prevent-extensions
-    name <preventExtensions>
+  task prevent-extensions, name <preventExtensions>
     head t, like like-link-text
     take o, like t
     free seed, like t
@@ -159,18 +155,17 @@ form object-constructor
     take o, like native-any
     free seed, like native-boolean
 
-  task is-extensible
-    name <isExtensible>
+  task is-extensible, name <isExtensible>
     take o, like native-any
     free seed, like native-boolean
 
   task keys, name <keys>
     take o, like native-object
     free seed
-      like list-link-text
+      like native-array
         like native-string
 
   hook make
     take value, like native-any
-      void take
+      void true
     free seed, like object

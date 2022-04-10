@@ -1,38 +1,40 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
 load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form x-path-ns-resolver
-  name <XPathNSResolver>
-  like sink-link-text
-    like task
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form x-path-ns-resolver, name <XPathNSResolver>
+  like or-link-text
+    like task-link-text
       take prefix
-        like sink-link-text
+        like or-link-text
           like native-string
           like native-null
       free seed
-        like sink-link-text
+        like or-link-text
           like native-string
           like native-null
     like form-link-text
-      task lookup-namespace-uri
-        name <lookupNamespaceURI>
+      task lookup-namespace-uri, name <lookupNamespaceURI>
         take prefix
-          like sink-link-text
+          like or-link-text
             like native-string
             like native-null
         free seed
-          like sink-link-text
+          like or-link-text
             like native-string
             like native-null

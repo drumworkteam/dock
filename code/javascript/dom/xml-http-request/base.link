@@ -1,53 +1,53 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/add-event-listener-options
+load @drumwork/moon/code/javascript/dom/add-event-listener-options
   take form add-event-listener-options
 
-load @drumwork/land/code/javascript/dom/document
+load @drumwork/moon/code/javascript/dom/document
   take form document
 
-load @drumwork/land/code/javascript/dom/event
+load @drumwork/moon/code/javascript/dom/event
   take form event
 
-load @drumwork/land/code/javascript/dom/event-listener-options
+load @drumwork/moon/code/javascript/dom/event-listener-options
   take form event-listener-options
 
-load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+load @drumwork/moon/code/javascript/dom/event-listener-or-event-listener-object
   take form event-listener-or-event-listener-object
 
-load @drumwork/land/code/javascript/dom/url
+load @drumwork/moon/code/javascript/dom/url
   take form url
 
-load @drumwork/land/code/javascript/dom/xml-http-request-body-init
+load @drumwork/moon/code/javascript/dom/xml-http-request-body-init
   take form xml-http-request-body-init
 
-load @drumwork/land/code/javascript/dom/xml-http-request-event-map
+load @drumwork/moon/code/javascript/dom/xml-http-request-event-map
   take form xml-http-request-event-map
 
-load @drumwork/land/code/javascript/dom/xml-http-request-event-target
+load @drumwork/moon/code/javascript/dom/xml-http-request-event-target
   take form xml-http-request-event-target
 
-load @drumwork/land/code/javascript/dom/xml-http-request-response-type
+load @drumwork/moon/code/javascript/dom/xml-http-request-response-type
   take form xml-http-request-response-type
 
-load @drumwork/land/code/javascript/dom/xml-http-request-upload
+load @drumwork/moon/code/javascript/dom/xml-http-request-upload
   take form xml-http-request-upload
 
 load @drumwork/seed/code/form/form/link
@@ -62,38 +62,38 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form xml-http-request
-  name <XMLHttpRequest>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form xml-http-request, name <XMLHttpRequest>
   base xml-http-request-event-target
 
-  take onreadystatechange
-    name <onreadystatechange>
-    like sink-link-text
-      like task
+  take onreadystatechange, name <onreadystatechange>
+    like or-link-text
+      like task-link-text
         take this, like xml-http-request
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take ready-state, name <readyState>
     like native-number
   take response, name <response>
     like native-any
-  take response-text
-    name <responseText>
+  take response-text, name <responseText>
     like native-string
-  take response-type
-    name <responseType>
+  take response-type, name <responseType>
     like xml-http-request-response-type
-    lock free
+    lock false
   take response-url, name <responseURL>
     like native-string
   take response-xml, name <responseXML>
-    like sink-link-text
+    like or-link-text
       like document
       like native-null
   take status, name <status>
@@ -102,17 +102,15 @@ form xml-http-request
     like native-string
   take timeout, name <timeout>
     like native-number
-    lock free
+    lock false
   take upload, name <upload>
     like xml-http-request-upload
-  take with-credentials
-    name <withCredentials>
+  take with-credentials, name <withCredentials>
     like native-boolean
-    lock free
+    lock false
   take done, name <DONE>
     like native-number
-  take headers-received
-    name <HEADERS_RECEIVED>
+  take headers-received, name <HEADERS_RECEIVED>
     like native-number
   take loading, name <LOADING>
     like native-number
@@ -124,22 +122,20 @@ form xml-http-request
   task abort, name <abort>
     free seed, like native-void
 
-  task get-all-response-headers
-    name <getAllResponseHeaders>
+  task get-all-response-headers, name <getAllResponseHeaders>
     free seed, like native-string
 
-  task get-response-header
-    name <getResponseHeader>
+  task get-response-header, name <getResponseHeader>
     take name, like native-string
     free seed
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-null
 
   task open, name <open>
     take method, like native-string
     take url
-      like sink-link-text
+      like or-link-text
         like native-string
         like url
     free seed, like native-void
@@ -147,50 +143,47 @@ form xml-http-request
   task open, name <open>
     take method, like native-string
     take url
-      like sink-link-text
+      like or-link-text
         like native-string
         like url
     take async, like native-boolean
     take username
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-null
-      void take
+      void true
     take password
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-null
-      void take
+      void true
     free seed, like native-void
 
-  task override-mime-type
-    name <overrideMimeType>
+  task override-mime-type, name <overrideMimeType>
     take mime, like native-string
     free seed, like native-void
 
   task send, name <send>
     take body
-      like sink-link-text
+      like or-link-text
         like document
         like xml-http-request-body-init
         like native-null
-      void take
+      void true
     free seed, like native-void
 
-  task set-request-header
-    name <setRequestHeader>
+  task set-request-header, name <setRequestHeader>
     take name, like native-string
     take value, like native-string
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     head k, like like-link-text
       base link-read-link-text
         like xml-http-request-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like xml-http-request
         take ev
           like form-link-link-text
@@ -198,31 +191,29 @@ form xml-http-request
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     head k, like like-link-text
       base link-read-link-text
         like xml-http-request-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like xml-http-request
         take ev
           like form-link-link-text
@@ -230,19 +221,18 @@ form xml-http-request
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void

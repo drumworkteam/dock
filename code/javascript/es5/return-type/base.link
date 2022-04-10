@@ -1,13 +1,17 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/r
+load @drumwork/moon/code/javascript/base/r
   take form r
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 load @drumwork/seed/code/form/test
   take form test
@@ -15,19 +19,19 @@ load @drumwork/seed/code/form/test
 
 form return-type, name <ReturnType>
   head t, like like-link-text
-    base task
+    base task-link-text
       take args, like native-any
-        rest take
+        rest true
       free seed, like native-any
 
   like test-link-text
     stem roll
       like t
-      like task
+      like task-link-text
         take args, like native-any
-          rest take
+          rest true
         free seed, name r
-      hook take
+      hook true
         like r
-      hook free
+      hook false
         like native-any

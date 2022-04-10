@@ -1,29 +1,31 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
-form url-search-params
-  name <URLSearchParams>
+form url-search-params, name <URLSearchParams>
   task append, name <append>
     take name, like native-string
     take value, like native-string
@@ -36,14 +38,14 @@ form url-search-params
   task get, name <get>
     take name, like native-string
     free seed
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-null
 
   task get-all, name <getAll>
     take name, like native-string
     free seed
-      like list-link-text
+      like native-array
         like native-string
 
   task has, name <has>
@@ -63,11 +65,11 @@ form url-search-params
 
   task for-each, name <forEach>
     take callbackfn
-      like task
+      like task-link-text
         take value, like native-string
         take key, like native-string
         take parent, like url-search-params
         free seed, like native-void
     take this-arg, like native-any
-      void take
+      void true
     free seed, like native-void

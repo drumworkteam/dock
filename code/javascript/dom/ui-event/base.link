@@ -1,28 +1,28 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/event
+load @drumwork/moon/code/javascript/dom/event
   take form event
 
-load @drumwork/land/code/javascript/dom/window
+load @drumwork/moon/code/javascript/dom/window
   take form window
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form ui-event, name <UIEvent>
   base event
@@ -30,7 +30,7 @@ form ui-event, name <UIEvent>
   take detail, name <detail>
     like native-number
   take view, name <view>
-    like sink-link-text
+    like or-link-text
       like window
       like native-null
   take which, name <which>
@@ -39,14 +39,14 @@ form ui-event, name <UIEvent>
   task init-ui-event, name <initUIEvent>
     take type-arg, like native-string
     take bubbles-arg, like native-boolean
-      void take
+      void true
     take cancelable-arg, like native-boolean
-      void take
+      void true
     take view-arg
-      like sink-link-text
+      like or-link-text
         like window
         like native-null
-      void take
+      void true
     take detail-arg, like native-number
-      void take
+      void true
     free seed, like native-void

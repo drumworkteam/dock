@@ -1,23 +1,27 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-never
+load @drumwork/moon/code/javascript/base/native-never
   take form native-never
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-undefined
+load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form promise-like, name <PromiseLike>
   head t, like like-link-text
@@ -28,31 +32,31 @@ form promise-like, name <PromiseLike>
     head t-result2, like like-link-text
       back native-never
     take onfulfilled
-      like sink-link-text
-        like task
+      like or-link-text
+        like task-link-text
           take value, like t
           free seed
-            like sink-link-text
+            like or-link-text
               like t-result1
               like promise-like
                 like t-result1
         like native-undefined
         like native-null
-      void take
+      void true
     take onrejected
-      like sink-link-text
-        like task
+      like or-link-text
+        like task-link-text
           take reason, like native-any
           free seed
-            like sink-link-text
+            like or-link-text
               like t-result2
               like promise-like
                 like t-result2
         like native-undefined
         like native-null
-      void take
+      void true
     free seed
       like promise-like
-        like sink-link-text
+        like or-link-text
           like t-result1
           like t-result2

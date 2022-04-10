@@ -1,29 +1,28 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/dom/audio-node
+load @drumwork/moon/code/javascript/dom/audio-node
   take form audio-node
 
-load @drumwork/land/code/javascript/dom/over-sample-type
+load @drumwork/moon/code/javascript/dom/over-sample-type
   take form over-sample-type
 
-load @drumwork/land/code/javascript/es5/float32-array
+load @drumwork/moon/code/javascript/es5/float32-array
   take form float32-array
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form wave-shaper-node
-  name <WaveShaperNode>
+form wave-shaper-node, name <WaveShaperNode>
   base audio-node
 
   take curve, name <curve>
-    like sink-link-text
+    like or-link-text
       like float32-array
       like native-null
-    lock free
+    lock false
   take oversample, name <oversample>
     like over-sample-type
-    lock free
+    lock false

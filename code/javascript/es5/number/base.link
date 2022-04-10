@@ -1,58 +1,55 @@
 
-load @drumwork/land/code/javascript/base/intl-number-format-options
+load @drumwork/moon/code/javascript/base/intl-number-format-options
   take form intl-number-format-options
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/es5/number
+load @drumwork/moon/code/javascript/es5/number
   take form number
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form number, name <Number>
   task to-string, name <toString>
     take radix, like native-number
-      void take
+      void true
     free seed, like native-string
 
   task to-fixed, name <toFixed>
     take fraction-digits, like native-number
-      void take
+      void true
     free seed, like native-string
 
-  task to-exponential
-    name <toExponential>
+  task to-exponential, name <toExponential>
     take fraction-digits, like native-number
-      void take
+      void true
     free seed, like native-string
 
   task to-precision, name <toPrecision>
     take precision, like native-number
-      void take
+      void true
     free seed, like native-string
 
   task value-of, name <valueOf>
     free seed, like native-number
 
 form number, name <Number>
-  task to-locale-string
-    name <toLocaleString>
+  task to-locale-string, name <toLocaleString>
     take locales
-      like sink-link-text
+      like or-link-text
         like native-string
-        like list-link-text
+        like native-array
           like native-string
-      void take
+      void true
     take options, like intl-number-format-options
-      void take
+      void true
     free seed, like native-string

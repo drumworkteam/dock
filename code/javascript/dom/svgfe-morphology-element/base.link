@@ -1,44 +1,44 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/add-event-listener-options
+load @drumwork/moon/code/javascript/dom/add-event-listener-options
   take form add-event-listener-options
 
-load @drumwork/land/code/javascript/dom/event-listener-options
+load @drumwork/moon/code/javascript/dom/event-listener-options
   take form event-listener-options
 
-load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+load @drumwork/moon/code/javascript/dom/event-listener-or-event-listener-object
   take form event-listener-or-event-listener-object
 
-load @drumwork/land/code/javascript/dom/svg-animated-enumeration
+load @drumwork/moon/code/javascript/dom/svg-animated-enumeration
   take form svg-animated-enumeration
 
-load @drumwork/land/code/javascript/dom/svg-animated-number
+load @drumwork/moon/code/javascript/dom/svg-animated-number
   take form svg-animated-number
 
-load @drumwork/land/code/javascript/dom/svg-animated-string
+load @drumwork/moon/code/javascript/dom/svg-animated-string
   take form svg-animated-string
 
-load @drumwork/land/code/javascript/dom/svg-element
+load @drumwork/moon/code/javascript/dom/svg-element
   take form svg-element
 
-load @drumwork/land/code/javascript/dom/svg-element-event-map
+load @drumwork/moon/code/javascript/dom/svg-element-event-map
   take form svg-element-event-map
 
-load @drumwork/land/code/javascript/dom/svg-filter-primitive-standard-attributes
+load @drumwork/moon/code/javascript/dom/svg-filter-primitive-standard-attributes
   take form svg-filter-primitive-standard-attributes
 
 load @drumwork/seed/code/form/form/link
@@ -53,12 +53,15 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form svgfe-morphology-element
-  name <SVGFEMorphologyElement>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form svgfe-morphology-element, name <SVGFEMorphologyElement>
   base svg-element
   base svg-filter-primitive-standard-attributes
 
@@ -70,24 +73,20 @@ form svgfe-morphology-element
     like svg-animated-number
   take radius-y, name <radiusY>
     like svg-animated-number
-  take svg-morphology-operator-dilate
-    name <SVG_MORPHOLOGY_OPERATOR_DILATE>
+  take svg-morphology-operator-dilate, name <SVG_MORPHOLOGY_OPERATOR_DILATE>
     like native-number
-  take svg-morphology-operator-erode
-    name <SVG_MORPHOLOGY_OPERATOR_ERODE>
+  take svg-morphology-operator-erode, name <SVG_MORPHOLOGY_OPERATOR_ERODE>
     like native-number
-  take svg-morphology-operator-unknown
-    name <SVG_MORPHOLOGY_OPERATOR_UNKNOWN>
+  take svg-morphology-operator-unknown, name <SVG_MORPHOLOGY_OPERATOR_UNKNOWN>
     like native-number
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     head k, like like-link-text
       base link-read-link-text
         like svg-element-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like svgfe-morphology-element
         take ev
           like form-link-link-text
@@ -95,31 +94,29 @@ form svgfe-morphology-element
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     head k, like like-link-text
       base link-read-link-text
         like svg-element-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like svgfe-morphology-element
         take ev
           like form-link-link-text
@@ -127,19 +124,18 @@ form svgfe-morphology-element
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void

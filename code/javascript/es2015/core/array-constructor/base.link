@@ -1,33 +1,35 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/es5/array-constructor
+load @drumwork/moon/code/javascript/es5/array-constructor
   take form array-constructor
 
-load @drumwork/land/code/javascript/es5/array-like
+load @drumwork/moon/code/javascript/es5/array-like
   take form array-like
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
-form array-constructor
-  name <ArrayConstructor>
+form array-constructor, name <ArrayConstructor>
   task from, name <from>
     head t, like like-link-text
     take array-like
       like array-like
         like t
     free seed
-      like list-link-text
+      like native-array
         like t
 
   task from, name <from>
@@ -37,22 +39,22 @@ form array-constructor
       like array-like
         like t
     take mapfn
-      like task
+      like task-link-text
         take v, like t
         take k, like native-number
         free seed, like u
     take this-arg, like native-any
-      void take
+      void true
     free seed
-      like list-link-text
+      like native-array
         like u
 
   task of, name <of>
     head t, like like-link-text
     take items
-      like list-link-text
+      like native-array
         like t
-      rest take
+      rest true
     free seed
-      like list-link-text
+      like native-array
         like t

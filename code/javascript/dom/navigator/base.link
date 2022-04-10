@@ -1,104 +1,103 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/body-init
+load @drumwork/moon/code/javascript/dom/body-init
   take form body-init
 
-load @drumwork/land/code/javascript/dom/clipboard
+load @drumwork/moon/code/javascript/dom/clipboard
   take form clipboard
 
-load @drumwork/land/code/javascript/dom/credentials-container
+load @drumwork/moon/code/javascript/dom/credentials-container
   take form credentials-container
 
-load @drumwork/land/code/javascript/dom/gamepad
+load @drumwork/moon/code/javascript/dom/gamepad
   take form gamepad
 
-load @drumwork/land/code/javascript/dom/geolocation
+load @drumwork/moon/code/javascript/dom/geolocation
   take form geolocation
 
-load @drumwork/land/code/javascript/dom/media-capabilities
+load @drumwork/moon/code/javascript/dom/media-capabilities
   take form media-capabilities
 
-load @drumwork/land/code/javascript/dom/media-devices
+load @drumwork/moon/code/javascript/dom/media-devices
   take form media-devices
 
-load @drumwork/land/code/javascript/dom/media-key-system-access
+load @drumwork/moon/code/javascript/dom/media-key-system-access
   take form media-key-system-access
 
-load @drumwork/land/code/javascript/dom/media-key-system-configuration
+load @drumwork/moon/code/javascript/dom/media-key-system-configuration
   take form media-key-system-configuration
 
-load @drumwork/land/code/javascript/dom/media-session
+load @drumwork/moon/code/javascript/dom/media-session
   take form media-session
 
-load @drumwork/land/code/javascript/dom/navigator-automation-information
+load @drumwork/moon/code/javascript/dom/navigator-automation-information
   take form navigator-automation-information
 
-load @drumwork/land/code/javascript/dom/navigator-concurrent-hardware
+load @drumwork/moon/code/javascript/dom/navigator-concurrent-hardware
   take form navigator-concurrent-hardware
 
-load @drumwork/land/code/javascript/dom/navigator-content-utils
+load @drumwork/moon/code/javascript/dom/navigator-content-utils
   take form navigator-content-utils
 
-load @drumwork/land/code/javascript/dom/navigator-cookies
+load @drumwork/moon/code/javascript/dom/navigator-cookies
   take form navigator-cookies
 
-load @drumwork/land/code/javascript/dom/navigator-id
+load @drumwork/moon/code/javascript/dom/navigator-id
   take form navigator-id
 
-load @drumwork/land/code/javascript/dom/navigator-language
+load @drumwork/moon/code/javascript/dom/navigator-language
   take form navigator-language
 
-load @drumwork/land/code/javascript/dom/navigator-network-information
+load @drumwork/moon/code/javascript/dom/navigator-network-information
   take form navigator-network-information
 
-load @drumwork/land/code/javascript/dom/navigator-on-line
+load @drumwork/moon/code/javascript/dom/navigator-on-line
   take form navigator-on-line
 
-load @drumwork/land/code/javascript/dom/navigator-plugins
+load @drumwork/moon/code/javascript/dom/navigator-plugins
   take form navigator-plugins
 
-load @drumwork/land/code/javascript/dom/navigator-storage
+load @drumwork/moon/code/javascript/dom/navigator-storage
   take form navigator-storage
 
-load @drumwork/land/code/javascript/dom/permissions
+load @drumwork/moon/code/javascript/dom/permissions
   take form permissions
 
-load @drumwork/land/code/javascript/dom/service-worker-container
+load @drumwork/moon/code/javascript/dom/service-worker-container
   take form service-worker-container
 
-load @drumwork/land/code/javascript/dom/share-data
+load @drumwork/moon/code/javascript/dom/share-data
   take form share-data
 
-load @drumwork/land/code/javascript/dom/url
+load @drumwork/moon/code/javascript/dom/url
   take form url
 
-load @drumwork/land/code/javascript/dom/vibrate-pattern
+load @drumwork/moon/code/javascript/dom/vibrate-pattern
   take form vibrate-pattern
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form navigator, name <Navigator>
   base navigator-automation-information
@@ -117,44 +116,37 @@ form navigator, name <Navigator>
   take credentials, name <credentials>
     like credentials-container
   take do-not-track, name <doNotTrack>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
   take geolocation, name <geolocation>
     like geolocation
-  take max-touch-points
-    name <maxTouchPoints>
+  take max-touch-points, name <maxTouchPoints>
     like native-number
-  take media-capabilities
-    name <mediaCapabilities>
+  take media-capabilities, name <mediaCapabilities>
     like media-capabilities
-  take media-devices
-    name <mediaDevices>
+  take media-devices, name <mediaDevices>
     like media-devices
-  take media-session
-    name <mediaSession>
+  take media-session, name <mediaSession>
     like media-session
   take permissions, name <permissions>
     like permissions
-  take pointer-enabled
-    name <pointerEnabled>
+  take pointer-enabled, name <pointerEnabled>
     like native-boolean
-  take service-worker
-    name <serviceWorker>
+  take service-worker, name <serviceWorker>
     like service-worker-container
 
   task get-gamepads, name <getGamepads>
     free seed
-      like list-link-text
-        like sink-link-text
+      like native-array
+        like or-link-text
           like gamepad
           like native-null
 
-  task request-media-key-system-access
-    name <requestMediaKeySystemAccess>
+  task request-media-key-system-access, name <requestMediaKeySystemAccess>
     take key-system, like native-string
     take supported-configurations
-      like list-link-text
+      like native-array
         like media-key-system-configuration
     free seed
       like promise
@@ -162,19 +154,19 @@ form navigator, name <Navigator>
 
   task send-beacon, name <sendBeacon>
     take url
-      like sink-link-text
+      like or-link-text
         like native-string
         like url
     take data
-      like sink-link-text
+      like or-link-text
         like body-init
         like native-null
-      void take
+      void true
     free seed, like native-boolean
 
   task share, name <share>
     take data, like share-data
-      void take
+      void true
     free seed
       like promise
         like native-void

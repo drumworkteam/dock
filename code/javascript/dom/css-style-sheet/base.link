@@ -1,37 +1,36 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/css-rule
+load @drumwork/moon/code/javascript/dom/css-rule
   take form css-rule
 
-load @drumwork/land/code/javascript/dom/css-rule-list
+load @drumwork/moon/code/javascript/dom/css-rule-list
   take form css-rule-list
 
-load @drumwork/land/code/javascript/dom/style-sheet
+load @drumwork/moon/code/javascript/dom/style-sheet
   take form style-sheet
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form css-style-sheet
-  name <CSSStyleSheet>
+form css-style-sheet, name <CSSStyleSheet>
   base style-sheet
 
   take css-rules, name <cssRules>
     like css-rule-list
   take owner-rule, name <ownerRule>
-    like sink-link-text
+    like or-link-text
       like css-rule
       like native-null
   take rules, name <rules>
@@ -39,11 +38,11 @@ form css-style-sheet
 
   task add-rule, name <addRule>
     take selector, like native-string
-      void take
+      void true
     take style, like native-string
-      void take
+      void true
     take index, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task delete-rule, name <deleteRule>
@@ -53,10 +52,10 @@ form css-style-sheet
   task insert-rule, name <insertRule>
     take rule, like native-string
     take index, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task remove-rule, name <removeRule>
     take index, like native-number
-      void take
+      void true
     free seed, like native-void

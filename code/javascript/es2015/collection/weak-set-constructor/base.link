@@ -1,27 +1,25 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-object
+load @drumwork/moon/code/javascript/base/native-object
   take form native-object
 
-load @drumwork/land/code/javascript/es2015/collection/weak-set
+load @drumwork/moon/code/javascript/es2015/collection/weak-set
   take form weak-set
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form weak-set-constructor
-  name <WeakSetConstructor>
+form weak-set-constructor, name <WeakSetConstructor>
   take prototype, name <prototype>
     like weak-set
       like native-object
@@ -31,11 +29,11 @@ form weak-set-constructor
       base native-object
       back native-object
     take values
-      like sink-link-text
-        like list-link-text
+      like or-link-text
+        like native-array
           like t
         like native-null
-      void take
+      void true
     free seed
       like weak-set
         like t

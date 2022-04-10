@@ -1,11 +1,11 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-undefined
+load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/land/code/javascript/es2015/iterable/iterator-result
+load @drumwork/moon/code/javascript/es2015/iterable/iterator-result
   take form iterator-result
 
 load @drumwork/seed/code/form/band
@@ -16,9 +16,9 @@ load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form iterator, name <Iterator>
   head t, like like-link-text
@@ -29,11 +29,11 @@ form iterator, name <Iterator>
 
   task next, name <next>
     take args
-      like sink-link-text
+      like or-link-text
         like band-link-text
         like band-link-text
           like t-next
-      rest take
+      rest true
     free seed
       like iterator-result
         like t
@@ -41,7 +41,7 @@ form iterator, name <Iterator>
 
   task return, name <return>
     take value, like t-return
-      void take
+      void true
     free seed
       like iterator-result
         like t
@@ -49,7 +49,7 @@ form iterator, name <Iterator>
 
   task throw, name <throw>
     take e, like native-any
-      void take
+      void true
     free seed
       like iterator-result
         like t

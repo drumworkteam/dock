@@ -1,50 +1,50 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/add-event-listener-options
+load @drumwork/moon/code/javascript/dom/add-event-listener-options
   take form add-event-listener-options
 
-load @drumwork/land/code/javascript/dom/event-listener-options
+load @drumwork/moon/code/javascript/dom/event-listener-options
   take form event-listener-options
 
-load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+load @drumwork/moon/code/javascript/dom/event-listener-or-event-listener-object
   take form event-listener-or-event-listener-object
 
-load @drumwork/land/code/javascript/dom/html-element
+load @drumwork/moon/code/javascript/dom/html-element
   take form html-element
 
-load @drumwork/land/code/javascript/dom/html-element-event-map
+load @drumwork/moon/code/javascript/dom/html-element-event-map
   take form html-element-event-map
 
-load @drumwork/land/code/javascript/dom/html-form-element
+load @drumwork/moon/code/javascript/dom/html-form-element
   take form html-form-element
 
-load @drumwork/land/code/javascript/dom/html-label-element
+load @drumwork/moon/code/javascript/dom/html-label-element
   take form html-label-element
 
-load @drumwork/land/code/javascript/dom/node-list-of
+load @drumwork/moon/code/javascript/dom/node-list-of
   take form node-list-of
 
-load @drumwork/land/code/javascript/dom/selection-mode
+load @drumwork/moon/code/javascript/dom/selection-mode
   take form selection-mode
 
-load @drumwork/land/code/javascript/dom/validity-state
+load @drumwork/moon/code/javascript/dom/validity-state
   take form validity-state
 
 load @drumwork/seed/code/form/form/link
@@ -59,32 +59,34 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form html-text-area-element
-  name <HTMLTextAreaElement>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form html-text-area-element, name <HTMLTextAreaElement>
   base html-element
 
   take autocomplete, name <autocomplete>
     like native-string
-    lock free
+    lock false
   take cols, name <cols>
     like native-number
-    lock free
-  take default-value
-    name <defaultValue>
+    lock false
+  take default-value, name <defaultValue>
     like native-string
-    lock free
+    lock false
   take dir-name, name <dirName>
     like native-string
-    lock free
+    lock false
   take disabled, name <disabled>
     like native-boolean
-    lock free
+    lock false
   take form, name <form>
-    like sink-link-text
+    like or-link-text
       like html-form-element
       like native-null
   take labels, name <labels>
@@ -92,115 +94,103 @@ form html-text-area-element
       like html-label-element
   take max-length, name <maxLength>
     like native-number
-    lock free
+    lock false
   take min-length, name <minLength>
     like native-number
-    lock free
+    lock false
   take name, name <name>
     like native-string
-    lock free
+    lock false
   take placeholder, name <placeholder>
     like native-string
-    lock free
+    lock false
   take read-only, name <readOnly>
     like native-boolean
-    lock free
+    lock false
   take required, name <required>
     like native-boolean
-    lock free
+    lock false
   take rows, name <rows>
     like native-number
-    lock free
-  take selection-direction
-    name <selectionDirection>
-    like sink-link-text
+    lock false
+  take selection-direction, name <selectionDirection>
+    like or-link-text
       text <forward>
       text <backward>
       text <none>
-    lock free
-  take selection-end
-    name <selectionEnd>
+    lock false
+  take selection-end, name <selectionEnd>
     like native-number
-    lock free
-  take selection-start
-    name <selectionStart>
+    lock false
+  take selection-start, name <selectionStart>
     like native-number
-    lock free
+    lock false
   take text-length, name <textLength>
     like native-number
   take type, name <type>
     like native-string
-  take validation-message
-    name <validationMessage>
+  take validation-message, name <validationMessage>
     like native-string
   take validity, name <validity>
     like validity-state
   take value, name <value>
     like native-string
-    lock free
-  take will-validate
-    name <willValidate>
+    lock false
+  take will-validate, name <willValidate>
     like native-boolean
   take wrap, name <wrap>
     like native-string
-    lock free
+    lock false
 
-  task check-validity
-    name <checkValidity>
+  task check-validity, name <checkValidity>
     free seed, like native-boolean
 
-  task report-validity
-    name <reportValidity>
+  task report-validity, name <reportValidity>
     free seed, like native-boolean
 
   task select, name <select>
     free seed, like native-void
 
-  task set-custom-validity
-    name <setCustomValidity>
+  task set-custom-validity, name <setCustomValidity>
     take error, like native-string
     free seed, like native-void
 
-  task set-range-text
-    name <setRangeText>
+  task set-range-text, name <setRangeText>
     take replacement, like native-string
     free seed, like native-void
 
-  task set-range-text
-    name <setRangeText>
+  task set-range-text, name <setRangeText>
     take replacement, like native-string
     take start, like native-number
     take end, like native-number
     take selection-mode, like selection-mode
-      void take
+      void true
     free seed, like native-void
 
-  task set-selection-range
-    name <setSelectionRange>
+  task set-selection-range, name <setSelectionRange>
     take start
-      like sink-link-text
+      like or-link-text
         like native-number
         like native-null
     take end
-      like sink-link-text
+      like or-link-text
         like native-number
         like native-null
     take direction
-      like sink-link-text
+      like or-link-text
         text <forward>
         text <backward>
         text <none>
-      void take
+      void true
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     head k, like like-link-text
       base link-read-link-text
         like html-element-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like html-text-area-element
         take ev
           like form-link-link-text
@@ -208,31 +198,29 @@ form html-text-area-element
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     head k, like like-link-text
       base link-read-link-text
         like html-element-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like html-text-area-element
         take ev
           like form-link-link-text
@@ -240,19 +228,18 @@ form html-text-area-element
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void

@@ -1,26 +1,24 @@
 
-load @drumwork/land/code/javascript/base/iterable
+load @drumwork/moon/code/javascript/base/iterable
   take form iterable
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/dom/base-audio-context
+load @drumwork/moon/code/javascript/dom/base-audio-context
   take form base-audio-context
 
-load @drumwork/land/code/javascript/dom/iir-filter-node
+load @drumwork/moon/code/javascript/dom/iir-filter-node
   take form iir-filter-node
 
-load @drumwork/land/code/javascript/dom/periodic-wave
+load @drumwork/moon/code/javascript/dom/periodic-wave
   take form periodic-wave
 
-load @drumwork/land/code/javascript/dom/periodic-wave-constraints
+load @drumwork/moon/code/javascript/dom/periodic-wave-constraints
   take form periodic-wave-constraints
 
-form base-audio-context
-  name <BaseAudioContext>
-  task create-iir-filter
-    name <createIIRFilter>
+form base-audio-context, name <BaseAudioContext>
+  task create-iir-filter, name <createIIRFilter>
     take feedforward
       like iterable
         like native-number
@@ -29,8 +27,7 @@ form base-audio-context
         like native-number
     free seed, like iir-filter-node
 
-  task create-periodic-wave
-    name <createPeriodicWave>
+  task create-periodic-wave, name <createPeriodicWave>
     take real
       like iterable
         like native-number
@@ -38,5 +35,5 @@ form base-audio-context
       like iterable
         like native-number
     take constraints, like periodic-wave-constraints
-      void take
+      void true
     free seed, like periodic-wave

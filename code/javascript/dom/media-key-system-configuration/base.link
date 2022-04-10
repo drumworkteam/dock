@@ -1,47 +1,39 @@
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/dom/media-key-system-media-capability
+load @drumwork/moon/code/javascript/dom/media-key-system-media-capability
   take form media-key-system-media-capability
 
-load @drumwork/land/code/javascript/dom/media-keys-requirement
+load @drumwork/moon/code/javascript/dom/media-keys-requirement
   take form media-keys-requirement
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-form media-key-system-configuration
-  name <MediaKeySystemConfiguration>
-  take audio-capabilities
-    name <audioCapabilities>
-    like list-link-text
+form media-key-system-configuration, name <MediaKeySystemConfiguration>
+  take audio-capabilities, name <audioCapabilities>
+    like native-array
       like media-key-system-media-capability
-    lock free
-  take distinctive-identifier
-    name <distinctiveIdentifier>
+    lock false
+  take distinctive-identifier, name <distinctiveIdentifier>
     like media-keys-requirement
-    lock free
-  take init-data-types
-    name <initDataTypes>
-    like list-link-text
+    lock false
+  take init-data-types, name <initDataTypes>
+    like native-array
       like native-string
-    lock free
+    lock false
   take label, name <label>
     like native-string
-    lock free
-  take persistent-state
-    name <persistentState>
+    lock false
+  take persistent-state, name <persistentState>
     like media-keys-requirement
-    lock free
-  take session-types
-    name <sessionTypes>
-    like list-link-text
+    lock false
+  take session-types, name <sessionTypes>
+    like native-array
       like native-string
-    lock free
-  take video-capabilities
-    name <videoCapabilities>
-    like list-link-text
+    lock false
+  take video-capabilities, name <videoCapabilities>
+    like native-array
       like media-key-system-media-capability
-    lock free
+    lock false

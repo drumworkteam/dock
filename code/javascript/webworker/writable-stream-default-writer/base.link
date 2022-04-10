@@ -1,35 +1,34 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-undefined
+load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/writable-stream-default-writer
+load @drumwork/moon/code/javascript/dom/writable-stream-default-writer
   take form writable-stream-default-writer
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form writable-stream-default-writer
-  name <WritableStreamDefaultWriter>
+form writable-stream-default-writer, name <WritableStreamDefaultWriter>
   head w, like like-link-text
     back native-any
 
@@ -37,7 +36,7 @@ form writable-stream-default-writer
     like promise
       like native-undefined
   take desired-size, name <desiredSize>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-null
   take ready, name <ready>
@@ -46,7 +45,7 @@ form writable-stream-default-writer
 
   task abort, name <abort>
     take reason, like native-any
-      void take
+      void true
     free seed
       like promise
         like native-void

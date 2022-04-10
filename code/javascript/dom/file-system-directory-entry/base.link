@@ -1,65 +1,62 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/error-callback
+load @drumwork/moon/code/javascript/dom/error-callback
   take form error-callback
 
-load @drumwork/land/code/javascript/dom/file-system-directory-reader
+load @drumwork/moon/code/javascript/dom/file-system-directory-reader
   take form file-system-directory-reader
 
-load @drumwork/land/code/javascript/dom/file-system-entry
+load @drumwork/moon/code/javascript/dom/file-system-entry
   take form file-system-entry
 
-load @drumwork/land/code/javascript/dom/file-system-entry-callback
+load @drumwork/moon/code/javascript/dom/file-system-entry-callback
   take form file-system-entry-callback
 
-load @drumwork/land/code/javascript/dom/file-system-flags
+load @drumwork/moon/code/javascript/dom/file-system-flags
   take form file-system-flags
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form file-system-directory-entry
-  name <FileSystemDirectoryEntry>
+form file-system-directory-entry, name <FileSystemDirectoryEntry>
   base file-system-entry
 
-  task create-reader
-    name <createReader>
+  task create-reader, name <createReader>
     free seed, like file-system-directory-reader
 
-  task get-directory
-    name <getDirectory>
+  task get-directory, name <getDirectory>
     take path
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-null
-      void take
+      void true
     take options, like file-system-flags
-      void take
+      void true
     take success-callback, like file-system-entry-callback
-      void take
+      void true
     take error-callback, like error-callback
-      void take
+      void true
     free seed, like native-void
 
   task get-file, name <getFile>
     take path
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-null
-      void take
+      void true
     take options, like file-system-flags
-      void take
+      void true
     take success-callback, like file-system-entry-callback
-      void take
+      void true
     take error-callback, like error-callback
-      void take
+      void true
     free seed, like native-void

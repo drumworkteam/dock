@@ -1,51 +1,47 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/dom-high-res-time-stamp
+load @drumwork/moon/code/javascript/dom/dom-high-res-time-stamp
   take form dom-high-res-time-stamp
 
-load @drumwork/land/code/javascript/dom/event-target
+load @drumwork/moon/code/javascript/dom/event-target
   take form event-target
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form event, name <Event>
   take bubbles, name <bubbles>
     like native-boolean
-  take cancel-bubble
-    name <cancelBubble>
+  take cancel-bubble, name <cancelBubble>
     like native-boolean
-    lock free
+    lock false
   take cancelable, name <cancelable>
     like native-boolean
   take composed, name <composed>
     like native-boolean
-  take current-target
-    name <currentTarget>
-    like sink-link-text
+  take current-target, name <currentTarget>
+    like or-link-text
       like event-target
       like native-null
-  take default-prevented
-    name <defaultPrevented>
+  take default-prevented, name <defaultPrevented>
     like native-boolean
   take event-phase, name <eventPhase>
     like native-number
@@ -53,13 +49,13 @@ form event, name <Event>
     like native-boolean
   take return-value, name <returnValue>
     like native-boolean
-    lock free
+    lock false
   take src-element, name <srcElement>
-    like sink-link-text
+    like or-link-text
       like event-target
       like native-null
   take target, name <target>
-    like sink-link-text
+    like or-link-text
       like event-target
       like native-null
   take time-stamp, name <timeStamp>
@@ -68,37 +64,31 @@ form event, name <Event>
     like native-string
   take at-target, name <AT_TARGET>
     like native-number
-  take bubbling-phase
-    name <BUBBLING_PHASE>
+  take bubbling-phase, name <BUBBLING_PHASE>
     like native-number
-  take capturing-phase
-    name <CAPTURING_PHASE>
+  take capturing-phase, name <CAPTURING_PHASE>
     like native-number
   take none, name <NONE>
     like native-number
 
-  task composed-path
-    name <composedPath>
+  task composed-path, name <composedPath>
     free seed
-      like list-link-text
+      like native-array
         like event-target
 
   task init-event, name <initEvent>
     take type, like native-string
     take bubbles, like native-boolean
-      void take
+      void true
     take cancelable, like native-boolean
-      void take
+      void true
     free seed, like native-void
 
-  task prevent-default
-    name <preventDefault>
+  task prevent-default, name <preventDefault>
     free seed, like native-void
 
-  task stop-immediate-propagation
-    name <stopImmediatePropagation>
+  task stop-immediate-propagation, name <stopImmediatePropagation>
     free seed, like native-void
 
-  task stop-propagation
-    name <stopPropagation>
+  task stop-propagation, name <stopPropagation>
     free seed, like native-void

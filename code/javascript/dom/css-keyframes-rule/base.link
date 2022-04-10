@@ -1,35 +1,34 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/css-keyframe-rule
+load @drumwork/moon/code/javascript/dom/css-keyframe-rule
   take form css-keyframe-rule
 
-load @drumwork/land/code/javascript/dom/css-rule
+load @drumwork/moon/code/javascript/dom/css-rule
   take form css-rule
 
-load @drumwork/land/code/javascript/dom/css-rule-list
+load @drumwork/moon/code/javascript/dom/css-rule-list
   take form css-rule-list
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form css-keyframes-rule
-  name <CSSKeyframesRule>
+form css-keyframes-rule, name <CSSKeyframesRule>
   base css-rule
 
   take css-rules, name <cssRules>
     like css-rule-list
   take name, name <name>
     like native-string
-    lock free
+    lock false
 
   task append-rule, name <appendRule>
     take rule, like native-string
@@ -42,6 +41,6 @@ form css-keyframes-rule
   task find-rule, name <findRule>
     take select, like native-string
     free seed
-      like sink-link-text
+      like or-link-text
         like css-keyframe-rule
         like native-null

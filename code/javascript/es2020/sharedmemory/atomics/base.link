@@ -1,27 +1,27 @@
 
-load @drumwork/land/code/javascript/base/native-bigint
+load @drumwork/moon/code/javascript/base/native-bigint
   take form native-bigint
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/es2017/sharedmemory/atomics
+load @drumwork/moon/code/javascript/es2017/sharedmemory/atomics
   take form atomics
 
-load @drumwork/land/code/javascript/es2020/bigint/big-int64-array
+load @drumwork/moon/code/javascript/es2020/bigint/big-int64-array
   take form big-int64-array
 
-load @drumwork/land/code/javascript/es2020/bigint/big-uint64-array
+load @drumwork/moon/code/javascript/es2020/bigint/big-uint64-array
   take form big-uint64-array
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form atomics, name <Atomics>
   task add, name <add>
     take typed-array
-      like sink-link-text
+      like or-link-text
         like big-int64-array
         like big-uint64-array
     take index, like native-number
@@ -30,17 +30,16 @@ form atomics, name <Atomics>
 
   task and, name <and>
     take typed-array
-      like sink-link-text
+      like or-link-text
         like big-int64-array
         like big-uint64-array
     take index, like native-number
     take value, like native-bigint
     free seed, like native-bigint
 
-  task compare-exchange
-    name <compareExchange>
+  task compare-exchange, name <compareExchange>
     take typed-array
-      like sink-link-text
+      like or-link-text
         like big-int64-array
         like big-uint64-array
     take index, like native-number
@@ -50,7 +49,7 @@ form atomics, name <Atomics>
 
   task exchange, name <exchange>
     take typed-array
-      like sink-link-text
+      like or-link-text
         like big-int64-array
         like big-uint64-array
     take index, like native-number
@@ -59,7 +58,7 @@ form atomics, name <Atomics>
 
   task load, name <load>
     take typed-array
-      like sink-link-text
+      like or-link-text
         like big-int64-array
         like big-uint64-array
     take index, like native-number
@@ -67,7 +66,7 @@ form atomics, name <Atomics>
 
   task or, name <or>
     take typed-array
-      like sink-link-text
+      like or-link-text
         like big-int64-array
         like big-uint64-array
     take index, like native-number
@@ -76,7 +75,7 @@ form atomics, name <Atomics>
 
   task store, name <store>
     take typed-array
-      like sink-link-text
+      like or-link-text
         like big-int64-array
         like big-uint64-array
     take index, like native-number
@@ -85,7 +84,7 @@ form atomics, name <Atomics>
 
   task sub, name <sub>
     take typed-array
-      like sink-link-text
+      like or-link-text
         like big-int64-array
         like big-uint64-array
     take index, like native-number
@@ -97,9 +96,9 @@ form atomics, name <Atomics>
     take index, like native-number
     take value, like native-bigint
     take timeout, like native-number
-      void take
+      void true
     free seed
-      like sink-link-text
+      like or-link-text
         text <ok>
         text <not-equal>
         text <timed-out>
@@ -108,12 +107,12 @@ form atomics, name <Atomics>
     take typed-array, like big-int64-array
     take index, like native-number
     take count, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task xor, name <xor>
     take typed-array
-      like sink-link-text
+      like or-link-text
         like big-int64-array
         like big-uint64-array
     take index, like native-number

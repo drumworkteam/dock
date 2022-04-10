@@ -1,33 +1,30 @@
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/es2015/symbol/wellknown/date
+load @drumwork/moon/code/javascript/es2015/symbol/wellknown/date
   take form date
 
-load @drumwork/land/code/javascript/es2017/intl/date-time-format-part
+load @drumwork/moon/code/javascript/es2017/intl/date-time-format-part
   take form date-time-format-part
 
-load @drumwork/land/code/javascript/es5/date-time-format
+load @drumwork/moon/code/javascript/es5/date-time-format
   take form date-time-format
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form date-time-format
-  name <DateTimeFormat>
-  task format-to-parts
-    name <formatToParts>
+form date-time-format, name <DateTimeFormat>
+  task format-to-parts, name <formatToParts>
     take date
-      like sink-link-text
+      like or-link-text
         like date
         like native-number
-      void take
+      void true
     free seed
-      like list-link-text
+      like native-array
         like date-time-format-part

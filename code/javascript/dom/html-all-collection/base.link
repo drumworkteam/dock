@@ -1,33 +1,32 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/dom/element
+load @drumwork/moon/code/javascript/dom/element
   take form element
 
-load @drumwork/land/code/javascript/dom/html-collection
+load @drumwork/moon/code/javascript/dom/html-collection
   take form html-collection
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form html-all-collection
-  name <HTMLAllCollection>
+form html-all-collection, name <HTMLAllCollection>
   take length, name <length>
     like native-number
 
   task item, name <item>
     take name-or-index, like native-string
-      void take
+      void true
     free seed
-      like sink-link-text
+      like or-link-text
         like html-collection
         like element
         like native-null
@@ -35,10 +34,10 @@ form html-all-collection
   task named-item, name <namedItem>
     take name, like native-string
     free seed
-      like sink-link-text
+      like or-link-text
         like html-collection
         like element
         like native-null
 
-  cite index, like native-number
+  mesh index, like native-number
     like element

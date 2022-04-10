@@ -1,28 +1,25 @@
 
-load @drumwork/land/code/javascript/dom/media-stream
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/dom/media-stream
   take form media-stream
 
-load @drumwork/land/code/javascript/dom/rtc-rtp-encoding-parameters
+load @drumwork/moon/code/javascript/dom/rtc-rtp-encoding-parameters
   take form rtc-rtp-encoding-parameters
 
-load @drumwork/land/code/javascript/dom/rtc-rtp-transceiver-direction
+load @drumwork/moon/code/javascript/dom/rtc-rtp-transceiver-direction
   take form rtc-rtp-transceiver-direction
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
-
-form rtc-rtp-transceiver-init
-  name <RTCRtpTransceiverInit>
+form rtc-rtp-transceiver-init, name <RTCRtpTransceiverInit>
   take direction, name <direction>
     like rtc-rtp-transceiver-direction
-    lock free
-  take send-encodings
-    name <sendEncodings>
-    like list-link-text
+    lock false
+  take send-encodings, name <sendEncodings>
+    like native-array
       like rtc-rtp-encoding-parameters
-    lock free
+    lock false
   take streams, name <streams>
-    like list-link-text
+    like native-array
       like media-stream
-    lock free
+    lock false

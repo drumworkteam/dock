@@ -1,17 +1,17 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/dom/idb-factory
+load @drumwork/moon/code/javascript/dom/idb-factory
   take form idb-factory
 
-load @drumwork/land/code/javascript/webworker/idb-open-db-request
+load @drumwork/moon/code/javascript/webworker/idb-open-db-request
   take form idb-open-db-request
 
 form idb-factory, name <IDBFactory>
@@ -20,13 +20,12 @@ form idb-factory, name <IDBFactory>
     take second, like native-any
     free seed, like native-number
 
-  task delete-database
-    name <deleteDatabase>
+  task delete-database, name <deleteDatabase>
     take name, like native-string
     free seed, like idb-open-db-request
 
   task open, name <open>
     take name, like native-string
     take version, like native-number
-      void take
+      void true
     free seed, like idb-open-db-request

@@ -1,85 +1,82 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-undefined
+load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/dom-string-list
+load @drumwork/moon/code/javascript/dom/dom-string-list
   take form dom-string-list
 
-load @drumwork/land/code/javascript/dom/idb-cursor
+load @drumwork/moon/code/javascript/dom/idb-cursor
   take form idb-cursor
 
-load @drumwork/land/code/javascript/dom/idb-cursor-direction
+load @drumwork/moon/code/javascript/dom/idb-cursor-direction
   take form idb-cursor-direction
 
-load @drumwork/land/code/javascript/dom/idb-cursor-with-value
+load @drumwork/moon/code/javascript/dom/idb-cursor-with-value
   take form idb-cursor-with-value
 
-load @drumwork/land/code/javascript/dom/idb-index
+load @drumwork/moon/code/javascript/dom/idb-index
   take form idb-index
 
-load @drumwork/land/code/javascript/dom/idb-index-parameters
+load @drumwork/moon/code/javascript/dom/idb-index-parameters
   take form idb-index-parameters
 
-load @drumwork/land/code/javascript/dom/idb-key-range
+load @drumwork/moon/code/javascript/dom/idb-key-range
   take form idb-key-range
 
-load @drumwork/land/code/javascript/dom/idb-request
+load @drumwork/moon/code/javascript/dom/idb-request
   take form idb-request
 
-load @drumwork/land/code/javascript/dom/idb-transaction
+load @drumwork/moon/code/javascript/dom/idb-transaction
   take form idb-transaction
 
-load @drumwork/land/code/javascript/dom/idb-valid-key
+load @drumwork/moon/code/javascript/dom/idb-valid-key
   take form idb-valid-key
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form idb-object-store
-  name <IDBObjectStore>
-  take auto-increment
-    name <autoIncrement>
+form idb-object-store, name <IDBObjectStore>
+  take auto-increment, name <autoIncrement>
     like native-boolean
   take index-names, name <indexNames>
     like dom-string-list
   take key-path, name <keyPath>
-    like sink-link-text
+    like or-link-text
       like native-string
-      like list-link-text
+      like native-array
         like native-string
   take name, name <name>
     like native-string
-    lock free
+    lock false
   take transaction, name <transaction>
     like idb-transaction
 
   task add, name <add>
     take value, like native-any
     take key, like idb-valid-key
-      void take
+      void true
     free seed
       like idb-request
         like idb-valid-key
@@ -91,10 +88,10 @@ form idb-object-store
 
   task count, name <count>
     take query
-      like sink-link-text
+      like or-link-text
         like idb-valid-key
         like idb-key-range
-      void take
+      void true
     free seed
       like idb-request
         like native-number
@@ -102,17 +99,17 @@ form idb-object-store
   task create-index, name <createIndex>
     take name, like native-string
     take key-path
-      like sink-link-text
+      like or-link-text
         like native-string
-        like list-link-text
+        like native-array
           like native-string
     take options, like idb-index-parameters
-      void take
+      void true
     free seed, like idb-index
 
   task delete, name <delete>
     take query
-      like sink-link-text
+      like or-link-text
         like idb-valid-key
         like idb-key-range
     free seed
@@ -125,7 +122,7 @@ form idb-object-store
 
   task get, name <get>
     take query
-      like sink-link-text
+      like or-link-text
         like idb-valid-key
         like idb-key-range
     free seed
@@ -134,40 +131,40 @@ form idb-object-store
 
   task get-all, name <getAll>
     take query
-      like sink-link-text
+      like or-link-text
         like idb-valid-key
         like idb-key-range
         like native-null
-      void take
+      void true
     take count, like native-number
-      void take
+      void true
     free seed
       like idb-request
-        like list-link-text
+        like native-array
           like native-any
 
   task get-all-keys, name <getAllKeys>
     take query
-      like sink-link-text
+      like or-link-text
         like idb-valid-key
         like idb-key-range
         like native-null
-      void take
+      void true
     take count, like native-number
-      void take
+      void true
     free seed
       like idb-request
-        like list-link-text
+        like native-array
           like idb-valid-key
 
   task get-key, name <getKey>
     take query
-      like sink-link-text
+      like or-link-text
         like idb-valid-key
         like idb-key-range
     free seed
       like idb-request
-        like sink-link-text
+        like or-link-text
           like idb-valid-key
           like native-undefined
 
@@ -177,39 +174,38 @@ form idb-object-store
 
   task open-cursor, name <openCursor>
     take query
-      like sink-link-text
+      like or-link-text
         like idb-valid-key
         like idb-key-range
         like native-null
-      void take
+      void true
     take direction, like idb-cursor-direction
-      void take
+      void true
     free seed
       like idb-request
-        like sink-link-text
+        like or-link-text
           like idb-cursor-with-value
           like native-null
 
-  task open-key-cursor
-    name <openKeyCursor>
+  task open-key-cursor, name <openKeyCursor>
     take query
-      like sink-link-text
+      like or-link-text
         like idb-valid-key
         like idb-key-range
         like native-null
-      void take
+      void true
     take direction, like idb-cursor-direction
-      void take
+      void true
     free seed
       like idb-request
-        like sink-link-text
+        like or-link-text
           like idb-cursor
           like native-null
 
   task put, name <put>
     take value, like native-any
     take key, like idb-valid-key
-      void take
+      void true
     free seed
       like idb-request
         like idb-valid-key

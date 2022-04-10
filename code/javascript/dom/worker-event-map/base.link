@@ -1,17 +1,16 @@
 
-load @drumwork/land/code/javascript/dom/abstract-worker-event-map
+load @drumwork/moon/code/javascript/dom/abstract-worker-event-map
   take form abstract-worker-event-map
 
-load @drumwork/land/code/javascript/dom/message-event
+load @drumwork/moon/code/javascript/dom/message-event
   take form message-event
 
-form worker-event-map
-  name <WorkerEventMap>
+form worker-event-map, name <WorkerEventMap>
   base abstract-worker-event-map
 
   take message, name <message>
     like message-event
-    lock free
+    lock false
   take messageerror, name <messageerror>
     like message-event
-    lock free
+    lock false

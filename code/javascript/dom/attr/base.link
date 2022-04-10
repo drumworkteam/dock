@@ -1,25 +1,25 @@
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/dom/document
+load @drumwork/moon/code/javascript/dom/document
   take form document
 
-load @drumwork/land/code/javascript/dom/element
+load @drumwork/moon/code/javascript/dom/element
   take form element
 
-load @drumwork/land/code/javascript/dom/node
+load @drumwork/moon/code/javascript/dom/node
   take form node
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
 form attr, name <Attr>
   base node
@@ -28,25 +28,22 @@ form attr, name <Attr>
     like native-string
   take name, name <name>
     like native-string
-  take namespace-uri
-    name <namespaceURI>
-    like sink-link-text
+  take namespace-uri, name <namespaceURI>
+    like or-link-text
       like native-string
       like native-null
-  take owner-document
-    name <ownerDocument>
+  take owner-document, name <ownerDocument>
     like document
-  take owner-element
-    name <ownerElement>
-    like sink-link-text
+  take owner-element, name <ownerElement>
+    like or-link-text
       like element
       like native-null
   take prefix, name <prefix>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
   take specified, name <specified>
     like native-boolean
   take value, name <value>
     like native-string
-    lock free
+    lock false

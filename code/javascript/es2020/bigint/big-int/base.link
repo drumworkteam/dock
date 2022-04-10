@@ -1,32 +1,31 @@
 
-load @drumwork/land/code/javascript/base/native-bigint
+load @drumwork/moon/code/javascript/base/native-bigint
   take form native-bigint
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/es2020/bigint/big-int-to-locale-string-options
+load @drumwork/moon/code/javascript/es2020/bigint/big-int-to-locale-string-options
   take form big-int-to-locale-string-options
 
 form big-int, name <BigInt>
   take loan symbol/to-string-tag
     text <BigInt>
-    read take
+    read true
 
   task to-string, name <toString>
     take radix, like native-number
-      void take
+      void true
     free seed, like native-string
 
-  task to-locale-string
-    name <toLocaleString>
+  task to-locale-string, name <toLocaleString>
     take locales, like native-string
-      void take
+      void true
     take options, like big-int-to-locale-string-options
-      void take
+      void true
     free seed, like native-string
 
   task value-of, name <valueOf>

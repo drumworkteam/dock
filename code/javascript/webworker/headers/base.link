@@ -1,25 +1,29 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/iterable/headers
+load @drumwork/moon/code/javascript/dom/iterable/headers
   take form headers
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form headers, name <Headers>
   task append, name <append>
@@ -34,7 +38,7 @@ form headers, name <Headers>
   task get, name <get>
     take name, like native-string
     free seed
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-null
 
@@ -49,11 +53,11 @@ form headers, name <Headers>
 
   task for-each, name <forEach>
     take callbackfn
-      like task
+      like task-link-text
         take value, like native-string
         take key, like native-string
         take parent, like headers
         free seed, like native-void
     take this-arg, like native-any
-      void take
+      void true
     free seed, like native-void

@@ -1,27 +1,26 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/event-target
+load @drumwork/moon/code/javascript/dom/event-target
   take form event-target
 
-load @drumwork/land/code/javascript/dom/payment-complete
+load @drumwork/moon/code/javascript/dom/payment-complete
   take form payment-complete
 
-load @drumwork/land/code/javascript/dom/payment-validation-errors
+load @drumwork/moon/code/javascript/dom/payment-validation-errors
   take form payment-validation-errors
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
-form payment-response
-  name <PaymentResponse>
+form payment-response, name <PaymentResponse>
   base event-target
 
   take details, name <details>
@@ -33,14 +32,14 @@ form payment-response
 
   task complete, name <complete>
     take result, like payment-complete
-      void take
+      void true
     free seed
       like promise
         like native-void
 
   task retry, name <retry>
     take error-fields, like payment-validation-errors
-      void take
+      void true
     free seed
       like promise
         like native-void

@@ -1,33 +1,36 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/es2015/iterable/iterable
+load @drumwork/moon/code/javascript/es2015/iterable/iterable
   take form iterable
 
-load @drumwork/land/code/javascript/es2015/iterable/uint8-array
+load @drumwork/moon/code/javascript/es2015/iterable/uint8-array
   take form uint8-array
 
-load @drumwork/land/code/javascript/es5/uint8-array-constructor
+load @drumwork/moon/code/javascript/es5/uint8-array-constructor
   take form uint8-array-constructor
 
-form uint8-array-constructor
-  name <Uint8ArrayConstructor>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form uint8-array-constructor, name <Uint8ArrayConstructor>
   task from, name <from>
     take array-like
       like iterable
         like native-number
     take mapfn
-      like task
+      like task-link-text
         take v, like native-number
         take k, like native-number
         free seed, like native-number
-      void take
+      void true
     take this-arg, like native-any
-      void take
+      void true
     free seed, like uint8-array
 
   hook make

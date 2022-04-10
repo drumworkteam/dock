@@ -1,47 +1,47 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/add-event-listener-options
+load @drumwork/moon/code/javascript/dom/add-event-listener-options
   take form add-event-listener-options
 
-load @drumwork/land/code/javascript/dom/event
+load @drumwork/moon/code/javascript/dom/event
   take form event
 
-load @drumwork/land/code/javascript/dom/event-listener-options
+load @drumwork/moon/code/javascript/dom/event-listener-options
   take form event-listener-options
 
-load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+load @drumwork/moon/code/javascript/dom/event-listener-or-event-listener-object
   take form event-listener-or-event-listener-object
 
-load @drumwork/land/code/javascript/dom/html-media-element
+load @drumwork/moon/code/javascript/dom/html-media-element
   take form html-media-element
 
-load @drumwork/land/code/javascript/dom/html-video-element-event-map
+load @drumwork/moon/code/javascript/dom/html-video-element-event-map
   take form html-video-element-event-map
 
-load @drumwork/land/code/javascript/dom/picture-in-picture-window
+load @drumwork/moon/code/javascript/dom/picture-in-picture-window
   take form picture-in-picture-window
 
-load @drumwork/land/code/javascript/dom/video-playback-quality
+load @drumwork/moon/code/javascript/dom/video-playback-quality
   take form video-playback-quality
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
 load @drumwork/seed/code/form/form/link
@@ -56,71 +56,68 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form html-video-element
-  name <HTMLVideoElement>
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
+
+form html-video-element, name <HTMLVideoElement>
   base html-media-element
 
-  take disable-picture-in-picture
-    name <disablePictureInPicture>
+  take disable-picture-in-picture, name <disablePictureInPicture>
     like native-boolean
-    lock free
+    lock false
   take height, name <height>
     like native-number
-    lock free
-  take onenterpictureinpicture
-    name <onenterpictureinpicture>
-    like sink-link-text
-      like task
+    lock false
+  take onenterpictureinpicture, name <onenterpictureinpicture>
+    like or-link-text
+      like task-link-text
         take this, like html-video-element
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
-  take onleavepictureinpicture
-    name <onleavepictureinpicture>
-    like sink-link-text
-      like task
+    lock false
+  take onleavepictureinpicture, name <onleavepictureinpicture>
+    like or-link-text
+      like task-link-text
         take this, like html-video-element
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take plays-inline, name <playsInline>
     like native-boolean
-    lock free
+    lock false
   take poster, name <poster>
     like native-string
-    lock free
+    lock false
   take video-height, name <videoHeight>
     like native-number
   take video-width, name <videoWidth>
     like native-number
   take width, name <width>
     like native-number
-    lock free
+    lock false
 
-  task get-video-playback-quality
-    name <getVideoPlaybackQuality>
+  task get-video-playback-quality, name <getVideoPlaybackQuality>
     free seed, like video-playback-quality
 
-  task request-picture-in-picture
-    name <requestPictureInPicture>
+  task request-picture-in-picture, name <requestPictureInPicture>
     free seed
       like promise
         like picture-in-picture-window
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     head k, like like-link-text
       base link-read-link-text
         like html-video-element-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like html-video-element
         take ev
           like form-link-link-text
@@ -128,31 +125,29 @@ form html-video-element
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     head k, like like-link-text
       base link-read-link-text
         like html-video-element-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like html-video-element
         take ev
           like form-link-link-text
@@ -160,19 +155,18 @@ form html-video-element
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void

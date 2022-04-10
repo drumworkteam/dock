@@ -1,56 +1,56 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/add-event-listener-options
+load @drumwork/moon/code/javascript/dom/add-event-listener-options
   take form add-event-listener-options
 
-load @drumwork/land/code/javascript/dom/animation-effect
+load @drumwork/moon/code/javascript/dom/animation-effect
   take form animation-effect
 
-load @drumwork/land/code/javascript/dom/animation-event-map
+load @drumwork/moon/code/javascript/dom/animation-event-map
   take form animation-event-map
 
-load @drumwork/land/code/javascript/dom/animation-play-state
+load @drumwork/moon/code/javascript/dom/animation-play-state
   take form animation-play-state
 
-load @drumwork/land/code/javascript/dom/animation-playback-event
+load @drumwork/moon/code/javascript/dom/animation-playback-event
   take form animation-playback-event
 
-load @drumwork/land/code/javascript/dom/animation-replace-state
+load @drumwork/moon/code/javascript/dom/animation-replace-state
   take form animation-replace-state
 
-load @drumwork/land/code/javascript/dom/animation-timeline
+load @drumwork/moon/code/javascript/dom/animation-timeline
   take form animation-timeline
 
-load @drumwork/land/code/javascript/dom/event
+load @drumwork/moon/code/javascript/dom/event
   take form event
 
-load @drumwork/land/code/javascript/dom/event-listener-options
+load @drumwork/moon/code/javascript/dom/event-listener-options
   take form event-listener-options
 
-load @drumwork/land/code/javascript/dom/event-listener-or-event-listener-object
+load @drumwork/moon/code/javascript/dom/event-listener-or-event-listener-object
   take form event-listener-or-event-listener-object
 
-load @drumwork/land/code/javascript/dom/event-target
+load @drumwork/moon/code/javascript/dom/event-target
   take form event-target
 
-load @drumwork/land/code/javascript/es5/promise
+load @drumwork/moon/code/javascript/es5/promise
   take form promise
 
 load @drumwork/seed/code/form/form/link
@@ -65,83 +65,84 @@ load @drumwork/seed/code/form/link/read
   take form link-read
     save form link-read-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
+
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form animation, name <Animation>
   base event-target
 
   take current-time, name <currentTime>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-null
-    lock free
+    lock false
   take effect, name <effect>
-    like sink-link-text
+    like or-link-text
       like animation-effect
       like native-null
-    lock free
+    lock false
   take finished, name <finished>
     like promise
       like animation
   take id, name <id>
     like native-string
-    lock free
+    lock false
   take oncancel, name <oncancel>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like animation
         take ev, like animation-playback-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onfinish, name <onfinish>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like animation
         take ev, like animation-playback-event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take onremove, name <onremove>
-    like sink-link-text
-      like task
+    like or-link-text
+      like task-link-text
         take this, like animation
         take ev, like event
         free seed, like native-any
       like native-null
-    lock free
+    lock false
   take pending, name <pending>
     like native-boolean
   take play-state, name <playState>
     like animation-play-state
-  take playback-rate
-    name <playbackRate>
+  take playback-rate, name <playbackRate>
     like native-number
-    lock free
+    lock false
   take ready, name <ready>
     like promise
       like animation
-  take replace-state
-    name <replaceState>
+  take replace-state, name <replaceState>
     like animation-replace-state
   take start-time, name <startTime>
-    like sink-link-text
+    like or-link-text
       like native-number
       like native-null
-    lock free
+    lock false
   take timeline, name <timeline>
-    like sink-link-text
+    like or-link-text
       like animation-timeline
       like native-null
-    lock free
+    lock false
 
   task cancel, name <cancel>
     free seed, like native-void
 
-  task commit-styles
-    name <commitStyles>
+  task commit-styles, name <commitStyles>
     free seed, like native-void
 
   task finish, name <finish>
@@ -159,19 +160,17 @@ form animation, name <Animation>
   task reverse, name <reverse>
     free seed, like native-void
 
-  task update-playback-rate
-    name <updatePlaybackRate>
+  task update-playback-rate, name <updatePlaybackRate>
     take playback-rate, like native-number
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     head k, like like-link-text
       base link-read-link-text
         like animation-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like animation
         take ev
           like form-link-link-text
@@ -179,31 +178,29 @@ form animation, name <Animation>
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task add-event-listener
-    name <addEventListener>
+  task add-event-listener, name <addEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like add-event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     head k, like like-link-text
       base link-read-link-text
         like animation-event-map
     take type, like k
     take listener
-      like task
+      like task-link-text
         take this, like animation
         take ev
           like form-link-link-text
@@ -211,19 +208,18 @@ form animation, name <Animation>
             like k
         free seed, like native-any
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void
 
-  task remove-event-listener
-    name <removeEventListener>
+  task remove-event-listener, name <removeEventListener>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like sink-link-text
+      like or-link-text
         like native-boolean
         like event-listener-options
-      void take
+      void true
     free seed, like native-void

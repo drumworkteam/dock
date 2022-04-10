@@ -1,65 +1,60 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/dom/document
+load @drumwork/moon/code/javascript/dom/document
   take form document
 
-load @drumwork/land/code/javascript/dom/document-type
+load @drumwork/moon/code/javascript/dom/document-type
   take form document-type
 
-load @drumwork/land/code/javascript/dom/xml-document
+load @drumwork/moon/code/javascript/dom/xml-document
   take form xml-document
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form dom-implementation
-  name <DOMImplementation>
-  task create-document
-    name <createDocument>
+form dom-implementation, name <DOMImplementation>
+  task create-document, name <createDocument>
     take namespace
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-null
     take qualified-name
-      like sink-link-text
+      like or-link-text
         like native-string
         like native-null
     take doctype
-      like sink-link-text
+      like or-link-text
         like document-type
         like native-null
-      void take
+      void true
     free seed, like xml-document
 
-  task create-document-type
-    name <createDocumentType>
+  task create-document-type, name <createDocumentType>
     take qualified-name, like native-string
     take public-id, like native-string
     take system-id, like native-string
     free seed, like document-type
 
-  task create-html-document
-    name <createHTMLDocument>
+  task create-html-document, name <createHTMLDocument>
     take title, like native-string
-      void take
+      void true
     free seed, like document
 
   task has-feature, name <hasFeature>
     take args
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, text <true>

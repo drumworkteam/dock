@@ -1,53 +1,50 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/es5/array-like
+load @drumwork/moon/code/javascript/es5/array-like
   take form array-like
 
-load @drumwork/land/code/javascript/es5/string-constructor
+load @drumwork/moon/code/javascript/es5/string-constructor
   take form string-constructor
 
 load @drumwork/seed/code/form/form
   take form form
     save form form-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
-
-form string-constructor
-  name <StringConstructor>
-  task from-code-point
-    name <fromCodePoint>
+form string-constructor, name <StringConstructor>
+  task from-code-point, name <fromCodePoint>
     take code-points
-      like list-link-text
+      like native-array
         like native-number
-      rest take
+      rest true
     free seed, like native-string
 
   task raw, name <raw>
     take template
       like form-link-text
         take raw, name <raw>
-          like sink-link-text
-            like list-link-text
+          like or-link-text
+            like native-array
               like native-string
             like array-like
               like native-string
-          lock free
+          lock false
     take substitutions
-      like list-link-text
+      like native-array
         like native-any
-      rest take
+      rest true
     free seed, like native-string

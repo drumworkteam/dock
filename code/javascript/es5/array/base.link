@@ -1,294 +1,296 @@
 
-load @drumwork/land/code/javascript/base/native-any
+load @drumwork/moon/code/javascript/base/native-any
   take form native-any
 
-load @drumwork/land/code/javascript/base/native-boolean
+load @drumwork/moon/code/javascript/base/native-array
+  take form native-array
+
+load @drumwork/moon/code/javascript/base/native-boolean
   take form native-boolean
 
-load @drumwork/land/code/javascript/base/native-number
+load @drumwork/moon/code/javascript/base/native-number
   take form native-number
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-this
+load @drumwork/moon/code/javascript/base/native-this
   take form native-this
 
-load @drumwork/land/code/javascript/base/native-undefined
+load @drumwork/moon/code/javascript/base/native-undefined
   take form native-undefined
 
-load @drumwork/land/code/javascript/base/native-unknown
+load @drumwork/moon/code/javascript/base/native-unknown
   take form native-unknown
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/es5/concat-array
+load @drumwork/moon/code/javascript/es5/concat-array
   take form concat-array
 
 load @drumwork/seed/code/form/like
   take form like
     save form like-link-text
 
-load @drumwork/seed/code/form/list
-  take form list
-    save form list-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/task
+  take form task
+    save form task-link-text
 
 form array, name <Array>
   head t, like like-link-text
 
   take length, name <length>
     like native-number
-    lock free
+    lock false
 
   task to-string, name <toString>
     free seed, like native-string
 
-  task to-locale-string
-    name <toLocaleString>
+  task to-locale-string, name <toLocaleString>
     free seed, like native-string
 
   task pop, name <pop>
     free seed
-      like sink-link-text
+      like or-link-text
         like t
         like native-undefined
 
   task push, name <push>
     take items
-      like list-link-text
+      like native-array
         like t
-      rest take
+      rest true
     free seed, like native-number
 
   task concat, name <concat>
     take items
-      like list-link-text
+      like native-array
         like concat-array
           like t
-      rest take
+      rest true
     free seed
-      like list-link-text
+      like native-array
         like t
 
   task concat, name <concat>
     take items
-      like list-link-text
-        like sink-link-text
+      like native-array
+        like or-link-text
           like t
           like concat-array
             like t
-      rest take
+      rest true
     free seed
-      like list-link-text
+      like native-array
         like t
 
   task join, name <join>
     take separator, like native-string
-      void take
+      void true
     free seed, like native-string
 
   task reverse, name <reverse>
     free seed
-      like list-link-text
+      like native-array
         like t
 
   task shift, name <shift>
     free seed
-      like sink-link-text
+      like or-link-text
         like t
         like native-undefined
 
   task slice, name <slice>
     take start, like native-number
-      void take
+      void true
     take end, like native-number
-      void take
+      void true
     free seed
-      like list-link-text
+      like native-array
         like t
 
   task sort, name <sort>
     take compare-fn
-      like task
+      like task-link-text
         take a, like t
         take b, like t
         free seed, like native-number
-      void take
+      void true
     free seed, like native-this
 
   task splice, name <splice>
     take start, like native-number
     take delete-count, like native-number
-      void take
+      void true
     free seed
-      like list-link-text
+      like native-array
         like t
 
   task splice, name <splice>
     take start, like native-number
     take delete-count, like native-number
     take items
-      like list-link-text
+      like native-array
         like t
-      rest take
+      rest true
     free seed
-      like list-link-text
+      like native-array
         like t
 
   task unshift, name <unshift>
     take items
-      like list-link-text
+      like native-array
         like t
-      rest take
+      rest true
     free seed, like native-number
 
   task index-of, name <indexOf>
     take search-element, like t
     take from-index, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task last-index-of, name <lastIndexOf>
     take search-element, like t
     take from-index, like native-number
-      void take
+      void true
     free seed, like native-number
 
   task every, name <every>
     head s, like like-link-text
       base t
     take predicate
-      like task
+      like task-link-text
         take value, like t
         take index, like native-number
         take array
-          like list-link-text
+          like native-array
             like t
         free seed
           like native-boolean
           rank value, like s
     take this-arg, like native-any
-      void take
+      void true
     free seed
       like native-boolean
       rank self
-        like list-link-text
+        like native-array
           like s
 
   task every, name <every>
     take predicate
-      like task
+      like task-link-text
         take value, like t
         take index, like native-number
         take array
-          like list-link-text
+          like native-array
             like t
         free seed, like native-unknown
     take this-arg, like native-any
-      void take
+      void true
     free seed, like native-boolean
 
   task some, name <some>
     take predicate
-      like task
+      like task-link-text
         take value, like t
         take index, like native-number
         take array
-          like list-link-text
+          like native-array
             like t
         free seed, like native-unknown
     take this-arg, like native-any
-      void take
+      void true
     free seed, like native-boolean
 
   task for-each, name <forEach>
     take callbackfn
-      like task
+      like task-link-text
         take value, like t
         take index, like native-number
         take array
-          like list-link-text
+          like native-array
             like t
         free seed, like native-void
     take this-arg, like native-any
-      void take
+      void true
     free seed, like native-void
 
   task map, name <map>
     head u, like like-link-text
     take callbackfn
-      like task
+      like task-link-text
         take value, like t
         take index, like native-number
         take array
-          like list-link-text
+          like native-array
             like t
         free seed, like u
     take this-arg, like native-any
-      void take
+      void true
     free seed
-      like list-link-text
+      like native-array
         like u
 
   task filter, name <filter>
     head s, like like-link-text
       base t
     take predicate
-      like task
+      like task-link-text
         take value, like t
         take index, like native-number
         take array
-          like list-link-text
+          like native-array
             like t
         free seed
           like native-boolean
           rank value, like s
     take this-arg, like native-any
-      void take
+      void true
     free seed
-      like list-link-text
+      like native-array
         like s
 
   task filter, name <filter>
     take predicate
-      like task
+      like task-link-text
         take value, like t
         take index, like native-number
         take array
-          like list-link-text
+          like native-array
             like t
         free seed, like native-unknown
     take this-arg, like native-any
-      void take
+      void true
     free seed
-      like list-link-text
+      like native-array
         like t
 
   task reduce, name <reduce>
     take callbackfn
-      like task
+      like task-link-text
         take previous-value, like t
         take current-value, like t
         take current-index, like native-number
         take array
-          like list-link-text
+          like native-array
             like t
         free seed, like t
     free seed, like t
 
   task reduce, name <reduce>
     take callbackfn
-      like task
+      like task-link-text
         take previous-value, like t
         take current-value, like t
         take current-index, like native-number
         take array
-          like list-link-text
+          like native-array
             like t
         free seed, like t
     take initial-value, like t
@@ -297,12 +299,12 @@ form array, name <Array>
   task reduce, name <reduce>
     head u, like like-link-text
     take callbackfn
-      like task
+      like task-link-text
         take previous-value, like u
         take current-value, like t
         take current-index, like native-number
         take array
-          like list-link-text
+          like native-array
             like t
         free seed, like u
     take initial-value, like u
@@ -310,24 +312,24 @@ form array, name <Array>
 
   task reduce-right, name <reduceRight>
     take callbackfn
-      like task
+      like task-link-text
         take previous-value, like t
         take current-value, like t
         take current-index, like native-number
         take array
-          like list-link-text
+          like native-array
             like t
         free seed, like t
     free seed, like t
 
   task reduce-right, name <reduceRight>
     take callbackfn
-      like task
+      like task-link-text
         take previous-value, like t
         take current-value, like t
         take current-index, like native-number
         take array
-          like list-link-text
+          like native-array
             like t
         free seed, like t
     take initial-value, like t
@@ -336,16 +338,16 @@ form array, name <Array>
   task reduce-right, name <reduceRight>
     head u, like like-link-text
     take callbackfn
-      like task
+      like task-link-text
         take previous-value, like u
         take current-value, like t
         take current-index, like native-number
         take array
-          like list-link-text
+          like native-array
             like t
         free seed, like u
     take initial-value, like u
     free seed, like u
 
-  cite n, like native-number
+  mesh n, like native-number
     like t

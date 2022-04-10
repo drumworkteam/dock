@@ -1,38 +1,36 @@
 
-load @drumwork/land/code/javascript/base/native-null
+load @drumwork/moon/code/javascript/base/native-null
   take form native-null
 
-load @drumwork/land/code/javascript/base/native-string
+load @drumwork/moon/code/javascript/base/native-string
   take form native-string
 
-load @drumwork/land/code/javascript/base/native-void
+load @drumwork/moon/code/javascript/base/native-void
   take form native-void
 
-load @drumwork/land/code/javascript/dom/rtc-rtp-receiver
+load @drumwork/moon/code/javascript/dom/rtc-rtp-receiver
   take form rtc-rtp-receiver
 
-load @drumwork/land/code/javascript/dom/rtc-rtp-sender
+load @drumwork/moon/code/javascript/dom/rtc-rtp-sender
   take form rtc-rtp-sender
 
-load @drumwork/land/code/javascript/dom/rtc-rtp-transceiver-direction
+load @drumwork/moon/code/javascript/dom/rtc-rtp-transceiver-direction
   take form rtc-rtp-transceiver-direction
 
-load @drumwork/seed/code/form/sink
-  take form sink
-    save form sink-link-text
+load @drumwork/seed/code/form/or
+  take form or
+    save form or-link-text
 
-form rtc-rtp-transceiver
-  name <RTCRtpTransceiver>
-  take current-direction
-    name <currentDirection>
-    like sink-link-text
+form rtc-rtp-transceiver, name <RTCRtpTransceiver>
+  take current-direction, name <currentDirection>
+    like or-link-text
       like rtc-rtp-transceiver-direction
       like native-null
   take direction, name <direction>
     like rtc-rtp-transceiver-direction
-    lock free
+    lock false
   take mid, name <mid>
-    like sink-link-text
+    like or-link-text
       like native-string
       like native-null
   take receiver, name <receiver>
