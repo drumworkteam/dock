@@ -8,10 +8,10 @@
 <br/>
 
 <p align='center'>
-  <img src='https://github.com/teamdrumwork/seed/blob/make/view/view.svg?raw=true' height='192'>
+  <img src='https://github.com/teamdrumwork/nest/blob/make/view/view.svg?raw=true' height='192'>
 </p>
 
-<h3 align='center'>seed</h3>
+<h3 align='center'>nest</h3>
 <p align='center'>
   Link Text Platform Drivers
 </p>
@@ -22,7 +22,7 @@
 
 ### Welcome
 
-This `seed` project is a collection of low-level environment APIs, such as those for JavaScript, Node.js, Rust, Swift, etc.. They are simply the type definitions for most of the useful features of the environment, for use in code. We use them to generate the appropriate environment code in the `base` compiler.
+This `nest` project is a collection of low-level environment APIs, such as those for JavaScript, Node.js, Rust, Swift, etc.. They are simply the type definitions for most of the useful features of the environment, for use in code. We use them to generate the appropriate environment code in the `base` compiler.
 
 ### License
 
