@@ -1,49 +1,44 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/mutation-record-type
+load @treesurf/nest/code/javascript/dom
   take form mutation-record-type
-
-load @treesurf/nest/code/javascript/dom/node
   take form node
-
-load @treesurf/nest/code/javascript/dom/node-list
   take form node-list
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form mutation-record, name <MutationRecord>
-  take added-nodes, name <addedNodes>
+  link added-nodes, name <addedNodes>
     like node-list
-  take attribute-name, name <attributeName>
-    like or-link-text
+  link attribute-name, name <attributeName>
+    like or
       like native-string
       like native-null
-  take attribute-namespace, name <attributeNamespace>
-    like or-link-text
+  link attribute-namespace, name <attributeNamespace>
+    like or
       like native-string
       like native-null
-  take next-sibling, name <nextSibling>
-    like or-link-text
+  link next-sibling, name <nextSibling>
+    like or
       like node
       like native-null
-  take old-value, name <oldValue>
-    like or-link-text
+  link old-value, name <oldValue>
+    like or
       like native-string
       like native-null
-  take previous-sibling, name <previousSibling>
-    like or-link-text
+  link previous-sibling, name <previousSibling>
+    like or
       like node
       like native-null
-  take removed-nodes, name <removedNodes>
+  link removed-nodes, name <removedNodes>
     like node-list
-  take target, name <target>
+  link target, name <target>
     like node
-  take type, name <type>
+  link type, name <type>
     like mutation-record-type

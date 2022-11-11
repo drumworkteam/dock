@@ -1,28 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
+load @treesurf/moon
+  take form like
+  take form or
+  take form task
 
-load @treesurf/nest/code/javascript/es5/function
+load @treesurf/nest/code/javascript/native
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/es5
   take form function
 
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
 form class-decorator, name <ClassDecorator>
-  like task-link-text
-    head t-function, like like-link-text
+  like task
+    head t-function
       base function
+
     take target, like t-function
     free seed
-      like or-link-text
+      like or
         like t-function
         like native-void

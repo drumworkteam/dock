@@ -1,25 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/es5/array-buffer
+load @treesurf/nest/code/javascript/es5
   take form array-buffer
-
-load @treesurf/nest/code/javascript/es5/array-buffer-view
   take form array-buffer-view
 
 form array-buffer-constructor, name <ArrayBufferConstructor>
-  take prototype, name <prototype>
+  link prototype, name <prototype>
     like array-buffer
 
   task is-view, name <isView>
-    take arg, like native-any
+    take arg, like any
     free seed
       like native-boolean
       rank arg, like array-buffer-view

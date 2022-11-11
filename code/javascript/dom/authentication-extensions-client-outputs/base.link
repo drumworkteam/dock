@@ -1,20 +1,19 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
 
-load @treesurf/nest/code/javascript/dom/credential-properties-output
+load @treesurf/nest/code/javascript/dom
   take form credential-properties-output
-
-load @treesurf/nest/code/javascript/dom/uvm-entries
   take form uvm-entries
 
 form authentication-extensions-client-outputs, name <AuthenticationExtensionsClientOutputs>
-  take appid, name <appid>
+  link appid, name <appid>
     like native-boolean
-    lock false
-  take cred-props, name <credProps>
+    flex true
+  link cred-props, name <credProps>
     like credential-properties-output
-    lock false
-  take uvm, name <uvm>
+    flex true
+  link uvm, name <uvm>
     like uvm-entries
-    lock false
+    flex true

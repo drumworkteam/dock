@@ -1,41 +1,31 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form or
+  take form task
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/buffer-source
+load @treesurf/nest/code/javascript/dom
   take form buffer-source
-
-load @treesurf/nest/code/javascript/dom/media-key-status
   take form media-key-status
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
 form media-key-status-map, name <MediaKeyStatusMap>
-  take size, name <size>
+  link size, name <size>
     like native-number
 
   task get, name <get>
     take key-id, like buffer-source
     free seed
-      like or-link-text
+      like or
         like media-key-status
         like native-undefined
 
@@ -45,11 +35,11 @@ form media-key-status-map, name <MediaKeyStatusMap>
 
   task for-each, name <forEach>
     take callbackfn
-      like task-link-text
+      like task
         take value, like media-key-status
         take key, like buffer-source
         take parent, like media-key-status-map
         free seed, like native-void
-    take this-arg, like native-any
+    take this-arg, like any
       void true
     free seed, like native-void

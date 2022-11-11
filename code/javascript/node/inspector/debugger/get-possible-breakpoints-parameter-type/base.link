@@ -1,28 +1,27 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/inspector/debugger/location
+load @drumwork/nest/code/javascript/node/inspector/debugger
   take form location
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form get-possible-breakpoints-parameter-type, name <GetPossibleBreakpointsParameterType>
-  take start, name <start>
+  link start, name <start>
     like location
-    lock false
-  take end, name <end>
-    like or-link-text
+    flex true
+  link end, name <end>
+    like or
       like location
       like native-undefined
-    lock false
-  take restrict-to-function, name <restrictToFunction>
-    like or-link-text
+    flex true
+  link restrict-to-function, name <restrictToFunction>
+    like or
       like native-boolean
       like native-undefined
-    lock false
+    flex true

@@ -1,22 +1,21 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/dom/audio-buffer
+load @treesurf/nest/code/javascript/dom
   take form audio-buffer
-
-load @treesurf/nest/code/javascript/dom/event-init
   take form event-init
 
 form audio-processing-event-init, name <AudioProcessingEventInit>
   base event-init
 
-  take input-buffer, name <inputBuffer>
+  link input-buffer, name <inputBuffer>
     like audio-buffer
-    lock false
-  take output-buffer, name <outputBuffer>
+    flex true
+  link output-buffer, name <outputBuffer>
     like audio-buffer
-    lock false
-  take playback-time, name <playbackTime>
+    flex true
+  link playback-time, name <playbackTime>
     like native-number
-    lock false
+    flex true

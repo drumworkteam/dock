@@ -1,28 +1,27 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/webworker
+  take form event-init
 
 load @treesurf/nest/code/javascript/dom/close-event-init
   take form close-event-init
 
-load @treesurf/nest/code/javascript/webworker/event-init
-  take form event-init
-
 form close-event-init, name <CloseEventInit>
   base event-init
 
-  take code, name <code>
+  link code, name <code>
     like native-number
-    lock false
-  take reason, name <reason>
+    flex true
+  link reason, name <reason>
     like native-string
-    lock false
-  take was-clean, name <wasClean>
+    flex true
+  link was-clean, name <wasClean>
     like native-boolean
-    lock false
+    flex true

@@ -1,62 +1,60 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/remote-object
+load @drumwork/nest/code/javascript/node/inspector/runtime
   take form remote-object
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form property-descriptor, name <PropertyDescriptor>
-  take name, name <name>
+  link name, name <name>
     like native-string
-    lock false
-  take value, name <value>
-    like or-link-text
+    flex true
+  link value, name <value>
+    like or
       like remote-object
       like native-undefined
-    lock false
-  take writable, name <writable>
-    like or-link-text
+    flex true
+  link writable, name <writable>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take get, name <get>
-    like or-link-text
+    flex true
+  link get, name <get>
+    like or
       like remote-object
       like native-undefined
-    lock false
-  take set, name <set>
-    like or-link-text
+    flex true
+  link set, name <set>
+    like or
       like remote-object
       like native-undefined
-    lock false
-  take configurable, name <configurable>
+    flex true
+  link configurable, name <configurable>
     like native-boolean
-    lock false
-  take enumerable, name <enumerable>
+    flex true
+  link enumerable, name <enumerable>
     like native-boolean
-    lock false
-  take was-thrown, name <wasThrown>
-    like or-link-text
+    flex true
+  link was-thrown, name <wasThrown>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take is-own, name <isOwn>
-    like or-link-text
+    flex true
+  link is-own, name <isOwn>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take symbol, name <symbol>
-    like or-link-text
+    flex true
+  link symbol, name <symbol>
+    like or
       like remote-object
       like native-undefined
-    lock false
+    flex true

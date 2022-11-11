@@ -1,14 +1,15 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/rtc-sdp-type
+load @treesurf/nest/code/javascript/dom
   take form rtc-sdp-type
 
 form rtc-local-session-description-init, name <RTCLocalSessionDescriptionInit>
-  take sdp, name <sdp>
+  link sdp, name <sdp>
     like native-string
-    lock false
-  take type, name <type>
+    flex true
+  link type, name <type>
     like rtc-sdp-type
-    lock false
+    flex true

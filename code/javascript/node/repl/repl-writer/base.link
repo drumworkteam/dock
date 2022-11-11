@@ -1,19 +1,15 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/repl-server
-  take form repl-server
-
-load @treesurf/nest/code/form/task
+load @treesurf/moon
+  take form any
   take form task
-    save form task-link-text
+
+load @drumwork/nest/code/javascript
+  take form repl-server
+  take form string
+    save form native-string
 
 form repl-writer, name <REPLWriter>
-  like task-link-text
+  like task
     take this, like repl-server
-    take obj, like native-any
-    free seed, like native-string
+    take obj, like any
+    free result, like native-string

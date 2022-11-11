@@ -1,33 +1,30 @@
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
+load @treesurf/nest/code/javascript/native
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/dom/audio-node
+load @treesurf/nest/code/javascript/dom
   take form audio-node
-
-load @treesurf/nest/code/javascript/dom/audio-param
   take form audio-param
-
-load @treesurf/nest/code/javascript/dom/biquad-filter-type
   take form biquad-filter-type
 
-load @treesurf/nest/code/javascript/es5/float32-array
+load @treesurf/nest/code/javascript/es5
   take form float32-array
 
 form biquad-filter-node, name <BiquadFilterNode>
   base audio-node
 
-  take q, name <Q>
+  link q, name <Q>
     like audio-param
-  take detune, name <detune>
+  link detune, name <detune>
     like audio-param
-  take frequency, name <frequency>
+  link frequency, name <frequency>
     like audio-param
-  take gain, name <gain>
+  link gain, name <gain>
     like audio-param
-  take type, name <type>
+  link type, name <type>
     like biquad-filter-type
-    lock false
+    flex true
 
   task get-frequency-response, name <getFrequencyResponse>
     take frequency-hz, like float32-array

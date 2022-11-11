@@ -1,43 +1,35 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form like
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @treesurf/nest/code/javascript/native
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/dom/underlying-sink-abort-callback
+load @treesurf/nest/code/javascript/dom
   take form underlying-sink-abort-callback
-
-load @treesurf/nest/code/javascript/dom/underlying-sink-close-callback
   take form underlying-sink-close-callback
-
-load @treesurf/nest/code/javascript/dom/underlying-sink-start-callback
   take form underlying-sink-start-callback
-
-load @treesurf/nest/code/javascript/dom/underlying-sink-write-callback
   take form underlying-sink-write-callback
 
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
 form underlying-sink, name <UnderlyingSink>
-  head w, like like-link-text
-    back native-any
+  head w
+    back any
 
-  take abort, name <abort>
+  link abort, name <abort>
     like underlying-sink-abort-callback
-    lock false
-  take close, name <close>
+    flex true
+  link close, name <close>
     like underlying-sink-close-callback
-    lock false
-  take start, name <start>
+    flex true
+  link start, name <start>
     like underlying-sink-start-callback
-    lock false
-  take type, name <type>
+    flex true
+  link type, name <type>
     like native-undefined
-    lock false
-  take write, name <write>
+    flex true
+  link write, name <write>
     like underlying-sink-write-callback
       like w
-    lock false
+    flex true

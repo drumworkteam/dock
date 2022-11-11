@@ -1,121 +1,108 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form and
+  take form form
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/object-encoding-options
+load @drumwork/nest/code/javascript
+  take form null
+    save form native-null
   take form object-encoding-options
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
-
-load @treesurf/nest/code/javascript/node/buffer/buffer-encoding
   take form buffer-encoding
 
-load @treesurf/nest/code/javascript/node/child-process/exec-options
+load @drumwork/nest/code/javascript/node/child-process
   take form exec-options
-
-load @treesurf/nest/code/javascript/node/child-process/promise-with-child
   take form promise-with-child
 
-load @treesurf/nest/code/form/and
-  take form and
-    save form and-link-text
-
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 task promisify, name <__promisify__>
   take command, like native-string
   free seed
     like promise-with-child
-      like form-link-text
-        take stdout, name <stdout>
+      like form
+        link stdout, name <stdout>
           like native-string
-          lock false
-        take stderr, name <stderr>
+          flex true
+        link stderr, name <stderr>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take command, like native-string
   take options
-    like and-link-text
-      like form-link-text
-        take encoding, name <encoding>
-          like or-link-text
+    like and
+      like form
+        link encoding, name <encoding>
+          like or
             text <buffer>
             like native-null
-          lock false
+          flex true
       like exec-options
   free seed
     like promise-with-child
-      like form-link-text
-        take stdout, name <stdout>
+      like form
+        link stdout, name <stdout>
           like buffer
-          lock false
-        take stderr, name <stderr>
+          flex true
+        link stderr, name <stderr>
           like buffer
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take command, like native-string
   take options
-    like and-link-text
-      like form-link-text
-        take encoding, name <encoding>
+    like and
+      like form
+        link encoding, name <encoding>
           like buffer-encoding
-          lock false
+          flex true
       like exec-options
   free seed
     like promise-with-child
-      like form-link-text
-        take stdout, name <stdout>
+      like form
+        link stdout, name <stdout>
           like native-string
-          lock false
-        take stderr, name <stderr>
+          flex true
+        link stderr, name <stderr>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take command, like native-string
   take options, like exec-options
   free seed
     like promise-with-child
-      like form-link-text
-        take stdout, name <stdout>
+      like form
+        link stdout, name <stdout>
           like native-string
-          lock false
-        take stderr, name <stderr>
+          flex true
+        link stderr, name <stderr>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take command, like native-string
   take options
-    like or-link-text
-      like and-link-text
+    like or
+      like and
         like object-encoding-options
         like exec-options
       like native-null
     void true
   free seed
     like promise-with-child
-      like form-link-text
-        take stdout, name <stdout>
-          like or-link-text
+      like form
+        link stdout, name <stdout>
+          like or
             like native-string
             like buffer
-          lock false
-        take stderr, name <stderr>
-          like or-link-text
+          flex true
+        link stderr, name <stderr>
+          like or
             like native-string
             like buffer
-          lock false
+          flex true

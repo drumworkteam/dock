@@ -1,20 +1,21 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/webworker
+  take form table-kind
 
 load @treesurf/nest/code/javascript/dom/table-descriptor
   take form table-descriptor
 
-load @treesurf/nest/code/javascript/webworker/table-kind
-  take form table-kind
-
 form table-descriptor, name <TableDescriptor>
-  take element, name <element>
+  link element, name <element>
     like table-kind
-    lock false
-  take initial, name <initial>
+    flex true
+  link initial, name <initial>
     like native-number
-    lock false
-  take maximum, name <maximum>
+    flex true
+  link maximum, name <maximum>
     like native-number
-    lock false
+    flex true

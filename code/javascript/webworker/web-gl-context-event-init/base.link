@@ -1,16 +1,17 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
+
+load @treesurf/nest/code/javascript/webworker
+  take form event-init
 
 load @treesurf/nest/code/javascript/dom/web-gl-context-event-init
   take form web-gl-context-event-init
 
-load @treesurf/nest/code/javascript/webworker/event-init
-  take form event-init
-
 form web-gl-context-event-init, name <WebGLContextEventInit>
   base event-init
 
-  take status-message, name <statusMessage>
+  link status-message, name <statusMessage>
     like native-string
-    lock false
+    flex true

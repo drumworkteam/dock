@@ -1,19 +1,19 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/moon
+  take form tuple
 
-load @treesurf/nest/code/javascript/es2015/iterable/iterable-iterator
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/es2015/iterable
   take form iterable-iterator
 
 load @treesurf/nest/code/javascript/es5/float32-array
   take form float32-array
 
-load @treesurf/nest/code/form/band
-  take form band
-    save form band-link-text
-
 form float32-array, name <Float32Array>
-  task loan symbol/iterator
+  task {symbol/iterator}
     free seed
       like iterable-iterator
         like native-number
@@ -21,7 +21,7 @@ form float32-array, name <Float32Array>
   task entries, name <entries>
     free seed
       like iterable-iterator
-        like band-link-text
+        like tuple
           like native-number
           like native-number
 

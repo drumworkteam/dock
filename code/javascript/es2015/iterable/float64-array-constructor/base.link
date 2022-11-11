@@ -1,22 +1,18 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form task
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/es2015/iterable/float64-array
+load @treesurf/nest/code/javascript/es2015/iterable
   take form float64-array
-
-load @treesurf/nest/code/javascript/es2015/iterable/iterable
   take form iterable
 
 load @treesurf/nest/code/javascript/es5/float64-array-constructor
   take form float64-array-constructor
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
 
 form float64-array-constructor, name <Float64ArrayConstructor>
   task from, name <from>
@@ -24,12 +20,12 @@ form float64-array-constructor, name <Float64ArrayConstructor>
       like iterable
         like native-number
     take mapfn
-      like task-link-text
+      like task
         take v, like native-number
         take k, like native-number
         free seed, like native-number
       void true
-    take this-arg, like native-any
+    take this-arg, like any
       void true
     free seed, like float64-array
 

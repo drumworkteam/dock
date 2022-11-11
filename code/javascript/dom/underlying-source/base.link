@@ -1,38 +1,32 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form like
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @treesurf/nest/code/javascript/native
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/dom/underlying-source-cancel-callback
+load @treesurf/nest/code/javascript/dom
   take form underlying-source-cancel-callback
-
-load @treesurf/nest/code/javascript/dom/underlying-source-pull-callback
   take form underlying-source-pull-callback
-
-load @treesurf/nest/code/javascript/dom/underlying-source-start-callback
   take form underlying-source-start-callback
 
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
 form underlying-source, name <UnderlyingSource>
-  head r, like like-link-text
-    back native-any
+  head r
+    back any
 
-  take cancel, name <cancel>
+  link cancel, name <cancel>
     like underlying-source-cancel-callback
-    lock false
-  take pull, name <pull>
+    flex true
+  link pull, name <pull>
     like underlying-source-pull-callback
       like r
-    lock false
-  take start, name <start>
+    flex true
+  link start, name <start>
     like underlying-source-start-callback
       like r
-    lock false
-  take type, name <type>
+    flex true
+  link type, name <type>
     like native-undefined
-    lock false
+    flex true

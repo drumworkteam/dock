@@ -1,35 +1,33 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/idb-database-info
+load @treesurf/nest/code/javascript/dom
   take form idb-database-info
-
-load @treesurf/nest/code/javascript/dom/idb-open-db-request
   take form idb-open-db-request
 
-load @treesurf/nest/code/javascript/es5/promise
+load @treesurf/nest/code/javascript/es5
   take form promise
 
 form idb-factory, name <IDBFactory>
   task cmp, name <cmp>
-    take first, like native-any
-    take second, like native-any
+    take first, like any
+    take second, like any
     free seed, like native-number
 
   task databases, name <databases>
     free seed
       like promise
-        like native-array
+        like array
           like idb-database-info
 
   task delete-database, name <deleteDatabase>

@@ -1,49 +1,38 @@
 
-load @treesurf/nest/code/javascript/base/async-iterator
-  take form async-iterator
+load @treesurf/moon
+  take form any
+  take form like
+  take form or
+  take form tuple
+  take form unknown
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-unknown
-  take form native-unknown
-
-load @treesurf/nest/code/javascript/es2015/iterable/iterator-result
+load @treesurf/nest/code/javascript/es2015/iterable
   take form iterator-result
 
-load @treesurf/nest/code/javascript/es2015/symbol/wellknown/promise
+load @treesurf/nest/code/javascript/es2015/symbol/wellknown
   take form promise
 
-load @treesurf/nest/code/javascript/es5/promise-like
+load @treesurf/nest/code/javascript/es5
   take form promise-like
 
-load @treesurf/nest/code/form/band
-  take form band
-    save form band-link-text
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
+load @treesurf/nest/code/javascript/native
+  take form async-iterator
 
 form async-generator, name <AsyncGenerator>
   base async-iterator
 
-  head t, like like-link-text
-    back native-unknown
-  head t-return, like like-link-text
-    back native-any
-  head t-next, like like-link-text
-    back native-unknown
+  head t
+    back unknown
+  head t-return
+    back any
+  head t-next
+    back unknown
 
   task next, name <next>
     take args
-      like or-link-text
-        like band-link-text
-        like band-link-text
+      like or
+        like tuple
+        like tuple
           like t-next
       rest true
     free seed
@@ -54,7 +43,7 @@ form async-generator, name <AsyncGenerator>
 
   task return, name <return>
     take value
-      like or-link-text
+      like or
         like t-return
         like promise-like
           like t-return
@@ -65,14 +54,14 @@ form async-generator, name <AsyncGenerator>
           like t-return
 
   task throw, name <throw>
-    take e, like native-any
+    take e, like any
     free seed
       like promise
         like iterator-result
           like t
           like t-return
 
-  task loan symbol/async-iterator
+  task {symbol/async-iterator}
     free seed
       like async-generator
         like t

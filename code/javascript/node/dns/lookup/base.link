@@ -1,44 +1,35 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/promise
-  take form promise
-
-load @treesurf/nest/code/javascript/node/dns/lookup-address
-  take form lookup-address
-
-load @treesurf/nest/code/javascript/node/dns/lookup-all-options
-  take form lookup-all-options
-
-load @treesurf/nest/code/javascript/node/dns/lookup-one-options
-  take form lookup-one-options
-
-load @treesurf/nest/code/javascript/node/dns/lookup-options
-  take form lookup-options
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
+  take form promise
+  take form string
+    save form native-string
+
+load @drumwork/nest/code/javascript/node/dns
+  take form lookup-address
+  take form lookup-all-options
+  take form lookup-one-options
+  take form lookup-options
 
 task promisify, name <__promisify__>
   take hostname, like native-string
   take options, like lookup-all-options
   free seed
     like promise
-      like native-array
+      like array
         like lookup-address
 
 task promisify, name <__promisify__>
   take hostname, like native-string
   take options
-    like or-link-text
+    like or
       like lookup-one-options
       like native-number
     void true
@@ -51,7 +42,7 @@ task promisify, name <__promisify__>
   take options, like lookup-options
   free seed
     like promise
-      like or-link-text
+      like or
         like lookup-address
-        like native-array
+        like array
           like lookup-address

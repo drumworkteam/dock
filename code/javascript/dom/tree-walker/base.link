@@ -1,71 +1,68 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/dom/node
+load @treesurf/nest/code/javascript/dom
   take form node
-
-load @treesurf/nest/code/javascript/dom/node-filter
   take form node-filter
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form tree-walker, name <TreeWalker>
-  take current-node, name <currentNode>
+  link current-node, name <currentNode>
     like node
-    lock false
-  take filter, name <filter>
-    like or-link-text
+    flex true
+  link filter, name <filter>
+    like or
       like node-filter
       like native-null
-  take root, name <root>
+  link root, name <root>
     like node
-  take what-to-show, name <whatToShow>
+  link what-to-show, name <whatToShow>
     like native-number
 
   task first-child, name <firstChild>
     free seed
-      like or-link-text
+      like or
         like node
         like native-null
 
   task last-child, name <lastChild>
     free seed
-      like or-link-text
+      like or
         like node
         like native-null
 
   task next-node, name <nextNode>
     free seed
-      like or-link-text
+      like or
         like node
         like native-null
 
   task next-sibling, name <nextSibling>
     free seed
-      like or-link-text
+      like or
         like node
         like native-null
 
   task parent-node, name <parentNode>
     free seed
-      like or-link-text
+      like or
         like node
         like native-null
 
   task previous-node, name <previousNode>
     free seed
-      like or-link-text
+      like or
         like node
         like native-null
 
   task previous-sibling, name <previousSibling>
     free seed
-      like or-link-text
+      like or
         like node
         like native-null

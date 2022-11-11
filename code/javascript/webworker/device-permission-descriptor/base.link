@@ -1,23 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/webworker/permission-descriptor
-  take form permission-descriptor
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
+
+load @treesurf/nest/code/javascript/webworker
+  take form permission-descriptor
 
 form device-permission-descriptor, name <DevicePermissionDescriptor>
   base permission-descriptor
 
-  take device-id, name <deviceId>
+  link device-id, name <deviceId>
     like native-string
-    lock false
-  take name, name <name>
-    like or-link-text
+    flex true
+  link name, name <name>
+    like or
       text <camera>
       text <microphone>
       text <speaker>
-    lock false
+    flex true

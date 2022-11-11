@@ -1,53 +1,53 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
 form function, name <Function>
-  take prototype, name <prototype>
-    like native-any
-    lock false
-  take length, name <length>
+  link prototype, name <prototype>
+    like any
+    flex true
+  link length, name <length>
     like native-number
-  take arguments, name <arguments>
-    like native-any
-    lock false
-  take caller, name <caller>
+  link arguments, name <arguments>
+    like any
+    flex true
+  link caller, name <caller>
     like function
-    lock false
+    flex true
 
   task apply, name <apply>
     take this, like function
-    take this-arg, like native-any
-    take arg-array, like native-any
+    take this-arg, like any
+    take arg-array, like any
       void true
-    free seed, like native-any
+    free seed, like any
 
   task call, name <call>
     take this, like function
-    take this-arg, like native-any
+    take this-arg, like any
     take arg-array
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
-    free seed, like native-any
+    free seed, like any
 
   task bind, name <bind>
     take this, like function
-    take this-arg, like native-any
+    take this-arg, like any
     take arg-array
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
-    free seed, like native-any
+    free seed, like any
 
   task to-string, name <toString>
     free seed, like native-string

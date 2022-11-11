@@ -1,27 +1,22 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/base/node-js-array-buffer-view
+load @drumwork/nest/code/javascript
   take form node-js-array-buffer-view
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
-
-load @treesurf/nest/code/javascript/node/buffer/buffer-encoding
   take form buffer-encoding
 
-load @treesurf/nest/code/javascript/node/crypto/binary-to-text-encoding
+load @drumwork/nest/code/javascript/node/crypto
   take form binary-to-text-encoding
 
 form diffie-hellman, name <DiffieHellman>
-  take verify-error, name <verifyError>, like native-number
+  link verify-error, name <verifyError>, like native-number
 
   task generate-keys, name <generateKeys>
     free seed, like buffer

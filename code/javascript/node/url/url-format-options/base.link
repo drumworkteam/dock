@@ -1,32 +1,31 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form undefined
+    save form native-undefined
 
 form url-format-options, name <URLFormatOptions>
-  take auth, name <auth>
-    like or-link-text
+  link auth, name <auth>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take fragment, name <fragment>
-    like or-link-text
+    flex true
+  link fragment, name <fragment>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take search, name <search>
-    like or-link-text
+    flex true
+  link search, name <search>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take unicode, name <unicode>
-    like or-link-text
+    flex true
+  link unicode, name <unicode>
+    like or
       like native-boolean
       like native-undefined
-    lock false
+    flex true

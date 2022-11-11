@@ -1,49 +1,38 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/dom/media-stream
+load @treesurf/nest/code/javascript/dom
   take form media-stream
-
-load @treesurf/nest/code/javascript/dom/media-stream-track
   take form media-stream-track
-
-load @treesurf/nest/code/javascript/dom/rtc-dtls-transport
   take form rtc-dtls-transport
-
-load @treesurf/nest/code/javascript/dom/rtc-rtp-send-parameters
   take form rtc-rtp-send-parameters
-
-load @treesurf/nest/code/javascript/dom/rtc-stats-report
   take form rtc-stats-report
-
-load @treesurf/nest/code/javascript/dom/rtcdtmf-sender
   take form rtcdtmf-sender
 
-load @treesurf/nest/code/javascript/es5/promise
+load @treesurf/nest/code/javascript/es5
   take form promise
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form rtc-rtp-sender, name <RTCRtpSender>
-  take dtmf, name <dtmf>
-    like or-link-text
+  link dtmf, name <dtmf>
+    like or
       like rtcdtmf-sender
       like native-null
-  take track, name <track>
-    like or-link-text
+  link track, name <track>
+    like or
       like media-stream-track
       like native-null
-  take transport, name <transport>
-    like or-link-text
+  link transport, name <transport>
+    like or
       like rtc-dtls-transport
       like native-null
 
@@ -57,7 +46,7 @@ form rtc-rtp-sender, name <RTCRtpSender>
 
   task replace-track, name <replaceTrack>
     take with-track
-      like or-link-text
+      like or
         like media-stream-track
         like native-null
     free seed
@@ -72,7 +61,7 @@ form rtc-rtp-sender, name <RTCRtpSender>
 
   task set-streams, name <setStreams>
     take streams
-      like native-array
+      like array
         like media-stream
       rest true
     free seed, like native-void

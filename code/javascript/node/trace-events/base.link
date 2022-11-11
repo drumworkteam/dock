@@ -2,21 +2,18 @@
 bear @treesurf/nest/code/javascript/node/trace-events/tracing
 bear @treesurf/nest/code/javascript/node/trace-events/create-tracing-options
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/node/trace-events/create-tracing-options
-  take form create-tracing-options
-
-load @treesurf/nest/code/javascript/node/trace-events/tracing
-  take form tracing
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
+
+load @drumwork/nest/code/javascript/node/trace-events
+  take form create-tracing-options
+  take form tracing
 
 task create-tracing, name <createTracing>
   take options, like create-tracing-options
@@ -24,6 +21,6 @@ task create-tracing, name <createTracing>
 
 task get-enabled-categories, name <getEnabledCategories>
   free seed
-    like or-link-text
+    like or
       like native-string
       like native-undefined

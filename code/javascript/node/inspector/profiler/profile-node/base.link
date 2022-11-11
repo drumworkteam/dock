@@ -1,52 +1,48 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/runtime-call-frame
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
   take form runtime-call-frame
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/inspector/profiler/position-tick-info
+load @drumwork/nest/code/javascript/node/inspector/profiler
   take form position-tick-info
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form profile-node, name <ProfileNode>
-  take id, name <id>
+  link id, name <id>
     like native-number
-    lock false
-  take call-frame, name <callFrame>
+    flex true
+  link call-frame, name <callFrame>
     like runtime-call-frame
-    lock false
-  take hit-count, name <hitCount>
-    like or-link-text
+    flex true
+  link hit-count, name <hitCount>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take children, name <children>
-    like or-link-text
-      like native-array
+    flex true
+  link children, name <children>
+    like or
+      like array
         like native-number
       like native-undefined
-    lock false
-  take deopt-reason, name <deoptReason>
-    like or-link-text
+    flex true
+  link deopt-reason, name <deoptReason>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take position-ticks, name <positionTicks>
-    like or-link-text
-      like native-array
+    flex true
+  link position-ticks, name <positionTicks>
+    like or
+      like array
         like position-tick-info
       like native-undefined
-    lock false
+    flex true

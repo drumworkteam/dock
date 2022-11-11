@@ -1,23 +1,21 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-object
-  take form native-object
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/base/node-js-dict
+load @drumwork/nest/code/javascript
   take form node-js-dict
+  take form object
+    save form native-object
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/node/wasi/wasi-options
+load @drumwork/nest/code/javascript/node/wasi
   take form wasi-options
 
 form wasi, name <WASI>
-  take wasi-import, name <wasiImport>
+  link wasi-import, name <wasiImport>
     like node-js-dict
-      like native-any
+      like any
 
   task start, name <start>
     take instance, like native-object

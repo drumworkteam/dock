@@ -1,18 +1,19 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/es2015/iterable/iterable-iterator
+load @treesurf/nest/code/javascript/es2015/iterable
   take form iterable-iterator
+
+load @treesurf/nest/code/javascript/es2018/regexp
+  take form reg-exp-match-array
 
 load @treesurf/nest/code/javascript/es2018/regexp/reg-exp
   take form reg-exp
 
-load @treesurf/nest/code/javascript/es2018/regexp/reg-exp-match-array
-  take form reg-exp-match-array
-
 form reg-exp, name <RegExp>
-  task loan symbol/match-all
+  task {symbol/match-all}
     take str, like native-string
     free seed
       like iterable-iterator

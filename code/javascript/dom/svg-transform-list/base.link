@@ -1,27 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/dom-matrix2-d-init
+load @treesurf/nest/code/javascript/dom
   take form dom-matrix2-d-init
-
-load @treesurf/nest/code/javascript/dom/svg-transform
   take form svg-transform
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form svg-transform-list, name <SVGTransformList>
-  take length, name <length>
+  link length, name <length>
     like native-number
-  take number-of-items, name <numberOfItems>
+  link number-of-items, name <numberOfItems>
     like native-number
 
   task append-item, name <appendItem>
@@ -33,7 +29,7 @@ form svg-transform-list, name <SVGTransformList>
 
   task consolidate, name <consolidate>
     free seed
-      like or-link-text
+      like or
         like svg-transform
         like native-null
 

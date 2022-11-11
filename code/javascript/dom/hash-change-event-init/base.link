@@ -1,16 +1,17 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/event-init
+load @treesurf/nest/code/javascript/dom
   take form event-init
 
 form hash-change-event-init, name <HashChangeEventInit>
   base event-init
 
-  take new-url, name <newURL>
+  link new-url, name <newURL>
     like native-string
-    lock false
-  take old-url, name <oldURL>
+    flex true
+  link old-url, name <oldURL>
     like native-string
-    lock false
+    flex true

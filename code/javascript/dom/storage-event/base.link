@@ -1,49 +1,42 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/event
-  take form event
-
-load @treesurf/nest/code/javascript/dom/storage
-  take form storage
-
-load @treesurf/nest/code/javascript/dom/url
-  take form url
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/dom
+  take form event
+  take form storage
+  take form url
 
 form storage-event, name <StorageEvent>
   base event
 
-  take key, name <key>
-    like or-link-text
+  link key, name <key>
+    like or
       like native-string
       like native-null
-  take new-value, name <newValue>
-    like or-link-text
+  link new-value, name <newValue>
+    like or
       like native-string
       like native-null
-  take old-value, name <oldValue>
-    like or-link-text
+  link old-value, name <oldValue>
+    like or
       like native-string
       like native-null
-  take storage-area, name <storageArea>
-    like or-link-text
+  link storage-area, name <storageArea>
+    like or
       like storage
       like native-null
-  take url, name <url>
+  link url, name <url>
     like native-string
 
   task init-storage-event, name <initStorageEvent>
@@ -53,27 +46,27 @@ form storage-event, name <StorageEvent>
     take cancelable, like native-boolean
       void true
     take key
-      like or-link-text
+      like or
         like native-string
         like native-null
       void true
     take old-value
-      like or-link-text
+      like or
         like native-string
         like native-null
       void true
     take new-value
-      like or-link-text
+      like or
         like native-string
         like native-null
       void true
     take url
-      like or-link-text
+      like or
         like native-string
         like url
       void true
     take storage-area
-      like or-link-text
+      like or
         like storage
         like native-null
       void true

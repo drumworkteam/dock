@@ -1,19 +1,18 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/promise
+load @drumwork/nest/code/javascript
   take form promise
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/node/dns/caa-record
+load @drumwork/nest/code/javascript/node/dns
   take form caa-record
 
 task promisify, name <__promisify__>
   take hostname, like native-string
   free seed
     like promise
-      like native-array
+      like array
         like caa-record

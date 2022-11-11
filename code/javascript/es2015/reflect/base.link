@@ -1,60 +1,49 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form object
+    save form native-object
+  take form string
+    save form native-string
+  take form symbol
+    save form native-symbol
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-object
-  take form native-object
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-symbol
-  take form native-symbol
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/es2015/core/function
+load @treesurf/nest/code/javascript/es2015/core
   take form function
 
-load @treesurf/nest/code/javascript/es5/array-like
+load @treesurf/nest/code/javascript/es5
   take form array-like
-
-load @treesurf/nest/code/javascript/es5/property-descriptor
   take form property-descriptor
-
-load @treesurf/nest/code/javascript/es5/property-key
   take form property-key
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 task apply, name <apply>
   take target, like function
-  take this-argument, like native-any
+  take this-argument, like any
   take arguments-list
     like array-like
-      like native-any
-  free seed, like native-any
+      like any
+  free seed, like any
 
 task construct, name <construct>
   take target, like function
   take arguments-list
     like array-like
-      like native-any
+      like any
   take new-target, like function
     void true
-  free seed, like native-any
+  free seed, like any
 
 task define-property, name <defineProperty>
   take target, like native-object
@@ -70,22 +59,22 @@ task delete-property, name <deleteProperty>
 task get, name <get>
   take target, like native-object
   take property-key, like property-key
-  take receiver, like native-any
+  take receiver, like any
     void true
-  free seed, like native-any
+  free seed, like any
 
 task get-own-property-descriptor, name <getOwnPropertyDescriptor>
   take target, like native-object
   take property-key, like property-key
   free seed
-    like or-link-text
+    like or
       like property-descriptor
       like native-undefined
 
 task get-prototype-of, name <getPrototypeOf>
   take target, like native-object
   free seed
-    like or-link-text
+    like or
       like native-object
       like native-null
 
@@ -101,8 +90,8 @@ task is-extensible, name <isExtensible>
 task own-keys, name <ownKeys>
   take target, like native-object
   free seed
-    like native-array
-      like or-link-text
+    like array
+      like or
         like native-string
         like native-symbol
 
@@ -113,15 +102,15 @@ task prevent-extensions, name <preventExtensions>
 task set, name <set>
   take target, like native-object
   take property-key, like property-key
-  take value, like native-any
-  take receiver, like native-any
+  take value, like any
+  take receiver, like any
     void true
   free seed, like native-boolean
 
 task set-prototype-of, name <setPrototypeOf>
   take target, like native-object
   take proto
-    like or-link-text
+    like or
       like native-object
       like native-null
   free seed, like native-boolean

@@ -1,56 +1,56 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/webworker
+  take form performance-entry
 
 load @treesurf/nest/code/javascript/dom/performance-resource-timing
   take form performance-resource-timing
 
-load @treesurf/nest/code/javascript/webworker/performance-entry
-  take form performance-entry
-
 form performance-resource-timing, name <PerformanceResourceTiming>
   base performance-entry
 
-  take connect-end, name <connectEnd>
+  link connect-end, name <connectEnd>
     like native-number
-  take connect-start, name <connectStart>
+  link connect-start, name <connectStart>
     like native-number
-  take decoded-body-size, name <decodedBodySize>
+  link decoded-body-size, name <decodedBodySize>
     like native-number
-  take domain-lookup-end, name <domainLookupEnd>
+  link domain-lookup-end, name <domainLookupEnd>
     like native-number
-  take domain-lookup-start, name <domainLookupStart>
+  link domain-lookup-start, name <domainLookupStart>
     like native-number
-  take encoded-body-size, name <encodedBodySize>
+  link encoded-body-size, name <encodedBodySize>
     like native-number
-  take fetch-start, name <fetchStart>
+  link fetch-start, name <fetchStart>
     like native-number
-  take initiator-type, name <initiatorType>
+  link initiator-type, name <initiatorType>
     like native-string
-  take next-hop-protocol, name <nextHopProtocol>
+  link next-hop-protocol, name <nextHopProtocol>
     like native-string
-  take redirect-end, name <redirectEnd>
+  link redirect-end, name <redirectEnd>
     like native-number
-  take redirect-start, name <redirectStart>
+  link redirect-start, name <redirectStart>
     like native-number
-  take request-start, name <requestStart>
+  link request-start, name <requestStart>
     like native-number
-  take response-end, name <responseEnd>
+  link response-end, name <responseEnd>
     like native-number
-  take response-start, name <responseStart>
+  link response-start, name <responseStart>
     like native-number
-  take secure-connection-start, name <secureConnectionStart>
+  link secure-connection-start, name <secureConnectionStart>
     like native-number
-  take transfer-size, name <transferSize>
+  link transfer-size, name <transferSize>
     like native-number
-  take worker-start, name <workerStart>
+  link worker-start, name <workerStart>
     like native-number
 
   task to-json, name <toJSON>
-    free seed, like native-any
+    free seed, like any

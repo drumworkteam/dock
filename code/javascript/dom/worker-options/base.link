@@ -1,20 +1,19 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/request-credentials
+load @treesurf/nest/code/javascript/dom
   take form request-credentials
-
-load @treesurf/nest/code/javascript/dom/worker-type
   take form worker-type
 
 form worker-options, name <WorkerOptions>
-  take credentials, name <credentials>
+  link credentials, name <credentials>
     like request-credentials
-    lock false
-  take name, name <name>
+    flex true
+  link name, name <name>
     like native-string
-    lock false
-  take type, name <type>
+    flex true
+  link type, name <type>
     like worker-type
-    lock false
+    flex true

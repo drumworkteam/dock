@@ -1,22 +1,21 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/webworker
+  take form algorithm
+  take form hash-algorithm-identifier
 
 load @treesurf/nest/code/javascript/dom/hmac-import-params
   take form hmac-import-params
 
-load @treesurf/nest/code/javascript/webworker/algorithm
-  take form algorithm
-
-load @treesurf/nest/code/javascript/webworker/hash-algorithm-identifier
-  take form hash-algorithm-identifier
-
 form hmac-import-params, name <HmacImportParams>
   base algorithm
 
-  take hash, name <hash>
+  link hash, name <hash>
     like hash-algorithm-identifier
-    lock false
-  take length, name <length>
+    flex true
+  link length, name <length>
     like native-number
-    lock false
+    flex true

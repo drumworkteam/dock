@@ -1,162 +1,146 @@
 
-load @treesurf/nest/code/javascript/base/agent
+load @treesurf/moon
+  take form or
+  take form task
+
+load @drumwork/nest/code/javascript
   take form agent
-
-load @treesurf/nest/code/javascript/base/error
+  take form boolean
+    save form native-boolean
   take form error
-
-load @treesurf/nest/code/javascript/base/lookup-function
   take form lookup-function
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/base/socket
+  take form null
+    save form native-null
+  take form number
+    save form native-number
   take form socket
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/node/globals/abort-signal
+load @drumwork/nest/code/javascript/node/globals
   take form abort-signal
 
-load @treesurf/nest/code/javascript/node/http/outgoing-http-headers
+load @drumwork/nest/code/javascript/node/http
   take form outgoing-http-headers
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
 form client-request-args, name <ClientRequestArgs>
-  take signal, name <signal>
-    like or-link-text
+  link signal, name <signal>
+    like or
       like abort-signal
       like native-undefined
-    lock false
-  take protocol, name <protocol>
-    like or-link-text
+    flex true
+  link protocol, name <protocol>
+    like or
       like native-string
       like native-null
       like native-undefined
-    lock false
-  take host, name <host>
-    like or-link-text
+    flex true
+  link host, name <host>
+    like or
       like native-string
       like native-null
       like native-undefined
-    lock false
-  take hostname, name <hostname>
-    like or-link-text
+    flex true
+  link hostname, name <hostname>
+    like or
       like native-string
       like native-null
       like native-undefined
-    lock false
-  take family, name <family>
-    like or-link-text
+    flex true
+  link family, name <family>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take port, name <port>
-    like or-link-text
+    flex true
+  link port, name <port>
+    like or
       like native-number
       like native-string
       like native-null
       like native-undefined
-    lock false
-  take default-port, name <defaultPort>
-    like or-link-text
+    flex true
+  link default-port, name <defaultPort>
+    like or
       like native-number
       like native-string
       like native-undefined
-    lock false
-  take local-address, name <localAddress>
-    like or-link-text
+    flex true
+  link local-address, name <localAddress>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take socket-path, name <socketPath>
-    like or-link-text
+    flex true
+  link socket-path, name <socketPath>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take max-header-size, name <maxHeaderSize>
-    like or-link-text
+    flex true
+  link max-header-size, name <maxHeaderSize>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take method, name <method>
-    like or-link-text
+    flex true
+  link method, name <method>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take path, name <path>
-    like or-link-text
+    flex true
+  link path, name <path>
+    like or
       like native-string
       like native-null
       like native-undefined
-    lock false
-  take headers, name <headers>
-    like or-link-text
+    flex true
+  link headers, name <headers>
+    like or
       like outgoing-http-headers
       like native-undefined
-    lock false
-  take auth, name <auth>
-    like or-link-text
+    flex true
+  link auth, name <auth>
+    like or
       like native-string
       like native-null
       like native-undefined
-    lock false
-  take agent, name <agent>
-    like or-link-text
+    flex true
+  link agent, name <agent>
+    like or
       like agent
       like native-boolean
       like native-undefined
-    lock false
-  take default-agent, name <_defaultAgent>
-    like or-link-text
+    flex true
+  link default-agent, name <_defaultAgent>
+    like or
       like agent
       like native-undefined
-    lock false
-  take timeout, name <timeout>
-    like or-link-text
+    flex true
+  link timeout, name <timeout>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take set-host, name <setHost>
-    like or-link-text
+    flex true
+  link set-host, name <setHost>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take create-connection, name <createConnection>
-    like or-link-text
-      like task-link-text
+    flex true
+  link create-connection, name <createConnection>
+    like or
+      like task
         take options, like client-request-args
         take oncreate
-          like task-link-text
+          like task
             take err, like error
             take socket, like socket
-            free seed, like native-void
-        free seed, like socket
+            free result, like native-void
+        free result, like socket
       like native-undefined
-    lock false
-  take lookup, name <lookup>
-    like or-link-text
+    flex true
+  link lookup, name <lookup>
+    like or
       like lookup-function
       like native-undefined
-    lock false
+    flex true

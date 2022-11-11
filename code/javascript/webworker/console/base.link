@@ -1,33 +1,32 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
 load @treesurf/nest/code/javascript/dom/console
   take form console
 
 form console, name <Console>
-  take memory, name <memory>
-    like native-any
-    lock false
+  link memory, name <memory>
+    like any
+    flex true
 
   task assert, name <assert>
     take condition, like native-boolean
       void true
     take data
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
     free seed, like native-void
 
@@ -46,29 +45,29 @@ form console, name <Console>
 
   task debug, name <debug>
     take data
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
     free seed, like native-void
 
   task dir, name <dir>
-    take item, like native-any
+    take item, like any
       void true
-    take options, like native-any
+    take options, like any
       void true
     free seed, like native-void
 
   task dirxml, name <dirxml>
     take data
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
     free seed, like native-void
 
   task error, name <error>
     take data
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
     free seed, like native-void
 
@@ -76,22 +75,22 @@ form console, name <Console>
     take message, like native-string
       void true
     take optional-params
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
     free seed, like native-void
 
   task group, name <group>
     take data
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
     free seed, like native-void
 
   task group-collapsed, name <groupCollapsed>
     take data
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
     free seed, like native-void
 
@@ -100,23 +99,23 @@ form console, name <Console>
 
   task info, name <info>
     take data
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
     free seed, like native-void
 
   task log, name <log>
     take data
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
     free seed, like native-void
 
   task table, name <table>
-    take tabular-data, like native-any
+    take tabular-data, like any
       void true
     take properties
-      like native-array
+      like array
         like native-string
       void true
     free seed, like native-void
@@ -135,8 +134,8 @@ form console, name <Console>
     take label, like native-string
       void true
     take data
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
     free seed, like native-void
 
@@ -147,14 +146,14 @@ form console, name <Console>
 
   task trace, name <trace>
     take data
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
     free seed, like native-void
 
   task warn, name <warn>
     take data
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
     free seed, like native-void

@@ -1,24 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/dom/dom-matrix-init
+load @treesurf/nest/code/javascript/dom
   take form dom-matrix-init
-
-load @treesurf/nest/code/javascript/dom/dom-point
   take form dom-point
 
 form dom-point-read-only, name <DOMPointReadOnly>
-  take w, name <w>
+  link w, name <w>
     like native-number
-  take x, name <x>
+  link x, name <x>
     like native-number
-  take y, name <y>
+  link y, name <y>
     like native-number
-  take z, name <z>
+  link z, name <z>
     like native-number
 
   task matrix-transform, name <matrixTransform>
@@ -27,4 +26,4 @@ form dom-point-read-only, name <DOMPointReadOnly>
     free seed, like dom-point
 
   task to-json, name <toJSON>
-    free seed, like native-any
+    free seed, like any

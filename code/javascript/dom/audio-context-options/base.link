@@ -1,20 +1,20 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/dom/audio-context-latency-category
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/dom
   take form audio-context-latency-category
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form audio-context-options, name <AudioContextOptions>
-  take latency-hint, name <latencyHint>
-    like or-link-text
+  link latency-hint, name <latencyHint>
+    like or
       like audio-context-latency-category
       like native-number
-    lock false
-  take sample-rate, name <sampleRate>
+    flex true
+  link sample-rate, name <sampleRate>
     like native-number
-    lock false
+    flex true

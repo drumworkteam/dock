@@ -1,26 +1,26 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/script-id
+load @drumwork/nest/code/javascript/node/inspector/runtime
   take form script-id
 
 form call-frame, name <CallFrame>
-  take function-name, name <functionName>
+  link function-name, name <functionName>
     like native-string
-    lock false
-  take script-id, name <scriptId>
+    flex true
+  link script-id, name <scriptId>
     like script-id
-    lock false
-  take url, name <url>
+    flex true
+  link url, name <url>
     like native-string
-    lock false
-  take line-number, name <lineNumber>
+    flex true
+  link line-number, name <lineNumber>
     like native-number
-    lock false
-  take column-number, name <columnNumber>
+    flex true
+  link column-number, name <columnNumber>
     like native-number
-    lock false
+    flex true

@@ -1,26 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
 
-load @treesurf/nest/code/javascript/dom/key-algorithm
+load @treesurf/nest/code/javascript/dom
   take form key-algorithm
-
-load @treesurf/nest/code/javascript/dom/key-type
   take form key-type
-
-load @treesurf/nest/code/javascript/dom/key-usage
   take form key-usage
 
 form crypto-key, name <CryptoKey>
-  take algorithm, name <algorithm>
+  link algorithm, name <algorithm>
     like key-algorithm
-  take extractable, name <extractable>
+  link extractable, name <extractable>
     like native-boolean
-  take type, name <type>
+  link type, name <type>
     like key-type
-  take usages, name <usages>
-    like native-array
+  link usages, name <usages>
+    like array
       like key-usage

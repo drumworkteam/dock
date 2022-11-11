@@ -1,22 +1,21 @@
 
-load @treesurf/nest/code/javascript/base/iterable-iterator
-  take form iterable-iterator
+load @treesurf/moon
+  take form like
 
-load @treesurf/nest/code/javascript/dom/element
+load @treesurf/nest/code/javascript/dom
   take form element
+
+load @treesurf/nest/code/javascript/native
+  take form iterable-iterator
 
 load @treesurf/nest/code/javascript/dom/html-collection-of
   take form html-collection-of
 
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
 form html-collection-of, name <HTMLCollectionOf>
-  head t, like like-link-text
+  head t
     base element
 
-  task loan symbol/iterator
+  task {symbol/iterator}
     free seed
       like iterable-iterator
         like t

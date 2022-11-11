@@ -1,28 +1,26 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+
+load @treesurf/nest/code/javascript/webworker
+  take form dom-point
+  take form dom-rect
 
 load @treesurf/nest/code/javascript/dom/dom-quad
   take form dom-quad
 
-load @treesurf/nest/code/javascript/webworker/dom-point
-  take form dom-point
-
-load @treesurf/nest/code/javascript/webworker/dom-rect
-  take form dom-rect
-
 form dom-quad, name <DOMQuad>
-  take p1, name <p1>
+  link p1, name <p1>
     like dom-point
-  take p2, name <p2>
+  link p2, name <p2>
     like dom-point
-  take p3, name <p3>
+  link p3, name <p3>
     like dom-point
-  take p4, name <p4>
+  link p4, name <p4>
     like dom-point
 
   task get-bounds, name <getBounds>
     free seed, like dom-rect
 
   task to-json, name <toJSON>
-    free seed, like native-any
+    free seed, like any

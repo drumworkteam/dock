@@ -1,40 +1,39 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/inspector/profiler/profile-node
+load @drumwork/nest/code/javascript/node/inspector/profiler
   take form profile-node
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form profile, name <Profile>
-  take nodes, name <nodes>
-    like native-array
+  link nodes, name <nodes>
+    like array
       like profile-node
-    lock false
-  take start-time, name <startTime>
+    flex true
+  link start-time, name <startTime>
     like native-number
-    lock false
-  take end-time, name <endTime>
+    flex true
+  link end-time, name <endTime>
     like native-number
-    lock false
-  take samples, name <samples>
-    like or-link-text
-      like native-array
+    flex true
+  link samples, name <samples>
+    like or
+      like array
         like native-number
       like native-undefined
-    lock false
-  take time-deltas, name <timeDeltas>
-    like or-link-text
-      like native-array
+    flex true
+  link time-deltas, name <timeDeltas>
+    like or
+      like array
         like native-number
       like native-undefined
-    lock false
+    flex true

@@ -1,24 +1,25 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/media-image
+load @treesurf/nest/code/javascript/dom
   take form media-image
 
-load @treesurf/nest/code/javascript/es5/readonly-array
+load @treesurf/nest/code/javascript/es5
   take form readonly-array
 
 form media-metadata, name <MediaMetadata>
-  take album, name <album>
+  link album, name <album>
     like native-string
-    lock false
-  take artist, name <artist>
+    flex true
+  link artist, name <artist>
     like native-string
-    lock false
-  take artwork, name <artwork>
+    flex true
+  link artwork, name <artwork>
     like readonly-array
       like media-image
-    lock false
-  take title, name <title>
+    flex true
+  link title, name <title>
     like native-string
-    lock false
+    flex true

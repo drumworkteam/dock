@@ -1,35 +1,34 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/es5/promise
+load @treesurf/nest/code/javascript/es5
   take form promise
 
-load @treesurf/nest/code/javascript/webworker/extendable-event-init
+load @treesurf/nest/code/javascript/webworker
   take form extendable-event-init
-
-load @treesurf/nest/code/javascript/webworker/request
   take form request
 
 form fetch-event-init, name <FetchEventInit>
   base extendable-event-init
 
-  take client-id, name <clientId>
+  link client-id, name <clientId>
     like native-string
-    lock false
-  take preload-response, name <preloadResponse>
+    flex true
+  link preload-response, name <preloadResponse>
     like promise
-      like native-any
-    lock false
-  take replaces-client-id, name <replacesClientId>
+      like any
+    flex true
+  link replaces-client-id, name <replacesClientId>
     like native-string
-    lock false
-  take request, name <request>
+    flex true
+  link request, name <request>
     like request
-    lock false
-  take resulting-client-id, name <resultingClientId>
+    flex true
+  link resulting-client-id, name <resultingClientId>
     like native-string
-    lock false
+    flex true

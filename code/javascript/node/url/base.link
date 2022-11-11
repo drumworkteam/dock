@@ -7,63 +7,43 @@ bear @treesurf/nest/code/javascript/node/url/url-format-options
 bear @treesurf/nest/code/javascript/node/url/url-search-params
 bear @treesurf/nest/code/javascript/node/url/global
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form form
+  take form or
+  take form test
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/node/http/client-request-args
-  take form client-request-args
-
-load @treesurf/nest/code/javascript/node/url/url
+load @drumwork/nest/code/javascript/node/url
   take form url
-
-load @treesurf/nest/code/javascript/node/url/url-format-options
   take form url-format-options
-
-load @treesurf/nest/code/javascript/node/url/url-object
   take form url-object
-
-load @treesurf/nest/code/javascript/node/url/url-search-params
   take form url-search-params
-
-load @treesurf/nest/code/javascript/node/url/url-with-parsed-query
   take form url-with-parsed-query
-
-load @treesurf/nest/code/javascript/node/url/url-with-string-query
   take form url-with-string-query
 
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/test
-  take form test
-    save form test-link-text
+load @drumwork/nest/code/javascript/node/http
+  take form client-request-args
 
 host url, name <URL>
   home true
-  like test-link-text
+  like test
     stem roll
       like global-this
-      like form-link-text
-        take onmessage, name <onmessage>
-          like native-any
-          lock false
-        take url, name <URL>
+      like form
+        link onmessage, name <onmessage>
+          like any
+          flex true
+        link url, name <URL>
           name url
-          lock false
+          flex true
       hook true
         like url
       hook false
@@ -71,16 +51,16 @@ host url, name <URL>
 
 host url-search-params, name <URLSearchParams>
   home true
-  like test-link-text
+  like test
     stem roll
       like global-this
-      like form-link-text
-        take onmessage, name <onmessage>
-          like native-any
-          lock false
-        take url-search-params, name <URLSearchParams>
+      like form
+        link onmessage, name <onmessage>
+          like any
+          flex true
+        link url-search-params, name <URLSearchParams>
           name url-search-params
-          lock false
+          flex true
       hook true
         like url-search-params
       hook false
@@ -93,7 +73,7 @@ task parse, name <parse>
 task parse, name <parse>
   take url-string, like native-string
   take parse-query-string
-    like or-link-text
+    like or
       text <false>
       like native-undefined
   take slashes-denote-host, like native-boolean
@@ -122,7 +102,7 @@ task format, name <format>
 
 task format, name <format>
   take url-object
-    like or-link-text
+    like or
       like url-object
       like native-string
   free seed, like native-string
@@ -142,7 +122,7 @@ task domain-to-unicode, name <domainToUnicode>
 
 task file-url-to-path, name <fileURLToPath>
   take url
-    like or-link-text
+    like or
       like native-string
       like url
   free seed, like native-string

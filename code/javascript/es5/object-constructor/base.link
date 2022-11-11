@@ -1,171 +1,154 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form and
+  take form any
+  take form like
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-object
-  take form native-object
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/es5/function
-  take form function
-
-load @treesurf/nest/code/javascript/es5/object
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
   take form object
+    save form native-object
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/es5/property-descriptor
+load @treesurf/nest/code/javascript/es5
+  take form function
+  take form object
   take form property-descriptor
-
-load @treesurf/nest/code/javascript/es5/property-descriptor-map
   take form property-descriptor-map
-
-load @treesurf/nest/code/javascript/es5/property-key
   take form property-key
-
-load @treesurf/nest/code/javascript/es5/readonly
   take form readonly
-
-load @treesurf/nest/code/javascript/es5/this-type
   take form this-type
 
-load @treesurf/nest/code/form/and
-  take form and
-    save form and-link-text
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form object-constructor, name <ObjectConstructor>
-  take prototype, name <prototype>
+  link prototype, name <prototype>
     like object
 
   task get-prototype-of, name <getPrototypeOf>
-    take o, like native-any
-    free seed, like native-any
+    take o, like any
+    free seed, like any
 
   task get-own-property-descriptor, name <getOwnPropertyDescriptor>
-    take o, like native-any
+    take o, like any
     take p, like property-key
     free seed
-      like or-link-text
+      like or
         like property-descriptor
         like native-undefined
 
   task get-own-property-names, name <getOwnPropertyNames>
-    take o, like native-any
+    take o, like any
     free seed
-      like native-array
+      like array
         like native-string
 
   task create, name <create>
     take o
-      like or-link-text
+      like or
         like native-object
         like native-null
-    free seed, like native-any
+    free seed, like any
 
   task create, name <create>
     take o
-      like or-link-text
+      like or
         like native-object
         like native-null
     take properties
-      like and-link-text
+      like and
         like property-descriptor-map
         like this-type
-          like native-any
-    free seed, like native-any
+          like any
+    free seed, like any
 
   task define-property, name <defineProperty>
-    head t, like like-link-text
+    head t
+
     take o, like t
     take p, like property-key
     take attributes
-      like and-link-text
+      like and
         like property-descriptor
         like this-type
-          like native-any
+          like any
     free seed, like t
 
   task define-properties, name <defineProperties>
-    head t, like like-link-text
+    head t
+
     take o, like t
     take properties
-      like and-link-text
+      like and
         like property-descriptor-map
         like this-type
-          like native-any
+          like any
     free seed, like t
 
   task seal, name <seal>
-    head t, like like-link-text
+    head t
+
     take o, like t
     free seed, like t
 
   task freeze, name <freeze>
-    head t, like like-link-text
+    head t
+
     take a
-      like native-array
+      like array
         like t
     free seed
-      like native-array
+      like array
         like t
 
   task freeze, name <freeze>
-    head t, like like-link-text
+    head t
       base function
+
     take f, like t
     free seed, like t
 
   task freeze, name <freeze>
-    head t, like like-link-text
+    head t
+
     take o, like t
     free seed
       like readonly
         like t
 
   task prevent-extensions, name <preventExtensions>
-    head t, like like-link-text
+    head t
+
     take o, like t
     free seed, like t
 
   task is-sealed, name <isSealed>
-    take o, like native-any
+    take o, like any
     free seed, like native-boolean
 
   task is-frozen, name <isFrozen>
-    take o, like native-any
+    take o, like any
     free seed, like native-boolean
 
   task is-extensible, name <isExtensible>
-    take o, like native-any
+    take o, like any
     free seed, like native-boolean
 
   task keys, name <keys>
     take o, like native-object
     free seed
-      like native-array
+      like array
         like native-string
 
   hook make
-    take value, like native-any
+    take value, like any
       void true
     free seed, like object

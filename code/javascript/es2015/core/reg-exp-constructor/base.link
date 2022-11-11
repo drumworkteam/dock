@@ -1,21 +1,21 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/es2015/core/reg-exp
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
+
+load @treesurf/nest/code/javascript/es2015/core
   take form reg-exp
 
 load @treesurf/nest/code/javascript/es5/reg-exp-constructor
   take form reg-exp-constructor
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form reg-exp-constructor, name <RegExpConstructor>
   hook make
     take pattern
-      like or-link-text
+      like or
         like reg-exp
         like native-string
     take flags, like native-string

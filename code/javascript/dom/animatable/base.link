@@ -1,42 +1,33 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/dom/animation
-  take form animation
-
-load @treesurf/nest/code/javascript/dom/get-animations-options
-  take form get-animations-options
-
-load @treesurf/nest/code/javascript/dom/keyframe
-  take form keyframe
-
-load @treesurf/nest/code/javascript/dom/keyframe-animation-options
-  take form keyframe-animation-options
-
-load @treesurf/nest/code/javascript/dom/property-indexed-keyframes
-  take form property-indexed-keyframes
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/dom
+  take form animation
+  take form get-animations-options
+  take form keyframe
+  take form keyframe-animation-options
+  take form property-indexed-keyframes
 
 form animatable, name <Animatable>
   task animate, name <animate>
     take keyframes
-      like or-link-text
-        like native-array
+      like or
+        like array
           like keyframe
         like property-indexed-keyframes
         like native-null
     take options
-      like or-link-text
+      like or
         like native-number
         like keyframe-animation-options
       void true
@@ -46,5 +37,5 @@ form animatable, name <Animatable>
     take options, like get-animations-options
       void true
     free seed
-      like native-array
+      like array
         like animation

@@ -1,35 +1,36 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/es5/readonly-array
+load @treesurf/nest/code/javascript/es5
   take form readonly-array
 
 form payment-address, name <PaymentAddress>
-  take address-line, name <addressLine>
+  link address-line, name <addressLine>
     like readonly-array
       like native-string
-  take city, name <city>
+  link city, name <city>
     like native-string
-  take country, name <country>
+  link country, name <country>
     like native-string
-  take dependent-locality, name <dependentLocality>
+  link dependent-locality, name <dependentLocality>
     like native-string
-  take organization, name <organization>
+  link organization, name <organization>
     like native-string
-  take phone, name <phone>
+  link phone, name <phone>
     like native-string
-  take postal-code, name <postalCode>
+  link postal-code, name <postalCode>
     like native-string
-  take recipient, name <recipient>
+  link recipient, name <recipient>
     like native-string
-  take region, name <region>
+  link region, name <region>
     like native-string
-  take sorting-code, name <sortingCode>
+  link sorting-code, name <sortingCode>
     like native-string
 
   task to-json, name <toJSON>
-    free seed, like native-any
+    free seed, like any

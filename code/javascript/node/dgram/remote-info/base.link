@@ -1,26 +1,25 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
 form remote-info, name <RemoteInfo>
-  take address, name <address>
+  link address, name <address>
     like native-string
-    lock false
-  take family, name <family>
-    like or-link-text
+    flex true
+  link family, name <family>
+    like or
       text <IPv4>
       text <IPv6>
-    lock false
-  take port, name <port>
+    flex true
+  link port, name <port>
     like native-number
-    lock false
-  take size, name <size>
+    flex true
+  link size, name <size>
     like native-number
-    lock false
+    flex true

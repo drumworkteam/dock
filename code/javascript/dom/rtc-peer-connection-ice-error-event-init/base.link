@@ -1,39 +1,37 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/event-init
-  take form event-init
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+
+load @treesurf/nest/code/javascript/dom
+  take form event-init
 
 form rtc-peer-connection-ice-error-event-init, name <RTCPeerConnectionIceErrorEventInit>
   base event-init
 
-  take address, name <address>
-    like or-link-text
+  link address, name <address>
+    like or
       like native-string
       like native-null
-    lock false
-  take error-code, name <errorCode>
+    flex true
+  link error-code, name <errorCode>
     like native-number
-    lock false
-  take error-text, name <errorText>
+    flex true
+  link error-text, name <errorText>
     like native-string
-    lock false
-  take port, name <port>
-    like or-link-text
+    flex true
+  link port, name <port>
+    like or
       like native-number
       like native-null
-    lock false
-  take url, name <url>
+    flex true
+  link url, name <url>
     like native-string
-    lock false
+    flex true

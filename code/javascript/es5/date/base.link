@@ -1,25 +1,20 @@
 
-load @treesurf/nest/code/javascript/base/intl-date-time-format-options
+load @treesurf/moon
+  take form any
+  take form or
+
+load @treesurf/nest/code/javascript/native
   take form intl-date-time-format-options
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript
+  take form array
 
 load @treesurf/nest/code/javascript/es5/date
   take form date
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form date, name <Date>
   task to-string, name <toString>
@@ -200,16 +195,16 @@ form date, name <Date>
     free seed, like native-string
 
   task to-json, name <toJSON>
-    take key, like native-any
+    take key, like any
       void true
     free seed, like native-string
 
 form date, name <Date>
   task to-locale-string, name <toLocaleString>
     take locales
-      like or-link-text
+      like or
         like native-string
-        like native-array
+        like array
           like native-string
       void true
     take options, like intl-date-time-format-options
@@ -218,9 +213,9 @@ form date, name <Date>
 
   task to-locale-date-string, name <toLocaleDateString>
     take locales
-      like or-link-text
+      like or
         like native-string
-        like native-array
+        like array
           like native-string
       void true
     take options, like intl-date-time-format-options
@@ -229,9 +224,9 @@ form date, name <Date>
 
   task to-locale-time-string, name <toLocaleTimeString>
     take locales
-      like or-link-text
+      like or
         like native-string
-        like native-array
+        like array
           like native-string
       void true
     take options, like intl-date-time-format-options

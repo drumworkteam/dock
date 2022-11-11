@@ -1,34 +1,33 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
 form svg-angle, name <SVGAngle>
-  take unit-type, name <unitType>
+  link unit-type, name <unitType>
     like native-number
-  take value, name <value>
+  link value, name <value>
     like native-number
-    lock false
-  take value-as-string, name <valueAsString>
+    flex true
+  link value-as-string, name <valueAsString>
     like native-string
-    lock false
-  take value-in-specified-units, name <valueInSpecifiedUnits>
+    flex true
+  link value-in-specified-units, name <valueInSpecifiedUnits>
     like native-number
-    lock false
-  take svg-angletype-deg, name <SVG_ANGLETYPE_DEG>
+    flex true
+  link svg-angletype-deg, name <SVG_ANGLETYPE_DEG>
     like native-number
-  take svg-angletype-grad, name <SVG_ANGLETYPE_GRAD>
+  link svg-angletype-grad, name <SVG_ANGLETYPE_GRAD>
     like native-number
-  take svg-angletype-rad, name <SVG_ANGLETYPE_RAD>
+  link svg-angletype-rad, name <SVG_ANGLETYPE_RAD>
     like native-number
-  take svg-angletype-unknown, name <SVG_ANGLETYPE_UNKNOWN>
+  link svg-angletype-unknown, name <SVG_ANGLETYPE_UNKNOWN>
     like native-number
-  take svg-angletype-unspecified, name <SVG_ANGLETYPE_UNSPECIFIED>
+  link svg-angletype-unspecified, name <SVG_ANGLETYPE_UNSPECIFIED>
     like native-number
 
   task convert-to-specified-units, name <convertToSpecifiedUnits>

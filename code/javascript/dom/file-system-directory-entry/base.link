@@ -1,31 +1,21 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/error-callback
-  take form error-callback
-
-load @treesurf/nest/code/javascript/dom/file-system-directory-reader
-  take form file-system-directory-reader
-
-load @treesurf/nest/code/javascript/dom/file-system-entry
-  take form file-system-entry
-
-load @treesurf/nest/code/javascript/dom/file-system-entry-callback
-  take form file-system-entry-callback
-
-load @treesurf/nest/code/javascript/dom/file-system-flags
-  take form file-system-flags
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/dom
+  take form error-callback
+  take form file-system-directory-reader
+  take form file-system-entry
+  take form file-system-entry-callback
+  take form file-system-flags
 
 form file-system-directory-entry, name <FileSystemDirectoryEntry>
   base file-system-entry
@@ -35,7 +25,7 @@ form file-system-directory-entry, name <FileSystemDirectoryEntry>
 
   task get-directory, name <getDirectory>
     take path
-      like or-link-text
+      like or
         like native-string
         like native-null
       void true
@@ -49,7 +39,7 @@ form file-system-directory-entry, name <FileSystemDirectoryEntry>
 
   task get-file, name <getFile>
     take path
-      like or-link-text
+      like or
         like native-string
         like native-null
       void true

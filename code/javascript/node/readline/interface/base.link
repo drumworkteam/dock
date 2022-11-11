@@ -1,77 +1,51 @@
 
-load @treesurf/nest/code/javascript/base/async-iterable-iterator
+load @treesurf/moon
+  take form any
+  take form or
+  take form task
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @drumwork/nest/code/javascript
   take form async-iterable-iterator
-
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-symbol
-  take form native-symbol
-
-load @treesurf/nest/code/javascript/base/native-this
-  take form native-this
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/base/node-js-readable-stream
+  take form boolean
+    save form native-boolean
   take form node-js-readable-stream
-
-load @treesurf/nest/code/javascript/base/node-js-writable-stream
   take form node-js-writable-stream
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form symbol
+    save form native-symbol
+  take form this
+    save form native-this
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
 
-load @treesurf/nest/code/javascript/node/events/event-emitter/abortable
+load @drumwork/nest/code/javascript/node/events/event-emitter
   take form abortable
 
-load @treesurf/nest/code/javascript/node/readline/async-completer
+load @drumwork/nest/code/javascript/node/readline
   take form async-completer
-
-load @treesurf/nest/code/javascript/node/readline/completer
   take form completer
-
-load @treesurf/nest/code/javascript/node/readline/cursor-pos
   take form cursor-pos
-
-load @treesurf/nest/code/javascript/node/readline/key
   take form key
-
-load @treesurf/nest/code/javascript/node/readline/read-line-options
   take form read-line-options
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
 
 form interface, name <Interface>
   base event-emitter
-  take terminal, name <terminal>, like native-boolean
-  take line, name <line>, like native-string
-  take cursor, name <cursor>, like native-number
+  link terminal, name <terminal>, like native-boolean
+  link line, name <line>, like native-string
+  link cursor, name <cursor>, like native-number
 
   task get-prompt, name <getPrompt>
     free seed, like native-string
@@ -88,18 +62,18 @@ form interface, name <Interface>
   task question, name <question>
     take query, like native-string
     take callback
-      like task-link-text
+      like task
         take answer, like native-string
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-void
 
   task question, name <question>
     take query, like native-string
     take options, like abortable
     take callback
-      like task-link-text
+      like task
         take answer, like native-string
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-void
 
   task pause, name <pause>
@@ -113,7 +87,7 @@ form interface, name <Interface>
 
   task write, name <write>
     take data
-      like or-link-text
+      like or
         like native-string
         like buffer
     take key, like key
@@ -122,7 +96,7 @@ form interface, name <Interface>
 
   task write, name <write>
     take data
-      like or-link-text
+      like or
         like native-undefined
         like native-null
         like native-string
@@ -136,82 +110,82 @@ form interface, name <Interface>
   task add-listener, name <addListener>
     take event, like native-string
     take listener
-      like task-link-text
+      like task
         take args
-          like native-array
-            like native-any
+          like array
+            like any
           rest true
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <close>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <line>
     take listener
-      like task-link-text
+      like task
         take input, like native-string
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <pause>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <resume>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <SIGCONT>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <SIGINT>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <SIGTSTP>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <history>
     take listener
-      like task-link-text
+      like task
         take history
-          like native-array
+          like array
             like native-string
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task emit, name <emit>
     take event
-      like or-link-text
+      like or
         like native-string
         like native-symbol
     take args
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
     free seed, like native-boolean
 
@@ -247,295 +221,295 @@ form interface, name <Interface>
   task emit, name <emit>
     take event, text <history>
     take history
-      like native-array
+      like array
         like native-string
     free seed, like native-boolean
 
   task on, name <on>
     take event, like native-string
     take listener
-      like task-link-text
+      like task
         take args
-          like native-array
-            like native-any
+          like array
+            like any
           rest true
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <close>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <line>
     take listener
-      like task-link-text
+      like task
         take input, like native-string
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <pause>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <resume>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <SIGCONT>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <SIGINT>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <SIGTSTP>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <history>
     take listener
-      like task-link-text
+      like task
         take history
-          like native-array
+          like array
             like native-string
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, like native-string
     take listener
-      like task-link-text
+      like task
         take args
-          like native-array
-            like native-any
+          like array
+            like any
           rest true
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <close>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <line>
     take listener
-      like task-link-text
+      like task
         take input, like native-string
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <pause>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <resume>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <SIGCONT>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <SIGINT>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <SIGTSTP>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <history>
     take listener
-      like task-link-text
+      like task
         take history
-          like native-array
+          like array
             like native-string
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task prepend-listener, name <prependListener>
     take event, like native-string
     take listener
-      like task-link-text
+      like task
         take args
-          like native-array
-            like native-any
+          like array
+            like any
           rest true
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task prepend-listener, name <prependListener>
     take event, text <close>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task prepend-listener, name <prependListener>
     take event, text <line>
     take listener
-      like task-link-text
+      like task
         take input, like native-string
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task prepend-listener, name <prependListener>
     take event, text <pause>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task prepend-listener, name <prependListener>
     take event, text <resume>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task prepend-listener, name <prependListener>
     take event, text <SIGCONT>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task prepend-listener, name <prependListener>
     take event, text <SIGINT>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task prepend-listener, name <prependListener>
     take event, text <SIGTSTP>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task prepend-listener, name <prependListener>
     take event, text <history>
     take listener
-      like task-link-text
+      like task
         take history
-          like native-array
+          like array
             like native-string
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
     take event, like native-string
     take listener
-      like task-link-text
+      like task
         take args
-          like native-array
-            like native-any
+          like array
+            like any
           rest true
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
     take event, text <close>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
     take event, text <line>
     take listener
-      like task-link-text
+      like task
         take input, like native-string
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
     take event, text <pause>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
     take event, text <resume>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
     take event, text <SIGCONT>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
     take event, text <SIGINT>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
     take event, text <SIGTSTP>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
     take event, text <history>
     take listener
-      like task-link-text
+      like task
         take history
-          like native-array
+          like array
             like native-string
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
-  task loan symbol/async-iterator
+  task {symbol/async-iterator}
     name <Symbol.asyncIterator>
     free seed
       like async-iterable-iterator
@@ -547,7 +521,7 @@ form interface-constructor
     take output, like node-js-writable-stream
       void true
     take completer
-      like or-link-text
+      like or
         like completer
         like async-completer
       void true

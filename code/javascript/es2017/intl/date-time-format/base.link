@@ -1,30 +1,30 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/es2015/symbol/wellknown/date
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/es2015/symbol/wellknown
   take form date
 
-load @treesurf/nest/code/javascript/es2017/intl/date-time-format-part
+load @treesurf/nest/code/javascript/es2017/intl
   take form date-time-format-part
 
 load @treesurf/nest/code/javascript/es5/date-time-format
   take form date-time-format
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form date-time-format, name <DateTimeFormat>
   task format-to-parts, name <formatToParts>
     take date
-      like or-link-text
+      like or
         like date
         like native-number
       void true
     free seed
-      like native-array
+      like array
         like date-time-format-part

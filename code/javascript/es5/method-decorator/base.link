@@ -1,44 +1,35 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/moon
+  take form like
+  take form or
+  take form task
 
-load @treesurf/nest/code/javascript/base/native-symbol
-  take form native-symbol
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
+  take form symbol
+    save form native-symbol
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/es5/object
+load @treesurf/nest/code/javascript/es5
   take form object
-
-load @treesurf/nest/code/javascript/es5/typed-property-descriptor
   take form typed-property-descriptor
 
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
 form method-decorator, name <MethodDecorator>
-  like task-link-text
-    head t, like like-link-text
+  like task
+    head t
+
     take target, like object
     take property-key
-      like or-link-text
+      like or
         like native-string
         like native-symbol
     take descriptor
       like typed-property-descriptor
         like t
     free seed
-      like or-link-text
+      like or
         like typed-property-descriptor
           like t
         like native-void

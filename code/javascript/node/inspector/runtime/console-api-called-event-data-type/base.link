@@ -1,50 +1,43 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @drumwork/nest/code/javascript
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/inspector/runtime/execution-context-id
+load @drumwork/nest/code/javascript/node/inspector/runtime
   take form execution-context-id
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/remote-object
   take form remote-object
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/stack-trace
   take form stack-trace
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/timestamp
   take form timestamp
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form console-api-called-event-data-type, name <ConsoleAPICalledEventDataType>
-  take type, name <type>
+  link type, name <type>
     like native-string
-    lock false
-  take args, name <args>
-    like native-array
+    flex true
+  link args, name <args>
+    like array
       like remote-object
-    lock false
-  take execution-context-id, name <executionContextId>
+    flex true
+  link execution-context-id, name <executionContextId>
     like execution-context-id
-    lock false
-  take timestamp, name <timestamp>
+    flex true
+  link timestamp, name <timestamp>
     like timestamp
-    lock false
-  take stack-trace, name <stackTrace>
-    like or-link-text
+    flex true
+  link stack-trace, name <stackTrace>
+    like or
       like stack-trace
       like native-undefined
-    lock false
-  take context, name <context>
-    like or-link-text
+    flex true
+  link context, name <context>
+    like or
       like native-string
       like native-undefined
-    lock false
+    flex true

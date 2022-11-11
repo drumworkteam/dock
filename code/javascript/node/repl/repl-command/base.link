@@ -1,23 +1,22 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @drumwork/nest/code/javascript
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/repl/repl-command-action
+load @drumwork/nest/code/javascript/node/repl
   take form repl-command-action
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form repl-command, name <REPLCommand>
-  take help, name <help>
-    like or-link-text
+  link help, name <help>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take action, name <action>
+    flex true
+  link action, name <action>
     like repl-command-action
-    lock false
+    flex true

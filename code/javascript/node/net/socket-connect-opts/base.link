@@ -1,15 +1,12 @@
 
-load @treesurf/nest/code/javascript/node/net/ipc-socket-connect-opts
-  take form ipc-socket-connect-opts
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/node/net/tcp-socket-connect-opts
+load @drumwork/nest/code/javascript/node/net
+  take form ipc-socket-connect-opts
   take form tcp-socket-connect-opts
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form socket-connect-opts, name <SocketConnectOpts>
-  like or-link-text
+  like or
     like tcp-socket-connect-opts
     like ipc-socket-connect-opts

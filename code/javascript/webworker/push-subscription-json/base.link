@@ -1,34 +1,32 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/es5
+  take form record
 
 load @treesurf/nest/code/javascript/dom/push-subscription-json
   take form push-subscription-json
 
-load @treesurf/nest/code/javascript/es5/record
-  take form record
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form push-subscription-json, name <PushSubscriptionJSON>
-  take endpoint, name <endpoint>
+  link endpoint, name <endpoint>
     like native-string
-    lock false
-  take expiration-time, name <expirationTime>
-    like or-link-text
+    flex true
+  link expiration-time, name <expirationTime>
+    like or
       like native-number
       like native-null
-    lock false
-  take keys, name <keys>
+    flex true
+  link keys, name <keys>
     like record
       like native-string
       like native-string
-    lock false
+    flex true

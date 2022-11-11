@@ -1,38 +1,32 @@
 
-load @treesurf/nest/code/javascript/dom/event
+load @treesurf/nest/code/javascript/dom
   take form event
-
-load @treesurf/nest/code/javascript/dom/rtc-data-channel-event
   take form rtc-data-channel-event
-
-load @treesurf/nest/code/javascript/dom/rtc-peer-connection-ice-event
   take form rtc-peer-connection-ice-event
-
-load @treesurf/nest/code/javascript/dom/rtc-track-event
   take form rtc-track-event
 
 form rtc-peer-connection-event-map, name <RTCPeerConnectionEventMap>
-  take connectionstatechange, name <connectionstatechange>
+  link connectionstatechange, name <connectionstatechange>
     like event
-    lock false
-  take datachannel, name <datachannel>
+    flex true
+  link datachannel, name <datachannel>
     like rtc-data-channel-event
-    lock false
-  take icecandidate, name <icecandidate>
+    flex true
+  link icecandidate, name <icecandidate>
     like rtc-peer-connection-ice-event
-    lock false
-  take iceconnectionstatechange, name <iceconnectionstatechange>
+    flex true
+  link iceconnectionstatechange, name <iceconnectionstatechange>
     like event
-    lock false
-  take icegatheringstatechange, name <icegatheringstatechange>
+    flex true
+  link icegatheringstatechange, name <icegatheringstatechange>
     like event
-    lock false
-  take negotiationneeded, name <negotiationneeded>
+    flex true
+  link negotiationneeded, name <negotiationneeded>
     like event
-    lock false
-  take signalingstatechange, name <signalingstatechange>
+    flex true
+  link signalingstatechange, name <signalingstatechange>
     like event
-    lock false
-  take track, name <track>
+    flex true
+  link track, name <track>
     like rtc-track-event
-    lock false
+    flex true

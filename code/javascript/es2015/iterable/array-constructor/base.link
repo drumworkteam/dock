@@ -1,63 +1,57 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form like
+  take form or
+  take form task
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterable
+
+load @treesurf/nest/code/javascript/es5
+  take form array-like
 
 load @treesurf/nest/code/javascript/es2015/core/array-constructor
   take form array-constructor
 
-load @treesurf/nest/code/javascript/es2015/iterable/iterable
-  take form iterable
-
-load @treesurf/nest/code/javascript/es5/array-like
-  take form array-like
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
 form array-constructor, name <ArrayConstructor>
   task from, name <from>
-    head t, like like-link-text
+    head t
+
     take iterable
-      like or-link-text
+      like or
         like iterable
           like t
         like array-like
           like t
     free seed
-      like native-array
+      like array
         like t
 
   task from, name <from>
-    head t, like like-link-text
-    head u, like like-link-text
+    head t
+    head u
+
     take iterable
-      like or-link-text
+      like or
         like iterable
           like t
         like array-like
           like t
     take mapfn
-      like task-link-text
+      like task
         take v, like t
         take k, like native-number
         free seed, like u
-    take this-arg, like native-any
+    take this-arg, like any
       void true
     free seed
-      like native-array
+      like array
         like u

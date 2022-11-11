@@ -1,108 +1,53 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/dom/aes-cbc-params
+load @treesurf/nest/code/javascript/dom
   take form aes-cbc-params
-
-load @treesurf/nest/code/javascript/dom/aes-ctr-params
   take form aes-ctr-params
-
-load @treesurf/nest/code/javascript/dom/aes-derived-key-params
   take form aes-derived-key-params
-
-load @treesurf/nest/code/javascript/dom/aes-gcm-params
   take form aes-gcm-params
-
-load @treesurf/nest/code/javascript/dom/aes-key-algorithm
   take form aes-key-algorithm
-
-load @treesurf/nest/code/javascript/dom/aes-key-gen-params
   take form aes-key-gen-params
-
-load @treesurf/nest/code/javascript/dom/algorithm-identifier
   take form algorithm-identifier
-
-load @treesurf/nest/code/javascript/dom/buffer-source
   take form buffer-source
-
-load @treesurf/nest/code/javascript/dom/crypto-key
   take form crypto-key
-
-load @treesurf/nest/code/javascript/dom/crypto-key-pair
   take form crypto-key-pair
-
-load @treesurf/nest/code/javascript/dom/ec-key-gen-params
   take form ec-key-gen-params
-
-load @treesurf/nest/code/javascript/dom/ec-key-import-params
   take form ec-key-import-params
-
-load @treesurf/nest/code/javascript/dom/ecdh-key-derive-params
   take form ecdh-key-derive-params
-
-load @treesurf/nest/code/javascript/dom/ecdsa-params
   take form ecdsa-params
-
-load @treesurf/nest/code/javascript/dom/hkdf-params
   take form hkdf-params
-
-load @treesurf/nest/code/javascript/dom/hmac-import-params
   take form hmac-import-params
-
-load @treesurf/nest/code/javascript/dom/hmac-key-gen-params
   take form hmac-key-gen-params
-
-load @treesurf/nest/code/javascript/dom/json-web-key
   take form json-web-key
-
-load @treesurf/nest/code/javascript/dom/key-format
   take form key-format
-
-load @treesurf/nest/code/javascript/dom/key-usage
   take form key-usage
-
-load @treesurf/nest/code/javascript/dom/pbkdf2-params
   take form pbkdf2-params
-
-load @treesurf/nest/code/javascript/dom/rsa-hashed-import-params
   take form rsa-hashed-import-params
-
-load @treesurf/nest/code/javascript/dom/rsa-hashed-key-gen-params
   take form rsa-hashed-key-gen-params
-
-load @treesurf/nest/code/javascript/dom/rsa-oaep-params
   take form rsa-oaep-params
-
-load @treesurf/nest/code/javascript/dom/rsa-pss-params
   take form rsa-pss-params
 
-load @treesurf/nest/code/javascript/es5/array-buffer
+load @treesurf/nest/code/javascript/es5
   take form array-buffer
-
-load @treesurf/nest/code/javascript/es5/exclude
   take form exclude
-
-load @treesurf/nest/code/javascript/es5/promise
   take form promise
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form subtle-crypto, name <SubtleCrypto>
   task decrypt, name <decrypt>
     take algorithm
-      like or-link-text
+      like or
         like algorithm-identifier
         like rsa-oaep-params
         like aes-ctr-params
@@ -112,11 +57,11 @@ form subtle-crypto, name <SubtleCrypto>
     take data, like buffer-source
     free seed
       like promise
-        like native-any
+        like any
 
   task derive-bits, name <deriveBits>
     take algorithm
-      like or-link-text
+      like or
         like algorithm-identifier
         like ecdh-key-derive-params
         like hkdf-params
@@ -129,14 +74,14 @@ form subtle-crypto, name <SubtleCrypto>
 
   task derive-key, name <deriveKey>
     take algorithm
-      like or-link-text
+      like or
         like algorithm-identifier
         like ecdh-key-derive-params
         like hkdf-params
         like pbkdf2-params
     take base-key, like crypto-key
     take derived-key-type
-      like or-link-text
+      like or
         like algorithm-identifier
         like aes-derived-key-params
         like hmac-import-params
@@ -144,7 +89,7 @@ form subtle-crypto, name <SubtleCrypto>
         like pbkdf2-params
     take extractable, like native-boolean
     take key-usages
-      like native-array
+      like array
         like key-usage
     free seed
       like promise
@@ -159,7 +104,7 @@ form subtle-crypto, name <SubtleCrypto>
 
   task encrypt, name <encrypt>
     take algorithm
-      like or-link-text
+      like or
         like algorithm-identifier
         like rsa-oaep-params
         like aes-ctr-params
@@ -169,7 +114,7 @@ form subtle-crypto, name <SubtleCrypto>
     take data, like buffer-source
     free seed
       like promise
-        like native-any
+        like any
 
   task export-key, name <exportKey>
     take format, text <jwk>
@@ -190,12 +135,12 @@ form subtle-crypto, name <SubtleCrypto>
 
   task generate-key, name <generateKey>
     take algorithm
-      like or-link-text
+      like or
         like rsa-hashed-key-gen-params
         like ec-key-gen-params
     take extractable, like native-boolean
     take key-usages
-      like native-array
+      like array
         like key-usage
     free seed
       like promise
@@ -203,13 +148,13 @@ form subtle-crypto, name <SubtleCrypto>
 
   task generate-key, name <generateKey>
     take algorithm
-      like or-link-text
+      like or
         like aes-key-gen-params
         like hmac-key-gen-params
         like pbkdf2-params
     take extractable, like native-boolean
     take key-usages
-      like native-array
+      like array
         like key-usage
     free seed
       like promise
@@ -219,11 +164,11 @@ form subtle-crypto, name <SubtleCrypto>
     take algorithm, like algorithm-identifier
     take extractable, like native-boolean
     take key-usages
-      like native-array
+      like array
         like key-usage
     free seed
       like promise
-        like or-link-text
+        like or
           like crypto-key-pair
           like crypto-key
 
@@ -231,7 +176,7 @@ form subtle-crypto, name <SubtleCrypto>
     take format, text <jwk>
     take key-data, like json-web-key
     take algorithm
-      like or-link-text
+      like or
         like algorithm-identifier
         like rsa-hashed-import-params
         like ec-key-import-params
@@ -239,7 +184,7 @@ form subtle-crypto, name <SubtleCrypto>
         like aes-key-algorithm
     take extractable, like native-boolean
     take key-usages
-      like native-array
+      like array
         like key-usage
     free seed
       like promise
@@ -252,7 +197,7 @@ form subtle-crypto, name <SubtleCrypto>
         text <jwk>
     take key-data, like buffer-source
     take algorithm
-      like or-link-text
+      like or
         like algorithm-identifier
         like rsa-hashed-import-params
         like ec-key-import-params
@@ -260,7 +205,7 @@ form subtle-crypto, name <SubtleCrypto>
         like aes-key-algorithm
     take extractable, like native-boolean
     take key-usages
-      like native-array
+      like array
         like key-usage
     free seed
       like promise
@@ -268,7 +213,7 @@ form subtle-crypto, name <SubtleCrypto>
 
   task sign, name <sign>
     take algorithm
-      like or-link-text
+      like or
         like algorithm-identifier
         like rsa-pss-params
         like ecdsa-params
@@ -283,14 +228,14 @@ form subtle-crypto, name <SubtleCrypto>
     take wrapped-key, like buffer-source
     take unwrapping-key, like crypto-key
     take unwrap-algorithm
-      like or-link-text
+      like or
         like algorithm-identifier
         like rsa-oaep-params
         like aes-ctr-params
         like aes-cbc-params
         like aes-gcm-params
     take unwrapped-key-algorithm
-      like or-link-text
+      like or
         like algorithm-identifier
         like rsa-hashed-import-params
         like ec-key-import-params
@@ -298,7 +243,7 @@ form subtle-crypto, name <SubtleCrypto>
         like aes-key-algorithm
     take extractable, like native-boolean
     take key-usages
-      like native-array
+      like array
         like key-usage
     free seed
       like promise
@@ -306,7 +251,7 @@ form subtle-crypto, name <SubtleCrypto>
 
   task verify, name <verify>
     take algorithm
-      like or-link-text
+      like or
         like algorithm-identifier
         like rsa-pss-params
         like ecdsa-params
@@ -322,7 +267,7 @@ form subtle-crypto, name <SubtleCrypto>
     take key, like crypto-key
     take wrapping-key, like crypto-key
     take wrap-algorithm
-      like or-link-text
+      like or
         like algorithm-identifier
         like rsa-oaep-params
         like aes-ctr-params

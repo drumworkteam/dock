@@ -1,38 +1,33 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/node
+load @treesurf/nest/code/javascript/dom
   take form node
-
-load @treesurf/nest/code/javascript/dom/node-filter
   take form node-filter
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form node-iterator, name <NodeIterator>
-  take filter, name <filter>
-    like or-link-text
+  link filter, name <filter>
+    like or
       like node-filter
       like native-null
-  take pointer-before-reference-node, name <pointerBeforeReferenceNode>
+  link pointer-before-reference-node, name <pointerBeforeReferenceNode>
     like native-boolean
-  take reference-node, name <referenceNode>
+  link reference-node, name <referenceNode>
     like node
-  take root, name <root>
+  link root, name <root>
     like node
-  take what-to-show, name <whatToShow>
+  link what-to-show, name <whatToShow>
     like native-number
 
   task detach, name <detach>
@@ -40,12 +35,12 @@ form node-iterator, name <NodeIterator>
 
   task next-node, name <nextNode>
     free seed
-      like or-link-text
+      like or
         like node
         like native-null
 
   task previous-node, name <previousNode>
     free seed
-      like or-link-text
+      like or
         like node
         like native-null

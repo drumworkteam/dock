@@ -1,22 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/dom/rtc-rtp-stream-stats
+load @treesurf/nest/code/javascript/dom
   take form rtc-rtp-stream-stats
 
 form rtc-received-rtp-stream-stats, name <RTCReceivedRtpStreamStats>
   base rtc-rtp-stream-stats
 
-  take jitter, name <jitter>
+  link jitter, name <jitter>
     like native-number
-    lock false
-  take packets-discarded, name <packetsDiscarded>
+    flex true
+  link packets-discarded, name <packetsDiscarded>
     like native-number
-    lock false
-  take packets-lost, name <packetsLost>
+    flex true
+  link packets-lost, name <packetsLost>
     like native-number
-    lock false
-  take packets-received, name <packetsReceived>
+    flex true
+  link packets-received, name <packetsReceived>
     like native-number
-    lock false
+    flex true

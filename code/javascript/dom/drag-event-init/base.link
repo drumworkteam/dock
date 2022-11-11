@@ -1,22 +1,20 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/dom/data-transfer
-  take form data-transfer
-
-load @treesurf/nest/code/javascript/dom/mouse-event-init
-  take form mouse-event-init
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+
+load @treesurf/nest/code/javascript/dom
+  take form data-transfer
+  take form mouse-event-init
 
 form drag-event-init, name <DragEventInit>
   base mouse-event-init
 
-  take data-transfer, name <dataTransfer>
-    like or-link-text
+  link data-transfer, name <dataTransfer>
+    like or
       like data-transfer
       like native-null
-    lock false
+    flex true

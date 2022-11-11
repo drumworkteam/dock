@@ -1,95 +1,67 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/add-event-listener-options
-  take form add-event-listener-options
-
-load @treesurf/nest/code/javascript/dom/event
-  take form event
-
-load @treesurf/nest/code/javascript/dom/event-listener-options
-  take form event-listener-options
-
-load @treesurf/nest/code/javascript/dom/event-listener-or-event-listener-object
-  take form event-listener-or-event-listener-object
-
-load @treesurf/nest/code/javascript/dom/idb-open-db-request-event-map
-  take form idb-open-db-request-event-map
-
-load @treesurf/nest/code/javascript/dom/idb-request
-  take form idb-request
-
-load @treesurf/nest/code/javascript/dom/idb-version-change-event
-  take form idb-version-change-event
-
-load @treesurf/nest/code/form/form/link
-  take form form-link
-    save form form-link-link-text
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
+  take form any
+  take form index
+  take form key-list
   take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/link/read
-  take form link-read
-    save form link-read-link-text
-
-load @treesurf/nest/code/form/or
   take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
   take form task
-    save form task-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/dom
+  take form add-event-listener-options
+  take form event
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form idb-open-db-request-event-map
+  take form idb-request
+  take form idb-version-change-event
 
 form idb-open-db-request, name <IDBOpenDBRequest>
   base idb-request
 
-  take onblocked, name <onblocked>
-    like or-link-text
-      like task-link-text
+  link onblocked, name <onblocked>
+    like or
+      like task
         take this, like idb-open-db-request
         take ev, like event
-        free seed, like native-any
+        free seed, like any
       like native-null
-    lock false
-  take onupgradeneeded, name <onupgradeneeded>
-    like or-link-text
-      like task-link-text
+    flex true
+  link onupgradeneeded, name <onupgradeneeded>
+    like or
+      like task
         take this, like idb-open-db-request
         take ev, like idb-version-change-event
-        free seed, like native-any
+        free seed, like any
       like native-null
-    lock false
+    flex true
 
   task add-event-listener, name <addEventListener>
-    head k, like like-link-text
-      base link-read-link-text
+    head k
+      base key-list
         like idb-open-db-request-event-map
+
     take type, like k
     take listener
-      like task-link-text
+      like task
         take this, like idb-open-db-request
         take ev
-          like form-link-link-text
+          like index
             like idb-open-db-request-event-map
             like k
-        free seed, like native-any
+        free seed, like any
     take options
-      like or-link-text
+      like or
         like native-boolean
         like add-event-listener-options
       void true
@@ -99,27 +71,28 @@ form idb-open-db-request, name <IDBOpenDBRequest>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like or-link-text
+      like or
         like native-boolean
         like add-event-listener-options
       void true
     free seed, like native-void
 
   task remove-event-listener, name <removeEventListener>
-    head k, like like-link-text
-      base link-read-link-text
+    head k
+      base key-list
         like idb-open-db-request-event-map
+
     take type, like k
     take listener
-      like task-link-text
+      like task
         take this, like idb-open-db-request
         take ev
-          like form-link-link-text
+          like index
             like idb-open-db-request-event-map
             like k
-        free seed, like native-any
+        free seed, like any
     take options
-      like or-link-text
+      like or
         like native-boolean
         like event-listener-options
       void true
@@ -129,7 +102,7 @@ form idb-open-db-request, name <IDBOpenDBRequest>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like or-link-text
+      like or
         like native-boolean
         like event-listener-options
       void true

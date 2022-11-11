@@ -1,143 +1,105 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form index
+  take form key-list
+  take form like
+  take form or
+  take form task
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/add-event-listener-options
+load @treesurf/nest/code/javascript/dom
   take form add-event-listener-options
-
-load @treesurf/nest/code/javascript/dom/animation-effect
   take form animation-effect
-
-load @treesurf/nest/code/javascript/dom/animation-event-map
   take form animation-event-map
-
-load @treesurf/nest/code/javascript/dom/animation-play-state
   take form animation-play-state
-
-load @treesurf/nest/code/javascript/dom/animation-playback-event
   take form animation-playback-event
-
-load @treesurf/nest/code/javascript/dom/animation-replace-state
   take form animation-replace-state
-
-load @treesurf/nest/code/javascript/dom/animation-timeline
   take form animation-timeline
-
-load @treesurf/nest/code/javascript/dom/event
   take form event
-
-load @treesurf/nest/code/javascript/dom/event-listener-options
   take form event-listener-options
-
-load @treesurf/nest/code/javascript/dom/event-listener-or-event-listener-object
   take form event-listener-or-event-listener-object
-
-load @treesurf/nest/code/javascript/dom/event-target
   take form event-target
 
-load @treesurf/nest/code/javascript/es5/promise
+load @treesurf/nest/code/javascript/es5
   take form promise
-
-load @treesurf/nest/code/form/form/link
-  take form form-link
-    save form form-link-link-text
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/link/read
-  take form link-read
-    save form link-read-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
 
 form animation, name <Animation>
   base event-target
 
-  take current-time, name <currentTime>
-    like or-link-text
+  link current-time, name <currentTime>
+    like or
       like native-number
       like native-null
-    lock false
-  take effect, name <effect>
-    like or-link-text
+    flex true
+  link effect, name <effect>
+    like or
       like animation-effect
       like native-null
-    lock false
-  take finished, name <finished>
+    flex true
+  link finished, name <finished>
     like promise
       like animation
-  take id, name <id>
+  link id, name <id>
     like native-string
-    lock false
-  take oncancel, name <oncancel>
-    like or-link-text
-      like task-link-text
+    flex true
+  link oncancel, name <oncancel>
+    like or
+      like task
         take this, like animation
         take ev, like animation-playback-event
-        free seed, like native-any
+        free seed, like any
       like native-null
-    lock false
-  take onfinish, name <onfinish>
-    like or-link-text
-      like task-link-text
+    flex true
+  link onfinish, name <onfinish>
+    like or
+      like task
         take this, like animation
         take ev, like animation-playback-event
-        free seed, like native-any
+        free seed, like any
       like native-null
-    lock false
-  take onremove, name <onremove>
-    like or-link-text
-      like task-link-text
+    flex true
+  link onremove, name <onremove>
+    like or
+      like task
         take this, like animation
         take ev, like event
-        free seed, like native-any
+        free seed, like any
       like native-null
-    lock false
-  take pending, name <pending>
+    flex true
+  link pending, name <pending>
     like native-boolean
-  take play-state, name <playState>
+  link play-state, name <playState>
     like animation-play-state
-  take playback-rate, name <playbackRate>
+  link playback-rate, name <playbackRate>
     like native-number
-    lock false
-  take ready, name <ready>
+    flex true
+  link ready, name <ready>
     like promise
       like animation
-  take replace-state, name <replaceState>
+  link replace-state, name <replaceState>
     like animation-replace-state
-  take start-time, name <startTime>
-    like or-link-text
+  link start-time, name <startTime>
+    like or
       like native-number
       like native-null
-    lock false
-  take timeline, name <timeline>
-    like or-link-text
+    flex true
+  link timeline, name <timeline>
+    like or
       like animation-timeline
       like native-null
-    lock false
+    flex true
 
   task cancel, name <cancel>
     free seed, like native-void
@@ -165,20 +127,21 @@ form animation, name <Animation>
     free seed, like native-void
 
   task add-event-listener, name <addEventListener>
-    head k, like like-link-text
-      base link-read-link-text
+    head k
+      base key-list
         like animation-event-map
+
     take type, like k
     take listener
-      like task-link-text
+      like task
         take this, like animation
         take ev
-          like form-link-link-text
+          like index
             like animation-event-map
             like k
-        free seed, like native-any
+        free seed, like any
     take options
-      like or-link-text
+      like or
         like native-boolean
         like add-event-listener-options
       void true
@@ -188,27 +151,28 @@ form animation, name <Animation>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like or-link-text
+      like or
         like native-boolean
         like add-event-listener-options
       void true
     free seed, like native-void
 
   task remove-event-listener, name <removeEventListener>
-    head k, like like-link-text
-      base link-read-link-text
+    head k
+      base key-list
         like animation-event-map
+
     take type, like k
     take listener
-      like task-link-text
+      like task
         take this, like animation
         take ev
-          like form-link-link-text
+          like index
             like animation-event-map
             like k
-        free seed, like native-any
+        free seed, like any
     take options
-      like or-link-text
+      like or
         like native-boolean
         like event-listener-options
       void true
@@ -218,7 +182,7 @@ form animation, name <Animation>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like or-link-text
+      like or
         like native-boolean
         like event-listener-options
       void true

@@ -1,46 +1,38 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/html-collection-of
-  take form html-collection-of
-
-load @treesurf/nest/code/javascript/dom/html-element
-  take form html-element
-
-load @treesurf/nest/code/javascript/dom/html-opt-group-element
-  take form html-opt-group-element
-
-load @treesurf/nest/code/javascript/dom/html-option-element
-  take form html-option-element
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/dom
+  take form html-collection-of
+  take form html-element
+  take form html-opt-group-element
+  take form html-option-element
 
 form html-options-collection, name <HTMLOptionsCollection>
   base html-collection-of
 
-  take length, name <length>
+  link length, name <length>
     like native-number
-    lock false
-  take selected-index, name <selectedIndex>
+    flex true
+  link selected-index, name <selectedIndex>
     like native-number
-    lock false
+    flex true
 
   task add, name <add>
     take element
-      like or-link-text
+      like or
         like html-option-element
         like html-opt-group-element
     take before
-      like or-link-text
+      like or
         like html-element
         like native-number
         like native-null

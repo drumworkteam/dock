@@ -1,22 +1,17 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/element
-  take form element
-
-load @treesurf/nest/code/javascript/dom/html-collection-base
-  take form html-collection-base
-
-load @treesurf/nest/code/javascript/dom/radio-node-list
-  take form radio-node-list
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+
+load @treesurf/nest/code/javascript/dom
+  take form element
+  take form html-collection-base
+  take form radio-node-list
 
 form html-form-controls-collection, name <HTMLFormControlsCollection>
   base html-collection-base
@@ -24,7 +19,7 @@ form html-form-controls-collection, name <HTMLFormControlsCollection>
   task named-item, name <namedItem>
     take name, like native-string
     free seed
-      like or-link-text
+      like or
         like radio-node-list
         like element
         like native-null

@@ -1,83 +1,58 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
+load @treesurf/nest/code/javascript/webworker
+  take form dom-string-list
+  take form idb-cursor
+  take form idb-cursor-direction
+  take form idb-cursor-with-value
+  take form idb-index
+  take form idb-index-parameters
+  take form idb-key-range
+  take form idb-request
+  take form idb-transaction
+  take form idb-valid-key
 
 load @treesurf/nest/code/javascript/dom/iterable/idb-object-store
   take form idb-object-store
 
-load @treesurf/nest/code/javascript/webworker/dom-string-list
-  take form dom-string-list
-
-load @treesurf/nest/code/javascript/webworker/idb-cursor
-  take form idb-cursor
-
-load @treesurf/nest/code/javascript/webworker/idb-cursor-direction
-  take form idb-cursor-direction
-
-load @treesurf/nest/code/javascript/webworker/idb-cursor-with-value
-  take form idb-cursor-with-value
-
-load @treesurf/nest/code/javascript/webworker/idb-index
-  take form idb-index
-
-load @treesurf/nest/code/javascript/webworker/idb-index-parameters
-  take form idb-index-parameters
-
-load @treesurf/nest/code/javascript/webworker/idb-key-range
-  take form idb-key-range
-
-load @treesurf/nest/code/javascript/webworker/idb-request
-  take form idb-request
-
-load @treesurf/nest/code/javascript/webworker/idb-transaction
-  take form idb-transaction
-
-load @treesurf/nest/code/javascript/webworker/idb-valid-key
-  take form idb-valid-key
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form idb-object-store, name <IDBObjectStore>
-  take auto-increment, name <autoIncrement>
+  link auto-increment, name <autoIncrement>
     like native-boolean
-  take index-names, name <indexNames>
+  link index-names, name <indexNames>
     like dom-string-list
-  take key-path, name <keyPath>
-    like or-link-text
+  link key-path, name <keyPath>
+    like or
       like native-string
-      like native-array
+      like array
         like native-string
-  take name, name <name>
+  link name, name <name>
     like native-string
-    lock false
-  take transaction, name <transaction>
+    flex true
+  link transaction, name <transaction>
     like idb-transaction
 
   task add, name <add>
-    take value, like native-any
+    take value, like any
     take key, like idb-valid-key
       void true
     free seed
@@ -91,7 +66,7 @@ form idb-object-store, name <IDBObjectStore>
 
   task count, name <count>
     take key
-      like or-link-text
+      like or
         like idb-valid-key
         like idb-key-range
       void true
@@ -102,9 +77,9 @@ form idb-object-store, name <IDBObjectStore>
   task create-index, name <createIndex>
     take name, like native-string
     take key-path
-      like or-link-text
+      like or
         like native-string
-        like native-array
+        like array
           like native-string
     take options, like idb-index-parameters
       void true
@@ -112,7 +87,7 @@ form idb-object-store, name <IDBObjectStore>
 
   task delete, name <delete>
     take key
-      like or-link-text
+      like or
         like idb-valid-key
         like idb-key-range
     free seed
@@ -125,18 +100,18 @@ form idb-object-store, name <IDBObjectStore>
 
   task get, name <get>
     take query
-      like or-link-text
+      like or
         like idb-valid-key
         like idb-key-range
     free seed
       like idb-request
-        like or-link-text
-          like native-any
+        like or
+          like any
           like native-undefined
 
   task get-all, name <getAll>
     take query
-      like or-link-text
+      like or
         like idb-valid-key
         like idb-key-range
         like native-null
@@ -145,12 +120,12 @@ form idb-object-store, name <IDBObjectStore>
       void true
     free seed
       like idb-request
-        like native-array
-          like native-any
+        like array
+          like any
 
   task get-all-keys, name <getAllKeys>
     take query
-      like or-link-text
+      like or
         like idb-valid-key
         like idb-key-range
         like native-null
@@ -159,17 +134,17 @@ form idb-object-store, name <IDBObjectStore>
       void true
     free seed
       like idb-request
-        like native-array
+        like array
           like idb-valid-key
 
   task get-key, name <getKey>
     take query
-      like or-link-text
+      like or
         like idb-valid-key
         like idb-key-range
     free seed
       like idb-request
-        like or-link-text
+        like or
           like idb-valid-key
           like native-undefined
 
@@ -179,7 +154,7 @@ form idb-object-store, name <IDBObjectStore>
 
   task open-cursor, name <openCursor>
     take query
-      like or-link-text
+      like or
         like idb-valid-key
         like idb-key-range
         like native-null
@@ -188,13 +163,13 @@ form idb-object-store, name <IDBObjectStore>
       void true
     free seed
       like idb-request
-        like or-link-text
+        like or
           like idb-cursor-with-value
           like native-null
 
   task open-key-cursor, name <openKeyCursor>
     take query
-      like or-link-text
+      like or
         like idb-valid-key
         like idb-key-range
         like native-null
@@ -203,12 +178,12 @@ form idb-object-store, name <IDBObjectStore>
       void true
     free seed
       like idb-request
-        like or-link-text
+        like or
           like idb-cursor
           like native-null
 
   task put, name <put>
-    take value, like native-any
+    take value, like any
     take key, like idb-valid-key
       void true
     free seed

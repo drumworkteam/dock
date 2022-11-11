@@ -1,23 +1,19 @@
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/runtime-exception-details
-  take form runtime-exception-details
-
-load @treesurf/nest/code/javascript/base/runtime-remote-object
-  take form runtime-remote-object
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form runtime-exception-details
+  take form runtime-remote-object
+  take form undefined
+    save form native-undefined
 
 form evaluate-on-call-frame-return-type, name <EvaluateOnCallFrameReturnType>
-  take result, name <result>
+  link result, name <result>
     like runtime-remote-object
-    lock false
-  take exception-details, name <exceptionDetails>
-    like or-link-text
+    flex true
+  link exception-details, name <exceptionDetails>
+    like or
       like runtime-exception-details
       like native-undefined
-    lock false
+    flex true

@@ -1,19 +1,15 @@
 
-load @treesurf/nest/code/javascript/dom/event
+load @treesurf/nest/code/javascript/dom
   take form event
-
-load @treesurf/nest/code/javascript/dom/html-element-event-map
   take form html-element-event-map
-
-load @treesurf/nest/code/javascript/dom/media-encrypted-event
   take form media-encrypted-event
 
 form html-media-element-event-map, name <HTMLMediaElementEventMap>
   base html-element-event-map
 
-  take encrypted, name <encrypted>
+  link encrypted, name <encrypted>
     like media-encrypted-event
-    lock false
-  take waitingforkey, name <waitingforkey>
+    flex true
+  link waitingforkey, name <waitingforkey>
     like event
-    lock false
+    flex true

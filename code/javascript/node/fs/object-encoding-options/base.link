@@ -1,21 +1,20 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @drumwork/nest/code/javascript
+  take form null
+    save form native-null
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/buffer/buffer-encoding
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer-encoding
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form object-encoding-options, name <ObjectEncodingOptions>
-  take encoding, name <encoding>
-    like or-link-text
+  link encoding, name <encoding>
+    like or
       like buffer-encoding
       like native-null
       like native-undefined
-    lock false
+    flex true

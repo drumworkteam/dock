@@ -1,27 +1,24 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/dom/url
+load @treesurf/nest/code/javascript/dom
   take form url
-
-load @treesurf/nest/code/javascript/dom/worklet-options
   take form worklet-options
 
-load @treesurf/nest/code/javascript/es5/promise
+load @treesurf/nest/code/javascript/es5
   take form promise
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form worklet, name <Worklet>
   task add-module, name <addModule>
     take module-url
-      like or-link-text
+      like or
         like native-string
         like url
     take options, like worklet-options

@@ -1,41 +1,40 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form unknown
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-unknown
-  take form native-unknown
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
 load @treesurf/nest/code/javascript/es5/number-constructor
   take form number-constructor
 
 form number-constructor, name <NumberConstructor>
-  take epsilon, name <EPSILON>
+  link epsilon, name <EPSILON>
     like native-number
-  take max-safe-integer, name <MAX_SAFE_INTEGER>
+  link max-safe-integer, name <MAX_SAFE_INTEGER>
     like native-number
-  take min-safe-integer, name <MIN_SAFE_INTEGER>
+  link min-safe-integer, name <MIN_SAFE_INTEGER>
     like native-number
 
   task is-finite, name <isFinite>
-    take number, like native-unknown
+    take number, like unknown
     free seed, like native-boolean
 
   task is-integer, name <isInteger>
-    take number, like native-unknown
+    take number, like unknown
     free seed, like native-boolean
 
   task is-na-n, name <isNaN>
-    take number, like native-unknown
+    take number, like unknown
     free seed, like native-boolean
 
   task is-safe-integer, name <isSafeInteger>
-    take number, like native-unknown
+    take number, like unknown
     free seed, like native-boolean
 
   task parse-float, name <parseFloat>

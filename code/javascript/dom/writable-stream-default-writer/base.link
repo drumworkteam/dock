@@ -1,47 +1,39 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form like
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/es5/promise
+load @treesurf/nest/code/javascript/es5
   take form promise
 
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form writable-stream-default-writer, name <WritableStreamDefaultWriter>
-  head w, like like-link-text
-    back native-any
+  head w
+    back any
 
-  take closed, name <closed>
+  link closed, name <closed>
     like promise
       like native-undefined
-  take desired-size, name <desiredSize>
-    like or-link-text
+  link desired-size, name <desiredSize>
+    like or
       like native-number
       like native-null
-  take ready, name <ready>
+  link ready, name <ready>
     like promise
       like native-undefined
 
   task abort, name <abort>
-    take reason, like native-any
+    take reason, like any
       void true
     free seed
       like promise

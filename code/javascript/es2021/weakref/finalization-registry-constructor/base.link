@@ -1,30 +1,26 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form like
+  take form task
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
+load @treesurf/nest/code/javascript/native
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/es2021/weakref/finalization-registry
+load @treesurf/nest/code/javascript/es2021/weakref
   take form finalization-registry
 
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
 form finalization-registry-constructor, name <FinalizationRegistryConstructor>
-  take prototype, name <prototype>
+  link prototype, name <prototype>
     like finalization-registry
-      like native-any
+      like any
 
   hook make
-    head t, like like-link-text
+    head t
+
     take cleanup-callback
-      like task-link-text
+      like task
         take held-value, like t
         free seed, like native-void
     free seed

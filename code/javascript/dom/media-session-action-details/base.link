@@ -1,36 +1,34 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/dom/media-session-action
+load @treesurf/nest/code/javascript/dom
   take form media-session-action
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form media-session-action-details, name <MediaSessionActionDetails>
-  take action, name <action>
+  link action, name <action>
     like media-session-action
-    lock false
-  take fast-seek, name <fastSeek>
-    like or-link-text
+    flex true
+  link fast-seek, name <fastSeek>
+    like or
       like native-boolean
       like native-null
-    lock false
-  take seek-offset, name <seekOffset>
-    like or-link-text
+    flex true
+  link seek-offset, name <seekOffset>
+    like or
       like native-number
       like native-null
-    lock false
-  take seek-time, name <seekTime>
-    like or-link-text
+    flex true
+  link seek-time, name <seekTime>
+    like or
       like native-number
       like native-null
-    lock false
+    flex true

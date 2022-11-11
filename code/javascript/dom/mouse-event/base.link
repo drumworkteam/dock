@@ -1,74 +1,66 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/event-target
-  take form event-target
-
-load @treesurf/nest/code/javascript/dom/ui-event
-  take form ui-event
-
-load @treesurf/nest/code/javascript/dom/window
-  take form window
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/dom
+  take form event-target
+  take form ui-event
+  take form window
 
 form mouse-event, name <MouseEvent>
   base ui-event
 
-  take alt-key, name <altKey>
+  link alt-key, name <altKey>
     like native-boolean
-  take button, name <button>
+  link button, name <button>
     like native-number
-  take buttons, name <buttons>
+  link buttons, name <buttons>
     like native-number
-  take client-x, name <clientX>
+  link client-x, name <clientX>
     like native-number
-  take client-y, name <clientY>
+  link client-y, name <clientY>
     like native-number
-  take ctrl-key, name <ctrlKey>
+  link ctrl-key, name <ctrlKey>
     like native-boolean
-  take meta-key, name <metaKey>
+  link meta-key, name <metaKey>
     like native-boolean
-  take movement-x, name <movementX>
+  link movement-x, name <movementX>
     like native-number
-  take movement-y, name <movementY>
+  link movement-y, name <movementY>
     like native-number
-  take offset-x, name <offsetX>
+  link offset-x, name <offsetX>
     like native-number
-  take offset-y, name <offsetY>
+  link offset-y, name <offsetY>
     like native-number
-  take page-x, name <pageX>
+  link page-x, name <pageX>
     like native-number
-  take page-y, name <pageY>
+  link page-y, name <pageY>
     like native-number
-  take related-target, name <relatedTarget>
-    like or-link-text
+  link related-target, name <relatedTarget>
+    like or
       like event-target
       like native-null
-  take screen-x, name <screenX>
+  link screen-x, name <screenX>
     like native-number
-  take screen-y, name <screenY>
+  link screen-y, name <screenY>
     like native-number
-  take shift-key, name <shiftKey>
+  link shift-key, name <shiftKey>
     like native-boolean
-  take x, name <x>
+  link x, name <x>
     like native-number
-  take y, name <y>
+  link y, name <y>
     like native-number
 
   task get-modifier-state, name <getModifierState>
@@ -91,7 +83,7 @@ form mouse-event, name <MouseEvent>
     take meta-key-arg, like native-boolean
     take button-arg, like native-number
     take related-target-arg
-      like or-link-text
+      like or
         like event-target
         like native-null
     free seed, like native-void

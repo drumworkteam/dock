@@ -1,41 +1,30 @@
 
-load @treesurf/nest/code/javascript/base/intl-collator-options
+load @treesurf/moon
+  take form any
+  take form or
+  take form task
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @treesurf/nest/code/javascript/native
   take form intl-collator-options
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/es5/reg-exp
+load @treesurf/nest/code/javascript/es5
   take form reg-exp
-
-load @treesurf/nest/code/javascript/es5/reg-exp-match-array
   take form reg-exp-match-array
 
 load @treesurf/nest/code/javascript/es5/string
   take form string
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
 form string, name <String>
-  take length, name <length>
+  link length, name <length>
     like native-number
 
   task to-string, name <toString>
@@ -51,7 +40,7 @@ form string, name <String>
 
   task concat, name <concat>
     take strings
-      like native-array
+      like array
         like native-string
       rest true
     free seed, like native-string
@@ -74,17 +63,17 @@ form string, name <String>
 
   task match, name <match>
     take regexp
-      like or-link-text
+      like or
         like native-string
         like reg-exp
     free seed
-      like or-link-text
+      like or
         like reg-exp-match-array
         like native-null
 
   task replace, name <replace>
     take search-value
-      like or-link-text
+      like or
         like native-string
         like reg-exp
     take replace-value, like native-string
@@ -92,22 +81,22 @@ form string, name <String>
 
   task replace, name <replace>
     take search-value
-      like or-link-text
+      like or
         like native-string
         like reg-exp
     take replacer
-      like task-link-text
+      like task
         take substring, like native-string
         take args
-          like native-array
-            like native-any
+          like array
+            like any
           rest true
         free seed, like native-string
     free seed, like native-string
 
   task search, name <search>
     take regexp
-      like or-link-text
+      like or
         like native-string
         like reg-exp
     free seed, like native-number
@@ -121,13 +110,13 @@ form string, name <String>
 
   task split, name <split>
     take separator
-      like or-link-text
+      like or
         like native-string
         like reg-exp
     take limit, like native-number
       void true
     free seed
-      like native-array
+      like array
         like native-string
 
   task substring, name <substring>
@@ -141,9 +130,9 @@ form string, name <String>
 
   task to-locale-lower-case, name <toLocaleLowerCase>
     take locales
-      like or-link-text
+      like or
         like native-string
-        like native-array
+        like array
           like native-string
       void true
     free seed, like native-string
@@ -153,9 +142,9 @@ form string, name <String>
 
   task to-locale-upper-case, name <toLocaleUpperCase>
     take locales
-      like or-link-text
+      like or
         like native-string
-        like native-array
+        like array
           like native-string
       void true
     free seed, like native-string
@@ -179,9 +168,9 @@ form string, name <String>
   task locale-compare, name <localeCompare>
     take that, like native-string
     take locales
-      like or-link-text
+      like or
         like native-string
-        like native-array
+        like array
           like native-string
       void true
     take options, like intl-collator-options

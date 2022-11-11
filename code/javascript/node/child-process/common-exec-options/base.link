@@ -1,64 +1,55 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/node-js-array-buffer-view
+load @drumwork/nest/code/javascript
   take form node-js-array-buffer-view
-
-load @treesurf/nest/code/javascript/base/node-js-signals
   take form node-js-signals
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/buffer/buffer-encoding
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer-encoding
 
-load @treesurf/nest/code/javascript/node/child-process/common-options
+load @drumwork/nest/code/javascript/node/child-process
   take form common-options
-
-load @treesurf/nest/code/javascript/node/child-process/stdio-options
   take form stdio-options
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form common-exec-options, name <CommonExecOptions>
   base common-options
 
-  take input, name <input>
-    like or-link-text
+  link input, name <input>
+    like or
       like native-string
       like node-js-array-buffer-view
       like native-undefined
-    lock false
-  take stdio, name <stdio>
-    like or-link-text
+    flex true
+  link stdio, name <stdio>
+    like or
       like stdio-options
       like native-undefined
-    lock false
-  take kill-signal, name <killSignal>
-    like or-link-text
+    flex true
+  link kill-signal, name <killSignal>
+    like or
       like node-js-signals
       like native-number
       like native-undefined
-    lock false
-  take max-buffer, name <maxBuffer>
-    like or-link-text
+    flex true
+  link max-buffer, name <maxBuffer>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take encoding, name <encoding>
-    like or-link-text
+    flex true
+  link encoding, name <encoding>
+    like or
       like buffer-encoding
       text <buffer>
       like native-null
       like native-undefined
-    lock false
+    flex true

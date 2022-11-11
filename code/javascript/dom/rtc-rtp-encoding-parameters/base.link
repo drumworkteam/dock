@@ -1,28 +1,26 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/dom/rtc-priority-type
+load @treesurf/nest/code/javascript/dom
   take form rtc-priority-type
-
-load @treesurf/nest/code/javascript/dom/rtc-rtp-coding-parameters
   take form rtc-rtp-coding-parameters
 
 form rtc-rtp-encoding-parameters, name <RTCRtpEncodingParameters>
   base rtc-rtp-coding-parameters
 
-  take active, name <active>
+  link active, name <active>
     like native-boolean
-    lock false
-  take max-bitrate, name <maxBitrate>
+    flex true
+  link max-bitrate, name <maxBitrate>
     like native-number
-    lock false
-  take priority, name <priority>
+    flex true
+  link priority, name <priority>
     like rtc-priority-type
-    lock false
-  take scale-resolution-down-by, name <scaleResolutionDownBy>
+    flex true
+  link scale-resolution-down-by, name <scaleResolutionDownBy>
     like native-number
-    lock false
+    flex true

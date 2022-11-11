@@ -7,37 +7,24 @@ bear @treesurf/nest/code/javascript/node/buffer/with-implicit-coercion
 bear @treesurf/nest/code/javascript/node/buffer/buffer-constructor
 bear @treesurf/nest/code/javascript/node/buffer/buffer
 
-load @treesurf/nest/code/javascript/base/blob
+load @drumwork/nest/code/javascript
   take form blob
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/uint8-array
+  take form number
+    save form native-number
+  take form string
+    save form native-string
   take form uint8-array
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
-
-load @treesurf/nest/code/javascript/node/buffer/buffer-constructor
   take form buffer-constructor
-
-load @treesurf/nest/code/javascript/node/buffer/transcode-encoding
   take form transcode-encoding
 
-load @treesurf/nest/code/form/form
+load @treesurf/moon
   take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
   take form or
-    save form or-link-text
 
 host buffer, name <Buffer>
   home true
@@ -63,23 +50,23 @@ host k-string-max-length, name <kStringMaxLength>
   like native-number
 
 host constants, name <constants>
-  like form-link-text
-    take max-length, name <MAX_LENGTH>
+  like form
+    link max-length, name <MAX_LENGTH>
       like native-number
-      lock false
-    take max-string-length, name <MAX_STRING_LENGTH>
+      flex true
+    link max-string-length, name <MAX_STRING_LENGTH>
       like native-number
-      lock false
+      flex true
 
 host slow-buffer, name <SlowBuffer>
-  like form-link-text
+  like form
     hook make
       take size, like native-number
       free seed, like buffer
 
-    take prototype, name <prototype>
+    link prototype, name <prototype>
       like buffer
-      lock false
+      flex true
 
 task transcode, name <transcode>
   take source, like uint8-array
@@ -90,6 +77,6 @@ task transcode, name <transcode>
 task resolve-object-url, name <resolveObjectURL>
   take id, like native-string
   free seed
-    like or-link-text
+    like or
       like blob
       like native-undefined

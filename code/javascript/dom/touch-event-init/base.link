@@ -1,25 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/dom/event-modifier-init
+load @treesurf/nest/code/javascript/dom
   take form event-modifier-init
-
-load @treesurf/nest/code/javascript/dom/touch
   take form touch
 
 form touch-event-init, name <TouchEventInit>
   base event-modifier-init
 
-  take changed-touches, name <changedTouches>
-    like native-array
+  link changed-touches, name <changedTouches>
+    like array
       like touch
-    lock false
-  take target-touches, name <targetTouches>
-    like native-array
+    flex true
+  link target-touches, name <targetTouches>
+    like array
       like touch
-    lock false
-  take touches, name <touches>
-    like native-array
+    flex true
+  link touches, name <touches>
+    like array
       like touch
-    lock false
+    flex true

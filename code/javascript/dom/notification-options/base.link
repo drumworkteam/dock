@@ -1,69 +1,63 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/dom-time-stamp
+load @treesurf/nest/code/javascript/dom
   take form dom-time-stamp
-
-load @treesurf/nest/code/javascript/dom/notification-action
   take form notification-action
-
-load @treesurf/nest/code/javascript/dom/notification-direction
   take form notification-direction
-
-load @treesurf/nest/code/javascript/dom/vibrate-pattern
   take form vibrate-pattern
 
 form notification-options, name <NotificationOptions>
-  take actions, name <actions>
-    like native-array
+  link actions, name <actions>
+    like array
       like notification-action
-    lock false
-  take badge, name <badge>
+    flex true
+  link badge, name <badge>
     like native-string
-    lock false
-  take body, name <body>
+    flex true
+  link body, name <body>
     like native-string
-    lock false
-  take data, name <data>
-    like native-any
-    lock false
-  take dir, name <dir>
+    flex true
+  link data, name <data>
+    like any
+    flex true
+  link dir, name <dir>
     like notification-direction
-    lock false
-  take icon, name <icon>
+    flex true
+  link icon, name <icon>
     like native-string
-    lock false
-  take image, name <image>
+    flex true
+  link image, name <image>
     like native-string
-    lock false
-  take lang, name <lang>
+    flex true
+  link lang, name <lang>
     like native-string
-    lock false
-  take renotify, name <renotify>
+    flex true
+  link renotify, name <renotify>
     like native-boolean
-    lock false
-  take require-interaction, name <requireInteraction>
+    flex true
+  link require-interaction, name <requireInteraction>
     like native-boolean
-    lock false
-  take silent, name <silent>
+    flex true
+  link silent, name <silent>
     like native-boolean
-    lock false
-  take tag, name <tag>
+    flex true
+  link tag, name <tag>
     like native-string
-    lock false
-  take timestamp, name <timestamp>
+    flex true
+  link timestamp, name <timestamp>
     like dom-time-stamp
-    lock false
-  take vibrate, name <vibrate>
+    flex true
+  link vibrate, name <vibrate>
     like vibrate-pattern
-    lock false
+    flex true

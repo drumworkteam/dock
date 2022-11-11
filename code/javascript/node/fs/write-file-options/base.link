@@ -1,52 +1,42 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form and
+  take form form
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @drumwork/nest/code/javascript
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/node/buffer/buffer-encoding
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer-encoding
 
-load @treesurf/nest/code/javascript/node/events/event-emitter/abortable
+load @drumwork/nest/code/javascript/node/events/event-emitter
   take form abortable
 
-load @treesurf/nest/code/javascript/node/fs/mode
+load @drumwork/nest/code/javascript/node/fs
   take form mode
-
-load @treesurf/nest/code/javascript/node/fs/object-encoding-options
   take form object-encoding-options
 
-load @treesurf/nest/code/form/and
-  take form and
-    save form and-link-text
-
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form write-file-options, name <WriteFileOptions>
-  like or-link-text
-    like and-link-text
+  like or
+    like and
       like object-encoding-options
       like abortable
-      like form-link-text
-        take mode, name <mode>
-          like or-link-text
+      like form
+        link mode, name <mode>
+          like or
             like mode
             like native-undefined
-          lock false
-        take flag, name <flag>
-          like or-link-text
+          flex true
+        link flag, name <flag>
+          like or
             like native-string
             like native-undefined
-          lock false
+          flex true
     like buffer-encoding
     like native-null

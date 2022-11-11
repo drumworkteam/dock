@@ -1,22 +1,20 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/dom/event-init
-  take form event-init
-
-load @treesurf/nest/code/javascript/dom/html-element
-  take form html-element
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+
+load @treesurf/nest/code/javascript/dom
+  take form event-init
+  take form html-element
 
 form submit-event-init, name <SubmitEventInit>
   base event-init
 
-  take submitter, name <submitter>
-    like or-link-text
+  link submitter, name <submitter>
+    like or
       like html-element
       like native-null
-    lock false
+    flex true

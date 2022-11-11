@@ -1,34 +1,29 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/composite-operation
-  take form composite-operation
-
-load @treesurf/nest/code/javascript/dom/effect-timing
-  take form effect-timing
-
-load @treesurf/nest/code/javascript/dom/iteration-composite-operation
-  take form iteration-composite-operation
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+
+load @treesurf/nest/code/javascript/dom
+  take form composite-operation
+  take form effect-timing
+  take form iteration-composite-operation
 
 form keyframe-effect-options, name <KeyframeEffectOptions>
   base effect-timing
 
-  take composite, name <composite>
+  link composite, name <composite>
     like composite-operation
-    lock false
-  take iteration-composite, name <iterationComposite>
+    flex true
+  link iteration-composite, name <iterationComposite>
     like iteration-composite-operation
-    lock false
-  take pseudo-element, name <pseudoElement>
-    like or-link-text
+    flex true
+  link pseudo-element, name <pseudoElement>
+    like or
       like native-string
       like native-null
-    lock false
+    flex true

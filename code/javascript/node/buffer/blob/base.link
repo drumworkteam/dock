@@ -1,38 +1,25 @@
 
-load @treesurf/nest/code/javascript/base/array
+load @treesurf/moon
+  take form or
+  take form unknown
+
+load @drumwork/nest/code/javascript
   take form array
-
-load @treesurf/nest/code/javascript/base/array-buffer
   take form array-buffer
-
-load @treesurf/nest/code/javascript/base/binary-like
   take form binary-like
-
-load @treesurf/nest/code/javascript/base/blob
   take form blob
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-unknown
-  take form native-unknown
-
-load @treesurf/nest/code/javascript/base/promise
+  take form number
+    save form native-number
   take form promise
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/node/buffer/blob-options
+load @drumwork/nest/code/javascript/node/buffer
   take form blob-options
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form blob, name <Blob>
-  take size, name <size>, like native-number
-  take type, name <type>, like native-string
+  link size, name <size>, like native-number
+  link type, name <type>, like native-string
 
   task array-buffer, name <arrayBuffer>
     free seed
@@ -54,13 +41,13 @@ form blob, name <Blob>
         like native-string
 
   task stream, name <stream>
-    free seed, like native-unknown
+    free seed, like unknown
 
 form blob-constructor
   hook make
     take sources
       like array
-        like or-link-text
+        like or
           like binary-like
           like blob
     take options, like blob-options

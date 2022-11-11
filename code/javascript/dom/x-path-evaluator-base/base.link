@@ -1,34 +1,26 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/node
-  take form node
-
-load @treesurf/nest/code/javascript/dom/x-path-expression
-  take form x-path-expression
-
-load @treesurf/nest/code/javascript/dom/x-path-ns-resolver
-  take form x-path-ns-resolver
-
-load @treesurf/nest/code/javascript/dom/x-path-result
-  take form x-path-result
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+
+load @treesurf/nest/code/javascript/dom
+  take form node
+  take form x-path-expression
+  take form x-path-ns-resolver
+  take form x-path-result
 
 form x-path-evaluator-base, name <XPathEvaluatorBase>
   task create-expression, name <createExpression>
     take expression, like native-string
     take resolver
-      like or-link-text
+      like or
         like x-path-ns-resolver
         like native-null
       void true
@@ -42,14 +34,14 @@ form x-path-evaluator-base, name <XPathEvaluatorBase>
     take expression, like native-string
     take context-node, like node
     take resolver
-      like or-link-text
+      like or
         like x-path-ns-resolver
         like native-null
       void true
     take type, like native-number
       void true
     take result
-      like or-link-text
+      like or
         like x-path-result
         like native-null
       void true

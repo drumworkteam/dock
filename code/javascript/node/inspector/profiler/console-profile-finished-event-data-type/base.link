@@ -1,32 +1,29 @@
 
-load @treesurf/nest/code/javascript/base/debugger-location
+load @treesurf/moon
+  take form or
+
+load @drumwork/nest/code/javascript
   take form debugger-location
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/node/inspector/profiler/profile
+load @drumwork/nest/code/javascript/node/inspector/profiler
   take form profile
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form console-profile-finished-event-data-type, name <ConsoleProfileFinishedEventDataType>
-  take id, name <id>
+  link id, name <id>
     like native-string
-    lock false
-  take location, name <location>
+    flex true
+  link location, name <location>
     like debugger-location
-    lock false
-  take profile, name <profile>
+    flex true
+  link profile, name <profile>
     like profile
-    lock false
-  take title, name <title>
-    like or-link-text
+    flex true
+  link title, name <title>
+    like or
       like native-string
       like native-undefined
-    lock false
+    flex true

@@ -1,26 +1,24 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/runtime-call-argument
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
   take form runtime-call-argument
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/node/inspector/debugger/call-frame-id
+load @drumwork/nest/code/javascript/node/inspector/debugger
   take form call-frame-id
 
 form set-variable-value-parameter-type, name <SetVariableValueParameterType>
-  take scope-number, name <scopeNumber>
+  link scope-number, name <scopeNumber>
     like native-number
-    lock false
-  take variable-name, name <variableName>
+    flex true
+  link variable-name, name <variableName>
     like native-string
-    lock false
-  take new-value, name <newValue>
+    flex true
+  link new-value, name <newValue>
     like runtime-call-argument
-    lock false
-  take call-frame-id, name <callFrameId>
+    flex true
+  link call-frame-id, name <callFrameId>
     like call-frame-id
-    lock false
+    flex true

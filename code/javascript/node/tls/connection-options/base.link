@@ -1,99 +1,88 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/net-lookup-function
+load @drumwork/nest/code/javascript
   take form net-lookup-function
-
-load @treesurf/nest/code/javascript/base/stream-duplex
+  take form null
+    save form native-null
+  take form number
+    save form native-number
   take form stream-duplex
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
 
-load @treesurf/nest/code/javascript/node/tls/common-connection-options
+load @drumwork/nest/code/javascript/node/tls
   take form common-connection-options
-
-load @treesurf/nest/code/javascript/node/tls/psk-callback-negotation
   take form psk-callback-negotation
-
-load @treesurf/nest/code/javascript/node/tls/secure-context-options
   take form secure-context-options
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form connection-options, name <ConnectionOptions>
   base secure-context-options
   base common-connection-options
 
-  take host, name <host>
-    like or-link-text
+  link host, name <host>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take port, name <port>
-    like or-link-text
+    flex true
+  link port, name <port>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take path, name <path>
-    like or-link-text
+    flex true
+  link path, name <path>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take socket, name <socket>
-    like or-link-text
+    flex true
+  link socket, name <socket>
+    like or
       like stream-duplex
       like native-undefined
-    lock false
-  take check-server-identity, name <checkServerIdentity>
-    like or-link-text
+    flex true
+  link check-server-identity, name <checkServerIdentity>
+    like or
       like check-server-identity
       like native-undefined
-    lock false
-  take servername, name <servername>
-    like or-link-text
+    flex true
+  link servername, name <servername>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take session, name <session>
-    like or-link-text
+    flex true
+  link session, name <session>
+    like or
       like buffer
       like native-undefined
-    lock false
-  take min-dh-size, name <minDHSize>
-    like or-link-text
+    flex true
+  link min-dh-size, name <minDHSize>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take lookup, name <lookup>
-    like or-link-text
+    flex true
+  link lookup, name <lookup>
+    like or
       like net-lookup-function
       like native-undefined
-    lock false
-  take timeout, name <timeout>
-    like or-link-text
+    flex true
+  link timeout, name <timeout>
+    like or
       like native-number
       like native-undefined
-    lock false
+    flex true
 
   task psk-callback, name <pskCallback>
     take hint
-      like or-link-text
+      like or
         like native-string
         like native-null
     free seed
-      like or-link-text
+      like or
         like psk-callback-negotation
         like native-null

@@ -1,25 +1,24 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @drumwork/nest/code/javascript
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form key-object, name <KeyObject>
-  take pem, name <pem>
-    like or-link-text
+  link pem, name <pem>
+    like or
       like native-string
       like buffer
-    lock false
-  take passphrase, name <passphrase>
-    like or-link-text
+    flex true
+  link passphrase, name <passphrase>
+    like or
       like native-string
       like native-undefined
-    lock false
+    flex true

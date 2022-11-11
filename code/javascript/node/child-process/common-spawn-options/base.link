@@ -1,52 +1,44 @@
 
-load @treesurf/nest/code/javascript/base/abortable
-  take form abortable
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/node/child-process/common-options
-  take form common-options
-
-load @treesurf/nest/code/javascript/node/child-process/messaging-options
-  take form messaging-options
-
-load @treesurf/nest/code/javascript/node/child-process/stdio-options
-  take form stdio-options
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form abortable
+  take form boolean
+    save form native-boolean
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
+
+load @drumwork/nest/code/javascript/node/child-process
+  take form common-options
+  take form messaging-options
+  take form stdio-options
 
 form common-spawn-options, name <CommonSpawnOptions>
   base common-options
   base messaging-options
   base abortable
 
-  take argv0, name <argv0>
-    like or-link-text
+  link argv0, name <argv0>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take stdio, name <stdio>
-    like or-link-text
+    flex true
+  link stdio, name <stdio>
+    like or
       like stdio-options
       like native-undefined
-    lock false
-  take shell, name <shell>
-    like or-link-text
+    flex true
+  link shell, name <shell>
+    like or
       like native-boolean
       like native-string
       like native-undefined
-    lock false
-  take windows-verbatim-arguments, name <windowsVerbatimArguments>
-    like or-link-text
+    flex true
+  link windows-verbatim-arguments, name <windowsVerbatimArguments>
+    like or
       like native-boolean
       like native-undefined
-    lock false
+    flex true

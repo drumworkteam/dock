@@ -1,57 +1,46 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/moon
+  take form and
+  take form form
+  take form like
+  take form or
 
-load @treesurf/nest/code/javascript/node/crypto/base-private-key-encoding-options
+load @drumwork/nest/code/javascript
+  take form string
+    save form native-string
+
+load @drumwork/nest/code/javascript/node/crypto
   take form base-private-key-encoding-options
-
-load @treesurf/nest/code/javascript/node/crypto/key-format
   take form key-format
 
-load @treesurf/nest/code/form/and
-  take form and
-    save form and-link-text
-
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form ec-key-pair-options, name <ECKeyPairOptions>
-  head pub-f, like like-link-text
+  head pub-f
     base key-format
-  head priv-f, like like-link-text
+  head priv-f
     base key-format
 
-  take named-curve, name <namedCurve>
+  link named-curve, name <namedCurve>
     like native-string
-    lock false
-  take public-key-encoding, name <publicKeyEncoding>
-    like form-link-text
-      take type, name <type>
-        like or-link-text
+    flex true
+  link public-key-encoding, name <publicKeyEncoding>
+    like form
+      link type, name <type>
+        like or
           text <pkcs1>
           text <spki>
-        lock false
-      take format, name <format>
+        flex true
+      link format, name <format>
         like pub-f
-        lock false
-    lock false
-  take private-key-encoding, name <privateKeyEncoding>
-    like and-link-text
+        flex true
+    flex true
+  link private-key-encoding, name <privateKeyEncoding>
+    like and
       like base-private-key-encoding-options
         like priv-f
-      like form-link-text
-        take type, name <type>
-          like or-link-text
+      like form
+        link type, name <type>
+          like or
             text <sec1>
             text <pkcs8>
-          lock false
-    lock false
+          flex true
+    flex true

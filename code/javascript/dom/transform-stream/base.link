@@ -1,26 +1,21 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form like
 
-load @treesurf/nest/code/javascript/dom/readable-stream
+load @treesurf/nest/code/javascript/dom
   take form readable-stream
-
-load @treesurf/nest/code/javascript/dom/writable-stream
   take form writable-stream
 
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
 form transform-stream, name <TransformStream>
-  head i, like like-link-text
-    back native-any
-  head o, like like-link-text
-    back native-any
+  head i
+    back any
+  head o
+    back any
 
-  take readable, name <readable>
+  link readable, name <readable>
     like readable-stream
       like o
-  take writable, name <writable>
+  link writable, name <writable>
     like writable-stream
       like i

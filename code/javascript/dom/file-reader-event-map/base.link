@@ -1,32 +1,30 @@
 
-load @treesurf/nest/code/javascript/dom/file-reader
+load @treesurf/nest/code/javascript/dom
   take form file-reader
-
-load @treesurf/nest/code/javascript/dom/progress-event
   take form progress-event
 
 form file-reader-event-map, name <FileReaderEventMap>
-  take abort, name <abort>
+  link abort, name <abort>
     like progress-event
       like file-reader
-    lock false
-  take error, name <error>
+    flex true
+  link error, name <error>
     like progress-event
       like file-reader
-    lock false
-  take load, name <load>
+    flex true
+  link load, name <load>
     like progress-event
       like file-reader
-    lock false
-  take loadend, name <loadend>
+    flex true
+  link loadend, name <loadend>
     like progress-event
       like file-reader
-    lock false
-  take loadstart, name <loadstart>
+    flex true
+  link loadstart, name <loadstart>
     like progress-event
       like file-reader
-    lock false
-  take progress, name <progress>
+    flex true
+  link progress, name <progress>
     like progress-event
       like file-reader
-    lock false
+    flex true

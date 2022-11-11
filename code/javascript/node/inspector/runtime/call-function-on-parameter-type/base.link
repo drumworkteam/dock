@@ -1,76 +1,70 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/call-argument
+load @drumwork/nest/code/javascript/node/inspector/runtime
   take form call-argument
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/execution-context-id
   take form execution-context-id
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/remote-object-id
   take form remote-object-id
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form call-function-on-parameter-type, name <CallFunctionOnParameterType>
-  take function-declaration, name <functionDeclaration>
+  link function-declaration, name <functionDeclaration>
     like native-string
-    lock false
-  take object-id, name <objectId>
-    like or-link-text
+    flex true
+  link object-id, name <objectId>
+    like or
       like remote-object-id
       like native-undefined
-    lock false
-  take arguments, name <arguments>
-    like or-link-text
-      like native-array
+    flex true
+  link arguments, name <arguments>
+    like or
+      like array
         like call-argument
       like native-undefined
-    lock false
-  take silent, name <silent>
-    like or-link-text
+    flex true
+  link silent, name <silent>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take return-by-value, name <returnByValue>
-    like or-link-text
+    flex true
+  link return-by-value, name <returnByValue>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take generate-preview, name <generatePreview>
-    like or-link-text
+    flex true
+  link generate-preview, name <generatePreview>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take user-gesture, name <userGesture>
-    like or-link-text
+    flex true
+  link user-gesture, name <userGesture>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take await-promise, name <awaitPromise>
-    like or-link-text
+    flex true
+  link await-promise, name <awaitPromise>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take execution-context-id, name <executionContextId>
-    like or-link-text
+    flex true
+  link execution-context-id, name <executionContextId>
+    like or
       like execution-context-id
       like native-undefined
-    lock false
-  take object-group, name <objectGroup>
-    like or-link-text
+    flex true
+  link object-group, name <objectGroup>
+    like or
       like native-string
       like native-undefined
-    lock false
+    flex true

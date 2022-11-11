@@ -1,18 +1,19 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/rtc-sdp-type
+load @treesurf/nest/code/javascript/dom
   take form rtc-sdp-type
 
 form rtc-session-description, name <RTCSessionDescription>
-  take sdp, name <sdp>
+  link sdp, name <sdp>
     like native-string
-  take type, name <type>
+  link type, name <type>
     like rtc-sdp-type
 
   task to-json, name <toJSON>
-    free seed, like native-any
+    free seed, like any

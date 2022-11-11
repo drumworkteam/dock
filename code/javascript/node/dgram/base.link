@@ -5,44 +5,38 @@ bear @treesurf/nest/code/javascript/node/dgram/socket-type
 bear @treesurf/nest/code/javascript/node/dgram/socket-options
 bear @treesurf/nest/code/javascript/node/dgram/socket
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
+load @treesurf/moon
+  take form task
 
-load @treesurf/nest/code/javascript/base/socket
+load @drumwork/nest/code/javascript
   take form socket
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
 
-load @treesurf/nest/code/javascript/node/dgram/remote-info
+load @drumwork/nest/code/javascript/node/dgram
   take form remote-info
-
-load @treesurf/nest/code/javascript/node/dgram/socket-options
   take form socket-options
-
-load @treesurf/nest/code/javascript/node/dgram/socket-type
   take form socket-type
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
 
 task create-socket, name <createSocket>
   take type, like socket-type
   take callback
-    like task-link-text
+    like task
       take msg, like buffer
       take rinfo, like remote-info
-      free seed, like native-void
+      free result, like native-void
     void true
   free seed, like socket
 
 task create-socket, name <createSocket>
   take options, like socket-options
   take callback
-    like task-link-text
+    like task
       take msg, like buffer
       take rinfo, like remote-info
-      free seed, like native-void
+      free result, like native-void
     void true
   free seed, like socket

@@ -1,20 +1,16 @@
 
-load @treesurf/nest/code/javascript/dom/abort-signal
+load @treesurf/nest/code/javascript/dom
   take form abort-signal
-
-load @treesurf/nest/code/javascript/dom/credential-mediation-requirement
   take form credential-mediation-requirement
-
-load @treesurf/nest/code/javascript/dom/public-key-credential-request-options
   take form public-key-credential-request-options
 
 form credential-request-options, name <CredentialRequestOptions>
-  take mediation, name <mediation>
+  link mediation, name <mediation>
     like credential-mediation-requirement
-    lock false
-  take public-key, name <publicKey>
+    flex true
+  link public-key, name <publicKey>
     like public-key-credential-request-options
-    lock false
-  take signal, name <signal>
+    flex true
+  link signal, name <signal>
     like abort-signal
-    lock false
+    flex true

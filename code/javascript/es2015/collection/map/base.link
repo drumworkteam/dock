@@ -1,39 +1,27 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-this
-  take form native-this
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
+  take form any
   take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
   take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
   take form task
-    save form task-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form this
+    save form native-this
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
 
 form map, name <Map>
-  head k, like like-link-text
-  head v, like like-link-text
+  head k
+  head v
 
-  take size, name <size>
+  link size, name <size>
     like native-number
 
   task clear, name <clear>
@@ -45,7 +33,7 @@ form map, name <Map>
 
   task for-each, name <forEach>
     take callbackfn
-      like task-link-text
+      like task
         take value, like v
         take key, like k
         take map
@@ -53,14 +41,14 @@ form map, name <Map>
             like k
             like v
         free seed, like native-void
-    take this-arg, like native-any
+    take this-arg, like any
       void true
     free seed, like native-void
 
   task get, name <get>
     take key, like k
     free seed
-      like or-link-text
+      like or
         like v
         like native-undefined
 

@@ -1,20 +1,14 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
+  take form any
+  take form key-list
   take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/link/read
-  take form link-read
-    save form link-read-link-text
 
 form record, name <Record>
-  head k, like like-link-text
-    base link-read-link-text
-      like native-any
-  head t, like like-link-text
+  head k
+    base key-list
+      like any
+  head t
 
   slot self
   walk link-name-like-list
@@ -22,5 +16,5 @@ form record, name <Record>
     take name
     take p
     beam self
-      take loan name
+      take {name}
         like t

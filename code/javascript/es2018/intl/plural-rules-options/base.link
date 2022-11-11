@@ -1,35 +1,35 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/es2018/intl/plural-rule-type
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/es2018/intl
   take form plural-rule-type
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form plural-rules-options, name <PluralRulesOptions>
-  take locale-matcher, name <localeMatcher>
-    like or-link-text
+  link locale-matcher, name <localeMatcher>
+    like or
       text <lookup>
       text <best fit>
-    lock false
-  take type, name <type>
+    flex true
+  link type, name <type>
     like plural-rule-type
-    lock false
-  take minimum-integer-digits, name <minimumIntegerDigits>
+    flex true
+  link minimum-integer-digits, name <minimumIntegerDigits>
     like native-number
-    lock false
-  take minimum-fraction-digits, name <minimumFractionDigits>
+    flex true
+  link minimum-fraction-digits, name <minimumFractionDigits>
     like native-number
-    lock false
-  take maximum-fraction-digits, name <maximumFractionDigits>
+    flex true
+  link maximum-fraction-digits, name <maximumFractionDigits>
     like native-number
-    lock false
-  take minimum-significant-digits, name <minimumSignificantDigits>
+    flex true
+  link minimum-significant-digits, name <minimumSignificantDigits>
     like native-number
-    lock false
-  take maximum-significant-digits, name <maximumSignificantDigits>
+    flex true
+  link maximum-significant-digits, name <maximumSignificantDigits>
     like native-number
-    lock false
+    flex true

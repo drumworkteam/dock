@@ -1,43 +1,34 @@
 
-load @treesurf/nest/code/javascript/node/crypto/base-private-key-encoding-options
-  take form base-private-key-encoding-options
+load @treesurf/moon
+  take form and
+  take form form
+  take form like
 
-load @treesurf/nest/code/javascript/node/crypto/key-format
+load @drumwork/nest/code/javascript/node/crypto
+  take form base-private-key-encoding-options
   take form key-format
 
-load @treesurf/nest/code/form/and
-  take form and
-    save form and-link-text
-
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
 form x25519-key-pair-options, name <X25519KeyPairOptions>
-  head pub-f, like like-link-text
+  head pub-f
     base key-format
-  head priv-f, like like-link-text
+  head priv-f
     base key-format
 
-  take public-key-encoding, name <publicKeyEncoding>
-    like form-link-text
-      take type, name <type>
+  link public-key-encoding, name <publicKeyEncoding>
+    like form
+      link type, name <type>
         text <spki>
-        lock false
-      take format, name <format>
+        flex true
+      link format, name <format>
         like pub-f
-        lock false
-    lock false
-  take private-key-encoding, name <privateKeyEncoding>
-    like and-link-text
+        flex true
+    flex true
+  link private-key-encoding, name <privateKeyEncoding>
+    like and
       like base-private-key-encoding-options
         like priv-f
-      like form-link-text
-        take type, name <type>
+      like form
+        link type, name <type>
           text <pkcs8>
-          lock false
-    lock false
+          flex true
+    flex true

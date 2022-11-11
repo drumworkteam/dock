@@ -1,30 +1,29 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/crypto/dsa-encoding
+load @drumwork/nest/code/javascript/node/crypto
   take form dsa-encoding
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form signing-options, name <SigningOptions>
-  take padding, name <padding>
-    like or-link-text
+  link padding, name <padding>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take salt-length, name <saltLength>
-    like or-link-text
+    flex true
+  link salt-length, name <saltLength>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take dsa-encoding, name <dsaEncoding>
-    like or-link-text
+    flex true
+  link dsa-encoding, name <dsaEncoding>
+    like or
       like dsa-encoding
       like native-undefined
-    lock false
+    flex true

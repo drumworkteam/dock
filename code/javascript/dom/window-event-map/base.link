@@ -1,38 +1,28 @@
 
-load @treesurf/nest/code/javascript/dom/device-motion-event
+load @treesurf/nest/code/javascript/dom
   take form device-motion-event
-
-load @treesurf/nest/code/javascript/dom/device-orientation-event
   take form device-orientation-event
-
-load @treesurf/nest/code/javascript/dom/event
   take form event
-
-load @treesurf/nest/code/javascript/dom/gamepad-event
   take form gamepad-event
-
-load @treesurf/nest/code/javascript/dom/global-event-handlers-event-map
   take form global-event-handlers-event-map
-
-load @treesurf/nest/code/javascript/dom/window-event-handlers-event-map
   take form window-event-handlers-event-map
 
 form window-event-map, name <WindowEventMap>
   base global-event-handlers-event-map
   base window-event-handlers-event-map
 
-  take devicemotion, name <devicemotion>
+  link devicemotion, name <devicemotion>
     like device-motion-event
-    lock false
-  take deviceorientation, name <deviceorientation>
+    flex true
+  link deviceorientation, name <deviceorientation>
     like device-orientation-event
-    lock false
-  take gamepadconnected, name <gamepadconnected>
+    flex true
+  link gamepadconnected, name <gamepadconnected>
     like gamepad-event
-    lock false
-  take gamepaddisconnected, name <gamepaddisconnected>
+    flex true
+  link gamepaddisconnected, name <gamepaddisconnected>
     like gamepad-event
-    lock false
-  take orientationchange, name <orientationchange>
+    flex true
+  link orientationchange, name <orientationchange>
     like event
-    lock false
+    flex true

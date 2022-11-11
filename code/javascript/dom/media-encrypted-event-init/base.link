@@ -1,28 +1,27 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/event-init
+load @treesurf/nest/code/javascript/dom
   take form event-init
 
-load @treesurf/nest/code/javascript/es5/array-buffer
+load @treesurf/nest/code/javascript/es5
   take form array-buffer
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form media-encrypted-event-init, name <MediaEncryptedEventInit>
   base event-init
 
-  take init-data, name <initData>
-    like or-link-text
+  link init-data, name <initData>
+    like or
       like array-buffer
       like native-null
-    lock false
-  take init-data-type, name <initDataType>
+    flex true
+  link init-data-type, name <initDataType>
     like native-string
-    lock false
+    flex true

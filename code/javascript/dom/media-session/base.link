@@ -1,43 +1,34 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/dom/media-metadata
+load @treesurf/nest/code/javascript/dom
   take form media-metadata
-
-load @treesurf/nest/code/javascript/dom/media-position-state
   take form media-position-state
-
-load @treesurf/nest/code/javascript/dom/media-session-action
   take form media-session-action
-
-load @treesurf/nest/code/javascript/dom/media-session-action-handler
   take form media-session-action-handler
-
-load @treesurf/nest/code/javascript/dom/media-session-playback-state
   take form media-session-playback-state
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form media-session, name <MediaSession>
-  take metadata, name <metadata>
-    like or-link-text
+  link metadata, name <metadata>
+    like or
       like media-metadata
       like native-null
-    lock false
-  take playback-state, name <playbackState>
+    flex true
+  link playback-state, name <playbackState>
     like media-session-playback-state
-    lock false
+    flex true
 
   task set-action-handler, name <setActionHandler>
     take action, like media-session-action
     take handler
-      like or-link-text
+      like or
         like media-session-action-handler
         like native-null
     free seed, like native-void

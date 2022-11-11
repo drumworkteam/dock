@@ -1,75 +1,51 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/cache-storage
+load @treesurf/nest/code/javascript/dom
   take form cache-storage
-
-load @treesurf/nest/code/javascript/dom/crypto
   take form crypto
-
-load @treesurf/nest/code/javascript/dom/idb-factory
   take form idb-factory
-
-load @treesurf/nest/code/javascript/dom/image-bitmap
   take form image-bitmap
-
-load @treesurf/nest/code/javascript/dom/image-bitmap-options
   take form image-bitmap-options
-
-load @treesurf/nest/code/javascript/dom/image-bitmap-source
   take form image-bitmap-source
-
-load @treesurf/nest/code/javascript/dom/performance
   take form performance
-
-load @treesurf/nest/code/javascript/dom/request-info
   take form request-info
-
-load @treesurf/nest/code/javascript/dom/request-init
   take form request-init
-
-load @treesurf/nest/code/javascript/dom/response
   take form response
-
-load @treesurf/nest/code/javascript/dom/timer-handler
   take form timer-handler
-
-load @treesurf/nest/code/javascript/dom/void-function
   take form void-function
 
-load @treesurf/nest/code/javascript/es5/promise
+load @treesurf/nest/code/javascript/es5
   take form promise
 
 form window-or-worker-global-scope, name <WindowOrWorkerGlobalScope>
-  take caches, name <caches>
+  link caches, name <caches>
     like cache-storage
-  take cross-origin-isolated, name <crossOriginIsolated>
+  link cross-origin-isolated, name <crossOriginIsolated>
     like native-boolean
-  take crypto, name <crypto>
+  link crypto, name <crypto>
     like crypto
-  take indexed-db, name <indexedDB>
+  link indexed-db, name <indexedDB>
     like idb-factory
-  take is-secure-context, name <isSecureContext>
+  link is-secure-context, name <isSecureContext>
     like native-boolean
-  take origin, name <origin>
+  link origin, name <origin>
     like native-string
-  take performance, name <performance>
+  link performance, name <performance>
     like performance
 
   task atob, name <atob>
@@ -127,8 +103,8 @@ form window-or-worker-global-scope, name <WindowOrWorkerGlobalScope>
     take timeout, like native-number
       void true
     take arguments
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
     free seed, like native-number
 
@@ -137,7 +113,7 @@ form window-or-worker-global-scope, name <WindowOrWorkerGlobalScope>
     take timeout, like native-number
       void true
     take arguments
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
     free seed, like native-number

@@ -1,53 +1,50 @@
 
-load @treesurf/nest/code/javascript/base/native-bigint
-  take form native-bigint
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form bigint
+    save form native-bigint
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
 form asymmetric-key-details, name <AsymmetricKeyDetails>
-  take modulus-length, name <modulusLength>
-    like or-link-text
+  link modulus-length, name <modulusLength>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take public-exponent, name <publicExponent>
-    like or-link-text
+    flex true
+  link public-exponent, name <publicExponent>
+    like or
       like native-bigint
       like native-undefined
-    lock false
-  take hash-algorithm, name <hashAlgorithm>
-    like or-link-text
+    flex true
+  link hash-algorithm, name <hashAlgorithm>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take mgf1-hash-algorithm, name <mgf1HashAlgorithm>
-    like or-link-text
+    flex true
+  link mgf1-hash-algorithm, name <mgf1HashAlgorithm>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take salt-length, name <saltLength>
-    like or-link-text
+    flex true
+  link salt-length, name <saltLength>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take divisor-length, name <divisorLength>
-    like or-link-text
+    flex true
+  link divisor-length, name <divisorLength>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take named-curve, name <namedCurve>
-    like or-link-text
+    flex true
+  link named-curve, name <namedCurve>
+    like or
       like native-string
       like native-undefined
-    lock false
+    flex true

@@ -1,44 +1,43 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/mouse-event
+load @treesurf/nest/code/javascript/dom
   take form mouse-event
 
 form pointer-event, name <PointerEvent>
   base mouse-event
 
-  take height, name <height>
+  link height, name <height>
     like native-number
-  take is-primary, name <isPrimary>
+  link is-primary, name <isPrimary>
     like native-boolean
-  take pointer-id, name <pointerId>
+  link pointer-id, name <pointerId>
     like native-number
-  take pointer-type, name <pointerType>
+  link pointer-type, name <pointerType>
     like native-string
-  take pressure, name <pressure>
+  link pressure, name <pressure>
     like native-number
-  take tangential-pressure, name <tangentialPressure>
+  link tangential-pressure, name <tangentialPressure>
     like native-number
-  take tilt-x, name <tiltX>
+  link tilt-x, name <tiltX>
     like native-number
-  take tilt-y, name <tiltY>
+  link tilt-y, name <tiltY>
     like native-number
-  take twist, name <twist>
+  link twist, name <twist>
     like native-number
-  take width, name <width>
+  link width, name <width>
     like native-number
 
   task get-coalesced-events, name <getCoalescedEvents>
     free seed
-      like native-array
+      like array
         like pointer-event

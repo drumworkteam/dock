@@ -1,37 +1,30 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/scroll-restoration
+load @treesurf/nest/code/javascript/dom
   take form scroll-restoration
-
-load @treesurf/nest/code/javascript/dom/url
   take form url
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form history, name <History>
-  take length, name <length>
+  link length, name <length>
     like native-number
-  take scroll-restoration, name <scrollRestoration>
+  link scroll-restoration, name <scrollRestoration>
     like scroll-restoration
-    lock false
-  take state, name <state>
-    like native-any
+    flex true
+  link state, name <state>
+    like any
 
   task back, name <back>
     free seed, like native-void
@@ -45,10 +38,10 @@ form history, name <History>
     free seed, like native-void
 
   task push-state, name <pushState>
-    take data, like native-any
+    take data, like any
     take unused, like native-string
     take url
-      like or-link-text
+      like or
         like native-string
         like url
         like native-null
@@ -56,10 +49,10 @@ form history, name <History>
     free seed, like native-void
 
   task replace-state, name <replaceState>
-    take data, like native-any
+    take data, like any
     take unused, like native-string
     take url
-      like or-link-text
+      like or
         like native-string
         like url
         like native-null

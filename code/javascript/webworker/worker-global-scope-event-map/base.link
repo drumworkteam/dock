@@ -1,29 +1,25 @@
 
-load @treesurf/nest/code/javascript/webworker/error-event
+load @treesurf/nest/code/javascript/webworker
   take form error-event
-
-load @treesurf/nest/code/javascript/webworker/event
   take form event
-
-load @treesurf/nest/code/javascript/webworker/promise-rejection-event
   take form promise-rejection-event
 
 form worker-global-scope-event-map, name <WorkerGlobalScopeEventMap>
-  take error, name <error>
+  link error, name <error>
     like error-event
-    lock false
-  take languagechange, name <languagechange>
+    flex true
+  link languagechange, name <languagechange>
     like event
-    lock false
-  take offline, name <offline>
+    flex true
+  link offline, name <offline>
     like event
-    lock false
-  take online, name <online>
+    flex true
+  link online, name <online>
     like event
-    lock false
-  take rejectionhandled, name <rejectionhandled>
+    flex true
+  link rejectionhandled, name <rejectionhandled>
     like promise-rejection-event
-    lock false
-  take unhandledrejection, name <unhandledrejection>
+    flex true
+  link unhandledrejection, name <unhandledrejection>
     like promise-rejection-event
-    lock false
+    flex true

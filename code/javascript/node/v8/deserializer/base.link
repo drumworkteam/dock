@@ -1,35 +1,27 @@
 
-load @treesurf/nest/code/javascript/base/array-buffer
+load @treesurf/moon
+  take form any
+  take form tuple
+
+load @drumwork/nest/code/javascript
   take form array-buffer
-
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/base/node-js-typed-array
+  take form boolean
+    save form native-boolean
   take form node-js-typed-array
+  take form number
+    save form native-number
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
-
-load @treesurf/nest/code/form/band
-  take form band
-    save form band-link-text
 
 form deserializer, name <Deserializer>
   task read-header, name <readHeader>
     free seed, like native-boolean
 
   task read-value, name <readValue>
-    free seed, like native-any
+    free seed, like any
 
   task transfer-array-buffer, name <transferArrayBuffer>
     take id, like native-number
@@ -44,7 +36,7 @@ form deserializer, name <Deserializer>
 
   task read-uint64, name <readUint64>
     free seed
-      like band-link-text
+      like tuple
         like native-number
         like native-number
 

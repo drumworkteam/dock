@@ -1,37 +1,37 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/es5/uint8-array
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
+
+load @treesurf/nest/code/javascript/es5
   take form uint8-array
 
-load @treesurf/nest/code/javascript/webworker/algorithm
+load @treesurf/nest/code/javascript/webworker
   take form algorithm
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form concat-params, name <ConcatParams>
   base algorithm
 
-  take algorithm-id, name <algorithmId>
+  link algorithm-id, name <algorithmId>
     like uint8-array
-    lock false
-  take hash, name <hash>
-    like or-link-text
+    flex true
+  link hash, name <hash>
+    like or
       like native-string
       like algorithm
-    lock false
-  take party-u-info, name <partyUInfo>
+    flex true
+  link party-u-info, name <partyUInfo>
     like uint8-array
-    lock false
-  take party-v-info, name <partyVInfo>
+    flex true
+  link party-v-info, name <partyVInfo>
     like uint8-array
-    lock false
-  take private-info, name <privateInfo>
+    flex true
+  link private-info, name <privateInfo>
     like uint8-array
-    lock false
-  take public-info, name <publicInfo>
+    flex true
+  link public-info, name <publicInfo>
     like uint8-array
-    lock false
+    flex true

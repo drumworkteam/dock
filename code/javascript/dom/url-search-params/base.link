@@ -1,29 +1,21 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
+  take form any
   take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
   take form task
-    save form task-link-text
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
 form url-search-params, name <URLSearchParams>
   task append, name <append>
@@ -38,14 +30,14 @@ form url-search-params, name <URLSearchParams>
   task get, name <get>
     take name, like native-string
     free seed
-      like or-link-text
+      like or
         like native-string
         like native-null
 
   task get-all, name <getAll>
     take name, like native-string
     free seed
-      like native-array
+      like array
         like native-string
 
   task has, name <has>
@@ -65,11 +57,11 @@ form url-search-params, name <URLSearchParams>
 
   task for-each, name <forEach>
     take callbackfn
-      like task-link-text
+      like task
         take value, like native-string
         take key, like native-string
         take parent, like url-search-params
         free seed, like native-void
-    take this-arg, like native-any
+    take this-arg, like any
       void true
     free seed, like native-void

@@ -1,29 +1,21 @@
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/base/node-js-read-write-stream
-  take form node-js-read-write-stream
-
-load @treesurf/nest/code/javascript/base/node-js-readable-stream
-  take form node-js-readable-stream
-
-load @treesurf/nest/code/javascript/base/node-js-writable-stream
-  take form node-js-writable-stream
-
-load @treesurf/nest/code/javascript/base/promise
-  take form promise
-
-load @treesurf/nest/code/javascript/node/stream/internal/finished-options
-  take form finished-options
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form node-js-read-write-stream
+  take form node-js-readable-stream
+  take form node-js-writable-stream
+  take form promise
+  take form void
+    save form native-void
+
+load @drumwork/nest/code/javascript/node/stream/internal
+  take form finished-options
 
 task promisify, name <__promisify__>
   take stream
-    like or-link-text
+    like or
       like node-js-readable-stream
       like node-js-writable-stream
       like node-js-read-write-stream

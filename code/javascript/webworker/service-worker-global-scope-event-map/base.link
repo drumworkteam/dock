@@ -1,55 +1,41 @@
 
-load @treesurf/nest/code/javascript/webworker/extendable-event
+load @treesurf/nest/code/javascript/webworker
   take form extendable-event
-
-load @treesurf/nest/code/javascript/webworker/extendable-message-event
   take form extendable-message-event
-
-load @treesurf/nest/code/javascript/webworker/fetch-event
   take form fetch-event
-
-load @treesurf/nest/code/javascript/webworker/message-event
   take form message-event
-
-load @treesurf/nest/code/javascript/webworker/notification-event
   take form notification-event
-
-load @treesurf/nest/code/javascript/webworker/push-event
   take form push-event
-
-load @treesurf/nest/code/javascript/webworker/sync-event
   take form sync-event
-
-load @treesurf/nest/code/javascript/webworker/worker-global-scope-event-map
   take form worker-global-scope-event-map
 
 form service-worker-global-scope-event-map, name <ServiceWorkerGlobalScopeEventMap>
   base worker-global-scope-event-map
 
-  take activate, name <activate>
+  link activate, name <activate>
     like extendable-event
-    lock false
-  take fetch, name <fetch>
+    flex true
+  link fetch, name <fetch>
     like fetch-event
-    lock false
-  take install, name <install>
+    flex true
+  link install, name <install>
     like extendable-event
-    lock false
-  take message, name <message>
+    flex true
+  link message, name <message>
     like extendable-message-event
-    lock false
-  take messageerror, name <messageerror>
+    flex true
+  link messageerror, name <messageerror>
     like message-event
-    lock false
-  take notificationclick, name <notificationclick>
+    flex true
+  link notificationclick, name <notificationclick>
     like notification-event
-    lock false
-  take notificationclose, name <notificationclose>
+    flex true
+  link notificationclose, name <notificationclose>
     like notification-event
-    lock false
-  take push, name <push>
+    flex true
+  link push, name <push>
     like push-event
-    lock false
-  take sync, name <sync>
+    flex true
+  link sync, name <sync>
     like sync-event
-    lock false
+    flex true

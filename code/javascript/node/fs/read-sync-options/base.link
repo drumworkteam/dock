@@ -1,34 +1,32 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @drumwork/nest/code/javascript
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/node/fs/read-position
+load @drumwork/nest/code/javascript/node/fs
   take form read-position
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form read-sync-options, name <ReadSyncOptions>
-  take offset, name <offset>
-    like or-link-text
+  link offset, name <offset>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take length, name <length>
-    like or-link-text
+    flex true
+  link length, name <length>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take position, name <position>
-    like or-link-text
+    flex true
+  link position, name <position>
+    like or
       like read-position
       like native-null
       like native-undefined
-    lock false
+    flex true

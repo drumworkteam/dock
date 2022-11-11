@@ -1,31 +1,27 @@
 
-load @treesurf/nest/code/javascript/base/native-object
-  take form native-object
+load @treesurf/moon
+  take form like
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @treesurf/nest/code/javascript/native
+  take form object
+    save form native-object
+  take form undefined
+    save form native-undefined
 
 load @treesurf/nest/code/javascript/es2021/weakref/weak-ref
   take form weak-ref
 
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form weak-ref, name <WeakRef>
-  head t, like like-link-text
+  head t
     base native-object
 
-  take loan symbol/to-string-tag
+  link {symbol/to-string-tag}
     text <WeakRef>
-    read true
+    work true
 
   task deref, name <deref>
     free seed
-      like or-link-text
+      like or
         like t
         like native-undefined

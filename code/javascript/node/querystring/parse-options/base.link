@@ -1,31 +1,26 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
   take form task
-    save form task-link-text
+
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
 form parse-options, name <ParseOptions>
-  take max-keys, name <maxKeys>
-    like or-link-text
+  link max-keys, name <maxKeys>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take decode-uri-component, name <decodeURIComponent>
-    like or-link-text
-      like task-link-text
+    flex true
+  link decode-uri-component, name <decodeURIComponent>
+    like or
+      like task
         take str, like native-string
-        free seed, like native-string
+        free result, like native-string
       like native-undefined
-    lock false
+    flex true

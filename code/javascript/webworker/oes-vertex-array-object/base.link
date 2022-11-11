@@ -1,53 +1,48 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/webworker
+  take form g-lboolean
+  take form g-lenum
+  take form web-gl-vertex-array-object-oes
 
 load @treesurf/nest/code/javascript/dom/oes-vertex-array-object
   take form oes-vertex-array-object
 
-load @treesurf/nest/code/javascript/webworker/g-lboolean
-  take form g-lboolean
-
-load @treesurf/nest/code/javascript/webworker/g-lenum
-  take form g-lenum
-
-load @treesurf/nest/code/javascript/webworker/web-gl-vertex-array-object-oes
-  take form web-gl-vertex-array-object-oes
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form oes-vertex-array-object, name <OES_vertex_array_object>
-  take vertex-array-binding-oes, name <VERTEX_ARRAY_BINDING_OES>
+  link vertex-array-binding-oes, name <VERTEX_ARRAY_BINDING_OES>
     like g-lenum
 
   task bind-vertex-array-oes, name <bindVertexArrayOES>
     take array-object
-      like or-link-text
+      like or
         like web-gl-vertex-array-object-oes
         like native-null
     free seed, like native-void
 
   task create-vertex-array-oes, name <createVertexArrayOES>
     free seed
-      like or-link-text
+      like or
         like web-gl-vertex-array-object-oes
         like native-null
 
   task delete-vertex-array-oes, name <deleteVertexArrayOES>
     take array-object
-      like or-link-text
+      like or
         like web-gl-vertex-array-object-oes
         like native-null
     free seed, like native-void
 
   task is-vertex-array-oes, name <isVertexArrayOES>
     take array-object
-      like or-link-text
+      like or
         like web-gl-vertex-array-object-oes
         like native-null
     free seed, like g-lboolean

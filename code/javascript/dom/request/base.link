@@ -1,65 +1,49 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/abort-signal
+load @treesurf/nest/code/javascript/dom
   take form abort-signal
-
-load @treesurf/nest/code/javascript/dom/body
   take form body
-
-load @treesurf/nest/code/javascript/dom/headers
   take form headers
-
-load @treesurf/nest/code/javascript/dom/referrer-policy
   take form referrer-policy
-
-load @treesurf/nest/code/javascript/dom/request-cache
   take form request-cache
-
-load @treesurf/nest/code/javascript/dom/request-credentials
   take form request-credentials
-
-load @treesurf/nest/code/javascript/dom/request-destination
   take form request-destination
-
-load @treesurf/nest/code/javascript/dom/request-mode
   take form request-mode
-
-load @treesurf/nest/code/javascript/dom/request-redirect
   take form request-redirect
 
 form request, name <Request>
   base body
 
-  take cache, name <cache>
+  link cache, name <cache>
     like request-cache
-  take credentials, name <credentials>
+  link credentials, name <credentials>
     like request-credentials
-  take destination, name <destination>
+  link destination, name <destination>
     like request-destination
-  take headers, name <headers>
+  link headers, name <headers>
     like headers
-  take integrity, name <integrity>
+  link integrity, name <integrity>
     like native-string
-  take keepalive, name <keepalive>
+  link keepalive, name <keepalive>
     like native-boolean
-  take method, name <method>
+  link method, name <method>
     like native-string
-  take mode, name <mode>
+  link mode, name <mode>
     like request-mode
-  take redirect, name <redirect>
+  link redirect, name <redirect>
     like request-redirect
-  take referrer, name <referrer>
+  link referrer, name <referrer>
     like native-string
-  take referrer-policy, name <referrerPolicy>
+  link referrer-policy, name <referrerPolicy>
     like referrer-policy
-  take signal, name <signal>
+  link signal, name <signal>
     like abort-signal
-  take url, name <url>
+  link url, name <url>
     like native-string
 
   task clone, name <clone>

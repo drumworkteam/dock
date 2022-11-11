@@ -1,32 +1,30 @@
 
-load @treesurf/nest/code/javascript/base/iterable-iterator
-  take form iterable-iterator
+load @treesurf/moon
+  take form tuple
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form iterable-iterator
+  take form string
+    save form native-string
+
+load @treesurf/nest/code/javascript/dom
+  take form form-data-entry-value
 
 load @treesurf/nest/code/javascript/dom/form-data
   take form form-data
 
-load @treesurf/nest/code/javascript/dom/form-data-entry-value
-  take form form-data-entry-value
-
-load @treesurf/nest/code/form/band
-  take form band
-    save form band-link-text
-
 form form-data, name <FormData>
-  task loan symbol/iterator
+  task {symbol/iterator}
     free seed
       like iterable-iterator
-        like band-link-text
+        like tuple
           like native-string
           like form-data-entry-value
 
   task entries, name <entries>
     free seed
       like iterable-iterator
-        like band-link-text
+        like tuple
           like native-string
           like form-data-entry-value
 

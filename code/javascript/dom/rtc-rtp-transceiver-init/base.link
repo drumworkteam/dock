@@ -1,25 +1,21 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/dom/media-stream
+load @treesurf/nest/code/javascript/dom
   take form media-stream
-
-load @treesurf/nest/code/javascript/dom/rtc-rtp-encoding-parameters
   take form rtc-rtp-encoding-parameters
-
-load @treesurf/nest/code/javascript/dom/rtc-rtp-transceiver-direction
   take form rtc-rtp-transceiver-direction
 
 form rtc-rtp-transceiver-init, name <RTCRtpTransceiverInit>
-  take direction, name <direction>
+  link direction, name <direction>
     like rtc-rtp-transceiver-direction
-    lock false
-  take send-encodings, name <sendEncodings>
-    like native-array
+    flex true
+  link send-encodings, name <sendEncodings>
+    like array
       like rtc-rtp-encoding-parameters
-    lock false
-  take streams, name <streams>
-    like native-array
+    flex true
+  link streams, name <streams>
+    like array
       like media-stream
-    lock false
+    flex true

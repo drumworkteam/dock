@@ -1,50 +1,45 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/object
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
   take form object
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
 
-load @treesurf/nest/code/javascript/node/vm/base-options
+load @drumwork/nest/code/javascript/node/vm
   take form base-options
-
-load @treesurf/nest/code/javascript/node/vm/context
   take form context
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form compile-function-options, name <CompileFunctionOptions>
   base base-options
 
-  take cached-data, name <cachedData>
-    like or-link-text
+  link cached-data, name <cachedData>
+    like or
       like buffer
       like native-undefined
-    lock false
-  take produce-cached-data, name <produceCachedData>
-    like or-link-text
+    flex true
+  link produce-cached-data, name <produceCachedData>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take parsing-context, name <parsingContext>
-    like or-link-text
+    flex true
+  link parsing-context, name <parsingContext>
+    like or
       like context
       like native-undefined
-    lock false
-  take context-extensions, name <contextExtensions>
-    like or-link-text
-      like native-array
+    flex true
+  link context-extensions, name <contextExtensions>
+    like or
+      like array
         like object
       like native-undefined
-    lock false
+    flex true

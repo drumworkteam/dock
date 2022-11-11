@@ -1,21 +1,18 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/character-data
+load @treesurf/nest/code/javascript/dom
   take form character-data
-
-load @treesurf/nest/code/javascript/dom/document
   take form document
-
-load @treesurf/nest/code/javascript/dom/link-style
   take form link-style
 
 form processing-instruction, name <ProcessingInstruction>
   base character-data
   base link-style
 
-  take owner-document, name <ownerDocument>
+  link owner-document, name <ownerDocument>
     like document
-  take target, name <target>
+  link target, name <target>
     like native-string

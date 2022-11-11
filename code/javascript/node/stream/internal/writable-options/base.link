@@ -1,103 +1,88 @@
 
-load @treesurf/nest/code/javascript/base/error
+load @treesurf/moon
+  take form any
+  take form form
+  take form or
+  take form task
+
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
   take form error
-
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/base/writable
+  take form null
+    save form native-null
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
   take form writable
 
-load @treesurf/nest/code/javascript/node/buffer/buffer-encoding
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer-encoding
 
-load @treesurf/nest/code/javascript/node/globals/array
+load @drumwork/nest/code/javascript/node/globals
   take form array
 
-load @treesurf/nest/code/javascript/node/stream/internal/stream-options
+load @drumwork/nest/code/javascript/node/stream/internal
   take form stream-options
-
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
 
 form writable-options, name <WritableOptions>
   base stream-options
 
-  take decode-strings, name <decodeStrings>
-    like or-link-text
+  link decode-strings, name <decodeStrings>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take default-encoding, name <defaultEncoding>
-    like or-link-text
+    flex true
+  link default-encoding, name <defaultEncoding>
+    like or
       like buffer-encoding
       like native-undefined
-    lock false
+    flex true
 
   task write, name <write>
     take this, like writable
-    take chunk, like native-any
+    take chunk, like any
     take encoding, like buffer-encoding
     take callback
-      like task-link-text
+      like task
         take error
-          like or-link-text
+          like or
             like error
             like native-null
           void true
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-void
 
   task writev, name <writev>
     take this, like writable
     take chunks
       like array
-        like form-link-text
-          take chunk, name <chunk>
-            like native-any
-            lock false
-          take encoding, name <encoding>
+        like form
+          link chunk, name <chunk>
+            like any
+            flex true
+          link encoding, name <encoding>
             like buffer-encoding
-            lock false
+            flex true
     take callback
-      like task-link-text
+      like task
         take error
-          like or-link-text
+          like or
             like error
             like native-null
           void true
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-void
 
   task final, name <final>
     take this, like writable
     take callback
-      like task-link-text
+      like task
         take error
-          like or-link-text
+          like or
             like error
             like native-null
           void true
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-void

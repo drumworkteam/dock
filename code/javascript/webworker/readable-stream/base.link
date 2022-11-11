@@ -1,48 +1,36 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form like
+  take form tuple
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
+load @treesurf/nest/code/javascript/es5
+  take form promise
+
+load @treesurf/nest/code/javascript/webworker
+  take form readable-stream-default-reader
+  take form readable-writable-pair
+  take form stream-pipe-options
+  take form writable-stream
 
 load @treesurf/nest/code/javascript/dom/iterable/readable-stream
   take form readable-stream
 
-load @treesurf/nest/code/javascript/es5/promise
-  take form promise
-
-load @treesurf/nest/code/javascript/webworker/readable-stream-default-reader
-  take form readable-stream-default-reader
-
-load @treesurf/nest/code/javascript/webworker/readable-writable-pair
-  take form readable-writable-pair
-
-load @treesurf/nest/code/javascript/webworker/stream-pipe-options
-  take form stream-pipe-options
-
-load @treesurf/nest/code/javascript/webworker/writable-stream
-  take form writable-stream
-
-load @treesurf/nest/code/form/band
-  take form band
-    save form band-link-text
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
 form readable-stream, name <ReadableStream>
-  head r, like like-link-text
-    back native-any
+  head r
+    back any
 
-  take locked, name <locked>
+  link locked, name <locked>
     like native-boolean
 
   task cancel, name <cancel>
-    take reason, like native-any
+    take reason, like any
       void true
     free seed
       like promise
@@ -54,7 +42,8 @@ form readable-stream, name <ReadableStream>
         like r
 
   task pipe-through, name <pipeThrough>
-    head t, like like-link-text
+    head t
+
     take transform
       like readable-writable-pair
         like t
@@ -77,7 +66,7 @@ form readable-stream, name <ReadableStream>
 
   task tee, name <tee>
     free seed
-      like band-link-text
+      like tuple
         like readable-stream
           like r
         like readable-stream

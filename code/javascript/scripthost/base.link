@@ -13,99 +13,86 @@ bear @treesurf/nest/code/javascript/scripthost/var-date
 bear @treesurf/nest/code/javascript/scripthost/date-constructor
 bear @treesurf/nest/code/javascript/scripthost/date
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/scripthost/active-x-object
-  take form active-x-object
-
-load @treesurf/nest/code/javascript/scripthost/enumerator-constructor
-  take form enumerator-constructor
-
-load @treesurf/nest/code/javascript/scripthost/text-stream-reader
-  take form text-stream-reader
-
-load @treesurf/nest/code/javascript/scripthost/text-stream-writer
-  take form text-stream-writer
-
-load @treesurf/nest/code/javascript/scripthost/vb-array-constructor
-  take form vb-array-constructor
-
-load @treesurf/nest/code/form/form
+load @treesurf/moon
+  take form any
   take form form
-    save form form-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/scripthost
+  take form active-x-object
+  take form enumerator-constructor
+  take form text-stream-reader
+  take form text-stream-writer
+  take form vb-array-constructor
 
 host active-x-object, name <ActiveXObject>
   like active-x-object
 
 host w-script, name <WScript>
-  like form-link-text
+  like form
     task echo, name <Echo>
-      take s, like native-any
+      take s, like any
       free seed, like native-void
 
-    take std-err, name <StdErr>
+    link std-err, name <StdErr>
       like text-stream-writer
-      lock false
-    take std-out, name <StdOut>
+      flex true
+    link std-out, name <StdOut>
       like text-stream-writer
-      lock false
-    take arguments, name <Arguments>
-      like form-link-text
-        take length, name <length>
+      flex true
+    link arguments, name <Arguments>
+      like form
+        link length, name <length>
           like native-number
-          lock false
+          flex true
         task item, name <Item>
           take n, like native-number
           free seed, like native-string
 
-      lock false
-    take script-full-name, name <ScriptFullName>
+      flex true
+    link script-full-name, name <ScriptFullName>
       like native-string
-      lock false
+      flex true
     task quit, name <Quit>
       take exit-code, like native-number
         void true
       free seed, like native-number
 
-    take build-version, name <BuildVersion>
+    link build-version, name <BuildVersion>
       like native-number
-      lock false
-    take full-name, name <FullName>
+      flex true
+    link full-name, name <FullName>
       like native-string
-      lock false
-    take interactive, name <Interactive>
+      flex true
+    link interactive, name <Interactive>
       like native-boolean
-      lock false
-    take name, name <Name>
+      flex true
+    link name, name <Name>
       like native-string
-      lock false
-    take path, name <Path>
+      flex true
+    link path, name <Path>
       like native-string
-      lock false
-    take script-name, name <ScriptName>
+      flex true
+    link script-name, name <ScriptName>
       like native-string
-      lock false
-    take std-in, name <StdIn>
+      flex true
+    link std-in, name <StdIn>
       like text-stream-reader
-      lock false
-    take version, name <Version>
+      flex true
+    link version, name <Version>
       like native-string
-      lock false
+      flex true
     task connect-object, name <ConnectObject>
-      take obj-event-source, like native-any
+      take obj-event-source, like any
       take str-prefix, like native-string
       free seed, like native-void
 
@@ -113,10 +100,10 @@ host w-script, name <WScript>
       take str-prog-id, like native-string
       take str-prefix, like native-string
         void true
-      free seed, like native-any
+      free seed, like any
 
     task disconnect-object, name <DisconnectObject>
-      take obj, like native-any
+      take obj, like any
       free seed, like native-void
 
     task get-object, name <GetObject>
@@ -125,7 +112,7 @@ host w-script, name <WScript>
         void true
       take str-prefix, like native-string
         void true
-      free seed, like native-any
+      free seed, like any
 
     task sleep, name <Sleep>
       take int-time, like native-number

@@ -1,25 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/node/vm/context
+load @drumwork/nest/code/javascript
+  take form undefined
+    save form native-undefined
+
+load @drumwork/nest/code/javascript/node/vm
   take form context
-
-load @treesurf/nest/code/javascript/node/vm/measure-memory-mode
   take form measure-memory-mode
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form measure-memory-options, name <MeasureMemoryOptions>
-  take mode, name <mode>
-    like or-link-text
+  link mode, name <mode>
+    like or
       like measure-memory-mode
       like native-undefined
-    lock false
-  take context, name <context>
-    like or-link-text
+    flex true
+  link context, name <context>
+    like or
       like context
       like native-undefined
-    lock false
+    flex true

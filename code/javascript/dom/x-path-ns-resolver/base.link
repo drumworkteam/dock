@@ -1,40 +1,33 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/form/form
+load @treesurf/moon
   take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
   take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
   take form task
-    save form task-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form string
+    save form native-string
 
 form x-path-ns-resolver, name <XPathNSResolver>
-  like or-link-text
-    like task-link-text
+  like or
+    like task
       take prefix
-        like or-link-text
+        like or
           like native-string
           like native-null
       free seed
-        like or-link-text
+        like or
           like native-string
           like native-null
-    like form-link-text
+    like form
       task lookup-namespace-uri, name <lookupNamespaceURI>
         take prefix
-          like or-link-text
+          like or
             like native-string
             like native-null
         free seed
-          like or-link-text
+          like or
             like native-string
             like native-null

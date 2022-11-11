@@ -1,38 +1,36 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/dom/audio-buffer
+load @treesurf/nest/code/javascript/dom
   take form audio-buffer
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form audio-buffer-source-options, name <AudioBufferSourceOptions>
-  take buffer, name <buffer>
-    like or-link-text
+  link buffer, name <buffer>
+    like or
       like audio-buffer
       like native-null
-    lock false
-  take detune, name <detune>
+    flex true
+  link detune, name <detune>
     like native-number
-    lock false
-  take loop, name <loop>
+    flex true
+  link loop, name <loop>
     like native-boolean
-    lock false
-  take loop-end, name <loopEnd>
+    flex true
+  link loop-end, name <loopEnd>
     like native-number
-    lock false
-  take loop-start, name <loopStart>
+    flex true
+  link loop-start, name <loopStart>
     like native-number
-    lock false
-  take playback-rate, name <playbackRate>
+    flex true
+  link playback-rate, name <playbackRate>
     like native-number
-    lock false
+    flex true

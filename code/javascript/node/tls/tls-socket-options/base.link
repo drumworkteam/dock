@@ -1,47 +1,42 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/net-server
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
   take form net-server
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
 
-load @treesurf/nest/code/javascript/node/tls/common-connection-options
+load @drumwork/nest/code/javascript/node/tls
   take form common-connection-options
-
-load @treesurf/nest/code/javascript/node/tls/secure-context-options
   take form secure-context-options
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form tls-socket-options, name <TLSSocketOptions>
   base secure-context-options
   base common-connection-options
 
-  take is-server, name <isServer>
-    like or-link-text
+  link is-server, name <isServer>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take server, name <server>
-    like or-link-text
+    flex true
+  link server, name <server>
+    like or
       like net-server
       like native-undefined
-    lock false
-  take session, name <session>
-    like or-link-text
+    flex true
+  link session, name <session>
+    like or
       like buffer
       like native-undefined
-    lock false
-  take request-ocsp, name <requestOCSP>
-    like or-link-text
+    flex true
+  link request-ocsp, name <requestOCSP>
+    like or
       like native-boolean
       like native-undefined
-    lock false
+    flex true

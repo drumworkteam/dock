@@ -1,32 +1,22 @@
 
-load @treesurf/nest/code/javascript/base/error
+load @treesurf/moon
+  take form or
+  take form task
+  take form unknown
+
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
   take form error
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-object
-  take form native-object
-
-load @treesurf/nest/code/javascript/base/native-unknown
-  take form native-unknown
-
-load @treesurf/nest/code/javascript/base/reg-exp
+  take form object
+    save form native-object
   take form reg-exp
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
 form assert-predicate, name <AssertPredicate>
-  like or-link-text
+  like or
     like reg-exp
-    like task-link-text
-      take thrown, like native-unknown
-      free seed, like native-boolean
+    like task
+      take thrown, like unknown
+      free result, like native-boolean
     like native-object
     like error

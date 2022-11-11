@@ -1,46 +1,40 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/data-transfer
-  take form data-transfer
-
-load @treesurf/nest/code/javascript/dom/static-range
-  take form static-range
-
-load @treesurf/nest/code/javascript/dom/ui-event
-  take form ui-event
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+
+load @treesurf/nest/code/javascript/dom
+  take form data-transfer
+  take form static-range
+  take form ui-event
 
 form input-event, name <InputEvent>
   base ui-event
 
-  take data, name <data>
-    like or-link-text
+  link data, name <data>
+    like or
       like native-string
       like native-null
-  take data-transfer, name <dataTransfer>
-    like or-link-text
+  link data-transfer, name <dataTransfer>
+    like or
       like data-transfer
       like native-null
-  take input-type, name <inputType>
+  link input-type, name <inputType>
     like native-string
-  take is-composing, name <isComposing>
+  link is-composing, name <isComposing>
     like native-boolean
 
   task get-target-ranges, name <getTargetRanges>
     free seed
-      like native-array
+      like array
         like static-range

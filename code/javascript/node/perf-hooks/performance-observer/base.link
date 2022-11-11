@@ -1,29 +1,20 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/base/readonly-array
-  take form readonly-array
-
-load @treesurf/nest/code/javascript/node/perf-hooks/entry-type
-  take form entry-type
-
-load @treesurf/nest/code/javascript/node/perf-hooks/performance-observer-callback
-  take form performance-observer-callback
-
-load @treesurf/nest/code/form/form
+load @treesurf/moon
   take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form readonly-array
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
+
+load @drumwork/nest/code/javascript/node/perf-hooks
+  take form entry-type
+  take form performance-observer-callback
 
 form performance-observer, name <PerformanceObserver>
   base async-resource
@@ -32,26 +23,26 @@ form performance-observer, name <PerformanceObserver>
 
   task observe, name <observe>
     take options
-      like or-link-text
-        like form-link-text
-          take entry-types, name <entryTypes>
+      like or
+        like form
+          link entry-types, name <entryTypes>
             like readonly-array
               like entry-type
-            lock false
-          take buffered, name <buffered>
-            like or-link-text
+            flex true
+          link buffered, name <buffered>
+            like or
               like native-boolean
               like native-undefined
-            lock false
-        like form-link-text
-          take type, name <type>
+            flex true
+        like form
+          link type, name <type>
             like entry-type
-            lock false
-          take buffered, name <buffered>
-            like or-link-text
+            flex true
+          link buffered, name <buffered>
+            like or
               like native-boolean
               like native-undefined
-            lock false
+            flex true
     free seed, like native-void
 
 form performance-observer-constructor

@@ -1,37 +1,26 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form form
+  take form like
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/node-js-array-buffer-view
+load @drumwork/nest/code/javascript
   take form node-js-array-buffer-view
-
-load @treesurf/nest/code/javascript/base/promise
+  take form null
+    save form native-null
+  take form number
+    save form native-number
   take form promise
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/node/buffer/buffer-encoding
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer-encoding
 
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 task promisify, name <__promisify__>
-  head t-buffer, like like-link-text
+  head t-buffer
     base node-js-array-buffer-view
+
   take fd, like native-number
   take buffer, like t-buffer
     void true
@@ -40,39 +29,39 @@ task promisify, name <__promisify__>
   take length, like native-number
     void true
   take position
-    like or-link-text
+    like or
       like native-number
       like native-null
     void true
   free seed
     like promise
-      like form-link-text
-        take bytes-written, name <bytesWritten>
+      like form
+        link bytes-written, name <bytesWritten>
           like native-number
-          lock false
-        take buffer, name <buffer>
+          flex true
+        link buffer, name <buffer>
           like t-buffer
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take fd, like native-number
   take string, like native-string
   take position
-    like or-link-text
+    like or
       like native-number
       like native-null
     void true
   take encoding
-    like or-link-text
+    like or
       like buffer-encoding
       like native-null
     void true
   free seed
     like promise
-      like form-link-text
-        take bytes-written, name <bytesWritten>
+      like form
+        link bytes-written, name <bytesWritten>
           like native-number
-          lock false
-        take buffer, name <buffer>
+          flex true
+        link buffer, name <buffer>
           like native-string
-          lock false
+          flex true

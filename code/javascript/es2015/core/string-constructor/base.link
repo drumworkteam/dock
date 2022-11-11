@@ -1,50 +1,44 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form form
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/es5/array-like
+load @treesurf/nest/code/javascript/es5
   take form array-like
 
 load @treesurf/nest/code/javascript/es5/string-constructor
   take form string-constructor
 
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form string-constructor, name <StringConstructor>
   task from-code-point, name <fromCodePoint>
     take code-points
-      like native-array
+      like array
         like native-number
       rest true
     free seed, like native-string
 
   task raw, name <raw>
     take template
-      like form-link-text
-        take raw, name <raw>
-          like or-link-text
-            like native-array
+      like form
+        link raw, name <raw>
+          like or
+            like array
               like native-string
             like array-like
               like native-string
-          lock false
+          flex true
     take substitutions
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
     free seed, like native-string

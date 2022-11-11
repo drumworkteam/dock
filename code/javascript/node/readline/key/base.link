@@ -1,40 +1,38 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
 form key, name <Key>
-  take sequence, name <sequence>
-    like or-link-text
+  link sequence, name <sequence>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take name, name <name>
-    like or-link-text
+    flex true
+  link name, name <name>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take ctrl, name <ctrl>
-    like or-link-text
+    flex true
+  link ctrl, name <ctrl>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take meta, name <meta>
-    like or-link-text
+    flex true
+  link meta, name <meta>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take shift, name <shift>
-    like or-link-text
+    flex true
+  link shift, name <shift>
+    like or
       like native-boolean
       like native-undefined
-    lock false
+    flex true

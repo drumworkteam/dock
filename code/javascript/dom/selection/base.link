@@ -1,47 +1,41 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/node
+load @treesurf/nest/code/javascript/dom
   take form node
-
-load @treesurf/nest/code/javascript/dom/range
   take form range
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form selection, name <Selection>
-  take anchor-node, name <anchorNode>
-    like or-link-text
+  link anchor-node, name <anchorNode>
+    like or
       like node
       like native-null
-  take anchor-offset, name <anchorOffset>
+  link anchor-offset, name <anchorOffset>
     like native-number
-  take focus-node, name <focusNode>
-    like or-link-text
+  link focus-node, name <focusNode>
+    like or
       like node
       like native-null
-  take focus-offset, name <focusOffset>
+  link focus-offset, name <focusOffset>
     like native-number
-  take is-collapsed, name <isCollapsed>
+  link is-collapsed, name <isCollapsed>
     like native-boolean
-  take range-count, name <rangeCount>
+  link range-count, name <rangeCount>
     like native-number
-  take type, name <type>
+  link type, name <type>
     like native-string
 
   task add-range, name <addRange>
@@ -50,7 +44,7 @@ form selection, name <Selection>
 
   task collapse, name <collapse>
     take node
-      like or-link-text
+      like or
         like node
         like native-null
     take offset, like native-number
@@ -105,7 +99,7 @@ form selection, name <Selection>
 
   task set-position, name <setPosition>
     take node
-      like or-link-text
+      like or
         like node
         like native-null
     take offset, like native-number

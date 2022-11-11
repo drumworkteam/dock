@@ -26,93 +26,55 @@ bear @treesurf/nest/code/javascript/node/stream/internal/pipeline-options
 bear @treesurf/nest/code/javascript/node/stream/internal/pipeline
 bear @treesurf/nest/code/javascript/node/stream/internal/pipe
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form form
+  take form like
+  take form or
+  take form task
+  take form test
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/base/node-js-errno-exception
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
   take form node-js-errno-exception
-
-load @treesurf/nest/code/javascript/base/node-js-read-write-stream
   take form node-js-read-write-stream
-
-load @treesurf/nest/code/javascript/base/node-js-readable-stream
   take form node-js-readable-stream
-
-load @treesurf/nest/code/javascript/base/node-js-writable-stream
   take form node-js-writable-stream
-
-load @treesurf/nest/code/javascript/base/readonly-array
+  take form null
+    save form native-null
   take form readonly-array
-
-load @treesurf/nest/code/javascript/base/stream
   take form stream
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/node/globals/abort-signal
+load @drumwork/nest/code/javascript/node/globals
   take form abort-signal
-
-load @treesurf/nest/code/javascript/node/globals/array
   take form array
 
-load @treesurf/nest/code/javascript/node/stream/internal/finished-options
+load @drumwork/nest/code/javascript/node/stream/internal
   take form finished-options
-
-load @treesurf/nest/code/javascript/node/stream/internal/pipeline-callback
   take form pipeline-callback
-
-load @treesurf/nest/code/javascript/node/stream/internal/pipeline-destination
   take form pipeline-destination
-
-load @treesurf/nest/code/javascript/node/stream/internal/pipeline-source
   take form pipeline-source
-
-load @treesurf/nest/code/javascript/node/stream/internal/pipeline-transform
   take form pipeline-transform
-
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
-load @treesurf/nest/code/form/test
-  take form test
-    save form test-link-text
 
 form internal, name <internal>
   base event-emitter
   task pipe, name <pipe>
-    head t, like like-link-text
+    head t
       base node-js-writable-stream
+
     take destination, like t
     take options
-      like form-link-text
-        take end, name <end>
-          like or-link-text
+      like form
+        link end, name <end>
+          like or
             like native-boolean
             like native-undefined
-          lock false
+          flex true
       void true
     free seed, like t
 
@@ -123,57 +85,59 @@ host consumers, name <consumers>
   like stream-consumers
 
 task add-abort-signal, name <addAbortSignal>
-  head t, like like-link-text
+  head t
     base stream
+
   take signal, like abort-signal
   take stream, like t
   free seed, like t
 
 task finished, name <finished>
   take stream
-    like or-link-text
+    like or
       like node-js-readable-stream
       like node-js-writable-stream
       like node-js-read-write-stream
   take options, like finished-options
   take callback
-    like task-link-text
+    like task
       take err
-        like or-link-text
+        like or
           like node-js-errno-exception
           like native-null
         void true
-      free seed, like native-void
+      free result, like native-void
   free seed
-    like task-link-text
-      free seed, like native-void
+    like task
+      free result, like native-void
 
 task finished, name <finished>
   take stream
-    like or-link-text
+    like or
       like node-js-readable-stream
       like node-js-writable-stream
       like node-js-read-write-stream
   take callback
-    like task-link-text
+    like task
       take err
-        like or-link-text
+        like or
           like node-js-errno-exception
           like native-null
         void true
-      free seed, like native-void
+      free result, like native-void
   free seed
-    like task-link-text
-      free seed, like native-void
+    like task
+      free result, like native-void
 
 task pipeline, name <pipeline>
-  head a, like like-link-text
+  head a
     base pipeline-source
-      like native-any
-  head b, like like-link-text
+      like any
+  head b
     base pipeline-destination
       like a
-      like native-any
+      like any
+
   take source, like a
   take destination, like b
   take callback
@@ -181,7 +145,7 @@ task pipeline, name <pipeline>
       like b
     void true
   free seed
-    like test-link-text
+    like test
       stem roll
         like b
         like node-js-writable-stream
@@ -191,17 +155,18 @@ task pipeline, name <pipeline>
           like node-js-writable-stream
 
 task pipeline, name <pipeline>
-  head a, like like-link-text
+  head a
     base pipeline-source
-      like native-any
-  head t1, like like-link-text
+      like any
+  head t1
     base pipeline-transform
       like a
-      like native-any
-  head b, like like-link-text
+      like any
+  head b
     base pipeline-destination
       like t1
-      like native-any
+      like any
+
   take source, like a
   take transform1, like t1
   take destination, like b
@@ -210,7 +175,7 @@ task pipeline, name <pipeline>
       like b
     void true
   free seed
-    like test-link-text
+    like test
       stem roll
         like b
         like node-js-writable-stream
@@ -220,21 +185,22 @@ task pipeline, name <pipeline>
           like node-js-writable-stream
 
 task pipeline, name <pipeline>
-  head a, like like-link-text
+  head a
     base pipeline-source
-      like native-any
-  head t1, like like-link-text
+      like any
+  head t1
     base pipeline-transform
       like a
-      like native-any
-  head t2, like like-link-text
+      like any
+  head t2
     base pipeline-transform
       like t1
-      like native-any
-  head b, like like-link-text
+      like any
+  head b
     base pipeline-destination
       like t2
-      like native-any
+      like any
+
   take source, like a
   take transform1, like t1
   take transform2, like t2
@@ -244,7 +210,7 @@ task pipeline, name <pipeline>
       like b
     void true
   free seed
-    like test-link-text
+    like test
       stem roll
         like b
         like node-js-writable-stream
@@ -254,25 +220,26 @@ task pipeline, name <pipeline>
           like node-js-writable-stream
 
 task pipeline, name <pipeline>
-  head a, like like-link-text
+  head a
     base pipeline-source
-      like native-any
-  head t1, like like-link-text
+      like any
+  head t1
     base pipeline-transform
       like a
-      like native-any
-  head t2, like like-link-text
+      like any
+  head t2
     base pipeline-transform
       like t1
-      like native-any
-  head t3, like like-link-text
+      like any
+  head t3
     base pipeline-transform
       like t2
-      like native-any
-  head b, like like-link-text
+      like any
+  head b
     base pipeline-destination
       like t3
-      like native-any
+      like any
+
   take source, like a
   take transform1, like t1
   take transform2, like t2
@@ -283,7 +250,7 @@ task pipeline, name <pipeline>
       like b
     void true
   free seed
-    like test-link-text
+    like test
       stem roll
         like b
         like node-js-writable-stream
@@ -293,29 +260,30 @@ task pipeline, name <pipeline>
           like node-js-writable-stream
 
 task pipeline, name <pipeline>
-  head a, like like-link-text
+  head a
     base pipeline-source
-      like native-any
-  head t1, like like-link-text
+      like any
+  head t1
     base pipeline-transform
       like a
-      like native-any
-  head t2, like like-link-text
+      like any
+  head t2
     base pipeline-transform
       like t1
-      like native-any
-  head t3, like like-link-text
+      like any
+  head t3
     base pipeline-transform
       like t2
-      like native-any
-  head t4, like like-link-text
+      like any
+  head t4
     base pipeline-transform
       like t3
-      like native-any
-  head b, like like-link-text
+      like any
+  head b
     base pipeline-destination
       like t4
-      like native-any
+      like any
+
   take source, like a
   take transform1, like t1
   take transform2, like t2
@@ -327,7 +295,7 @@ task pipeline, name <pipeline>
       like b
     void true
   free seed
-    like test-link-text
+    like test
       stem roll
         like b
         like node-js-writable-stream
@@ -339,36 +307,36 @@ task pipeline, name <pipeline>
 task pipeline, name <pipeline>
   take streams
     like readonly-array
-      like or-link-text
+      like or
         like node-js-readable-stream
         like node-js-writable-stream
         like node-js-read-write-stream
   take callback
-    like task-link-text
+    like task
       take err
-        like or-link-text
+        like or
           like node-js-errno-exception
           like native-null
-      free seed, like native-void
+      free result, like native-void
     void true
   free seed, like node-js-writable-stream
 
 task pipeline, name <pipeline>
   take stream1, like node-js-readable-stream
   take stream2
-    like or-link-text
+    like or
       like node-js-read-write-stream
       like node-js-writable-stream
   take streams
     like array
-      like or-link-text
+      like or
         like node-js-read-write-stream
         like node-js-writable-stream
-        like task-link-text
+        like task
           take err
-            like or-link-text
+            like or
               like node-js-errno-exception
               like native-null
-          free seed, like native-void
+          free result, like native-void
     rest true
   free seed, like node-js-writable-stream

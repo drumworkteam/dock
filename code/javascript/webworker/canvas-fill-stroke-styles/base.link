@@ -1,42 +1,36 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/webworker
+  take form canvas-gradient
+  take form canvas-image-source
+  take form canvas-pattern
 
 load @treesurf/nest/code/javascript/dom/canvas-fill-stroke-styles
   take form canvas-fill-stroke-styles
 
-load @treesurf/nest/code/javascript/webworker/canvas-gradient
-  take form canvas-gradient
-
-load @treesurf/nest/code/javascript/webworker/canvas-image-source
-  take form canvas-image-source
-
-load @treesurf/nest/code/javascript/webworker/canvas-pattern
-  take form canvas-pattern
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form canvas-fill-stroke-styles, name <CanvasFillStrokeStyles>
-  take fill-style, name <fillStyle>
-    like or-link-text
+  link fill-style, name <fillStyle>
+    like or
       like native-string
       like canvas-gradient
       like canvas-pattern
-    lock false
-  take stroke-style, name <strokeStyle>
-    like or-link-text
+    flex true
+  link stroke-style, name <strokeStyle>
+    like or
       like native-string
       like canvas-gradient
       like canvas-pattern
-    lock false
+    flex true
 
   task create-linear-gradient, name <createLinearGradient>
     take x0, like native-number
@@ -48,11 +42,11 @@ form canvas-fill-stroke-styles, name <CanvasFillStrokeStyles>
   task create-pattern, name <createPattern>
     take image, like canvas-image-source
     take repetition
-      like or-link-text
+      like or
         like native-string
         like native-null
     free seed
-      like or-link-text
+      like or
         like canvas-pattern
         like native-null
 

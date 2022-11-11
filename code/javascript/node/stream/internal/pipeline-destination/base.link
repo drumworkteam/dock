@@ -1,50 +1,33 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form like
+  take form never
+  take form or
+  take form test
 
-load @treesurf/nest/code/javascript/base/native-never
-  take form native-never
-
-load @treesurf/nest/code/javascript/base/node-js-writable-stream
+load @drumwork/nest/code/javascript
   take form node-js-writable-stream
-
-load @treesurf/nest/code/javascript/base/st
   take form st
 
-load @treesurf/nest/code/javascript/node/stream/internal/pipeline-destination-iterable-function
+load @drumwork/nest/code/javascript/node/stream/internal
   take form pipeline-destination-iterable-function
-
-load @treesurf/nest/code/javascript/node/stream/internal/pipeline-destination-promise-function
   take form pipeline-destination-promise-function
-
-load @treesurf/nest/code/javascript/node/stream/internal/pipeline-transform-source
   take form pipeline-transform-source
 
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/test
-  take form test
-    save form test-link-text
-
 form pipeline-destination, name <PipelineDestination>
-  head s, like like-link-text
+  head s
     base pipeline-transform-source
-      like native-any
-  head p, like like-link-text
+      like any
+  head p
 
-  like test-link-text
+  like test
     stem roll
       like s
       like pipeline-transform-source
         name st
       hook true
-        like or-link-text
+        like or
           like node-js-writable-stream
           like pipeline-destination-iterable-function
             like st
@@ -52,4 +35,4 @@ form pipeline-destination, name <PipelineDestination>
             like st
             like p
       hook false
-        like native-never
+        like never

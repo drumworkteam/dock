@@ -1,20 +1,13 @@
 
-load @treesurf/nest/code/form/form/link
-  take form form-link
-    save form form-link-link-text
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
+  take form index
+  take form key-list
   take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/link/read
-  take form link-read
-    save form link-read-link-text
 
 form pick, name <Pick>
-  head t, like like-link-text
-  head k, like like-link-text
-    base link-read-link-text
+  head t
+  head k
+    base key-list
       like t
 
   slot self
@@ -23,7 +16,7 @@ form pick, name <Pick>
     take name
     take p
     beam self
-      take loan name
-        like form-link-link-text
+      take {name}
+        like index
           like t
           like p

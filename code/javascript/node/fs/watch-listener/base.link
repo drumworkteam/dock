@@ -1,22 +1,19 @@
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
+load @treesurf/moon
+  take form like
+  take form task
 
-load @treesurf/nest/code/javascript/node/fs/watch-event-type
+load @drumwork/nest/code/javascript
+  take form void
+    save form native-void
+
+load @drumwork/nest/code/javascript/node/fs
   take form watch-event-type
 
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
 form watch-listener, name <WatchListener>
-  head t, like like-link-text
+  head t
 
-  like task-link-text
+  like task
     take event, like watch-event-type
     take filename, like t
-    free seed, like native-void
+    free result, like native-void

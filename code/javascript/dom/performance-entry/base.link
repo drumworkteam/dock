@@ -1,22 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/dom-high-res-time-stamp
+load @treesurf/nest/code/javascript/dom
   take form dom-high-res-time-stamp
 
 form performance-entry, name <PerformanceEntry>
-  take duration, name <duration>
+  link duration, name <duration>
     like dom-high-res-time-stamp
-  take entry-type, name <entryType>
+  link entry-type, name <entryType>
     like native-string
-  take name, name <name>
+  link name, name <name>
     like native-string
-  take start-time, name <startTime>
+  link start-time, name <startTime>
     like dom-high-res-time-stamp
 
   task to-json, name <toJSON>
-    free seed, like native-any
+    free seed, like any

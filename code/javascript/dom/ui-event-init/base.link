@@ -1,31 +1,28 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/dom/event-init
-  take form event-init
-
-load @treesurf/nest/code/javascript/dom/window
-  take form window
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/dom
+  take form event-init
+  take form window
 
 form ui-event-init, name <UIEventInit>
   base event-init
 
-  take detail, name <detail>
+  link detail, name <detail>
     like native-number
-    lock false
-  take view, name <view>
-    like or-link-text
+    flex true
+  link view, name <view>
+    like or
       like window
       like native-null
-    lock false
-  take which, name <which>
+    flex true
+  link which, name <which>
     like native-number
-    lock false
+    flex true

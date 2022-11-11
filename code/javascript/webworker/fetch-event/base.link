@@ -1,45 +1,38 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/es5/promise
+load @treesurf/nest/code/javascript/es5
   take form promise
 
-load @treesurf/nest/code/javascript/webworker/extendable-event
+load @treesurf/nest/code/javascript/webworker
   take form extendable-event
-
-load @treesurf/nest/code/javascript/webworker/request
   take form request
-
-load @treesurf/nest/code/javascript/webworker/response
   take form response
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form fetch-event, name <FetchEvent>
   base extendable-event
 
-  take client-id, name <clientId>
+  link client-id, name <clientId>
     like native-string
-  take preload-response, name <preloadResponse>
+  link preload-response, name <preloadResponse>
     like promise
-      like native-any
-  take request, name <request>
+      like any
+  link request, name <request>
     like request
-  take resulting-client-id, name <resultingClientId>
+  link resulting-client-id, name <resultingClientId>
     like native-string
 
   task respond-with, name <respondWith>
     take r
-      like or-link-text
+      like or
         like response
         like promise
           like response

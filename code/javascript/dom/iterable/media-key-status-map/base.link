@@ -1,32 +1,29 @@
 
-load @treesurf/nest/code/javascript/base/iterable-iterator
-  take form iterable-iterator
+load @treesurf/moon
+  take form tuple
 
-load @treesurf/nest/code/javascript/dom/buffer-source
+load @treesurf/nest/code/javascript/dom
   take form buffer-source
-
-load @treesurf/nest/code/javascript/dom/media-key-status
   take form media-key-status
+
+load @treesurf/nest/code/javascript/native
+  take form iterable-iterator
 
 load @treesurf/nest/code/javascript/dom/media-key-status-map
   take form media-key-status-map
 
-load @treesurf/nest/code/form/band
-  take form band
-    save form band-link-text
-
 form media-key-status-map, name <MediaKeyStatusMap>
-  task loan symbol/iterator
+  task {symbol/iterator}
     free seed
       like iterable-iterator
-        like band-link-text
+        like tuple
           like buffer-source
           like media-key-status
 
   task entries, name <entries>
     free seed
       like iterable-iterator
-        like band-link-text
+        like tuple
           like buffer-source
           like media-key-status
 

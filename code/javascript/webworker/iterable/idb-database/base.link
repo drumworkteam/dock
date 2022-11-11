@@ -1,27 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/iterable
-  take form iterable
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form iterable
+  take form string
+    save form native-string
+
+load @treesurf/nest/code/javascript/webworker
+  take form idb-transaction
+  take form idb-transaction-mode
 
 load @treesurf/nest/code/javascript/webworker/idb-database
   take form idb-database
 
-load @treesurf/nest/code/javascript/webworker/idb-transaction
-  take form idb-transaction
-
-load @treesurf/nest/code/javascript/webworker/idb-transaction-mode
-  take form idb-transaction-mode
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form idb-database, name <IDBDatabase>
   task transaction, name <transaction>
     take store-names
-      like or-link-text
+      like or
         like native-string
         like iterable
           like native-string

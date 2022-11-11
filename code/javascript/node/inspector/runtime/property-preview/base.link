@@ -1,36 +1,35 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @drumwork/nest/code/javascript
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/inspector/runtime/object-preview
+load @drumwork/nest/code/javascript/node/inspector/runtime
   take form object-preview
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form property-preview, name <PropertyPreview>
-  take name, name <name>
+  link name, name <name>
     like native-string
-    lock false
-  take type, name <type>
+    flex true
+  link type, name <type>
     like native-string
-    lock false
-  take value, name <value>
-    like or-link-text
+    flex true
+  link value, name <value>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take value-preview, name <valuePreview>
-    like or-link-text
+    flex true
+  link value-preview, name <valuePreview>
+    like or
       like object-preview
       like native-undefined
-    lock false
-  take subtype, name <subtype>
-    like or-link-text
+    flex true
+  link subtype, name <subtype>
+    like or
       like native-string
       like native-undefined
-    lock false
+    flex true

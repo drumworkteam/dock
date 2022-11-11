@@ -1,106 +1,99 @@
 
-load @treesurf/nest/code/javascript/base/blob
+load @treesurf/moon
+  take form or
+
+load @drumwork/nest/code/javascript
   take form blob
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/node/querystring/parsed-url-query
+load @drumwork/nest/code/javascript/node/querystring
   take form parsed-url-query
 
-load @treesurf/nest/code/javascript/node/url/url
+load @drumwork/nest/code/javascript/node/url
   take form url
-
-load @treesurf/nest/code/javascript/node/url/url-search-params
   take form url-search-params
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form url, name <Url>
-  take auth, name <auth>
-    like or-link-text
+  link auth, name <auth>
+    like or
       like native-string
       like native-null
-    lock false
-  take hash, name <hash>
-    like or-link-text
+    flex true
+  link hash, name <hash>
+    like or
       like native-string
       like native-null
-    lock false
-  take host, name <host>
-    like or-link-text
+    flex true
+  link host, name <host>
+    like or
       like native-string
       like native-null
-    lock false
-  take hostname, name <hostname>
-    like or-link-text
+    flex true
+  link hostname, name <hostname>
+    like or
       like native-string
       like native-null
-    lock false
-  take href, name <href>
+    flex true
+  link href, name <href>
     like native-string
-    lock false
-  take path, name <path>
-    like or-link-text
+    flex true
+  link path, name <path>
+    like or
       like native-string
       like native-null
-    lock false
-  take pathname, name <pathname>
-    like or-link-text
+    flex true
+  link pathname, name <pathname>
+    like or
       like native-string
       like native-null
-    lock false
-  take protocol, name <protocol>
-    like or-link-text
+    flex true
+  link protocol, name <protocol>
+    like or
       like native-string
       like native-null
-    lock false
-  take search, name <search>
-    like or-link-text
+    flex true
+  link search, name <search>
+    like or
       like native-string
       like native-null
-    lock false
-  take slashes, name <slashes>
-    like or-link-text
+    flex true
+  link slashes, name <slashes>
+    like or
       like native-boolean
       like native-null
-    lock false
-  take port, name <port>
-    like or-link-text
+    flex true
+  link port, name <port>
+    like or
       like native-string
       like native-null
-    lock false
-  take query, name <query>
-    like or-link-text
+    flex true
+  link query, name <query>
+    like or
       like native-string
       like native-null
       like parsed-url-query
-    lock false
+    flex true
 
 form url, name <URL>
-  take hash, name <hash>, like native-string
-  take host, name <host>, like native-string
-  take hostname, name <hostname>, like native-string
-  take href, name <href>, like native-string
-  take origin, name <origin>, like native-string
-  take password, name <password>, like native-string
-  take pathname, name <pathname>, like native-string
-  take port, name <port>, like native-string
-  take protocol, name <protocol>, like native-string
-  take search, name <search>, like native-string
-  take search-params, name <searchParams>, like url-search-params
-  take username, name <username>, like native-string
+  link hash, name <hash>, like native-string
+  link host, name <host>, like native-string
+  link hostname, name <hostname>, like native-string
+  link href, name <href>, like native-string
+  link origin, name <origin>, like native-string
+  link password, name <password>, like native-string
+  link pathname, name <pathname>, like native-string
+  link port, name <port>, like native-string
+  link protocol, name <protocol>, like native-string
+  link search, name <search>, like native-string
+  link search-params, name <searchParams>, like url-search-params
+  link username, name <username>, like native-string
 
   task to-string, name <toString>
     free seed, like native-string
@@ -120,7 +113,7 @@ form url-constructor
   hook make
     take input, like native-string
     take base
-      like or-link-text
+      like or
         like native-string
         like url
       void true

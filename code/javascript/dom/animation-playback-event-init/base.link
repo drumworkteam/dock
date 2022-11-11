@@ -1,27 +1,26 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/dom/event-init
-  take form event-init
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/dom
+  take form event-init
 
 form animation-playback-event-init, name <AnimationPlaybackEventInit>
   base event-init
 
-  take current-time, name <currentTime>
-    like or-link-text
+  link current-time, name <currentTime>
+    like or
       like native-number
       like native-null
-    lock false
-  take timeline-time, name <timelineTime>
-    like or-link-text
+    flex true
+  link timeline-time, name <timelineTime>
+    like or
       like native-number
       like native-null
-    lock false
+    flex true

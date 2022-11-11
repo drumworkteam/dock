@@ -1,22 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-bigint
-  take form native-bigint
+load @drumwork/nest/code/javascript
+  take form bigint
+    save form native-bigint
 
-load @treesurf/nest/code/javascript/node/fs/stats-base
+load @drumwork/nest/code/javascript/node/fs
   take form stats-base
 
 form big-int-stats, name <BigIntStats>
   base stats-base
 
-  take atime-ns, name <atimeNs>
+  link atime-ns, name <atimeNs>
     like native-bigint
-    lock false
-  take mtime-ns, name <mtimeNs>
+    flex true
+  link mtime-ns, name <mtimeNs>
     like native-bigint
-    lock false
-  take ctime-ns, name <ctimeNs>
+    flex true
+  link ctime-ns, name <ctimeNs>
     like native-bigint
-    lock false
-  take birthtime-ns, name <birthtimeNs>
+    flex true
+  link birthtime-ns, name <birthtimeNs>
     like native-bigint
-    lock false
+    flex true

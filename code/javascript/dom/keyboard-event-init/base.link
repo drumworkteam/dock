@@ -1,37 +1,36 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/event-modifier-init
+load @treesurf/nest/code/javascript/dom
   take form event-modifier-init
 
 form keyboard-event-init, name <KeyboardEventInit>
   base event-modifier-init
 
-  take char-code, name <charCode>
+  link char-code, name <charCode>
     like native-number
-    lock false
-  take code, name <code>
+    flex true
+  link code, name <code>
     like native-string
-    lock false
-  take is-composing, name <isComposing>
+    flex true
+  link is-composing, name <isComposing>
     like native-boolean
-    lock false
-  take key, name <key>
+    flex true
+  link key, name <key>
     like native-string
-    lock false
-  take key-code, name <keyCode>
+    flex true
+  link key-code, name <keyCode>
     like native-number
-    lock false
-  take location, name <location>
+    flex true
+  link location, name <location>
     like native-number
-    lock false
-  take repeat, name <repeat>
+    flex true
+  link repeat, name <repeat>
     like native-boolean
-    lock false
+    flex true

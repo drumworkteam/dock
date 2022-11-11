@@ -1,30 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
+  take form any
   take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form void
+    save form native-void
 
 form transform-stream-default-controller, name <TransformStreamDefaultController>
-  head o, like like-link-text
-    back native-any
+  head o
+    back any
 
-  take desired-size, name <desiredSize>
-    like or-link-text
+  link desired-size, name <desiredSize>
+    like or
       like native-number
       like native-null
 
@@ -34,7 +27,7 @@ form transform-stream-default-controller, name <TransformStreamDefaultController
     free seed, like native-void
 
   task error, name <error>
-    take reason, like native-any
+    take reason, like any
       void true
     free seed, like native-void
 

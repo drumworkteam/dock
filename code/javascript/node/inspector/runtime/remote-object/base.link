@@ -1,68 +1,59 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @drumwork/nest/code/javascript
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/custom-preview
+load @drumwork/nest/code/javascript/node/inspector/runtime
   take form custom-preview
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/object-preview
   take form object-preview
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/remote-object-id
   take form remote-object-id
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/unserializable-value
   take form unserializable-value
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form remote-object, name <RemoteObject>
-  take type, name <type>
+  link type, name <type>
     like native-string
-    lock false
-  take subtype, name <subtype>
-    like or-link-text
+    flex true
+  link subtype, name <subtype>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take class-name, name <className>
-    like or-link-text
+    flex true
+  link class-name, name <className>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take value, name <value>
-    like native-any
-    lock false
-  take unserializable-value, name <unserializableValue>
-    like or-link-text
+    flex true
+  link value, name <value>
+    like any
+    flex true
+  link unserializable-value, name <unserializableValue>
+    like or
       like unserializable-value
       like native-undefined
-    lock false
-  take description, name <description>
-    like or-link-text
+    flex true
+  link description, name <description>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take object-id, name <objectId>
-    like or-link-text
+    flex true
+  link object-id, name <objectId>
+    like or
       like remote-object-id
       like native-undefined
-    lock false
-  take preview, name <preview>
-    like or-link-text
+    flex true
+  link preview, name <preview>
+    like or
       like object-preview
       like native-undefined
-    lock false
-  take custom-preview, name <customPreview>
-    like or-link-text
+    flex true
+  link custom-preview, name <customPreview>
+    like or
       like custom-preview
       like native-undefined
-    lock false
+    flex true

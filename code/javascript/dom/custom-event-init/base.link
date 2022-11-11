@@ -1,20 +1,17 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/dom/event-init
-  take form event-init
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
+  take form any
   take form like
-    save form like-link-text
+
+load @treesurf/nest/code/javascript/dom
+  take form event-init
 
 form custom-event-init, name <CustomEventInit>
   base event-init
 
-  head t, like like-link-text
-    back native-any
+  head t
+    back any
 
-  take detail, name <detail>
+  link detail, name <detail>
     like t
-    lock false
+    flex true

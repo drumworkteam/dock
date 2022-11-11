@@ -1,33 +1,29 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/moon
+  take form form
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @drumwork/nest/code/javascript
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/inspector/runtime/execution-context-id
+load @drumwork/nest/code/javascript/node/inspector/runtime
   take form execution-context-id
 
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form execution-context-description, name <ExecutionContextDescription>
-  take id, name <id>
+  link id, name <id>
     like execution-context-id
-    lock false
-  take origin, name <origin>
+    flex true
+  link origin, name <origin>
     like native-string
-    lock false
-  take name, name <name>
+    flex true
+  link name, name <name>
     like native-string
-    lock false
-  take aux-data, name <auxData>
-    like or-link-text
-      like form-link-text
+    flex true
+  link aux-data, name <auxData>
+    like or
+      like form
       like native-undefined
-    lock false
+    flex true

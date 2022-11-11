@@ -1,28 +1,25 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/dom/device-motion-event-acceleration-init
+load @treesurf/nest/code/javascript/dom
   take form device-motion-event-acceleration-init
-
-load @treesurf/nest/code/javascript/dom/device-motion-event-rotation-rate-init
   take form device-motion-event-rotation-rate-init
-
-load @treesurf/nest/code/javascript/dom/event-init
   take form event-init
 
 form device-motion-event-init, name <DeviceMotionEventInit>
   base event-init
 
-  take acceleration, name <acceleration>
+  link acceleration, name <acceleration>
     like device-motion-event-acceleration-init
-    lock false
-  take acceleration-including-gravity, name <accelerationIncludingGravity>
+    flex true
+  link acceleration-including-gravity, name <accelerationIncludingGravity>
     like device-motion-event-acceleration-init
-    lock false
-  take interval, name <interval>
+    flex true
+  link interval, name <interval>
     like native-number
-    lock false
-  take rotation-rate, name <rotationRate>
+    flex true
+  link rotation-rate, name <rotationRate>
     like device-motion-event-rotation-rate-init
-    lock false
+    flex true

@@ -1,45 +1,31 @@
 
-load @treesurf/nest/code/javascript/base/inner-arr
+load @treesurf/moon
+  take form form
+  take form index
+  take form like
+  take form test
+  take form tuple
+
+load @treesurf/nest/code/javascript/native
   take form inner-arr
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/es2019/array/readonly-array
+load @treesurf/nest/code/javascript/es2019/array
   take form readonly-array
 
-load @treesurf/nest/code/form/band
-  take form band
-    save form band-link-text
-
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/form/link
-  take form form-link
-    save form form-link-link-text
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/test
-  take form test
-    save form test-link-text
-
 form flat-array, name <FlatArray>
-  head arr, like like-link-text
-  head depth, like like-link-text
+  head arr
+  head depth
     base native-number
 
-  like form-link-link-text
-    like form-link-text
-      take done, name <done>
+  like index
+    like form
+      link done, name <done>
         like arr
-        lock false
-      take recur, name <recur>
-        like test-link-text
+        flex true
+      link recur, name <recur>
+        like test
           stem roll
             like arr
             like readonly-array
@@ -47,8 +33,8 @@ form flat-array, name <FlatArray>
             hook true
               like flat-array
                 like inner-arr
-                like form-link-link-text
-                  like band-link-text
+                like index
+                  like tuple
                     text <undefined>
                     text <0>
                     text <1>
@@ -74,8 +60,8 @@ form flat-array, name <FlatArray>
                   like depth
             hook false
               like arr
-        lock false
-    like test-link-text
+        flex true
+    like test
       stem roll
         like depth
         text <undefined>

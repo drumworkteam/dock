@@ -1,62 +1,53 @@
 
-load @treesurf/nest/code/javascript/base/function
-  take form function
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-unknown
-  take form native-unknown
-
-load @treesurf/nest/code/form/form
+load @treesurf/moon
   take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
   take form or
-    save form or-link-text
+  take form unknown
+
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form function
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
 form assertion-error, name <AssertionError>
   base error
-  take actual, name <actual>, like native-unknown
-  take expected, name <expected>, like native-unknown
-  take operator, name <operator>, like native-string
-  take generated-message, name <generatedMessage>, like native-boolean
-  take code, name <code>, text <ERR_ASSERTION>
+  link actual, name <actual>, like unknown
+  link expected, name <expected>, like unknown
+  link operator, name <operator>, like native-string
+  link generated-message, name <generatedMessage>, like native-boolean
+  link code, name <code>, text <ERR_ASSERTION>
 
 form assertion-error-constructor
   hook make
     take options
-      like form-link-text
-        take message, name <message>
-          like or-link-text
+      like form
+        link message, name <message>
+          like or
             like native-string
             like native-undefined
-          lock false
-        take actual, name <actual>
-          like or-link-text
-            like native-unknown
+          flex true
+        link actual, name <actual>
+          like or
+            like unknown
             like native-undefined
-          lock false
-        take expected, name <expected>
-          like or-link-text
-            like native-unknown
+          flex true
+        link expected, name <expected>
+          like or
+            like unknown
             like native-undefined
-          lock false
-        take operator, name <operator>
-          like or-link-text
+          flex true
+        link operator, name <operator>
+          like or
             like native-string
             like native-undefined
-          lock false
-        take stack-start-fn, name <stackStartFn>
-          like or-link-text
+          flex true
+        link stack-start-fn, name <stackStartFn>
+          like or
             like function
             like native-undefined
-          lock false
+          flex true
       void true

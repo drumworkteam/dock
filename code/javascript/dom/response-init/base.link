@@ -1,20 +1,20 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/headers-init
+load @treesurf/nest/code/javascript/dom
   take form headers-init
 
 form response-init, name <ResponseInit>
-  take headers, name <headers>
+  link headers, name <headers>
     like headers-init
-    lock false
-  take status, name <status>
+    flex true
+  link status, name <status>
     like native-number
-    lock false
-  take status-text, name <statusText>
+    flex true
+  link status-text, name <statusText>
     like native-string
-    lock false
+    flex true

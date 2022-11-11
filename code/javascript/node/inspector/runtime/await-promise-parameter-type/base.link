@@ -1,28 +1,27 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/inspector/runtime/remote-object-id
+load @drumwork/nest/code/javascript/node/inspector/runtime
   take form remote-object-id
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form await-promise-parameter-type, name <AwaitPromiseParameterType>
-  take promise-object-id, name <promiseObjectId>
+  link promise-object-id, name <promiseObjectId>
     like remote-object-id
-    lock false
-  take return-by-value, name <returnByValue>
-    like or-link-text
+    flex true
+  link return-by-value, name <returnByValue>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take generate-preview, name <generatePreview>
-    like or-link-text
+    flex true
+  link generate-preview, name <generatePreview>
+    like or
       like native-boolean
       like native-undefined
-    lock false
+    flex true

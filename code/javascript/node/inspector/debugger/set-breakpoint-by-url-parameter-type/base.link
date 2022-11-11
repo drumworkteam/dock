@@ -1,43 +1,41 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
 form set-breakpoint-by-url-parameter-type, name <SetBreakpointByUrlParameterType>
-  take line-number, name <lineNumber>
+  link line-number, name <lineNumber>
     like native-number
-    lock false
-  take url, name <url>
-    like or-link-text
+    flex true
+  link url, name <url>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take url-regex, name <urlRegex>
-    like or-link-text
+    flex true
+  link url-regex, name <urlRegex>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take script-hash, name <scriptHash>
-    like or-link-text
+    flex true
+  link script-hash, name <scriptHash>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take column-number, name <columnNumber>
-    like or-link-text
+    flex true
+  link column-number, name <columnNumber>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take condition, name <condition>
-    like or-link-text
+    flex true
+  link condition, name <condition>
+    like or
       like native-string
       like native-undefined
-    lock false
+    flex true

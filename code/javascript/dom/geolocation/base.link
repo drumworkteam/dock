@@ -1,25 +1,19 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/position-callback
-  take form position-callback
-
-load @treesurf/nest/code/javascript/dom/position-error-callback
-  take form position-error-callback
-
-load @treesurf/nest/code/javascript/dom/position-options
-  take form position-options
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/dom
+  take form position-callback
+  take form position-error-callback
+  take form position-options
 
 form geolocation, name <Geolocation>
   task clear-watch, name <clearWatch>
@@ -29,7 +23,7 @@ form geolocation, name <Geolocation>
   task get-current-position, name <getCurrentPosition>
     take success-callback, like position-callback
     take error-callback
-      like or-link-text
+      like or
         like position-error-callback
         like native-null
       void true
@@ -40,7 +34,7 @@ form geolocation, name <Geolocation>
   task watch-position, name <watchPosition>
     take success-callback, like position-callback
     take error-callback
-      like or-link-text
+      like or
         like position-error-callback
         like native-null
       void true

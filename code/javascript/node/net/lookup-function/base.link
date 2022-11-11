@@ -1,41 +1,31 @@
 
-load @treesurf/nest/code/javascript/base/dns-lookup-one-options
-  take form dns-lookup-one-options
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/base/node-js-errno-exception
-  take form node-js-errno-exception
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
   take form task
-    save form task-link-text
+
+load @drumwork/nest/code/javascript
+  take form dns-lookup-one-options
+  take form node-js-errno-exception
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
 form lookup-function, name <LookupFunction>
-  like task-link-text
+  like task
     take hostname, like native-string
     take options, like dns-lookup-one-options
     take callback
-      like task-link-text
+      like task
         take err
-          like or-link-text
+          like or
             like node-js-errno-exception
             like native-null
         take address, like native-string
         take family, like native-number
-        free seed, like native-void
-    free seed, like native-void
+        free result, like native-void
+    free result, like native-void

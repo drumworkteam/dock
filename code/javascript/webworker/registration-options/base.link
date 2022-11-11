@@ -1,23 +1,22 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
+
+load @treesurf/nest/code/javascript/webworker
+  take form service-worker-update-via-cache
+  take form worker-type
 
 load @treesurf/nest/code/javascript/dom/registration-options
   take form registration-options
 
-load @treesurf/nest/code/javascript/webworker/service-worker-update-via-cache
-  take form service-worker-update-via-cache
-
-load @treesurf/nest/code/javascript/webworker/worker-type
-  take form worker-type
-
 form registration-options, name <RegistrationOptions>
-  take scope, name <scope>
+  link scope, name <scope>
     like native-string
-    lock false
-  take type, name <type>
+    flex true
+  link type, name <type>
     like worker-type
-    lock false
-  take update-via-cache, name <updateViaCache>
+    flex true
+  link update-via-cache, name <updateViaCache>
     like service-worker-update-via-cache
-    lock false
+    flex true

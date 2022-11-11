@@ -1,47 +1,35 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
+load @treesurf/nest/code/javascript/webworker
+  take form idb-cursor-direction
+  take form idb-index
+  take form idb-object-store
+  take form idb-request
+  take form idb-valid-key
 
 load @treesurf/nest/code/javascript/dom/idb-cursor
   take form idb-cursor
 
-load @treesurf/nest/code/javascript/webworker/idb-cursor-direction
-  take form idb-cursor-direction
-
-load @treesurf/nest/code/javascript/webworker/idb-index
-  take form idb-index
-
-load @treesurf/nest/code/javascript/webworker/idb-object-store
-  take form idb-object-store
-
-load @treesurf/nest/code/javascript/webworker/idb-request
-  take form idb-request
-
-load @treesurf/nest/code/javascript/webworker/idb-valid-key
-  take form idb-valid-key
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form idb-cursor, name <IDBCursor>
-  take direction, name <direction>
+  link direction, name <direction>
     like idb-cursor-direction
-  take key, name <key>
+  link key, name <key>
     like idb-valid-key
-  take primary-key, name <primaryKey>
+  link primary-key, name <primaryKey>
     like idb-valid-key
-  take source, name <source>
-    like or-link-text
+  link source, name <source>
+    like or
       like idb-object-store
       like idb-index
 
@@ -65,7 +53,7 @@ form idb-cursor, name <IDBCursor>
         like native-undefined
 
   task update, name <update>
-    take value, like native-any
+    take value, like any
     free seed
       like idb-request
         like idb-valid-key

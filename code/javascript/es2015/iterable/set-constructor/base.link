@@ -1,29 +1,25 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form like
+  take form or
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+
+load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterable
+  take form set
 
 load @treesurf/nest/code/javascript/es2015/collection/set-constructor
   take form set-constructor
 
-load @treesurf/nest/code/javascript/es2015/iterable/iterable
-  take form iterable
-
-load @treesurf/nest/code/javascript/es2015/iterable/set
-  take form set
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form set-constructor, name <SetConstructor>
   hook make
-    head t, like like-link-text
+    head t
+
     take iterable
-      like or-link-text
+      like or
         like iterable
           like t
         like native-null

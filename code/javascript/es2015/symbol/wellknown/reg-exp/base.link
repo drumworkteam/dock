@@ -1,66 +1,59 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form or
+  take form task
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/es5
+  take form reg-exp-match-array
 
 load @treesurf/nest/code/javascript/es2015/core/reg-exp
   take form reg-exp
 
-load @treesurf/nest/code/javascript/es5/reg-exp-match-array
-  take form reg-exp-match-array
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
 form reg-exp, name <RegExp>
-  task loan symbol/match
+  task {symbol/match}
     take string, like native-string
     free seed
-      like or-link-text
+      like or
         like reg-exp-match-array
         like native-null
 
-  task loan symbol/replace
+  task {symbol/replace}
     take string, like native-string
     take replace-value, like native-string
     free seed, like native-string
 
-  task loan symbol/replace
+  task {symbol/replace}
     take string, like native-string
     take replacer
-      like task-link-text
+      like task
         take substring, like native-string
         take args
-          like native-array
-            like native-any
+          like array
+            like any
           rest true
         free seed, like native-string
     free seed, like native-string
 
-  task loan symbol/search
+  task {symbol/search}
     take string, like native-string
     free seed, like native-number
 
-  task loan symbol/split
+  task {symbol/split}
     take string, like native-string
     take limit, like native-number
       void true
     free seed
-      like native-array
+      like array
         like native-string

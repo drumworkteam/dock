@@ -1,68 +1,53 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/base/promise
-  take form promise
-
-load @treesurf/nest/code/javascript/node/fs/make-directory-options
-  take form make-directory-options
-
-load @treesurf/nest/code/javascript/node/fs/mode
-  take form mode
-
-load @treesurf/nest/code/javascript/node/fs/path-like
-  take form path-like
-
-load @treesurf/nest/code/form/and
+load @treesurf/moon
   take form and
-    save form and-link-text
-
-load @treesurf/nest/code/form/form
   take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form null
+    save form native-null
+  take form promise
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
+
+load @drumwork/nest/code/javascript/node/fs
+  take form make-directory-options
+  take form mode
+  take form path-like
 
 task promisify, name <__promisify__>
   take path, like path-like
   take options
-    like and-link-text
+    like and
       like make-directory-options
-      like form-link-text
-        take recursive, name <recursive>
+      like form
+        link recursive, name <recursive>
           text <true>
-          lock false
+          flex true
   free seed
     like promise
-      like or-link-text
+      like or
         like native-string
         like native-undefined
 
 task promisify, name <__promisify__>
   take path, like path-like
   take options
-    like or-link-text
+    like or
       like mode
-      like and-link-text
+      like and
         like make-directory-options
-        like form-link-text
-          take recursive, name <recursive>
-            like or-link-text
+        like form
+          link recursive, name <recursive>
+            like or
               text <false>
               like native-undefined
-            lock false
+            flex true
       like native-null
     void true
   free seed
@@ -72,13 +57,13 @@ task promisify, name <__promisify__>
 task promisify, name <__promisify__>
   take path, like path-like
   take options
-    like or-link-text
+    like or
       like mode
       like make-directory-options
       like native-null
     void true
   free seed
     like promise
-      like or-link-text
+      like or
         like native-string
         like native-undefined

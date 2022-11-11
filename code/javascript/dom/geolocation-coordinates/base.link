@@ -1,34 +1,33 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
 
 form geolocation-coordinates, name <GeolocationCoordinates>
-  take accuracy, name <accuracy>
+  link accuracy, name <accuracy>
     like native-number
-  take altitude, name <altitude>
-    like or-link-text
+  link altitude, name <altitude>
+    like or
       like native-number
       like native-null
-  take altitude-accuracy, name <altitudeAccuracy>
-    like or-link-text
+  link altitude-accuracy, name <altitudeAccuracy>
+    like or
       like native-number
       like native-null
-  take heading, name <heading>
-    like or-link-text
+  link heading, name <heading>
+    like or
       like native-number
       like native-null
-  take latitude, name <latitude>
+  link latitude, name <latitude>
     like native-number
-  take longitude, name <longitude>
+  link longitude, name <longitude>
     like native-number
-  take speed, name <speed>
-    like or-link-text
+  link speed, name <speed>
+    like or
       like native-number
       like native-null

@@ -1,52 +1,31 @@
 
-load @treesurf/nest/code/javascript/dom/rsa-oaep-params
-  take form rsa-oaep-params
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/es5/array-buffer
+load @treesurf/nest/code/javascript/es5
   take form array-buffer
-
-load @treesurf/nest/code/javascript/es5/data-view
   take form data-view
-
-load @treesurf/nest/code/javascript/es5/float32-array
   take form float32-array
-
-load @treesurf/nest/code/javascript/es5/float64-array
   take form float64-array
-
-load @treesurf/nest/code/javascript/es5/int16-array
   take form int16-array
-
-load @treesurf/nest/code/javascript/es5/int32-array
   take form int32-array
-
-load @treesurf/nest/code/javascript/es5/int8-array
   take form int8-array
-
-load @treesurf/nest/code/javascript/es5/uint16-array
   take form uint16-array
-
-load @treesurf/nest/code/javascript/es5/uint32-array
   take form uint32-array
-
-load @treesurf/nest/code/javascript/es5/uint8-array
   take form uint8-array
-
-load @treesurf/nest/code/javascript/es5/uint8-clamped-array
   take form uint8-clamped-array
 
-load @treesurf/nest/code/javascript/webworker/algorithm
+load @treesurf/nest/code/javascript/webworker
   take form algorithm
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
+load @treesurf/nest/code/javascript/dom/rsa-oaep-params
+  take form rsa-oaep-params
 
 form rsa-oaep-params, name <RsaOaepParams>
   base algorithm
 
-  take label, name <label>
-    like or-link-text
+  link label, name <label>
+    like or
       like int8-array
       like int16-array
       like int32-array
@@ -58,4 +37,4 @@ form rsa-oaep-params, name <RsaOaepParams>
       like float64-array
       like data-view
       like array-buffer
-    lock false
+    flex true

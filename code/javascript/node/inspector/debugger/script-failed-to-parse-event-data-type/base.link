@@ -1,85 +1,73 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/runtime-execution-context-id
-  take form runtime-execution-context-id
-
-load @treesurf/nest/code/javascript/base/runtime-script-id
-  take form runtime-script-id
-
-load @treesurf/nest/code/javascript/base/runtime-stack-trace
-  take form runtime-stack-trace
-
-load @treesurf/nest/code/form/form
+load @treesurf/moon
   take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form runtime-execution-context-id
+  take form runtime-script-id
+  take form runtime-stack-trace
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
 form script-failed-to-parse-event-data-type, name <ScriptFailedToParseEventDataType>
-  take script-id, name <scriptId>
+  link script-id, name <scriptId>
     like runtime-script-id
-    lock false
-  take url, name <url>
+    flex true
+  link url, name <url>
     like native-string
-    lock false
-  take start-line, name <startLine>
+    flex true
+  link start-line, name <startLine>
     like native-number
-    lock false
-  take start-column, name <startColumn>
+    flex true
+  link start-column, name <startColumn>
     like native-number
-    lock false
-  take end-line, name <endLine>
+    flex true
+  link end-line, name <endLine>
     like native-number
-    lock false
-  take end-column, name <endColumn>
+    flex true
+  link end-column, name <endColumn>
     like native-number
-    lock false
-  take execution-context-id, name <executionContextId>
+    flex true
+  link execution-context-id, name <executionContextId>
     like runtime-execution-context-id
-    lock false
-  take hash, name <hash>
+    flex true
+  link hash, name <hash>
     like native-string
-    lock false
-  take execution-context-aux-data, name <executionContextAuxData>
-    like or-link-text
-      like form-link-text
+    flex true
+  link execution-context-aux-data, name <executionContextAuxData>
+    like or
+      like form
       like native-undefined
-    lock false
-  take source-map-url, name <sourceMapURL>
-    like or-link-text
+    flex true
+  link source-map-url, name <sourceMapURL>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take has-source-url, name <hasSourceURL>
-    like or-link-text
+    flex true
+  link has-source-url, name <hasSourceURL>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take is-module, name <isModule>
-    like or-link-text
+    flex true
+  link is-module, name <isModule>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take length, name <length>
-    like or-link-text
+    flex true
+  link length, name <length>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take stack-trace, name <stackTrace>
-    like or-link-text
+    flex true
+  link stack-trace, name <stackTrace>
+    like or
       like runtime-stack-trace
       like native-undefined
-    lock false
+    flex true

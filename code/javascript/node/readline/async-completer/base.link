@@ -1,38 +1,31 @@
 
-load @treesurf/nest/code/javascript/base/error
+load @treesurf/moon
+  take form or
+  take form task
+
+load @drumwork/nest/code/javascript
   take form error
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/node/readline/completer-result
+load @drumwork/nest/code/javascript/node/readline
   take form completer-result
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
 form async-completer, name <AsyncCompleter>
-  like task-link-text
+  like task
     take line, like native-string
     take callback
-      like task-link-text
+      like task
         take err
-          like or-link-text
+          like or
             like native-null
             like error
           void true
         take result, like completer-result
           void true
-        free seed, like native-void
-    free seed, like native-void
+        free result, like native-void
+    free result, like native-void

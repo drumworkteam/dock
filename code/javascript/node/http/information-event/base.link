@@ -1,36 +1,36 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/node/http/incoming-http-headers
+load @drumwork/nest/code/javascript/node/http
   take form incoming-http-headers
 
 form information-event, name <InformationEvent>
-  take status-code, name <statusCode>
+  link status-code, name <statusCode>
     like native-number
-    lock false
-  take status-message, name <statusMessage>
+    flex true
+  link status-message, name <statusMessage>
     like native-string
-    lock false
-  take http-version, name <httpVersion>
+    flex true
+  link http-version, name <httpVersion>
     like native-string
-    lock false
-  take http-version-major, name <httpVersionMajor>
+    flex true
+  link http-version-major, name <httpVersionMajor>
     like native-number
-    lock false
-  take http-version-minor, name <httpVersionMinor>
+    flex true
+  link http-version-minor, name <httpVersionMinor>
     like native-number
-    lock false
-  take headers, name <headers>
+    flex true
+  link headers, name <headers>
     like incoming-http-headers
-    lock false
-  take raw-headers, name <rawHeaders>
-    like native-array
+    flex true
+  link raw-headers, name <rawHeaders>
+    like array
       like native-string
-    lock false
+    flex true

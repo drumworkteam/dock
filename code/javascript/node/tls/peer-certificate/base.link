@@ -1,59 +1,58 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/node-js-dict
+load @drumwork/nest/code/javascript
   take form node-js-dict
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
 
-load @treesurf/nest/code/javascript/node/tls/certificate
+load @drumwork/nest/code/javascript/node/tls
   take form certificate
 
 form peer-certificate, name <PeerCertificate>
-  take subject, name <subject>
+  link subject, name <subject>
     like certificate
-    lock false
-  take issuer, name <issuer>
+    flex true
+  link issuer, name <issuer>
     like certificate
-    lock false
-  take subjectaltname, name <subjectaltname>
+    flex true
+  link subjectaltname, name <subjectaltname>
     like native-string
-    lock false
-  take info-access, name <infoAccess>
+    flex true
+  link info-access, name <infoAccess>
     like node-js-dict
-      like native-array
+      like array
         like native-string
-    lock false
-  take modulus, name <modulus>
+    flex true
+  link modulus, name <modulus>
     like native-string
-    lock false
-  take exponent, name <exponent>
+    flex true
+  link exponent, name <exponent>
     like native-string
-    lock false
-  take valid-from, name <valid_from>
+    flex true
+  link valid-from, name <valid_from>
     like native-string
-    lock false
-  take valid-to, name <valid_to>
+    flex true
+  link valid-to, name <valid_to>
     like native-string
-    lock false
-  take fingerprint, name <fingerprint>
+    flex true
+  link fingerprint, name <fingerprint>
     like native-string
-    lock false
-  take fingerprint256, name <fingerprint256>
+    flex true
+  link fingerprint256, name <fingerprint256>
     like native-string
-    lock false
-  take ext-key-usage, name <ext_key_usage>
-    like native-array
+    flex true
+  link ext-key-usage, name <ext_key_usage>
+    like array
       like native-string
-    lock false
-  take serial-number, name <serialNumber>
+    flex true
+  link serial-number, name <serialNumber>
     like native-string
-    lock false
-  take raw, name <raw>
+    flex true
+  link raw, name <raw>
     like buffer
-    lock false
+    flex true

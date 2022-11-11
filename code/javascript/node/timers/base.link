@@ -1,34 +1,22 @@
 
 bear @treesurf/nest/code/javascript/node/timers/timer-options
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/base/node-js-immediate
-  take form node-js-immediate
-
-load @treesurf/nest/code/javascript/base/node-js-timeout
-  take form node-js-timeout
-
-load @treesurf/nest/code/javascript/base/node-js-timer
-  take form node-js-timer
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
+  take form any
   take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/task
   take form task
-    save form task-link-text
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @drumwork/nest/code/javascript
+  take form node-js-immediate
+  take form node-js-timeout
+  take form node-js-timer
+  take form number
+    save form native-number
+  take form void
+    save form native-void
 
 host promisify, name <__promisify__>
   home true
@@ -44,14 +32,15 @@ host promisify, name <__promisify__>
 
 task set-timeout, name <setTimeout>
   home true
-  head t-args, like like-link-text
-    base native-array
-      like native-any
+  head t-args
+    base array
+      like any
+
   take callback
-    like task-link-text
+    like task
       take args, like t-args
         rest true
-      free seed, like native-void
+      free result, like native-void
   take ms, like native-number
     void true
   take args, like t-args
@@ -61,9 +50,9 @@ task set-timeout, name <setTimeout>
 task set-timeout, name <setTimeout>
   home true
   take callback
-    like task-link-text
+    like task
       take args, like native-void
-      free seed, like native-void
+      free result, like native-void
   take ms, like native-number
     void true
   free seed, like node-js-timeout
@@ -75,14 +64,15 @@ task clear-timeout, name <clearTimeout>
 
 task set-interval, name <setInterval>
   home true
-  head t-args, like like-link-text
-    base native-array
-      like native-any
+  head t-args
+    base array
+      like any
+
   take callback
-    like task-link-text
+    like task
       take args, like t-args
         rest true
-      free seed, like native-void
+      free result, like native-void
   take ms, like native-number
     void true
   take args, like t-args
@@ -92,9 +82,9 @@ task set-interval, name <setInterval>
 task set-interval, name <setInterval>
   home true
   take callback
-    like task-link-text
+    like task
       take args, like native-void
-      free seed, like native-void
+      free result, like native-void
   take ms, like native-number
     void true
   free seed, like node-js-timer
@@ -106,14 +96,15 @@ task clear-interval, name <clearInterval>
 
 task set-immediate, name <setImmediate>
   home true
-  head t-args, like like-link-text
-    base native-array
-      like native-any
+  head t-args
+    base array
+      like any
+
   take callback
-    like task-link-text
+    like task
       take args, like t-args
         rest true
-      free seed, like native-void
+      free result, like native-void
   take args, like t-args
     rest true
   free seed, like node-js-immediate
@@ -121,9 +112,9 @@ task set-immediate, name <setImmediate>
 task set-immediate, name <setImmediate>
   home true
   take callback
-    like task-link-text
+    like task
       take args, like native-void
-      free seed, like native-void
+      free result, like native-void
   free seed, like node-js-immediate
 
 task clear-immediate, name <clearImmediate>
@@ -134,8 +125,8 @@ task clear-immediate, name <clearImmediate>
 task queue-microtask, name <queueMicrotask>
   home true
   take callback
-    like task-link-text
-      free seed, like native-void
+    like task
+      free result, like native-void
   free seed, like native-void
 
 host set-timeout, name <setTimeout>

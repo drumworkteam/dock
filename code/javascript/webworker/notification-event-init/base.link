@@ -1,19 +1,18 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/webworker/extendable-event-init
+load @treesurf/nest/code/javascript/webworker
   take form extendable-event-init
-
-load @treesurf/nest/code/javascript/webworker/notification
   take form notification
 
 form notification-event-init, name <NotificationEventInit>
   base extendable-event-init
 
-  take action, name <action>
+  link action, name <action>
     like native-string
-    lock false
-  take notification, name <notification>
+    flex true
+  link notification, name <notification>
     like notification
-    lock false
+    flex true

@@ -1,45 +1,39 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form like
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @treesurf/nest/code/javascript/native
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/dom/transformer-flush-callback
+load @treesurf/nest/code/javascript/dom
   take form transformer-flush-callback
-
-load @treesurf/nest/code/javascript/dom/transformer-start-callback
   take form transformer-start-callback
-
-load @treesurf/nest/code/javascript/dom/transformer-transform-callback
   take form transformer-transform-callback
 
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
 form transformer, name <Transformer>
-  head i, like like-link-text
-    back native-any
-  head o, like like-link-text
-    back native-any
+  head i
+    back any
+  head o
+    back any
 
-  take flush, name <flush>
+  link flush, name <flush>
     like transformer-flush-callback
       like o
-    lock false
-  take readable-type, name <readableType>
+    flex true
+  link readable-type, name <readableType>
     like native-undefined
-    lock false
-  take start, name <start>
+    flex true
+  link start, name <start>
     like transformer-start-callback
       like o
-    lock false
-  take transform, name <transform>
+    flex true
+  link transform, name <transform>
     like transformer-transform-callback
       like i
       like o
-    lock false
-  take writable-type, name <writableType>
+    flex true
+  link writable-type, name <writableType>
     like native-undefined
-    lock false
+    flex true

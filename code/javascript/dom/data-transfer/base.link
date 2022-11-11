@@ -1,39 +1,33 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/data-transfer-item-list
+load @treesurf/nest/code/javascript/dom
   take form data-transfer-item-list
-
-load @treesurf/nest/code/javascript/dom/element
   take form element
-
-load @treesurf/nest/code/javascript/dom/file-list
   take form file-list
 
-load @treesurf/nest/code/javascript/es5/readonly-array
+load @treesurf/nest/code/javascript/es5
   take form readonly-array
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form data-transfer, name <DataTransfer>
-  take drop-effect, name <dropEffect>
-    like or-link-text
+  link drop-effect, name <dropEffect>
+    like or
       text <none>
       text <copy>
       text <link>
       text <move>
-    lock false
-  take effect-allowed, name <effectAllowed>
-    like or-link-text
+    flex true
+  link effect-allowed, name <effectAllowed>
+    like or
       text <none>
       text <copy>
       text <copyLink>
@@ -43,12 +37,12 @@ form data-transfer, name <DataTransfer>
       text <move>
       text <all>
       text <uninitialized>
-    lock false
-  take files, name <files>
+    flex true
+  link files, name <files>
     like file-list
-  take items, name <items>
+  link items, name <items>
     like data-transfer-item-list
-  take types, name <types>
+  link types, name <types>
     like readonly-array
       like native-string
 

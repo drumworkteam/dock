@@ -1,69 +1,53 @@
 
-load @treesurf/nest/code/javascript/base/key-object
+load @treesurf/moon
+  take form or
+
+load @drumwork/nest/code/javascript
   take form key-object
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/webcrypto-crypto-key
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
   take form webcrypto-crypto-key
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
 
-load @treesurf/nest/code/javascript/node/crypto/asymmetric-key-details
+load @drumwork/nest/code/javascript/node/crypto
   take form asymmetric-key-details
-
-load @treesurf/nest/code/javascript/node/crypto/json-web-key
   take form json-web-key
-
-load @treesurf/nest/code/javascript/node/crypto/jwk-key-export-options
   take form jwk-key-export-options
-
-load @treesurf/nest/code/javascript/node/crypto/key-export-options
   take form key-export-options
-
-load @treesurf/nest/code/javascript/node/crypto/key-object-type
   take form key-object-type
-
-load @treesurf/nest/code/javascript/node/crypto/key-type
   take form key-type
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form key-object, name <KeyObject>
-  take asymmetric-key-type, name <asymmetricKeyType>
-    like or-link-text
+  link asymmetric-key-type, name <asymmetricKeyType>
+    like or
       like key-type
       like native-undefined
-  take asymmetric-key-size, name <asymmetricKeySize>
-    like or-link-text
+  link asymmetric-key-size, name <asymmetricKeySize>
+    like or
       like native-number
       like native-undefined
-  take asymmetric-key-details, name <asymmetricKeyDetails>
-    like or-link-text
+  link asymmetric-key-details, name <asymmetricKeyDetails>
+    like or
       like asymmetric-key-details
       like native-undefined
-  take symmetric-key-size, name <symmetricKeySize>
-    like or-link-text
+  link symmetric-key-size, name <symmetricKeySize>
+    like or
       like native-number
       like native-undefined
-  take type, name <type>, like key-object-type
+  link type, name <type>, like key-object-type
 
   task export, name <export>
     take options
       like key-export-options
         text <pem>
     free seed
-      like or-link-text
+      like or
         like native-string
         like buffer
 

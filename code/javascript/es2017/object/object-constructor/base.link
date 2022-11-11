@@ -1,114 +1,93 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form and
+  take form any
+  take form form
+  take form index
+  take form key-list
+  take form like
+  take form or
+  take form tuple
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
+
+load @treesurf/nest/code/javascript/es5
+  take form array-like
+  take form property-descriptor
+  take form typed-property-descriptor
 
 load @treesurf/nest/code/javascript/es2015/core/object-constructor
   take form object-constructor
 
-load @treesurf/nest/code/javascript/es5/array-like
-  take form array-like
-
-load @treesurf/nest/code/javascript/es5/property-descriptor
-  take form property-descriptor
-
-load @treesurf/nest/code/javascript/es5/typed-property-descriptor
-  take form typed-property-descriptor
-
-load @treesurf/nest/code/form/and
-  take form and
-    save form and-link-text
-
-load @treesurf/nest/code/form/band
-  take form band
-    save form band-link-text
-
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/form/link
-  take form form-link
-    save form form-link-link-text
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/link/read
-  take form link-read
-    save form link-read-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form object-constructor, name <ObjectConstructor>
   task values, name <values>
-    head t, like like-link-text
+    head t
+
     take o
-      like or-link-text
-        like form-link-text
+      like or
+        like form
           mesh s, like native-string
             like t
         like array-like
           like t
     free seed
-      like native-array
+      like array
         like t
 
   task values, name <values>
-    take o, like form-link-text
+    take o, like form
     free seed
-      like native-array
-        like native-any
+      like array
+        like any
 
   task entries, name <entries>
-    head t, like like-link-text
+    head t
+
     take o
-      like or-link-text
-        like form-link-text
+      like or
+        like form
           mesh s, like native-string
             like t
         like array-like
           like t
     free seed
-      like native-array
-        like band-link-text
+      like array
+        like tuple
           like native-string
           like t
 
   task entries, name <entries>
-    take o, like form-link-text
+    take o, like form
     free seed
-      like native-array
-        like band-link-text
+      like array
+        like tuple
           like native-string
-          like native-any
+          like any
 
   task get-own-property-descriptors, name <getOwnPropertyDescriptors>
-    head t, like like-link-text
+    head t
+
     take o, like t
     free seed
-      like and-link-text
+      like and
         slot self
         walk link-name-like-list
           loan
-          like link-read-link-text
+          like key-list
             like t
           take name
           take p
           beam self
-            take loan name
+            take {name}
               like typed-property-descriptor
-                like form-link-link-text
+                like index
                   like t
                   like p
-        like form-link-text
+        like form
           mesh x, like native-string
             like property-descriptor

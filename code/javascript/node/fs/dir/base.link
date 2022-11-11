@@ -1,40 +1,27 @@
 
-load @treesurf/nest/code/javascript/base/async-iterable-iterator
+load @treesurf/moon
+  take form or
+  take form task
+
+load @drumwork/nest/code/javascript
   take form async-iterable-iterator
-
-load @treesurf/nest/code/javascript/base/dirent
   take form dirent
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/base/node-js-errno-exception
   take form node-js-errno-exception
-
-load @treesurf/nest/code/javascript/base/promise
+  take form null
+    save form native-null
   take form promise
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/node/fs/no-param-callback
+load @drumwork/nest/code/javascript/node/fs
   take form no-param-callback
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
 form dir, name <Dir>
-  take path, name <path>, like native-string
+  link path, name <path>, like native-string
 
-  task loan symbol/async-iterator
+  task {symbol/async-iterator}
     name <Symbol.asyncIterator>
     free seed
       like async-iterable-iterator
@@ -55,26 +42,26 @@ form dir, name <Dir>
   task read, name <read>
     free seed
       like promise
-        like or-link-text
+        like or
           like dirent
           like native-null
 
   task read, name <read>
     take cb
-      like task-link-text
+      like task
         take err
-          like or-link-text
+          like or
             like node-js-errno-exception
             like native-null
         take dir-ent
-          like or-link-text
+          like or
             like dirent
             like native-null
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-void
 
   task read-sync, name <readSync>
     free seed
-      like or-link-text
+      like or
         like dirent
         like native-null

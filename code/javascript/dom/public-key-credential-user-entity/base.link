@@ -1,19 +1,18 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/buffer-source
+load @treesurf/nest/code/javascript/dom
   take form buffer-source
-
-load @treesurf/nest/code/javascript/dom/public-key-credential-entity
   take form public-key-credential-entity
 
 form public-key-credential-user-entity, name <PublicKeyCredentialUserEntity>
   base public-key-credential-entity
 
-  take display-name, name <displayName>
+  link display-name, name <displayName>
     like native-string
-    lock false
-  take id, name <id>
+    flex true
+  link id, name <id>
     like buffer-source
-    lock false
+    flex true

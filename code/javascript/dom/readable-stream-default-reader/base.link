@@ -1,28 +1,24 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form like
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
+load @treesurf/nest/code/javascript/native
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/dom/readable-stream-default-read-result
+load @treesurf/nest/code/javascript/dom
   take form readable-stream-default-read-result
-
-load @treesurf/nest/code/javascript/dom/readable-stream-generic-reader
   take form readable-stream-generic-reader
 
-load @treesurf/nest/code/javascript/es5/promise
+load @treesurf/nest/code/javascript/es5
   take form promise
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
 
 form readable-stream-default-reader, name <ReadableStreamDefaultReader>
   base readable-stream-generic-reader
 
-  head r, like like-link-text
-    back native-any
+  head r
+    back any
 
   task read, name <read>
     free seed

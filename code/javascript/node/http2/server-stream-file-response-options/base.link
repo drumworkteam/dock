@@ -1,51 +1,46 @@
 
-load @treesurf/nest/code/javascript/base/fs-stats
+load @treesurf/moon
+  take form or
+
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
   take form fs-stats
+  take form number
+    save form native-number
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/node/http/outgoing-http-headers
+load @drumwork/nest/code/javascript/node/http
   take form outgoing-http-headers
 
-load @treesurf/nest/code/javascript/node/http2/stat-options
+load @drumwork/nest/code/javascript/node/http2
   take form stat-options
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form server-stream-file-response-options, name <ServerStreamFileResponseOptions>
-  take wait-for-trailers, name <waitForTrailers>
-    like or-link-text
+  link wait-for-trailers, name <waitForTrailers>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take offset, name <offset>
-    like or-link-text
+    flex true
+  link offset, name <offset>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take length, name <length>
-    like or-link-text
+    flex true
+  link length, name <length>
+    like or
       like native-number
       like native-undefined
-    lock false
+    flex true
 
   task stat-check, name <statCheck>
     take stats, like fs-stats
     take headers, like outgoing-http-headers
     take stat-options, like stat-options
     free seed
-      like or-link-text
+      like or
         like native-void
         like native-boolean

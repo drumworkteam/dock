@@ -1,22 +1,20 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/dom/data-transfer
-  take form data-transfer
-
-load @treesurf/nest/code/javascript/dom/event-init
-  take form event-init
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+
+load @treesurf/nest/code/javascript/dom
+  take form data-transfer
+  take form event-init
 
 form clipboard-event-init, name <ClipboardEventInit>
   base event-init
 
-  take clipboard-data, name <clipboardData>
-    like or-link-text
+  link clipboard-data, name <clipboardData>
+    like or
       like data-transfer
       like native-null
-    lock false
+    flex true

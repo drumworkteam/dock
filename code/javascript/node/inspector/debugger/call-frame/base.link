@@ -1,59 +1,52 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/runtime-remote-object
+load @drumwork/nest/code/javascript
   take form runtime-remote-object
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
+
+load @drumwork/nest/code/javascript/node/inspector/debugger
+  take form call-frame-id
+  take form location
+  take form scope
 
 load @treesurf/nest/code/javascript/node/inspector/debugger/call-frame
   take form call-frame
 
-load @treesurf/nest/code/javascript/node/inspector/debugger/call-frame-id
-  take form call-frame-id
-
-load @treesurf/nest/code/javascript/node/inspector/debugger/location
-  take form location
-
-load @treesurf/nest/code/javascript/node/inspector/debugger/scope
-  take form scope
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form call-frame, name <CallFrame>
-  take call-frame-id, name <callFrameId>
+  link call-frame-id, name <callFrameId>
     like call-frame-id
-    lock false
-  take function-name, name <functionName>
+    flex true
+  link function-name, name <functionName>
     like native-string
-    lock false
-  take function-location, name <functionLocation>
-    like or-link-text
+    flex true
+  link function-location, name <functionLocation>
+    like or
       like location
       like native-undefined
-    lock false
-  take location, name <location>
+    flex true
+  link location, name <location>
     like location
-    lock false
-  take url, name <url>
+    flex true
+  link url, name <url>
     like native-string
-    lock false
-  take scope-chain, name <scopeChain>
-    like native-array
+    flex true
+  link scope-chain, name <scopeChain>
+    like array
       like scope
-    lock false
-  take this, name <this>
+    flex true
+  link this, name <this>
     like runtime-remote-object
-    lock false
-  take return-value, name <returnValue>
-    like or-link-text
+    flex true
+  link return-value, name <returnValue>
+    like or
       like runtime-remote-object
       like native-undefined
-    lock false
+    flex true

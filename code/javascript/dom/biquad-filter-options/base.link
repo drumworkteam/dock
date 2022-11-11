@@ -1,28 +1,27 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/dom/audio-node-options
+load @treesurf/nest/code/javascript/dom
   take form audio-node-options
-
-load @treesurf/nest/code/javascript/dom/biquad-filter-type
   take form biquad-filter-type
 
 form biquad-filter-options, name <BiquadFilterOptions>
   base audio-node-options
 
-  take q, name <Q>
+  link q, name <Q>
     like native-number
-    lock false
-  take detune, name <detune>
+    flex true
+  link detune, name <detune>
     like native-number
-    lock false
-  take frequency, name <frequency>
+    flex true
+  link frequency, name <frequency>
     like native-number
-    lock false
-  take gain, name <gain>
+    flex true
+  link gain, name <gain>
     like native-number
-    lock false
-  take type, name <type>
+    flex true
+  link type, name <type>
     like biquad-filter-type
-    lock false
+    flex true

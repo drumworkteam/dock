@@ -1,88 +1,70 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/webworker
+  take form abort-signal
+  take form body-init
+  take form headers-init
+  take form referrer-policy
+  take form request-cache
+  take form request-credentials
+  take form request-mode
+  take form request-redirect
 
 load @treesurf/nest/code/javascript/dom/request-init
   take form request-init
 
-load @treesurf/nest/code/javascript/webworker/abort-signal
-  take form abort-signal
-
-load @treesurf/nest/code/javascript/webworker/body-init
-  take form body-init
-
-load @treesurf/nest/code/javascript/webworker/headers-init
-  take form headers-init
-
-load @treesurf/nest/code/javascript/webworker/referrer-policy
-  take form referrer-policy
-
-load @treesurf/nest/code/javascript/webworker/request-cache
-  take form request-cache
-
-load @treesurf/nest/code/javascript/webworker/request-credentials
-  take form request-credentials
-
-load @treesurf/nest/code/javascript/webworker/request-mode
-  take form request-mode
-
-load @treesurf/nest/code/javascript/webworker/request-redirect
-  take form request-redirect
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form request-init, name <RequestInit>
-  take body, name <body>
-    like or-link-text
+  link body, name <body>
+    like or
       like body-init
       like native-null
-    lock false
-  take cache, name <cache>
+    flex true
+  link cache, name <cache>
     like request-cache
-    lock false
-  take credentials, name <credentials>
+    flex true
+  link credentials, name <credentials>
     like request-credentials
-    lock false
-  take headers, name <headers>
+    flex true
+  link headers, name <headers>
     like headers-init
-    lock false
-  take integrity, name <integrity>
+    flex true
+  link integrity, name <integrity>
     like native-string
-    lock false
-  take keepalive, name <keepalive>
+    flex true
+  link keepalive, name <keepalive>
     like native-boolean
-    lock false
-  take method, name <method>
+    flex true
+  link method, name <method>
     like native-string
-    lock false
-  take mode, name <mode>
+    flex true
+  link mode, name <mode>
     like request-mode
-    lock false
-  take redirect, name <redirect>
+    flex true
+  link redirect, name <redirect>
     like request-redirect
-    lock false
-  take referrer, name <referrer>
+    flex true
+  link referrer, name <referrer>
     like native-string
-    lock false
-  take referrer-policy, name <referrerPolicy>
+    flex true
+  link referrer-policy, name <referrerPolicy>
     like referrer-policy
-    lock false
-  take signal, name <signal>
-    like or-link-text
+    flex true
+  link signal, name <signal>
+    like or
       like abort-signal
       like native-null
-    lock false
-  take window, name <window>
-    like native-any
-    lock false
+    flex true
+  link window, name <window>
+    like any
+    flex true

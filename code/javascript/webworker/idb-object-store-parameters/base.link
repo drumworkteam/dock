@@ -1,31 +1,29 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form string
+    save form native-string
 
 load @treesurf/nest/code/javascript/dom/idb-object-store-parameters
   take form idb-object-store-parameters
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form idb-object-store-parameters, name <IDBObjectStoreParameters>
-  take auto-increment, name <autoIncrement>
+  link auto-increment, name <autoIncrement>
     like native-boolean
-    lock false
-  take key-path, name <keyPath>
-    like or-link-text
+    flex true
+  link key-path, name <keyPath>
+    like or
       like native-string
-      like native-array
+      like array
         like native-string
       like native-null
-    lock false
+    flex true

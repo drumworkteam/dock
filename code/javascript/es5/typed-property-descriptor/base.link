@@ -1,39 +1,35 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
   take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/task
   take form task
-    save form task-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form void
+    save form native-void
 
 form typed-property-descriptor, name <TypedPropertyDescriptor>
-  head t, like like-link-text
+  head t
 
-  take enumerable, name <enumerable>
+  link enumerable, name <enumerable>
     like native-boolean
-    lock false
-  take configurable, name <configurable>
+    flex true
+  link configurable, name <configurable>
     like native-boolean
-    lock false
-  take writable, name <writable>
+    flex true
+  link writable, name <writable>
     like native-boolean
-    lock false
-  take value, name <value>
+    flex true
+  link value, name <value>
     like t
-    lock false
-  take get, name <get>
-    like task-link-text
+    flex true
+  link get, name <get>
+    like task
       free seed, like t
-    lock false
-  take set, name <set>
-    like task-link-text
+    flex true
+  link set, name <set>
+    like task
       take value, like t
       free seed, like native-void
-    lock false
+    flex true

@@ -1,41 +1,34 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/dom/event
-  take form event
-
-load @treesurf/nest/code/javascript/dom/event-target
-  take form event-target
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
   take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/dom
+  take form event
+  take form event-target
 
 form progress-event, name <ProgressEvent>
   base event
 
-  head t, like like-link-text
+  head t
     base event-target
     back event-target
 
-  take length-computable, name <lengthComputable>
+  link length-computable, name <lengthComputable>
     like native-boolean
-  take loaded, name <loaded>
+  link loaded, name <loaded>
     like native-number
-  take target, name <target>
-    like or-link-text
+  link target, name <target>
+    like or
       like t
       like native-null
-  take total, name <total>
+  link total, name <total>
     like native-number

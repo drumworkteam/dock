@@ -1,28 +1,20 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/document
-  take form document
-
-load @treesurf/nest/code/javascript/dom/document-fragment
-  take form document-fragment
-
-load @treesurf/nest/code/javascript/dom/node
-  take form node
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
+  take form any
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/dom
+  take form document
+  take form document-fragment
+  take form node
 
 form xslt-processor, name <XSLTProcessor>
   task clear-parameters, name <clearParameters>
@@ -30,11 +22,11 @@ form xslt-processor, name <XSLTProcessor>
 
   task get-parameter, name <getParameter>
     take namespace-uri
-      like or-link-text
+      like or
         like native-string
         like native-null
     take local-name, like native-string
-    free seed, like native-any
+    free seed, like any
 
   task import-stylesheet, name <importStylesheet>
     take style, like node
@@ -42,7 +34,7 @@ form xslt-processor, name <XSLTProcessor>
 
   task remove-parameter, name <removeParameter>
     take namespace-uri
-      like or-link-text
+      like or
         like native-string
         like native-null
     take local-name, like native-string
@@ -53,11 +45,11 @@ form xslt-processor, name <XSLTProcessor>
 
   task set-parameter, name <setParameter>
     take namespace-uri
-      like or-link-text
+      like or
         like native-string
         like native-null
     take local-name, like native-string
-    take value, like native-any
+    take value, like any
     free seed, like native-void
 
   task transform-to-document, name <transformToDocument>

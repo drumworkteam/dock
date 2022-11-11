@@ -1,23 +1,16 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/child-node
+load @treesurf/nest/code/javascript/dom
   take form child-node
-
-load @treesurf/nest/code/javascript/dom/document
   take form document
-
-load @treesurf/nest/code/javascript/dom/node
   take form node
-
-load @treesurf/nest/code/javascript/dom/non-document-type-child-node
   take form non-document-type-child-node
 
 form character-data, name <CharacterData>
@@ -25,12 +18,12 @@ form character-data, name <CharacterData>
   base child-node
   base non-document-type-child-node
 
-  take data, name <data>
+  link data, name <data>
     like native-string
-    lock false
-  take length, name <length>
+    flex true
+  link length, name <length>
     like native-number
-  take owner-document, name <ownerDocument>
+  link owner-document, name <ownerDocument>
     like document
 
   task append-data, name <appendData>

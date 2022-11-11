@@ -1,35 +1,29 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/character-data
-  take form character-data
-
-load @treesurf/nest/code/javascript/dom/html-slot-element
-  take form html-slot-element
-
-load @treesurf/nest/code/javascript/dom/slottable
-  take form slottable
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+
+load @treesurf/nest/code/javascript/dom
+  take form character-data
+  take form html-slot-element
+  take form slottable
 
 form text, name <Text>
   base character-data
   base slottable
 
-  take assigned-slot, name <assignedSlot>
-    like or-link-text
+  link assigned-slot, name <assignedSlot>
+    like or
       like html-slot-element
       like native-null
-  take whole-text, name <wholeText>
+  link whole-text, name <wholeText>
     like native-string
 
   task split-text, name <splitText>

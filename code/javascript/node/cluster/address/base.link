@@ -1,24 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
 form address, name <Address>
-  take address, name <address>
+  link address, name <address>
     like native-string
-    lock false
-  take port, name <port>
+    flex true
+  link port, name <port>
     like native-number
-    lock false
-  take address-type, name <addressType>
-    like or-link-text
+    flex true
+  link address-type, name <addressType>
+    like or
       like native-number
       text <udp4>
       text <udp6>
-    lock false
+    flex true

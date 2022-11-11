@@ -1,40 +1,38 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/node/crypto/cipher-mode
+load @drumwork/nest/code/javascript/node/crypto
   take form cipher-mode
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form cipher-info, name <CipherInfo>
-  take name, name <name>
+  link name, name <name>
     like native-string
-    lock false
-  take nid, name <nid>
+    flex true
+  link nid, name <nid>
     like native-number
-    lock false
-  take block-size, name <blockSize>
-    like or-link-text
+    flex true
+  link block-size, name <blockSize>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take iv-length, name <ivLength>
-    like or-link-text
+    flex true
+  link iv-length, name <ivLength>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take key-length, name <keyLength>
+    flex true
+  link key-length, name <keyLength>
     like native-number
-    lock false
-  take mode, name <mode>
+    flex true
+  link mode, name <mode>
     like cipher-mode
-    lock false
+    flex true

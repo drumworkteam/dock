@@ -1,16 +1,17 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
 
 form shared-array-buffer, name <SharedArrayBuffer>
-  take byte-length, name <byteLength>
+  link byte-length, name <byteLength>
     like native-number
-  take loan symbol/species
+  link {symbol/species}
     like shared-array-buffer
-    read true
-  take loan symbol/to-string-tag
+    work true
+  link {symbol/to-string-tag}
     text <SharedArrayBuffer>
-    read true
+    work true
 
   task slice, name <slice>
     take begin, like native-number

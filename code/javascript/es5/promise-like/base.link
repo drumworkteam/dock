@@ -1,42 +1,32 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-never
-  take form native-never
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
+  take form any
   take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
+  take form never
   take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
   take form task
-    save form task-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form undefined
+    save form native-undefined
 
 form promise-like, name <PromiseLike>
-  head t, like like-link-text
+  head t
 
   task then, name <then>
-    head t-result1, like like-link-text
+    head t-result1
       back t
-    head t-result2, like like-link-text
-      back native-never
+    head t-result2
+      back never
+
     take onfulfilled
-      like or-link-text
-        like task-link-text
+      like or
+        like task
           take value, like t
           free seed
-            like or-link-text
+            like or
               like t-result1
               like promise-like
                 like t-result1
@@ -44,11 +34,11 @@ form promise-like, name <PromiseLike>
         like native-null
       void true
     take onrejected
-      like or-link-text
-        like task-link-text
-          take reason, like native-any
+      like or
+        like task
+          take reason, like any
           free seed
-            like or-link-text
+            like or
               like t-result2
               like promise-like
                 like t-result2
@@ -57,6 +47,6 @@ form promise-like, name <PromiseLike>
       void true
     free seed
       like promise-like
-        like or-link-text
+        like or
           like t-result1
           like t-result2

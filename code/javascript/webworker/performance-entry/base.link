@@ -1,25 +1,25 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
 load @treesurf/nest/code/javascript/dom/performance-entry
   take form performance-entry
 
 form performance-entry, name <PerformanceEntry>
-  take duration, name <duration>
+  link duration, name <duration>
     like native-number
-  take entry-type, name <entryType>
+  link entry-type, name <entryType>
     like native-string
-  take name, name <name>
+  link name, name <name>
     like native-string
-  take start-time, name <startTime>
+  link start-time, name <startTime>
     like native-number
 
   task to-json, name <toJSON>
-    free seed, like native-any
+    free seed, like any

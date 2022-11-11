@@ -1,34 +1,30 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/base/readable
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
   take form readable
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/node/buffer/buffer-encoding
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer-encoding
 
-load @treesurf/nest/code/javascript/node/stream/internal/stream-options
+load @drumwork/nest/code/javascript/node/stream/internal
   take form stream-options
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form readable-options, name <ReadableOptions>
   base stream-options
 
-  take encoding, name <encoding>
-    like or-link-text
+  link encoding, name <encoding>
+    like or
       like buffer-encoding
       like native-undefined
-    lock false
+    flex true
 
   task read, name <read>
     take this, like readable

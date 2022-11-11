@@ -1,47 +1,41 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/file
+load @treesurf/nest/code/javascript/dom
   take form file
-
-load @treesurf/nest/code/javascript/dom/file-system-entry
   take form file-system-entry
-
-load @treesurf/nest/code/javascript/dom/function-string-callback
   take form function-string-callback
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form data-transfer-item, name <DataTransferItem>
-  take kind, name <kind>
+  link kind, name <kind>
     like native-string
-  take type, name <type>
+  link type, name <type>
     like native-string
 
   task get-as-file, name <getAsFile>
     free seed
-      like or-link-text
+      like or
         like file
         like native-null
 
   task get-as-string, name <getAsString>
     take callback
-      like or-link-text
+      like or
         like function-string-callback
         like native-null
     free seed, like native-void
 
   task webkit-get-as-entry, name <webkitGetAsEntry>
     free seed
-      like or-link-text
+      like or
         like file-system-entry
         like native-null

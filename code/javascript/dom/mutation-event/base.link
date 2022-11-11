@@ -1,49 +1,43 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/event
-  take form event
-
-load @treesurf/nest/code/javascript/dom/node
-  take form node
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/dom
+  take form event
+  take form node
 
 form mutation-event, name <MutationEvent>
   base event
 
-  take attr-change, name <attrChange>
+  link attr-change, name <attrChange>
     like native-number
-  take attr-name, name <attrName>
+  link attr-name, name <attrName>
     like native-string
-  take new-value, name <newValue>
+  link new-value, name <newValue>
     like native-string
-  take prev-value, name <prevValue>
+  link prev-value, name <prevValue>
     like native-string
-  take related-node, name <relatedNode>
-    like or-link-text
+  link related-node, name <relatedNode>
+    like or
       like node
       like native-null
-  take addition, name <ADDITION>
+  link addition, name <ADDITION>
     like native-number
-  take modification, name <MODIFICATION>
+  link modification, name <MODIFICATION>
     like native-number
-  take removal, name <REMOVAL>
+  link removal, name <REMOVAL>
     like native-number
 
   task init-mutation-event, name <initMutationEvent>
@@ -53,7 +47,7 @@ form mutation-event, name <MutationEvent>
     take cancelable-arg, like native-boolean
       void true
     take related-node-arg
-      like or-link-text
+      like or
         like node
         like native-null
       void true

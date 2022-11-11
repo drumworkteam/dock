@@ -1,31 +1,31 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/event-init
+load @treesurf/nest/code/javascript/dom
   take form event-init
 
 form error-event-init, name <ErrorEventInit>
   base event-init
 
-  take colno, name <colno>
+  link colno, name <colno>
     like native-number
-    lock false
-  take error, name <error>
-    like native-any
-    lock false
-  take filename, name <filename>
+    flex true
+  link error, name <error>
+    like any
+    flex true
+  link filename, name <filename>
     like native-string
-    lock false
-  take lineno, name <lineno>
+    flex true
+  link lineno, name <lineno>
     like native-number
-    lock false
-  take message, name <message>
+    flex true
+  link message, name <message>
     like native-string
-    lock false
+    flex true

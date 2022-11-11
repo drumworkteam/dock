@@ -1,16 +1,17 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/dom/rtc-rtp-stream-stats
+load @treesurf/nest/code/javascript/dom
   take form rtc-rtp-stream-stats
 
 form rtc-sent-rtp-stream-stats, name <RTCSentRtpStreamStats>
   base rtc-rtp-stream-stats
 
-  take bytes-sent, name <bytesSent>
+  link bytes-sent, name <bytesSent>
     like native-number
-    lock false
-  take packets-sent, name <packetsSent>
+    flex true
+  link packets-sent, name <packetsSent>
     like native-number
-    lock false
+    flex true

@@ -1,88 +1,79 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/node-js-readable-stream
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
   take form node-js-readable-stream
-
-load @treesurf/nest/code/javascript/base/node-js-writable-stream
   take form node-js-writable-stream
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/readline/async-completer
+load @drumwork/nest/code/javascript/node/readline
   take form async-completer
-
-load @treesurf/nest/code/javascript/node/readline/completer
   take form completer
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form read-line-options, name <ReadLineOptions>
-  take input, name <input>
+  link input, name <input>
     like node-js-readable-stream
-    lock false
-  take output, name <output>
-    like or-link-text
+    flex true
+  link output, name <output>
+    like or
       like node-js-writable-stream
       like native-undefined
-    lock false
-  take completer, name <completer>
-    like or-link-text
+    flex true
+  link completer, name <completer>
+    like or
       like completer
       like async-completer
       like native-undefined
-    lock false
-  take terminal, name <terminal>
-    like or-link-text
+    flex true
+  link terminal, name <terminal>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take history, name <history>
-    like or-link-text
-      like native-array
+    flex true
+  link history, name <history>
+    like or
+      like array
         like native-string
       like native-undefined
-    lock false
-  take history-size, name <historySize>
-    like or-link-text
+    flex true
+  link history-size, name <historySize>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take prompt, name <prompt>
-    like or-link-text
+    flex true
+  link prompt, name <prompt>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take crlf-delay, name <crlfDelay>
-    like or-link-text
+    flex true
+  link crlf-delay, name <crlfDelay>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take remove-history-duplicates, name <removeHistoryDuplicates>
-    like or-link-text
+    flex true
+  link remove-history-duplicates, name <removeHistoryDuplicates>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take escape-code-timeout, name <escapeCodeTimeout>
-    like or-link-text
+    flex true
+  link escape-code-timeout, name <escapeCodeTimeout>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take tab-size, name <tabSize>
-    like or-link-text
+    flex true
+  link tab-size, name <tabSize>
+    like or
       like native-number
       like native-undefined
-    lock false
+    flex true

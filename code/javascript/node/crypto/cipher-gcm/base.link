@@ -1,22 +1,17 @@
 
-load @treesurf/nest/code/javascript/base/cipher
-  take form cipher
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-this
-  take form native-this
-
-load @treesurf/nest/code/javascript/base/node-js-array-buffer-view
-  take form node-js-array-buffer-view
-
-load @treesurf/nest/code/javascript/node/buffer/buffer
-  take form buffer
-
-load @treesurf/nest/code/form/form
+load @treesurf/moon
   take form form
-    save form form-link-text
+
+load @drumwork/nest/code/javascript
+  take form cipher
+  take form node-js-array-buffer-view
+  take form number
+    save form native-number
+  take form this
+    save form native-this
+
+load @drumwork/nest/code/javascript/node/buffer
+  take form buffer
 
 form cipher-gcm, name <CipherGCM>
   base cipher
@@ -24,10 +19,10 @@ form cipher-gcm, name <CipherGCM>
   task set-aad, name <setAAD>
     take buffer, like node-js-array-buffer-view
     take options
-      like form-link-text
-        take plaintext-length, name <plaintextLength>
+      like form
+        link plaintext-length, name <plaintextLength>
           like native-number
-          lock false
+          flex true
       void true
     free seed, like native-this
 

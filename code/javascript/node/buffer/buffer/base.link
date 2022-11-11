@@ -1,42 +1,28 @@
 
-load @treesurf/nest/code/javascript/base/iterable-iterator
+load @treesurf/moon
+  take form form
+  take form or
+  take form tuple
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @drumwork/nest/code/javascript
+  take form bigint
+    save form native-bigint
+  take form boolean
+    save form native-boolean
   take form iterable-iterator
-
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
-
-load @treesurf/nest/code/javascript/base/native-bigint
-  take form native-bigint
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-this
-  take form native-this
-
-load @treesurf/nest/code/javascript/base/uint8-array
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form this
+    save form native-this
   take form uint8-array
 
-load @treesurf/nest/code/javascript/node/buffer/buffer-encoding
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer-encoding
-
-load @treesurf/nest/code/form/band
-  take form band
-    save form band-link-text
-
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form buffer, name <Buffer>
   home true
@@ -74,14 +60,14 @@ form buffer, name <Buffer>
 
   task to-json, name <toJSON>
     free seed
-      like form-link-text
-        take type, name <type>
+      like form
+        link type, name <type>
           text <Buffer>
-          lock false
-        take data, name <data>
-          like native-array
+          flex true
+        link data, name <data>
+          like array
             like native-number
-          lock false
+          flex true
 
   task equals, name <equals>
     take other-buffer, like uint8-array
@@ -98,7 +84,7 @@ form buffer, name <Buffer>
     take source-end, like native-number
       void true
     free seed
-      like or-link-text
+      like or
         text <undefined>
         text <0>
         text <1>
@@ -482,7 +468,7 @@ form buffer, name <Buffer>
 
   task fill, name <fill>
     take value
-      like or-link-text
+      like or
         like native-string
         like uint8-array
         like native-number
@@ -496,7 +482,7 @@ form buffer, name <Buffer>
 
   task index-of, name <indexOf>
     take value
-      like or-link-text
+      like or
         like native-string
         like native-number
         like uint8-array
@@ -508,7 +494,7 @@ form buffer, name <Buffer>
 
   task last-index-of, name <lastIndexOf>
     take value
-      like or-link-text
+      like or
         like native-string
         like native-number
         like uint8-array
@@ -521,13 +507,13 @@ form buffer, name <Buffer>
   task entries, name <entries>
     free seed
       like iterable-iterator
-        like band-link-text
+        like tuple
           like native-number
           like native-number
 
   task includes, name <includes>
     take value
-      like or-link-text
+      like or
         like native-string
         like native-number
         like buffer

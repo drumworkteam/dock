@@ -1,60 +1,49 @@
 
-load @treesurf/nest/code/javascript/base/array
-  take form array
-
-load @treesurf/nest/code/javascript/base/error
-  take form error
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/node-js-signals
-  take form node-js-signals
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
   take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form array
+  take form error
+  take form node-js-signals
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form undefined
+    save form native-undefined
 
 form spawn-sync-returns, name <SpawnSyncReturns>
-  head t, like like-link-text
+  head t
 
-  take pid, name <pid>
+  link pid, name <pid>
     like native-number
-    lock false
-  take output, name <output>
+    flex true
+  link output, name <output>
     like array
-      like or-link-text
+      like or
         like t
         like native-null
-    lock false
-  take stdout, name <stdout>
+    flex true
+  link stdout, name <stdout>
     like t
-    lock false
-  take stderr, name <stderr>
+    flex true
+  link stderr, name <stderr>
     like t
-    lock false
-  take status, name <status>
-    like or-link-text
+    flex true
+  link status, name <status>
+    like or
       like native-number
       like native-null
-    lock false
-  take signal, name <signal>
-    like or-link-text
+    flex true
+  link signal, name <signal>
+    like or
       like node-js-signals
       like native-null
-    lock false
-  take error, name <error>
-    like or-link-text
+    flex true
+  link error, name <error>
+    like or
       like error
       like native-undefined
-    lock false
+    flex true

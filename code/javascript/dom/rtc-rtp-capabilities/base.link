@@ -1,19 +1,17 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/dom/rtc-rtp-codec-capability
+load @treesurf/nest/code/javascript/dom
   take form rtc-rtp-codec-capability
-
-load @treesurf/nest/code/javascript/dom/rtc-rtp-header-extension-capability
   take form rtc-rtp-header-extension-capability
 
 form rtc-rtp-capabilities, name <RTCRtpCapabilities>
-  take codecs, name <codecs>
-    like native-array
+  link codecs, name <codecs>
+    like array
       like rtc-rtp-codec-capability
-    lock false
-  take header-extensions, name <headerExtensions>
-    like native-array
+    flex true
+  link header-extensions, name <headerExtensions>
+    like array
       like rtc-rtp-header-extension-capability
-    lock false
+    flex true

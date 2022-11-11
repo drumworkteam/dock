@@ -1,41 +1,39 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/node/globals/abort-signal
+load @drumwork/nest/code/javascript/node/globals
   take form abort-signal
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form socket-constructor-opts, name <SocketConstructorOpts>
-  take fd, name <fd>
-    like or-link-text
+  link fd, name <fd>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take allow-half-open, name <allowHalfOpen>
-    like or-link-text
+    flex true
+  link allow-half-open, name <allowHalfOpen>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take readable, name <readable>
-    like or-link-text
+    flex true
+  link readable, name <readable>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take writable, name <writable>
-    like or-link-text
+    flex true
+  link writable, name <writable>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take signal, name <signal>
+    flex true
+  link signal, name <signal>
     like abort-signal
-    lock false
+    flex true

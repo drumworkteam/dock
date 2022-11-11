@@ -1,16 +1,17 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
 
-load @treesurf/nest/code/javascript/webworker/permission-descriptor
+load @treesurf/nest/code/javascript/webworker
   take form permission-descriptor
 
 form push-permission-descriptor, name <PushPermissionDescriptor>
   base permission-descriptor
 
-  take name, name <name>
+  link name, name <name>
     text <push>
-    lock false
-  take user-visible-only, name <userVisibleOnly>
+    flex true
+  link user-visible-only, name <userVisibleOnly>
     like native-boolean
-    lock false
+    flex true

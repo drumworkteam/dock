@@ -1,19 +1,18 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/payment-details-base
+load @treesurf/nest/code/javascript/dom
   take form payment-details-base
-
-load @treesurf/nest/code/javascript/dom/payment-item
   take form payment-item
 
 form payment-details-init, name <PaymentDetailsInit>
   base payment-details-base
 
-  take id, name <id>
+  link id, name <id>
     like native-string
-    lock false
-  take total, name <total>
+    flex true
+  link total, name <total>
     like payment-item
-    lock false
+    flex true

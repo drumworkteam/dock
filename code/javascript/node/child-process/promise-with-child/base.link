@@ -1,19 +1,16 @@
 
-load @treesurf/nest/code/javascript/base/child-process
-  take form child-process
-
-load @treesurf/nest/code/javascript/base/promise
-  take form promise
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
   take form like
-    save form like-link-text
+
+load @drumwork/nest/code/javascript
+  take form child-process
+  take form promise
 
 form promise-with-child, name <PromiseWithChild>
   base promise
 
-  head t, like like-link-text
+  head t
 
-  take child, name <child>
+  link child, name <child>
     like child-process
-    lock false
+    flex true

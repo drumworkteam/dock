@@ -1,20 +1,18 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
+  take form any
   take form like
-    save form like-link-text
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
 
 form vb-array, name <VBArray>
-  head t, like like-link-text
-    back native-any
+  head t
+    back any
 
   task dimensions, name <dimensions>
     free seed, like native-number
@@ -22,7 +20,7 @@ form vb-array, name <VBArray>
   task get-item, name <getItem>
     take dimension1-index, like native-number
     take dimension-n-indexes
-      like native-array
+      like array
         like native-number
       rest true
     free seed, like t
@@ -39,5 +37,5 @@ form vb-array, name <VBArray>
 
   task to-array, name <toArray>
     free seed
-      like native-array
+      like array
         like t

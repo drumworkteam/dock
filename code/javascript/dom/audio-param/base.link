@@ -1,33 +1,33 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/dom/automation-rate
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/dom
   take form automation-rate
 
-load @treesurf/nest/code/javascript/es5/float32-array
+load @treesurf/nest/code/javascript/es5
   take form float32-array
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form audio-param, name <AudioParam>
-  take automation-rate, name <automationRate>
+  link automation-rate, name <automationRate>
     like automation-rate
-    lock false
-  take default-value, name <defaultValue>
+    flex true
+  link default-value, name <defaultValue>
     like native-number
-  take max-value, name <maxValue>
+  link max-value, name <maxValue>
     like native-number
-  take min-value, name <minValue>
+  link min-value, name <minValue>
     like native-number
-  take value, name <value>
+  link value, name <value>
     like native-number
-    lock false
+    flex true
 
   task cancel-and-hold-at-time, name <cancelAndHoldAtTime>
     take cancel-time, like native-number
@@ -60,8 +60,8 @@ form audio-param, name <AudioParam>
 
   task set-value-curve-at-time, name <setValueCurveAtTime>
     take values
-      like or-link-text
-        like native-array
+      like or
+        like array
           like native-number
         like float32-array
     take start-time, like native-number

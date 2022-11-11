@@ -1,50 +1,46 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/entry-preview
+load @drumwork/nest/code/javascript/node/inspector/runtime
   take form entry-preview
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/property-preview
   take form property-preview
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form object-preview, name <ObjectPreview>
-  take type, name <type>
+  link type, name <type>
     like native-string
-    lock false
-  take subtype, name <subtype>
-    like or-link-text
+    flex true
+  link subtype, name <subtype>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take description, name <description>
-    like or-link-text
+    flex true
+  link description, name <description>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take overflow, name <overflow>
+    flex true
+  link overflow, name <overflow>
     like native-boolean
-    lock false
-  take properties, name <properties>
-    like native-array
+    flex true
+  link properties, name <properties>
+    like array
       like property-preview
-    lock false
-  take entries, name <entries>
-    like or-link-text
-      like native-array
+    flex true
+  link entries, name <entries>
+    like or
+      like array
         like entry-preview
       like native-undefined
-    lock false
+    flex true

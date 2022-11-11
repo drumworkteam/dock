@@ -1,30 +1,30 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/dom/rtc-ice-credential-type
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
+
+load @treesurf/nest/code/javascript/dom
   take form rtc-ice-credential-type
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form rtc-ice-server, name <RTCIceServer>
-  take credential, name <credential>
+  link credential, name <credential>
     like native-string
-    lock false
-  take credential-type, name <credentialType>
+    flex true
+  link credential-type, name <credentialType>
     like rtc-ice-credential-type
-    lock false
-  take urls, name <urls>
-    like or-link-text
+    flex true
+  link urls, name <urls>
+    like or
       like native-string
-      like native-array
+      like array
         like native-string
-    lock false
-  take username, name <username>
+    flex true
+  link username, name <username>
     like native-string
-    lock false
+    flex true

@@ -1,22 +1,21 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/dom/algorithm
+load @treesurf/nest/code/javascript/dom
   take form algorithm
-
-load @treesurf/nest/code/javascript/dom/buffer-source
   take form buffer-source
 
 form aes-gcm-params, name <AesGcmParams>
   base algorithm
 
-  take additional-data, name <additionalData>
+  link additional-data, name <additionalData>
     like buffer-source
-    lock false
-  take iv, name <iv>
+    flex true
+  link iv, name <iv>
     like buffer-source
-    lock false
-  take tag-length, name <tagLength>
+    flex true
+  link tag-length, name <tagLength>
     like native-number
-    lock false
+    flex true

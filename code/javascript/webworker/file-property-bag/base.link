@@ -1,16 +1,17 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/webworker
+  take form blob-property-bag
 
 load @treesurf/nest/code/javascript/dom/file-property-bag
   take form file-property-bag
 
-load @treesurf/nest/code/javascript/webworker/blob-property-bag
-  take form blob-property-bag
-
 form file-property-bag, name <FilePropertyBag>
   base blob-property-bag
 
-  take last-modified, name <lastModified>
+  link last-modified, name <lastModified>
     like native-number
-    lock false
+    flex true

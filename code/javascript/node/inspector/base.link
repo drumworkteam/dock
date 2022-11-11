@@ -8,24 +8,20 @@ bear @treesurf/nest/code/javascript/node/inspector/profiler
 bear @treesurf/nest/code/javascript/node/inspector/heap-profiler
 bear @treesurf/nest/code/javascript/node/inspector/session
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
 
 task open, name <open>
   take port, like native-number
@@ -41,7 +37,7 @@ task close, name <close>
 
 task url, name <url>
   free seed
-    like or-link-text
+    like or
       like native-string
       like native-undefined
 

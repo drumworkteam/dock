@@ -1,85 +1,75 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/rtc-ice-candidate-init
+load @treesurf/nest/code/javascript/dom
   take form rtc-ice-candidate-init
-
-load @treesurf/nest/code/javascript/dom/rtc-ice-candidate-type
   take form rtc-ice-candidate-type
-
-load @treesurf/nest/code/javascript/dom/rtc-ice-component
   take form rtc-ice-component
-
-load @treesurf/nest/code/javascript/dom/rtc-ice-protocol
   take form rtc-ice-protocol
-
-load @treesurf/nest/code/javascript/dom/rtc-ice-tcp-candidate-type
   take form rtc-ice-tcp-candidate-type
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form rtc-ice-candidate, name <RTCIceCandidate>
-  take address, name <address>
-    like or-link-text
+  link address, name <address>
+    like or
       like native-string
       like native-null
-  take candidate, name <candidate>
+  link candidate, name <candidate>
     like native-string
-  take component, name <component>
-    like or-link-text
+  link component, name <component>
+    like or
       like rtc-ice-component
       like native-null
-  take foundation, name <foundation>
-    like or-link-text
+  link foundation, name <foundation>
+    like or
       like native-string
       like native-null
-  take port, name <port>
-    like or-link-text
+  link port, name <port>
+    like or
       like native-number
       like native-null
-  take priority, name <priority>
-    like or-link-text
+  link priority, name <priority>
+    like or
       like native-number
       like native-null
-  take protocol, name <protocol>
-    like or-link-text
+  link protocol, name <protocol>
+    like or
       like rtc-ice-protocol
       like native-null
-  take related-address, name <relatedAddress>
-    like or-link-text
+  link related-address, name <relatedAddress>
+    like or
       like native-string
       like native-null
-  take related-port, name <relatedPort>
-    like or-link-text
+  link related-port, name <relatedPort>
+    like or
       like native-number
       like native-null
-  take sdp-m-line-index, name <sdpMLineIndex>
-    like or-link-text
+  link sdp-m-line-index, name <sdpMLineIndex>
+    like or
       like native-number
       like native-null
-  take sdp-mid, name <sdpMid>
-    like or-link-text
+  link sdp-mid, name <sdpMid>
+    like or
       like native-string
       like native-null
-  take tcp-type, name <tcpType>
-    like or-link-text
+  link tcp-type, name <tcpType>
+    like or
       like rtc-ice-tcp-candidate-type
       like native-null
-  take type, name <type>
-    like or-link-text
+  link type, name <type>
+    like or
       like rtc-ice-candidate-type
       like native-null
-  take username-fragment, name <usernameFragment>
-    like or-link-text
+  link username-fragment, name <usernameFragment>
+    like or
       like native-string
       like native-null
 

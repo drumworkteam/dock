@@ -1,35 +1,27 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/dom/event-init
+load @treesurf/nest/code/javascript/dom
   take form event-init
-
-load @treesurf/nest/code/javascript/dom/media-stream
   take form media-stream
-
-load @treesurf/nest/code/javascript/dom/media-stream-track
   take form media-stream-track
-
-load @treesurf/nest/code/javascript/dom/rtc-rtp-receiver
   take form rtc-rtp-receiver
-
-load @treesurf/nest/code/javascript/dom/rtc-rtp-transceiver
   take form rtc-rtp-transceiver
 
 form rtc-track-event-init, name <RTCTrackEventInit>
   base event-init
 
-  take receiver, name <receiver>
+  link receiver, name <receiver>
     like rtc-rtp-receiver
-    lock false
-  take streams, name <streams>
-    like native-array
+    flex true
+  link streams, name <streams>
+    like array
       like media-stream
-    lock false
-  take track, name <track>
+    flex true
+  link track, name <track>
     like media-stream-track
-    lock false
-  take transceiver, name <transceiver>
+    flex true
+  link transceiver, name <transceiver>
     like rtc-rtp-transceiver
-    lock false
+    flex true

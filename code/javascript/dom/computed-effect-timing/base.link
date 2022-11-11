@@ -1,41 +1,40 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/dom/effect-timing
-  take form effect-timing
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/dom
+  take form effect-timing
 
 form computed-effect-timing, name <ComputedEffectTiming>
   base effect-timing
 
-  take active-duration, name <activeDuration>
+  link active-duration, name <activeDuration>
     like native-number
-    lock false
-  take current-iteration, name <currentIteration>
-    like or-link-text
+    flex true
+  link current-iteration, name <currentIteration>
+    like or
       like native-number
       like native-null
-    lock false
-  take end-time, name <endTime>
+    flex true
+  link end-time, name <endTime>
     like native-number
-    lock false
-  take local-time, name <localTime>
-    like or-link-text
+    flex true
+  link local-time, name <localTime>
+    like or
       like native-number
       like native-null
-    lock false
-  take progress, name <progress>
-    like or-link-text
+    flex true
+  link progress, name <progress>
+    like or
       like native-number
       like native-null
-    lock false
-  take start-time, name <startTime>
+    flex true
+  link start-time, name <startTime>
     like native-number
-    lock false
+    flex true

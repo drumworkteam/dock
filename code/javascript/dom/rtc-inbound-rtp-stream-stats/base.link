@@ -1,31 +1,31 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/rtc-received-rtp-stream-stats
+load @treesurf/nest/code/javascript/dom
   take form rtc-received-rtp-stream-stats
 
 form rtc-inbound-rtp-stream-stats, name <RTCInboundRtpStreamStats>
   base rtc-received-rtp-stream-stats
 
-  take fir-count, name <firCount>
+  link fir-count, name <firCount>
     like native-number
-    lock false
-  take frames-decoded, name <framesDecoded>
+    flex true
+  link frames-decoded, name <framesDecoded>
     like native-number
-    lock false
-  take nack-count, name <nackCount>
+    flex true
+  link nack-count, name <nackCount>
     like native-number
-    lock false
-  take pli-count, name <pliCount>
+    flex true
+  link pli-count, name <pliCount>
     like native-number
-    lock false
-  take qp-sum, name <qpSum>
+    flex true
+  link qp-sum, name <qpSum>
     like native-number
-    lock false
-  take remote-id, name <remoteId>
+    flex true
+  link remote-id, name <remoteId>
     like native-string
-    lock false
+    flex true

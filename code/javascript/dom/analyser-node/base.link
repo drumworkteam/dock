@@ -1,36 +1,34 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/audio-node
+load @treesurf/nest/code/javascript/dom
   take form audio-node
 
-load @treesurf/nest/code/javascript/es5/float32-array
+load @treesurf/nest/code/javascript/es5
   take form float32-array
-
-load @treesurf/nest/code/javascript/es5/uint8-array
   take form uint8-array
 
 form analyser-node, name <AnalyserNode>
   base audio-node
 
-  take fft-size, name <fftSize>
+  link fft-size, name <fftSize>
     like native-number
-    lock false
-  take frequency-bin-count, name <frequencyBinCount>
+    flex true
+  link frequency-bin-count, name <frequencyBinCount>
     like native-number
-  take max-decibels, name <maxDecibels>
+  link max-decibels, name <maxDecibels>
     like native-number
-    lock false
-  take min-decibels, name <minDecibels>
+    flex true
+  link min-decibels, name <minDecibels>
     like native-number
-    lock false
-  take smoothing-time-constant, name <smoothingTimeConstant>
+    flex true
+  link smoothing-time-constant, name <smoothingTimeConstant>
     like native-number
-    lock false
+    flex true
 
   task get-byte-frequency-data, name <getByteFrequencyData>
     take array, like uint8-array

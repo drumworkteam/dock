@@ -1,44 +1,40 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/color-gamut
+load @treesurf/nest/code/javascript/dom
   take form color-gamut
-
-load @treesurf/nest/code/javascript/dom/hdr-metadata-type
   take form hdr-metadata-type
-
-load @treesurf/nest/code/javascript/dom/transfer-function
   take form transfer-function
 
 form video-configuration, name <VideoConfiguration>
-  take bitrate, name <bitrate>
+  link bitrate, name <bitrate>
     like native-number
-    lock false
-  take color-gamut, name <colorGamut>
+    flex true
+  link color-gamut, name <colorGamut>
     like color-gamut
-    lock false
-  take content-type, name <contentType>
+    flex true
+  link content-type, name <contentType>
     like native-string
-    lock false
-  take framerate, name <framerate>
+    flex true
+  link framerate, name <framerate>
     like native-number
-    lock false
-  take hdr-metadata-type, name <hdrMetadataType>
+    flex true
+  link hdr-metadata-type, name <hdrMetadataType>
     like hdr-metadata-type
-    lock false
-  take height, name <height>
+    flex true
+  link height, name <height>
     like native-number
-    lock false
-  take scalability-mode, name <scalabilityMode>
+    flex true
+  link scalability-mode, name <scalabilityMode>
     like native-string
-    lock false
-  take transfer-function, name <transferFunction>
+    flex true
+  link transfer-function, name <transferFunction>
     like transfer-function
-    lock false
-  take width, name <width>
+    flex true
+  link width, name <width>
     like native-number
-    lock false
+    flex true

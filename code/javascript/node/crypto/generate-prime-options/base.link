@@ -1,35 +1,34 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/crypto/large-number-like
+load @drumwork/nest/code/javascript/node/crypto
   take form large-number-like
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form generate-prime-options, name <GeneratePrimeOptions>
-  take add, name <add>
-    like or-link-text
+  link add, name <add>
+    like or
       like large-number-like
       like native-undefined
-    lock false
-  take rem, name <rem>
-    like or-link-text
+    flex true
+  link rem, name <rem>
+    like or
       like large-number-like
       like native-undefined
-    lock false
-  take safe, name <safe>
-    like or-link-text
+    flex true
+  link safe, name <safe>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take bigint, name <bigint>
-    like or-link-text
+    flex true
+  link bigint, name <bigint>
+    like or
       like native-boolean
       like native-undefined
-    lock false
+    flex true

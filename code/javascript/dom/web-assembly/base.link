@@ -22,110 +22,68 @@ bear @treesurf/nest/code/javascript/dom/web-assembly/import-value
 bear @treesurf/nest/code/javascript/dom/web-assembly/imports
 bear @treesurf/nest/code/javascript/dom/web-assembly/module-imports
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form form
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/buffer-source
+load @treesurf/nest/code/javascript/dom
   take form buffer-source
-
-load @treesurf/nest/code/javascript/dom/compile-error
   take form compile-error
-
-load @treesurf/nest/code/javascript/dom/global
   take form global
-
-load @treesurf/nest/code/javascript/dom/global-descriptor
   take form global-descriptor
-
-load @treesurf/nest/code/javascript/dom/imports
   take form imports
-
-load @treesurf/nest/code/javascript/dom/instance
   take form instance
-
-load @treesurf/nest/code/javascript/dom/link-error
   take form link-error
-
-load @treesurf/nest/code/javascript/dom/memory
   take form memory
-
-load @treesurf/nest/code/javascript/dom/memory-descriptor
   take form memory-descriptor
-
-load @treesurf/nest/code/javascript/dom/module
   take form module
-
-load @treesurf/nest/code/javascript/dom/module-export-descriptor
   take form module-export-descriptor
-
-load @treesurf/nest/code/javascript/dom/module-import-descriptor
   take form module-import-descriptor
-
-load @treesurf/nest/code/javascript/dom/response
   take form response
-
-load @treesurf/nest/code/javascript/dom/runtime-error
   take form runtime-error
-
-load @treesurf/nest/code/javascript/dom/table
   take form table
-
-load @treesurf/nest/code/javascript/dom/table-descriptor
   take form table-descriptor
-
-load @treesurf/nest/code/javascript/dom/web-assembly-instantiated-source
   take form web-assembly-instantiated-source
 
-load @treesurf/nest/code/javascript/es5/array-buffer
+load @treesurf/nest/code/javascript/es5
   take form array-buffer
-
-load @treesurf/nest/code/javascript/es5/promise
   take form promise
-
-load @treesurf/nest/code/javascript/es5/promise-like
   take form promise-like
 
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 host compile-error, name <CompileError>
-  like form-link-text
-    take prototype, name <prototype>
+  like form
+    link prototype, name <prototype>
       like compile-error
-      lock false
+      flex true
     hook make
       free seed, like compile-error
 
 host global, name <Global>
-  like form-link-text
-    take prototype, name <prototype>
+  like form
+    link prototype, name <prototype>
       like global
-      lock false
+      flex true
     hook make
       take descriptor, like global-descriptor
-      take v, like native-any
+      take v, like any
         void true
       free seed, like global
 
 host instance, name <Instance>
-  like form-link-text
-    take prototype, name <prototype>
+  like form
+    link prototype, name <prototype>
       like instance
-      lock false
+      flex true
     hook make
       take module, like module
       take import-object, like imports
@@ -133,27 +91,27 @@ host instance, name <Instance>
       free seed, like instance
 
 host link-error, name <LinkError>
-  like form-link-text
-    take prototype, name <prototype>
+  like form
+    link prototype, name <prototype>
       like link-error
-      lock false
+      flex true
     hook make
       free seed, like link-error
 
 host memory, name <Memory>
-  like form-link-text
-    take prototype, name <prototype>
+  like form
+    link prototype, name <prototype>
       like memory
-      lock false
+      flex true
     hook make
       take descriptor, like memory-descriptor
       free seed, like memory
 
 host module, name <Module>
-  like form-link-text
-    take prototype, name <prototype>
+  like form
+    link prototype, name <prototype>
       like module
-      lock false
+      flex true
     hook make
       take bytes, like buffer-source
       free seed, like module
@@ -162,37 +120,37 @@ host module, name <Module>
       take module-object, like module
       take section-name, like native-string
       free seed
-        like native-array
+        like array
           like array-buffer
 
     task exports, name <exports>
       take module-object, like module
       free seed
-        like native-array
+        like array
           like module-export-descriptor
 
     task imports, name <imports>
       take module-object, like module
       free seed
-        like native-array
+        like array
           like module-import-descriptor
 
 host runtime-error, name <RuntimeError>
-  like form-link-text
-    take prototype, name <prototype>
+  like form
+    link prototype, name <prototype>
       like runtime-error
-      lock false
+      flex true
     hook make
       free seed, like runtime-error
 
 host table, name <Table>
-  like form-link-text
-    take prototype, name <prototype>
+  like form
+    link prototype, name <prototype>
       like table
-      lock false
+      flex true
     hook make
       take descriptor, like table-descriptor
-      take value, like native-any
+      take value, like any
         void true
       free seed, like table
 
@@ -204,7 +162,7 @@ task compile, name <compile>
 
 task compile-streaming, name <compileStreaming>
   take source
-    like or-link-text
+    like or
       like response
       like promise-like
         like response
@@ -230,7 +188,7 @@ task instantiate, name <instantiate>
 
 task instantiate-streaming, name <instantiateStreaming>
   take source
-    like or-link-text
+    like or
       like response
       like promise-like
         like response

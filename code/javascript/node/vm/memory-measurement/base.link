@@ -1,24 +1,21 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/form/band
-  take form band
-    save form band-link-text
-
-load @treesurf/nest/code/form/form
+load @treesurf/moon
   take form form
-    save form form-link-text
+  take form tuple
+
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
 
 form memory-measurement, name <MemoryMeasurement>
-  take total, name <total>
-    like form-link-text
-      take js-memory-estimate, name <jsMemoryEstimate>
+  link total, name <total>
+    like form
+      link js-memory-estimate, name <jsMemoryEstimate>
         like native-number
-        lock false
-      take js-memory-range, name <jsMemoryRange>
-        like band-link-text
+        flex true
+      link js-memory-range, name <jsMemoryRange>
+        like tuple
           like native-number
           like native-number
-        lock false
-    lock false
+        flex true
+    flex true

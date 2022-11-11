@@ -1,21 +1,20 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/element
-  take form element
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+
+load @treesurf/nest/code/javascript/dom
+  take form element
 
 form non-element-parent-node, name <NonElementParentNode>
   task get-element-by-id, name <getElementById>
     take element-id, like native-string
     free seed
-      like or-link-text
+      like or
         like element
         like native-null

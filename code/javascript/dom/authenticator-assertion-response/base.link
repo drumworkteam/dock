@@ -1,25 +1,25 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/dom/authenticator-response
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+
+load @treesurf/nest/code/javascript/dom
   take form authenticator-response
 
-load @treesurf/nest/code/javascript/es5/array-buffer
+load @treesurf/nest/code/javascript/es5
   take form array-buffer
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form authenticator-assertion-response, name <AuthenticatorAssertionResponse>
   base authenticator-response
 
-  take authenticator-data, name <authenticatorData>
+  link authenticator-data, name <authenticatorData>
     like array-buffer
-  take signature, name <signature>
+  link signature, name <signature>
     like array-buffer
-  take user-handle, name <userHandle>
-    like or-link-text
+  link user-handle, name <userHandle>
+    like or
       like array-buffer
       like native-null

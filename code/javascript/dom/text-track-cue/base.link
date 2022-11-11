@@ -1,114 +1,85 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/add-event-listener-options
-  take form add-event-listener-options
-
-load @treesurf/nest/code/javascript/dom/event
-  take form event
-
-load @treesurf/nest/code/javascript/dom/event-listener-options
-  take form event-listener-options
-
-load @treesurf/nest/code/javascript/dom/event-listener-or-event-listener-object
-  take form event-listener-or-event-listener-object
-
-load @treesurf/nest/code/javascript/dom/event-target
-  take form event-target
-
-load @treesurf/nest/code/javascript/dom/text-track
-  take form text-track
-
-load @treesurf/nest/code/javascript/dom/text-track-cue-event-map
-  take form text-track-cue-event-map
-
-load @treesurf/nest/code/form/form/link
-  take form form-link
-    save form form-link-link-text
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
+  take form any
+  take form index
+  take form key-list
   take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/link/read
-  take form link-read
-    save form link-read-link-text
-
-load @treesurf/nest/code/form/or
   take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
   take form task
-    save form task-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/dom
+  take form add-event-listener-options
+  take form event
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form event-target
+  take form text-track
+  take form text-track-cue-event-map
 
 form text-track-cue, name <TextTrackCue>
   base event-target
 
-  take end-time, name <endTime>
+  link end-time, name <endTime>
     like native-number
-    lock false
-  take id, name <id>
+    flex true
+  link id, name <id>
     like native-string
-    lock false
-  take onenter, name <onenter>
-    like or-link-text
-      like task-link-text
+    flex true
+  link onenter, name <onenter>
+    like or
+      like task
         take this, like text-track-cue
         take ev, like event
-        free seed, like native-any
+        free seed, like any
       like native-null
-    lock false
-  take onexit, name <onexit>
-    like or-link-text
-      like task-link-text
+    flex true
+  link onexit, name <onexit>
+    like or
+      like task
         take this, like text-track-cue
         take ev, like event
-        free seed, like native-any
+        free seed, like any
       like native-null
-    lock false
-  take pause-on-exit, name <pauseOnExit>
+    flex true
+  link pause-on-exit, name <pauseOnExit>
     like native-boolean
-    lock false
-  take start-time, name <startTime>
+    flex true
+  link start-time, name <startTime>
     like native-number
-    lock false
-  take track, name <track>
-    like or-link-text
+    flex true
+  link track, name <track>
+    like or
       like text-track
       like native-null
 
   task add-event-listener, name <addEventListener>
-    head k, like like-link-text
-      base link-read-link-text
+    head k
+      base key-list
         like text-track-cue-event-map
+
     take type, like k
     take listener
-      like task-link-text
+      like task
         take this, like text-track-cue
         take ev
-          like form-link-link-text
+          like index
             like text-track-cue-event-map
             like k
-        free seed, like native-any
+        free seed, like any
     take options
-      like or-link-text
+      like or
         like native-boolean
         like add-event-listener-options
       void true
@@ -118,27 +89,28 @@ form text-track-cue, name <TextTrackCue>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like or-link-text
+      like or
         like native-boolean
         like add-event-listener-options
       void true
     free seed, like native-void
 
   task remove-event-listener, name <removeEventListener>
-    head k, like like-link-text
-      base link-read-link-text
+    head k
+      base key-list
         like text-track-cue-event-map
+
     take type, like k
     take listener
-      like task-link-text
+      like task
         take this, like text-track-cue
         take ev
-          like form-link-link-text
+          like index
             like text-track-cue-event-map
             like k
-        free seed, like native-any
+        free seed, like any
     take options
-      like or-link-text
+      like or
         like native-boolean
         like event-listener-options
       void true
@@ -148,7 +120,7 @@ form text-track-cue, name <TextTrackCue>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like or-link-text
+      like or
         like native-boolean
         like event-listener-options
       void true

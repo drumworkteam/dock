@@ -1,25 +1,24 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/dom/event-init
-  take form event-init
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/dom
+  take form event-init
 
 form idb-version-change-event-init, name <IDBVersionChangeEventInit>
   base event-init
 
-  take new-version, name <newVersion>
-    like or-link-text
+  link new-version, name <newVersion>
+    like or
       like native-number
       like native-null
-    lock false
-  take old-version, name <oldVersion>
+    flex true
+  link old-version, name <oldVersion>
     like native-number
-    lock false
+    flex true

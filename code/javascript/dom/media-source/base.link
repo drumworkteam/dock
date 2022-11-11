@@ -1,107 +1,71 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/add-event-listener-options
-  take form add-event-listener-options
-
-load @treesurf/nest/code/javascript/dom/end-of-stream-error
-  take form end-of-stream-error
-
-load @treesurf/nest/code/javascript/dom/event
-  take form event
-
-load @treesurf/nest/code/javascript/dom/event-listener-options
-  take form event-listener-options
-
-load @treesurf/nest/code/javascript/dom/event-listener-or-event-listener-object
-  take form event-listener-or-event-listener-object
-
-load @treesurf/nest/code/javascript/dom/event-target
-  take form event-target
-
-load @treesurf/nest/code/javascript/dom/media-source-event-map
-  take form media-source-event-map
-
-load @treesurf/nest/code/javascript/dom/ready-state
-  take form ready-state
-
-load @treesurf/nest/code/javascript/dom/source-buffer
-  take form source-buffer
-
-load @treesurf/nest/code/javascript/dom/source-buffer-list
-  take form source-buffer-list
-
-load @treesurf/nest/code/form/form/link
-  take form form-link
-    save form form-link-link-text
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
+  take form any
+  take form index
+  take form key-list
   take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/link/read
-  take form link-read
-    save form link-read-link-text
-
-load @treesurf/nest/code/form/or
   take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
   take form task
-    save form task-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/dom
+  take form add-event-listener-options
+  take form end-of-stream-error
+  take form event
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form event-target
+  take form media-source-event-map
+  take form ready-state
+  take form source-buffer
+  take form source-buffer-list
 
 form media-source, name <MediaSource>
   base event-target
 
-  take active-source-buffers, name <activeSourceBuffers>
+  link active-source-buffers, name <activeSourceBuffers>
     like source-buffer-list
-  take duration, name <duration>
+  link duration, name <duration>
     like native-number
-    lock false
-  take onsourceclose, name <onsourceclose>
-    like or-link-text
-      like task-link-text
+    flex true
+  link onsourceclose, name <onsourceclose>
+    like or
+      like task
         take this, like media-source
         take ev, like event
-        free seed, like native-any
+        free seed, like any
       like native-null
-    lock false
-  take onsourceended, name <onsourceended>
-    like or-link-text
-      like task-link-text
+    flex true
+  link onsourceended, name <onsourceended>
+    like or
+      like task
         take this, like media-source
         take ev, like event
-        free seed, like native-any
+        free seed, like any
       like native-null
-    lock false
-  take onsourceopen, name <onsourceopen>
-    like or-link-text
-      like task-link-text
+    flex true
+  link onsourceopen, name <onsourceopen>
+    like or
+      like task
         take this, like media-source
         take ev, like event
-        free seed, like native-any
+        free seed, like any
       like native-null
-    lock false
-  take ready-state, name <readyState>
+    flex true
+  link ready-state, name <readyState>
     like ready-state
-  take source-buffers, name <sourceBuffers>
+  link source-buffers, name <sourceBuffers>
     like source-buffer-list
 
   task add-source-buffer, name <addSourceBuffer>
@@ -126,20 +90,21 @@ form media-source, name <MediaSource>
     free seed, like native-void
 
   task add-event-listener, name <addEventListener>
-    head k, like like-link-text
-      base link-read-link-text
+    head k
+      base key-list
         like media-source-event-map
+
     take type, like k
     take listener
-      like task-link-text
+      like task
         take this, like media-source
         take ev
-          like form-link-link-text
+          like index
             like media-source-event-map
             like k
-        free seed, like native-any
+        free seed, like any
     take options
-      like or-link-text
+      like or
         like native-boolean
         like add-event-listener-options
       void true
@@ -149,27 +114,28 @@ form media-source, name <MediaSource>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like or-link-text
+      like or
         like native-boolean
         like add-event-listener-options
       void true
     free seed, like native-void
 
   task remove-event-listener, name <removeEventListener>
-    head k, like like-link-text
-      base link-read-link-text
+    head k
+      base key-list
         like media-source-event-map
+
     take type, like k
     take listener
-      like task-link-text
+      like task
         take this, like media-source
         take ev
-          like form-link-link-text
+          like index
             like media-source-event-map
             like k
-        free seed, like native-any
+        free seed, like any
     take options
-      like or-link-text
+      like or
         like native-boolean
         like event-listener-options
       void true
@@ -179,7 +145,7 @@ form media-source, name <MediaSource>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like or-link-text
+      like or
         like native-boolean
         like event-listener-options
       void true

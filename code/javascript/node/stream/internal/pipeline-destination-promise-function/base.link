@@ -1,26 +1,20 @@
 
-load @treesurf/nest/code/javascript/base/async-iterable
-  take form async-iterable
+load @treesurf/moon
+  take form like
+  take form task
 
-load @treesurf/nest/code/javascript/base/promise
+load @drumwork/nest/code/javascript
+  take form async-iterable
   take form promise
 
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
 form pipeline-destination-promise-function, name <PipelineDestinationPromiseFunction>
-  head t, like like-link-text
-  head p, like like-link-text
+  head t
+  head p
 
-  like task-link-text
+  like task
     take source
       like async-iterable
         like t
-    free seed
+    free result
       like promise
         like p

@@ -1,22 +1,21 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
 
-load @treesurf/nest/code/javascript/dom/abort-signal
+load @treesurf/nest/code/javascript/dom
   take form abort-signal
-
-load @treesurf/nest/code/javascript/dom/event-listener-options
   take form event-listener-options
 
 form add-event-listener-options, name <AddEventListenerOptions>
   base event-listener-options
 
-  take once, name <once>
+  link once, name <once>
     like native-boolean
-    lock false
-  take passive, name <passive>
+    flex true
+  link passive, name <passive>
     like native-boolean
-    lock false
-  take signal, name <signal>
+    flex true
+  link signal, name <signal>
     like abort-signal
-    lock false
+    flex true

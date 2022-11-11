@@ -1,50 +1,40 @@
 
-load @treesurf/nest/code/javascript/base/child-process
-  take form child-process
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/readable
-  take form readable
-
-load @treesurf/nest/code/javascript/base/writable
-  take form writable
-
-load @treesurf/nest/code/form/band
-  take form band
-    save form band-link-text
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+  take form tuple
+
+load @drumwork/nest/code/javascript
+  take form child-process
+  take form null
+    save form native-null
+  take form readable
+  take form undefined
+    save form native-undefined
+  take form writable
 
 form child-process-without-null-streams, name <ChildProcessWithoutNullStreams>
   base child-process
 
-  take stdin, name <stdin>
+  link stdin, name <stdin>
     like writable
-    lock false
-  take stdout, name <stdout>
+    flex true
+  link stdout, name <stdout>
     like readable
-    lock false
-  take stderr, name <stderr>
+    flex true
+  link stderr, name <stderr>
     like readable
-    lock false
-  take stdio, name <stdio>
-    like band-link-text
+    flex true
+  link stdio, name <stdio>
+    like tuple
       like writable
       like readable
       like readable
-      like or-link-text
+      like or
         like readable
         like writable
         like native-null
         like native-undefined
-      like or-link-text
+      like or
         like readable
         like writable
         like native-null

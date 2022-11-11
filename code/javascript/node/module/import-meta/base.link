@@ -1,27 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/promise
-  take form promise
-
-load @treesurf/nest/code/javascript/base/url
-  take form url
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form promise
+  take form string
+    save form native-string
+  take form url
 
 form import-meta, name <ImportMeta>
   home true
-  take url, name <url>
+  link url, name <url>
     like native-string
-    lock false
+    flex true
 
   task resolve, name <resolve>
     take specified, like native-string
     take parent
-      like or-link-text
+      like or
         like native-string
         like url
       void true

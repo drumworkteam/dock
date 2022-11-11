@@ -1,29 +1,22 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/buffer-source
+load @treesurf/nest/code/javascript/dom
   take form buffer-source
-
-load @treesurf/nest/code/javascript/dom/generic-transform-stream
   take form generic-transform-stream
-
-load @treesurf/nest/code/javascript/dom/readable-stream
   take form readable-stream
-
-load @treesurf/nest/code/javascript/dom/text-decoder-common
   take form text-decoder-common
-
-load @treesurf/nest/code/javascript/dom/writable-stream
   take form writable-stream
 
 form text-decoder-stream, name <TextDecoderStream>
   base generic-transform-stream
   base text-decoder-common
 
-  take readable, name <readable>
+  link readable, name <readable>
     like readable-stream
       like native-string
-  take writable, name <writable>
+  link writable, name <writable>
     like writable-stream
       like buffer-source

@@ -1,28 +1,24 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form or
+  take form task
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/node/globals/uint8-array
+load @drumwork/nest/code/javascript/node/globals
   take form uint8-array
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
 form on-read-opts, name <OnReadOpts>
-  take buffer, name <buffer>
-    like or-link-text
+  link buffer, name <buffer>
+    like or
       like uint8-array
-      like task-link-text
-        free seed, like uint8-array
-    lock false
+      like task
+        free result, like uint8-array
+    flex true
 
   task callback, name <callback>
     take bytes-written, like native-number

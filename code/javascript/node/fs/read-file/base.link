@@ -1,55 +1,41 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form and
+  take form form
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/promise
+load @drumwork/nest/code/javascript
+  take form null
+    save form native-null
   take form promise
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
-
-load @treesurf/nest/code/javascript/node/buffer/buffer-encoding
   take form buffer-encoding
 
-load @treesurf/nest/code/javascript/node/fs/object-encoding-options
+load @drumwork/nest/code/javascript/node/fs
   take form object-encoding-options
-
-load @treesurf/nest/code/javascript/node/fs/path-or-file-descriptor
   take form path-or-file-descriptor
-
-load @treesurf/nest/code/form/and
-  take form and
-    save form and-link-text
-
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 task promisify, name <__promisify__>
   take path, like path-or-file-descriptor
   take options
-    like or-link-text
-      like form-link-text
-        take encoding, name <encoding>
-          like or-link-text
+    like or
+      like form
+        link encoding, name <encoding>
+          like or
             like native-null
             like native-undefined
-          lock false
-        take flag, name <flag>
-          like or-link-text
+          flex true
+        link flag, name <flag>
+          like or
             like native-string
             like native-undefined
-          lock false
+          flex true
       like native-null
     void true
   free seed
@@ -59,16 +45,16 @@ task promisify, name <__promisify__>
 task promisify, name <__promisify__>
   take path, like path-or-file-descriptor
   take options
-    like or-link-text
-      like form-link-text
-        take encoding, name <encoding>
+    like or
+      like form
+        link encoding, name <encoding>
           like buffer-encoding
-          lock false
-        take flag, name <flag>
-          like or-link-text
+          flex true
+        link flag, name <flag>
+          like or
             like native-string
             like native-undefined
-          lock false
+          flex true
       like buffer-encoding
   free seed
     like promise
@@ -77,20 +63,20 @@ task promisify, name <__promisify__>
 task promisify, name <__promisify__>
   take path, like path-or-file-descriptor
   take options
-    like or-link-text
-      like and-link-text
+    like or
+      like and
         like object-encoding-options
-        like form-link-text
-          take flag, name <flag>
-            like or-link-text
+        like form
+          link flag, name <flag>
+            like or
               like native-string
               like native-undefined
-            lock false
+            flex true
       like buffer-encoding
       like native-null
     void true
   free seed
     like promise
-      like or-link-text
+      like or
         like native-string
         like buffer

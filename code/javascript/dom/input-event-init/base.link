@@ -1,49 +1,43 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/data-transfer
-  take form data-transfer
-
-load @treesurf/nest/code/javascript/dom/static-range
-  take form static-range
-
-load @treesurf/nest/code/javascript/dom/ui-event-init
-  take form ui-event-init
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+
+load @treesurf/nest/code/javascript/dom
+  take form data-transfer
+  take form static-range
+  take form ui-event-init
 
 form input-event-init, name <InputEventInit>
   base ui-event-init
 
-  take data, name <data>
-    like or-link-text
+  link data, name <data>
+    like or
       like native-string
       like native-null
-    lock false
-  take data-transfer, name <dataTransfer>
-    like or-link-text
+    flex true
+  link data-transfer, name <dataTransfer>
+    like or
       like data-transfer
       like native-null
-    lock false
-  take input-type, name <inputType>
+    flex true
+  link input-type, name <inputType>
     like native-string
-    lock false
-  take is-composing, name <isComposing>
+    flex true
+  link is-composing, name <isComposing>
     like native-boolean
-    lock false
-  take target-ranges, name <targetRanges>
-    like native-array
+    flex true
+  link target-ranges, name <targetRanges>
+    like array
       like static-range
-    lock false
+    flex true

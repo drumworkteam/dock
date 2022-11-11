@@ -1,22 +1,19 @@
 
-load @treesurf/nest/code/javascript/base/intl-number-format-options
+load @treesurf/nest/code/javascript/native
   take form intl-number-format-options
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript
+  take form array
 
 load @treesurf/nest/code/javascript/es5/number
   take form number
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form number, name <Number>
   task to-string, name <toString>
@@ -45,9 +42,9 @@ form number, name <Number>
 form number, name <Number>
   task to-locale-string, name <toLocaleString>
     take locales
-      like or-link-text
+      like or
         like native-string
-        like native-array
+        like array
           like native-string
       void true
     take options, like intl-number-format-options

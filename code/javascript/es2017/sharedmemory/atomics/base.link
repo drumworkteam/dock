@@ -1,40 +1,29 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/es2016/array/include/int16-array
+load @treesurf/nest/code/javascript/es2016/array/include
   take form int16-array
-
-load @treesurf/nest/code/javascript/es2016/array/include/int32-array
   take form int32-array
-
-load @treesurf/nest/code/javascript/es2016/array/include/int8-array
   take form int8-array
-
-load @treesurf/nest/code/javascript/es2016/array/include/uint16-array
   take form uint16-array
-
-load @treesurf/nest/code/javascript/es2016/array/include/uint32-array
   take form uint32-array
-
-load @treesurf/nest/code/javascript/es2016/array/include/uint8-array
   take form uint8-array
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form atomics, name <Atomics>
-  take loan symbol/to-string-tag
+  link {symbol/to-string-tag}
     text <Atomics>
-    read true
+    work true
 
   task add, name <add>
     take typed-array
-      like or-link-text
+      like or
         like int8-array
         like uint8-array
         like int16-array
@@ -47,7 +36,7 @@ form atomics, name <Atomics>
 
   task and, name <and>
     take typed-array
-      like or-link-text
+      like or
         like int8-array
         like uint8-array
         like int16-array
@@ -60,7 +49,7 @@ form atomics, name <Atomics>
 
   task compare-exchange, name <compareExchange>
     take typed-array
-      like or-link-text
+      like or
         like int8-array
         like uint8-array
         like int16-array
@@ -74,7 +63,7 @@ form atomics, name <Atomics>
 
   task exchange, name <exchange>
     take typed-array
-      like or-link-text
+      like or
         like int8-array
         like uint8-array
         like int16-array
@@ -91,7 +80,7 @@ form atomics, name <Atomics>
 
   task load, name <load>
     take typed-array
-      like or-link-text
+      like or
         like int8-array
         like uint8-array
         like int16-array
@@ -103,7 +92,7 @@ form atomics, name <Atomics>
 
   task or, name <or>
     take typed-array
-      like or-link-text
+      like or
         like int8-array
         like uint8-array
         like int16-array
@@ -116,7 +105,7 @@ form atomics, name <Atomics>
 
   task store, name <store>
     take typed-array
-      like or-link-text
+      like or
         like int8-array
         like uint8-array
         like int16-array
@@ -129,7 +118,7 @@ form atomics, name <Atomics>
 
   task sub, name <sub>
     take typed-array
-      like or-link-text
+      like or
         like int8-array
         like uint8-array
         like int16-array
@@ -147,7 +136,7 @@ form atomics, name <Atomics>
     take timeout, like native-number
       void true
     free seed
-      like or-link-text
+      like or
         text <ok>
         text <not-equal>
         text <timed-out>
@@ -161,7 +150,7 @@ form atomics, name <Atomics>
 
   task xor, name <xor>
     take typed-array
-      like or-link-text
+      like or
         like int8-array
         like uint8-array
         like int16-array

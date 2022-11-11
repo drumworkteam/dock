@@ -1,20 +1,21 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
 
-load @treesurf/nest/code/javascript/dom/abort-signal
+load @treesurf/nest/code/javascript/dom
   take form abort-signal
 
 form stream-pipe-options, name <StreamPipeOptions>
-  take prevent-abort, name <preventAbort>
+  link prevent-abort, name <preventAbort>
     like native-boolean
-    lock false
-  take prevent-cancel, name <preventCancel>
+    flex true
+  link prevent-cancel, name <preventCancel>
     like native-boolean
-    lock false
-  take prevent-close, name <preventClose>
+    flex true
+  link prevent-close, name <preventClose>
     like native-boolean
-    lock false
-  take signal, name <signal>
+    flex true
+  link signal, name <signal>
     like abort-signal
-    lock false
+    flex true

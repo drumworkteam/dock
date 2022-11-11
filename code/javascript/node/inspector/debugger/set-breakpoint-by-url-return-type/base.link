@@ -1,18 +1,16 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/node/inspector/debugger/breakpoint-id
+load @drumwork/nest/code/javascript/node/inspector/debugger
   take form breakpoint-id
-
-load @treesurf/nest/code/javascript/node/inspector/debugger/location
   take form location
 
 form set-breakpoint-by-url-return-type, name <SetBreakpointByUrlReturnType>
-  take breakpoint-id, name <breakpointId>
+  link breakpoint-id, name <breakpointId>
     like breakpoint-id
-    lock false
-  take locations, name <locations>
-    like native-array
+    flex true
+  link locations, name <locations>
+    like array
       like location
-    lock false
+    flex true

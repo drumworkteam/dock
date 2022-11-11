@@ -1,41 +1,35 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/rtc-rtp-receiver
+load @treesurf/nest/code/javascript/dom
   take form rtc-rtp-receiver
-
-load @treesurf/nest/code/javascript/dom/rtc-rtp-sender
   take form rtc-rtp-sender
-
-load @treesurf/nest/code/javascript/dom/rtc-rtp-transceiver-direction
   take form rtc-rtp-transceiver-direction
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form rtc-rtp-transceiver, name <RTCRtpTransceiver>
-  take current-direction, name <currentDirection>
-    like or-link-text
+  link current-direction, name <currentDirection>
+    like or
       like rtc-rtp-transceiver-direction
       like native-null
-  take direction, name <direction>
+  link direction, name <direction>
     like rtc-rtp-transceiver-direction
-    lock false
-  take mid, name <mid>
-    like or-link-text
+    flex true
+  link mid, name <mid>
+    like or
       like native-string
       like native-null
-  take receiver, name <receiver>
+  link receiver, name <receiver>
     like rtc-rtp-receiver
-  take sender, name <sender>
+  link sender, name <sender>
     like rtc-rtp-sender
 
   task stop, name <stop>

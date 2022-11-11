@@ -1,37 +1,32 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/dom/device-motion-event-acceleration
-  take form device-motion-event-acceleration
-
-load @treesurf/nest/code/javascript/dom/device-motion-event-rotation-rate
-  take form device-motion-event-rotation-rate
-
-load @treesurf/nest/code/javascript/dom/event
-  take form event
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/dom
+  take form device-motion-event-acceleration
+  take form device-motion-event-rotation-rate
+  take form event
 
 form device-motion-event, name <DeviceMotionEvent>
   base event
 
-  take acceleration, name <acceleration>
-    like or-link-text
+  link acceleration, name <acceleration>
+    like or
       like device-motion-event-acceleration
       like native-null
-  take acceleration-including-gravity, name <accelerationIncludingGravity>
-    like or-link-text
+  link acceleration-including-gravity, name <accelerationIncludingGravity>
+    like or
       like device-motion-event-acceleration
       like native-null
-  take interval, name <interval>
+  link interval, name <interval>
     like native-number
-  take rotation-rate, name <rotationRate>
-    like or-link-text
+  link rotation-rate, name <rotationRate>
+    like or
       like device-motion-event-rotation-rate
       like native-null

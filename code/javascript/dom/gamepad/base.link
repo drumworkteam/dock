@@ -1,45 +1,38 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/dom-high-res-time-stamp
+load @treesurf/nest/code/javascript/dom
   take form dom-high-res-time-stamp
-
-load @treesurf/nest/code/javascript/dom/gamepad-button
   take form gamepad-button
-
-load @treesurf/nest/code/javascript/dom/gamepad-haptic-actuator
   take form gamepad-haptic-actuator
-
-load @treesurf/nest/code/javascript/dom/gamepad-mapping-type
   take form gamepad-mapping-type
 
-load @treesurf/nest/code/javascript/es5/readonly-array
+load @treesurf/nest/code/javascript/es5
   take form readonly-array
 
 form gamepad, name <Gamepad>
-  take axes, name <axes>
+  link axes, name <axes>
     like readonly-array
       like native-number
-  take buttons, name <buttons>
+  link buttons, name <buttons>
     like readonly-array
       like gamepad-button
-  take connected, name <connected>
+  link connected, name <connected>
     like native-boolean
-  take haptic-actuators, name <hapticActuators>
+  link haptic-actuators, name <hapticActuators>
     like readonly-array
       like gamepad-haptic-actuator
-  take id, name <id>
+  link id, name <id>
     like native-string
-  take index, name <index>
+  link index, name <index>
     like native-number
-  take mapping, name <mapping>
+  link mapping, name <mapping>
     like gamepad-mapping-type
-  take timestamp, name <timestamp>
+  link timestamp, name <timestamp>
     like dom-high-res-time-stamp

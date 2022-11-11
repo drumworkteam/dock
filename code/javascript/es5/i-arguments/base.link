@@ -1,20 +1,21 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/es5/function
+load @treesurf/nest/code/javascript/es5
   take form function
 
 form i-arguments, name <IArguments>
-  take length, name <length>
+  link length, name <length>
     like native-number
-    lock false
-  take callee, name <callee>
+    flex true
+  link callee, name <callee>
     like function
-    lock false
+    flex true
 
   mesh index, like native-number
-    like native-any
+    like any

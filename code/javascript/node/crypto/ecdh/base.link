@@ -1,28 +1,21 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/base/node-js-array-buffer-view
+load @drumwork/nest/code/javascript
   take form node-js-array-buffer-view
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
 
-load @treesurf/nest/code/javascript/node/crypto/binary-like
+load @drumwork/nest/code/javascript/node/crypto
   take form binary-like
-
-load @treesurf/nest/code/javascript/node/crypto/binary-to-text-encoding
   take form binary-to-text-encoding
-
-load @treesurf/nest/code/javascript/node/crypto/ecdh-key-format
   take form ecdh-key-format
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form ecdh, name <ECDH>
   task generate-keys, name <generateKeys>
@@ -88,19 +81,19 @@ form ecdh-constructor
     take input-encoding, like binary-to-text-encoding
       void true
     take output-encoding
-      like or-link-text
+      like or
         text <latin1>
         text <hex>
         text <base64>
         text <base64url>
       void true
     take format
-      like or-link-text
+      like or
         text <uncompressed>
         text <compressed>
         text <hybrid>
       void true
     free seed
-      like or-link-text
+      like or
         like buffer
         like native-string

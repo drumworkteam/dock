@@ -1,32 +1,30 @@
 
-load @treesurf/nest/code/javascript/base/native-bigint
-  take form native-bigint
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form bigint
+    save form native-bigint
+  take form number
+    save form native-number
+  take form undefined
+    save form native-undefined
 
 form create-histogram-options, name <CreateHistogramOptions>
-  take min, name <min>
-    like or-link-text
+  link min, name <min>
+    like or
       like native-number
       like native-bigint
       like native-undefined
-    lock false
-  take max, name <max>
-    like or-link-text
+    flex true
+  link max, name <max>
+    like or
       like native-number
       like native-bigint
       like native-undefined
-    lock false
-  take figures, name <figures>
-    like or-link-text
+    flex true
+  link figures, name <figures>
+    like or
       like native-number
       like native-undefined
-    lock false
+    flex true

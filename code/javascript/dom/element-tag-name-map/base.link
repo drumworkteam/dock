@@ -1,31 +1,23 @@
 
-load @treesurf/nest/code/javascript/dom/html-element-tag-name-map
-  take form html-element-tag-name-map
+load @treesurf/moon
+  take form and
+  take form key-list
 
-load @treesurf/nest/code/javascript/dom/svg-element-tag-name-map
+load @treesurf/nest/code/javascript/dom
+  take form html-element-tag-name-map
   take form svg-element-tag-name-map
 
-load @treesurf/nest/code/javascript/es5/exclude
+load @treesurf/nest/code/javascript/es5
   take form exclude
-
-load @treesurf/nest/code/javascript/es5/pick
   take form pick
 
-load @treesurf/nest/code/form/and
-  take form and
-    save form and-link-text
-
-load @treesurf/nest/code/form/link/read
-  take form link-read
-    save form link-read-link-text
-
 form element-tag-name-map, name <ElementTagNameMap>
-  like and-link-text
+  like and
     like html-element-tag-name-map
     like pick
       like svg-element-tag-name-map
       like exclude
-        like link-read-link-text
+        like key-list
           like svg-element-tag-name-map
-        like link-read-link-text
+        like key-list
           like html-element-tag-name-map

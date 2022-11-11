@@ -1,18 +1,17 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/css-rule
+load @treesurf/nest/code/javascript/dom
   take form css-rule
-
-load @treesurf/nest/code/javascript/dom/css-style-declaration
   take form css-style-declaration
 
 form css-style-rule, name <CSSStyleRule>
   base css-rule
 
-  take selector-text, name <selectorText>
+  link selector-text, name <selectorText>
     like native-string
-    lock false
-  take style, name <style>
+    flex true
+  link style, name <style>
     like css-style-declaration

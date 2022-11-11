@@ -1,46 +1,44 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/rtc-dtls-transport-state
+load @treesurf/nest/code/javascript/dom
   take form rtc-dtls-transport-state
-
-load @treesurf/nest/code/javascript/dom/rtc-stats
   take form rtc-stats
 
 form rtc-transport-stats, name <RTCTransportStats>
   base rtc-stats
 
-  take bytes-received, name <bytesReceived>
+  link bytes-received, name <bytesReceived>
     like native-number
-    lock false
-  take bytes-sent, name <bytesSent>
+    flex true
+  link bytes-sent, name <bytesSent>
     like native-number
-    lock false
-  take dtls-cipher, name <dtlsCipher>
+    flex true
+  link dtls-cipher, name <dtlsCipher>
     like native-string
-    lock false
-  take dtls-state, name <dtlsState>
+    flex true
+  link dtls-state, name <dtlsState>
     like rtc-dtls-transport-state
-    lock false
-  take local-certificate-id, name <localCertificateId>
+    flex true
+  link local-certificate-id, name <localCertificateId>
     like native-string
-    lock false
-  take remote-certificate-id, name <remoteCertificateId>
+    flex true
+  link remote-certificate-id, name <remoteCertificateId>
     like native-string
-    lock false
-  take rtcp-transport-stats-id, name <rtcpTransportStatsId>
+    flex true
+  link rtcp-transport-stats-id, name <rtcpTransportStatsId>
     like native-string
-    lock false
-  take selected-candidate-pair-id, name <selectedCandidatePairId>
+    flex true
+  link selected-candidate-pair-id, name <selectedCandidatePairId>
     like native-string
-    lock false
-  take srtp-cipher, name <srtpCipher>
+    flex true
+  link srtp-cipher, name <srtpCipher>
     like native-string
-    lock false
-  take tls-version, name <tlsVersion>
+    flex true
+  link tls-version, name <tlsVersion>
     like native-string
-    lock false
+    flex true

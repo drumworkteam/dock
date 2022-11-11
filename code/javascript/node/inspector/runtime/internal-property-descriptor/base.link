@@ -1,23 +1,22 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @drumwork/nest/code/javascript
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/inspector/runtime/remote-object
+load @drumwork/nest/code/javascript/node/inspector/runtime
   take form remote-object
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form internal-property-descriptor, name <InternalPropertyDescriptor>
-  take name, name <name>
+  link name, name <name>
     like native-string
-    lock false
-  take value, name <value>
-    like or-link-text
+    flex true
+  link value, name <value>
+    like or
       like remote-object
       like native-undefined
-    lock false
+    flex true

@@ -1,36 +1,35 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/form/form
+load @treesurf/moon
   take form form
-    save form form-link-text
+
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
 form cpu-info, name <CpuInfo>
-  take model, name <model>
+  link model, name <model>
     like native-string
-    lock false
-  take speed, name <speed>
+    flex true
+  link speed, name <speed>
     like native-number
-    lock false
-  take times, name <times>
-    like form-link-text
-      take user, name <user>
+    flex true
+  link times, name <times>
+    like form
+      link user, name <user>
         like native-number
-        lock false
-      take nice, name <nice>
+        flex true
+      link nice, name <nice>
         like native-number
-        lock false
-      take sys, name <sys>
+        flex true
+      link sys, name <sys>
         like native-number
-        lock false
-      take idle, name <idle>
+        flex true
+      link idle, name <idle>
         like native-number
-        lock false
-      take irq, name <irq>
+        flex true
+      link irq, name <irq>
         like native-number
-        lock false
-    lock false
+        flex true
+    flex true

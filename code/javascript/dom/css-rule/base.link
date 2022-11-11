@@ -1,51 +1,49 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/css-style-sheet
+load @treesurf/nest/code/javascript/dom
   take form css-style-sheet
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form css-rule, name <CSSRule>
-  take css-text, name <cssText>
+  link css-text, name <cssText>
     like native-string
-    lock false
-  take parent-rule, name <parentRule>
-    like or-link-text
+    flex true
+  link parent-rule, name <parentRule>
+    like or
       like css-rule
       like native-null
-  take parent-style-sheet, name <parentStyleSheet>
-    like or-link-text
+  link parent-style-sheet, name <parentStyleSheet>
+    like or
       like css-style-sheet
       like native-null
-  take type, name <type>
+  link type, name <type>
     like native-number
-  take charset-rule, name <CHARSET_RULE>
+  link charset-rule, name <CHARSET_RULE>
     like native-number
-  take font-face-rule, name <FONT_FACE_RULE>
+  link font-face-rule, name <FONT_FACE_RULE>
     like native-number
-  take import-rule, name <IMPORT_RULE>
+  link import-rule, name <IMPORT_RULE>
     like native-number
-  take keyframes-rule, name <KEYFRAMES_RULE>
+  link keyframes-rule, name <KEYFRAMES_RULE>
     like native-number
-  take keyframe-rule, name <KEYFRAME_RULE>
+  link keyframe-rule, name <KEYFRAME_RULE>
     like native-number
-  take media-rule, name <MEDIA_RULE>
+  link media-rule, name <MEDIA_RULE>
     like native-number
-  take namespace-rule, name <NAMESPACE_RULE>
+  link namespace-rule, name <NAMESPACE_RULE>
     like native-number
-  take page-rule, name <PAGE_RULE>
+  link page-rule, name <PAGE_RULE>
     like native-number
-  take style-rule, name <STYLE_RULE>
+  link style-rule, name <STYLE_RULE>
     like native-number
-  take supports-rule, name <SUPPORTS_RULE>
+  link supports-rule, name <SUPPORTS_RULE>
     like native-number

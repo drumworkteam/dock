@@ -1,44 +1,33 @@
 
-load @treesurf/nest/code/javascript/node/child-process/spawn-options
-  take form spawn-options
-
-load @treesurf/nest/code/javascript/node/child-process/stdio-null
-  take form stdio-null
-
-load @treesurf/nest/code/javascript/node/child-process/stdio-pipe
-  take form stdio-pipe
-
-load @treesurf/nest/code/form/band
-  take form band
-    save form band-link-text
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
   take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
   take form or
-    save form or-link-text
+  take form tuple
+
+load @drumwork/nest/code/javascript/node/child-process
+  take form spawn-options
+  take form stdio-null
+  take form stdio-pipe
 
 form spawn-options-with-stdio-tuple, name <SpawnOptionsWithStdioTuple>
   base spawn-options
 
-  head stdin, like like-link-text
-    base or-link-text
+  head stdin
+    base or
       like stdio-null
       like stdio-pipe
-  head stdout, like like-link-text
-    base or-link-text
+  head stdout
+    base or
       like stdio-null
       like stdio-pipe
-  head stderr, like like-link-text
-    base or-link-text
+  head stderr
+    base or
       like stdio-null
       like stdio-pipe
 
-  take stdio, name <stdio>
-    like band-link-text
+  link stdio, name <stdio>
+    like tuple
       like stdin
       like stdout
       like stderr
-    lock false
+    flex true

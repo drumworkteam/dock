@@ -1,24 +1,24 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/node/inspector/profiler/coverage-range
+load @drumwork/nest/code/javascript/node/inspector/profiler
   take form coverage-range
 
 form function-coverage, name <FunctionCoverage>
-  take function-name, name <functionName>
+  link function-name, name <functionName>
     like native-string
-    lock false
-  take ranges, name <ranges>
-    like native-array
+    flex true
+  link ranges, name <ranges>
+    like array
       like coverage-range
-    lock false
-  take is-block-coverage, name <isBlockCoverage>
+    flex true
+  link is-block-coverage, name <isBlockCoverage>
     like native-boolean
-    lock false
+    flex true

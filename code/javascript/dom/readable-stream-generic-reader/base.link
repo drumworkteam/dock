@@ -1,23 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @treesurf/nest/code/javascript/native
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/es5/promise
+load @treesurf/nest/code/javascript/es5
   take form promise
 
 form readable-stream-generic-reader, name <ReadableStreamGenericReader>
-  take closed, name <closed>
+  link closed, name <closed>
     like promise
       like native-undefined
 
   task cancel, name <cancel>
-    take reason, like native-any
+    take reason, like any
       void true
     free seed
       like promise

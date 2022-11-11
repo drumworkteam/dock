@@ -1,27 +1,24 @@
 
-load @treesurf/nest/code/javascript/base/native-bigint
-  take form native-bigint
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form bigint
+    save form native-bigint
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/es2020/bigint
+  take form big-int64-array
+  take form big-uint64-array
 
 load @treesurf/nest/code/javascript/es2017/sharedmemory/atomics
   take form atomics
 
-load @treesurf/nest/code/javascript/es2020/bigint/big-int64-array
-  take form big-int64-array
-
-load @treesurf/nest/code/javascript/es2020/bigint/big-uint64-array
-  take form big-uint64-array
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form atomics, name <Atomics>
   task add, name <add>
     take typed-array
-      like or-link-text
+      like or
         like big-int64-array
         like big-uint64-array
     take index, like native-number
@@ -30,7 +27,7 @@ form atomics, name <Atomics>
 
   task and, name <and>
     take typed-array
-      like or-link-text
+      like or
         like big-int64-array
         like big-uint64-array
     take index, like native-number
@@ -39,7 +36,7 @@ form atomics, name <Atomics>
 
   task compare-exchange, name <compareExchange>
     take typed-array
-      like or-link-text
+      like or
         like big-int64-array
         like big-uint64-array
     take index, like native-number
@@ -49,7 +46,7 @@ form atomics, name <Atomics>
 
   task exchange, name <exchange>
     take typed-array
-      like or-link-text
+      like or
         like big-int64-array
         like big-uint64-array
     take index, like native-number
@@ -58,7 +55,7 @@ form atomics, name <Atomics>
 
   task load, name <load>
     take typed-array
-      like or-link-text
+      like or
         like big-int64-array
         like big-uint64-array
     take index, like native-number
@@ -66,7 +63,7 @@ form atomics, name <Atomics>
 
   task or, name <or>
     take typed-array
-      like or-link-text
+      like or
         like big-int64-array
         like big-uint64-array
     take index, like native-number
@@ -75,7 +72,7 @@ form atomics, name <Atomics>
 
   task store, name <store>
     take typed-array
-      like or-link-text
+      like or
         like big-int64-array
         like big-uint64-array
     take index, like native-number
@@ -84,7 +81,7 @@ form atomics, name <Atomics>
 
   task sub, name <sub>
     take typed-array
-      like or-link-text
+      like or
         like big-int64-array
         like big-uint64-array
     take index, like native-number
@@ -98,7 +95,7 @@ form atomics, name <Atomics>
     take timeout, like native-number
       void true
     free seed
-      like or-link-text
+      like or
         text <ok>
         text <not-equal>
         text <timed-out>
@@ -112,7 +109,7 @@ form atomics, name <Atomics>
 
   task xor, name <xor>
     take typed-array
-      like or-link-text
+      like or
         like big-int64-array
         like big-uint64-array
     take index, like native-number

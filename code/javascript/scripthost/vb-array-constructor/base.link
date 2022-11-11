@@ -1,21 +1,19 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form like
 
-load @treesurf/nest/code/javascript/base/safe-array
+load @treesurf/nest/code/javascript/native
   take form safe-array
 
-load @treesurf/nest/code/javascript/scripthost/vb-array
+load @treesurf/nest/code/javascript/scripthost
   take form vb-array
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
 
 form vb-array-constructor, name <VBArrayConstructor>
   hook make
-    head t, like like-link-text
-      back native-any
+    head t
+      back any
+
     take safe-array
       like safe-array
         like t

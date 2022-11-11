@@ -1,65 +1,55 @@
 
-load @treesurf/nest/code/javascript/base/key-object
+load @treesurf/moon
+  take form or
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
   take form key-object
-
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/peer-certificate
   take form peer-certificate
-
-load @treesurf/nest/code/javascript/base/x509-certificate
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
   take form x509-certificate
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
 
-load @treesurf/nest/code/javascript/node/crypto/binary-like
+load @drumwork/nest/code/javascript/node/crypto
   take form binary-like
-
-load @treesurf/nest/code/javascript/node/crypto/x509-check-options
   take form x509-check-options
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form x509-certificate, name <X509Certificate>
-  take ca, name <ca>, like native-boolean
-  take fingerprint, name <fingerprint>, like native-string
-  take fingerprint256, name <fingerprint256>, like native-string
-  take subject, name <subject>, like native-string
-  take subject-alt-name, name <subjectAltName>, like native-string
-  take info-access, name <infoAccess>, like native-string
-  take key-usage, name <keyUsage>
-    like native-array
+  link ca, name <ca>, like native-boolean
+  link fingerprint, name <fingerprint>, like native-string
+  link fingerprint256, name <fingerprint256>, like native-string
+  link subject, name <subject>, like native-string
+  link subject-alt-name, name <subjectAltName>, like native-string
+  link info-access, name <infoAccess>, like native-string
+  link key-usage, name <keyUsage>
+    like array
       like native-string
-  take issuer, name <issuer>, like native-string
-  take issuer-certificate, name <issuerCertificate>
-    like or-link-text
+  link issuer, name <issuer>, like native-string
+  link issuer-certificate, name <issuerCertificate>
+    like or
       like x509-certificate
       like native-undefined
-  take public-key, name <publicKey>, like key-object
-  take raw, name <raw>, like buffer
-  take serial-number, name <serialNumber>, like native-string
-  take valid-from, name <validFrom>, like native-string
-  take valid-to, name <validTo>, like native-string
+  link public-key, name <publicKey>, like key-object
+  link raw, name <raw>, like buffer
+  link serial-number, name <serialNumber>, like native-string
+  link valid-from, name <validFrom>, like native-string
+  link valid-to, name <validTo>, like native-string
 
   task check-email, name <checkEmail>
     take email, like native-string
     take options, like x509-check-options
       void true
     free seed
-      like or-link-text
+      like or
         like native-string
         like native-undefined
 
@@ -68,7 +58,7 @@ form x509-certificate, name <X509Certificate>
     take options, like x509-check-options
       void true
     free seed
-      like or-link-text
+      like or
         like native-string
         like native-undefined
 
@@ -77,7 +67,7 @@ form x509-certificate, name <X509Certificate>
     take options, like x509-check-options
       void true
     free seed
-      like or-link-text
+      like or
         like native-string
         like native-undefined
 

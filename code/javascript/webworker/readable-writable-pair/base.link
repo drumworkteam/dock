@@ -1,31 +1,26 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form like
+
+load @treesurf/nest/code/javascript/webworker
+  take form readable-stream
+  take form writable-stream
 
 load @treesurf/nest/code/javascript/dom/readable-writable-pair
   take form readable-writable-pair
 
-load @treesurf/nest/code/javascript/webworker/readable-stream
-  take form readable-stream
-
-load @treesurf/nest/code/javascript/webworker/writable-stream
-  take form writable-stream
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
 form readable-writable-pair, name <ReadableWritablePair>
-  head r, like like-link-text
-    back native-any
-  head w, like like-link-text
-    back native-any
+  head r
+    back any
+  head w
+    back any
 
-  take readable, name <readable>
+  link readable, name <readable>
     like readable-stream
       like r
-    lock false
-  take writable, name <writable>
+    flex true
+  link writable, name <writable>
     like writable-stream
       like w
-    lock false
+    flex true

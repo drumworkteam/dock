@@ -1,28 +1,25 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/dom/audio-node-options
+load @treesurf/nest/code/javascript/dom
   take form audio-node-options
-
-load @treesurf/nest/code/javascript/dom/oscillator-type
   take form oscillator-type
-
-load @treesurf/nest/code/javascript/dom/periodic-wave
   take form periodic-wave
 
 form oscillator-options, name <OscillatorOptions>
   base audio-node-options
 
-  take detune, name <detune>
+  link detune, name <detune>
     like native-number
-    lock false
-  take frequency, name <frequency>
+    flex true
+  link frequency, name <frequency>
     like native-number
-    lock false
-  take periodic-wave, name <periodicWave>
+    flex true
+  link periodic-wave, name <periodicWave>
     like periodic-wave
-    lock false
-  take type, name <type>
+    flex true
+  link type, name <type>
     like oscillator-type
-    lock false
+    flex true

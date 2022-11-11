@@ -1,47 +1,44 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/fill-mode
+load @treesurf/nest/code/javascript/dom
   take form fill-mode
-
-load @treesurf/nest/code/javascript/dom/playback-direction
   take form playback-direction
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form optional-effect-timing, name <OptionalEffectTiming>
-  take delay, name <delay>
+  link delay, name <delay>
     like native-number
-    lock false
-  take direction, name <direction>
+    flex true
+  link direction, name <direction>
     like playback-direction
-    lock false
-  take duration, name <duration>
-    like or-link-text
+    flex true
+  link duration, name <duration>
+    like or
       like native-number
       like native-string
-    lock false
-  take easing, name <easing>
+    flex true
+  link easing, name <easing>
     like native-string
-    lock false
-  take end-delay, name <endDelay>
+    flex true
+  link end-delay, name <endDelay>
     like native-number
-    lock false
-  take fill, name <fill>
+    flex true
+  link fill, name <fill>
     like fill-mode
-    lock false
-  take iteration-start, name <iterationStart>
+    flex true
+  link iteration-start, name <iterationStart>
     like native-number
-    lock false
-  take iterations, name <iterations>
+    flex true
+  link iterations, name <iterations>
     like native-number
-    lock false
-  take playback-rate, name <playbackRate>
+    flex true
+  link playback-rate, name <playbackRate>
     like native-number
-    lock false
+    flex true

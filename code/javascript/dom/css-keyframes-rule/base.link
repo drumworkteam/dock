@@ -1,34 +1,28 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/css-keyframe-rule
-  take form css-keyframe-rule
-
-load @treesurf/nest/code/javascript/dom/css-rule
-  take form css-rule
-
-load @treesurf/nest/code/javascript/dom/css-rule-list
-  take form css-rule-list
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/dom
+  take form css-keyframe-rule
+  take form css-rule
+  take form css-rule-list
 
 form css-keyframes-rule, name <CSSKeyframesRule>
   base css-rule
 
-  take css-rules, name <cssRules>
+  link css-rules, name <cssRules>
     like css-rule-list
-  take name, name <name>
+  link name, name <name>
     like native-string
-    lock false
+    flex true
 
   task append-rule, name <appendRule>
     take rule, like native-string
@@ -41,6 +35,6 @@ form css-keyframes-rule, name <CSSKeyframesRule>
   task find-rule, name <findRule>
     take select, like native-string
     free seed
-      like or-link-text
+      like or
         like css-keyframe-rule
         like native-null

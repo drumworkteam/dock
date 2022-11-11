@@ -1,30 +1,29 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
 form plugin-array, name <PluginArray>
-  take length, name <length>
+  link length, name <length>
     like native-number
 
   task item, name <item>
     take index, like native-number
-    free seed, like native-any
+    free seed, like any
 
   task named-item, name <namedItem>
     take name, like native-string
-    free seed, like native-any
+    free seed, like any
 
   task refresh, name <refresh>
     free seed, like native-void
 
   mesh index, like native-number
-    like native-any
+    like any

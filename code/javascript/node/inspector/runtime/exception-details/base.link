@@ -1,64 +1,56 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/execution-context-id
+load @drumwork/nest/code/javascript/node/inspector/runtime
   take form execution-context-id
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/remote-object
   take form remote-object
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/script-id
   take form script-id
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/stack-trace
   take form stack-trace
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form exception-details, name <ExceptionDetails>
-  take exception-id, name <exceptionId>
+  link exception-id, name <exceptionId>
     like native-number
-    lock false
-  take text, name <text>
+    flex true
+  link text, name <text>
     like native-string
-    lock false
-  take line-number, name <lineNumber>
+    flex true
+  link line-number, name <lineNumber>
     like native-number
-    lock false
-  take column-number, name <columnNumber>
+    flex true
+  link column-number, name <columnNumber>
     like native-number
-    lock false
-  take script-id, name <scriptId>
-    like or-link-text
+    flex true
+  link script-id, name <scriptId>
+    like or
       like script-id
       like native-undefined
-    lock false
-  take url, name <url>
-    like or-link-text
+    flex true
+  link url, name <url>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take stack-trace, name <stackTrace>
-    like or-link-text
+    flex true
+  link stack-trace, name <stackTrace>
+    like or
       like stack-trace
       like native-undefined
-    lock false
-  take exception, name <exception>
-    like or-link-text
+    flex true
+  link exception, name <exception>
+    like or
       like remote-object
       like native-undefined
-    lock false
-  take execution-context-id, name <executionContextId>
-    like or-link-text
+    flex true
+  link execution-context-id, name <executionContextId>
+    like or
       like execution-context-id
       like native-undefined
-    lock false
+    flex true

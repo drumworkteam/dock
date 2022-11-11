@@ -1,43 +1,41 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/canvas-line-cap
+load @treesurf/nest/code/javascript/dom
   take form canvas-line-cap
-
-load @treesurf/nest/code/javascript/dom/canvas-line-join
   take form canvas-line-join
 
 form canvas-path-drawing-styles, name <CanvasPathDrawingStyles>
-  take line-cap, name <lineCap>
+  link line-cap, name <lineCap>
     like canvas-line-cap
-    lock false
-  take line-dash-offset, name <lineDashOffset>
+    flex true
+  link line-dash-offset, name <lineDashOffset>
     like native-number
-    lock false
-  take line-join, name <lineJoin>
+    flex true
+  link line-join, name <lineJoin>
     like canvas-line-join
-    lock false
-  take line-width, name <lineWidth>
+    flex true
+  link line-width, name <lineWidth>
     like native-number
-    lock false
-  take miter-limit, name <miterLimit>
+    flex true
+  link miter-limit, name <miterLimit>
     like native-number
-    lock false
+    flex true
 
   task get-line-dash, name <getLineDash>
     free seed
-      like native-array
+      like array
         like native-number
 
   task set-line-dash, name <setLineDash>
     take segments
-      like native-array
+      like array
         like native-number
     free seed, like native-void

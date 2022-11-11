@@ -1,43 +1,40 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/event-init
-  take form event-init
-
-load @treesurf/nest/code/javascript/dom/storage
-  take form storage
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+
+load @treesurf/nest/code/javascript/dom
+  take form event-init
+  take form storage
 
 form storage-event-init, name <StorageEventInit>
   base event-init
 
-  take key, name <key>
-    like or-link-text
+  link key, name <key>
+    like or
       like native-string
       like native-null
-    lock false
-  take new-value, name <newValue>
-    like or-link-text
+    flex true
+  link new-value, name <newValue>
+    like or
       like native-string
       like native-null
-    lock false
-  take old-value, name <oldValue>
-    like or-link-text
+    flex true
+  link old-value, name <oldValue>
+    like or
       like native-string
       like native-null
-    lock false
-  take storage-area, name <storageArea>
-    like or-link-text
+    flex true
+  link storage-area, name <storageArea>
+    like or
       like storage
       like native-null
-    lock false
-  take url, name <url>
+    flex true
+  link url, name <url>
     like native-string
-    lock false
+    flex true

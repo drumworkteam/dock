@@ -1,21 +1,19 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/node/net/ip-version
+load @drumwork/nest/code/javascript/node/net
   take form ip-version
-
-load @treesurf/nest/code/javascript/node/net/socket-address-init-options
   take form socket-address-init-options
 
 form socket-address, name <SocketAddress>
-  take address, name <address>, like native-string
-  take family, name <family>, like ip-version
-  take port, name <port>, like native-number
-  take flowlabel, name <flowlabel>, like native-number
+  link address, name <address>, like native-string
+  link family, name <family>, like ip-version
+  link port, name <port>, like native-number
+  link flowlabel, name <flowlabel>, like native-number
 
 form socket-address-constructor
   hook make

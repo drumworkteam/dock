@@ -1,20 +1,19 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/performance-entry
+load @drumwork/nest/code/javascript
   take form performance-entry
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/node/perf-hooks/entry-type
+load @drumwork/nest/code/javascript/node/perf-hooks
   take form entry-type
 
 form performance-observer-entry-list, name <PerformanceObserverEntryList>
   task get-entries, name <getEntries>
     free seed
-      like native-array
+      like array
         like performance-entry
 
   task get-entries-by-name, name <getEntriesByName>
@@ -22,11 +21,11 @@ form performance-observer-entry-list, name <PerformanceObserverEntryList>
     take type, like entry-type
       void true
     free seed
-      like native-array
+      like array
         like performance-entry
 
   task get-entries-by-type, name <getEntriesByType>
     take type, like entry-type
     free seed
-      like native-array
+      like array
         like performance-entry

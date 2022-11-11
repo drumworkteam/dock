@@ -1,26 +1,24 @@
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/dom/event
+load @treesurf/nest/code/javascript/native
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/dom
   take form event
-
-load @treesurf/nest/code/javascript/dom/payment-details-update
   take form payment-details-update
 
-load @treesurf/nest/code/javascript/es5/promise-like
+load @treesurf/nest/code/javascript/es5
   take form promise-like
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form payment-request-update-event, name <PaymentRequestUpdateEvent>
   base event
 
   task update-with, name <updateWith>
     take details-promise
-      like or-link-text
+      like or
         like payment-details-update
         like promise-like
           like payment-details-update

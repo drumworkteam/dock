@@ -1,56 +1,52 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/partial
-  take form partial
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form partial
+  take form undefined
+    save form native-undefined
 
 form agent-options, name <AgentOptions>
   base partial
 
-  take keep-alive, name <keepAlive>
-    like or-link-text
+  link keep-alive, name <keepAlive>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take keep-alive-msecs, name <keepAliveMsecs>
-    like or-link-text
+    flex true
+  link keep-alive-msecs, name <keepAliveMsecs>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take max-sockets, name <maxSockets>
-    like or-link-text
+    flex true
+  link max-sockets, name <maxSockets>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take max-total-sockets, name <maxTotalSockets>
-    like or-link-text
+    flex true
+  link max-total-sockets, name <maxTotalSockets>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take max-free-sockets, name <maxFreeSockets>
-    like or-link-text
+    flex true
+  link max-free-sockets, name <maxFreeSockets>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take timeout, name <timeout>
-    like or-link-text
+    flex true
+  link timeout, name <timeout>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take scheduling, name <scheduling>
-    like or-link-text
+    flex true
+  link scheduling, name <scheduling>
+    like or
       text <fifo>
       text <lifo>
       like native-undefined
-    lock false
+    flex true

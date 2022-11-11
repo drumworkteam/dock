@@ -1,35 +1,30 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/dom/color-space-conversion
+load @treesurf/nest/code/javascript/dom
   take form color-space-conversion
-
-load @treesurf/nest/code/javascript/dom/image-orientation
   take form image-orientation
-
-load @treesurf/nest/code/javascript/dom/premultiply-alpha
   take form premultiply-alpha
-
-load @treesurf/nest/code/javascript/dom/resize-quality
   take form resize-quality
 
 form image-bitmap-options, name <ImageBitmapOptions>
-  take color-space-conversion, name <colorSpaceConversion>
+  link color-space-conversion, name <colorSpaceConversion>
     like color-space-conversion
-    lock false
-  take image-orientation, name <imageOrientation>
+    flex true
+  link image-orientation, name <imageOrientation>
     like image-orientation
-    lock false
-  take premultiply-alpha, name <premultiplyAlpha>
+    flex true
+  link premultiply-alpha, name <premultiplyAlpha>
     like premultiply-alpha
-    lock false
-  take resize-height, name <resizeHeight>
+    flex true
+  link resize-height, name <resizeHeight>
     like native-number
-    lock false
-  take resize-quality, name <resizeQuality>
+    flex true
+  link resize-quality, name <resizeQuality>
     like resize-quality
-    lock false
-  take resize-width, name <resizeWidth>
+    flex true
+  link resize-width, name <resizeWidth>
     like native-number
-    lock false
+    flex true

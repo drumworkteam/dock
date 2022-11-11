@@ -1,20 +1,19 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
+  take form undefined
+    save form native-undefined
 
 form resolver-options, name <ResolverOptions>
-  take timeout, name <timeout>
-    like or-link-text
+  link timeout, name <timeout>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take tries, name <tries>
+    flex true
+  link tries, name <tries>
     like native-number
-    lock false
+    flex true

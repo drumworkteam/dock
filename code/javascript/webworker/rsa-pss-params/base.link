@@ -1,16 +1,17 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/webworker
+  take form algorithm
 
 load @treesurf/nest/code/javascript/dom/rsa-pss-params
   take form rsa-pss-params
 
-load @treesurf/nest/code/javascript/webworker/algorithm
-  take form algorithm
-
 form rsa-pss-params, name <RsaPssParams>
   base algorithm
 
-  take salt-length, name <saltLength>
+  link salt-length, name <saltLength>
     like native-number
-    lock false
+    flex true

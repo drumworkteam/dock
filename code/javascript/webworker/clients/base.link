@@ -1,46 +1,28 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form index
+  take form like
+  take form or
+  take form test
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/es5/promise
+load @treesurf/nest/code/javascript/es5
   take form promise
-
-load @treesurf/nest/code/javascript/es5/readonly-array
   take form readonly-array
 
-load @treesurf/nest/code/javascript/webworker/client
+load @treesurf/nest/code/javascript/webworker
   take form client
-
-load @treesurf/nest/code/javascript/webworker/client-query-options
   take form client-query-options
-
-load @treesurf/nest/code/javascript/webworker/window-client
   take form window-client
-
-load @treesurf/nest/code/form/form/link
-  take form form-link
-    save form form-link-link-text
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/test
-  take form test
-    save form test-link-text
 
 form clients, name <Clients>
   task claim, name <claim>
@@ -52,21 +34,22 @@ form clients, name <Clients>
     take id, like native-string
     free seed
       like promise
-        like or-link-text
+        like or
           like client
           like native-undefined
 
   task match-all, name <matchAll>
-    head t, like like-link-text
+    head t
       base client-query-options
+
     take options, like t
       void true
     free seed
       like promise
         like readonly-array
-          like test-link-text
+          like test
             stem roll
-              like form-link-link-text
+              like index
                 like t
                 text <type>
               text <window>
@@ -79,6 +62,6 @@ form clients, name <Clients>
     take url, like native-string
     free seed
       like promise
-        like or-link-text
+        like or
           like window-client
           like native-null

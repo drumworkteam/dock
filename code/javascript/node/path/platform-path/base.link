@@ -1,27 +1,25 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/node/path/format-input-path-object
+load @drumwork/nest/code/javascript/node/path
   take form format-input-path-object
-
-load @treesurf/nest/code/javascript/node/path/parsed-path
   take form parsed-path
 
 form platform-path, name <PlatformPath>
-  take sep, name <sep>
+  link sep, name <sep>
     like native-string
-  take delimiter, name <delimiter>
+  link delimiter, name <delimiter>
     like native-string
-  take posix, name <posix>
+  link posix, name <posix>
     like platform-path
-  take win32, name <win32>
+  link win32, name <win32>
     like platform-path
 
   task normalize, name <normalize>
@@ -30,14 +28,14 @@ form platform-path, name <PlatformPath>
 
   task join, name <join>
     take paths
-      like native-array
+      like array
         like native-string
       rest true
     free seed, like native-string
 
   task resolve, name <resolve>
     take path-segments
-      like native-array
+      like array
         like native-string
       rest true
     free seed, like native-string

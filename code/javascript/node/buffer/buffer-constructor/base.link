@@ -1,61 +1,40 @@
 
-load @treesurf/nest/code/javascript/base/array-buffer
+load @treesurf/moon
+  take form any
+  take form form
+  take form or
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @drumwork/nest/code/javascript
   take form array-buffer
-
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/node-js-array-buffer-view
+  take form boolean
+    save form native-boolean
   take form node-js-array-buffer-view
-
-load @treesurf/nest/code/javascript/base/readonly-array
+  take form number
+    save form native-number
   take form readonly-array
-
-load @treesurf/nest/code/javascript/base/shared-array-buffer
   take form shared-array-buffer
-
-load @treesurf/nest/code/javascript/base/uint8-array
+  take form string
+    save form native-string
   take form uint8-array
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
-
-load @treesurf/nest/code/javascript/node/buffer/buffer-encoding
   take form buffer-encoding
-
-load @treesurf/nest/code/javascript/node/buffer/with-implicit-coercion
   take form with-implicit-coercion
-
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form buffer-constructor, name <BufferConstructor>
   home true
-  take pool-size, name <poolSize>
+  link pool-size, name <poolSize>
     like native-number
-    lock false
+    flex true
 
   task from, name <from>
     take array-buffer
       like with-implicit-coercion
-        like or-link-text
+        like or
           like array-buffer
           like shared-array-buffer
     take byte-offset, like native-number
@@ -66,7 +45,7 @@ form buffer-constructor, name <BufferConstructor>
 
   task from, name <from>
     take data
-      like or-link-text
+      like or
         like uint8-array
         like readonly-array
           like native-number
@@ -75,7 +54,7 @@ form buffer-constructor, name <BufferConstructor>
   task from, name <from>
     take data
       like with-implicit-coercion
-        like or-link-text
+        like or
           like uint8-array
           like readonly-array
             like native-number
@@ -84,11 +63,11 @@ form buffer-constructor, name <BufferConstructor>
 
   task from, name <from>
     take str
-      like or-link-text
+      like or
         like with-implicit-coercion
           like native-string
-        like form-link-text
-          task loan symbol/to-primitive
+        like form
+          task {symbol/to-primitive}
             take hint, text <string>
             free seed, like native-string
 
@@ -98,13 +77,13 @@ form buffer-constructor, name <BufferConstructor>
 
   task of, name <of>
     take items
-      like native-array
+      like array
         like native-number
       rest true
     free seed, like buffer
 
   task is-buffer, name <isBuffer>
-    take obj, like native-any
+    take obj, like any
     free seed
       like native-boolean
       rank obj, like buffer
@@ -117,7 +96,7 @@ form buffer-constructor, name <BufferConstructor>
 
   task byte-length, name <byteLength>
     take string
-      like or-link-text
+      like or
         like native-string
         like node-js-array-buffer-view
         like array-buffer
@@ -138,7 +117,7 @@ form buffer-constructor, name <BufferConstructor>
     take buf1, like uint8-array
     take buf2, like uint8-array
     free seed
-      like or-link-text
+      like or
         text <undefined>
         text <0>
         text <1>
@@ -146,7 +125,7 @@ form buffer-constructor, name <BufferConstructor>
   task alloc, name <alloc>
     take size, like native-number
     take fill
-      like or-link-text
+      like or
         like native-string
         like buffer
         like native-number
@@ -179,7 +158,7 @@ form buffer-constructor, name <BufferConstructor>
 
   hook make
     take array-buffer
-      like or-link-text
+      like or
         like array-buffer
         like shared-array-buffer
     free seed, like buffer
@@ -187,7 +166,7 @@ form buffer-constructor, name <BufferConstructor>
   hook make
     take array
       like readonly-array
-        like native-any
+        like any
     free seed, like buffer
 
   hook make

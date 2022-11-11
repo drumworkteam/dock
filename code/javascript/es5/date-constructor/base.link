@@ -1,19 +1,18 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/es5/date
+load @treesurf/nest/code/javascript/es5
   take form date
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form date-constructor, name <DateConstructor>
-  take prototype, name <prototype>
+  link prototype, name <prototype>
     like date
 
   task parse, name <parse>
@@ -43,7 +42,7 @@ form date-constructor, name <DateConstructor>
 
   hook make
     take value
-      like or-link-text
+      like or
         like native-number
         like native-string
     free seed, like date

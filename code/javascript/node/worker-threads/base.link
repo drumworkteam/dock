@@ -9,55 +9,40 @@ bear @treesurf/nest/code/javascript/node/worker-threads/worker
 bear @treesurf/nest/code/javascript/node/worker-threads/broadcast-channel
 bear @treesurf/nest/code/javascript/node/worker-threads/serializable
 
-load @treesurf/nest/code/javascript/base/message-port
+load @treesurf/moon
+  take form any
+  take form form
+  take form or
+
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
   take form message-port
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form object
+    save form native-object
+  take form symbol
+    save form native-symbol
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-object
-  take form native-object
-
-load @treesurf/nest/code/javascript/base/native-symbol
-  take form native-symbol
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/node/vm/context
+load @drumwork/nest/code/javascript/node/vm
   take form context
 
-load @treesurf/nest/code/javascript/node/worker-threads/resource-limits
+load @drumwork/nest/code/javascript/node/worker-threads
   take form resource-limits
-
-load @treesurf/nest/code/javascript/node/worker-threads/serializable
   take form serializable
-
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 host is-main-thread, name <isMainThread>
   like native-boolean
 
 host parent-port, name <parentPort>
-  like or-link-text
+  like or
     like native-null
     like message-port
 
@@ -72,7 +57,7 @@ host thread-id, name <threadId>
   like native-number
 
 host worker-data, name <workerData>
-  like native-any
+  like any
 
 task mark-as-untransferable, name <markAsUntransferable>
   take object, like native-object
@@ -86,11 +71,11 @@ task move-message-port-to-context, name <moveMessagePortToContext>
 task receive-message-on-port, name <receiveMessageOnPort>
   take port, like message-port
   free seed
-    like or-link-text
-      like form-link-text
-        take message, name <message>
-          like native-any
-          lock false
+    like or
+      like form
+        link message, name <message>
+          like any
+          flex true
       like native-undefined
 
 task get-environment-data, name <getEnvironmentData>

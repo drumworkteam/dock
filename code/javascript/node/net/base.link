@@ -19,39 +19,32 @@ bear @treesurf/nest/code/javascript/node/net/net-connect-opts
 bear @treesurf/nest/code/javascript/node/net/socket-address-init-options
 bear @treesurf/nest/code/javascript/node/net/socket-address
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form task
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/base/socket
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
   take form socket
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/node/https/server
+load @drumwork/nest/code/javascript/node/https
   take form server
 
-load @treesurf/nest/code/javascript/node/net/net-connect-opts
+load @drumwork/nest/code/javascript/node/net
   take form net-connect-opts
-
-load @treesurf/nest/code/javascript/node/net/server-opts
   take form server-opts
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
 
 task create-server, name <createServer>
   take connection-listener
-    like task-link-text
+    like task
       take socket, like socket
-      free seed, like native-void
+      free result, like native-void
     void true
   free seed, like server
 
@@ -59,17 +52,17 @@ task create-server, name <createServer>
   take options, like server-opts
     void true
   take connection-listener
-    like task-link-text
+    like task
       take socket, like socket
-      free seed, like native-void
+      free result, like native-void
     void true
   free seed, like server
 
 task connect, name <connect>
   take options, like net-connect-opts
   take connection-listener
-    like task-link-text
-      free seed, like native-void
+    like task
+      free result, like native-void
     void true
   free seed, like socket
 
@@ -78,24 +71,24 @@ task connect, name <connect>
   take host, like native-string
     void true
   take connection-listener
-    like task-link-text
-      free seed, like native-void
+    like task
+      free result, like native-void
     void true
   free seed, like socket
 
 task connect, name <connect>
   take path, like native-string
   take connection-listener
-    like task-link-text
-      free seed, like native-void
+    like task
+      free result, like native-void
     void true
   free seed, like socket
 
 task create-connection, name <createConnection>
   take options, like net-connect-opts
   take connection-listener
-    like task-link-text
-      free seed, like native-void
+    like task
+      free result, like native-void
     void true
   free seed, like socket
 
@@ -104,16 +97,16 @@ task create-connection, name <createConnection>
   take host, like native-string
     void true
   take connection-listener
-    like task-link-text
-      free seed, like native-void
+    like task
+      free result, like native-void
     void true
   free seed, like socket
 
 task create-connection, name <createConnection>
   take path, like native-string
   take connection-listener
-    like task-link-text
-      free seed, like native-void
+    like task
+      free result, like native-void
     void true
   free seed, like socket
 

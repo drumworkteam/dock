@@ -1,14 +1,14 @@
 
+load @treesurf/nest/code/javascript/webworker
+  take form message-event
+
 load @treesurf/nest/code/javascript/dom/message-port-event-map
   take form message-port-event-map
 
-load @treesurf/nest/code/javascript/webworker/message-event
-  take form message-event
-
 form message-port-event-map, name <MessagePortEventMap>
-  take message, name <message>
+  link message, name <message>
     like message-event
-    lock false
-  take messageerror, name <messageerror>
+    flex true
+  link messageerror, name <messageerror>
     like message-event
-    lock false
+    flex true

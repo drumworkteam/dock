@@ -1,69 +1,58 @@
 
-load @treesurf/nest/code/javascript/base/data-view
+load @treesurf/moon
+  take form or
+
+load @drumwork/nest/code/javascript
   take form data-view
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/node-js-typed-array
   take form node-js-typed-array
-
-load @treesurf/nest/code/javascript/base/tls-socket
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
   take form tls-socket
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
 
-load @treesurf/nest/code/javascript/node/tls/common-connection-options
+load @drumwork/nest/code/javascript/node/tls
   take form common-connection-options
-
-load @treesurf/nest/code/javascript/node/tls/secure-context-options
   take form secure-context-options
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form tls-options, name <TlsOptions>
   base secure-context-options
   base common-connection-options
   base net-server-opts
 
-  take handshake-timeout, name <handshakeTimeout>
-    like or-link-text
+  link handshake-timeout, name <handshakeTimeout>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take session-timeout, name <sessionTimeout>
-    like or-link-text
+    flex true
+  link session-timeout, name <sessionTimeout>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take ticket-keys, name <ticketKeys>
-    like or-link-text
+    flex true
+  link ticket-keys, name <ticketKeys>
+    like or
       like buffer
       like native-undefined
-    lock false
-  take psk-identity-hint, name <pskIdentityHint>
-    like or-link-text
+    flex true
+  link psk-identity-hint, name <pskIdentityHint>
+    like or
       like native-string
       like native-undefined
-    lock false
+    flex true
 
   task psk-callback, name <pskCallback>
     take socket, like tls-socket
     take identity, like native-string
     free seed
-      like or-link-text
+      like or
         like data-view
         like node-js-typed-array
         like native-null

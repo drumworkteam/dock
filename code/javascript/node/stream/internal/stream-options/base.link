@@ -1,93 +1,79 @@
 
-load @treesurf/nest/code/javascript/base/error
+load @treesurf/moon
+  take form like
+  take form or
+  take form task
+
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
   take form error
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/base/stream
+  take form null
+    save form native-null
+  take form number
+    save form native-number
   take form stream
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/node/events/event-emitter/abortable
+load @drumwork/nest/code/javascript/node/events/event-emitter
   take form abortable
 
 load @treesurf/nest/code/javascript/node/fs/stream-options
   take form stream-options
 
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
 form stream-options, name <StreamOptions>
   base abortable
 
-  head t, like like-link-text
+  head t
     base stream
 
-  take emit-close, name <emitClose>
-    like or-link-text
+  link emit-close, name <emitClose>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take high-water-mark, name <highWaterMark>
-    like or-link-text
+    flex true
+  link high-water-mark, name <highWaterMark>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take object-mode, name <objectMode>
-    like or-link-text
+    flex true
+  link object-mode, name <objectMode>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take auto-destroy, name <autoDestroy>
-    like or-link-text
+    flex true
+  link auto-destroy, name <autoDestroy>
+    like or
       like native-boolean
       like native-undefined
-    lock false
+    flex true
 
   task construct, name <construct>
     take this, like t
     take callback
-      like task-link-text
+      like task
         take error
-          like or-link-text
+          like or
             like error
             like native-null
           void true
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-void
 
   task destroy, name <destroy>
     take this, like t
     take error
-      like or-link-text
+      like or
         like error
         like native-null
     take callback
-      like task-link-text
+      like task
         take error
-          like or-link-text
+          like or
             like error
             like native-null
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-void

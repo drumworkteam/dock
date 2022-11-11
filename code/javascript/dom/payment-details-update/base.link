@@ -1,19 +1,17 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/dom/payment-details-base
+load @treesurf/nest/code/javascript/dom
   take form payment-details-base
-
-load @treesurf/nest/code/javascript/dom/payment-item
   take form payment-item
 
 form payment-details-update, name <PaymentDetailsUpdate>
   base payment-details-base
 
-  take payment-method-errors, name <paymentMethodErrors>
-    like native-any
-    lock false
-  take total, name <total>
+  link payment-method-errors, name <paymentMethodErrors>
+    like any
+    flex true
+  link total, name <total>
     like payment-item
-    lock false
+    flex true

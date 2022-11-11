@@ -1,28 +1,26 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form like
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/webworker
+  take form queuing-strategy-size
 
 load @treesurf/nest/code/javascript/dom/queuing-strategy
   take form queuing-strategy
 
-load @treesurf/nest/code/javascript/webworker/queuing-strategy-size
-  take form queuing-strategy-size
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
 form queuing-strategy, name <QueuingStrategy>
-  head t, like like-link-text
-    back native-any
+  head t
+    back any
 
-  take high-water-mark, name <highWaterMark>
+  link high-water-mark, name <highWaterMark>
     like native-number
-    lock false
-  take size, name <size>
+    flex true
+  link size, name <size>
     like queuing-strategy-size
       like t
-    lock false
+    flex true

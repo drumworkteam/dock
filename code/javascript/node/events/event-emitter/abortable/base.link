@@ -1,17 +1,15 @@
 
-load @treesurf/nest/code/javascript/base/abort-signal
-  take form abort-signal
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form abort-signal
+  take form undefined
+    save form native-undefined
 
 form abortable, name <Abortable>
-  take signal, name <signal>
-    like or-link-text
+  link signal, name <signal>
+    like or
       like abort-signal
       like native-undefined
-    lock false
+    flex true

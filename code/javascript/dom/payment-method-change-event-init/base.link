@@ -1,19 +1,20 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/payment-request-update-event-init
+load @treesurf/nest/code/javascript/dom
   take form payment-request-update-event-init
 
 form payment-method-change-event-init, name <PaymentMethodChangeEventInit>
   base payment-request-update-event-init
 
-  take method-details, name <methodDetails>
-    like native-any
-    lock false
-  take method-name, name <methodName>
+  link method-details, name <methodDetails>
+    like any
+    flex true
+  link method-name, name <methodName>
     like native-string
-    lock false
+    flex true

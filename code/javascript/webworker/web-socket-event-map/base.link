@@ -1,26 +1,22 @@
 
+load @treesurf/nest/code/javascript/webworker
+  take form close-event
+  take form event
+  take form message-event
+
 load @treesurf/nest/code/javascript/dom/web-socket-event-map
   take form web-socket-event-map
 
-load @treesurf/nest/code/javascript/webworker/close-event
-  take form close-event
-
-load @treesurf/nest/code/javascript/webworker/event
-  take form event
-
-load @treesurf/nest/code/javascript/webworker/message-event
-  take form message-event
-
 form web-socket-event-map, name <WebSocketEventMap>
-  take close, name <close>
+  link close, name <close>
     like close-event
-    lock false
-  take error, name <error>
+    flex true
+  link error, name <error>
     like event
-    lock false
-  take message, name <message>
+    flex true
+  link message, name <message>
     like message-event
-    lock false
-  take open, name <open>
+    flex true
+  link open, name <open>
     like event
-    lock false
+    flex true

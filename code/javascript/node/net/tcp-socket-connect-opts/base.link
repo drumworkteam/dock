@@ -1,56 +1,52 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/node/net/connect-opts
-  take form connect-opts
-
-load @treesurf/nest/code/javascript/node/net/lookup-function
-  take form lookup-function
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
+
+load @drumwork/nest/code/javascript/node/net
+  take form connect-opts
+  take form lookup-function
 
 form tcp-socket-connect-opts, name <TcpSocketConnectOpts>
   base connect-opts
 
-  take port, name <port>
+  link port, name <port>
     like native-number
-    lock false
-  take host, name <host>
-    like or-link-text
+    flex true
+  link host, name <host>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take local-address, name <localAddress>
-    like or-link-text
+    flex true
+  link local-address, name <localAddress>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take local-port, name <localPort>
-    like or-link-text
+    flex true
+  link local-port, name <localPort>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take hints, name <hints>
-    like or-link-text
+    flex true
+  link hints, name <hints>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take family, name <family>
-    like or-link-text
+    flex true
+  link family, name <family>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take lookup, name <lookup>
-    like or-link-text
+    flex true
+  link lookup, name <lookup>
+    like or
       like lookup-function
       like native-undefined
-    lock false
+    flex true

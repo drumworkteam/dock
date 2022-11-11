@@ -1,22 +1,18 @@
 
-load @treesurf/nest/code/javascript/dom/authentication-extensions-client-outputs
+load @treesurf/nest/code/javascript/dom
   take form authentication-extensions-client-outputs
-
-load @treesurf/nest/code/javascript/dom/authenticator-response
   take form authenticator-response
-
-load @treesurf/nest/code/javascript/dom/credential
   take form credential
 
-load @treesurf/nest/code/javascript/es5/array-buffer
+load @treesurf/nest/code/javascript/es5
   take form array-buffer
 
 form public-key-credential, name <PublicKeyCredential>
   base credential
 
-  take raw-id, name <rawId>
+  link raw-id, name <rawId>
     like array-buffer
-  take response, name <response>
+  link response, name <response>
     like authenticator-response
 
   task get-client-extension-results, name <getClientExtensionResults>

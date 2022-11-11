@@ -7,43 +7,30 @@ bear @treesurf/nest/code/javascript/node/repl/repl-command
 bear @treesurf/nest/code/javascript/node/repl/repl-server
 bear @treesurf/nest/code/javascript/node/repl/recoverable
 
-load @treesurf/nest/code/javascript/base/inspect-options
+load @treesurf/moon
+  take form and
+  take form form
+  take form or
+
+load @drumwork/nest/code/javascript
   take form inspect-options
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-symbol
-  take form native-symbol
-
-load @treesurf/nest/code/javascript/base/repl-server
   take form repl-server
+  take form string
+    save form native-string
+  take form symbol
+    save form native-symbol
 
-load @treesurf/nest/code/javascript/node/repl/repl-options
+load @drumwork/nest/code/javascript/node/repl
   take form repl-options
-
-load @treesurf/nest/code/javascript/node/repl/repl-writer
   take form repl-writer
 
-load @treesurf/nest/code/form/and
-  take form and
-    save form and-link-text
-
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 host writer, name <writer>
-  like and-link-text
+  like and
     like repl-writer
-    like form-link-text
-      take options, name <options>
+    like form
+      link options, name <options>
         like inspect-options
-        lock false
+        flex true
 
 host repl-mode-sloppy, name <REPL_MODE_SLOPPY>
   like native-symbol
@@ -55,7 +42,7 @@ host repl-mode-strict, name <REPL_MODE_STRICT>
 
 task start, name <start>
   take options
-    like or-link-text
+    like or
       like native-string
       like repl-options
     void true

@@ -1,22 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/media-device-kind
+load @treesurf/nest/code/javascript/dom
   take form media-device-kind
 
 form media-device-info, name <MediaDeviceInfo>
-  take device-id, name <deviceId>
+  link device-id, name <deviceId>
     like native-string
-  take group-id, name <groupId>
+  link group-id, name <groupId>
     like native-string
-  take kind, name <kind>
+  link kind, name <kind>
     like media-device-kind
-  take label, name <label>
+  link label, name <label>
     like native-string
 
   task to-json, name <toJSON>
-    free seed, like native-any
+    free seed, like any

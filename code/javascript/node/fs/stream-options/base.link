@@ -1,65 +1,60 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/promises-file-handle
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
   take form promises-file-handle
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/buffer/buffer-encoding
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer-encoding
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form stream-options, name <StreamOptions>
-  take flags, name <flags>
-    like or-link-text
+  link flags, name <flags>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take encoding, name <encoding>
-    like or-link-text
+    flex true
+  link encoding, name <encoding>
+    like or
       like buffer-encoding
       like native-undefined
-    lock false
-  take fd, name <fd>
-    like or-link-text
+    flex true
+  link fd, name <fd>
+    like or
       like native-number
       like promises-file-handle
       like native-undefined
-    lock false
-  take mode, name <mode>
-    like or-link-text
+    flex true
+  link mode, name <mode>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take auto-close, name <autoClose>
-    like or-link-text
+    flex true
+  link auto-close, name <autoClose>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take emit-close, name <emitClose>
-    like or-link-text
+    flex true
+  link emit-close, name <emitClose>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take start, name <start>
-    like or-link-text
+    flex true
+  link start, name <start>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take high-water-mark, name <highWaterMark>
-    like or-link-text
+    flex true
+  link high-water-mark, name <highWaterMark>
+    like or
       like native-number
       like native-undefined
-    lock false
+    flex true

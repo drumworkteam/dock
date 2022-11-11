@@ -1,39 +1,32 @@
 
-load @treesurf/nest/code/javascript/base/iterable-iterator
+load @treesurf/moon
+  take form any
+  take form like
+  take form tuple
+
+load @treesurf/nest/code/javascript/native
   take form iterable-iterator
-
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+  take form number
+    save form native-number
 
 load @treesurf/nest/code/javascript/dom/readable-stream
   take form readable-stream
 
-load @treesurf/nest/code/form/band
-  take form band
-    save form band-link-text
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
 form readable-stream, name <ReadableStream>
-  head r, like like-link-text
-    back native-any
+  head r
+    back any
 
-  task loan symbol/iterator
+  task {symbol/iterator}
     free seed
       like iterable-iterator
-        like native-any
+        like any
 
   task entries, name <entries>
     free seed
       like iterable-iterator
-        like band-link-text
+        like tuple
           like native-number
-          like native-any
+          like any
 
   task keys, name <keys>
     free seed
@@ -43,4 +36,4 @@ form readable-stream, name <ReadableStream>
   task values, name <values>
     free seed
       like iterable-iterator
-        like native-any
+        like any

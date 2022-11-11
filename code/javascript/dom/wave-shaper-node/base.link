@@ -1,28 +1,26 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/dom/audio-node
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+
+load @treesurf/nest/code/javascript/dom
   take form audio-node
-
-load @treesurf/nest/code/javascript/dom/over-sample-type
   take form over-sample-type
 
-load @treesurf/nest/code/javascript/es5/float32-array
+load @treesurf/nest/code/javascript/es5
   take form float32-array
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form wave-shaper-node, name <WaveShaperNode>
   base audio-node
 
-  take curve, name <curve>
-    like or-link-text
+  link curve, name <curve>
+    like or
       like float32-array
       like native-null
-    lock false
-  take oversample, name <oversample>
+    flex true
+  link oversample, name <oversample>
     like over-sample-type
-    lock false
+    flex true

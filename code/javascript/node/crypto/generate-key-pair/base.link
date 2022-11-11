@@ -1,68 +1,34 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/moon
+  take form form
 
-load @treesurf/nest/code/javascript/base/promise
+load @drumwork/nest/code/javascript
   take form promise
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
 
-load @treesurf/nest/code/javascript/node/crypto/dsa-key-pair-key-object-options
+load @drumwork/nest/code/javascript/node/crypto
   take form dsa-key-pair-key-object-options
-
-load @treesurf/nest/code/javascript/node/crypto/dsa-key-pair-options
   take form dsa-key-pair-options
-
-load @treesurf/nest/code/javascript/node/crypto/ec-key-pair-key-object-options
   take form ec-key-pair-key-object-options
-
-load @treesurf/nest/code/javascript/node/crypto/ec-key-pair-options
   take form ec-key-pair-options
-
-load @treesurf/nest/code/javascript/node/crypto/ed25519-key-pair-key-object-options
   take form ed25519-key-pair-key-object-options
-
-load @treesurf/nest/code/javascript/node/crypto/ed25519-key-pair-options
   take form ed25519-key-pair-options
-
-load @treesurf/nest/code/javascript/node/crypto/ed448-key-pair-key-object-options
   take form ed448-key-pair-key-object-options
-
-load @treesurf/nest/code/javascript/node/crypto/ed448-key-pair-options
   take form ed448-key-pair-options
-
-load @treesurf/nest/code/javascript/node/crypto/key-pair-key-object-result
   take form key-pair-key-object-result
-
-load @treesurf/nest/code/javascript/node/crypto/rsa-key-pair-key-object-options
   take form rsa-key-pair-key-object-options
-
-load @treesurf/nest/code/javascript/node/crypto/rsa-key-pair-options
   take form rsa-key-pair-options
-
-load @treesurf/nest/code/javascript/node/crypto/rsapss-key-pair-key-object-options
   take form rsapss-key-pair-key-object-options
-
-load @treesurf/nest/code/javascript/node/crypto/rsapss-key-pair-options
   take form rsapss-key-pair-options
-
-load @treesurf/nest/code/javascript/node/crypto/x25519-key-pair-key-object-options
   take form x25519-key-pair-key-object-options
-
-load @treesurf/nest/code/javascript/node/crypto/x25519-key-pair-options
   take form x25519-key-pair-options
-
-load @treesurf/nest/code/javascript/node/crypto/x448-key-pair-key-object-options
   take form x448-key-pair-key-object-options
-
-load @treesurf/nest/code/javascript/node/crypto/x448-key-pair-options
   take form x448-key-pair-options
 
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
 task promisify, name <__promisify__>
   take type, text <rsa>
   take options
@@ -71,13 +37,13 @@ task promisify, name <__promisify__>
       text <pem>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like native-string
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <rsa>
@@ -87,13 +53,13 @@ task promisify, name <__promisify__>
       text <der>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like native-string
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like buffer
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <rsa>
@@ -103,13 +69,13 @@ task promisify, name <__promisify__>
       text <pem>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like buffer
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <rsa>
@@ -119,13 +85,13 @@ task promisify, name <__promisify__>
       text <der>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like buffer
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like buffer
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <rsa>
@@ -142,13 +108,13 @@ task promisify, name <__promisify__>
       text <pem>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like native-string
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <rsa-pss>
@@ -158,13 +124,13 @@ task promisify, name <__promisify__>
       text <der>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like native-string
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like buffer
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <rsa-pss>
@@ -174,13 +140,13 @@ task promisify, name <__promisify__>
       text <pem>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like buffer
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <rsa-pss>
@@ -190,13 +156,13 @@ task promisify, name <__promisify__>
       text <der>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like buffer
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like buffer
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <rsa-pss>
@@ -213,13 +179,13 @@ task promisify, name <__promisify__>
       text <pem>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like native-string
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <dsa>
@@ -229,13 +195,13 @@ task promisify, name <__promisify__>
       text <der>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like native-string
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like buffer
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <dsa>
@@ -245,13 +211,13 @@ task promisify, name <__promisify__>
       text <pem>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like buffer
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <dsa>
@@ -261,13 +227,13 @@ task promisify, name <__promisify__>
       text <der>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like buffer
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like buffer
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <dsa>
@@ -284,13 +250,13 @@ task promisify, name <__promisify__>
       text <pem>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like native-string
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <ec>
@@ -300,13 +266,13 @@ task promisify, name <__promisify__>
       text <der>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like native-string
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like buffer
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <ec>
@@ -316,13 +282,13 @@ task promisify, name <__promisify__>
       text <pem>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like buffer
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <ec>
@@ -332,13 +298,13 @@ task promisify, name <__promisify__>
       text <der>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like buffer
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like buffer
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <ec>
@@ -355,13 +321,13 @@ task promisify, name <__promisify__>
       text <pem>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like native-string
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <ed25519>
@@ -371,13 +337,13 @@ task promisify, name <__promisify__>
       text <der>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like native-string
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like buffer
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <ed25519>
@@ -387,13 +353,13 @@ task promisify, name <__promisify__>
       text <pem>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like buffer
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <ed25519>
@@ -403,13 +369,13 @@ task promisify, name <__promisify__>
       text <der>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like buffer
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like buffer
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <ed25519>
@@ -427,13 +393,13 @@ task promisify, name <__promisify__>
       text <pem>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like native-string
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <ed448>
@@ -443,13 +409,13 @@ task promisify, name <__promisify__>
       text <der>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like native-string
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like buffer
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <ed448>
@@ -459,13 +425,13 @@ task promisify, name <__promisify__>
       text <pem>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like buffer
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <ed448>
@@ -475,13 +441,13 @@ task promisify, name <__promisify__>
       text <der>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like buffer
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like buffer
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <ed448>
@@ -499,13 +465,13 @@ task promisify, name <__promisify__>
       text <pem>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like native-string
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <x25519>
@@ -515,13 +481,13 @@ task promisify, name <__promisify__>
       text <der>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like native-string
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like buffer
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <x25519>
@@ -531,13 +497,13 @@ task promisify, name <__promisify__>
       text <pem>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like buffer
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <x25519>
@@ -547,13 +513,13 @@ task promisify, name <__promisify__>
       text <der>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like buffer
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like buffer
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <x25519>
@@ -571,13 +537,13 @@ task promisify, name <__promisify__>
       text <pem>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like native-string
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <x448>
@@ -587,13 +553,13 @@ task promisify, name <__promisify__>
       text <der>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like native-string
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like buffer
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <x448>
@@ -603,13 +569,13 @@ task promisify, name <__promisify__>
       text <pem>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like buffer
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like native-string
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <x448>
@@ -619,13 +585,13 @@ task promisify, name <__promisify__>
       text <der>
   free seed
     like promise
-      like form-link-text
-        take public-key, name <publicKey>
+      like form
+        link public-key, name <publicKey>
           like buffer
-          lock false
-        take private-key, name <privateKey>
+          flex true
+        link private-key, name <privateKey>
           like buffer
-          lock false
+          flex true
 
 task promisify, name <__promisify__>
   take type, text <x448>

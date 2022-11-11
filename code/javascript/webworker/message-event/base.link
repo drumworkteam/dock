@@ -1,52 +1,42 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form like
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/es5
+  take form readonly-array
+
+load @treesurf/nest/code/javascript/webworker
+  take form event
+  take form message-event-source
+  take form message-port
 
 load @treesurf/nest/code/javascript/dom/iterable/message-event
   take form message-event
 
-load @treesurf/nest/code/javascript/es5/readonly-array
-  take form readonly-array
-
-load @treesurf/nest/code/javascript/webworker/event
-  take form event
-
-load @treesurf/nest/code/javascript/webworker/message-event-source
-  take form message-event-source
-
-load @treesurf/nest/code/javascript/webworker/message-port
-  take form message-port
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form message-event, name <MessageEvent>
   base event
 
-  head t, like like-link-text
-    back native-any
+  head t
+    back any
 
-  take data, name <data>
+  link data, name <data>
     like t
-  take last-event-id, name <lastEventId>
+  link last-event-id, name <lastEventId>
     like native-string
-  take origin, name <origin>
+  link origin, name <origin>
     like native-string
-  take ports, name <ports>
+  link ports, name <ports>
     like readonly-array
       like message-port
-  take source, name <source>
-    like or-link-text
+  link source, name <source>
+    like or
       like message-event-source
       like native-null

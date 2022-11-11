@@ -1,18 +1,19 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/node/inspector/profiler/type-object
+load @drumwork/nest/code/javascript/node/inspector/profiler
   take form type-object
 
 form type-profile-entry, name <TypeProfileEntry>
-  take offset, name <offset>
+  link offset, name <offset>
     like native-number
-    lock false
-  take types, name <types>
-    like native-array
+    flex true
+  link types, name <types>
+    like array
       like type-object
-    lock false
+    flex true

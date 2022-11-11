@@ -1,21 +1,19 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/dom/event
-  take form event
-
-load @treesurf/nest/code/javascript/dom/rtc-ice-candidate
-  take form rtc-ice-candidate
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+
+load @treesurf/nest/code/javascript/dom
+  take form event
+  take form rtc-ice-candidate
 
 form rtc-peer-connection-ice-event, name <RTCPeerConnectionIceEvent>
   base event
 
-  take candidate, name <candidate>
-    like or-link-text
+  link candidate, name <candidate>
+    like or
       like rtc-ice-candidate
       like native-null

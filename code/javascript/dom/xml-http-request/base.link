@@ -1,122 +1,84 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/add-event-listener-options
-  take form add-event-listener-options
-
-load @treesurf/nest/code/javascript/dom/document
-  take form document
-
-load @treesurf/nest/code/javascript/dom/event
-  take form event
-
-load @treesurf/nest/code/javascript/dom/event-listener-options
-  take form event-listener-options
-
-load @treesurf/nest/code/javascript/dom/event-listener-or-event-listener-object
-  take form event-listener-or-event-listener-object
-
-load @treesurf/nest/code/javascript/dom/url
-  take form url
-
-load @treesurf/nest/code/javascript/dom/xml-http-request-body-init
-  take form xml-http-request-body-init
-
-load @treesurf/nest/code/javascript/dom/xml-http-request-event-map
-  take form xml-http-request-event-map
-
-load @treesurf/nest/code/javascript/dom/xml-http-request-event-target
-  take form xml-http-request-event-target
-
-load @treesurf/nest/code/javascript/dom/xml-http-request-response-type
-  take form xml-http-request-response-type
-
-load @treesurf/nest/code/javascript/dom/xml-http-request-upload
-  take form xml-http-request-upload
-
-load @treesurf/nest/code/form/form/link
-  take form form-link
-    save form form-link-link-text
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
+  take form any
+  take form index
+  take form key-list
   take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/link/read
-  take form link-read
-    save form link-read-link-text
-
-load @treesurf/nest/code/form/or
   take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
   take form task
-    save form task-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/dom
+  take form add-event-listener-options
+  take form document
+  take form event
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form url
+  take form xml-http-request-body-init
+  take form xml-http-request-event-map
+  take form xml-http-request-event-target
+  take form xml-http-request-response-type
+  take form xml-http-request-upload
 
 form xml-http-request, name <XMLHttpRequest>
   base xml-http-request-event-target
 
-  take onreadystatechange, name <onreadystatechange>
-    like or-link-text
-      like task-link-text
+  link onreadystatechange, name <onreadystatechange>
+    like or
+      like task
         take this, like xml-http-request
         take ev, like event
-        free seed, like native-any
+        free seed, like any
       like native-null
-    lock false
-  take ready-state, name <readyState>
+    flex true
+  link ready-state, name <readyState>
     like native-number
-  take response, name <response>
-    like native-any
-  take response-text, name <responseText>
+  link response, name <response>
+    like any
+  link response-text, name <responseText>
     like native-string
-  take response-type, name <responseType>
+  link response-type, name <responseType>
     like xml-http-request-response-type
-    lock false
-  take response-url, name <responseURL>
+    flex true
+  link response-url, name <responseURL>
     like native-string
-  take response-xml, name <responseXML>
-    like or-link-text
+  link response-xml, name <responseXML>
+    like or
       like document
       like native-null
-  take status, name <status>
+  link status, name <status>
     like native-number
-  take status-text, name <statusText>
+  link status-text, name <statusText>
     like native-string
-  take timeout, name <timeout>
+  link timeout, name <timeout>
     like native-number
-    lock false
-  take upload, name <upload>
+    flex true
+  link upload, name <upload>
     like xml-http-request-upload
-  take with-credentials, name <withCredentials>
+  link with-credentials, name <withCredentials>
     like native-boolean
-    lock false
-  take done, name <DONE>
+    flex true
+  link done, name <DONE>
     like native-number
-  take headers-received, name <HEADERS_RECEIVED>
+  link headers-received, name <HEADERS_RECEIVED>
     like native-number
-  take loading, name <LOADING>
+  link loading, name <LOADING>
     like native-number
-  take opened, name <OPENED>
+  link opened, name <OPENED>
     like native-number
-  take unsent, name <UNSENT>
+  link unsent, name <UNSENT>
     like native-number
 
   task abort, name <abort>
@@ -128,14 +90,14 @@ form xml-http-request, name <XMLHttpRequest>
   task get-response-header, name <getResponseHeader>
     take name, like native-string
     free seed
-      like or-link-text
+      like or
         like native-string
         like native-null
 
   task open, name <open>
     take method, like native-string
     take url
-      like or-link-text
+      like or
         like native-string
         like url
     free seed, like native-void
@@ -143,17 +105,17 @@ form xml-http-request, name <XMLHttpRequest>
   task open, name <open>
     take method, like native-string
     take url
-      like or-link-text
+      like or
         like native-string
         like url
     take async, like native-boolean
     take username
-      like or-link-text
+      like or
         like native-string
         like native-null
       void true
     take password
-      like or-link-text
+      like or
         like native-string
         like native-null
       void true
@@ -165,7 +127,7 @@ form xml-http-request, name <XMLHttpRequest>
 
   task send, name <send>
     take body
-      like or-link-text
+      like or
         like document
         like xml-http-request-body-init
         like native-null
@@ -178,20 +140,21 @@ form xml-http-request, name <XMLHttpRequest>
     free seed, like native-void
 
   task add-event-listener, name <addEventListener>
-    head k, like like-link-text
-      base link-read-link-text
+    head k
+      base key-list
         like xml-http-request-event-map
+
     take type, like k
     take listener
-      like task-link-text
+      like task
         take this, like xml-http-request
         take ev
-          like form-link-link-text
+          like index
             like xml-http-request-event-map
             like k
-        free seed, like native-any
+        free seed, like any
     take options
-      like or-link-text
+      like or
         like native-boolean
         like add-event-listener-options
       void true
@@ -201,27 +164,28 @@ form xml-http-request, name <XMLHttpRequest>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like or-link-text
+      like or
         like native-boolean
         like add-event-listener-options
       void true
     free seed, like native-void
 
   task remove-event-listener, name <removeEventListener>
-    head k, like like-link-text
-      base link-read-link-text
+    head k
+      base key-list
         like xml-http-request-event-map
+
     take type, like k
     take listener
-      like task-link-text
+      like task
         take this, like xml-http-request
         take ev
-          like form-link-link-text
+          like index
             like xml-http-request-event-map
             like k
-        free seed, like native-any
+        free seed, like any
     take options
-      like or-link-text
+      like or
         like native-boolean
         like event-listener-options
       void true
@@ -231,7 +195,7 @@ form xml-http-request, name <XMLHttpRequest>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like or-link-text
+      like or
         like native-boolean
         like event-listener-options
       void true

@@ -1,82 +1,51 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/add-event-listener-options
-  take form add-event-listener-options
-
-load @treesurf/nest/code/javascript/dom/event
-  take form event
-
-load @treesurf/nest/code/javascript/dom/event-listener-options
-  take form event-listener-options
-
-load @treesurf/nest/code/javascript/dom/event-listener-or-event-listener-object
-  take form event-listener-or-event-listener-object
-
-load @treesurf/nest/code/javascript/dom/event-target
-  take form event-target
-
-load @treesurf/nest/code/javascript/dom/speech-synthesis-event-map
-  take form speech-synthesis-event-map
-
-load @treesurf/nest/code/javascript/dom/speech-synthesis-utterance
-  take form speech-synthesis-utterance
-
-load @treesurf/nest/code/javascript/dom/speech-synthesis-voice
-  take form speech-synthesis-voice
-
-load @treesurf/nest/code/form/form/link
-  take form form-link
-    save form form-link-link-text
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
+  take form any
+  take form index
+  take form key-list
   take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/link/read
-  take form link-read
-    save form link-read-link-text
-
-load @treesurf/nest/code/form/or
   take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
   take form task
-    save form task-link-text
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form string
+    save form native-string
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/dom
+  take form add-event-listener-options
+  take form event
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form event-target
+  take form speech-synthesis-event-map
+  take form speech-synthesis-utterance
+  take form speech-synthesis-voice
 
 form speech-synthesis, name <SpeechSynthesis>
   base event-target
 
-  take onvoiceschanged, name <onvoiceschanged>
-    like or-link-text
-      like task-link-text
+  link onvoiceschanged, name <onvoiceschanged>
+    like or
+      like task
         take this, like speech-synthesis
         take ev, like event
-        free seed, like native-any
+        free seed, like any
       like native-null
-    lock false
-  take paused, name <paused>
+    flex true
+  link paused, name <paused>
     like native-boolean
-  take pending, name <pending>
+  link pending, name <pending>
     like native-boolean
-  take speaking, name <speaking>
+  link speaking, name <speaking>
     like native-boolean
 
   task cancel, name <cancel>
@@ -84,7 +53,7 @@ form speech-synthesis, name <SpeechSynthesis>
 
   task get-voices, name <getVoices>
     free seed
-      like native-array
+      like array
         like speech-synthesis-voice
 
   task pause, name <pause>
@@ -98,20 +67,21 @@ form speech-synthesis, name <SpeechSynthesis>
     free seed, like native-void
 
   task add-event-listener, name <addEventListener>
-    head k, like like-link-text
-      base link-read-link-text
+    head k
+      base key-list
         like speech-synthesis-event-map
+
     take type, like k
     take listener
-      like task-link-text
+      like task
         take this, like speech-synthesis
         take ev
-          like form-link-link-text
+          like index
             like speech-synthesis-event-map
             like k
-        free seed, like native-any
+        free seed, like any
     take options
-      like or-link-text
+      like or
         like native-boolean
         like add-event-listener-options
       void true
@@ -121,27 +91,28 @@ form speech-synthesis, name <SpeechSynthesis>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like or-link-text
+      like or
         like native-boolean
         like add-event-listener-options
       void true
     free seed, like native-void
 
   task remove-event-listener, name <removeEventListener>
-    head k, like like-link-text
-      base link-read-link-text
+    head k
+      base key-list
         like speech-synthesis-event-map
+
     take type, like k
     take listener
-      like task-link-text
+      like task
         take this, like speech-synthesis
         take ev
-          like form-link-link-text
+          like index
             like speech-synthesis-event-map
             like k
-        free seed, like native-any
+        free seed, like any
     take options
-      like or-link-text
+      like or
         like native-boolean
         like event-listener-options
       void true
@@ -151,7 +122,7 @@ form speech-synthesis, name <SpeechSynthesis>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like or-link-text
+      like or
         like native-boolean
         like event-listener-options
       void true

@@ -1,67 +1,54 @@
 
-load @treesurf/nest/code/javascript/base/child-process
-  take form child-process
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/readable
-  take form readable
-
-load @treesurf/nest/code/javascript/base/writable
-  take form writable
-
-load @treesurf/nest/code/form/band
-  take form band
-    save form band-link-text
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
   take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
   take form or
-    save form or-link-text
+  take form tuple
+
+load @drumwork/nest/code/javascript
+  take form child-process
+  take form null
+    save form native-null
+  take form readable
+  take form undefined
+    save form native-undefined
+  take form writable
 
 form child-process-by-stdio, name <ChildProcessByStdio>
   base child-process
 
-  head i, like like-link-text
-    base or-link-text
+  head i
+    base or
       like native-null
       like writable
-  head o, like like-link-text
-    base or-link-text
+  head o
+    base or
       like native-null
       like readable
-  head e, like like-link-text
-    base or-link-text
+  head e
+    base or
       like native-null
       like readable
 
-  take stdin, name <stdin>
+  link stdin, name <stdin>
     like i
-    lock false
-  take stdout, name <stdout>
+    flex true
+  link stdout, name <stdout>
     like o
-    lock false
-  take stderr, name <stderr>
+    flex true
+  link stderr, name <stderr>
     like e
-    lock false
-  take stdio, name <stdio>
-    like band-link-text
+    flex true
+  link stdio, name <stdio>
+    like tuple
       like i
       like o
       like e
-      like or-link-text
+      like or
         like readable
         like writable
         like native-null
         like native-undefined
-      like or-link-text
+      like or
         like readable
         like writable
         like native-null

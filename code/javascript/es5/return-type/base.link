@@ -1,37 +1,28 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form like
+  take form task
+  take form test
 
-load @treesurf/nest/code/javascript/base/r
+load @treesurf/nest/code/javascript/native
   take form r
 
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
-load @treesurf/nest/code/form/test
-  take form test
-    save form test-link-text
-
 form return-type, name <ReturnType>
-  head t, like like-link-text
-    base task-link-text
-      take args, like native-any
+  head t
+    base task
+      take args, like any
         rest true
-      free seed, like native-any
+      free seed, like any
 
-  like test-link-text
+  like test
     stem roll
       like t
-      like task-link-text
-        take args, like native-any
+      like task
+        take args, like any
           rest true
         free seed, name r
       hook true
         like r
       hook false
-        like native-any
+        like any

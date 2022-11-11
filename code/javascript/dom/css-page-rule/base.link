@@ -1,18 +1,17 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/css-grouping-rule
+load @treesurf/nest/code/javascript/dom
   take form css-grouping-rule
-
-load @treesurf/nest/code/javascript/dom/css-style-declaration
   take form css-style-declaration
 
 form css-page-rule, name <CSSPageRule>
   base css-grouping-rule
 
-  take selector-text, name <selectorText>
+  link selector-text, name <selectorText>
     like native-string
-    lock false
-  take style, name <style>
+    flex true
+  link style, name <style>
     like css-style-declaration

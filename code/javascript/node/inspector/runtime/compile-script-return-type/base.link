@@ -1,25 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/node/inspector/runtime/exception-details
+load @drumwork/nest/code/javascript
+  take form undefined
+    save form native-undefined
+
+load @drumwork/nest/code/javascript/node/inspector/runtime
   take form exception-details
-
-load @treesurf/nest/code/javascript/node/inspector/runtime/script-id
   take form script-id
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form compile-script-return-type, name <CompileScriptReturnType>
-  take script-id, name <scriptId>
-    like or-link-text
+  link script-id, name <scriptId>
+    like or
       like script-id
       like native-undefined
-    lock false
-  take exception-details, name <exceptionDetails>
-    like or-link-text
+    flex true
+  link exception-details, name <exceptionDetails>
+    like or
       like exception-details
       like native-undefined
-    lock false
+    flex true

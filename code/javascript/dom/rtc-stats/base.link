@@ -1,20 +1,19 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/dom-high-res-time-stamp
+load @treesurf/nest/code/javascript/dom
   take form dom-high-res-time-stamp
-
-load @treesurf/nest/code/javascript/dom/rtc-stats-type
   take form rtc-stats-type
 
 form rtc-stats, name <RTCStats>
-  take id, name <id>
+  link id, name <id>
     like native-string
-    lock false
-  take timestamp, name <timestamp>
+    flex true
+  link timestamp, name <timestamp>
     like dom-high-res-time-stamp
-    lock false
-  take type, name <type>
+    flex true
+  link type, name <type>
     like rtc-stats-type
-    lock false
+    flex true

@@ -1,22 +1,18 @@
 
+load @treesurf/moon
+  take form like
+  take form tuple
+
+load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterable-iterator
+
 load @treesurf/nest/code/javascript/es2015/collection/set
   take form set
 
-load @treesurf/nest/code/javascript/es2015/iterable/iterable-iterator
-  take form iterable-iterator
-
-load @treesurf/nest/code/form/band
-  take form band
-    save form band-link-text
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
 form set, name <Set>
-  head t, like like-link-text
+  head t
 
-  task loan symbol/iterator
+  task {symbol/iterator}
     free seed
       like iterable-iterator
         like t
@@ -24,7 +20,7 @@ form set, name <Set>
   task entries, name <entries>
     free seed
       like iterable-iterator
-        like band-link-text
+        like tuple
           like t
           like t
 

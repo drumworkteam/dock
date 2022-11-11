@@ -1,28 +1,24 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/dom/push-permission-state
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+
+load @treesurf/nest/code/javascript/dom
   take form push-permission-state
-
-load @treesurf/nest/code/javascript/dom/push-subscription
   take form push-subscription
-
-load @treesurf/nest/code/javascript/dom/push-subscription-options-init
   take form push-subscription-options-init
 
-load @treesurf/nest/code/javascript/es5/promise
+load @treesurf/nest/code/javascript/es5
   take form promise
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form push-manager, name <PushManager>
   task get-subscription, name <getSubscription>
     free seed
       like promise
-        like or-link-text
+        like or
           like push-subscription
           like native-null
 

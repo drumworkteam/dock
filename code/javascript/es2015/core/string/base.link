@@ -1,28 +1,25 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
 load @treesurf/nest/code/javascript/es5/string
   take form string
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form string, name <String>
   task code-point-at, name <codePointAt>
     take pos, like native-number
     free seed
-      like or-link-text
+      like or
         like native-number
         like native-undefined
 
@@ -40,7 +37,7 @@ form string, name <String>
 
   task normalize, name <normalize>
     take form
-      like or-link-text
+      like or
         text <NFC>
         text <NFD>
         text <NFKC>

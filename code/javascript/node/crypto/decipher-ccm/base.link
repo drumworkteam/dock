@@ -1,19 +1,14 @@
 
-load @treesurf/nest/code/javascript/base/decipher
-  take form decipher
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-this
-  take form native-this
-
-load @treesurf/nest/code/javascript/base/node-js-array-buffer-view
-  take form node-js-array-buffer-view
-
-load @treesurf/nest/code/form/form
+load @treesurf/moon
   take form form
-    save form form-link-text
+
+load @drumwork/nest/code/javascript
+  take form decipher
+  take form node-js-array-buffer-view
+  take form number
+    save form native-number
+  take form this
+    save form native-this
 
 form decipher-ccm, name <DecipherCCM>
   base decipher
@@ -25,8 +20,8 @@ form decipher-ccm, name <DecipherCCM>
   task set-aad, name <setAAD>
     take buffer, like node-js-array-buffer-view
     take options
-      like form-link-text
-        take plaintext-length, name <plaintextLength>
+      like form
+        link plaintext-length, name <plaintextLength>
           like native-number
-          lock false
+          flex true
     free seed, like native-this

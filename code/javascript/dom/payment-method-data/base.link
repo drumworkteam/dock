@@ -1,14 +1,15 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
 form payment-method-data, name <PaymentMethodData>
-  take data, name <data>
-    like native-any
-    lock false
-  take supported-methods, name <supportedMethods>
+  link data, name <data>
+    like any
+    flex true
+  link supported-methods, name <supportedMethods>
     like native-string
-    lock false
+    flex true

@@ -1,61 +1,53 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/moon
+  take form form
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/runtime-stack-trace
+load @drumwork/nest/code/javascript
   take form runtime-stack-trace
-
-load @treesurf/nest/code/javascript/base/runtime-stack-trace-id
   take form runtime-stack-trace-id
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/inspector/debugger/call-frame
+load @drumwork/nest/code/javascript/node/inspector/debugger
   take form call-frame
 
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form paused-event-data-type, name <PausedEventDataType>
-  take call-frames, name <callFrames>
-    like native-array
+  link call-frames, name <callFrames>
+    like array
       like call-frame
-    lock false
-  take reason, name <reason>
+    flex true
+  link reason, name <reason>
     like native-string
-    lock false
-  take data, name <data>
-    like or-link-text
-      like form-link-text
+    flex true
+  link data, name <data>
+    like or
+      like form
       like native-undefined
-    lock false
-  take hit-breakpoints, name <hitBreakpoints>
-    like or-link-text
-      like native-array
+    flex true
+  link hit-breakpoints, name <hitBreakpoints>
+    like or
+      like array
         like native-string
       like native-undefined
-    lock false
-  take async-stack-trace, name <asyncStackTrace>
-    like or-link-text
+    flex true
+  link async-stack-trace, name <asyncStackTrace>
+    like or
       like runtime-stack-trace
       like native-undefined
-    lock false
-  take async-stack-trace-id, name <asyncStackTraceId>
-    like or-link-text
+    flex true
+  link async-stack-trace-id, name <asyncStackTraceId>
+    like or
       like runtime-stack-trace-id
       like native-undefined
-    lock false
-  take async-call-stack-trace-id, name <asyncCallStackTraceId>
-    like or-link-text
+    flex true
+  link async-call-stack-trace-id, name <asyncCallStackTraceId>
+    like or
       like runtime-stack-trace-id
       like native-undefined
-    lock false
+    flex true

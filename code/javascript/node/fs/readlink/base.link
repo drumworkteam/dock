@@ -1,25 +1,19 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/promise
+load @drumwork/nest/code/javascript
   take form promise
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
 
-load @treesurf/nest/code/javascript/node/fs/buffer-encoding-option
+load @drumwork/nest/code/javascript/node/fs
   take form buffer-encoding-option
-
-load @treesurf/nest/code/javascript/node/fs/encoding-option
   take form encoding-option
-
-load @treesurf/nest/code/javascript/node/fs/path-like
   take form path-like
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 task promisify, name <__promisify__>
   take path, like path-like
@@ -42,6 +36,6 @@ task promisify, name <__promisify__>
     void true
   free seed
     like promise
-      like or-link-text
+      like or
         like native-string
         like buffer

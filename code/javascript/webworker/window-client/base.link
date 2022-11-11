@@ -1,32 +1,28 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/es5/promise
+load @treesurf/nest/code/javascript/es5
   take form promise
 
-load @treesurf/nest/code/javascript/webworker/client
+load @treesurf/nest/code/javascript/webworker
   take form client
-
-load @treesurf/nest/code/javascript/webworker/visibility-state
   take form visibility-state
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form window-client, name <WindowClient>
   base client
 
-  take focused, name <focused>
+  link focused, name <focused>
     like native-boolean
-  take visibility-state, name <visibilityState>
+  link visibility-state, name <visibilityState>
     like visibility-state
 
   task focus, name <focus>
@@ -38,6 +34,6 @@ form window-client, name <WindowClient>
     take url, like native-string
     free seed
       like promise
-        like or-link-text
+        like or
           like window-client
           like native-null

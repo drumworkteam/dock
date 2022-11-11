@@ -1,28 +1,24 @@
 
-load @treesurf/nest/code/javascript/base/iterable
+load @treesurf/moon
+  take form or
+
+load @treesurf/nest/code/javascript/native
   take form iterable
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/webworker/idb-index
+load @treesurf/nest/code/javascript/webworker
   take form idb-index
-
-load @treesurf/nest/code/javascript/webworker/idb-index-parameters
   take form idb-index-parameters
 
 load @treesurf/nest/code/javascript/webworker/idb-object-store
   take form idb-object-store
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form idb-object-store, name <IDBObjectStore>
   task create-index, name <createIndex>
     take name, like native-string
     take key-path
-      like or-link-text
+      like or
         like native-string
         like iterable
           like native-string

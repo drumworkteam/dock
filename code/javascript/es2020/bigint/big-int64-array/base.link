@@ -1,67 +1,48 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form like
+  take form or
+  take form task
+  take form tuple
 
-load @treesurf/nest/code/javascript/base/native-bigint
-  take form native-bigint
+load @treesurf/nest/code/javascript/native
+  take form bigint
+    save form native-bigint
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form this
+    save form native-this
+  take form undefined
+    save form native-undefined
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-this
-  take form native-this
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/es2015/iterable/iterable-iterator
+load @treesurf/nest/code/javascript/es2015/iterable
   take form iterable-iterator
 
-load @treesurf/nest/code/javascript/es5/array-buffer-like
+load @treesurf/nest/code/javascript/es5
   take form array-buffer-like
-
-load @treesurf/nest/code/javascript/es5/array-like
   take form array-like
 
-load @treesurf/nest/code/form/band
-  take form band
-    save form band-link-text
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
 form big-int64-array, name <BigInt64Array>
-  take bytes-per-element, name <BYTES_PER_ELEMENT>
+  link bytes-per-element, name <BYTES_PER_ELEMENT>
     like native-number
-  take buffer, name <buffer>
+  link buffer, name <buffer>
     like array-buffer-like
-  take byte-length, name <byteLength>
+  link byte-length, name <byteLength>
     like native-number
-  take byte-offset, name <byteOffset>
+  link byte-offset, name <byteOffset>
     like native-number
-  take length, name <length>
+  link length, name <length>
     like native-number
-  take loan symbol/to-string-tag
+  link {symbol/to-string-tag}
     text <BigInt64Array>
-    read true
+    work true
 
   task copy-within, name <copyWithin>
     take target, like native-number
@@ -73,18 +54,18 @@ form big-int64-array, name <BigInt64Array>
   task entries, name <entries>
     free seed
       like iterable-iterator
-        like band-link-text
+        like tuple
           like native-number
           like native-bigint
 
   task every, name <every>
     take predicate
-      like task-link-text
+      like task
         take value, like native-bigint
         take index, like native-number
         take array, like big-int64-array
         free seed, like native-boolean
-    take this-arg, like native-any
+    take this-arg, like any
       void true
     free seed, like native-boolean
 
@@ -98,48 +79,48 @@ form big-int64-array, name <BigInt64Array>
 
   task filter, name <filter>
     take predicate
-      like task-link-text
+      like task
         take value, like native-bigint
         take index, like native-number
         take array, like big-int64-array
-        free seed, like native-any
-    take this-arg, like native-any
+        free seed, like any
+    take this-arg, like any
       void true
     free seed, like big-int64-array
 
   task find, name <find>
     take predicate
-      like task-link-text
+      like task
         take value, like native-bigint
         take index, like native-number
         take array, like big-int64-array
         free seed, like native-boolean
-    take this-arg, like native-any
+    take this-arg, like any
       void true
     free seed
-      like or-link-text
+      like or
         like native-bigint
         like native-undefined
 
   task find-index, name <findIndex>
     take predicate
-      like task-link-text
+      like task
         take value, like native-bigint
         take index, like native-number
         take array, like big-int64-array
         free seed, like native-boolean
-    take this-arg, like native-any
+    take this-arg, like any
       void true
     free seed, like native-number
 
   task for-each, name <forEach>
     take callbackfn
-      like task-link-text
+      like task
         take value, like native-bigint
         take index, like native-number
         take array, like big-int64-array
         free seed, like native-void
-    take this-arg, like native-any
+    take this-arg, like any
       void true
     free seed, like native-void
 
@@ -173,18 +154,18 @@ form big-int64-array, name <BigInt64Array>
 
   task map, name <map>
     take callbackfn
-      like task-link-text
+      like task
         take value, like native-bigint
         take index, like native-number
         take array, like big-int64-array
         free seed, like native-bigint
-    take this-arg, like native-any
+    take this-arg, like any
       void true
     free seed, like big-int64-array
 
   task reduce, name <reduce>
     take callbackfn
-      like task-link-text
+      like task
         take previous-value, like native-bigint
         take current-value, like native-bigint
         take current-index, like native-number
@@ -193,9 +174,10 @@ form big-int64-array, name <BigInt64Array>
     free seed, like native-bigint
 
   task reduce, name <reduce>
-    head u, like like-link-text
+    head u
+
     take callbackfn
-      like task-link-text
+      like task
         take previous-value, like u
         take current-value, like native-bigint
         take current-index, like native-number
@@ -206,7 +188,7 @@ form big-int64-array, name <BigInt64Array>
 
   task reduce-right, name <reduceRight>
     take callbackfn
-      like task-link-text
+      like task
         take previous-value, like native-bigint
         take current-value, like native-bigint
         take current-index, like native-number
@@ -215,9 +197,10 @@ form big-int64-array, name <BigInt64Array>
     free seed, like native-bigint
 
   task reduce-right, name <reduceRight>
-    head u, like like-link-text
+    head u
+
     take callbackfn
-      like task-link-text
+      like task
         take previous-value, like u
         take current-value, like native-bigint
         take current-index, like native-number
@@ -246,22 +229,22 @@ form big-int64-array, name <BigInt64Array>
 
   task some, name <some>
     take predicate
-      like task-link-text
+      like task
         take value, like native-bigint
         take index, like native-number
         take array, like big-int64-array
         free seed, like native-boolean
-    take this-arg, like native-any
+    take this-arg, like any
       void true
     free seed, like native-boolean
 
   task sort, name <sort>
     take compare-fn
-      like task-link-text
+      like task
         take a, like native-bigint
         take b, like native-bigint
         free seed
-          like or-link-text
+          like or
             like native-number
             like native-bigint
       void true
@@ -288,7 +271,7 @@ form big-int64-array, name <BigInt64Array>
       like iterable-iterator
         like native-bigint
 
-  task loan symbol/iterator
+  task {symbol/iterator}
     free seed
       like iterable-iterator
         like native-bigint

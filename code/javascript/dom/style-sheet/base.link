@@ -1,51 +1,43 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/css-style-sheet
+load @treesurf/nest/code/javascript/dom
   take form css-style-sheet
-
-load @treesurf/nest/code/javascript/dom/element
   take form element
-
-load @treesurf/nest/code/javascript/dom/media-list
   take form media-list
-
-load @treesurf/nest/code/javascript/dom/processing-instruction
   take form processing-instruction
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form style-sheet, name <StyleSheet>
-  take disabled, name <disabled>
+  link disabled, name <disabled>
     like native-boolean
-    lock false
-  take href, name <href>
-    like or-link-text
+    flex true
+  link href, name <href>
+    like or
       like native-string
       like native-null
-  take media, name <media>
+  link media, name <media>
     like media-list
-  take owner-node, name <ownerNode>
-    like or-link-text
+  link owner-node, name <ownerNode>
+    like or
       like element
       like processing-instruction
       like native-null
-  take parent-style-sheet, name <parentStyleSheet>
-    like or-link-text
+  link parent-style-sheet, name <parentStyleSheet>
+    like or
       like css-style-sheet
       like native-null
-  take title, name <title>
-    like or-link-text
+  link title, name <title>
+    like or
       like native-string
       like native-null
-  take type, name <type>
+  link type, name <type>
     like native-string

@@ -1,79 +1,75 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
+load @treesurf/nest/code/javascript/webworker
+  take form event-target
 
 load @treesurf/nest/code/javascript/dom/event
   take form event
 
-load @treesurf/nest/code/javascript/webworker/event-target
-  take form event-target
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form event, name <Event>
-  take bubbles, name <bubbles>
+  link bubbles, name <bubbles>
     like native-boolean
-  take cancel-bubble, name <cancelBubble>
+  link cancel-bubble, name <cancelBubble>
     like native-boolean
-    lock false
-  take cancelable, name <cancelable>
+    flex true
+  link cancelable, name <cancelable>
     like native-boolean
-  take composed, name <composed>
+  link composed, name <composed>
     like native-boolean
-  take current-target, name <currentTarget>
-    like or-link-text
+  link current-target, name <currentTarget>
+    like or
       like event-target
       like native-null
-  take default-prevented, name <defaultPrevented>
+  link default-prevented, name <defaultPrevented>
     like native-boolean
-  take event-phase, name <eventPhase>
+  link event-phase, name <eventPhase>
     like native-number
-  take is-trusted, name <isTrusted>
+  link is-trusted, name <isTrusted>
     like native-boolean
-  take return-value, name <returnValue>
+  link return-value, name <returnValue>
     like native-boolean
-    lock false
-  take src-element, name <srcElement>
-    like or-link-text
+    flex true
+  link src-element, name <srcElement>
+    like or
       like event-target
       like native-null
-  take target, name <target>
-    like or-link-text
+  link target, name <target>
+    like or
       like event-target
       like native-null
-  take time-stamp, name <timeStamp>
+  link time-stamp, name <timeStamp>
     like native-number
-  take type, name <type>
+  link type, name <type>
     like native-string
-  take at-target, name <AT_TARGET>
+  link at-target, name <AT_TARGET>
     like native-number
-  take bubbling-phase, name <BUBBLING_PHASE>
+  link bubbling-phase, name <BUBBLING_PHASE>
     like native-number
-  take capturing-phase, name <CAPTURING_PHASE>
+  link capturing-phase, name <CAPTURING_PHASE>
     like native-number
-  take none, name <NONE>
+  link none, name <NONE>
     like native-number
 
   task composed-path, name <composedPath>
     free seed
-      like native-array
+      like array
         like event-target
 
   task init-event, name <initEvent>

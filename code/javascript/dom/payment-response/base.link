@@ -1,33 +1,29 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/event-target
+load @treesurf/nest/code/javascript/dom
   take form event-target
-
-load @treesurf/nest/code/javascript/dom/payment-complete
   take form payment-complete
-
-load @treesurf/nest/code/javascript/dom/payment-validation-errors
   take form payment-validation-errors
 
-load @treesurf/nest/code/javascript/es5/promise
+load @treesurf/nest/code/javascript/es5
   take form promise
 
 form payment-response, name <PaymentResponse>
   base event-target
 
-  take details, name <details>
-    like native-any
-  take method-name, name <methodName>
+  link details, name <details>
+    like any
+  link method-name, name <methodName>
     like native-string
-  take request-id, name <requestId>
+  link request-id, name <requestId>
     like native-string
 
   task complete, name <complete>
@@ -45,4 +41,4 @@ form payment-response, name <PaymentResponse>
         like native-void
 
   task to-json, name <toJSON>
-    free seed, like native-any
+    free seed, like any

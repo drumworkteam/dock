@@ -1,28 +1,27 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
+  take form like
 
-load @treesurf/nest/code/javascript/base/native-object
-  take form native-object
+load @treesurf/nest/code/javascript/native
+  take form object
+    save form native-object
+
+load @treesurf/nest/code/javascript/esnext/weakref
+  take form weak-ref
 
 load @treesurf/nest/code/javascript/es2021/weakref/weak-ref-constructor
   take form weak-ref-constructor
 
-load @treesurf/nest/code/javascript/esnext/weakref/weak-ref
-  take form weak-ref
-
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
 form weak-ref-constructor, name <WeakRefConstructor>
-  take prototype, name <prototype>
+  link prototype, name <prototype>
     like weak-ref
-      like native-any
+      like any
 
   hook make
-    head t, like like-link-text
+    head t
       base native-object
+
     take target, like t
       void true
     free seed

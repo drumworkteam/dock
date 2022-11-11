@@ -1,17 +1,15 @@
 
-load @treesurf/nest/code/javascript/dom/event
+load @treesurf/nest/code/javascript/dom
   take form event
-
-load @treesurf/nest/code/javascript/dom/message-event
   take form message-event
 
 form service-worker-container-event-map, name <ServiceWorkerContainerEventMap>
-  take controllerchange, name <controllerchange>
+  link controllerchange, name <controllerchange>
     like event
-    lock false
-  take message, name <message>
+    flex true
+  link message, name <message>
     like message-event
-    lock false
-  take messageerror, name <messageerror>
+    flex true
+  link messageerror, name <messageerror>
     like message-event
-    lock false
+    flex true

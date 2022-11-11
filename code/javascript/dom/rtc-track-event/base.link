@@ -1,31 +1,23 @@
 
-load @treesurf/nest/code/javascript/dom/event
+load @treesurf/nest/code/javascript/dom
   take form event
-
-load @treesurf/nest/code/javascript/dom/media-stream
   take form media-stream
-
-load @treesurf/nest/code/javascript/dom/media-stream-track
   take form media-stream-track
-
-load @treesurf/nest/code/javascript/dom/rtc-rtp-receiver
   take form rtc-rtp-receiver
-
-load @treesurf/nest/code/javascript/dom/rtc-rtp-transceiver
   take form rtc-rtp-transceiver
 
-load @treesurf/nest/code/javascript/es5/readonly-array
+load @treesurf/nest/code/javascript/es5
   take form readonly-array
 
 form rtc-track-event, name <RTCTrackEvent>
   base event
 
-  take receiver, name <receiver>
+  link receiver, name <receiver>
     like rtc-rtp-receiver
-  take streams, name <streams>
+  link streams, name <streams>
     like readonly-array
       like media-stream
-  take track, name <track>
+  link track, name <track>
     like media-stream-track
-  take transceiver, name <transceiver>
+  link transceiver, name <transceiver>
     like rtc-rtp-transceiver

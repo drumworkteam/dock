@@ -1,31 +1,24 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/promise
+load @drumwork/nest/code/javascript
+  take form null
+    save form native-null
+  take form number
+    save form native-number
   take form promise
 
-load @treesurf/nest/code/javascript/node/fs/mode
+load @drumwork/nest/code/javascript/node/fs
   take form mode
-
-load @treesurf/nest/code/javascript/node/fs/open-mode
   take form open-mode
-
-load @treesurf/nest/code/javascript/node/fs/path-like
   take form path-like
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 task promisify, name <__promisify__>
   take path, like path-like
   take flags, like open-mode
   take mode
-    like or-link-text
+    like or
       like mode
       like native-null
     void true

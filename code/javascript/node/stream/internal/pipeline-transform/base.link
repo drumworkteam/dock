@@ -1,61 +1,43 @@
 
-load @treesurf/nest/code/javascript/base/async-iterable
+load @treesurf/moon
+  take form any
+  take form like
+  take form or
+  take form task
+  take form test
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @drumwork/nest/code/javascript
   take form async-iterable
-
-load @treesurf/nest/code/javascript/base/iterable
   take form iterable
-
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
-
-load @treesurf/nest/code/javascript/base/node-js-read-write-stream
   take form node-js-read-write-stream
-
-load @treesurf/nest/code/javascript/base/st
   take form st
 
-load @treesurf/nest/code/javascript/node/stream/internal/pipeline-transform-source
+load @drumwork/nest/code/javascript/node/stream/internal
   take form pipeline-transform-source
 
-load @treesurf/nest/code/form/like
-  take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
-
-load @treesurf/nest/code/form/test
-  take form test
-    save form test-link-text
-
 form pipeline-transform, name <PipelineTransform>
-  head s, like like-link-text
+  head s
     base pipeline-transform-source
-      like native-any
-  head u, like like-link-text
+      like any
+  head u
 
-  like or-link-text
+  like or
     like node-js-read-write-stream
-    like task-link-text
+    like task
       take source
-        like test-link-text
+        like test
           stem roll
             like s
-            like task-link-text
+            like task
               take args
-                like native-array
-                  like native-any
+                like array
+                  like any
                 rest true
-              free seed
-                like or-link-text
+              free result
+                like or
                   like iterable
                     name st
                   like async-iterable
@@ -65,6 +47,6 @@ form pipeline-transform, name <PipelineTransform>
                 like st
             hook false
               like s
-      free seed
+      free result
         like async-iterable
           like u

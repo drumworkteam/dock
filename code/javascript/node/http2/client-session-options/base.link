@@ -1,46 +1,38 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/moon
+  take form or
+  take form task
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/stream-duplex
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
   take form stream-duplex
-
-load @treesurf/nest/code/javascript/base/url-url
+  take form undefined
+    save form native-undefined
   take form url-url
 
-load @treesurf/nest/code/javascript/node/http2/session-options
+load @drumwork/nest/code/javascript/node/http2
   take form session-options
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
-  take form task
-    save form task-link-text
 
 form client-session-options, name <ClientSessionOptions>
   base session-options
 
-  take max-reserved-remote-streams, name <maxReservedRemoteStreams>
-    like or-link-text
+  link max-reserved-remote-streams, name <maxReservedRemoteStreams>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take create-connection, name <createConnection>
-    like or-link-text
-      like task-link-text
+    flex true
+  link create-connection, name <createConnection>
+    like or
+      like task
         take authority, like url-url
         take option, like session-options
-        free seed, like stream-duplex
+        free result, like stream-duplex
       like native-undefined
-    lock false
-  take protocol, name <protocol>
-    like or-link-text
+    flex true
+  link protocol, name <protocol>
+    like or
       text <http:>
       text <https:>
       like native-undefined
-    lock false
+    flex true

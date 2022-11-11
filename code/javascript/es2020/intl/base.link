@@ -12,33 +12,25 @@ bear @treesurf/nest/code/javascript/es2020/intl/number-format-options
 bear @treesurf/nest/code/javascript/es2020/intl/resolved-number-format-options
 bear @treesurf/nest/code/javascript/es2020/intl/date-time-format-options
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/moon
+  take form form
+  take form or
 
-load @treesurf/nest/code/javascript/es2020/intl/relative-time-format
+load @treesurf/nest/code/javascript
+  take form array
+
+load @treesurf/nest/code/javascript/es2020/intl
   take form relative-time-format
-
-load @treesurf/nest/code/javascript/es2020/intl/relative-time-format-options
   take form relative-time-format-options
-
-load @treesurf/nest/code/javascript/es2020/intl/unicode-bcp47-locale-identifier
   take form unicode-bcp47-locale-identifier
 
-load @treesurf/nest/code/form/form
-  take form form
-    save form form-link-text
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 host relative-time-format, name <RelativeTimeFormat>
-  like form-link-text
+  like form
     hook make
       take locales
-        like or-link-text
+        like or
           like unicode-bcp47-locale-identifier
-          like native-array
+          like array
             like unicode-bcp47-locale-identifier
         void true
       take options, like relative-time-format-options
@@ -47,13 +39,13 @@ host relative-time-format, name <RelativeTimeFormat>
 
     task supported-locales-of, name <supportedLocalesOf>
       take locales
-        like or-link-text
+        like or
           like unicode-bcp47-locale-identifier
-          like native-array
+          like array
             like unicode-bcp47-locale-identifier
         void true
       take options, like relative-time-format-options
         void true
       free seed
-        like native-array
+        like array
           like unicode-bcp47-locale-identifier

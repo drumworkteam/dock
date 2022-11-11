@@ -1,47 +1,42 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/node-js-array-buffer-view
+load @drumwork/nest/code/javascript
   take form node-js-array-buffer-view
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/buffer/buffer-encoding
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer-encoding
 
-load @treesurf/nest/code/javascript/node/child-process/common-spawn-options
+load @drumwork/nest/code/javascript/node/child-process
   take form common-spawn-options
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form spawn-sync-options, name <SpawnSyncOptions>
   base common-spawn-options
 
-  take input, name <input>
-    like or-link-text
+  link input, name <input>
+    like or
       like native-string
       like node-js-array-buffer-view
       like native-undefined
-    lock false
-  take max-buffer, name <maxBuffer>
-    like or-link-text
+    flex true
+  link max-buffer, name <maxBuffer>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take encoding, name <encoding>
-    like or-link-text
+    flex true
+  link encoding, name <encoding>
+    like or
       like buffer-encoding
       text <buffer>
       like native-null
       like native-undefined
-    lock false
+    flex true

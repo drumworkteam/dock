@@ -1,22 +1,21 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/url
-  take form url
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/dom
+  take form url
 
 form navigator-content-utils, name <NavigatorContentUtils>
   task register-protocol-handler, name <registerProtocolHandler>
     take scheme, like native-string
     take url
-      like or-link-text
+      like or
         like native-string
         like url
     free seed, like native-void

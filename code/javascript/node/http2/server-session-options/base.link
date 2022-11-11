@@ -1,34 +1,34 @@
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/node/http2/session-options
-  take form session-options
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form undefined
+    save form native-undefined
+
+load @drumwork/nest/code/javascript/node/http2
+  take form session-options
 
 form server-session-options, name <ServerSessionOptions>
   base session-options
 
-  take http1-incoming-message, name <Http1IncomingMessage>
-    like or-link-text
+  link http1-incoming-message, name <Http1IncomingMessage>
+    like or
       like incoming-message
       like native-undefined
-    lock false
-  take http1-server-response, name <Http1ServerResponse>
-    like or-link-text
+    flex true
+  link http1-server-response, name <Http1ServerResponse>
+    like or
       like server-response
       like native-undefined
-    lock false
-  take http2-server-request, name <Http2ServerRequest>
-    like or-link-text
+    flex true
+  link http2-server-request, name <Http2ServerRequest>
+    like or
       like http2-server-request
       like native-undefined
-    lock false
-  take http2-server-response, name <Http2ServerResponse>
-    like or-link-text
+    flex true
+  link http2-server-response, name <Http2ServerResponse>
+    like or
       like http2-server-response
       like native-undefined
-    lock false
+    flex true

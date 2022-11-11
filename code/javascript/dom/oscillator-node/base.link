@@ -1,90 +1,61 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/dom/add-event-listener-options
-  take form add-event-listener-options
-
-load @treesurf/nest/code/javascript/dom/audio-param
-  take form audio-param
-
-load @treesurf/nest/code/javascript/dom/audio-scheduled-source-node
-  take form audio-scheduled-source-node
-
-load @treesurf/nest/code/javascript/dom/audio-scheduled-source-node-event-map
-  take form audio-scheduled-source-node-event-map
-
-load @treesurf/nest/code/javascript/dom/event-listener-options
-  take form event-listener-options
-
-load @treesurf/nest/code/javascript/dom/event-listener-or-event-listener-object
-  take form event-listener-or-event-listener-object
-
-load @treesurf/nest/code/javascript/dom/oscillator-type
-  take form oscillator-type
-
-load @treesurf/nest/code/javascript/dom/periodic-wave
-  take form periodic-wave
-
-load @treesurf/nest/code/form/form/link
-  take form form-link
-    save form form-link-link-text
-
-load @treesurf/nest/code/form/like
+load @treesurf/moon
+  take form any
+  take form index
+  take form key-list
   take form like
-    save form like-link-text
-
-load @treesurf/nest/code/form/link/read
-  take form link-read
-    save form link-read-link-text
-
-load @treesurf/nest/code/form/or
   take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
   take form task
-    save form task-link-text
+
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form string
+    save form native-string
+  take form void
+    save form native-void
+
+load @treesurf/nest/code/javascript/dom
+  take form add-event-listener-options
+  take form audio-param
+  take form audio-scheduled-source-node
+  take form audio-scheduled-source-node-event-map
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form oscillator-type
+  take form periodic-wave
 
 form oscillator-node, name <OscillatorNode>
   base audio-scheduled-source-node
 
-  take detune, name <detune>
+  link detune, name <detune>
     like audio-param
-  take frequency, name <frequency>
+  link frequency, name <frequency>
     like audio-param
-  take type, name <type>
+  link type, name <type>
     like oscillator-type
-    lock false
+    flex true
 
   task set-periodic-wave, name <setPeriodicWave>
     take periodic-wave, like periodic-wave
     free seed, like native-void
 
   task add-event-listener, name <addEventListener>
-    head k, like like-link-text
-      base link-read-link-text
+    head k
+      base key-list
         like audio-scheduled-source-node-event-map
+
     take type, like k
     take listener
-      like task-link-text
+      like task
         take this, like oscillator-node
         take ev
-          like form-link-link-text
+          like index
             like audio-scheduled-source-node-event-map
             like k
-        free seed, like native-any
+        free seed, like any
     take options
-      like or-link-text
+      like or
         like native-boolean
         like add-event-listener-options
       void true
@@ -94,27 +65,28 @@ form oscillator-node, name <OscillatorNode>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like or-link-text
+      like or
         like native-boolean
         like add-event-listener-options
       void true
     free seed, like native-void
 
   task remove-event-listener, name <removeEventListener>
-    head k, like like-link-text
-      base link-read-link-text
+    head k
+      base key-list
         like audio-scheduled-source-node-event-map
+
     take type, like k
     take listener
-      like task-link-text
+      like task
         take this, like oscillator-node
         take ev
-          like form-link-link-text
+          like index
             like audio-scheduled-source-node-event-map
             like k
-        free seed, like native-any
+        free seed, like any
     take options
-      like or-link-text
+      like or
         like native-boolean
         like event-listener-options
       void true
@@ -124,7 +96,7 @@ form oscillator-node, name <OscillatorNode>
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
-      like or-link-text
+      like or
         like native-boolean
         like event-listener-options
       void true

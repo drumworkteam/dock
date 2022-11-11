@@ -1,26 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/promise
-  take form promise
-
-load @treesurf/nest/code/form/form
+load @treesurf/moon
   take form form
-    save form form-link-text
+
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
+  take form promise
+  take form string
+    save form native-string
 
 task promisify, name <__promisify__>
   take address, like native-string
   take port, like native-number
   free seed
     like promise
-      like form-link-text
-        take hostname, name <hostname>
+      like form
+        link hostname, name <hostname>
           like native-string
-          lock false
-        take service, name <service>
+          flex true
+        link service, name <service>
           like native-string
-          lock false
+          flex true

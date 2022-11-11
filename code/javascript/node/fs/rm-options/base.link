@@ -1,35 +1,33 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form undefined
+    save form native-undefined
 
 form rm-options, name <RmOptions>
-  take force, name <force>
-    like or-link-text
+  link force, name <force>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take max-retries, name <maxRetries>
-    like or-link-text
+    flex true
+  link max-retries, name <maxRetries>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take recursive, name <recursive>
-    like or-link-text
+    flex true
+  link recursive, name <recursive>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take retry-delay, name <retryDelay>
-    like or-link-text
+    flex true
+  link retry-delay, name <retryDelay>
+    like or
       like native-number
       like native-undefined
-    lock false
+    flex true

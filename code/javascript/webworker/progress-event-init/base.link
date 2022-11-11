@@ -1,25 +1,25 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/webworker
+  take form event-init
 
 load @treesurf/nest/code/javascript/dom/progress-event-init
   take form progress-event-init
 
-load @treesurf/nest/code/javascript/webworker/event-init
-  take form event-init
-
 form progress-event-init, name <ProgressEventInit>
   base event-init
 
-  take length-computable, name <lengthComputable>
+  link length-computable, name <lengthComputable>
     like native-boolean
-    lock false
-  take loaded, name <loaded>
+    flex true
+  link loaded, name <loaded>
     like native-number
-    lock false
-  take total, name <total>
+    flex true
+  link total, name <total>
     like native-number
-    lock false
+    flex true

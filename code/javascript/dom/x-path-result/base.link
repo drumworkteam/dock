@@ -1,70 +1,67 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/dom/node
+load @treesurf/nest/code/javascript/dom
   take form node
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form x-path-result, name <XPathResult>
-  take boolean-value, name <booleanValue>
+  link boolean-value, name <booleanValue>
     like native-boolean
-  take invalid-iterator-state, name <invalidIteratorState>
+  link invalid-iterator-state, name <invalidIteratorState>
     like native-boolean
-  take number-value, name <numberValue>
+  link number-value, name <numberValue>
     like native-number
-  take result-type, name <resultType>
+  link result-type, name <resultType>
     like native-number
-  take single-node-value, name <singleNodeValue>
-    like or-link-text
+  link single-node-value, name <singleNodeValue>
+    like or
       like node
       like native-null
-  take snapshot-length, name <snapshotLength>
+  link snapshot-length, name <snapshotLength>
     like native-number
-  take string-value, name <stringValue>
+  link string-value, name <stringValue>
     like native-string
-  take any-type, name <ANY_TYPE>
+  link any-type, name <ANY_TYPE>
     like native-number
-  take any-unordered-node-type, name <ANY_UNORDERED_NODE_TYPE>
+  link any-unordered-node-type, name <ANY_UNORDERED_NODE_TYPE>
     like native-number
-  take boolean-type, name <BOOLEAN_TYPE>
+  link boolean-type, name <BOOLEAN_TYPE>
     like native-number
-  take first-ordered-node-type, name <FIRST_ORDERED_NODE_TYPE>
+  link first-ordered-node-type, name <FIRST_ORDERED_NODE_TYPE>
     like native-number
-  take number-type, name <NUMBER_TYPE>
+  link number-type, name <NUMBER_TYPE>
     like native-number
-  take ordered-node-iterator-type, name <ORDERED_NODE_ITERATOR_TYPE>
+  link ordered-node-iterator-type, name <ORDERED_NODE_ITERATOR_TYPE>
     like native-number
-  take ordered-node-snapshot-type, name <ORDERED_NODE_SNAPSHOT_TYPE>
+  link ordered-node-snapshot-type, name <ORDERED_NODE_SNAPSHOT_TYPE>
     like native-number
-  take string-type, name <STRING_TYPE>
+  link string-type, name <STRING_TYPE>
     like native-number
-  take unordered-node-iterator-type, name <UNORDERED_NODE_ITERATOR_TYPE>
+  link unordered-node-iterator-type, name <UNORDERED_NODE_ITERATOR_TYPE>
     like native-number
-  take unordered-node-snapshot-type, name <UNORDERED_NODE_SNAPSHOT_TYPE>
+  link unordered-node-snapshot-type, name <UNORDERED_NODE_SNAPSHOT_TYPE>
     like native-number
 
   task iterate-next, name <iterateNext>
     free seed
-      like or-link-text
+      like or
         like node
         like native-null
 
   task snapshot-item, name <snapshotItem>
     take index, like native-number
     free seed
-      like or-link-text
+      like or
         like node
         like native-null

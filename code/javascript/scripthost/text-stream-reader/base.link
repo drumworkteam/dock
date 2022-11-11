@@ -1,28 +1,26 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form void
+    save form native-void
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/scripthost/text-stream-base
+load @treesurf/nest/code/javascript/scripthost
   take form text-stream-base
 
 form text-stream-reader, name <TextStreamReader>
   base text-stream-base
 
-  take at-end-of-line, name <AtEndOfLine>
+  link at-end-of-line, name <AtEndOfLine>
     like native-boolean
-    lock false
-  take at-end-of-stream, name <AtEndOfStream>
+    flex true
+  link at-end-of-stream, name <AtEndOfStream>
     like native-boolean
-    lock false
+    flex true
 
   task read, name <Read>
     take characters, like native-number

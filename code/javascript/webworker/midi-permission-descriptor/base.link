@@ -1,16 +1,17 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
 
-load @treesurf/nest/code/javascript/webworker/permission-descriptor
+load @treesurf/nest/code/javascript/webworker
   take form permission-descriptor
 
 form midi-permission-descriptor, name <MidiPermissionDescriptor>
   base permission-descriptor
 
-  take name, name <name>
+  link name, name <name>
     text <midi>
-    lock false
-  take sysex, name <sysex>
+    flex true
+  link sysex, name <sysex>
     like native-boolean
-    lock false
+    flex true

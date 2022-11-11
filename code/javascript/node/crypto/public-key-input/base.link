@@ -1,34 +1,33 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @drumwork/nest/code/javascript
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/buffer/buffer
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer
 
-load @treesurf/nest/code/javascript/node/crypto/key-format
+load @drumwork/nest/code/javascript/node/crypto
   take form key-format
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form public-key-input, name <PublicKeyInput>
-  take key, name <key>
-    like or-link-text
+  link key, name <key>
+    like or
       like native-string
       like buffer
-    lock false
-  take format, name <format>
-    like or-link-text
+    flex true
+  link format, name <format>
+    like or
       like key-format
       like native-undefined
-    lock false
-  take type, name <type>
-    like or-link-text
+    flex true
+  link type, name <type>
+    like or
       text <pkcs1>
       text <spki>
       like native-undefined
-    lock false
+    flex true

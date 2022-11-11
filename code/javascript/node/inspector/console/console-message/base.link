@@ -1,39 +1,37 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
 form console-message, name <ConsoleMessage>
-  take source, name <source>
+  link source, name <source>
     like native-string
-    lock false
-  take level, name <level>
+    flex true
+  link level, name <level>
     like native-string
-    lock false
-  take text, name <text>
+    flex true
+  link text, name <text>
     like native-string
-    lock false
-  take url, name <url>
-    like or-link-text
+    flex true
+  link url, name <url>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take line, name <line>
-    like or-link-text
+    flex true
+  link line, name <line>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take column, name <column>
-    like or-link-text
+    flex true
+  link column, name <column>
+    like or
       like native-number
       like native-undefined
-    lock false
+    flex true

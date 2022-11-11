@@ -1,25 +1,24 @@
 
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form null
+    save form native-null
+  take form number
+    save form native-number
 
-load @treesurf/nest/code/javascript/dom/file
+load @treesurf/nest/code/javascript/dom
   take form file
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form file-list, name <FileList>
-  take length, name <length>
+  link length, name <length>
     like native-number
 
   task item, name <item>
     take index, like native-number
     free seed
-      like or-link-text
+      like or
         like file
         like native-null
 

@@ -1,38 +1,35 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
 form bind-options, name <BindOptions>
-  take port, name <port>
-    like or-link-text
+  link port, name <port>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take address, name <address>
-    like or-link-text
+    flex true
+  link address, name <address>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take exclusive, name <exclusive>
-    like or-link-text
+    flex true
+  link exclusive, name <exclusive>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take fd, name <fd>
-    like or-link-text
+    flex true
+  link fd, name <fd>
+    like or
       like native-number
       like native-undefined
-    lock false
+    flex true

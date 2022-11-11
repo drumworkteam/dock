@@ -1,19 +1,15 @@
 
-load @treesurf/nest/code/javascript/dom/event
+load @treesurf/nest/code/javascript/dom
   take form event
-
-load @treesurf/nest/code/javascript/dom/idb-request-event-map
   take form idb-request-event-map
-
-load @treesurf/nest/code/javascript/dom/idb-version-change-event
   take form idb-version-change-event
 
 form idb-open-db-request-event-map, name <IDBOpenDBRequestEventMap>
   base idb-request-event-map
 
-  take blocked, name <blocked>
+  link blocked, name <blocked>
     like event
-    lock false
-  take upgradeneeded, name <upgradeneeded>
+    flex true
+  link upgradeneeded, name <upgradeneeded>
     like idb-version-change-event
-    lock false
+    flex true

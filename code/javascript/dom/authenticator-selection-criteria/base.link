@@ -1,26 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/nest/code/javascript/native
+  take form boolean
+    save form native-boolean
 
-load @treesurf/nest/code/javascript/dom/authenticator-attachment
+load @treesurf/nest/code/javascript/dom
   take form authenticator-attachment
-
-load @treesurf/nest/code/javascript/dom/resident-key-requirement
   take form resident-key-requirement
-
-load @treesurf/nest/code/javascript/dom/user-verification-requirement
   take form user-verification-requirement
 
 form authenticator-selection-criteria, name <AuthenticatorSelectionCriteria>
-  take authenticator-attachment, name <authenticatorAttachment>
+  link authenticator-attachment, name <authenticatorAttachment>
     like authenticator-attachment
-    lock false
-  take require-resident-key, name <requireResidentKey>
+    flex true
+  link require-resident-key, name <requireResidentKey>
     like native-boolean
-    lock false
-  take resident-key, name <residentKey>
+    flex true
+  link resident-key, name <residentKey>
     like resident-key-requirement
-    lock false
-  take user-verification, name <userVerification>
+    flex true
+  link user-verification, name <userVerification>
     like user-verification-requirement
-    lock false
+    flex true

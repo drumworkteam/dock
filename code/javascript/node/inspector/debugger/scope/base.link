@@ -1,39 +1,36 @@
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/javascript/base/runtime-remote-object
+load @drumwork/nest/code/javascript
   take form runtime-remote-object
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/inspector/debugger/location
+load @drumwork/nest/code/javascript/node/inspector/debugger
   take form location
 
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
-
 form scope, name <Scope>
-  take type, name <type>
+  link type, name <type>
     like native-string
-    lock false
-  take object, name <object>
+    flex true
+  link object, name <object>
     like runtime-remote-object
-    lock false
-  take name, name <name>
-    like or-link-text
+    flex true
+  link name, name <name>
+    like or
       like native-string
       like native-undefined
-    lock false
-  take start-location, name <startLocation>
-    like or-link-text
+    flex true
+  link start-location, name <startLocation>
+    like or
       like location
       like native-undefined
-    lock false
-  take end-location, name <endLocation>
-    like or-link-text
+    flex true
+  link end-location, name <endLocation>
+    like or
       like location
       like native-undefined
-    lock false
+    flex true

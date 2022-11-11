@@ -1,36 +1,35 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
+load @treesurf/moon
+  take form or
 
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form undefined
+    save form native-undefined
 
-load @treesurf/nest/code/javascript/node/buffer/buffer-encoding
+load @drumwork/nest/code/javascript/node/buffer
   take form buffer-encoding
 
-load @treesurf/nest/code/javascript/node/events/event-emitter/abortable
+load @drumwork/nest/code/javascript/node/events/event-emitter
   take form abortable
-
-load @treesurf/nest/code/form/or
-  take form or
-    save form or-link-text
 
 form watch-options, name <WatchOptions>
   base abortable
 
-  take encoding, name <encoding>
-    like or-link-text
+  link encoding, name <encoding>
+    like or
       like buffer-encoding
       text <buffer>
       like native-undefined
-    lock false
-  take persistent, name <persistent>
-    like or-link-text
+    flex true
+  link persistent, name <persistent>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take recursive, name <recursive>
-    like or-link-text
+    flex true
+  link recursive, name <recursive>
+    like or
       like native-boolean
       like native-undefined
-    lock false
+    flex true

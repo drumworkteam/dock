@@ -1,25 +1,26 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+
+load @treesurf/nest/code/javascript/webworker
+  take form dom-point-read-only
 
 load @treesurf/nest/code/javascript/dom/dom-point
   take form dom-point
 
-load @treesurf/nest/code/javascript/webworker/dom-point-read-only
-  take form dom-point-read-only
-
 form dom-point, name <DOMPoint>
   base dom-point-read-only
 
-  take w, name <w>
+  link w, name <w>
     like native-number
-    lock false
-  take x, name <x>
+    flex true
+  link x, name <x>
     like native-number
-    lock false
-  take y, name <y>
+    flex true
+  link y, name <y>
     like native-number
-    lock false
-  take z, name <z>
+    flex true
+  link z, name <z>
     like native-number
-    lock false
+    flex true

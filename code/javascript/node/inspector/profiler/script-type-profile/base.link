@@ -1,24 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/runtime-script-id
+load @drumwork/nest/code/javascript
   take form runtime-script-id
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/node/inspector/profiler/type-profile-entry
+load @drumwork/nest/code/javascript/node/inspector/profiler
   take form type-profile-entry
 
 form script-type-profile, name <ScriptTypeProfile>
-  take script-id, name <scriptId>
+  link script-id, name <scriptId>
     like runtime-script-id
-    lock false
-  take url, name <url>
+    flex true
+  link url, name <url>
     like native-string
-    lock false
-  take entries, name <entries>
-    like native-array
+    flex true
+  link entries, name <entries>
+    like array
       like type-profile-entry
-    lock false
+    flex true

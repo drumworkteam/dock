@@ -1,90 +1,83 @@
 
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-null
-  take form native-null
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
   take form task
-    save form task-link-text
+
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form null
+    save form native-null
+  take form number
+    save form native-number
+  take form string
+    save form native-string
+  take form undefined
+    save form native-undefined
 
 form inspect-options, name <InspectOptions>
-  take getters, name <getters>
-    like or-link-text
+  link getters, name <getters>
+    like or
       text <get>
       text <set>
       like native-boolean
       like native-undefined
-    lock false
-  take show-hidden, name <showHidden>
-    like or-link-text
+    flex true
+  link show-hidden, name <showHidden>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take depth, name <depth>
-    like or-link-text
+    flex true
+  link depth, name <depth>
+    like or
       like native-number
       like native-null
       like native-undefined
-    lock false
-  take colors, name <colors>
-    like or-link-text
+    flex true
+  link colors, name <colors>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take custom-inspect, name <customInspect>
-    like or-link-text
+    flex true
+  link custom-inspect, name <customInspect>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take show-proxy, name <showProxy>
-    like or-link-text
+    flex true
+  link show-proxy, name <showProxy>
+    like or
       like native-boolean
       like native-undefined
-    lock false
-  take max-array-length, name <maxArrayLength>
-    like or-link-text
+    flex true
+  link max-array-length, name <maxArrayLength>
+    like or
       like native-number
       like native-null
       like native-undefined
-    lock false
-  take max-string-length, name <maxStringLength>
-    like or-link-text
+    flex true
+  link max-string-length, name <maxStringLength>
+    like or
       like native-number
       like native-null
       like native-undefined
-    lock false
-  take break-length, name <breakLength>
-    like or-link-text
+    flex true
+  link break-length, name <breakLength>
+    like or
       like native-number
       like native-undefined
-    lock false
-  take compact, name <compact>
-    like or-link-text
+    flex true
+  link compact, name <compact>
+    like or
       like native-boolean
       like native-number
       like native-undefined
-    lock false
-  take sorted, name <sorted>
-    like or-link-text
+    flex true
+  link sorted, name <sorted>
+    like or
       like native-boolean
-      like task-link-text
+      like task
         take a, like native-string
         take b, like native-string
-        free seed, like native-number
+        free result, like native-number
       like native-undefined
-    lock false
+    flex true

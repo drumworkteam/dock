@@ -1,17 +1,16 @@
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-undefined
-  take form native-undefined
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
   take form or
-    save form or-link-text
+
+load @drumwork/nest/code/javascript
+  take form number
+    save form native-number
+  take form undefined
+    save form native-undefined
 
 form incoming-http-status-header, name <IncomingHttpStatusHeader>
-  take status, name <:status>
-    like or-link-text
+  link status, name <:status>
+    like or
       like native-number
       like native-undefined
-    lock false
+    flex true

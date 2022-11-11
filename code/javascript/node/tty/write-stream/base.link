@@ -1,78 +1,64 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
-
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
-
-load @treesurf/nest/code/javascript/base/native-boolean
-  take form native-boolean
-
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
-
-load @treesurf/nest/code/javascript/base/native-object
-  take form native-object
-
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
-
-load @treesurf/nest/code/javascript/base/native-symbol
-  take form native-symbol
-
-load @treesurf/nest/code/javascript/base/native-this
-  take form native-this
-
-load @treesurf/nest/code/javascript/base/native-void
-  take form native-void
-
-load @treesurf/nest/code/javascript/node/tty/direction
-  take form direction
-
-load @treesurf/nest/code/form/band
-  take form band
-    save form band-link-text
-
-load @treesurf/nest/code/form/or
+load @treesurf/moon
+  take form any
   take form or
-    save form or-link-text
-
-load @treesurf/nest/code/form/task
   take form task
-    save form task-link-text
+  take form tuple
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @drumwork/nest/code/javascript
+  take form boolean
+    save form native-boolean
+  take form number
+    save form native-number
+  take form object
+    save form native-object
+  take form string
+    save form native-string
+  take form symbol
+    save form native-symbol
+  take form this
+    save form native-this
+  take form void
+    save form native-void
+
+load @drumwork/nest/code/javascript/node/tty
+  take form direction
 
 form write-stream, name <WriteStream>
   base net-socket
-  take columns, name <columns>, like native-number
-  take rows, name <rows>, like native-number
-  take is-tty, name <isTTY>, like native-boolean
+  link columns, name <columns>, like native-number
+  link rows, name <rows>, like native-number
+  link is-tty, name <isTTY>, like native-boolean
 
   task add-listener, name <addListener>
     take event, like native-string
     take listener
-      like task-link-text
+      like task
         take args
-          like native-array
-            like native-any
+          like array
+            like any
           rest true
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task add-listener, name <addListener>
     take event, text <resize>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task emit, name <emit>
     take event
-      like or-link-text
+      like or
         like native-string
         like native-symbol
     take args
-      like native-array
-        like native-any
+      like array
+        like any
       rest true
     free seed, like native-boolean
 
@@ -83,87 +69,87 @@ form write-stream, name <WriteStream>
   task on, name <on>
     take event, like native-string
     take listener
-      like task-link-text
+      like task
         take args
-          like native-array
-            like native-any
+          like array
+            like any
           rest true
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task on, name <on>
     take event, text <resize>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, like native-string
     take listener
-      like task-link-text
+      like task
         take args
-          like native-array
-            like native-any
+          like array
+            like any
           rest true
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task once, name <once>
     take event, text <resize>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task prepend-listener, name <prependListener>
     take event, like native-string
     take listener
-      like task-link-text
+      like task
         take args
-          like native-array
-            like native-any
+          like array
+            like any
           rest true
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task prepend-listener, name <prependListener>
     take event, text <resize>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
     take event, like native-string
     take listener
-      like task-link-text
+      like task
         take args
-          like native-array
-            like native-any
+          like array
+            like any
           rest true
-        free seed, like native-void
+        free result, like native-void
     free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
     take event, text <resize>
     take listener
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-this
 
   task clear-line, name <clearLine>
     take dir, like direction
     take callback
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
       void true
     free seed, like native-boolean
 
   task clear-screen-down, name <clearScreenDown>
     take callback
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
       void true
     free seed, like native-boolean
 
@@ -172,24 +158,24 @@ form write-stream, name <WriteStream>
     take y, like native-number
       void true
     take callback
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
       void true
     free seed, like native-boolean
 
   task cursor-to, name <cursorTo>
     take x, like native-number
     take callback
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
     free seed, like native-boolean
 
   task move-cursor, name <moveCursor>
     take dx, like native-number
     take dy, like native-number
     take callback
-      like task-link-text
-        free seed, like native-void
+      like task
+        free result, like native-void
       void true
     free seed, like native-boolean
 
@@ -216,7 +202,7 @@ form write-stream, name <WriteStream>
 
   task get-window-size, name <getWindowSize>
     free seed
-      like band-link-text
+      like tuple
         like native-number
         like native-number
 

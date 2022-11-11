@@ -1,23 +1,23 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-number
-  take form native-number
+load @treesurf/nest/code/javascript/native
+  take form number
+    save form native-number
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/webworker
+  take form idb-open-db-request
 
 load @treesurf/nest/code/javascript/dom/idb-factory
   take form idb-factory
 
-load @treesurf/nest/code/javascript/webworker/idb-open-db-request
-  take form idb-open-db-request
-
 form idb-factory, name <IDBFactory>
   task cmp, name <cmp>
-    take first, like native-any
-    take second, like native-any
+    take first, like any
+    take second, like any
     free seed, like native-number
 
   task delete-database, name <deleteDatabase>

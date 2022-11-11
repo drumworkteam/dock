@@ -1,27 +1,28 @@
 
-load @treesurf/nest/code/javascript/base/native-any
-  take form native-any
+load @treesurf/moon
+  take form any
 
-load @treesurf/nest/code/javascript/base/native-array
-  take form native-array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @treesurf/nest/code/javascript/base/native-string
-  take form native-string
+load @treesurf/nest/code/javascript/native
+  take form string
+    save form native-string
 
-load @treesurf/nest/code/javascript/dom/payment-item
+load @treesurf/nest/code/javascript/dom
   take form payment-item
 
 form payment-details-modifier, name <PaymentDetailsModifier>
-  take additional-display-items, name <additionalDisplayItems>
-    like native-array
+  link additional-display-items, name <additionalDisplayItems>
+    like array
       like payment-item
-    lock false
-  take data, name <data>
-    like native-any
-    lock false
-  take supported-methods, name <supportedMethods>
+    flex true
+  link data, name <data>
+    like any
+    flex true
+  link supported-methods, name <supportedMethods>
     like native-string
-    lock false
-  take total, name <total>
+    flex true
+  link total, name <total>
     like payment-item
-    lock false
+    flex true
