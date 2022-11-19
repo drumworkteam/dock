@@ -1,20 +1,20 @@
 
 load @treesurf/nest/code/javascript/native
-  take form intl-number-format-options
-  take form native-number
-  take form native-string
+  take face intl-number-format-options
+  take face native-number
+  take face native-string
 
 load @treesurf/moon
-  take form any
-  take form or
+  take face any
+  take face or
 
 load @treesurf/nest/code/javascript/es5/number
-  take form number
+  take face number
 
 load @treesurf/nest/code/javascript
-  take form array
+  take face array
 
-form number, name <Number>
+face number, name <Number>
   task to-string, name <toString>
     take radix, like native-number
       void true
@@ -38,7 +38,7 @@ form number, name <Number>
   task value-of, name <valueOf>
     free seed, like native-number
 
-form number
+face number
   hook self
     link prototype, name <prototype>
       like number
@@ -58,7 +58,7 @@ form number
       void true
     free seed, like number
 
-form number, name <Number>
+face number, name <Number>
   task to-locale-string, name <toLocaleString>
     take locales
       like or
