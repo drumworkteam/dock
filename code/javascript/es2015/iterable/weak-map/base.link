@@ -1,6 +1,7 @@
 
 load @treesurf/moon
   take form like
+  take form tuple
 
 load @treesurf/nest/code/javascript/native
   take form native-object
@@ -8,7 +9,30 @@ load @treesurf/nest/code/javascript/native
 load @treesurf/nest/code/javascript/es2015/collection/weak-map
   take form weak-map
 
+load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterable
+
+load @treesurf/nest/code/javascript/es2015/iterable/weak-map
+  take form weak-map
+
 form weak-map, name <WeakMap>
   head k
     base native-object
   head v
+
+form weak-map
+  hook self
+  hook make
+    head k
+      base native-object
+    head v
+
+    take iterable
+      like iterable
+        like tuple
+          like k
+          like v
+    free seed
+      like weak-map
+        like k
+        like v

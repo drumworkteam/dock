@@ -16,11 +16,18 @@ load @treesurf/nest/code/javascript/native
   take form native-void
 
 load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterable
   take form iterable-iterator
 
 load @treesurf/nest/code/javascript/es5
   take form array-buffer-like
   take form array-like
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @treesurf/nest/code/javascript/es2020/bigint/big-uint64-array
+  take form big-uint64-array
 
 form big-uint64-array, name <BigUint64Array>
   link bytes-per-element, name <BYTES_PER_ELEMENT>
@@ -271,3 +278,57 @@ form big-uint64-array, name <BigUint64Array>
 
   mesh index, like native-number
     like native-bigint
+
+form big-uint64-array
+  hook self
+    link prototype, name <prototype>
+      like big-uint64-array
+    link bytes-per-element, name <BYTES_PER_ELEMENT>
+      like native-number
+
+    task of, name <of>
+      take items
+        like array
+          like native-bigint
+        rest true
+      free seed, like big-uint64-array
+
+    task from, name <from>
+      take array-like
+        like array-like
+          like native-bigint
+      free seed, like big-uint64-array
+
+    task from, name <from>
+      head u
+
+      take array-like
+        like array-like
+          like u
+      take mapfn
+        like task
+          take v, like u
+          take k, like native-number
+          free seed, like native-bigint
+      take this-arg, like any
+        void true
+      free seed, like big-uint64-array
+
+  hook make
+    take length, like native-number
+      void true
+    free seed, like big-uint64-array
+
+  hook make
+    take array
+      like iterable
+        like native-bigint
+    free seed, like big-uint64-array
+
+  hook make
+    take buffer, like array-buffer-like
+    take byte-offset, like native-number
+      void true
+    take length, like native-number
+      void true
+    free seed, like big-uint64-array

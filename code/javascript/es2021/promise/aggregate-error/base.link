@@ -8,6 +8,15 @@ load @treesurf/nest/code/javascript
 load @treesurf/nest/code/javascript/es5
   take form error
 
+load @treesurf/nest/code/javascript/native
+  take form native-string
+
+load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterable
+
+load @treesurf/nest/code/javascript/es2021/promise/aggregate-error
+  take form aggregate-error
+
 form aggregate-error, name <AggregateError>
   base error
 
@@ -15,3 +24,16 @@ form aggregate-error, name <AggregateError>
     like array
       like any
     flex true
+
+form aggregate-error
+  hook self
+    link prototype, name <prototype>
+      like aggregate-error
+
+  hook make
+    take errors
+      like iterable
+        like any
+    take message, like native-string
+      void true
+    free seed, like aggregate-error

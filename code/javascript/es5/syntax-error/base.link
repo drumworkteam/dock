@@ -1,6 +1,25 @@
 
 load @treesurf/nest/code/javascript/es5
   take form error
+  take form error-constructor
+
+load @treesurf/nest/code/javascript/native
+  take form native-string
+
+load @treesurf/nest/code/javascript/es5/syntax-error
+  take form syntax-error
 
 form syntax-error, name <SyntaxError>
   base error
+
+form syntax-error
+  hook self
+  base error-constructor
+
+    link prototype, name <prototype>
+      like syntax-error
+
+  hook make
+    take message, like native-string
+      void true
+    free seed, like syntax-error

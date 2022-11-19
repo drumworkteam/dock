@@ -1,12 +1,20 @@
 
 load @treesurf/moon
   take form like
+  take form or
   take form tuple
 
 load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterable
   take form iterable-iterator
 
 load @treesurf/nest/code/javascript/es2015/collection/set
+  take form set
+
+load @treesurf/nest/code/javascript/native
+  take form native-null
+
+load @treesurf/nest/code/javascript/es2015/iterable/set
   take form set
 
 form set, name <Set>
@@ -32,4 +40,19 @@ form set, name <Set>
   task values, name <values>
     free seed
       like iterable-iterator
+        like t
+
+form set
+  hook self
+  hook make
+    head t
+
+    take iterable
+      like or
+        like iterable
+          like t
+        like native-null
+      void true
+    free seed
+      like set
         like t

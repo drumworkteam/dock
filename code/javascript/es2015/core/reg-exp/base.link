@@ -6,6 +6,12 @@ load @treesurf/nest/code/javascript/native
 load @treesurf/nest/code/javascript/es5/reg-exp
   take form reg-exp
 
+load @treesurf/moon
+  take form or
+
+load @treesurf/nest/code/javascript/es2015/core/reg-exp
+  take form reg-exp
+
 form reg-exp, name <RegExp>
   link flags, name <flags>
     like native-string
@@ -13,3 +19,14 @@ form reg-exp, name <RegExp>
     like native-boolean
   link unicode, name <unicode>
     like native-boolean
+
+form reg-exp
+  hook self
+  hook make
+    take pattern
+      like or
+        like reg-exp
+        like native-string
+    take flags, like native-string
+      void true
+    free seed, like reg-exp

@@ -9,6 +9,9 @@ load @treesurf/nest/code/javascript/native
   take form native-number
   take form native-string
 
+load @treesurf/nest/code/javascript/es5/function
+  take form function
+
 form function, name <Function>
   link prototype, name <prototype>
     like any
@@ -49,3 +52,15 @@ form function, name <Function>
 
   task to-string, name <toString>
     free seed, like native-string
+
+form function
+  hook self
+    link prototype, name <prototype>
+      like function
+
+  hook make
+    take args
+      like array
+        like native-string
+      rest true
+    free seed, like function

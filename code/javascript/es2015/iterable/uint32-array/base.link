@@ -1,14 +1,20 @@
 
 load @treesurf/moon
+  take form any
+  take form task
   take form tuple
 
 load @treesurf/nest/code/javascript/native
   take form native-number
 
 load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterable
   take form iterable-iterator
 
 load @treesurf/nest/code/javascript/es5/uint32-array
+  take form uint32-array
+
+load @treesurf/nest/code/javascript/es2015/iterable/uint32-array
   take form uint32-array
 
 form uint32-array, name <Uint32Array>
@@ -33,3 +39,25 @@ form uint32-array, name <Uint32Array>
     free seed
       like iterable-iterator
         like native-number
+
+form uint32-array
+  hook self
+    task from, name <from>
+      take array-like
+        like iterable
+          like native-number
+      take mapfn
+        like task
+          take v, like native-number
+          take k, like native-number
+          free seed, like native-number
+        void true
+      take this-arg, like any
+        void true
+      free seed, like uint32-array
+
+  hook make
+    take elements
+      like iterable
+        like native-number
+    free seed, like uint32-array

@@ -2,6 +2,22 @@
 load @treesurf/nest/code/javascript/native
   take form native-boolean
 
+load @treesurf/moon
+  take form any
+
+load @treesurf/nest/code/javascript/es5/boolean
+  take form boolean
+
 form boolean, name <Boolean>
   task value-of, name <valueOf>
     free seed, like native-boolean
+
+form boolean
+  hook self
+    link prototype, name <prototype>
+      like boolean
+
+  hook make
+    take value, like any
+      void true
+    free seed, like boolean

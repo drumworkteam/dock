@@ -12,6 +12,9 @@ load @treesurf/nest/code/javascript/native
 load @treesurf/nest/code/javascript/es2018/asyncgenerator
   take form async-generator
 
+load @treesurf/nest/code/javascript/es2018/asyncgenerator/async-generator-function
+  take form async-generator-function
+
 form async-generator-function, name <AsyncGeneratorFunction>
   link length, name <length>
     like native-number
@@ -26,3 +29,19 @@ form async-generator-function, name <AsyncGeneratorFunction>
         like any
       rest true
     free seed, like async-generator
+
+form async-generator-function
+  hook self
+    link length, name <length>
+      like native-number
+    link name, name <name>
+      like native-string
+    link prototype, name <prototype>
+      like async-generator-function
+
+  hook make
+    take args
+      like array
+        like native-string
+      rest true
+    free seed, like async-generator-function

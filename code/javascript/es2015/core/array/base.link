@@ -16,6 +16,9 @@ load @treesurf/nest/code/javascript/native
   take form native-undefined
   take form native-void
 
+load @treesurf/nest/code/javascript/es5
+  take form array-like
+
 form array, name <Array>
   head t
 
@@ -84,3 +87,44 @@ form array, name <Array>
     take end, like native-number
       void true
     free seed, like native-this
+
+form array
+  hook self
+    task from, name <from>
+      head t
+
+      take array-like
+        like array-like
+          like t
+      free seed
+        like array
+          like t
+
+    task from, name <from>
+      head t
+      head u
+
+      take array-like
+        like array-like
+          like t
+      take mapfn
+        like task
+          take v, like t
+          take k, like native-number
+          free seed, like u
+      take this-arg, like any
+        void true
+      free seed
+        like array
+          like u
+
+    task of, name <of>
+      head t
+
+      take items
+        like array
+          like t
+        rest true
+      free seed
+        like array
+          like t

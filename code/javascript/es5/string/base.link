@@ -161,6 +161,23 @@ form string, name <String>
   mesh index, like native-number
     like native-string
 
+form string
+  hook self
+    link prototype, name <prototype>
+      like string
+
+    task from-char-code, name <fromCharCode>
+      take codes
+        like array
+          like native-number
+        rest true
+      free seed, like native-string
+
+  hook make
+    take value, like any
+      void true
+    free seed, like string
+
 form string, name <String>
   task locale-compare, name <localeCompare>
     take that, like native-string

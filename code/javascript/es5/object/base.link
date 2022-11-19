@@ -1,11 +1,30 @@
 
 load @treesurf/nest/code/javascript/native
   take form native-boolean
+  take form native-null
+  take form native-object
   take form native-string
+  take form native-undefined
 
 load @treesurf/nest/code/javascript/es5
   take form function
+  take form property-descriptor
+  take form property-descriptor-map
   take form property-key
+  take form readonly
+  take form this-type
+
+load @treesurf/moon
+  take form and
+  take form any
+  take form like
+  take form or
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @treesurf/nest/code/javascript/es5/object
+  take form object
 
 form object, name <Object>
   link constructor, name <constructor>
@@ -32,3 +51,128 @@ form object, name <Object>
   task property-is-enumerable, name <propertyIsEnumerable>
     take v, like property-key
     free seed, like native-boolean
+
+form object
+  hook self
+    link prototype, name <prototype>
+      like object
+
+    task get-prototype-of, name <getPrototypeOf>
+      take o, like any
+      free seed, like any
+
+    task get-own-property-descriptor, name <getOwnPropertyDescriptor>
+      take o, like any
+      take p, like property-key
+      free seed
+        like or
+          like property-descriptor
+          like native-undefined
+
+    task get-own-property-names, name <getOwnPropertyNames>
+      take o, like any
+      free seed
+        like array
+          like native-string
+
+    task create, name <create>
+      take o
+        like or
+          like native-object
+          like native-null
+      free seed, like any
+
+    task create, name <create>
+      take o
+        like or
+          like native-object
+          like native-null
+      take properties
+        like and
+          like property-descriptor-map
+          like this-type
+            like any
+      free seed, like any
+
+    task define-property, name <defineProperty>
+      head t
+
+      take o, like t
+      take p, like property-key
+      take attributes
+        like and
+          like property-descriptor
+          like this-type
+            like any
+      free seed, like t
+
+    task define-properties, name <defineProperties>
+      head t
+
+      take o, like t
+      take properties
+        like and
+          like property-descriptor-map
+          like this-type
+            like any
+      free seed, like t
+
+    task seal, name <seal>
+      head t
+
+      take o, like t
+      free seed, like t
+
+    task freeze, name <freeze>
+      head t
+
+      take a
+        like array
+          like t
+      free seed
+        like array
+          like t
+
+    task freeze, name <freeze>
+      head t
+        base function
+
+      take f, like t
+      free seed, like t
+
+    task freeze, name <freeze>
+      head t
+
+      take o, like t
+      free seed
+        like readonly
+          like t
+
+    task prevent-extensions, name <preventExtensions>
+      head t
+
+      take o, like t
+      free seed, like t
+
+    task is-sealed, name <isSealed>
+      take o, like any
+      free seed, like native-boolean
+
+    task is-frozen, name <isFrozen>
+      take o, like any
+      free seed, like native-boolean
+
+    task is-extensible, name <isExtensible>
+      take o, like any
+      free seed, like native-boolean
+
+    task keys, name <keys>
+      take o, like native-object
+      free seed
+        like array
+          like native-string
+
+  hook make
+    take value, like any
+      void true
+    free seed, like object

@@ -1,14 +1,20 @@
 
 load @treesurf/moon
+  take form any
+  take form task
   take form tuple
 
 load @treesurf/nest/code/javascript/native
   take form native-number
 
 load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterable
   take form iterable-iterator
 
 load @treesurf/nest/code/javascript/es5/int16-array
+  take form int16-array
+
+load @treesurf/nest/code/javascript/es2015/iterable/int16-array
   take form int16-array
 
 form int16-array, name <Int16Array>
@@ -33,3 +39,25 @@ form int16-array, name <Int16Array>
     free seed
       like iterable-iterator
         like native-number
+
+form int16-array
+  hook self
+    task from, name <from>
+      take array-like
+        like iterable
+          like native-number
+      take mapfn
+        like task
+          take v, like native-number
+          take k, like native-number
+          free seed, like native-number
+        void true
+      take this-arg, like any
+        void true
+      free seed, like int16-array
+
+  hook make
+    take elements
+      like iterable
+        like native-number
+    free seed, like int16-array

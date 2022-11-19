@@ -5,7 +5,19 @@ load @treesurf/nest/code/javascript/native
 load @treesurf/nest/code/javascript/es5/array-buffer
   take form array-buffer
 
+load @treesurf/nest/code/javascript/es2015/symbol/wellknown
+  take form array-buffer-constructor
+
+load @treesurf/nest/code/javascript/es2015/symbol/wellknown/array-buffer
+  take form array-buffer
+
 form array-buffer, name <ArrayBuffer>
   link {symbol/to-string-tag}
     like native-string
     work true
+
+form array-buffer
+  hook self
+    link {symbol/species}
+      like array-buffer-constructor
+      work true

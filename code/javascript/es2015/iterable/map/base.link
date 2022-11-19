@@ -4,9 +4,13 @@ load @treesurf/moon
   take form tuple
 
 load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterable
   take form iterable-iterator
 
 load @treesurf/nest/code/javascript/es2015/collection/map
+  take form map
+
+load @treesurf/nest/code/javascript/es2015/iterable/map
   take form map
 
 form map, name <Map>
@@ -35,4 +39,20 @@ form map, name <Map>
   task values, name <values>
     free seed
       like iterable-iterator
+        like v
+
+form map
+  hook self
+  hook make
+    head k
+    head v
+
+    take iterable
+      like iterable
+        like tuple
+          like k
+          like v
+    free seed
+      like map
+        like k
         like v

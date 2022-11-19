@@ -1,6 +1,16 @@
 
 load @treesurf/nest/code/javascript/native
+  take form native-boolean
   take form native-number
+
+load @treesurf/moon
+  take form any
+
+load @treesurf/nest/code/javascript/es5
+  take form array-buffer-view
+
+load @treesurf/nest/code/javascript/es5/array-buffer
+  take form array-buffer
 
 form array-buffer, name <ArrayBuffer>
   link byte-length, name <byteLength>
@@ -10,4 +20,19 @@ form array-buffer, name <ArrayBuffer>
     take begin, like native-number
     take end, like native-number
       void true
+    free seed, like array-buffer
+
+form array-buffer
+  hook self
+    link prototype, name <prototype>
+      like array-buffer
+
+    task is-view, name <isView>
+      take arg, like any
+      free seed
+        like native-boolean
+        rank arg, like array-buffer-view
+
+  hook make
+    take byte-length, like native-number
     free seed, like array-buffer

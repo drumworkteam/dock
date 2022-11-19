@@ -18,6 +18,12 @@ load @treesurf/nest/code/javascript/es5
   take form array-buffer-like
   take form array-like
 
+load @treesurf/nest/code/javascript
+  take form array
+
+load @treesurf/nest/code/javascript/es5/int32-array
+  take form int32-array
+
 form int32-array, name <Int32Array>
   link bytes-per-element, name <BYTES_PER_ELEMENT>
     like native-number
@@ -255,3 +261,58 @@ form int32-array, name <Int32Array>
 
   mesh index, like native-number
     like native-number
+
+form int32-array
+  hook self
+    link prototype, name <prototype>
+      like int32-array
+    link bytes-per-element, name <BYTES_PER_ELEMENT>
+      like native-number
+
+    task of, name <of>
+      take items
+        like array
+          like native-number
+        rest true
+      free seed, like int32-array
+
+    task from, name <from>
+      take array-like
+        like array-like
+          like native-number
+      free seed, like int32-array
+
+    task from, name <from>
+      head t
+
+      take array-like
+        like array-like
+          like t
+      take mapfn
+        like task
+          take v, like t
+          take k, like native-number
+          free seed, like native-number
+      take this-arg, like any
+        void true
+      free seed, like int32-array
+
+  hook make
+    take length, like native-number
+    free seed, like int32-array
+
+  hook make
+    take array
+      like or
+        like array-like
+          like native-number
+        like array-buffer-like
+    free seed, like int32-array
+
+  hook make
+    take buffer, like array-buffer-like
+    take byte-offset, like native-number
+      void true
+    take length, like native-number
+      void true
+    free seed, like int32-array

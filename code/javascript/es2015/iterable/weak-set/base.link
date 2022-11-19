@@ -8,6 +8,26 @@ load @treesurf/nest/code/javascript/native
 load @treesurf/nest/code/javascript/es2015/collection/weak-set
   take form weak-set
 
+load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterable
+
+load @treesurf/nest/code/javascript/es2015/iterable/weak-set
+  take form weak-set
+
 form weak-set, name <WeakSet>
   head t
     base native-object
+
+form weak-set
+  hook self
+  hook make
+    head t
+      base native-object
+      back native-object
+
+    take iterable
+      like iterable
+        like t
+    free seed
+      like weak-set
+        like t

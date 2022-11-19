@@ -1,5 +1,6 @@
 
 load @treesurf/moon
+  take form any
   take form like
   take form or
 
@@ -8,6 +9,9 @@ load @treesurf/nest/code/javascript/native
   take form native-undefined
 
 load @treesurf/nest/code/javascript/es2021/weakref/weak-ref
+  take form weak-ref
+
+load @treesurf/nest/code/javascript/esnext/weakref/weak-ref
   take form weak-ref
 
 form weak-ref, name <WeakRef>
@@ -23,3 +27,19 @@ form weak-ref, name <WeakRef>
       like or
         like t
         like native-undefined
+
+form weak-ref
+  hook self
+    link prototype, name <prototype>
+      like weak-ref
+        like any
+
+  hook make
+    head t
+      base native-object
+
+    take target, like t
+      void true
+    free seed
+      like weak-ref
+        like t

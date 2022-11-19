@@ -4,13 +4,21 @@ load @treesurf/moon
   take form like
   take form or
   take form task
+  take form tuple
 
 load @treesurf/nest/code/javascript/native
   take form native-boolean
+  take form native-null
   take form native-number
   take form native-this
   take form native-undefined
   take form native-void
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @treesurf/nest/code/javascript/es2015/collection/map
+  take form map
 
 form map, name <Map>
   head k
@@ -55,3 +63,33 @@ form map, name <Map>
     take key, like k
     take value, like v
     free seed, like native-this
+
+form map
+  hook self
+    link prototype, name <prototype>
+      like map
+        like any
+        like any
+
+  hook make
+    free seed
+      like map
+        like any
+        like any
+
+  hook make
+    head k
+    head v
+
+    take entries
+      like or
+        like array
+          like tuple
+            like k
+            like v
+        like native-null
+      void true
+    free seed
+      like map
+        like k
+        like v

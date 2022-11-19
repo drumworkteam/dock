@@ -1,0 +1,42 @@
+
+load @treesurf/moon
+  take form form
+  take form like
+  take form task
+
+load @treesurf/nest/code/javascript/native
+  take form native-object
+  take form native-void
+
+load @treesurf/nest/code/javascript/es2015/proxy
+  take form proxy-handler
+
+form proxy
+  hook self
+    task revocable, name <revocable>
+      head t
+        base native-object
+
+      take target, like t
+      take handler
+        like proxy-handler
+          like t
+      free seed
+        like form
+          link proxy, name <proxy>
+            like t
+            flex true
+          link revoke, name <revoke>
+            like task
+              free seed, like native-void
+            flex true
+
+  hook make
+    head t
+      base native-object
+
+    take target, like t
+    take handler
+      like proxy-handler
+        like t
+    free seed, like t

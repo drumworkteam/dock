@@ -1,5 +1,7 @@
 
 load @treesurf/moon
+  take form any
+  take form form
   take form or
 
 load @treesurf/nest/code/javascript/native
@@ -9,6 +11,15 @@ load @treesurf/nest/code/javascript/native
   take form native-undefined
 
 load @treesurf/nest/code/javascript/es5/string
+  take form string
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @treesurf/nest/code/javascript/es5
+  take form array-like
+
+load @treesurf/nest/code/javascript/es2015/core/string
   take form string
 
 form string, name <String>
@@ -101,3 +112,28 @@ form string, name <String>
 
   task sup, name <sup>
     free seed, like native-string
+
+form string
+  hook self
+    task from-code-point, name <fromCodePoint>
+      take code-points
+        like array
+          like native-number
+        rest true
+      free seed, like native-string
+
+    task raw, name <raw>
+      take template
+        like form
+          link raw, name <raw>
+            like or
+              like array
+                like native-string
+              like array-like
+                like native-string
+            flex true
+      take substitutions
+        like array
+          like any
+        rest true
+      free seed, like native-string

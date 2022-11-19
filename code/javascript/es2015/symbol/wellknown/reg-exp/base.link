@@ -18,6 +18,12 @@ load @treesurf/nest/code/javascript/es5
 load @treesurf/nest/code/javascript/es2015/core/reg-exp
   take form reg-exp
 
+load @treesurf/nest/code/javascript/es2015/symbol/wellknown
+  take form reg-exp-constructor
+
+load @treesurf/nest/code/javascript/es2015/symbol/wellknown/reg-exp
+  take form reg-exp
+
 form reg-exp, name <RegExp>
   task {symbol/match}
     take string, like native-string
@@ -54,3 +60,9 @@ form reg-exp, name <RegExp>
     free seed
       like array
         like native-string
+
+form reg-exp
+  hook self
+    link {symbol/species}
+      like reg-exp-constructor
+      work true

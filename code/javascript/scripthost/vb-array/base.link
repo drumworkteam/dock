@@ -8,6 +8,10 @@ load @treesurf/nest/code/javascript
 
 load @treesurf/nest/code/javascript/native
   take form native-number
+  take form safe-array
+
+load @treesurf/nest/code/javascript/scripthost/vb-array
+  take form vb-array
 
 form vb-array, name <VBArray>
   head t
@@ -37,4 +41,17 @@ form vb-array, name <VBArray>
   task to-array, name <toArray>
     free seed
       like array
+        like t
+
+form vb-array
+  hook self
+  hook make
+    head t
+      back any
+
+    take safe-array
+      like safe-array
+        like t
+    free seed
+      like vb-array
         like t

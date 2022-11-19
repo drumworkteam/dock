@@ -1,16 +1,26 @@
 
 load @treesurf/moon
+  take form any
   take form like
+  take form or
+  take form task
   take form tuple
 
 load @treesurf/nest/code/javascript/native
   take form native-number
 
 load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterable
   take form iterable-iterator
 
 load @treesurf/nest/code/javascript/es2015/core/array
   take form array
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @treesurf/nest/code/javascript/es5
+  take form array-like
 
 form array, name <Array>
   head t
@@ -36,3 +46,39 @@ form array, name <Array>
     free seed
       like iterable-iterator
         like t
+
+form array
+  hook self
+    task from, name <from>
+      head t
+
+      take iterable
+        like or
+          like iterable
+            like t
+          like array-like
+            like t
+      free seed
+        like array
+          like t
+
+    task from, name <from>
+      head t
+      head u
+
+      take iterable
+        like or
+          like iterable
+            like t
+          like array-like
+            like t
+      take mapfn
+        like task
+          take v, like t
+          take k, like native-number
+          free seed, like u
+      take this-arg, like any
+        void true
+      free seed
+        like array
+          like u

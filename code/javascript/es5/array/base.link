@@ -6,6 +6,9 @@ load @treesurf/moon
   take form task
   take form unknown
 
+load @treesurf/nest/code/javascript
+  take form array
+
 load @treesurf/nest/code/javascript/native
   take form native-boolean
   take form native-number
@@ -332,3 +335,43 @@ form array, name <Array>
 
   mesh n, like native-number
     like t
+
+form array
+  hook self
+    link prototype, name <prototype>
+      like array
+        like any
+
+    task is-array, name <isArray>
+      take arg, like any
+      free seed
+        like native-boolean
+        rank arg
+          like array
+            like any
+
+  hook make
+    take array-length, like native-number
+      void true
+    free seed
+      like array
+        like any
+
+  hook make
+    head t
+
+    take array-length, like native-number
+    free seed
+      like array
+        like t
+
+  hook make
+    head t
+
+    take items
+      like array
+        like t
+      rest true
+    free seed
+      like array
+        like t

@@ -1,6 +1,25 @@
 
 load @treesurf/nest/code/javascript/es5
   take form error
+  take form error-constructor
+
+load @treesurf/nest/code/javascript/native
+  take form native-string
+
+load @treesurf/nest/code/javascript/es5/eval-error
+  take form eval-error
 
 form eval-error, name <EvalError>
   base error
+
+form eval-error
+  hook self
+  base error-constructor
+
+    link prototype, name <prototype>
+      like eval-error
+
+  hook make
+    take message, like native-string
+      void true
+    free seed, like eval-error

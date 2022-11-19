@@ -2,13 +2,21 @@
 load @treesurf/moon
   take form any
   take form like
+  take form or
   take form task
 
 load @treesurf/nest/code/javascript/native
   take form native-boolean
+  take form native-null
   take form native-number
   take form native-this
   take form native-void
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @treesurf/nest/code/javascript/es2015/collection/set
+  take form set
 
 form set, name <Set>
   head t
@@ -43,3 +51,23 @@ form set, name <Set>
   task has, name <has>
     take value, like t
     free seed, like native-boolean
+
+form set
+  hook self
+    link prototype, name <prototype>
+      like set
+        like any
+
+  hook make
+    head t
+      back any
+
+    take values
+      like or
+        like array
+          like t
+        like native-null
+      void true
+    free seed
+      like set
+        like t

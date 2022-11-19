@@ -5,13 +5,14 @@ load @treesurf/nest/code/javascript/native
   take form native-string
 
 load @treesurf/moon
+  take form any
   take form or
-
-load @treesurf/nest/code/javascript
-  take form array
 
 load @treesurf/nest/code/javascript/es5/number
   take form number
+
+load @treesurf/nest/code/javascript
+  take form array
 
 form number, name <Number>
   task to-string, name <toString>
@@ -36,6 +37,26 @@ form number, name <Number>
 
   task value-of, name <valueOf>
     free seed, like native-number
+
+form number
+  hook self
+    link prototype, name <prototype>
+      like number
+    link max-value, name <MAX_VALUE>
+      like native-number
+    link min-value, name <MIN_VALUE>
+      like native-number
+    link na-n, name <NaN>
+      like native-number
+    link negative-infinity, name <NEGATIVE_INFINITY>
+      like native-number
+    link positive-infinity, name <POSITIVE_INFINITY>
+      like native-number
+
+  hook make
+    take value, like any
+      void true
+    free seed, like number
 
 form number, name <Number>
   task to-locale-string, name <toLocaleString>

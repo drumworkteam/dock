@@ -2,6 +2,9 @@
 load @treesurf/nest/code/javascript/native
   take form native-number
 
+load @treesurf/nest/code/javascript/es2017/sharedmemory/shared-array-buffer
+  take form shared-array-buffer
+
 form shared-array-buffer, name <SharedArrayBuffer>
   link byte-length, name <byteLength>
     like native-number
@@ -16,4 +19,13 @@ form shared-array-buffer, name <SharedArrayBuffer>
     take begin, like native-number
     take end, like native-number
       void true
+    free seed, like shared-array-buffer
+
+form shared-array-buffer
+  hook self
+    link prototype, name <prototype>
+      like shared-array-buffer
+
+  hook make
+    take byte-length, like native-number
     free seed, like shared-array-buffer

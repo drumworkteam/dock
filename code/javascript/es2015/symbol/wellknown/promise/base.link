@@ -5,7 +5,10 @@ load @treesurf/moon
 load @treesurf/nest/code/javascript/native
   take form native-string
 
-load @treesurf/nest/code/javascript/es2015/iterable/promise
+load @treesurf/nest/code/javascript/es2015/symbol/wellknown
+  take form promise-constructor
+
+load @treesurf/nest/code/javascript/es2015/symbol/wellknown/promise
   take form promise
 
 form promise, name <Promise>
@@ -14,3 +17,9 @@ form promise, name <Promise>
   link {symbol/to-string-tag}
     like native-string
     work true
+
+form promise
+  hook self
+    link {symbol/species}
+      like promise-constructor
+      work true

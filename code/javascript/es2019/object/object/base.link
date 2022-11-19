@@ -1,0 +1,41 @@
+
+load @treesurf/moon
+  take form any
+  take form form
+  take form like
+  take form tuple
+
+load @treesurf/nest/code/javascript
+  take form array
+
+load @treesurf/nest/code/javascript/native
+  take form native-string
+
+load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterable
+
+load @treesurf/nest/code/javascript/es5
+  take form property-key
+
+form object
+  hook self
+    task from-entries, name <fromEntries>
+      head t
+        back any
+
+      take entries
+        like iterable
+          like tuple
+            like property-key
+            like t
+      free seed
+        like form
+          mesh k, like native-string
+            like t
+
+    task from-entries, name <fromEntries>
+      take entries
+        like iterable
+          like array
+            like any
+      free seed, like any

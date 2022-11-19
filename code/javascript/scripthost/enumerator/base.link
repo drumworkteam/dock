@@ -1,11 +1,16 @@
 
 load @treesurf/moon
   take form any
+  take form form
   take form like
 
 load @treesurf/nest/code/javascript/native
   take form native-boolean
   take form native-void
+  take form safe-array
+
+load @treesurf/nest/code/javascript/scripthost/enumerator
+  take form enumerator
 
 form enumerator, name <Enumerator>
   head t
@@ -22,3 +27,39 @@ form enumerator, name <Enumerator>
 
   task move-next, name <moveNext>
     free seed, like native-void
+
+form enumerator
+  hook self
+  hook make
+    head t
+      back any
+
+    take safearray
+      like safe-array
+        like t
+    free seed
+      like enumerator
+        like t
+
+  hook make
+    head t
+      back any
+
+    take collection
+      like form
+        task item, name <Item>
+          take index, like any
+          free seed, like t
+
+    free seed
+      like enumerator
+        like t
+
+  hook make
+    head t
+      back any
+
+    take collection, like any
+    free seed
+      like enumerator
+        like t
