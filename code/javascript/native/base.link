@@ -18,17 +18,17 @@ form native-object
 form native-bigint
 
 task test
-  link test, form force
-  link block, form force
+  take test, like force
+  take block, like force
 
   call native-test
     bind test, link test
     bind block, link block
 
 task test-else
-  link test, form force
-  link block, form force
-  link other, form force
+  take test, like force
+  take block, like force
+  take other, like force
 
   call native-test-else
     bind test, link test
@@ -40,8 +40,8 @@ task debug-break
     bind keyword, text <debugger>
 
 task compute-bitwise-or
-  link left
-  link right
+  take left
+  take right
 
   call compute-binary-operation
     bind left, link left
@@ -50,8 +50,8 @@ task compute-bitwise-or
     turn seed
 
 task test-if-equal
-  link left
-  link right
+  take left
+  take right
 
   call compute-binary-operation
     bind left, link left
@@ -60,7 +60,7 @@ task test-if-equal
     turn seed
 
 task test-if-null
-  link value
+  take value
 
   call compute-binary-operation
     bind left, link value
@@ -69,8 +69,8 @@ task test-if-null
     turn seed
 
 task test-if-strictly-equal
-  link left
-  link right
+  take left
+  take right
 
   call compute-binary-operation
     bind left, link left
@@ -79,7 +79,7 @@ task test-if-strictly-equal
     turn seed
 
 task get-typeof
-  link value
+  take value
 
   call call-keyword
     bind keyword, text <typeof>
@@ -87,8 +87,8 @@ task get-typeof
     turn seed
 
 task get-instanceof
-  link left
-  link right
+  take left
+  take right
 
   call compute-binary-operation
     bind left, link left
@@ -97,9 +97,9 @@ task get-instanceof
     turn seed
 
 task set-field
-  link object
-  link attribute, form chord
-  link value
+  take object
+  take attribute, like chord
+  take value
 
   call set-dynamic-aspect
     bind object, link object
@@ -107,8 +107,8 @@ task set-field
     bind factor, link value
 
 task get-field
-  link object
-  link attribute, form chord
+  take object
+  take attribute, like chord
 
   call get-dynamic-aspect
     bind object, link object
@@ -116,16 +116,16 @@ task get-field
     turn seed
 
 task remove-field
-  link object
-  link attribute, form chord
+  take object
+  take attribute, like chord
 
   call delete
     bind object, link object
     bind aspect, link attribute
 
 task shift-left
-  link left
-  link right
+  take left
+  take right
 
   call compute-binary-operation
     bind left, link left
@@ -134,8 +134,8 @@ task shift-left
     turn seed
 
 task shift-right
-  link left
-  link right
+  take left
+  take right
 
   call compute-binary-operation
     bind left, link left
@@ -144,8 +144,8 @@ task shift-right
     turn seed
 
 task shift-right-unsigned
-  link left
-  link right
+  take left
+  take right
 
   call compute-binary-operation
     bind left, link left
@@ -154,8 +154,8 @@ task shift-right-unsigned
     turn seed
 
 task compute-bitwise-and
-  link left
-  link right
+  take left
+  take right
 
   call compute-binary-operation
     bind left, link left
@@ -164,8 +164,8 @@ task compute-bitwise-and
     turn seed
 
 task test-or
-  link left
-  link right
+  take left
+  take right
 
   call compute-binary-operation
     bind left, link left
@@ -174,15 +174,15 @@ task test-or
     turn seed
 
 task try-catch
-  link block, form function
-  link error, form function
+  take block, like function
+  take error, like function
 
   call try
     bind block, link block
     bind error, link error
 
 task test-if-truthy
-  link value
+  take value
 
   call compute-prefixed-unary-operation
     bind operation, text <!!>
@@ -190,7 +190,7 @@ task test-if-truthy
     turn seed
 
 task test-opposite
-  link value
+  take value
 
   call compute-prefixed-unary-operation
     bind operation, text <!>
@@ -198,8 +198,8 @@ task test-opposite
     turn seed
 
 task test-not-equal
-  link left
-  link right
+  take left
+  take right
 
   call compute-binary-operation
     bind left, link left
@@ -208,7 +208,7 @@ task test-not-equal
     turn seed
 
 task flip-block
-  link value
+  take value
 
   call compute-prefixed-unary-operation
     bind operation, text <~>
@@ -216,8 +216,8 @@ task flip-block
     turn seed
 
 task test-gt
-  link left
-  link right
+  take left
+  take right
 
   call compute-binary-operation
     bind left, link left
@@ -226,8 +226,8 @@ task test-gt
     turn seed
 
 task test-lt
-  link left
-  link right
+  take left
+  take right
 
   call compute-binary-operation
     bind left, link left
@@ -236,8 +236,8 @@ task test-lt
     turn seed
 
 task test-gte
-  link left
-  link right
+  take left
+  take right
 
   call compute-binary-operation
     bind left, link left
@@ -246,8 +246,8 @@ task test-gte
     turn seed
 
 task test-lte
-  link left
-  link right
+  take left
+  take right
 
   call compute-binary-operation
     bind left, link left
@@ -256,8 +256,8 @@ task test-lte
     turn seed
 
 task test-and
-  link left
-  link right
+  take left
+  take right
 
   call compute-binary-operation
     bind left, link left
