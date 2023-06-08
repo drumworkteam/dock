@@ -1,11 +1,11 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form any
   take form form
   take form or
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form error
   take form native-boolean
@@ -16,14 +16,14 @@ load @tunebond/bolt/code/javascript
   take form native-undefined
   take form native-void
 
-load @tunebond/bolt/code/javascript/node/buffer
+load @treesurf/nest/code/javascript/node/buffer
   take form buffer
   take form buffer-encoding
 
-load @tunebond/bolt/code/javascript/node/globals
+load @treesurf/nest/code/javascript/node/globals
   take form uint8-array
 
-load @tunebond/bolt/code/javascript/node/net
+load @treesurf/nest/code/javascript/node/net
   take form address-info
   take form socket-connect-opts
   take form socket-constructor-opts
@@ -51,19 +51,23 @@ form socket, name <Socket>
       like native-undefined
 
   task write, name <write>
+    like native-boolean
+
     take buffer
       like or
         like uint8-array
         like native-string
     take cb
       like task
+        like native-void
+
         take err, like error
           void true
-        free result, like native-void
       void true
-    free seed, like native-boolean
 
   task write, name <write>
+    like native-boolean
+
     take str
       like or
         like uint8-array
@@ -72,107 +76,125 @@ form socket, name <Socket>
       void true
     take cb
       like task
+        like native-void
+
         take err, like error
           void true
-        free result, like native-void
       void true
-    free seed, like native-boolean
 
   task connect, name <connect>
+    like native-this
+
     take options, like socket-connect-opts
     take connection-listener
       like task
-        free result, like native-void
+        like native-void
+
       void true
-    free seed, like native-this
 
   task connect, name <connect>
+    like native-this
+
     take port, like native-number
     take host, like native-string
     take connection-listener
       like task
-        free result, like native-void
+        like native-void
+
       void true
-    free seed, like native-this
 
   task connect, name <connect>
+    like native-this
+
     take port, like native-number
     take connection-listener
       like task
-        free result, like native-void
+        like native-void
+
       void true
-    free seed, like native-this
 
   task connect, name <connect>
+    like native-this
+
     take path, like native-string
     take connection-listener
       like task
-        free result, like native-void
+        like native-void
+
       void true
-    free seed, like native-this
 
   task set-encoding, name <setEncoding>
+    like native-this
+
     take encoding, like buffer-encoding
       void true
-    free seed, like native-this
 
   task pause, name <pause>
-    free seed, like native-this
+    like native-this
 
   task resume, name <resume>
-    free seed, like native-this
+    like native-this
 
   task set-timeout, name <setTimeout>
+    like native-this
+
     take timeout, like native-number
     take callback
       like task
-        free result, like native-void
+        like native-void
+
       void true
-    free seed, like native-this
 
   task set-no-delay, name <setNoDelay>
+    like native-this
+
     take no-delay, like native-boolean
       void true
-    free seed, like native-this
 
   task set-keep-alive, name <setKeepAlive>
+    like native-this
+
     take enable, like native-boolean
       void true
     take initial-delay, like native-number
       void true
-    free seed, like native-this
 
   task address, name <address>
-    free seed
-      like or
-        like address-info
-        like form
+    like or
+      like address-info
+      like form
 
   task unref, name <unref>
-    free seed, like native-this
+    like native-this
 
   task ref, name <ref>
-    free seed, like native-this
+    like native-this
 
   task end, name <end>
+    like native-this
+
     take callback
       like task
-        free result, like native-void
+        like native-void
+
       void true
-    free seed, like native-this
 
   task end, name <end>
+    like native-this
+
     take buffer
       like or
         like uint8-array
         like native-string
     take callback
       like task
-        free result, like native-void
+        like native-void
+
       void true
-    free seed, like native-this
 
   task end, name <end>
+    like native-this
+
     take str
       like or
         like uint8-array
@@ -181,70 +203,85 @@ form socket, name <Socket>
       void true
     take callback
       like task
-        free result, like native-void
+        like native-void
+
       void true
-    free seed, like native-this
 
   task add-listener, name <addListener>
+    like native-this
+
     take event, like native-string
     take listener
       like task
+        like native-void
+
         take args
           like array
             like any
           rest true
-        free result, like native-void
-    free seed, like native-this
 
   task add-listener, name <addListener>
+    like native-this
+
     take event, text <close>
     take listener
       like task
+        like native-void
+
         take had-error, like native-boolean
-        free result, like native-void
-    free seed, like native-this
 
   task add-listener, name <addListener>
+    like native-this
+
     take event, text <connect>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task add-listener, name <addListener>
+    like native-this
+
     take event, text <data>
     take listener
       like task
+        like native-void
+
         take data, like buffer
-        free result, like native-void
-    free seed, like native-this
 
   task add-listener, name <addListener>
+    like native-this
+
     take event, text <drain>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task add-listener, name <addListener>
+    like native-this
+
     take event, text <end>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task add-listener, name <addListener>
+    like native-this
+
     take event, text <error>
     take listener
       like task
+        like native-void
+
         take err, like error
-        free result, like native-void
-    free seed, like native-this
 
   task add-listener, name <addListener>
+    like native-this
+
     take event, text <lookup>
     take listener
       like task
+        like native-void
+
         take err, like error
         take address, like native-string
         take family
@@ -252,24 +289,26 @@ form socket, name <Socket>
             like native-string
             like native-number
         take host, like native-string
-        free result, like native-void
-    free seed, like native-this
 
   task add-listener, name <addListener>
+    like native-this
+
     take event, text <ready>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task add-listener, name <addListener>
+    like native-this
+
     take event, text <timeout>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task emit, name <emit>
+    like native-boolean
+
     take event
       like or
         like native-string
@@ -278,36 +317,43 @@ form socket, name <Socket>
       like array
         like any
       rest true
-    free seed, like native-boolean
 
   task emit, name <emit>
+    like native-boolean
+
     take event, text <close>
     take had-error, like native-boolean
-    free seed, like native-boolean
 
   task emit, name <emit>
+    like native-boolean
+
     take event, text <connect>
-    free seed, like native-boolean
 
   task emit, name <emit>
+    like native-boolean
+
     take event, text <data>
     take data, like buffer
-    free seed, like native-boolean
 
   task emit, name <emit>
+    like native-boolean
+
     take event, text <drain>
-    free seed, like native-boolean
 
   task emit, name <emit>
+    like native-boolean
+
     take event, text <end>
-    free seed, like native-boolean
 
   task emit, name <emit>
+    like native-boolean
+
     take event, text <error>
     take err, like error
-    free seed, like native-boolean
 
   task emit, name <emit>
+    like native-boolean
+
     take event, text <lookup>
     take err, like error
     take address, like native-string
@@ -316,76 +362,92 @@ form socket, name <Socket>
         like native-string
         like native-number
     take host, like native-string
-    free seed, like native-boolean
 
   task emit, name <emit>
+    like native-boolean
+
     take event, text <ready>
-    free seed, like native-boolean
 
   task emit, name <emit>
+    like native-boolean
+
     take event, text <timeout>
-    free seed, like native-boolean
 
   task on, name <on>
+    like native-this
+
     take event, like native-string
     take listener
       like task
+        like native-void
+
         take args
           like array
             like any
           rest true
-        free result, like native-void
-    free seed, like native-this
 
   task on, name <on>
+    like native-this
+
     take event, text <close>
     take listener
       like task
+        like native-void
+
         take had-error, like native-boolean
-        free result, like native-void
-    free seed, like native-this
 
   task on, name <on>
+    like native-this
+
     take event, text <connect>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task on, name <on>
+    like native-this
+
     take event, text <data>
     take listener
       like task
+        like native-void
+
         take data, like buffer
-        free result, like native-void
-    free seed, like native-this
 
   task on, name <on>
+    like native-this
+
     take event, text <drain>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task on, name <on>
+    like native-this
+
     take event, text <end>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task on, name <on>
+    like native-this
+
     take event, text <error>
     take listener
       like task
+        like native-void
+
         take err, like error
-        free result, like native-void
-    free seed, like native-this
 
   task on, name <on>
+    like native-this
+
     take event, text <lookup>
     take listener
       like task
+        like native-void
+
         take err, like error
         take address, like native-string
         take family
@@ -393,83 +455,98 @@ form socket, name <Socket>
             like native-string
             like native-number
         take host, like native-string
-        free result, like native-void
-    free seed, like native-this
 
   task on, name <on>
+    like native-this
+
     take event, text <ready>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task on, name <on>
+    like native-this
+
     take event, text <timeout>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task once, name <once>
+    like native-this
+
     take event, like native-string
     take listener
       like task
+        like native-void
+
         take args
           like array
             like any
           rest true
-        free result, like native-void
-    free seed, like native-this
 
   task once, name <once>
+    like native-this
+
     take event, text <close>
     take listener
       like task
+        like native-void
+
         take had-error, like native-boolean
-        free result, like native-void
-    free seed, like native-this
 
   task once, name <once>
+    like native-this
+
     take event, text <connect>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task once, name <once>
+    like native-this
+
     take event, text <data>
     take listener
       like task
+        like native-void
+
         take data, like buffer
-        free result, like native-void
-    free seed, like native-this
 
   task once, name <once>
+    like native-this
+
     take event, text <drain>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task once, name <once>
+    like native-this
+
     take event, text <end>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task once, name <once>
+    like native-this
+
     take event, text <error>
     take listener
       like task
+        like native-void
+
         take err, like error
-        free result, like native-void
-    free seed, like native-this
 
   task once, name <once>
+    like native-this
+
     take event, text <lookup>
     take listener
       like task
+        like native-void
+
         take err, like error
         take address, like native-string
         take family
@@ -477,83 +554,98 @@ form socket, name <Socket>
             like native-string
             like native-number
         take host, like native-string
-        free result, like native-void
-    free seed, like native-this
 
   task once, name <once>
+    like native-this
+
     take event, text <ready>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task once, name <once>
+    like native-this
+
     take event, text <timeout>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-listener, name <prependListener>
+    like native-this
+
     take event, like native-string
     take listener
       like task
+        like native-void
+
         take args
           like array
             like any
           rest true
-        free result, like native-void
-    free seed, like native-this
 
   task prepend-listener, name <prependListener>
+    like native-this
+
     take event, text <close>
     take listener
       like task
+        like native-void
+
         take had-error, like native-boolean
-        free result, like native-void
-    free seed, like native-this
 
   task prepend-listener, name <prependListener>
+    like native-this
+
     take event, text <connect>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-listener, name <prependListener>
+    like native-this
+
     take event, text <data>
     take listener
       like task
+        like native-void
+
         take data, like buffer
-        free result, like native-void
-    free seed, like native-this
 
   task prepend-listener, name <prependListener>
+    like native-this
+
     take event, text <drain>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-listener, name <prependListener>
+    like native-this
+
     take event, text <end>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-listener, name <prependListener>
+    like native-this
+
     take event, text <error>
     take listener
       like task
+        like native-void
+
         take err, like error
-        free result, like native-void
-    free seed, like native-this
 
   task prepend-listener, name <prependListener>
+    like native-this
+
     take event, text <lookup>
     take listener
       like task
+        like native-void
+
         take err, like error
         take address, like native-string
         take family
@@ -561,83 +653,98 @@ form socket, name <Socket>
             like native-string
             like native-number
         take host, like native-string
-        free result, like native-void
-    free seed, like native-this
 
   task prepend-listener, name <prependListener>
+    like native-this
+
     take event, text <ready>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-listener, name <prependListener>
+    like native-this
+
     take event, text <timeout>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-once-listener, name <prependOnceListener>
+    like native-this
+
     take event, like native-string
     take listener
       like task
+        like native-void
+
         take args
           like array
             like any
           rest true
-        free result, like native-void
-    free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
+    like native-this
+
     take event, text <close>
     take listener
       like task
+        like native-void
+
         take had-error, like native-boolean
-        free result, like native-void
-    free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
+    like native-this
+
     take event, text <connect>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-once-listener, name <prependOnceListener>
+    like native-this
+
     take event, text <data>
     take listener
       like task
+        like native-void
+
         take data, like buffer
-        free result, like native-void
-    free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
+    like native-this
+
     take event, text <drain>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-once-listener, name <prependOnceListener>
+    like native-this
+
     take event, text <end>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-once-listener, name <prependOnceListener>
+    like native-this
+
     take event, text <error>
     take listener
       like task
+        like native-void
+
         take err, like error
-        free result, like native-void
-    free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
+    like native-this
+
     take event, text <lookup>
     take listener
       like task
+        like native-void
+
         take err, like error
         take address, like native-string
         take family
@@ -645,22 +752,22 @@ form socket, name <Socket>
             like native-string
             like native-number
         take host, like native-string
-        free result, like native-void
-    free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
+    like native-this
+
     take event, text <ready>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-once-listener, name <prependOnceListener>
+    like native-this
+
     take event, text <timeout>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
 form socket-constructor
   hook make

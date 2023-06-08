@@ -1,13 +1,13 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form or
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form native-string
   take form promise
 
-load @tunebond/bolt/code/javascript/node/dns
+load @treesurf/nest/code/javascript/node/dns
   take form any-record
   take form mx-record
   take form naptr-record
@@ -15,6 +15,10 @@ load @tunebond/bolt/code/javascript/node/dns
   take form srv-record
 
 task promisify, name <__promisify__>
+  like promise
+    like array
+      like native-string
+
   take hostname, like native-string
   take rrtype
     like or
@@ -24,76 +28,72 @@ task promisify, name <__promisify__>
       text <NS>
       text <PTR>
     void true
-  free seed
-    like promise
+
+task promisify, name <__promisify__>
+  like promise
+    like array
+      like any-record
+
+  take hostname, like native-string
+  take rrtype, text <ANY>
+
+task promisify, name <__promisify__>
+  like promise
+    like array
+      like mx-record
+
+  take hostname, like native-string
+  take rrtype, text <MX>
+
+task promisify, name <__promisify__>
+  like promise
+    like array
+      like naptr-record
+
+  take hostname, like native-string
+  take rrtype, text <NAPTR>
+
+task promisify, name <__promisify__>
+  like promise
+    like soa-record
+
+  take hostname, like native-string
+  take rrtype, text <SOA>
+
+task promisify, name <__promisify__>
+  like promise
+    like array
+      like srv-record
+
+  take hostname, like native-string
+  take rrtype, text <SRV>
+
+task promisify, name <__promisify__>
+  like promise
+    like array
       like array
         like native-string
 
-task promisify, name <__promisify__>
   take hostname, like native-string
-  take rrtype, text <ANY>
-  free seed
-    like promise
+  take rrtype, text <TXT>
+
+task promisify, name <__promisify__>
+  like promise
+    like or
+      like array
+        like native-string
+      like array
+        like mx-record
+      like array
+        like naptr-record
+      like soa-record
+      like array
+        like srv-record
+      like array
+        like array
+          like native-string
       like array
         like any-record
 
-task promisify, name <__promisify__>
-  take hostname, like native-string
-  take rrtype, text <MX>
-  free seed
-    like promise
-      like array
-        like mx-record
-
-task promisify, name <__promisify__>
-  take hostname, like native-string
-  take rrtype, text <NAPTR>
-  free seed
-    like promise
-      like array
-        like naptr-record
-
-task promisify, name <__promisify__>
-  take hostname, like native-string
-  take rrtype, text <SOA>
-  free seed
-    like promise
-      like soa-record
-
-task promisify, name <__promisify__>
-  take hostname, like native-string
-  take rrtype, text <SRV>
-  free seed
-    like promise
-      like array
-        like srv-record
-
-task promisify, name <__promisify__>
-  take hostname, like native-string
-  take rrtype, text <TXT>
-  free seed
-    like promise
-      like array
-        like array
-          like native-string
-
-task promisify, name <__promisify__>
   take hostname, like native-string
   take rrtype, like native-string
-  free seed
-    like promise
-      like or
-        like array
-          like native-string
-        like array
-          like mx-record
-        like array
-          like naptr-record
-        like soa-record
-        like array
-          like srv-record
-        like array
-          like array
-            like native-string
-        like array
-          like any-record

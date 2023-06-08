@@ -1,18 +1,18 @@
 
-bear @tunebond/bolt/code/javascript/node/os/cpu-info
-bear @tunebond/bolt/code/javascript/node/os/network-interface-base
-bear @tunebond/bolt/code/javascript/node/os/network-interface-info-i-pv4
-bear @tunebond/bolt/code/javascript/node/os/network-interface-info-i-pv6
-bear @tunebond/bolt/code/javascript/node/os/user-info
-bear @tunebond/bolt/code/javascript/node/os/network-interface-info
-bear @tunebond/bolt/code/javascript/node/os/signal-constants
-bear @tunebond/bolt/code/javascript/node/os/constants
+bear @treesurf/nest/code/javascript/node/os/cpu-info
+bear @treesurf/nest/code/javascript/node/os/network-interface-base
+bear @treesurf/nest/code/javascript/node/os/network-interface-info-i-pv4
+bear @treesurf/nest/code/javascript/node/os/network-interface-info-i-pv6
+bear @treesurf/nest/code/javascript/node/os/user-info
+bear @treesurf/nest/code/javascript/node/os/network-interface-info
+bear @treesurf/nest/code/javascript/node/os/signal-constants
+bear @treesurf/nest/code/javascript/node/os/constants
 
-load @tunebond/moon
+load @treesurf/moon
   take form form
   take form or
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form native-number
   take form native-string
@@ -20,11 +20,11 @@ load @tunebond/bolt/code/javascript
   take form node-js-dict
   take form node-js-platform
 
-load @tunebond/bolt/code/javascript/node/buffer
+load @treesurf/nest/code/javascript/node/buffer
   take form buffer
   take form buffer-encoding
 
-load @tunebond/bolt/code/javascript/node/os
+load @treesurf/nest/code/javascript/node/os
   take form cpu-info
   take form network-interface-info
   take form user-info
@@ -36,91 +36,90 @@ host eol, name <EOL>
   like native-string
 
 task hostname, name <hostname>
-  free seed, like native-string
+  like native-string
 
 task loadavg, name <loadavg>
-  free seed
-    like array
-      like native-number
+  like array
+    like native-number
 
 task uptime, name <uptime>
-  free seed, like native-number
+  like native-number
 
 task freemem, name <freemem>
-  free seed, like native-number
+  like native-number
 
 task totalmem, name <totalmem>
-  free seed, like native-number
+  like native-number
 
 task cpus, name <cpus>
-  free seed
-    like array
-      like cpu-info
+  like array
+    like cpu-info
 
 task type, name <type>
-  free seed, like native-string
+  like native-string
 
 task release, name <release>
-  free seed, like native-string
+  like native-string
 
 task network-interfaces, name <networkInterfaces>
-  free seed
-    like node-js-dict
-      like array
-        like network-interface-info
+  like node-js-dict
+    like array
+      like network-interface-info
 
 task homedir, name <homedir>
-  free seed, like native-string
+  like native-string
 
 task user-info, name <userInfo>
+  like user-info
+    like buffer
+
   take options
     like form
       link encoding, name <encoding>
         text <buffer>
         flex true
-  free seed
-    like user-info
-      like buffer
 
 task user-info, name <userInfo>
+  like user-info
+    like native-string
+
   take options
     like form
       link encoding, name <encoding>
         like buffer-encoding
         flex true
     void true
-  free seed
-    like user-info
-      like native-string
 
 task arch, name <arch>
-  free seed, like native-string
+  like native-string
 
 task version, name <version>
-  free seed, like native-string
+  like native-string
 
 task platform, name <platform>
-  free seed, like node-js-platform
+  like node-js-platform
 
 task tmpdir, name <tmpdir>
-  free seed, like native-string
+  like native-string
 
 task endianness, name <endianness>
-  free seed
-    like or
-      text <BE>
-      text <LE>
+  like or
+    text <BE>
+    text <LE>
 
 task get-priority, name <getPriority>
+  like native-number
+
   take pid, like native-number
     void true
-  free seed, like native-number
 
 task set-priority, name <setPriority>
+  like native-void
+
   take priority, like native-number
-  free seed, like native-void
 
 task set-priority, name <setPriority>
+  like native-void
+
   take pid, like native-number
   take priority, like native-number
-  free seed, like native-void

@@ -1,11 +1,11 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form any
   take form like
   take form or
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form event-emitter
   take form function
@@ -21,51 +21,57 @@ form domain, name <Domain>
         like node-js-timer
 
   task enter, name <enter>
-    free seed, like native-void
+    like native-void
 
   task exit, name <exit>
-    free seed, like native-void
+    like native-void
 
   task run, name <run>
+    like t
+
     head t
 
     take fn
       like task
+        like t
+
         take args
           like array
             like any
           rest true
-        free result, like t
     take args
       like array
         like any
       rest true
-    free seed, like t
 
   task add, name <add>
+    like native-void
+
     take emitter
       like or
         like event-emitter
         like node-js-timer
-    free seed, like native-void
 
   task remove, name <remove>
+    like native-void
+
     take emitter
       like or
         like event-emitter
         like node-js-timer
-    free seed, like native-void
 
   task bind, name <bind>
+    like t
+
     head t
       base function
 
     take callback, like t
-    free seed, like t
 
   task intercept, name <intercept>
+    like t
+
     head t
       base function
 
     take callback, like t
-    free seed, like t

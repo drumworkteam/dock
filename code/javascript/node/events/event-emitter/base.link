@@ -1,11 +1,11 @@
 
-bear @tunebond/bolt/code/javascript/node/events/event-emitter/abortable
+bear @treesurf/nest/code/javascript/node/events/event-emitter/abortable
 
-load @tunebond/moon
+load @treesurf/moon
   take form any
   take form or
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form async-iterable-iterator
   take form function
@@ -17,7 +17,7 @@ load @tunebond/bolt/code/javascript
   take form node-js-event-emitter
   take form promise
 
-load @tunebond/bolt/code/javascript/node/events
+load @treesurf/nest/code/javascript/node/events
   take form dom-event-target
   take form event-emitter-options
   take form node-event-target
@@ -43,6 +43,10 @@ form event-emitter-constructor
       void true
 
   task once, name <once>
+    like promise
+      like array
+        like any
+
     take emitter, like node-event-target
     take event-name
       like or
@@ -50,39 +54,39 @@ form event-emitter-constructor
         like native-symbol
     take options, like static-event-emitter-options
       void true
-    free seed
-      like promise
-        like array
-          like any
 
   task once, name <once>
+    like promise
+      like array
+        like any
+
     take emitter, like dom-event-target
     take event-name, like native-string
     take options, like static-event-emitter-options
       void true
-    free seed
-      like promise
-        like array
-          like any
 
   task on, name <on>
+    like async-iterable-iterator
+      like any
+
     take emitter, like node-js-event-emitter
     take event-name, like native-string
     take options, like static-event-emitter-options
       void true
-    free seed
-      like async-iterable-iterator
-        like any
 
   task listener-count, name <listenerCount>
+    like native-number
+
     take emitter, like node-js-event-emitter
     take event-name
       like or
         like native-string
         like native-symbol
-    free seed, like native-number
 
   task get-event-listeners, name <getEventListeners>
+    like array
+      like function
+
     take emitter
       like or
         like dom-event-target
@@ -91,11 +95,10 @@ form event-emitter-constructor
       like or
         like native-string
         like native-symbol
-    free seed
-      like array
-        like function
 
   task set-max-listeners, name <setMaxListeners>
+    like native-void
+
     take n, like native-number
       void true
     take event-targets
@@ -104,4 +107,3 @@ form event-emitter-constructor
           like dom-event-target
           like node-js-event-emitter
       rest true
-    free seed, like native-void

@@ -1,10 +1,10 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form any
   take form like
   take form or
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form native-void
   take form node-js-read-write-stream
   take form node-js-readable-stream
@@ -12,10 +12,10 @@ load @tunebond/bolt/code/javascript
   take form promise
   take form readonly-array
 
-load @tunebond/bolt/code/javascript/node/globals
+load @treesurf/nest/code/javascript/node/globals
   take form array
 
-load @tunebond/bolt/code/javascript/node/stream/internal
+load @treesurf/nest/code/javascript/node/stream/internal
   take form pipeline-destination
   take form pipeline-options
   take form pipeline-promise
@@ -23,6 +23,9 @@ load @tunebond/bolt/code/javascript/node/stream/internal
   take form pipeline-transform
 
 task promisify, name <__promisify__>
+  like pipeline-promise
+    like b
+
   head a
     base pipeline-source
       like any
@@ -35,11 +38,11 @@ task promisify, name <__promisify__>
   take destination, like b
   take options, like pipeline-options
     void true
-  free seed
-    like pipeline-promise
-      like b
 
 task promisify, name <__promisify__>
+  like pipeline-promise
+    like b
+
   head a
     base pipeline-source
       like any
@@ -57,11 +60,11 @@ task promisify, name <__promisify__>
   take destination, like b
   take options, like pipeline-options
     void true
-  free seed
-    like pipeline-promise
-      like b
 
 task promisify, name <__promisify__>
+  like pipeline-promise
+    like b
+
   head a
     base pipeline-source
       like any
@@ -84,11 +87,11 @@ task promisify, name <__promisify__>
   take destination, like b
   take options, like pipeline-options
     void true
-  free seed
-    like pipeline-promise
-      like b
 
 task promisify, name <__promisify__>
+  like pipeline-promise
+    like b
+
   head a
     base pipeline-source
       like any
@@ -116,11 +119,11 @@ task promisify, name <__promisify__>
   take destination, like b
   take options, like pipeline-options
     void true
-  free seed
-    like pipeline-promise
-      like b
 
 task promisify, name <__promisify__>
+  like pipeline-promise
+    like b
+
   head a
     base pipeline-source
       like any
@@ -153,11 +156,11 @@ task promisify, name <__promisify__>
   take destination, like b
   take options, like pipeline-options
     void true
-  free seed
-    like pipeline-promise
-      like b
 
 task promisify, name <__promisify__>
+  like promise
+    like native-void
+
   take streams
     like readonly-array
       like or
@@ -166,11 +169,11 @@ task promisify, name <__promisify__>
         like node-js-read-write-stream
   take options, like pipeline-options
     void true
-  free seed
-    like promise
-      like native-void
 
 task promisify, name <__promisify__>
+  like promise
+    like native-void
+
   take stream1, like node-js-readable-stream
   take stream2
     like or
@@ -183,6 +186,3 @@ task promisify, name <__promisify__>
         like node-js-writable-stream
         like pipeline-options
     rest true
-  free seed
-    like promise
-      like native-void

@@ -1,20 +1,22 @@
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form native-string
 
-load @tunebond/bolt/code/javascript/node/buffer
+load @treesurf/nest/code/javascript/node/buffer
   take form buffer
   take form buffer-encoding
 
 form string-decoder, name <StringDecoder>
   task write, name <write>
+    like native-string
+
     take buffer, like buffer
-    free seed, like native-string
 
   task end, name <end>
+    like native-string
+
     take buffer, like buffer
       void true
-    free seed, like native-string
 
 form string-decoder-constructor
   hook make

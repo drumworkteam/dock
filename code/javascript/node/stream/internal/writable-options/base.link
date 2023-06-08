@@ -1,11 +1,11 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form any
   take form form
   take form or
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form error
   take form native-boolean
   take form native-null
@@ -13,13 +13,13 @@ load @tunebond/bolt/code/javascript
   take form native-void
   take form writable
 
-load @tunebond/bolt/code/javascript/node/buffer
+load @treesurf/nest/code/javascript/node/buffer
   take form buffer-encoding
 
-load @tunebond/bolt/code/javascript/node/globals
+load @treesurf/nest/code/javascript/node/globals
   take form array
 
-load @tunebond/bolt/code/javascript/node/stream/internal
+load @treesurf/nest/code/javascript/node/stream/internal
   take form stream-options
 
 form writable-options, name <WritableOptions>
@@ -37,20 +37,24 @@ form writable-options, name <WritableOptions>
     flex true
 
   task write, name <write>
+    like native-void
+
     take this, like writable
     take chunk, like any
     take encoding, like buffer-encoding
     take callback
       like task
+        like native-void
+
         take error
           like or
             like error
             like native-null
           void true
-        free result, like native-void
-    free seed, like native-void
 
   task writev, name <writev>
+    like native-void
+
     take this, like writable
     take chunks
       like array
@@ -63,22 +67,24 @@ form writable-options, name <WritableOptions>
             flex true
     take callback
       like task
+        like native-void
+
         take error
           like or
             like error
             like native-null
           void true
-        free result, like native-void
-    free seed, like native-void
 
   task final, name <final>
+    like native-void
+
     take this, like writable
     take callback
       like task
+        like native-void
+
         take error
           like or
             like error
             like native-null
           void true
-        free result, like native-void
-    free seed, like native-void

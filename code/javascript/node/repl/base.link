@@ -1,24 +1,24 @@
 
-bear @tunebond/bolt/code/javascript/node/repl/repl-options
-bear @tunebond/bolt/code/javascript/node/repl/repl-eval
-bear @tunebond/bolt/code/javascript/node/repl/repl-writer
-bear @tunebond/bolt/code/javascript/node/repl/repl-command-action
-bear @tunebond/bolt/code/javascript/node/repl/repl-command
-bear @tunebond/bolt/code/javascript/node/repl/repl-server
-bear @tunebond/bolt/code/javascript/node/repl/recoverable
+bear @treesurf/nest/code/javascript/node/repl/repl-options
+bear @treesurf/nest/code/javascript/node/repl/repl-eval
+bear @treesurf/nest/code/javascript/node/repl/repl-writer
+bear @treesurf/nest/code/javascript/node/repl/repl-command-action
+bear @treesurf/nest/code/javascript/node/repl/repl-command
+bear @treesurf/nest/code/javascript/node/repl/repl-server
+bear @treesurf/nest/code/javascript/node/repl/recoverable
 
-load @tunebond/moon
+load @treesurf/moon
   take form and
   take form form
   take form or
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form inspect-options
   take form native-string
   take form native-symbol
   take form repl-server
 
-load @tunebond/bolt/code/javascript/node/repl
+load @treesurf/nest/code/javascript/node/repl
   take form repl-options
   take form repl-writer
 
@@ -39,9 +39,10 @@ host repl-mode-strict, name <REPL_MODE_STRICT>
     cool true
 
 task start, name <start>
+  like repl-server
+
   take options
     like or
       like native-string
       like repl-options
     void true
-  free seed, like repl-server

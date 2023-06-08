@@ -1,19 +1,19 @@
 
-bear @tunebond/bolt/code/javascript/node/readline/key
-bear @tunebond/bolt/code/javascript/node/readline/interface
-bear @tunebond/bolt/code/javascript/node/readline/read-line
-bear @tunebond/bolt/code/javascript/node/readline/completer
-bear @tunebond/bolt/code/javascript/node/readline/async-completer
-bear @tunebond/bolt/code/javascript/node/readline/completer-result
-bear @tunebond/bolt/code/javascript/node/readline/read-line-options
-bear @tunebond/bolt/code/javascript/node/readline/direction
-bear @tunebond/bolt/code/javascript/node/readline/cursor-pos
+bear @treesurf/nest/code/javascript/node/readline/key
+bear @treesurf/nest/code/javascript/node/readline/interface
+bear @treesurf/nest/code/javascript/node/readline/read-line
+bear @treesurf/nest/code/javascript/node/readline/completer
+bear @treesurf/nest/code/javascript/node/readline/async-completer
+bear @treesurf/nest/code/javascript/node/readline/completer-result
+bear @treesurf/nest/code/javascript/node/readline/read-line-options
+bear @treesurf/nest/code/javascript/node/readline/direction
+bear @treesurf/nest/code/javascript/node/readline/cursor-pos
 
-load @tunebond/moon
+load @treesurf/moon
   take form or
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form interface
   take form native-boolean
   take form native-number
@@ -21,13 +21,15 @@ load @tunebond/bolt/code/javascript
   take form node-js-readable-stream
   take form node-js-writable-stream
 
-load @tunebond/bolt/code/javascript/node/readline
+load @treesurf/nest/code/javascript/node/readline
   take form async-completer
   take form completer
   take form direction
   take form read-line-options
 
 task create-interface, name <createInterface>
+  like interface
+
   take input, like node-js-readable-stream
   take output, like node-js-writable-stream
     void true
@@ -38,52 +40,61 @@ task create-interface, name <createInterface>
     void true
   take terminal, like native-boolean
     void true
-  free seed, like interface
 
 task create-interface, name <createInterface>
+  like interface
+
   take options, like read-line-options
-  free seed, like interface
 
 task emit-keypress-events, name <emitKeypressEvents>
+  like native-void
+
   take stream, like node-js-readable-stream
   take readline-interface, like interface
     void true
-  free seed, like native-void
 
 task clear-line, name <clearLine>
+  like native-boolean
+
   take stream, like node-js-writable-stream
   take dir, like direction
   take callback
     like task
-      free result, like native-void
+      like native-void
+
     void true
-  free seed, like native-boolean
 
 task clear-screen-down, name <clearScreenDown>
+  like native-boolean
+
   take stream, like node-js-writable-stream
   take callback
     like task
-      free result, like native-void
+      like native-void
+
     void true
-  free seed, like native-boolean
 
 task cursor-to, name <cursorTo>
+  like native-boolean
+
   take stream, like node-js-writable-stream
   take x, like native-number
   take y, like native-number
     void true
   take callback
     like task
-      free result, like native-void
+      like native-void
+
     void true
-  free seed, like native-boolean
 
 task move-cursor, name <moveCursor>
+  like native-boolean
+
   take stream, like node-js-writable-stream
   take dx, like native-number
   take dy, like native-number
   take callback
     like task
-      free result, like native-void
+      like native-void
+
     void true
-  free seed, like native-boolean

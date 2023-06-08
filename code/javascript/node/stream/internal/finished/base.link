@@ -1,18 +1,21 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form or
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form native-void
   take form node-js-read-write-stream
   take form node-js-readable-stream
   take form node-js-writable-stream
   take form promise
 
-load @tunebond/bolt/code/javascript/node/stream/internal
+load @treesurf/nest/code/javascript/node/stream/internal
   take form finished-options
 
 task promisify, name <__promisify__>
+  like promise
+    like native-void
+
   take stream
     like or
       like node-js-readable-stream
@@ -20,6 +23,3 @@ task promisify, name <__promisify__>
       like node-js-read-write-stream
   take options, like finished-options
     void true
-  free seed
-    like promise
-      like native-void

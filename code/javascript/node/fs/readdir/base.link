@@ -1,10 +1,10 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form and
   take form form
   take form or
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form dirent
   take form native-null
@@ -12,15 +12,19 @@ load @tunebond/bolt/code/javascript
   take form native-undefined
   take form promise
 
-load @tunebond/bolt/code/javascript/node/buffer
+load @treesurf/nest/code/javascript/node/buffer
   take form buffer
   take form buffer-encoding
 
-load @tunebond/bolt/code/javascript/node/fs
+load @treesurf/nest/code/javascript/node/fs
   take form object-encoding-options
   take form path-like
 
 task promisify, name <__promisify__>
+  like promise
+    like array
+      like native-string
+
   take path, like path-like
   take options
     like or
@@ -38,12 +42,12 @@ task promisify, name <__promisify__>
       like buffer-encoding
       like native-null
     void true
-  free seed
-    like promise
-      like array
-        like native-string
 
 task promisify, name <__promisify__>
+  like promise
+    like array
+      like buffer
+
   take path, like path-like
   take options
     like or
@@ -57,12 +61,15 @@ task promisify, name <__promisify__>
             text <false>
             like native-undefined
           flex true
-  free seed
-    like promise
+
+task promisify, name <__promisify__>
+  like promise
+    like or
+      like array
+        like native-string
       like array
         like buffer
 
-task promisify, name <__promisify__>
   take path, like path-like
   take options
     like or
@@ -77,15 +84,12 @@ task promisify, name <__promisify__>
       like buffer-encoding
       like native-null
     void true
-  free seed
-    like promise
-      like or
-        like array
-          like native-string
-        like array
-          like buffer
 
 task promisify, name <__promisify__>
+  like promise
+    like array
+      like dirent
+
   take path, like path-like
   take options
     like and
@@ -94,7 +98,3 @@ task promisify, name <__promisify__>
         link with-file-types, name <withFileTypes>
           text <true>
           flex true
-  free seed
-    like promise
-      like array
-        like dirent

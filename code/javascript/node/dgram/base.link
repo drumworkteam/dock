@@ -1,41 +1,45 @@
 
-bear @tunebond/bolt/code/javascript/node/dgram/remote-info
-bear @tunebond/bolt/code/javascript/node/dgram/bind-options
-bear @tunebond/bolt/code/javascript/node/dgram/socket-type
-bear @tunebond/bolt/code/javascript/node/dgram/socket-options
-bear @tunebond/bolt/code/javascript/node/dgram/socket
+bear @treesurf/nest/code/javascript/node/dgram/remote-info
+bear @treesurf/nest/code/javascript/node/dgram/bind-options
+bear @treesurf/nest/code/javascript/node/dgram/socket-type
+bear @treesurf/nest/code/javascript/node/dgram/socket-options
+bear @treesurf/nest/code/javascript/node/dgram/socket
 
-load @tunebond/moon
+load @treesurf/moon
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form native-void
   take form socket
 
-load @tunebond/bolt/code/javascript/node/buffer
+load @treesurf/nest/code/javascript/node/buffer
   take form buffer
 
-load @tunebond/bolt/code/javascript/node/dgram
+load @treesurf/nest/code/javascript/node/dgram
   take form remote-info
   take form socket-options
   take form socket-type
 
 task create-socket, name <createSocket>
+  like socket
+
   take type, like socket-type
   take callback
     like task
+      like native-void
+
       take msg, like buffer
       take rinfo, like remote-info
-      free result, like native-void
     void true
-  free seed, like socket
 
 task create-socket, name <createSocket>
+  like socket
+
   take options, like socket-options
   take callback
     like task
+      like native-void
+
       take msg, like buffer
       take rinfo, like remote-info
-      free result, like native-void
     void true
-  free seed, like socket

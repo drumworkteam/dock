@@ -1,13 +1,13 @@
 
-load @tunebond/bolt/code/javascript/node/zlib
+load @treesurf/nest/code/javascript/node/zlib
   take form brotli-options
   take form input-type
   take form zlib
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form promise
 
-load @tunebond/bolt/code/javascript/node/buffer
+load @treesurf/nest/code/javascript/node/buffer
   take form buffer
 
 form brotli-compress, name <BrotliCompress>
@@ -15,9 +15,9 @@ form brotli-compress, name <BrotliCompress>
   base zlib
 
 task promisify, name <__promisify__>
+  like promise
+    like buffer
+
   take buffer, like input-type
   take options, like brotli-options
     void true
-  free seed
-    like promise
-      like buffer

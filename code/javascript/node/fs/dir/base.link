@@ -1,9 +1,9 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form or
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form async-iterable-iterator
   take form dirent
   take form native-null
@@ -12,7 +12,7 @@ load @tunebond/bolt/code/javascript
   take form node-js-errno-exception
   take form promise
 
-load @tunebond/bolt/code/javascript/node/fs
+load @treesurf/nest/code/javascript/node/fs
   take form no-param-callback
 
 form dir, name <Dir>
@@ -20,32 +20,34 @@ form dir, name <Dir>
 
   task {symbol/async-iterator}
     name <Symbol.asyncIterator>
-    free seed
-      like async-iterable-iterator
-        like dirent
+    like async-iterable-iterator
+      like dirent
 
   task close, name <close>
-    free seed
-      like promise
-        like native-void
+    like promise
+      like native-void
 
   task close, name <close>
+    like native-void
+
     take cb, like no-param-callback
-    free seed, like native-void
 
   task close-sync, name <closeSync>
-    free seed, like native-void
+    like native-void
 
   task read, name <read>
-    free seed
-      like promise
-        like or
-          like dirent
-          like native-null
+    like promise
+      like or
+        like dirent
+        like native-null
 
   task read, name <read>
+    like native-void
+
     take cb
       like task
+        like native-void
+
         take err
           like or
             like node-js-errno-exception
@@ -54,11 +56,8 @@ form dir, name <Dir>
           like or
             like dirent
             like native-null
-        free result, like native-void
-    free seed, like native-void
 
   task read-sync, name <readSync>
-    free seed
-      like or
-        like dirent
-        like native-null
+    like or
+      like dirent
+      like native-null

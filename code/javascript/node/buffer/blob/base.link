@@ -1,9 +1,9 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form or
   take form unknown
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form array-buffer
   take form binary-like
@@ -12,7 +12,7 @@ load @tunebond/bolt/code/javascript
   take form native-string
   take form promise
 
-load @tunebond/bolt/code/javascript/node/buffer
+load @treesurf/nest/code/javascript/node/buffer
   take form blob-options
 
 form blob, name <Blob>
@@ -20,26 +20,25 @@ form blob, name <Blob>
   link type, name <type>, like native-string
 
   task array-buffer, name <arrayBuffer>
-    free seed
-      like promise
-        like array-buffer
+    like promise
+      like array-buffer
 
   task slice, name <slice>
+    like blob
+
     take start, like native-number
       void true
     take end, like native-number
       void true
     take type, like native-string
       void true
-    free seed, like blob
 
   task text, name <text>
-    free seed
-      like promise
-        like native-string
+    like promise
+      like native-string
 
   task stream, name <stream>
-    free seed, like unknown
+    like unknown
 
 form blob-constructor
   hook make

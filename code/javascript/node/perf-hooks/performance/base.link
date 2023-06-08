@@ -1,17 +1,17 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form any
   take form like
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form native-number
   take form native-string
   take form native-void
   take form performance-node-timing
 
-load @tunebond/bolt/code/javascript/node/perf-hooks
+load @treesurf/nest/code/javascript/node/perf-hooks
   take form event-loop-utility-function
   take form mark-options
   take form measure-options
@@ -27,43 +27,49 @@ form performance, name <Performance>
     flex true
 
   task clear-marks, name <clearMarks>
+    like native-void
+
     take name, like native-string
       void true
-    free seed, like native-void
 
   task mark, name <mark>
+    like native-void
+
     take name, like native-string
       void true
     take options, like mark-options
       void true
-    free seed, like native-void
 
   task measure, name <measure>
+    like native-void
+
     take name, like native-string
     take start-mark, like native-string
       void true
     take end-mark, like native-string
       void true
-    free seed, like native-void
 
   task measure, name <measure>
+    like native-void
+
     take name, like native-string
     take options, like measure-options
-    free seed, like native-void
 
   task now, name <now>
-    free seed, like native-number
+    like native-number
 
   task timerify, name <timerify>
+    like t
+
     head t
       base task
+        like any
+
         take params
           like array
             like any
           rest true
-        free result, like any
 
     take fn, like t
     take options, like timerify-options
       void true
-    free seed, like t

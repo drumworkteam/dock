@@ -1,32 +1,32 @@
 
-bear @tunebond/bolt/code/javascript/node/stream/internal/stream
-bear @tunebond/bolt/code/javascript/node/stream/internal/stream-options
-bear @tunebond/bolt/code/javascript/node/stream/internal/readable-options
-bear @tunebond/bolt/code/javascript/node/stream/internal/readable
-bear @tunebond/bolt/code/javascript/node/stream/internal/writable-options
-bear @tunebond/bolt/code/javascript/node/stream/internal/writable
-bear @tunebond/bolt/code/javascript/node/stream/internal/duplex-options
-bear @tunebond/bolt/code/javascript/node/stream/internal/duplex
-bear @tunebond/bolt/code/javascript/node/stream/internal/transform-callback
-bear @tunebond/bolt/code/javascript/node/stream/internal/transform-options
-bear @tunebond/bolt/code/javascript/node/stream/internal/transform
-bear @tunebond/bolt/code/javascript/node/stream/internal/pass-through
-bear @tunebond/bolt/code/javascript/node/stream/internal/finished-options
-bear @tunebond/bolt/code/javascript/node/stream/internal/finished
-bear @tunebond/bolt/code/javascript/node/stream/internal/pipeline-source-function
-bear @tunebond/bolt/code/javascript/node/stream/internal/pipeline-source
-bear @tunebond/bolt/code/javascript/node/stream/internal/pipeline-transform
-bear @tunebond/bolt/code/javascript/node/stream/internal/pipeline-transform-source
-bear @tunebond/bolt/code/javascript/node/stream/internal/pipeline-destination-iterable-function
-bear @tunebond/bolt/code/javascript/node/stream/internal/pipeline-destination-promise-function
-bear @tunebond/bolt/code/javascript/node/stream/internal/pipeline-destination
-bear @tunebond/bolt/code/javascript/node/stream/internal/pipeline-callback
-bear @tunebond/bolt/code/javascript/node/stream/internal/pipeline-promise
-bear @tunebond/bolt/code/javascript/node/stream/internal/pipeline-options
-bear @tunebond/bolt/code/javascript/node/stream/internal/pipeline
-bear @tunebond/bolt/code/javascript/node/stream/internal/pipe
+bear @treesurf/nest/code/javascript/node/stream/internal/stream
+bear @treesurf/nest/code/javascript/node/stream/internal/stream-options
+bear @treesurf/nest/code/javascript/node/stream/internal/readable-options
+bear @treesurf/nest/code/javascript/node/stream/internal/readable
+bear @treesurf/nest/code/javascript/node/stream/internal/writable-options
+bear @treesurf/nest/code/javascript/node/stream/internal/writable
+bear @treesurf/nest/code/javascript/node/stream/internal/duplex-options
+bear @treesurf/nest/code/javascript/node/stream/internal/duplex
+bear @treesurf/nest/code/javascript/node/stream/internal/transform-callback
+bear @treesurf/nest/code/javascript/node/stream/internal/transform-options
+bear @treesurf/nest/code/javascript/node/stream/internal/transform
+bear @treesurf/nest/code/javascript/node/stream/internal/pass-through
+bear @treesurf/nest/code/javascript/node/stream/internal/finished-options
+bear @treesurf/nest/code/javascript/node/stream/internal/finished
+bear @treesurf/nest/code/javascript/node/stream/internal/pipeline-source-function
+bear @treesurf/nest/code/javascript/node/stream/internal/pipeline-source
+bear @treesurf/nest/code/javascript/node/stream/internal/pipeline-transform
+bear @treesurf/nest/code/javascript/node/stream/internal/pipeline-transform-source
+bear @treesurf/nest/code/javascript/node/stream/internal/pipeline-destination-iterable-function
+bear @treesurf/nest/code/javascript/node/stream/internal/pipeline-destination-promise-function
+bear @treesurf/nest/code/javascript/node/stream/internal/pipeline-destination
+bear @treesurf/nest/code/javascript/node/stream/internal/pipeline-callback
+bear @treesurf/nest/code/javascript/node/stream/internal/pipeline-promise
+bear @treesurf/nest/code/javascript/node/stream/internal/pipeline-options
+bear @treesurf/nest/code/javascript/node/stream/internal/pipeline
+bear @treesurf/nest/code/javascript/node/stream/internal/pipe
 
-load @tunebond/moon
+load @treesurf/moon
   take form any
   take form form
   take form like
@@ -34,7 +34,7 @@ load @tunebond/moon
   take form task
   take form test
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form native-boolean
   take form native-null
   take form native-undefined
@@ -46,11 +46,11 @@ load @tunebond/bolt/code/javascript
   take form readonly-array
   take form stream
 
-load @tunebond/bolt/code/javascript/node/globals
+load @treesurf/nest/code/javascript/node/globals
   take form abort-signal
   take form array
 
-load @tunebond/bolt/code/javascript/node/stream/internal
+load @treesurf/nest/code/javascript/node/stream/internal
   take form finished-options
   take form pipeline-callback
   take form pipeline-destination
@@ -60,6 +60,8 @@ load @tunebond/bolt/code/javascript/node/stream/internal
 form internal, name <internal>
   base event-emitter
   task pipe, name <pipe>
+    like t
+
     head t
       base node-js-writable-stream
 
@@ -72,7 +74,6 @@ form internal, name <internal>
             like native-undefined
           flex true
       void true
-    free seed, like t
 
 host promises, name <promises>
   like stream-promises
@@ -81,14 +82,18 @@ host consumers, name <consumers>
   like stream-consumers
 
 task add-abort-signal, name <addAbortSignal>
+  like t
+
   head t
     base stream
 
   take signal, like abort-signal
   take stream, like t
-  free seed, like t
 
 task finished, name <finished>
+  like task
+    like native-void
+
   take stream
     like or
       like node-js-readable-stream
@@ -97,17 +102,18 @@ task finished, name <finished>
   take options, like finished-options
   take callback
     like task
+      like native-void
+
       take err
         like or
           like node-js-errno-exception
           like native-null
         void true
-      free result, like native-void
-  free seed
-    like task
-      free result, like native-void
 
 task finished, name <finished>
+  like task
+    like native-void
+
   take stream
     like or
       like node-js-readable-stream
@@ -115,17 +121,24 @@ task finished, name <finished>
       like node-js-read-write-stream
   take callback
     like task
+      like native-void
+
       take err
         like or
           like node-js-errno-exception
           like native-null
         void true
-      free result, like native-void
-  free seed
-    like task
-      free result, like native-void
 
 task pipeline, name <pipeline>
+  like test
+    stem roll
+      like b
+      like node-js-writable-stream
+      hook true
+        like b
+      hook false
+        like node-js-writable-stream
+
   head a
     base pipeline-source
       like any
@@ -140,17 +153,17 @@ task pipeline, name <pipeline>
     like pipeline-callback
       like b
     void true
-  free seed
-    like test
-      stem roll
-        like b
-        like node-js-writable-stream
-        hook true
-          like b
-        hook false
-          like node-js-writable-stream
 
 task pipeline, name <pipeline>
+  like test
+    stem roll
+      like b
+      like node-js-writable-stream
+      hook true
+        like b
+      hook false
+        like node-js-writable-stream
+
   head a
     base pipeline-source
       like any
@@ -170,17 +183,17 @@ task pipeline, name <pipeline>
     like pipeline-callback
       like b
     void true
-  free seed
-    like test
-      stem roll
-        like b
-        like node-js-writable-stream
-        hook true
-          like b
-        hook false
-          like node-js-writable-stream
 
 task pipeline, name <pipeline>
+  like test
+    stem roll
+      like b
+      like node-js-writable-stream
+      hook true
+        like b
+      hook false
+        like node-js-writable-stream
+
   head a
     base pipeline-source
       like any
@@ -205,17 +218,17 @@ task pipeline, name <pipeline>
     like pipeline-callback
       like b
     void true
-  free seed
-    like test
-      stem roll
-        like b
-        like node-js-writable-stream
-        hook true
-          like b
-        hook false
-          like node-js-writable-stream
 
 task pipeline, name <pipeline>
+  like test
+    stem roll
+      like b
+      like node-js-writable-stream
+      hook true
+        like b
+      hook false
+        like node-js-writable-stream
+
   head a
     base pipeline-source
       like any
@@ -245,17 +258,17 @@ task pipeline, name <pipeline>
     like pipeline-callback
       like b
     void true
-  free seed
-    like test
-      stem roll
-        like b
-        like node-js-writable-stream
-        hook true
-          like b
-        hook false
-          like node-js-writable-stream
 
 task pipeline, name <pipeline>
+  like test
+    stem roll
+      like b
+      like node-js-writable-stream
+      hook true
+        like b
+      hook false
+        like node-js-writable-stream
+
   head a
     base pipeline-source
       like any
@@ -290,17 +303,10 @@ task pipeline, name <pipeline>
     like pipeline-callback
       like b
     void true
-  free seed
-    like test
-      stem roll
-        like b
-        like node-js-writable-stream
-        hook true
-          like b
-        hook false
-          like node-js-writable-stream
 
 task pipeline, name <pipeline>
+  like node-js-writable-stream
+
   take streams
     like readonly-array
       like or
@@ -309,15 +315,17 @@ task pipeline, name <pipeline>
         like node-js-read-write-stream
   take callback
     like task
+      like native-void
+
       take err
         like or
           like node-js-errno-exception
           like native-null
-      free result, like native-void
     void true
-  free seed, like node-js-writable-stream
 
 task pipeline, name <pipeline>
+  like node-js-writable-stream
+
   take stream1, like node-js-readable-stream
   take stream2
     like or
@@ -329,10 +337,10 @@ task pipeline, name <pipeline>
         like node-js-read-write-stream
         like node-js-writable-stream
         like task
+          like native-void
+
           take err
             like or
               like node-js-errno-exception
               like native-null
-          free result, like native-void
     rest true
-  free seed, like node-js-writable-stream

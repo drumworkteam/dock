@@ -1,39 +1,39 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form or
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form native-string
   take form promise
 
-load @tunebond/bolt/code/javascript/node/buffer
+load @treesurf/nest/code/javascript/node/buffer
   take form buffer
 
-load @tunebond/bolt/code/javascript/node/fs
+load @treesurf/nest/code/javascript/node/fs
   take form buffer-encoding-option
   take form encoding-option
 
 task promisify, name <__promisify__>
+  like promise
+    like native-string
+
   take prefix, like native-string
   take options, like encoding-option
     void true
-  free seed
-    like promise
-      like native-string
 
 task promisify, name <__promisify__>
+  like promise
+    like buffer
+
   take prefix, like native-string
   take options, like buffer-encoding-option
-  free seed
-    like promise
-      like buffer
 
 task promisify, name <__promisify__>
+  like promise
+    like or
+      like native-string
+      like buffer
+
   take prefix, like native-string
   take options, like encoding-option
     void true
-  free seed
-    like promise
-      like or
-        like native-string
-        like buffer

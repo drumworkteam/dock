@@ -1,9 +1,9 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form or
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form dns-lookup-one-options
   take form native-null
   take form native-number
@@ -13,15 +13,17 @@ load @tunebond/bolt/code/javascript
 
 form lookup-function, name <LookupFunction>
   like task
+    like native-void
+
     take hostname, like native-string
     take options, like dns-lookup-one-options
     take callback
       like task
+        like native-void
+
         take err
           like or
             like node-js-errno-exception
             like native-null
         take address, like native-string
         take family, like native-number
-        free result, like native-void
-    free result, like native-void

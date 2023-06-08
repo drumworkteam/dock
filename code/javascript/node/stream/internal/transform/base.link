@@ -1,28 +1,30 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form any
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form native-void
 
-load @tunebond/bolt/code/javascript/node/buffer
+load @treesurf/nest/code/javascript/node/buffer
   take form buffer-encoding
 
-load @tunebond/bolt/code/javascript/node/stream/internal
+load @treesurf/nest/code/javascript/node/stream/internal
   take form transform-callback
   take form transform-options
 
 form transform, name <Transform>
   base duplex
   task transform, name <_transform>
+    like native-void
+
     take chunk, like any
     take encoding, like buffer-encoding
     take callback, like transform-callback
-    free seed, like native-void
 
   task flush, name <_flush>
+    like native-void
+
     take callback, like transform-callback
-    free seed, like native-void
 
 form transform-constructor
   hook make

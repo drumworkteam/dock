@@ -1,10 +1,10 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form any
   take form or
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form error
   take form function
@@ -18,11 +18,12 @@ form error-constructor, name <ErrorConstructor>
   link prepare-stack-trace, name <prepareStackTrace>
     like or
       like task
+        like any
+
         take err, like error
         take stack-traces
           like array
             like node-js-call-site
-        free result, like any
       like native-undefined
     flex true
   link stack-trace-limit, name <stackTraceLimit>
@@ -30,7 +31,8 @@ form error-constructor, name <ErrorConstructor>
     flex true
 
   task capture-stack-trace, name <captureStackTrace>
+    like native-void
+
     take target-object, like native-object
     take constructor-opt, like function
       void true
-    free seed, like native-void

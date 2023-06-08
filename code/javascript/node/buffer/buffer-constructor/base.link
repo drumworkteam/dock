@@ -1,10 +1,10 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form any
   take form form
   take form or
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form array-buffer
   take form native-boolean
@@ -15,7 +15,7 @@ load @tunebond/bolt/code/javascript
   take form shared-array-buffer
   take form uint8-array
 
-load @tunebond/bolt/code/javascript/node/buffer
+load @treesurf/nest/code/javascript/node/buffer
   take form buffer
   take form buffer-encoding
   take form with-implicit-coercion
@@ -27,6 +27,8 @@ form buffer-constructor, name <BufferConstructor>
     flex true
 
   task from, name <from>
+    like buffer
+
     take array-buffer
       like with-implicit-coercion
         like or
@@ -36,17 +38,19 @@ form buffer-constructor, name <BufferConstructor>
       void true
     take length, like native-number
       void true
-    free seed, like buffer
 
   task from, name <from>
+    like buffer
+
     take data
       like or
         like uint8-array
         like readonly-array
           like native-number
-    free seed, like buffer
 
   task from, name <from>
+    like buffer
+
     take data
       like with-implicit-coercion
         like or
@@ -54,42 +58,46 @@ form buffer-constructor, name <BufferConstructor>
           like readonly-array
             like native-number
           like native-string
-    free seed, like buffer
 
   task from, name <from>
+    like buffer
+
     take str
       like or
         like with-implicit-coercion
           like native-string
         like form
           task {symbol/to-primitive}
+            like native-string
+
             take hint, text <string>
-            free seed, like native-string
 
     take encoding, like buffer-encoding
       void true
-    free seed, like buffer
 
   task of, name <of>
+    like buffer
+
     take items
       like array
         like native-number
       rest true
-    free seed, like buffer
 
   task is-buffer, name <isBuffer>
+    like native-boolean
+    rank obj, like buffer
+
     take obj, like any
-    free seed
-      like native-boolean
-      rank obj, like buffer
 
   task is-encoding, name <isEncoding>
+    like native-boolean
+    rank encoding, like buffer-encoding
+
     take encoding, like native-string
-    free seed
-      like native-boolean
-      rank encoding, like buffer-encoding
 
   task byte-length, name <byteLength>
+    like native-number
+
     take string
       like or
         like native-string
@@ -98,26 +106,28 @@ form buffer-constructor, name <BufferConstructor>
         like shared-array-buffer
     take encoding, like buffer-encoding
       void true
-    free seed, like native-number
 
   task concat, name <concat>
+    like buffer
+
     take list
       like readonly-array
         like uint8-array
     take total-length, like native-number
       void true
-    free seed, like buffer
 
   task compare, name <compare>
+    like or
+      text <undefined>
+      text <0>
+      text <1>
+
     take buf1, like uint8-array
     take buf2, like uint8-array
-    free seed
-      like or
-        text <undefined>
-        text <0>
-        text <1>
 
   task alloc, name <alloc>
+    like buffer
+
     take size, like native-number
     take fill
       like or
@@ -127,43 +137,50 @@ form buffer-constructor, name <BufferConstructor>
       void true
     take encoding, like buffer-encoding
       void true
-    free seed, like buffer
 
   task alloc-unsafe, name <allocUnsafe>
+    like buffer
+
     take size, like native-number
-    free seed, like buffer
 
   task alloc-unsafe-slow, name <allocUnsafeSlow>
+    like buffer
+
     take size, like native-number
-    free seed, like buffer
 
   hook make
+      like buffer
+
     take str, like native-string
     take encoding, like buffer-encoding
       void true
-    free seed, like buffer
 
   hook make
+      like buffer
+
     take size, like native-number
-    free seed, like buffer
 
   hook make
+      like buffer
+
     take array, like uint8-array
-    free seed, like buffer
 
   hook make
+      like buffer
+
     take array-buffer
       like or
         like array-buffer
         like shared-array-buffer
-    free seed, like buffer
 
   hook make
+      like buffer
+
     take array
       like readonly-array
         like any
-    free seed, like buffer
 
   hook make
+      like buffer
+
     take buffer, like buffer
-    free seed, like buffer

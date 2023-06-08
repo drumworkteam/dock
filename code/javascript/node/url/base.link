@@ -1,19 +1,19 @@
 
-bear @tunebond/bolt/code/javascript/node/url/url-object
-bear @tunebond/bolt/code/javascript/node/url/url
-bear @tunebond/bolt/code/javascript/node/url/url-with-parsed-query
-bear @tunebond/bolt/code/javascript/node/url/url-with-string-query
-bear @tunebond/bolt/code/javascript/node/url/url-format-options
-bear @tunebond/bolt/code/javascript/node/url/url-search-params
-bear @tunebond/bolt/code/javascript/node/url/global
+bear @treesurf/nest/code/javascript/node/url/url-object
+bear @treesurf/nest/code/javascript/node/url/url
+bear @treesurf/nest/code/javascript/node/url/url-with-parsed-query
+bear @treesurf/nest/code/javascript/node/url/url-with-string-query
+bear @treesurf/nest/code/javascript/node/url/url-format-options
+bear @treesurf/nest/code/javascript/node/url/url-search-params
+bear @treesurf/nest/code/javascript/node/url/global
 
-load @tunebond/moon
+load @treesurf/moon
   take form any
   take form form
   take form or
   take form test
 
-load @tunebond/bolt/code/javascript/node/url
+load @treesurf/nest/code/javascript/node/url
   take form url
   take form url-format-options
   take form url-object
@@ -21,12 +21,12 @@ load @tunebond/bolt/code/javascript/node/url
   take form url-with-parsed-query
   take form url-with-string-query
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form native-boolean
   take form native-string
   take form native-undefined
 
-load @tunebond/bolt/code/javascript/node/http
+load @treesurf/nest/code/javascript/node/http
   take form client-request-args
 
 host url, name <URL>
@@ -64,10 +64,13 @@ host url-search-params, name <URLSearchParams>
         like url-search-params
 
 task parse, name <parse>
+  like url-with-string-query
+
   take url-string, like native-string
-  free seed, like url-with-string-query
 
 task parse, name <parse>
+  like url-with-string-query
+
   take url-string, like native-string
   take parse-query-string
     like or
@@ -75,59 +78,68 @@ task parse, name <parse>
       like native-undefined
   take slashes-denote-host, like native-boolean
     void true
-  free seed, like url-with-string-query
 
 task parse, name <parse>
+  like url-with-parsed-query
+
   take url-string, like native-string
   take parse-query-string, text <true>
   take slashes-denote-host, like native-boolean
     void true
-  free seed, like url-with-parsed-query
 
 task parse, name <parse>
+  like url
+
   take url-string, like native-string
   take parse-query-string, like native-boolean
   take slashes-denote-host, like native-boolean
     void true
-  free seed, like url
 
 task format, name <format>
+  like native-string
+
   take url-object, like url
   take options, like url-format-options
     void true
-  free seed, like native-string
 
 task format, name <format>
+  like native-string
+
   take url-object
     like or
       like url-object
       like native-string
-  free seed, like native-string
 
 task resolve, name <resolve>
+  like native-string
+
   take from, like native-string
   take to, like native-string
-  free seed, like native-string
 
 task domain-to-ascii, name <domainToASCII>
+  like native-string
+
   take domain, like native-string
-  free seed, like native-string
 
 task domain-to-unicode, name <domainToUnicode>
+  like native-string
+
   take domain, like native-string
-  free seed, like native-string
 
 task file-url-to-path, name <fileURLToPath>
+  like native-string
+
   take url
     like or
       like native-string
       like url
-  free seed, like native-string
 
 task path-to-file-url, name <pathToFileURL>
+  like url
+
   take path, like native-string
-  free seed, like url
 
 task url-to-http-options, name <urlToHttpOptions>
+  like client-request-args
+
   take url, like url
-  free seed, like client-request-args

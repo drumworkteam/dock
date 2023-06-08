@@ -1,12 +1,12 @@
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form hmac
   take form native-string
 
-load @tunebond/bolt/code/javascript/node/buffer
+load @treesurf/nest/code/javascript/node/buffer
   take form buffer
 
-load @tunebond/bolt/code/javascript/node/crypto
+load @treesurf/nest/code/javascript/node/crypto
   take form binary-like
   take form binary-to-text-encoding
   take form encoding
@@ -14,20 +14,23 @@ load @tunebond/bolt/code/javascript/node/crypto
 form hmac, name <Hmac>
   base stream-transform
   task update, name <update>
+    like hmac
+
     take data, like binary-like
-    free seed, like hmac
 
   task update, name <update>
+    like hmac
+
     take data, like native-string
     take input-encoding, like encoding
-    free seed, like hmac
 
   task digest, name <digest>
-    free seed, like buffer
+    like buffer
 
   task digest, name <digest>
+    like native-string
+
     take encoding, like binary-to-text-encoding
-    free seed, like native-string
 
 form hmac-constructor
   hook make

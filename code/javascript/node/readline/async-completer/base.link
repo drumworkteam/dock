@@ -1,22 +1,26 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form or
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form error
   take form native-null
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/node/readline
+load @treesurf/nest/code/javascript/node/readline
   take form completer-result
 
 form async-completer, name <AsyncCompleter>
   like task
+    like native-void
+
     take line, like native-string
     take callback
       like task
+        like native-void
+
         take err
           like or
             like native-null
@@ -24,5 +28,3 @@ form async-completer, name <AsyncCompleter>
           void true
         take result, like completer-result
           void true
-        free result, like native-void
-    free result, like native-void

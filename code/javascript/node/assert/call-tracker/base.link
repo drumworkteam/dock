@@ -1,44 +1,45 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form any
   take form like
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form native-number
   take form native-void
 
-load @tunebond/bolt/code/javascript/node/assert
+load @treesurf/nest/code/javascript/node/assert
   take form call-tracker-report-information
 
 form call-tracker, name <CallTracker>
   task calls, name <calls>
+    like task
+      like native-void
+
     take exact, like native-number
       void true
-    free seed
-      like task
-        free result, like native-void
 
   task calls, name <calls>
+    like func
+
     head func
       base task
+        like any
+
         take args
           like array
             like any
           rest true
-        free result, like any
 
     take fn, like func
       void true
     take exact, like native-number
       void true
-    free seed, like func
 
   task report, name <report>
-    free seed
-      like array
-        like call-tracker-report-information
+    like array
+      like call-tracker-report-information
 
   task verify, name <verify>
-    free seed, like native-void
+    like native-void

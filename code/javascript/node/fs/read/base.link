@@ -1,19 +1,28 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form form
   take form like
   take form or
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form native-null
   take form native-number
   take form node-js-array-buffer-view
   take form promise
 
-load @tunebond/bolt/code/javascript/node/fs
+load @treesurf/nest/code/javascript/node/fs
   take form read-async-options
 
 task promisify, name <__promisify__>
+  like promise
+    like form
+      link bytes-read, name <bytesRead>
+        like native-number
+        flex true
+      link buffer, name <buffer>
+        like t-buffer
+        flex true
+
   head t-buffer
     base node-js-array-buffer-view
 
@@ -25,17 +34,17 @@ task promisify, name <__promisify__>
     like or
       like native-number
       like native-null
-  free seed
-    like promise
-      like form
-        link bytes-read, name <bytesRead>
-          like native-number
-          flex true
-        link buffer, name <buffer>
-          like t-buffer
-          flex true
 
 task promisify, name <__promisify__>
+  like promise
+    like form
+      link bytes-read, name <bytesRead>
+        like native-number
+        flex true
+      link buffer, name <buffer>
+        like t-buffer
+        flex true
+
   head t-buffer
     base node-js-array-buffer-view
 
@@ -43,24 +52,15 @@ task promisify, name <__promisify__>
   take options
     like read-async-options
       like t-buffer
-  free seed
-    like promise
-      like form
-        link bytes-read, name <bytesRead>
-          like native-number
-          flex true
-        link buffer, name <buffer>
-          like t-buffer
-          flex true
 
 task promisify, name <__promisify__>
+  like promise
+    like form
+      link bytes-read, name <bytesRead>
+        like native-number
+        flex true
+      link buffer, name <buffer>
+        like node-js-array-buffer-view
+        flex true
+
   take fd, like native-number
-  free seed
-    like promise
-      like form
-        link bytes-read, name <bytesRead>
-          like native-number
-          flex true
-        link buffer, name <buffer>
-          like node-js-array-buffer-view
-          flex true

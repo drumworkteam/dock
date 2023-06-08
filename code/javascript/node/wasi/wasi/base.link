@@ -1,13 +1,13 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form any
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form native-object
   take form native-void
   take form node-js-dict
 
-load @tunebond/bolt/code/javascript/node/wasi
+load @treesurf/nest/code/javascript/node/wasi
   take form wasi-options
 
 form wasi, name <WASI>
@@ -16,12 +16,14 @@ form wasi, name <WASI>
       like any
 
   task start, name <start>
+    like native-void
+
     take instance, like native-object
-    free seed, like native-void
 
   task initialize, name <initialize>
+    like native-void
+
     take instance, like native-object
-    free seed, like native-void
 
 form wasi-constructor
   hook make

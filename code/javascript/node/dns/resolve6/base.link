@@ -1,40 +1,40 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form or
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form native-string
   take form promise
 
-load @tunebond/bolt/code/javascript/node/dns
+load @treesurf/nest/code/javascript/node/dns
   take form record-with-ttl
   take form resolve-options
   take form resolve-with-ttl-options
 
 task promisify, name <__promisify__>
+  like promise
+    like array
+      like native-string
+
   take hostname, like native-string
-  free seed
-    like promise
-      like array
-        like native-string
 
 task promisify, name <__promisify__>
+  like promise
+    like array
+      like record-with-ttl
+
   take hostname, like native-string
   take options, like resolve-with-ttl-options
-  free seed
-    like promise
+
+task promisify, name <__promisify__>
+  like promise
+    like or
+      like array
+        like native-string
       like array
         like record-with-ttl
 
-task promisify, name <__promisify__>
   take hostname, like native-string
   take options, like resolve-options
     void true
-  free seed
-    like promise
-      like or
-        like array
-          like native-string
-        like array
-          like record-with-ttl

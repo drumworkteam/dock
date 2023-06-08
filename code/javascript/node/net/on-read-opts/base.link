@@ -1,13 +1,13 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form or
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form native-boolean
   take form native-number
 
-load @tunebond/bolt/code/javascript/node/globals
+load @treesurf/nest/code/javascript/node/globals
   take form uint8-array
 
 form on-read-opts, name <OnReadOpts>
@@ -15,10 +15,12 @@ form on-read-opts, name <OnReadOpts>
     like or
       like uint8-array
       like task
-        free result, like uint8-array
+        like uint8-array
+
     flex true
 
   task callback, name <callback>
+    like native-boolean
+
     take bytes-written, like native-number
     take buf, like uint8-array
-    free seed, like native-boolean

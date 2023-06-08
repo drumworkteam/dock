@@ -1,18 +1,18 @@
 
-load @tunebond/bolt/code/javascript/node/globals
+load @treesurf/nest/code/javascript/node/globals
   take form node-module
   take form node-require
 
-load @tunebond/moon
+load @treesurf/moon
   take form or
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form native-string
   take form native-void
   take form url
 
-load @tunebond/bolt/code/javascript/node/module
+load @treesurf/nest/code/javascript/node/module
   take form module
 
 form module, name <Module>
@@ -27,18 +27,20 @@ form module-constructor
   link module, name <Module>, like module
 
   task run-main, name <runMain>
-    free seed, like native-void
+    like native-void
 
   task wrap, name <wrap>
+    like native-string
+
     take code, like native-string
-    free seed, like native-string
 
   task create-require, name <createRequire>
+    like node-require
+
     take path
       like or
         like native-string
         like url
-    free seed, like node-require
 
   hook make
     take id, like native-string

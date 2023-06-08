@@ -1,9 +1,9 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form or
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form incoming-message
   take form native-number
@@ -12,7 +12,7 @@ load @tunebond/bolt/code/javascript
   take form native-void
   take form socket
 
-load @tunebond/bolt/code/javascript/node/http
+load @treesurf/nest/code/javascript/node/http
   take form outgoing-http-header
   take form outgoing-http-headers
 
@@ -22,21 +22,27 @@ form server-response, name <ServerResponse>
   link status-message, name <statusMessage>, like native-string
 
   task assign-socket, name <assignSocket>
+    like native-void
+
     take socket, like socket
-    free seed, like native-void
 
   task detach-socket, name <detachSocket>
+    like native-void
+
     take socket, like socket
-    free seed, like native-void
 
   task write-continue, name <writeContinue>
+    like native-void
+
     take callback
       like task
-        free result, like native-void
+        like native-void
+
       void true
-    free seed, like native-void
 
   task write-head, name <writeHead>
+    like native-this
+
     take status-code, like native-number
     take status-message, like native-string
       void true
@@ -46,9 +52,10 @@ form server-response, name <ServerResponse>
         like array
           like outgoing-http-header
       void true
-    free seed, like native-this
 
   task write-head, name <writeHead>
+    like native-this
+
     take status-code, like native-number
     take headers
       like or
@@ -56,10 +63,9 @@ form server-response, name <ServerResponse>
         like array
           like outgoing-http-header
       void true
-    free seed, like native-this
 
   task write-processing, name <writeProcessing>
-    free seed, like native-void
+    like native-void
 
 form server-response-constructor
   hook make

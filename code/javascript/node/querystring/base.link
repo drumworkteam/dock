@@ -1,13 +1,13 @@
 
-bear @tunebond/bolt/code/javascript/node/querystring/stringify-options
-bear @tunebond/bolt/code/javascript/node/querystring/parse-options
-bear @tunebond/bolt/code/javascript/node/querystring/parsed-url-query
-bear @tunebond/bolt/code/javascript/node/querystring/parsed-url-query-input
+bear @treesurf/nest/code/javascript/node/querystring/stringify-options
+bear @treesurf/nest/code/javascript/node/querystring/parse-options
+bear @treesurf/nest/code/javascript/node/querystring/parsed-url-query
+bear @treesurf/nest/code/javascript/node/querystring/parsed-url-query-input
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form native-string
 
-load @tunebond/bolt/code/javascript/node/querystring
+load @treesurf/nest/code/javascript/node/querystring
   take form parse-options
   take form parsed-url-query
   take form parsed-url-query-input
@@ -20,6 +20,8 @@ host decode, name <decode>
   like parse
 
 task stringify, name <stringify>
+  like native-string
+
   take obj, like parsed-url-query-input
     void true
   take sep, like native-string
@@ -28,9 +30,10 @@ task stringify, name <stringify>
     void true
   take options, like stringify-options
     void true
-  free seed, like native-string
 
 task parse, name <parse>
+  like parsed-url-query
+
   take str, like native-string
   take sep, like native-string
     void true
@@ -38,12 +41,13 @@ task parse, name <parse>
     void true
   take options, like parse-options
     void true
-  free seed, like parsed-url-query
 
 task escape, name <escape>
+  like native-string
+
   take str, like native-string
-  free seed, like native-string
 
 task unescape, name <unescape>
+  like native-string
+
   take str, like native-string
-  free seed, like native-string

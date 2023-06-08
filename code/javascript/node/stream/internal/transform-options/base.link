@@ -1,24 +1,24 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form any
   take form form
   take form or
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form error
   take form native-null
   take form native-number
   take form native-void
   take form transform
 
-load @tunebond/bolt/code/javascript/node/buffer
+load @treesurf/nest/code/javascript/node/buffer
   take form buffer-encoding
 
-load @tunebond/bolt/code/javascript/node/globals
+load @treesurf/nest/code/javascript/node/globals
   take form array
 
-load @tunebond/bolt/code/javascript/node/stream/internal
+load @treesurf/nest/code/javascript/node/stream/internal
   take form duplex-options
   take form transform-callback
 
@@ -26,37 +26,44 @@ form transform-options, name <TransformOptions>
   base duplex-options
 
   task construct, name <construct>
+    like native-void
+
     take this, like transform
     take callback
       like task
+        like native-void
+
         take error
           like or
             like error
             like native-null
           void true
-        free result, like native-void
-    free seed, like native-void
 
   task read, name <read>
+    like native-void
+
     take this, like transform
     take size, like native-number
-    free seed, like native-void
 
   task write, name <write>
+    like native-void
+
     take this, like transform
     take chunk, like any
     take encoding, like buffer-encoding
     take callback
       like task
+        like native-void
+
         take error
           like or
             like error
             like native-null
           void true
-        free result, like native-void
-    free seed, like native-void
 
   task writev, name <writev>
+    like native-void
+
     take this, like transform
     take chunks
       like array
@@ -69,27 +76,31 @@ form transform-options, name <TransformOptions>
             flex true
     take callback
       like task
+        like native-void
+
         take error
           like or
             like error
             like native-null
           void true
-        free result, like native-void
-    free seed, like native-void
 
   task final, name <final>
+    like native-void
+
     take this, like transform
     take callback
       like task
+        like native-void
+
         take error
           like or
             like error
             like native-null
           void true
-        free result, like native-void
-    free seed, like native-void
 
   task destroy, name <destroy>
+    like native-void
+
     take this, like transform
     take error
       like or
@@ -97,21 +108,23 @@ form transform-options, name <TransformOptions>
         like native-null
     take callback
       like task
+        like native-void
+
         take error
           like or
             like error
             like native-null
-        free result, like native-void
-    free seed, like native-void
 
   task transform, name <transform>
+    like native-void
+
     take this, like transform
     take chunk, like any
     take encoding, like buffer-encoding
     take callback, like transform-callback
-    free seed, like native-void
 
   task flush, name <flush>
+    like native-void
+
     take this, like transform
     take callback, like transform-callback
-    free seed, like native-void

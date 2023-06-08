@@ -1,8 +1,8 @@
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form native-number
 
-load @tunebond/bolt/code/javascript/node/module
+load @treesurf/nest/code/javascript/node/module
   take form source-map-payload
   take form source-mapping
 
@@ -10,9 +10,10 @@ form source-map, name <SourceMap>
   link payload, name <payload>, like source-map-payload
 
   task find-entry, name <findEntry>
+    like source-mapping
+
     take line, like native-number
     take column, like native-number
-    free seed, like source-mapping
 
 form source-map-constructor
   hook make

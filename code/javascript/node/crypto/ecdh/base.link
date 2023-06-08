@@ -1,79 +1,92 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form or
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form native-string
   take form native-void
   take form node-js-array-buffer-view
 
-load @tunebond/bolt/code/javascript/node/buffer
+load @treesurf/nest/code/javascript/node/buffer
   take form buffer
 
-load @tunebond/bolt/code/javascript/node/crypto
+load @treesurf/nest/code/javascript/node/crypto
   take form binary-like
   take form binary-to-text-encoding
   take form ecdh-key-format
 
 form ecdh, name <ECDH>
   task generate-keys, name <generateKeys>
-    free seed, like buffer
+    like buffer
 
   task generate-keys, name <generateKeys>
+    like native-string
+
     take encoding, like binary-to-text-encoding
     take format, like ecdh-key-format
       void true
-    free seed, like native-string
 
   task compute-secret, name <computeSecret>
+    like buffer
+
     take other-public-key, like node-js-array-buffer-view
-    free seed, like buffer
 
   task compute-secret, name <computeSecret>
+    like buffer
+
     take other-public-key, like native-string
     take input-encoding, like binary-to-text-encoding
-    free seed, like buffer
 
   task compute-secret, name <computeSecret>
+    like native-string
+
     take other-public-key, like node-js-array-buffer-view
     take output-encoding, like binary-to-text-encoding
-    free seed, like native-string
 
   task compute-secret, name <computeSecret>
+    like native-string
+
     take other-public-key, like native-string
     take input-encoding, like binary-to-text-encoding
     take output-encoding, like binary-to-text-encoding
-    free seed, like native-string
 
   task get-private-key, name <getPrivateKey>
-    free seed, like buffer
+    like buffer
 
   task get-private-key, name <getPrivateKey>
+    like native-string
+
     take encoding, like binary-to-text-encoding
-    free seed, like native-string
 
   task get-public-key, name <getPublicKey>
-    free seed, like buffer
+    like buffer
 
   task get-public-key, name <getPublicKey>
+    like native-string
+
     take encoding, like binary-to-text-encoding
     take format, like ecdh-key-format
       void true
-    free seed, like native-string
 
   task set-private-key, name <setPrivateKey>
+    like native-void
+
     take private-key, like node-js-array-buffer-view
-    free seed, like native-void
 
   task set-private-key, name <setPrivateKey>
+    like native-void
+
     take private-key, like native-string
     take encoding, like binary-to-text-encoding
-    free seed, like native-void
 
 form ecdh-constructor
   hook make
 
   task convert-key, name <convertKey>
+    like or
+      like buffer
+      like native-string
+
     take key, like binary-like
     take curve, like native-string
     take input-encoding, like binary-to-text-encoding
@@ -91,7 +104,3 @@ form ecdh-constructor
         text <compressed>
         text <hybrid>
       void true
-    free seed
-      like or
-        like buffer
-        like native-string

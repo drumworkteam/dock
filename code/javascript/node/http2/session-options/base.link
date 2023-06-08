@@ -1,14 +1,14 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form or
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form native-number
   take form native-undefined
   take form stream-duplex
   take form url-url
 
-load @tunebond/bolt/code/javascript/node/http2
+load @treesurf/nest/code/javascript/node/http2
   take form settings
 
 form session-options, name <SessionOptions>
@@ -59,11 +59,13 @@ form session-options, name <SessionOptions>
     flex true
 
   task select-padding, name <selectPadding>
+    like native-number
+
     take frame-len, like native-number
     take max-frame-len, like native-number
-    free seed, like native-number
 
   task create-connection, name <createConnection>
+    like stream-duplex
+
     take authority, like url-url
     take option, like session-options
-    free seed, like stream-duplex

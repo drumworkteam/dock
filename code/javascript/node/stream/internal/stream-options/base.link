@@ -1,10 +1,10 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form like
   take form or
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form error
   take form native-boolean
   take form native-null
@@ -13,10 +13,10 @@ load @tunebond/bolt/code/javascript
   take form native-void
   take form stream
 
-load @tunebond/bolt/code/javascript/node/events/event-emitter
+load @treesurf/nest/code/javascript/node/events/event-emitter
   take form abortable
 
-load @tunebond/bolt/code/javascript/node/fs/stream-options
+load @treesurf/nest/code/javascript/node/fs/stream-options
   take form stream-options
 
 form stream-options, name <StreamOptions>
@@ -47,18 +47,22 @@ form stream-options, name <StreamOptions>
     flex true
 
   task construct, name <construct>
+    like native-void
+
     take this, like t
     take callback
       like task
+        like native-void
+
         take error
           like or
             like error
             like native-null
           void true
-        free result, like native-void
-    free seed, like native-void
 
   task destroy, name <destroy>
+    like native-void
+
     take this, like t
     take error
       like or
@@ -66,9 +70,9 @@ form stream-options, name <StreamOptions>
         like native-null
     take callback
       like task
+        like native-void
+
         take error
           like or
             like error
             like native-null
-        free result, like native-void
-    free seed, like native-void

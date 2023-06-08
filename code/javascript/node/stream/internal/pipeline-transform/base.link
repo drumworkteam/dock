@@ -1,19 +1,19 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form any
   take form like
   take form or
   take form task
   take form test
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form async-iterable
   take form iterable
   take form node-js-read-write-stream
   take form st
 
-load @tunebond/bolt/code/javascript/node/stream/internal
+load @treesurf/nest/code/javascript/node/stream/internal
   take form pipeline-transform-source
 
 form pipeline-transform, name <PipelineTransform>
@@ -25,26 +25,26 @@ form pipeline-transform, name <PipelineTransform>
   like or
     like node-js-read-write-stream
     like task
+      like async-iterable
+        like u
+
       take source
         like test
           stem roll
             like s
             like task
+              like or
+                like iterable
+                  name st
+                like async-iterable
+                  name st
+
               take args
                 like array
                   like any
                 rest true
-              free result
-                like or
-                  like iterable
-                    name st
-                  like async-iterable
-                    name st
             hook true
               like async-iterable
                 like st
             hook false
               like s
-      free result
-        like async-iterable
-          like u

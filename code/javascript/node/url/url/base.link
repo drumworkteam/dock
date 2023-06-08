@@ -1,18 +1,18 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form or
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form blob
   take form native-boolean
   take form native-null
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/node/querystring
+load @treesurf/nest/code/javascript/node/querystring
   take form parsed-url-query
 
-load @tunebond/bolt/code/javascript/node/url
+load @treesurf/nest/code/javascript/node/url
   take form url
   take form url-search-params
 
@@ -92,19 +92,21 @@ form url, name <URL>
   link username, name <username>, like native-string
 
   task to-string, name <toString>
-    free seed, like native-string
+    like native-string
 
   task to-json, name <toJSON>
-    free seed, like native-string
+    like native-string
 
 form url-constructor
   task create-object-url, name <createObjectURL>
+    like native-string
+
     take blob, like blob
-    free seed, like native-string
 
   task revoke-object-url, name <revokeObjectURL>
+    like native-void
+
     take object-url, like native-string
-    free seed, like native-void
 
   hook make
     take input, like native-string

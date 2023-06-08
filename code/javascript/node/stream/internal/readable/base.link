@@ -1,10 +1,10 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form any
   take form or
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form async-iterable
   take form async-iterable-iterator
@@ -21,10 +21,10 @@ load @tunebond/bolt/code/javascript
   take form node-js-writable-stream
   take form readable
 
-load @tunebond/bolt/code/javascript/node/buffer
+load @treesurf/nest/code/javascript/node/buffer
   take form buffer-encoding
 
-load @tunebond/bolt/code/javascript/node/stream/internal
+load @treesurf/nest/code/javascript/node/stream/internal
   take form readable-options
 
 form readable, name <Readable>
@@ -47,175 +47,207 @@ form readable, name <Readable>
   link destroyed, name <destroyed>, like native-boolean
 
   task construct, name <_construct>
+    like native-void
+
     take callback
       like task
+        like native-void
+
         take error
           like or
             like error
             like native-null
           void true
-        free result, like native-void
-    free seed, like native-void
 
   task read, name <_read>
+    like native-void
+
     take size, like native-number
-    free seed, like native-void
 
   task read, name <read>
+    like any
+
     take size, like native-number
       void true
-    free seed, like any
 
   task set-encoding, name <setEncoding>
+    like native-this
+
     take encoding, like buffer-encoding
-    free seed, like native-this
 
   task pause, name <pause>
-    free seed, like native-this
+    like native-this
 
   task resume, name <resume>
-    free seed, like native-this
+    like native-this
 
   task is-paused, name <isPaused>
-    free seed, like native-boolean
+    like native-boolean
 
   task unpipe, name <unpipe>
+    like native-this
+
     take destination, like node-js-writable-stream
       void true
-    free seed, like native-this
 
   task unshift, name <unshift>
+    like native-void
+
     take chunk, like any
     take encoding, like buffer-encoding
       void true
-    free seed, like native-void
 
   task wrap, name <wrap>
+    like native-this
+
     take stream, like node-js-readable-stream
-    free seed, like native-this
 
   task push, name <push>
+    like native-boolean
+
     take chunk, like any
     take encoding, like buffer-encoding
       void true
-    free seed, like native-boolean
 
   task destroy, name <_destroy>
+    like native-void
+
     take error
       like or
         like error
         like native-null
     take callback
       like task
+        like native-void
+
         take error
           like or
             like error
             like native-null
           void true
-        free result, like native-void
-    free seed, like native-void
 
   task destroy, name <destroy>
+    like native-this
+
     take error, like error
       void true
-    free seed, like native-this
 
   task add-listener, name <addListener>
+    like native-this
+
     take event, text <close>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task add-listener, name <addListener>
+    like native-this
+
     take event, text <data>
     take listener
       like task
+        like native-void
+
         take chunk, like any
-        free result, like native-void
-    free seed, like native-this
 
   task add-listener, name <addListener>
+    like native-this
+
     take event, text <end>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task add-listener, name <addListener>
+    like native-this
+
     take event, text <error>
     take listener
       like task
+        like native-void
+
         take err, like error
-        free result, like native-void
-    free seed, like native-this
 
   task add-listener, name <addListener>
+    like native-this
+
     take event, text <pause>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task add-listener, name <addListener>
+    like native-this
+
     take event, text <readable>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task add-listener, name <addListener>
+    like native-this
+
     take event, text <resume>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task add-listener, name <addListener>
+    like native-this
+
     take event
       like or
         like native-string
         like native-symbol
     take listener
       like task
+        like native-void
+
         take args
           like array
             like any
           rest true
-        free result, like native-void
-    free seed, like native-this
 
   task emit, name <emit>
+    like native-boolean
+
     take event, text <close>
-    free seed, like native-boolean
 
   task emit, name <emit>
+    like native-boolean
+
     take event, text <data>
     take chunk, like any
-    free seed, like native-boolean
 
   task emit, name <emit>
+    like native-boolean
+
     take event, text <end>
-    free seed, like native-boolean
 
   task emit, name <emit>
+    like native-boolean
+
     take event, text <error>
     take err, like error
-    free seed, like native-boolean
 
   task emit, name <emit>
+    like native-boolean
+
     take event, text <pause>
-    free seed, like native-boolean
 
   task emit, name <emit>
+    like native-boolean
+
     take event, text <readable>
-    free seed, like native-boolean
 
   task emit, name <emit>
+    like native-boolean
+
     take event, text <resume>
-    free seed, like native-boolean
 
   task emit, name <emit>
+    like native-boolean
+
     take event
       like or
         like native-string
@@ -224,341 +256,396 @@ form readable, name <Readable>
       like array
         like any
       rest true
-    free seed, like native-boolean
 
   task on, name <on>
+    like native-this
+
     take event, text <close>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task on, name <on>
+    like native-this
+
     take event, text <data>
     take listener
       like task
+        like native-void
+
         take chunk, like any
-        free result, like native-void
-    free seed, like native-this
 
   task on, name <on>
+    like native-this
+
     take event, text <end>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task on, name <on>
+    like native-this
+
     take event, text <error>
     take listener
       like task
+        like native-void
+
         take err, like error
-        free result, like native-void
-    free seed, like native-this
 
   task on, name <on>
+    like native-this
+
     take event, text <pause>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task on, name <on>
+    like native-this
+
     take event, text <readable>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task on, name <on>
+    like native-this
+
     take event, text <resume>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task on, name <on>
+    like native-this
+
     take event
       like or
         like native-string
         like native-symbol
     take listener
       like task
+        like native-void
+
         take args
           like array
             like any
           rest true
-        free result, like native-void
-    free seed, like native-this
 
   task once, name <once>
+    like native-this
+
     take event, text <close>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task once, name <once>
+    like native-this
+
     take event, text <data>
     take listener
       like task
+        like native-void
+
         take chunk, like any
-        free result, like native-void
-    free seed, like native-this
 
   task once, name <once>
+    like native-this
+
     take event, text <end>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task once, name <once>
+    like native-this
+
     take event, text <error>
     take listener
       like task
+        like native-void
+
         take err, like error
-        free result, like native-void
-    free seed, like native-this
 
   task once, name <once>
+    like native-this
+
     take event, text <pause>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task once, name <once>
+    like native-this
+
     take event, text <readable>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task once, name <once>
+    like native-this
+
     take event, text <resume>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task once, name <once>
+    like native-this
+
     take event
       like or
         like native-string
         like native-symbol
     take listener
       like task
+        like native-void
+
         take args
           like array
             like any
           rest true
-        free result, like native-void
-    free seed, like native-this
 
   task prepend-listener, name <prependListener>
+    like native-this
+
     take event, text <close>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-listener, name <prependListener>
+    like native-this
+
     take event, text <data>
     take listener
       like task
+        like native-void
+
         take chunk, like any
-        free result, like native-void
-    free seed, like native-this
 
   task prepend-listener, name <prependListener>
+    like native-this
+
     take event, text <end>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-listener, name <prependListener>
+    like native-this
+
     take event, text <error>
     take listener
       like task
+        like native-void
+
         take err, like error
-        free result, like native-void
-    free seed, like native-this
 
   task prepend-listener, name <prependListener>
+    like native-this
+
     take event, text <pause>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-listener, name <prependListener>
+    like native-this
+
     take event, text <readable>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-listener, name <prependListener>
+    like native-this
+
     take event, text <resume>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-listener, name <prependListener>
+    like native-this
+
     take event
       like or
         like native-string
         like native-symbol
     take listener
       like task
+        like native-void
+
         take args
           like array
             like any
           rest true
-        free result, like native-void
-    free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
+    like native-this
+
     take event, text <close>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-once-listener, name <prependOnceListener>
+    like native-this
+
     take event, text <data>
     take listener
       like task
+        like native-void
+
         take chunk, like any
-        free result, like native-void
-    free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
+    like native-this
+
     take event, text <end>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-once-listener, name <prependOnceListener>
+    like native-this
+
     take event, text <error>
     take listener
       like task
+        like native-void
+
         take err, like error
-        free result, like native-void
-    free seed, like native-this
 
   task prepend-once-listener, name <prependOnceListener>
+    like native-this
+
     take event, text <pause>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-once-listener, name <prependOnceListener>
+    like native-this
+
     take event, text <readable>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-once-listener, name <prependOnceListener>
+    like native-this
+
     take event, text <resume>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task prepend-once-listener, name <prependOnceListener>
+    like native-this
+
     take event
       like or
         like native-string
         like native-symbol
     take listener
       like task
+        like native-void
+
         take args
           like array
             like any
           rest true
-        free result, like native-void
-    free seed, like native-this
 
   task remove-listener, name <removeListener>
+    like native-this
+
     take event, text <close>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task remove-listener, name <removeListener>
+    like native-this
+
     take event, text <data>
     take listener
       like task
+        like native-void
+
         take chunk, like any
-        free result, like native-void
-    free seed, like native-this
 
   task remove-listener, name <removeListener>
+    like native-this
+
     take event, text <end>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task remove-listener, name <removeListener>
+    like native-this
+
     take event, text <error>
     take listener
       like task
+        like native-void
+
         take err, like error
-        free result, like native-void
-    free seed, like native-this
 
   task remove-listener, name <removeListener>
+    like native-this
+
     take event, text <pause>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task remove-listener, name <removeListener>
+    like native-this
+
     take event, text <readable>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task remove-listener, name <removeListener>
+    like native-this
+
     take event, text <resume>
     take listener
       like task
-        free result, like native-void
-    free seed, like native-this
+        like native-void
 
   task remove-listener, name <removeListener>
+    like native-this
+
     take event
       like or
         like native-string
         like native-symbol
     take listener
       like task
+        like native-void
+
         take args
           like array
             like any
           rest true
-        free result, like native-void
-    free seed, like native-this
 
   task {symbol/async-iterator}
     name <Symbol.asyncIterator>
-    free seed
-      like async-iterable-iterator
-        like any
+    like async-iterable-iterator
+      like any
 
 form readable-constructor
   task from, name <from>
+    like readable
+
     take iterable
       like or
         like iterable
@@ -567,14 +654,14 @@ form readable-constructor
           like any
     take options, like readable-options
       void true
-    free seed, like readable
 
   task is-disturbed, name <isDisturbed>
+    like native-boolean
+
     take stream
       like or
         like readable
         like node-js-readable-stream
-    free seed, like native-boolean
 
   hook make
     take opts, like readable-options

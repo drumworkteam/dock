@@ -1,11 +1,11 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form any
   take form form
   take form or
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form duplex
   take form error
   take form native-boolean
@@ -14,13 +14,13 @@ load @tunebond/bolt/code/javascript
   take form native-undefined
   take form native-void
 
-load @tunebond/bolt/code/javascript/node/buffer
+load @treesurf/nest/code/javascript/node/buffer
   take form buffer-encoding
 
-load @tunebond/bolt/code/javascript/node/globals
+load @treesurf/nest/code/javascript/node/globals
   take form array
 
-load @tunebond/bolt/code/javascript/node/stream/internal
+load @treesurf/nest/code/javascript/node/stream/internal
   take form readable-options
   take form writable-options
 
@@ -60,37 +60,44 @@ form duplex-options, name <DuplexOptions>
     flex true
 
   task construct, name <construct>
+    like native-void
+
     take this, like duplex
     take callback
       like task
+        like native-void
+
         take error
           like or
             like error
             like native-null
           void true
-        free result, like native-void
-    free seed, like native-void
 
   task read, name <read>
+    like native-void
+
     take this, like duplex
     take size, like native-number
-    free seed, like native-void
 
   task write, name <write>
+    like native-void
+
     take this, like duplex
     take chunk, like any
     take encoding, like buffer-encoding
     take callback
       like task
+        like native-void
+
         take error
           like or
             like error
             like native-null
           void true
-        free result, like native-void
-    free seed, like native-void
 
   task writev, name <writev>
+    like native-void
+
     take this, like duplex
     take chunks
       like array
@@ -103,27 +110,31 @@ form duplex-options, name <DuplexOptions>
             flex true
     take callback
       like task
+        like native-void
+
         take error
           like or
             like error
             like native-null
           void true
-        free result, like native-void
-    free seed, like native-void
 
   task final, name <final>
+    like native-void
+
     take this, like duplex
     take callback
       like task
+        like native-void
+
         take error
           like or
             like error
             like native-null
           void true
-        free result, like native-void
-    free seed, like native-void
 
   task destroy, name <destroy>
+    like native-void
+
     take this, like duplex
     take error
       like or
@@ -131,9 +142,9 @@ form duplex-options, name <DuplexOptions>
         like native-null
     take callback
       like task
+        like native-void
+
         take error
           like or
             like error
             like native-null
-        free result, like native-void
-    free seed, like native-void

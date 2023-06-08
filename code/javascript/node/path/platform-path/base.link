@@ -1,10 +1,10 @@
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form native-boolean
   take form native-string
 
-load @tunebond/bolt/code/javascript/node/path
+load @treesurf/nest/code/javascript/node/path
   take form format-input-path-object
   take form parsed-path
 
@@ -19,54 +19,65 @@ form platform-path, name <PlatformPath>
     like platform-path
 
   task normalize, name <normalize>
+    like native-string
+
     take p, like native-string
-    free seed, like native-string
 
   task join, name <join>
+    like native-string
+
     take paths
       like array
         like native-string
       rest true
-    free seed, like native-string
 
   task resolve, name <resolve>
+    like native-string
+
     take path-segments
       like array
         like native-string
       rest true
-    free seed, like native-string
 
   task is-absolute, name <isAbsolute>
+    like native-boolean
+
     take p, like native-string
-    free seed, like native-boolean
 
   task relative, name <relative>
+    like native-string
+
     take from, like native-string
     take to, like native-string
-    free seed, like native-string
 
   task dirname, name <dirname>
+    like native-string
+
     take p, like native-string
-    free seed, like native-string
 
   task basename, name <basename>
+    like native-string
+
     take p, like native-string
     take ext, like native-string
       void true
-    free seed, like native-string
 
   task extname, name <extname>
+    like native-string
+
     take p, like native-string
-    free seed, like native-string
 
   task parse, name <parse>
+    like parsed-path
+
     take p, like native-string
-    free seed, like parsed-path
 
   task format, name <format>
+    like native-string
+
     take p-p, like format-input-path-object
-    free seed, like native-string
 
   task to-namespaced-path, name <toNamespacedPath>
+    like native-string
+
     take path, like native-string
-    free seed, like native-string

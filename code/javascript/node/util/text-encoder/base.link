@@ -1,22 +1,24 @@
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form native-string
 
-load @tunebond/bolt/code/javascript/node/globals
+load @treesurf/nest/code/javascript/node/globals
   take form uint8-array
 
-load @tunebond/bolt/code/javascript/node/util
+load @treesurf/nest/code/javascript/node/util
   take form encode-into-result
 
 form text-encoder, name <TextEncoder>
   link encoding, name <encoding>, like native-string
 
   task encode, name <encode>
+    like uint8-array
+
     take input, like native-string
       void true
-    free seed, like uint8-array
 
   task encode-into, name <encodeInto>
+    like encode-into-result
+
     take src, like native-string
     take dest, like uint8-array
-    free seed, like encode-into-result

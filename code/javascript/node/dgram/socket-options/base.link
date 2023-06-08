@@ -1,9 +1,9 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form or
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form abortable
   take form dns-lookup-one-options
   take form native-boolean
@@ -14,7 +14,7 @@ load @tunebond/bolt/code/javascript
   take form native-void
   take form node-js-errno-exception
 
-load @tunebond/bolt/code/javascript/node/dgram
+load @treesurf/nest/code/javascript/node/dgram
   take form socket-type
 
 form socket-options, name <SocketOptions>
@@ -46,17 +46,19 @@ form socket-options, name <SocketOptions>
   link lookup, name <lookup>
     like or
       like task
+        like native-void
+
         take hostname, like native-string
         take options, like dns-lookup-one-options
         take callback
           like task
+            like native-void
+
             take err
               like or
                 like node-js-errno-exception
                 like native-null
             take address, like native-string
             take family, like native-number
-            free result, like native-void
-        free result, like native-void
       like native-undefined
     flex true

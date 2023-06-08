@@ -1,14 +1,14 @@
 
-load @tunebond/bolt/code/javascript/node/zlib
+load @treesurf/nest/code/javascript/node/zlib
   take form input-type
   take form zlib
   take form zlib-options
   take form zlib-reset
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form promise
 
-load @tunebond/bolt/code/javascript/node/buffer
+load @treesurf/nest/code/javascript/node/buffer
   take form buffer
 
 form inflate-raw, name <InflateRaw>
@@ -17,9 +17,9 @@ form inflate-raw, name <InflateRaw>
   base zlib-reset
 
 task promisify, name <__promisify__>
+  like promise
+    like buffer
+
   take buffer, like input-type
   take options, like zlib-options
     void true
-  free seed
-    like promise
-      like buffer

@@ -1,12 +1,12 @@
 
-bear @tunebond/bolt/code/javascript/node/timers/timer-options
+bear @treesurf/nest/code/javascript/node/timers/timer-options
 
-load @tunebond/moon
+load @treesurf/moon
   take form any
   take form like
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form native-number
   take form native-void
@@ -28,102 +28,118 @@ host promisify, name <__promisify__>
 
 task set-timeout, name <setTimeout>
   home true
+  like node-js-timeout
+
   head t-args
     base array
       like any
 
   take callback
     like task
+      like native-void
+
       take args, like t-args
         rest true
-      free result, like native-void
   take ms, like native-number
     void true
   take args, like t-args
     rest true
-  free seed, like node-js-timeout
 
 task set-timeout, name <setTimeout>
   home true
+  like node-js-timeout
+
   take callback
     like task
+      like native-void
+
       take args, like native-void
-      free result, like native-void
   take ms, like native-number
     void true
-  free seed, like node-js-timeout
 
 task clear-timeout, name <clearTimeout>
   home true
+  like native-void
+
   take timeout-id, like node-js-timeout
-  free seed, like native-void
 
 task set-interval, name <setInterval>
   home true
+  like node-js-timer
+
   head t-args
     base array
       like any
 
   take callback
     like task
+      like native-void
+
       take args, like t-args
         rest true
-      free result, like native-void
   take ms, like native-number
     void true
   take args, like t-args
     rest true
-  free seed, like node-js-timer
 
 task set-interval, name <setInterval>
   home true
+  like node-js-timer
+
   take callback
     like task
+      like native-void
+
       take args, like native-void
-      free result, like native-void
   take ms, like native-number
     void true
-  free seed, like node-js-timer
 
 task clear-interval, name <clearInterval>
   home true
+  like native-void
+
   take interval-id, like node-js-timeout
-  free seed, like native-void
 
 task set-immediate, name <setImmediate>
   home true
+  like node-js-immediate
+
   head t-args
     base array
       like any
 
   take callback
     like task
+      like native-void
+
       take args, like t-args
         rest true
-      free result, like native-void
   take args, like t-args
     rest true
-  free seed, like node-js-immediate
 
 task set-immediate, name <setImmediate>
   home true
+  like node-js-immediate
+
   take callback
     like task
+      like native-void
+
       take args, like native-void
-      free result, like native-void
-  free seed, like node-js-immediate
 
 task clear-immediate, name <clearImmediate>
   home true
+  like native-void
+
   take immediate-id, like node-js-immediate
-  free seed, like native-void
 
 task queue-microtask, name <queueMicrotask>
   home true
+  like native-void
+
   take callback
     like task
-      free result, like native-void
-  free seed, like native-void
+      like native-void
 
 host set-timeout, name <setTimeout>
   like global-set-timeout

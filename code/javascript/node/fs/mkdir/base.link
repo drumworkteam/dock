@@ -1,22 +1,27 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form and
   take form form
   take form or
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form native-null
   take form native-string
   take form native-undefined
   take form native-void
   take form promise
 
-load @tunebond/bolt/code/javascript/node/fs
+load @treesurf/nest/code/javascript/node/fs
   take form make-directory-options
   take form mode
   take form path-like
 
 task promisify, name <__promisify__>
+  like promise
+    like or
+      like native-string
+      like native-undefined
+
   take path, like path-like
   take options
     like and
@@ -25,13 +30,11 @@ task promisify, name <__promisify__>
         link recursive, name <recursive>
           text <true>
           flex true
-  free seed
-    like promise
-      like or
-        like native-string
-        like native-undefined
 
 task promisify, name <__promisify__>
+  like promise
+    like native-void
+
   take path, like path-like
   take options
     like or
@@ -46,11 +49,13 @@ task promisify, name <__promisify__>
             flex true
       like native-null
     void true
-  free seed
-    like promise
-      like native-void
 
 task promisify, name <__promisify__>
+  like promise
+    like or
+      like native-string
+      like native-undefined
+
   take path, like path-like
   take options
     like or
@@ -58,8 +63,3 @@ task promisify, name <__promisify__>
       like make-directory-options
       like native-null
     void true
-  free seed
-    like promise
-      like or
-        like native-string
-        like native-undefined

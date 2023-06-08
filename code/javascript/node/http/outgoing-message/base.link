@@ -1,10 +1,10 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form or
   take form task
   take form tuple
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form incoming-message
   take form native-boolean
@@ -17,7 +17,7 @@ load @tunebond/bolt/code/javascript
   take form readonly-array
   take form socket
 
-load @tunebond/bolt/code/javascript/node/http
+load @treesurf/nest/code/javascript/node/http
   take form outgoing-http-headers
 
 form outgoing-message, name <OutgoingMessage>
@@ -39,14 +39,18 @@ form outgoing-message, name <OutgoingMessage>
       like native-null
 
   task set-timeout, name <setTimeout>
+    like native-this
+
     take msecs, like native-number
     take callback
       like task
-        free result, like native-void
+        like native-void
+
       void true
-    free seed, like native-this
 
   task set-header, name <setHeader>
+    like native-this
+
     take name, like native-string
     take value
       like or
@@ -54,35 +58,37 @@ form outgoing-message, name <OutgoingMessage>
         like native-string
         like readonly-array
           like native-string
-    free seed, like native-this
 
   task get-header, name <getHeader>
-    take name, like native-string
-    free seed
-      like or
-        like native-number
-        like native-string
-        like array
-          like native-string
-        like native-undefined
-
-  task get-headers, name <getHeaders>
-    free seed, like outgoing-http-headers
-
-  task get-header-names, name <getHeaderNames>
-    free seed
+    like or
+      like native-number
+      like native-string
       like array
         like native-string
+      like native-undefined
+
+    take name, like native-string
+
+  task get-headers, name <getHeaders>
+    like outgoing-http-headers
+
+  task get-header-names, name <getHeaderNames>
+    like array
+      like native-string
 
   task has-header, name <hasHeader>
+    like native-boolean
+
     take name, like native-string
-    free seed, like native-boolean
 
   task remove-header, name <removeHeader>
+    like native-void
+
     take name, like native-string
-    free seed, like native-void
 
   task add-trailers, name <addTrailers>
+    like native-void
+
     take headers
       like or
         like outgoing-http-headers
@@ -90,10 +96,9 @@ form outgoing-message, name <OutgoingMessage>
           like tuple
             like native-string
             like native-string
-    free seed, like native-void
 
   task flush-headers, name <flushHeaders>
-    free seed, like native-void
+    like native-void
 
 form outgoing-message-constructor
   hook make

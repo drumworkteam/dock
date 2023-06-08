@@ -1,13 +1,13 @@
 
-load @tunebond/bolt/code/javascript/node/zlib
+load @treesurf/nest/code/javascript/node/zlib
   take form input-type
   take form zlib
   take form zlib-options
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form promise
 
-load @tunebond/bolt/code/javascript/node/buffer
+load @treesurf/nest/code/javascript/node/buffer
   take form buffer
 
 form gunzip, name <Gunzip>
@@ -15,9 +15,9 @@ form gunzip, name <Gunzip>
   base zlib
 
 task promisify, name <__promisify__>
+  like promise
+    like buffer
+
   take buffer, like input-type
   take options, like zlib-options
     void true
-  free seed
-    like promise
-      like buffer

@@ -1,5 +1,5 @@
 
-load @tunebond/moon
+load @treesurf/moon
   take form and
   take form any
   take form form
@@ -7,7 +7,7 @@ load @tunebond/moon
   take form or
   take form task
 
-load @tunebond/bolt/code/javascript
+load @treesurf/nest/code/javascript
   take form array
   take form async-resource
   take form native-number
@@ -15,56 +15,59 @@ load @tunebond/bolt/code/javascript
   take form native-this
   take form this-arg
 
-load @tunebond/bolt/code/javascript/node/async-hooks
+load @treesurf/nest/code/javascript/node/async-hooks
   take form async-resource-options
 
 form async-resource, name <AsyncResource>
   task bind, name <bind>
+    like and
+      like func
+      like form
+        link async-resource, name <asyncResource>
+          like async-resource
+          flex true
+
     head func
       base task
+        like any
+
         take args
           like array
             like any
           rest true
-        free result, like any
 
     take fn, like func
-    free seed
-      like and
-        like func
-        like form
-          link async-resource, name <asyncResource>
-            like async-resource
-            flex true
 
   task run-in-async-scope, name <runInAsyncScope>
+    like result
+
     head this
     head result
 
     take fn
       like task
+        like result
+
         take this, like this
         take args
           like array
             like any
           rest true
-        free result, like result
     take this-arg, like this
       void true
     take args
       like array
         like any
       rest true
-    free seed, like result
 
   task emit-destroy, name <emitDestroy>
-    free seed, like native-this
+    like native-this
 
   task async-id, name <asyncId>
-    free seed, like native-number
+    like native-number
 
   task trigger-async-id, name <triggerAsyncId>
-    free seed, like native-number
+    like native-number
 
 form async-resource-constructor
   hook make
@@ -76,14 +79,22 @@ form async-resource-constructor
       void true
 
   task bind, name <bind>
+    like and
+      like func
+      like form
+        link async-resource, name <asyncResource>
+          like async-resource
+          flex true
+
     head func
       base task
+        like any
+
         take this, like this-arg
         take args
           like array
             like any
           rest true
-        free result, like any
     head this-arg
 
     take fn, like func
@@ -91,10 +102,3 @@ form async-resource-constructor
       void true
     take this-arg, like this-arg
       void true
-    free seed
-      like and
-        like func
-        like form
-          link async-resource, name <asyncResource>
-            like async-resource
-            flex true
