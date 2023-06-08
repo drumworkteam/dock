@@ -1,34 +1,36 @@
 
-load @tunebond/moon
-  take suit like
-  take suit or
+load @treesurf/moon
+  take form like
+  take form or
 
-load @tunebond/bolt/code/javascript/native
-  take face native-null
+load @treesurf/nest/code/javascript/native
+  take form native-null
 
-load @tunebond/bolt/code/javascript/es5
-  take face data-view
-  take face float32-array
-  take face float64-array
-  take face int16-array
-  take face int32-array
-  take face int8-array
-  take face uint16-array
-  take face uint32-array
-  take face uint8-array
-  take face uint8-clamped-array
+load @treesurf/nest/code/javascript/es5
+  take form data-view
+  take form float32-array
+  take form float64-array
+  take form int16-array
+  take form int32-array
+  take form int8-array
+  take form uint16-array
+  take form uint32-array
+  take form uint8-array
+  take form uint8-clamped-array
 
-load @tunebond/bolt/code/javascript/webworker
-  take face subtle-crypto
+load @treesurf/nest/code/javascript/webworker
+  take form subtle-crypto
 
-load @tunebond/bolt/code/javascript/dom/crypto
-  take face crypto
+load @treesurf/nest/code/javascript/dom/crypto
+  take form crypto
 
-face crypto, name <Crypto>
+form crypto, name <Crypto>
   link subtle, name <subtle>
     like subtle-crypto
 
   task get-random-values, name <getRandomValues>
+    like t
+
     head t
       base or
         like int8-array
@@ -44,4 +46,3 @@ face crypto, name <Crypto>
         like native-null
 
     take array, like t
-    free seed, like t

@@ -1,17 +1,17 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-number
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-void
 
-load @tunebond/bolt/code/javascript/es5
-  take face array-buffer
-  take face array-buffer-like
+load @treesurf/nest/code/javascript/es5
+  take form array-buffer
+  take form array-buffer-like
 
-load @tunebond/bolt/code/javascript/es5/data-view
-  take face data-view
+load @treesurf/nest/code/javascript/es5/data-view
+  take form data-view
 
-face data-view, name <DataView>
+form data-view, name <DataView>
   link buffer, name <buffer>
     like array-buffer
   link byte-length, name <byteLength>
@@ -20,110 +20,127 @@ face data-view, name <DataView>
     like native-number
 
   task get-float32, name <getFloat32>
+    like native-number
+
     take byte-offset, like native-number
     take little-endian, like native-boolean
       void true
-    free seed, like native-number
 
   task get-float64, name <getFloat64>
+    like native-number
+
     take byte-offset, like native-number
     take little-endian, like native-boolean
       void true
-    free seed, like native-number
 
   task get-int8, name <getInt8>
+    like native-number
+
     take byte-offset, like native-number
-    free seed, like native-number
 
   task get-int16, name <getInt16>
+    like native-number
+
     take byte-offset, like native-number
     take little-endian, like native-boolean
       void true
-    free seed, like native-number
 
   task get-int32, name <getInt32>
+    like native-number
+
     take byte-offset, like native-number
     take little-endian, like native-boolean
       void true
-    free seed, like native-number
 
   task get-uint8, name <getUint8>
+    like native-number
+
     take byte-offset, like native-number
-    free seed, like native-number
 
   task get-uint16, name <getUint16>
+    like native-number
+
     take byte-offset, like native-number
     take little-endian, like native-boolean
       void true
-    free seed, like native-number
 
   task get-uint32, name <getUint32>
+    like native-number
+
     take byte-offset, like native-number
     take little-endian, like native-boolean
       void true
-    free seed, like native-number
 
   task set-float32, name <setFloat32>
+    like native-void
+
     take byte-offset, like native-number
     take value, like native-number
     take little-endian, like native-boolean
       void true
-    free seed, like native-void
 
   task set-float64, name <setFloat64>
+    like native-void
+
     take byte-offset, like native-number
     take value, like native-number
     take little-endian, like native-boolean
       void true
-    free seed, like native-void
 
   task set-int8, name <setInt8>
+    like native-void
+
     take byte-offset, like native-number
     take value, like native-number
-    free seed, like native-void
 
   task set-int16, name <setInt16>
+    like native-void
+
     take byte-offset, like native-number
     take value, like native-number
     take little-endian, like native-boolean
       void true
-    free seed, like native-void
 
   task set-int32, name <setInt32>
+    like native-void
+
     take byte-offset, like native-number
     take value, like native-number
     take little-endian, like native-boolean
       void true
-    free seed, like native-void
 
   task set-uint8, name <setUint8>
+    like native-void
+
     take byte-offset, like native-number
     take value, like native-number
-    free seed, like native-void
 
   task set-uint16, name <setUint16>
+    like native-void
+
     take byte-offset, like native-number
     take value, like native-number
     take little-endian, like native-boolean
       void true
-    free seed, like native-void
 
   task set-uint32, name <setUint32>
+    like native-void
+
     take byte-offset, like native-number
     take value, like native-number
     take little-endian, like native-boolean
       void true
-    free seed, like native-void
 
-face data-view
+form data-view
   hook self
     link prototype, name <prototype>
       like data-view
 
   hook make
+    like data-view
+
     take buffer, like array-buffer-like
     take byte-offset, like native-number
       void true
     take byte-length, like native-number
       void true
-    free seed, like data-view

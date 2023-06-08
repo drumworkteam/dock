@@ -1,50 +1,49 @@
 
-load @tunebond/moon
-  take suit like
-  take suit or
-  take suit tuple
+load @treesurf/moon
+  take form like
+  take form or
+  take form tuple
 
-load @tunebond/bolt/code/javascript/es2015/iterable
-  take face iterable
-  take face iterable-iterator
+load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterable
+  take form iterable-iterator
 
-load @tunebond/bolt/code/javascript/es2015/collection/set
-  take face set
+load @treesurf/nest/code/javascript/es2015/collection/set
+  take form set
 
-load @tunebond/bolt/code/javascript/native
-  take face native-null
+load @treesurf/nest/code/javascript/native
+  take form native-null
 
-load @tunebond/bolt/code/javascript/es2015/iterable/set
-  take face set
+load @treesurf/nest/code/javascript/es2015/iterable/set
+  take form set
 
-face set, name <Set>
+form set, name <Set>
   head t
 
   task {symbol/iterator}
-    free seed
-      like iterable-iterator
-        like t
+    like iterable-iterator
+      like t
 
   task entries, name <entries>
-    free seed
-      like iterable-iterator
-        like tuple
-          like t
-          like t
+    like iterable-iterator
+      like tuple
+        like t
+        like t
 
   task keys, name <keys>
-    free seed
-      like iterable-iterator
-        like t
+    like iterable-iterator
+      like t
 
   task values, name <values>
-    free seed
-      like iterable-iterator
-        like t
+    like iterable-iterator
+      like t
 
-face set
+form set
   hook self
   hook make
+    like set
+      like t
+
     head t
 
     take iterable
@@ -53,6 +52,3 @@ face set
           like t
         like native-null
       void true
-    free seed
-      like set
-        like t

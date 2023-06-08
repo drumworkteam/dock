@@ -1,20 +1,21 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-number
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-number
 
-load @tunebond/bolt/code/javascript/dom
-  take face speech-recognition-alternative
+load @treesurf/nest/code/javascript/dom
+  take form speech-recognition-alternative
 
-face speech-recognition-result, name <SpeechRecognitionResult>
+form speech-recognition-result, name <SpeechRecognitionResult>
   link is-final, name <isFinal>
     like native-boolean
   link length, name <length>
     like native-number
 
   task item, name <item>
+    like speech-recognition-alternative
+
     take index, like native-number
-    free seed, like speech-recognition-alternative
 
   mesh index, like native-number
     like speech-recognition-alternative

@@ -1,38 +1,42 @@
 
-load @tunebond/moon
-  take suit or
+load @treesurf/moon
+  take form or
 
-load @tunebond/bolt/code/javascript/native
-  take face native-bigint
-  take face native-number
+load @treesurf/nest/code/javascript/native
+  take form native-bigint
+  take form native-number
 
-load @tunebond/bolt/code/javascript/es2020/bigint
-  take face big-int64-array
-  take face big-uint64-array
+load @treesurf/nest/code/javascript/es2020/bigint
+  take form big-int64-array
+  take form big-uint64-array
 
-load @tunebond/bolt/code/javascript/es2017/sharedmemory/atomics
-  take face atomics
+load @treesurf/nest/code/javascript/es2017/sharedmemory/atomics
+  take form atomics
 
-face atomics, name <Atomics>
+form atomics, name <Atomics>
   task add, name <add>
+    like native-bigint
+
     take typed-array
       like or
         like big-int64-array
         like big-uint64-array
     take index, like native-number
     take value, like native-bigint
-    free seed, like native-bigint
 
   task and, name <and>
+    like native-bigint
+
     take typed-array
       like or
         like big-int64-array
         like big-uint64-array
     take index, like native-number
     take value, like native-bigint
-    free seed, like native-bigint
 
   task compare-exchange, name <compareExchange>
+    like native-bigint
+
     take typed-array
       like or
         like big-int64-array
@@ -40,76 +44,82 @@ face atomics, name <Atomics>
     take index, like native-number
     take expected-value, like native-bigint
     take replacement-value, like native-bigint
-    free seed, like native-bigint
 
   task exchange, name <exchange>
+    like native-bigint
+
     take typed-array
       like or
         like big-int64-array
         like big-uint64-array
     take index, like native-number
     take value, like native-bigint
-    free seed, like native-bigint
 
   task load, name <load>
+    like native-bigint
+
     take typed-array
       like or
         like big-int64-array
         like big-uint64-array
     take index, like native-number
-    free seed, like native-bigint
 
   task or, name <or>
+    like native-bigint
+
     take typed-array
       like or
         like big-int64-array
         like big-uint64-array
     take index, like native-number
     take value, like native-bigint
-    free seed, like native-bigint
 
   task store, name <store>
+    like native-bigint
+
     take typed-array
       like or
         like big-int64-array
         like big-uint64-array
     take index, like native-number
     take value, like native-bigint
-    free seed, like native-bigint
 
   task sub, name <sub>
+    like native-bigint
+
     take typed-array
       like or
         like big-int64-array
         like big-uint64-array
     take index, like native-number
     take value, like native-bigint
-    free seed, like native-bigint
 
   task wait, name <wait>
+    like or
+      text <ok>
+      text <not-equal>
+      text <timed-out>
+
     take typed-array, like big-int64-array
     take index, like native-number
     take value, like native-bigint
     take timeout, like native-number
       void true
-    free seed
-      like or
-        text <ok>
-        text <not-equal>
-        text <timed-out>
 
   task notify, name <notify>
+    like native-number
+
     take typed-array, like big-int64-array
     take index, like native-number
     take count, like native-number
       void true
-    free seed, like native-number
 
   task xor, name <xor>
+    like native-bigint
+
     take typed-array
       like or
         like big-int64-array
         like big-uint64-array
     take index, like native-number
     take value, like native-bigint
-    free seed, like native-bigint

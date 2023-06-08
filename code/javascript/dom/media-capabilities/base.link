@@ -1,22 +1,22 @@
 
-load @tunebond/bolt/code/javascript/dom
-  take face media-capabilities-decoding-info
-  take face media-capabilities-encoding-info
-  take face media-decoding-configuration
-  take face media-encoding-configuration
+load @treesurf/nest/code/javascript/dom
+  take form media-capabilities-decoding-info
+  take form media-capabilities-encoding-info
+  take form media-decoding-configuration
+  take form media-encoding-configuration
 
-load @tunebond/bolt/code/javascript/es5
-  take face promise
+load @treesurf/nest/code/javascript/es5
+  take form promise
 
-face media-capabilities, name <MediaCapabilities>
+form media-capabilities, name <MediaCapabilities>
   task decoding-info, name <decodingInfo>
+    like promise
+      like media-capabilities-decoding-info
+
     take configuration, like media-decoding-configuration
-    free seed
-      like promise
-        like media-capabilities-decoding-info
 
   task encoding-info, name <encodingInfo>
+    like promise
+      like media-capabilities-encoding-info
+
     take configuration, like media-encoding-configuration
-    free seed
-      like promise
-        like media-capabilities-encoding-info

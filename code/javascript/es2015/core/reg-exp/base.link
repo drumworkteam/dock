@@ -1,18 +1,18 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-string
 
-load @tunebond/bolt/code/javascript/es5/reg-exp
-  take face reg-exp
+load @treesurf/nest/code/javascript/es5/reg-exp
+  take form reg-exp
 
-load @tunebond/moon
-  take suit or
+load @treesurf/moon
+  take form or
 
-load @tunebond/bolt/code/javascript/es2015/core/reg-exp
-  take face reg-exp
+load @treesurf/nest/code/javascript/es2015/core/reg-exp
+  take form reg-exp
 
-face reg-exp, name <RegExp>
+form reg-exp, name <RegExp>
   link flags, name <flags>
     like native-string
   link sticky, name <sticky>
@@ -20,13 +20,14 @@ face reg-exp, name <RegExp>
   link unicode, name <unicode>
     like native-boolean
 
-face reg-exp
+form reg-exp
   hook self
   hook make
+    like reg-exp
+
     take pattern
       like or
         like reg-exp
         like native-string
     take flags, like native-string
       void true
-    free seed, like reg-exp

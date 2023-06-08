@@ -1,13 +1,13 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-number
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-string
 
-load @tunebond/bolt/code/javascript/dom
-  take face ui-event
+load @treesurf/nest/code/javascript/dom
+  take form ui-event
 
-face keyboard-event, name <KeyboardEvent>
+form keyboard-event, name <KeyboardEvent>
   base ui-event
 
   link alt-key, name <altKey>
@@ -42,5 +42,6 @@ face keyboard-event, name <KeyboardEvent>
     like native-number
 
   task get-modifier-state, name <getModifierState>
+    like native-boolean
+
     take key-arg, like native-string
-    free seed, like native-boolean

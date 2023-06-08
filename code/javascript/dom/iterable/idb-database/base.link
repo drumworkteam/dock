@@ -1,20 +1,22 @@
 
-load @tunebond/moon
-  take suit or
+load @treesurf/moon
+  take form or
 
-load @tunebond/bolt/code/javascript/native
-  take face iterable
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form iterable
+  take form native-string
 
-load @tunebond/bolt/code/javascript/dom
-  take face idb-transaction
-  take face idb-transaction-mode
+load @treesurf/nest/code/javascript/dom
+  take form idb-transaction
+  take form idb-transaction-mode
 
-load @tunebond/bolt/code/javascript/dom/idb-database
-  take face idb-database
+load @treesurf/nest/code/javascript/dom/idb-database
+  take form idb-database
 
-face idb-database, name <IDBDatabase>
+form idb-database, name <IDBDatabase>
   task transaction, name <transaction>
+    like idb-transaction
+
     take store-names
       like or
         like native-string
@@ -22,4 +24,3 @@ face idb-database, name <IDBDatabase>
           like native-string
     take mode, like idb-transaction-mode
       void true
-    free seed, like idb-transaction

@@ -1,98 +1,104 @@
 
-load @tunebond/moon
-  take suit any
-  take suit form
-  take suit or
-  take suit task
+load @treesurf/moon
+  take form any
+  take form form
+  take form or
+  take form task
 
-load @tunebond/bolt/code/javascript
-  take face array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @tunebond/bolt/code/javascript/native
-  take face native-null
-  take face native-number
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-null
+  take form native-number
+  take form native-string
 
-load @tunebond/bolt/code/javascript/es5
-  take face reg-exp-match-array
+load @treesurf/nest/code/javascript/es5
+  take form reg-exp-match-array
 
-load @tunebond/bolt/code/javascript/es2015/iterable/string
-  take face string
+load @treesurf/nest/code/javascript/es2015/iterable/string
+  take form string
 
-face string, name <String>
+form string, name <String>
   task match, name <match>
+    like or
+      like reg-exp-match-array
+      like native-null
+
     take matcher
       like form
         task {symbol/match}
-          take string, like native-string
-          free seed
-            like or
-              like reg-exp-match-array
-              like native-null
+          like or
+            like reg-exp-match-array
+            like native-null
 
-    free seed
-      like or
-        like reg-exp-match-array
-        like native-null
+          take string, like native-string
 
   task replace, name <replace>
+    like native-string
+
     take search-value
       like form
         task {symbol/replace}
+          like native-string
+
           take string, like native-string
           take replace-value, like native-string
-          free seed, like native-string
 
     take replace-value, like native-string
-    free seed, like native-string
 
   task replace, name <replace>
+    like native-string
+
     take search-value
       like form
         task {symbol/replace}
+          like native-string
+
           take string, like native-string
           take replacer
             like task
+              like native-string
+
               take substring, like native-string
               take args
                 like array
                   like any
                 rest true
-              free seed, like native-string
-          free seed, like native-string
 
     take replacer
       like task
+        like native-string
+
         take substring, like native-string
         take args
           like array
             like any
           rest true
-        free seed, like native-string
-    free seed, like native-string
 
   task search, name <search>
+    like native-number
+
     take searcher
       like form
         task {symbol/search}
-          take string, like native-string
-          free seed, like native-number
+          like native-number
 
-    free seed, like native-number
+          take string, like native-string
 
   task split, name <split>
+    like array
+      like native-string
+
     take splitter
       like form
         task {symbol/split}
+          like array
+            like native-string
+
           take string, like native-string
           take limit, like native-number
             void true
-          free seed
-            like array
-              like native-string
 
     take limit, like native-number
       void true
-    free seed
-      like array
-        like native-string

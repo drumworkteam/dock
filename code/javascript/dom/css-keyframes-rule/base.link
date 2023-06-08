@@ -1,18 +1,18 @@
 
-load @tunebond/moon
-  take suit or
+load @treesurf/moon
+  take form or
 
-load @tunebond/bolt/code/javascript/native
-  take face native-null
-  take face native-string
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-null
+  take form native-string
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face css-keyframe-rule
-  take face css-rule
-  take face css-rule-list
+load @treesurf/nest/code/javascript/dom
+  take form css-keyframe-rule
+  take form css-rule
+  take form css-rule-list
 
-face css-keyframes-rule, name <CSSKeyframesRule>
+form css-keyframes-rule, name <CSSKeyframesRule>
   base css-rule
 
   link css-rules, name <cssRules>
@@ -22,16 +22,18 @@ face css-keyframes-rule, name <CSSKeyframesRule>
     flex true
 
   task append-rule, name <appendRule>
+    like native-void
+
     take rule, like native-string
-    free seed, like native-void
 
   task delete-rule, name <deleteRule>
+    like native-void
+
     take select, like native-string
-    free seed, like native-void
 
   task find-rule, name <findRule>
+    like or
+      like css-keyframe-rule
+      like native-null
+
     take select, like native-string
-    free seed
-      like or
-        like css-keyframe-rule
-        like native-null

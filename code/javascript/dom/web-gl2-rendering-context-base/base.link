@@ -1,47 +1,47 @@
 
-load @tunebond/moon
-  take suit any
-  take suit or
+load @treesurf/moon
+  take form any
+  take form or
 
-load @tunebond/bolt/code/javascript
-  take face array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @tunebond/bolt/code/javascript/native
-  take face native-null
-  take face native-string
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-null
+  take form native-string
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face float32-list
-  take face g-lbitfield
-  take face g-lboolean
-  take face g-lenum
-  take face g-lfloat
-  take face g-lint
-  take face g-lint64
-  take face g-lintptr
-  take face g-lsizei
-  take face g-lsizeiptr
-  take face g-luint
-  take face g-luint64
-  take face int32-list
-  take face tex-image-source
-  take face uint32-list
-  take face web-gl-active-info
-  take face web-gl-buffer
-  take face web-gl-program
-  take face web-gl-query
-  take face web-gl-sampler
-  take face web-gl-sync
-  take face web-gl-texture
-  take face web-gl-transform-feedback
-  take face web-gl-uniform-location
-  take face web-gl-vertex-array-object
+load @treesurf/nest/code/javascript/dom
+  take form float32-list
+  take form g-lbitfield
+  take form g-lboolean
+  take form g-lenum
+  take form g-lfloat
+  take form g-lint
+  take form g-lint64
+  take form g-lintptr
+  take form g-lsizei
+  take form g-lsizeiptr
+  take form g-luint
+  take form g-luint64
+  take form int32-list
+  take form tex-image-source
+  take form uint32-list
+  take form web-gl-active-info
+  take form web-gl-buffer
+  take form web-gl-program
+  take form web-gl-query
+  take form web-gl-sampler
+  take form web-gl-sync
+  take form web-gl-texture
+  take form web-gl-transform-feedback
+  take form web-gl-uniform-location
+  take form web-gl-vertex-array-object
 
-load @tunebond/bolt/code/javascript/es5
-  take face array-buffer-view
+load @treesurf/nest/code/javascript/es5
+  take form array-buffer-view
 
-face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
+form web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
   link active-uniform-blocks, name <ACTIVE_UNIFORM_BLOCKS>
     like g-lenum
   link already-signaled, name <ALREADY_SIGNALED>
@@ -574,24 +574,29 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
     like g-lenum
 
   task begin-query, name <beginQuery>
+    like native-void
+
     take target, like g-lenum
     take query, like web-gl-query
-    free seed, like native-void
 
   task begin-transform-feedback, name <beginTransformFeedback>
+    like native-void
+
     take primitive-mode, like g-lenum
-    free seed, like native-void
 
   task bind-buffer-base, name <bindBufferBase>
+    like native-void
+
     take target, like g-lenum
     take index, like g-luint
     take buffer
       like or
         like web-gl-buffer
         like native-null
-    free seed, like native-void
 
   task bind-buffer-range, name <bindBufferRange>
+    like native-void
+
     take target, like g-lenum
     take index, like g-luint
     take buffer
@@ -600,32 +605,36 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
         like native-null
     take offset, like g-lintptr
     take size, like g-lsizeiptr
-    free seed, like native-void
 
   task bind-sampler, name <bindSampler>
+    like native-void
+
     take unit, like g-luint
     take sampler
       like or
         like web-gl-sampler
         like native-null
-    free seed, like native-void
 
   task bind-transform-feedback, name <bindTransformFeedback>
+    like native-void
+
     take target, like g-lenum
     take tf
       like or
         like web-gl-transform-feedback
         like native-null
-    free seed, like native-void
 
   task bind-vertex-array, name <bindVertexArray>
+    like native-void
+
     take array
       like or
         like web-gl-vertex-array-object
         like native-null
-    free seed, like native-void
 
   task blit-framebuffer, name <blitFramebuffer>
+    like native-void
+
     take src-x0, like g-lint
     take src-y0, like g-lint
     take src-x1, like g-lint
@@ -636,46 +645,52 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
     take dst-y1, like g-lint
     take mask, like g-lbitfield
     take filter, like g-lenum
-    free seed, like native-void
 
   task clear-bufferfi, name <clearBufferfi>
+    like native-void
+
     take buffer, like g-lenum
     take drawbuffer, like g-lint
     take depth, like g-lfloat
     take stencil, like g-lint
-    free seed, like native-void
 
   task clear-bufferfv, name <clearBufferfv>
+    like native-void
+
     take buffer, like g-lenum
     take drawbuffer, like g-lint
     take values, like float32-list
     take src-offset, like g-luint
       void true
-    free seed, like native-void
 
   task clear-bufferiv, name <clearBufferiv>
+    like native-void
+
     take buffer, like g-lenum
     take drawbuffer, like g-lint
     take values, like int32-list
     take src-offset, like g-luint
       void true
-    free seed, like native-void
 
   task clear-bufferuiv, name <clearBufferuiv>
+    like native-void
+
     take buffer, like g-lenum
     take drawbuffer, like g-lint
     take values, like uint32-list
     take src-offset, like g-luint
       void true
-    free seed, like native-void
 
   task client-wait-sync, name <clientWaitSync>
+    like g-lenum
+
     take sync, like web-gl-sync
     take flags, like g-lbitfield
     take timeout, like g-luint64
-    free seed, like g-lenum
 
   task compressed-tex-image3-d, name <compressedTexImage3D>
+    like native-void
+
     take target, like g-lenum
     take level, like g-lint
     take internalformat, like g-lenum
@@ -685,9 +700,10 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
     take border, like g-lint
     take image-size, like g-lsizei
     take offset, like g-lintptr
-    free seed, like native-void
 
   task compressed-tex-image3-d, name <compressedTexImage3D>
+    like native-void
+
     take target, like g-lenum
     take level, like g-lint
     take internalformat, like g-lenum
@@ -700,9 +716,10 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
       void true
     take src-length-override, like g-luint
       void true
-    free seed, like native-void
 
   task compressed-tex-sub-image3-d, name <compressedTexSubImage3D>
+    like native-void
+
     take target, like g-lenum
     take level, like g-lint
     take xoffset, like g-lint
@@ -714,9 +731,10 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
     take format, like g-lenum
     take image-size, like g-lsizei
     take offset, like g-lintptr
-    free seed, like native-void
 
   task compressed-tex-sub-image3-d, name <compressedTexSubImage3D>
+    like native-void
+
     take target, like g-lenum
     take level, like g-lint
     take xoffset, like g-lint
@@ -731,17 +749,19 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
       void true
     take src-length-override, like g-luint
       void true
-    free seed, like native-void
 
   task copy-buffer-sub-data, name <copyBufferSubData>
+    like native-void
+
     take read-target, like g-lenum
     take write-target, like g-lenum
     take read-offset, like g-lintptr
     take write-offset, like g-lintptr
     take size, like g-lsizeiptr
-    free seed, like native-void
 
   task copy-tex-sub-image3-d, name <copyTexSubImage3D>
+    like native-void
+
     take target, like g-lenum
     take level, like g-lint
     take xoffset, like g-lint
@@ -751,113 +771,120 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
     take y, like g-lint
     take width, like g-lsizei
     take height, like g-lsizei
-    free seed, like native-void
 
   task create-query, name <createQuery>
-    free seed
-      like or
-        like web-gl-query
-        like native-null
+    like or
+      like web-gl-query
+      like native-null
 
   task create-sampler, name <createSampler>
-    free seed
-      like or
-        like web-gl-sampler
-        like native-null
+    like or
+      like web-gl-sampler
+      like native-null
 
   task create-transform-feedback, name <createTransformFeedback>
-    free seed
-      like or
-        like web-gl-transform-feedback
-        like native-null
+    like or
+      like web-gl-transform-feedback
+      like native-null
 
   task create-vertex-array, name <createVertexArray>
-    free seed
-      like or
-        like web-gl-vertex-array-object
-        like native-null
+    like or
+      like web-gl-vertex-array-object
+      like native-null
 
   task delete-query, name <deleteQuery>
+    like native-void
+
     take query
       like or
         like web-gl-query
         like native-null
-    free seed, like native-void
 
   task delete-sampler, name <deleteSampler>
+    like native-void
+
     take sampler
       like or
         like web-gl-sampler
         like native-null
-    free seed, like native-void
 
   task delete-sync, name <deleteSync>
+    like native-void
+
     take sync
       like or
         like web-gl-sync
         like native-null
-    free seed, like native-void
 
   task delete-transform-feedback, name <deleteTransformFeedback>
+    like native-void
+
     take tf
       like or
         like web-gl-transform-feedback
         like native-null
-    free seed, like native-void
 
   task delete-vertex-array, name <deleteVertexArray>
+    like native-void
+
     take vertex-array
       like or
         like web-gl-vertex-array-object
         like native-null
-    free seed, like native-void
 
   task draw-arrays-instanced, name <drawArraysInstanced>
+    like native-void
+
     take mode, like g-lenum
     take first, like g-lint
     take count, like g-lsizei
     take instance-count, like g-lsizei
-    free seed, like native-void
 
   task draw-buffers, name <drawBuffers>
+    like native-void
+
     take buffers
       like array
         like g-lenum
-    free seed, like native-void
 
   task draw-elements-instanced, name <drawElementsInstanced>
+    like native-void
+
     take mode, like g-lenum
     take count, like g-lsizei
     take type, like g-lenum
     take offset, like g-lintptr
     take instance-count, like g-lsizei
-    free seed, like native-void
 
   task draw-range-elements, name <drawRangeElements>
+    like native-void
+
     take mode, like g-lenum
     take start, like g-luint
     take end, like g-luint
     take count, like g-lsizei
     take type, like g-lenum
     take offset, like g-lintptr
-    free seed, like native-void
 
   task end-query, name <endQuery>
+    like native-void
+
     take target, like g-lenum
-    free seed, like native-void
 
   task end-transform-feedback, name <endTransformFeedback>
-    free seed, like native-void
+    like native-void
 
   task fence-sync, name <fenceSync>
+    like or
+      like web-gl-sync
+      like native-null
+
     take condition, like g-lenum
     take flags, like g-lbitfield
-    free seed
-      like or
-        like web-gl-sync
-        like native-null
 
   task framebuffer-texture-layer, name <framebufferTextureLayer>
+    like native-void
+
     take target, like g-lenum
     take attachment, like g-lenum
     take texture
@@ -866,31 +893,34 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
         like native-null
     take level, like g-lint
     take layer, like g-lint
-    free seed, like native-void
 
   task get-active-uniform-block-name, name <getActiveUniformBlockName>
+    like or
+      like native-string
+      like native-null
+
     take program, like web-gl-program
     take uniform-block-index, like g-luint
-    free seed
-      like or
-        like native-string
-        like native-null
 
   task get-active-uniform-block-parameter, name <getActiveUniformBlockParameter>
+    like any
+
     take program, like web-gl-program
     take uniform-block-index, like g-luint
     take pname, like g-lenum
-    free seed, like any
 
   task get-active-uniforms, name <getActiveUniforms>
+    like any
+
     take program, like web-gl-program
     take uniform-indices
       like array
         like g-luint
     take pname, like g-lenum
-    free seed, like any
 
   task get-buffer-sub-data, name <getBufferSubData>
+    like native-void
+
     take target, like g-lenum
     take src-byte-offset, like g-lintptr
     take dst-buffer, like array-buffer-view
@@ -898,79 +928,88 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
       void true
     take length, like g-luint
       void true
-    free seed, like native-void
 
   task get-frag-data-location, name <getFragDataLocation>
+    like g-lint
+
     take program, like web-gl-program
     take name, like native-string
-    free seed, like g-lint
 
   task get-indexed-parameter, name <getIndexedParameter>
+    like any
+
     take target, like g-lenum
     take index, like g-luint
-    free seed, like any
 
   task get-internalformat-parameter, name <getInternalformatParameter>
+    like any
+
     take target, like g-lenum
     take internalformat, like g-lenum
     take pname, like g-lenum
-    free seed, like any
 
   task get-query, name <getQuery>
+    like or
+      like web-gl-query
+      like native-null
+
     take target, like g-lenum
     take pname, like g-lenum
-    free seed
-      like or
-        like web-gl-query
-        like native-null
 
   task get-query-parameter, name <getQueryParameter>
+    like any
+
     take query, like web-gl-query
     take pname, like g-lenum
-    free seed, like any
 
   task get-sampler-parameter, name <getSamplerParameter>
+    like any
+
     take sampler, like web-gl-sampler
     take pname, like g-lenum
-    free seed, like any
 
   task get-sync-parameter, name <getSyncParameter>
+    like any
+
     take sync, like web-gl-sync
     take pname, like g-lenum
-    free seed, like any
 
   task get-transform-feedback-varying, name <getTransformFeedbackVarying>
+    like or
+      like web-gl-active-info
+      like native-null
+
     take program, like web-gl-program
     take index, like g-luint
-    free seed
-      like or
-        like web-gl-active-info
-        like native-null
 
   task get-uniform-block-index, name <getUniformBlockIndex>
+    like g-luint
+
     take program, like web-gl-program
     take uniform-block-name, like native-string
-    free seed, like g-luint
 
   task get-uniform-indices, name <getUniformIndices>
+    like or
+      like array
+        like g-luint
+      like native-null
+
     take program, like web-gl-program
     take uniform-names
       like array
         like native-string
-    free seed
-      like or
-        like array
-          like g-luint
-        like native-null
 
   task invalidate-framebuffer, name <invalidateFramebuffer>
+    like native-void
+
     take target, like g-lenum
     take attachments
       like array
         like g-lenum
-    free seed, like native-void
 
   task invalidate-sub-framebuffer, name <invalidateSubFramebuffer>
+    like native-void
+
     take target, like g-lenum
     take attachments
       like array
@@ -979,74 +1018,84 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
     take y, like g-lint
     take width, like g-lsizei
     take height, like g-lsizei
-    free seed, like native-void
 
   task is-query, name <isQuery>
+    like g-lboolean
+
     take query
       like or
         like web-gl-query
         like native-null
-    free seed, like g-lboolean
 
   task is-sampler, name <isSampler>
+    like g-lboolean
+
     take sampler
       like or
         like web-gl-sampler
         like native-null
-    free seed, like g-lboolean
 
   task is-sync, name <isSync>
+    like g-lboolean
+
     take sync
       like or
         like web-gl-sync
         like native-null
-    free seed, like g-lboolean
 
   task is-transform-feedback, name <isTransformFeedback>
+    like g-lboolean
+
     take tf
       like or
         like web-gl-transform-feedback
         like native-null
-    free seed, like g-lboolean
 
   task is-vertex-array, name <isVertexArray>
+    like g-lboolean
+
     take vertex-array
       like or
         like web-gl-vertex-array-object
         like native-null
-    free seed, like g-lboolean
 
   task pause-transform-feedback, name <pauseTransformFeedback>
-    free seed, like native-void
+    like native-void
 
   task read-buffer, name <readBuffer>
+    like native-void
+
     take src, like g-lenum
-    free seed, like native-void
 
   task renderbuffer-storage-multisample, name <renderbufferStorageMultisample>
+    like native-void
+
     take target, like g-lenum
     take samples, like g-lsizei
     take internalformat, like g-lenum
     take width, like g-lsizei
     take height, like g-lsizei
-    free seed, like native-void
 
   task resume-transform-feedback, name <resumeTransformFeedback>
-    free seed, like native-void
+    like native-void
 
   task sampler-parameterf, name <samplerParameterf>
+    like native-void
+
     take sampler, like web-gl-sampler
     take pname, like g-lenum
     take param, like g-lfloat
-    free seed, like native-void
 
   task sampler-parameteri, name <samplerParameteri>
+    like native-void
+
     take sampler, like web-gl-sampler
     take pname, like g-lenum
     take param, like g-lint
-    free seed, like native-void
 
   task tex-image3-d, name <texImage3D>
+    like native-void
+
     take target, like g-lenum
     take level, like g-lint
     take internalformat, like g-lint
@@ -1057,9 +1106,10 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
     take format, like g-lenum
     take type, like g-lenum
     take pbo-offset, like g-lintptr
-    free seed, like native-void
 
   task tex-image3-d, name <texImage3D>
+    like native-void
+
     take target, like g-lenum
     take level, like g-lint
     take internalformat, like g-lint
@@ -1070,9 +1120,10 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
     take format, like g-lenum
     take type, like g-lenum
     take source, like tex-image-source
-    free seed, like native-void
 
   task tex-image3-d, name <texImage3D>
+    like native-void
+
     take target, like g-lenum
     take level, like g-lint
     take internalformat, like g-lint
@@ -1086,9 +1137,10 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
       like or
         like array-buffer-view
         like native-null
-    free seed, like native-void
 
   task tex-image3-d, name <texImage3D>
+    like native-void
+
     take target, like g-lenum
     take level, like g-lint
     take internalformat, like g-lint
@@ -1100,26 +1152,29 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
     take type, like g-lenum
     take src-data, like array-buffer-view
     take src-offset, like g-luint
-    free seed, like native-void
 
   task tex-storage2-d, name <texStorage2D>
+    like native-void
+
     take target, like g-lenum
     take levels, like g-lsizei
     take internalformat, like g-lenum
     take width, like g-lsizei
     take height, like g-lsizei
-    free seed, like native-void
 
   task tex-storage3-d, name <texStorage3D>
+    like native-void
+
     take target, like g-lenum
     take levels, like g-lsizei
     take internalformat, like g-lenum
     take width, like g-lsizei
     take height, like g-lsizei
     take depth, like g-lsizei
-    free seed, like native-void
 
   task tex-sub-image3-d, name <texSubImage3D>
+    like native-void
+
     take target, like g-lenum
     take level, like g-lint
     take xoffset, like g-lint
@@ -1131,9 +1186,10 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
     take format, like g-lenum
     take type, like g-lenum
     take pbo-offset, like g-lintptr
-    free seed, like native-void
 
   task tex-sub-image3-d, name <texSubImage3D>
+    like native-void
+
     take target, like g-lenum
     take level, like g-lint
     take xoffset, like g-lint
@@ -1145,9 +1201,10 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
     take format, like g-lenum
     take type, like g-lenum
     take source, like tex-image-source
-    free seed, like native-void
 
   task tex-sub-image3-d, name <texSubImage3D>
+    like native-void
+
     take target, like g-lenum
     take level, like g-lint
     take xoffset, like g-lint
@@ -1164,25 +1221,28 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
         like native-null
     take src-offset, like g-luint
       void true
-    free seed, like native-void
 
   task transform-feedback-varyings, name <transformFeedbackVaryings>
+    like native-void
+
     take program, like web-gl-program
     take varyings
       like array
         like native-string
     take buffer-mode, like g-lenum
-    free seed, like native-void
 
   task uniform1ui, name <uniform1ui>
+    like native-void
+
     take location
       like or
         like web-gl-uniform-location
         like native-null
     take v0, like g-luint
-    free seed, like native-void
 
   task uniform1uiv, name <uniform1uiv>
+    like native-void
+
     take location
       like or
         like web-gl-uniform-location
@@ -1192,18 +1252,20 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
       void true
     take src-length, like g-luint
       void true
-    free seed, like native-void
 
   task uniform2ui, name <uniform2ui>
+    like native-void
+
     take location
       like or
         like web-gl-uniform-location
         like native-null
     take v0, like g-luint
     take v1, like g-luint
-    free seed, like native-void
 
   task uniform2uiv, name <uniform2uiv>
+    like native-void
+
     take location
       like or
         like web-gl-uniform-location
@@ -1213,9 +1275,10 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
       void true
     take src-length, like g-luint
       void true
-    free seed, like native-void
 
   task uniform3ui, name <uniform3ui>
+    like native-void
+
     take location
       like or
         like web-gl-uniform-location
@@ -1223,9 +1286,10 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
     take v0, like g-luint
     take v1, like g-luint
     take v2, like g-luint
-    free seed, like native-void
 
   task uniform3uiv, name <uniform3uiv>
+    like native-void
+
     take location
       like or
         like web-gl-uniform-location
@@ -1235,9 +1299,10 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
       void true
     take src-length, like g-luint
       void true
-    free seed, like native-void
 
   task uniform4ui, name <uniform4ui>
+    like native-void
+
     take location
       like or
         like web-gl-uniform-location
@@ -1246,9 +1311,10 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
     take v1, like g-luint
     take v2, like g-luint
     take v3, like g-luint
-    free seed, like native-void
 
   task uniform4uiv, name <uniform4uiv>
+    like native-void
+
     take location
       like or
         like web-gl-uniform-location
@@ -1258,15 +1324,17 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
       void true
     take src-length, like g-luint
       void true
-    free seed, like native-void
 
   task uniform-block-binding, name <uniformBlockBinding>
+    like native-void
+
     take program, like web-gl-program
     take uniform-block-index, like g-luint
     take uniform-block-binding, like g-luint
-    free seed, like native-void
 
   task uniform-matrix2x3fv, name <uniformMatrix2x3fv>
+    like native-void
+
     take location
       like or
         like web-gl-uniform-location
@@ -1277,9 +1345,10 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
       void true
     take src-length, like g-luint
       void true
-    free seed, like native-void
 
   task uniform-matrix2x4fv, name <uniformMatrix2x4fv>
+    like native-void
+
     take location
       like or
         like web-gl-uniform-location
@@ -1290,9 +1359,10 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
       void true
     take src-length, like g-luint
       void true
-    free seed, like native-void
 
   task uniform-matrix3x2fv, name <uniformMatrix3x2fv>
+    like native-void
+
     take location
       like or
         like web-gl-uniform-location
@@ -1303,9 +1373,10 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
       void true
     take src-length, like g-luint
       void true
-    free seed, like native-void
 
   task uniform-matrix3x4fv, name <uniformMatrix3x4fv>
+    like native-void
+
     take location
       like or
         like web-gl-uniform-location
@@ -1316,9 +1387,10 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
       void true
     take src-length, like g-luint
       void true
-    free seed, like native-void
 
   task uniform-matrix4x2fv, name <uniformMatrix4x2fv>
+    like native-void
+
     take location
       like or
         like web-gl-uniform-location
@@ -1329,9 +1401,10 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
       void true
     take src-length, like g-luint
       void true
-    free seed, like native-void
 
   task uniform-matrix4x3fv, name <uniformMatrix4x3fv>
+    like native-void
+
     take location
       like or
         like web-gl-uniform-location
@@ -1342,49 +1415,55 @@ face web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
       void true
     take src-length, like g-luint
       void true
-    free seed, like native-void
 
   task vertex-attrib-divisor, name <vertexAttribDivisor>
+    like native-void
+
     take index, like g-luint
     take divisor, like g-luint
-    free seed, like native-void
 
   task vertex-attrib-i4i, name <vertexAttribI4i>
+    like native-void
+
     take index, like g-luint
     take x, like g-lint
     take y, like g-lint
     take z, like g-lint
     take w, like g-lint
-    free seed, like native-void
 
   task vertex-attrib-i4iv, name <vertexAttribI4iv>
+    like native-void
+
     take index, like g-luint
     take values, like int32-list
-    free seed, like native-void
 
   task vertex-attrib-i4ui, name <vertexAttribI4ui>
+    like native-void
+
     take index, like g-luint
     take x, like g-luint
     take y, like g-luint
     take z, like g-luint
     take w, like g-luint
-    free seed, like native-void
 
   task vertex-attrib-i4uiv, name <vertexAttribI4uiv>
+    like native-void
+
     take index, like g-luint
     take values, like uint32-list
-    free seed, like native-void
 
   task vertex-attrib-i-pointer, name <vertexAttribIPointer>
+    like native-void
+
     take index, like g-luint
     take size, like g-lint
     take type, like g-lenum
     take stride, like g-lsizei
     take offset, like g-lintptr
-    free seed, like native-void
 
   task wait-sync, name <waitSync>
+    like native-void
+
     take sync, like web-gl-sync
     take flags, like g-lbitfield
     take timeout, like g-lint64
-    free seed, like native-void

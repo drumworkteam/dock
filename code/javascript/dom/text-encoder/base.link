@@ -1,23 +1,25 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-string
 
-load @tunebond/bolt/code/javascript/dom
-  take face text-encoder-common
-  take face text-encoder-encode-into-result
+load @treesurf/nest/code/javascript/dom
+  take form text-encoder-common
+  take form text-encoder-encode-into-result
 
-load @tunebond/bolt/code/javascript/es5
-  take face uint8-array
+load @treesurf/nest/code/javascript/es5
+  take form uint8-array
 
-face text-encoder, name <TextEncoder>
+form text-encoder, name <TextEncoder>
   base text-encoder-common
 
   task encode, name <encode>
+    like uint8-array
+
     take input, like native-string
       void true
-    free seed, like uint8-array
 
   task encode-into, name <encodeInto>
+    like text-encoder-encode-into-result
+
     take source, like native-string
     take destination, like uint8-array
-    free seed, like text-encoder-encode-into-result

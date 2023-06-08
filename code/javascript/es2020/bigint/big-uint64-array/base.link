@@ -1,35 +1,35 @@
 
-load @tunebond/moon
-  take suit any
-  take suit like
-  take suit or
-  take suit task
-  take suit tuple
+load @treesurf/moon
+  take form any
+  take form like
+  take form or
+  take form task
+  take form tuple
 
-load @tunebond/bolt/code/javascript/native
-  take face native-bigint
-  take face native-boolean
-  take face native-number
-  take face native-string
-  take face native-this
-  take face native-undefined
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-bigint
+  take form native-boolean
+  take form native-number
+  take form native-string
+  take form native-this
+  take form native-undefined
+  take form native-void
 
-load @tunebond/bolt/code/javascript/es2015/iterable
-  take face iterable
-  take face iterable-iterator
+load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterable
+  take form iterable-iterator
 
-load @tunebond/bolt/code/javascript/es5
-  take face array-buffer-like
-  take face array-like
+load @treesurf/nest/code/javascript/es5
+  take form array-buffer-like
+  take form array-like
 
-load @tunebond/bolt/code/javascript
-  take face array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @tunebond/bolt/code/javascript/es2020/bigint/big-uint64-array
-  take face big-uint64-array
+load @treesurf/nest/code/javascript/es2020/bigint/big-uint64-array
+  take form big-uint64-array
 
-face big-uint64-array, name <BigUint64Array>
+form big-uint64-array, name <BigUint64Array>
   link bytes-per-element, name <BYTES_PER_ELEMENT>
     like native-number
   link buffer, name <buffer>
@@ -45,241 +45,268 @@ face big-uint64-array, name <BigUint64Array>
     work true
 
   task copy-within, name <copyWithin>
+    like native-this
+
     take target, like native-number
     take start, like native-number
     take end, like native-number
       void true
-    free seed, like native-this
 
   task entries, name <entries>
-    free seed
-      like iterable-iterator
-        like tuple
-          like native-number
-          like native-bigint
+    like iterable-iterator
+      like tuple
+        like native-number
+        like native-bigint
 
   task every, name <every>
+    like native-boolean
+
     take predicate
       like task
+        like native-boolean
+
         take value, like native-bigint
         take index, like native-number
         take array, like big-uint64-array
-        free seed, like native-boolean
     take this-arg, like any
       void true
-    free seed, like native-boolean
 
   task fill, name <fill>
+    like native-this
+
     take value, like native-bigint
     take start, like native-number
       void true
     take end, like native-number
       void true
-    free seed, like native-this
 
   task filter, name <filter>
+    like big-uint64-array
+
     take predicate
       like task
+        like any
+
         take value, like native-bigint
         take index, like native-number
         take array, like big-uint64-array
-        free seed, like any
     take this-arg, like any
       void true
-    free seed, like big-uint64-array
 
   task find, name <find>
+    like or
+      like native-bigint
+      like native-undefined
+
     take predicate
       like task
+        like native-boolean
+
         take value, like native-bigint
         take index, like native-number
         take array, like big-uint64-array
-        free seed, like native-boolean
     take this-arg, like any
       void true
-    free seed
-      like or
-        like native-bigint
-        like native-undefined
 
   task find-index, name <findIndex>
+    like native-number
+
     take predicate
       like task
+        like native-boolean
+
         take value, like native-bigint
         take index, like native-number
         take array, like big-uint64-array
-        free seed, like native-boolean
     take this-arg, like any
       void true
-    free seed, like native-number
 
   task for-each, name <forEach>
+    like native-void
+
     take callbackfn
       like task
+        like native-void
+
         take value, like native-bigint
         take index, like native-number
         take array, like big-uint64-array
-        free seed, like native-void
     take this-arg, like any
       void true
-    free seed, like native-void
 
   task includes, name <includes>
+    like native-boolean
+
     take search-element, like native-bigint
     take from-index, like native-number
       void true
-    free seed, like native-boolean
 
   task index-of, name <indexOf>
+    like native-number
+
     take search-element, like native-bigint
     take from-index, like native-number
       void true
-    free seed, like native-number
 
   task join, name <join>
+    like native-string
+
     take separator, like native-string
       void true
-    free seed, like native-string
 
   task keys, name <keys>
-    free seed
-      like iterable-iterator
-        like native-number
+    like iterable-iterator
+      like native-number
 
   task last-index-of, name <lastIndexOf>
+    like native-number
+
     take search-element, like native-bigint
     take from-index, like native-number
       void true
-    free seed, like native-number
 
   task map, name <map>
+    like big-uint64-array
+
     take callbackfn
       like task
+        like native-bigint
+
         take value, like native-bigint
         take index, like native-number
         take array, like big-uint64-array
-        free seed, like native-bigint
     take this-arg, like any
       void true
-    free seed, like big-uint64-array
 
   task reduce, name <reduce>
+    like native-bigint
+
     take callbackfn
       like task
+        like native-bigint
+
         take previous-value, like native-bigint
         take current-value, like native-bigint
         take current-index, like native-number
         take array, like big-uint64-array
-        free seed, like native-bigint
-    free seed, like native-bigint
 
   task reduce, name <reduce>
+    like u
+
     head u
 
     take callbackfn
       like task
+        like u
+
         take previous-value, like u
         take current-value, like native-bigint
         take current-index, like native-number
         take array, like big-uint64-array
-        free seed, like u
     take initial-value, like u
-    free seed, like u
 
   task reduce-right, name <reduceRight>
+    like native-bigint
+
     take callbackfn
       like task
+        like native-bigint
+
         take previous-value, like native-bigint
         take current-value, like native-bigint
         take current-index, like native-number
         take array, like big-uint64-array
-        free seed, like native-bigint
-    free seed, like native-bigint
 
   task reduce-right, name <reduceRight>
+    like u
+
     head u
 
     take callbackfn
       like task
+        like u
+
         take previous-value, like u
         take current-value, like native-bigint
         take current-index, like native-number
         take array, like big-uint64-array
-        free seed, like u
     take initial-value, like u
-    free seed, like u
 
   task reverse, name <reverse>
-    free seed, like native-this
+    like native-this
 
   task set, name <set>
+    like native-void
+
     take array
       like array-like
         like native-bigint
     take offset, like native-number
       void true
-    free seed, like native-void
 
   task slice, name <slice>
+    like big-uint64-array
+
     take start, like native-number
       void true
     take end, like native-number
       void true
-    free seed, like big-uint64-array
 
   task some, name <some>
+    like native-boolean
+
     take predicate
       like task
+        like native-boolean
+
         take value, like native-bigint
         take index, like native-number
         take array, like big-uint64-array
-        free seed, like native-boolean
     take this-arg, like any
       void true
-    free seed, like native-boolean
 
   task sort, name <sort>
+    like native-this
+
     take compare-fn
       like task
+        like or
+          like native-number
+          like native-bigint
+
         take a, like native-bigint
         take b, like native-bigint
-        free seed
-          like or
-            like native-number
-            like native-bigint
       void true
-    free seed, like native-this
 
   task subarray, name <subarray>
+    like big-uint64-array
+
     take begin, like native-number
       void true
     take end, like native-number
       void true
-    free seed, like big-uint64-array
 
   task to-locale-string, name <toLocaleString>
-    free seed, like native-string
+    like native-string
 
   task to-string, name <toString>
-    free seed, like native-string
+    like native-string
 
   task value-of, name <valueOf>
-    free seed, like big-uint64-array
+    like big-uint64-array
 
   task values, name <values>
-    free seed
-      like iterable-iterator
-        like native-bigint
+    like iterable-iterator
+      like native-bigint
 
   task {symbol/iterator}
-    free seed
-      like iterable-iterator
-        like native-bigint
+    like iterable-iterator
+      like native-bigint
 
   mesh index, like native-number
     like native-bigint
 
-face big-uint64-array
+form big-uint64-array
   hook self
     link prototype, name <prototype>
       like big-uint64-array
@@ -287,19 +314,23 @@ face big-uint64-array
       like native-number
 
     task of, name <of>
+      like big-uint64-array
+
       take items
         like array
           like native-bigint
         rest true
-      free seed, like big-uint64-array
 
     task from, name <from>
+      like big-uint64-array
+
       take array-like
         like array-like
           like native-bigint
-      free seed, like big-uint64-array
 
     task from, name <from>
+      like big-uint64-array
+
       head u
 
       take array-like
@@ -307,28 +338,31 @@ face big-uint64-array
           like u
       take mapfn
         like task
+          like native-bigint
+
           take v, like u
           take k, like native-number
-          free seed, like native-bigint
       take this-arg, like any
         void true
-      free seed, like big-uint64-array
 
   hook make
+    like big-uint64-array
+
     take length, like native-number
       void true
-    free seed, like big-uint64-array
 
   hook make
+    like big-uint64-array
+
     take array
       like iterable
         like native-bigint
-    free seed, like big-uint64-array
 
   hook make
+    like big-uint64-array
+
     take buffer, like array-buffer-like
     take byte-offset, like native-number
       void true
     take length, like native-number
       void true
-    free seed, like big-uint64-array

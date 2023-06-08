@@ -1,23 +1,26 @@
 
-load @tunebond/moon
-  take suit or
+load @treesurf/moon
+  take form or
 
-load @tunebond/bolt/code/javascript/native
-  take face native-null
-  take face native-number
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-null
+  take form native-number
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face position-callback
-  take face position-error-callback
-  take face position-options
+load @treesurf/nest/code/javascript/dom
+  take form position-callback
+  take form position-error-callback
+  take form position-options
 
-face geolocation, name <Geolocation>
+form geolocation, name <Geolocation>
   task clear-watch, name <clearWatch>
+    like native-void
+
     take watch-id, like native-number
-    free seed, like native-void
 
   task get-current-position, name <getCurrentPosition>
+    like native-void
+
     take success-callback, like position-callback
     take error-callback
       like or
@@ -26,9 +29,10 @@ face geolocation, name <Geolocation>
       void true
     take options, like position-options
       void true
-    free seed, like native-void
 
   task watch-position, name <watchPosition>
+    like native-number
+
     take success-callback, like position-callback
     take error-callback
       like or
@@ -37,4 +41,3 @@ face geolocation, name <Geolocation>
       void true
     take options, like position-options
       void true
-    free seed, like native-number

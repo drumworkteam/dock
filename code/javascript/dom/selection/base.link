@@ -1,19 +1,19 @@
 
-load @tunebond/moon
-  take suit or
+load @treesurf/moon
+  take form or
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-null
-  take face native-number
-  take face native-string
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face node
-  take face range
+load @treesurf/nest/code/javascript/dom
+  take form node
+  take form range
 
-face selection, name <Selection>
+form selection, name <Selection>
   link anchor-node, name <anchorNode>
     like or
       like node
@@ -34,72 +34,81 @@ face selection, name <Selection>
     like native-string
 
   task add-range, name <addRange>
+    like native-void
+
     take range, like range
-    free seed, like native-void
 
   task collapse, name <collapse>
+    like native-void
+
     take node
       like or
         like node
         like native-null
     take offset, like native-number
       void true
-    free seed, like native-void
 
   task collapse-to-end, name <collapseToEnd>
-    free seed, like native-void
+    like native-void
 
   task collapse-to-start, name <collapseToStart>
-    free seed, like native-void
+    like native-void
 
   task contains-node, name <containsNode>
+    like native-boolean
+
     take node, like node
     take allow-partial-containment, like native-boolean
       void true
-    free seed, like native-boolean
 
   task delete-from-document, name <deleteFromDocument>
-    free seed, like native-void
+    like native-void
 
   task empty, name <empty>
-    free seed, like native-void
+    like native-void
 
   task extend, name <extend>
+    like native-void
+
     take node, like node
     take offset, like native-number
       void true
-    free seed, like native-void
 
   task get-range-at, name <getRangeAt>
+    like range
+
     take index, like native-number
-    free seed, like range
 
   task remove-all-ranges, name <removeAllRanges>
-    free seed, like native-void
+    like native-void
 
   task remove-range, name <removeRange>
+    like native-void
+
     take range, like range
-    free seed, like native-void
 
   task select-all-children, name <selectAllChildren>
+    like native-void
+
     take node, like node
-    free seed, like native-void
 
   task set-base-and-extent, name <setBaseAndExtent>
+    like native-void
+
     take anchor-node, like node
     take anchor-offset, like native-number
     take focus-node, like node
     take focus-offset, like native-number
-    free seed, like native-void
 
   task set-position, name <setPosition>
+    like native-void
+
     take node
       like or
         like node
         like native-null
     take offset, like native-number
       void true
-    free seed, like native-void
 
   task to-string, name <toString>
-    free seed, like native-string
+    like native-string

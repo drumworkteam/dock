@@ -1,29 +1,32 @@
 
-load @tunebond/moon
-  take suit any
+load @treesurf/moon
+  take form any
 
-load @tunebond/bolt/code/javascript/native
-  take face native-number
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-number
+  take form native-string
 
-load @tunebond/bolt/code/javascript/webworker
-  take face idb-open-db-request
+load @treesurf/nest/code/javascript/webworker
+  take form idb-open-db-request
 
-load @tunebond/bolt/code/javascript/dom/idb-factory
-  take face idb-factory
+load @treesurf/nest/code/javascript/dom/idb-factory
+  take form idb-factory
 
-face idb-factory, name <IDBFactory>
+form idb-factory, name <IDBFactory>
   task cmp, name <cmp>
+    like native-number
+
     take first, like any
     take second, like any
-    free seed, like native-number
 
   task delete-database, name <deleteDatabase>
+    like idb-open-db-request
+
     take name, like native-string
-    free seed, like idb-open-db-request
 
   task open, name <open>
+    like idb-open-db-request
+
     take name, like native-string
     take version, like native-number
       void true
-    free seed, like idb-open-db-request

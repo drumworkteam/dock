@@ -1,55 +1,54 @@
 
-load @tunebond/moon
-  take suit any
-  take suit like
-  take suit or
-  take suit task
-  take suit tuple
+load @treesurf/moon
+  take form any
+  take form like
+  take form or
+  take form task
+  take form tuple
 
-load @tunebond/bolt/code/javascript/native
-  take face native-number
+load @treesurf/nest/code/javascript/native
+  take form native-number
 
-load @tunebond/bolt/code/javascript/es2015/iterable
-  take face iterable
-  take face iterable-iterator
+load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterable
+  take form iterable-iterator
 
-load @tunebond/bolt/code/javascript/es2015/core/array
-  take face array
+load @treesurf/nest/code/javascript/es2015/core/array
+  take form array
 
-load @tunebond/bolt/code/javascript
-  take face array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @tunebond/bolt/code/javascript/es5
-  take face array-like
+load @treesurf/nest/code/javascript/es5
+  take form array-like
 
-face array, name <Array>
+form array, name <Array>
   head t
 
   task {symbol/iterator}
-    free seed
-      like iterable-iterator
-        like t
+    like iterable-iterator
+      like t
 
   task entries, name <entries>
-    free seed
-      like iterable-iterator
-        like tuple
-          like native-number
-          like t
-
-  task keys, name <keys>
-    free seed
-      like iterable-iterator
+    like iterable-iterator
+      like tuple
         like native-number
-
-  task values, name <values>
-    free seed
-      like iterable-iterator
         like t
 
-face array
+  task keys, name <keys>
+    like iterable-iterator
+      like native-number
+
+  task values, name <values>
+    like iterable-iterator
+      like t
+
+form array
   hook self
     task from, name <from>
+      like array
+        like t
+
       head t
 
       take iterable
@@ -58,11 +57,11 @@ face array
             like t
           like array-like
             like t
-      free seed
-        like array
-          like t
 
     task from, name <from>
+      like array
+        like u
+
       head t
       head u
 
@@ -74,11 +73,9 @@ face array
             like t
       take mapfn
         like task
+          like u
+
           take v, like t
           take k, like native-number
-          free seed, like u
       take this-arg, like any
         void true
-      free seed
-        like array
-          like u

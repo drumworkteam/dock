@@ -1,13 +1,14 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-string
 
-load @tunebond/bolt/code/javascript/dom
-  take face document
-  take face dom-parser-supported-type
+load @treesurf/nest/code/javascript/dom
+  take form document
+  take form dom-parser-supported-type
 
-face dom-parser, name <DOMParser>
+form dom-parser, name <DOMParser>
   task parse-from-string, name <parseFromString>
+    like document
+
     take string, like native-string
     take type, like dom-parser-supported-type
-    free seed, like document

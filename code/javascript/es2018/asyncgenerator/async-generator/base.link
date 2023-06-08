@@ -1,24 +1,24 @@
 
-load @tunebond/moon
-  take suit any
-  take suit like
-  take suit or
-  take suit tuple
-  take suit unknown
+load @treesurf/moon
+  take form any
+  take form like
+  take form or
+  take form tuple
+  take form unknown
 
-load @tunebond/bolt/code/javascript/es2015/iterable
-  take face iterator-result
+load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterator-result
 
-load @tunebond/bolt/code/javascript/es2015/symbol/wellknown
-  take face promise
+load @treesurf/nest/code/javascript/es2015/symbol/wellknown
+  take form promise
 
-load @tunebond/bolt/code/javascript/es5
-  take face promise-like
+load @treesurf/nest/code/javascript/es5
+  take form promise-like
 
-load @tunebond/bolt/code/javascript/native
-  take face async-iterator
+load @treesurf/nest/code/javascript/native
+  take form async-iterator
 
-face async-generator, name <AsyncGenerator>
+form async-generator, name <AsyncGenerator>
   base async-iterator
 
   head t
@@ -29,41 +29,40 @@ face async-generator, name <AsyncGenerator>
     back unknown
 
   task next, name <next>
+    like promise
+      like iterator-result
+        like t
+        like t-return
+
     take args
       like or
         like tuple
         like tuple
           like t-next
       rest true
-    free seed
-      like promise
-        like iterator-result
-          like t
-          like t-return
 
   task return, name <return>
+    like promise
+      like iterator-result
+        like t
+        like t-return
+
     take value
       like or
         like t-return
         like promise-like
           like t-return
-    free seed
-      like promise
-        like iterator-result
-          like t
-          like t-return
 
   task throw, name <throw>
-    take e, like any
-    free seed
-      like promise
-        like iterator-result
-          like t
-          like t-return
-
-  task {symbol/async-iterator}
-    free seed
-      like async-generator
+    like promise
+      like iterator-result
         like t
         like t-return
-        like t-next
+
+    take e, like any
+
+  task {symbol/async-iterator}
+    like async-generator
+      like t
+      like t-return
+      like t-next

@@ -1,30 +1,30 @@
 
-load @tunebond/moon
-  take suit any
-  take suit like
-  take suit or
-  take suit task
-  take suit unknown
+load @treesurf/moon
+  take form any
+  take form like
+  take form or
+  take form task
+  take form unknown
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-number
-  take face native-string
-  take face native-this
-  take face native-undefined
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-string
+  take form native-this
+  take form native-undefined
+  take form native-void
 
-load @tunebond/bolt/code/javascript/es5
-  take face array-buffer-like
-  take face array-like
+load @treesurf/nest/code/javascript/es5
+  take form array-buffer-like
+  take form array-like
 
-load @tunebond/bolt/code/javascript
-  take face array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @tunebond/bolt/code/javascript/es5/float32-array
-  take face float32-array
+load @treesurf/nest/code/javascript/es5/float32-array
+  take form float32-array
 
-face float32-array, name <Float32Array>
+form float32-array, name <Float32Array>
   link bytes-per-element, name <BYTES_PER_ELEMENT>
     like native-number
   link buffer, name <buffer>
@@ -37,232 +37,267 @@ face float32-array, name <Float32Array>
     like native-number
 
   task copy-within, name <copyWithin>
+    like native-this
+
     take target, like native-number
     take start, like native-number
     take end, like native-number
       void true
-    free seed, like native-this
 
   task every, name <every>
+    like native-boolean
+
     take predicate
       like task
+        like unknown
+
         take value, like native-number
         take index, like native-number
         take array, like float32-array
-        free seed, like unknown
     take this-arg, like any
       void true
-    free seed, like native-boolean
 
   task fill, name <fill>
+    like native-this
+
     take value, like native-number
     take start, like native-number
       void true
     take end, like native-number
       void true
-    free seed, like native-this
 
   task filter, name <filter>
+    like float32-array
+
     take predicate
       like task
+        like any
+
         take value, like native-number
         take index, like native-number
         take array, like float32-array
-        free seed, like any
     take this-arg, like any
       void true
-    free seed, like float32-array
 
   task find, name <find>
+    like or
+      like native-number
+      like native-undefined
+
     take predicate
       like task
+        like native-boolean
+
         take value, like native-number
         take index, like native-number
         take obj, like float32-array
-        free seed, like native-boolean
     take this-arg, like any
       void true
-    free seed
-      like or
-        like native-number
-        like native-undefined
 
   task find-index, name <findIndex>
+    like native-number
+
     take predicate
       like task
+        like native-boolean
+
         take value, like native-number
         take index, like native-number
         take obj, like float32-array
-        free seed, like native-boolean
     take this-arg, like any
       void true
-    free seed, like native-number
 
   task for-each, name <forEach>
+    like native-void
+
     take callbackfn
       like task
+        like native-void
+
         take value, like native-number
         take index, like native-number
         take array, like float32-array
-        free seed, like native-void
     take this-arg, like any
       void true
-    free seed, like native-void
 
   task index-of, name <indexOf>
+    like native-number
+
     take search-element, like native-number
     take from-index, like native-number
       void true
-    free seed, like native-number
 
   task join, name <join>
+    like native-string
+
     take separator, like native-string
       void true
-    free seed, like native-string
 
   task last-index-of, name <lastIndexOf>
+    like native-number
+
     take search-element, like native-number
     take from-index, like native-number
       void true
-    free seed, like native-number
 
   task map, name <map>
+    like float32-array
+
     take callbackfn
       like task
+        like native-number
+
         take value, like native-number
         take index, like native-number
         take array, like float32-array
-        free seed, like native-number
     take this-arg, like any
       void true
-    free seed, like float32-array
 
   task reduce, name <reduce>
+    like native-number
+
     take callbackfn
       like task
+        like native-number
+
         take previous-value, like native-number
         take current-value, like native-number
         take current-index, like native-number
         take array, like float32-array
-        free seed, like native-number
-    free seed, like native-number
 
   task reduce, name <reduce>
+    like native-number
+
     take callbackfn
       like task
+        like native-number
+
         take previous-value, like native-number
         take current-value, like native-number
         take current-index, like native-number
         take array, like float32-array
-        free seed, like native-number
     take initial-value, like native-number
-    free seed, like native-number
 
   task reduce, name <reduce>
+    like u
+
     head u
 
     take callbackfn
       like task
+        like u
+
         take previous-value, like u
         take current-value, like native-number
         take current-index, like native-number
         take array, like float32-array
-        free seed, like u
     take initial-value, like u
-    free seed, like u
 
   task reduce-right, name <reduceRight>
+    like native-number
+
     take callbackfn
       like task
+        like native-number
+
         take previous-value, like native-number
         take current-value, like native-number
         take current-index, like native-number
         take array, like float32-array
-        free seed, like native-number
-    free seed, like native-number
 
   task reduce-right, name <reduceRight>
+    like native-number
+
     take callbackfn
       like task
+        like native-number
+
         take previous-value, like native-number
         take current-value, like native-number
         take current-index, like native-number
         take array, like float32-array
-        free seed, like native-number
     take initial-value, like native-number
-    free seed, like native-number
 
   task reduce-right, name <reduceRight>
+    like u
+
     head u
 
     take callbackfn
       like task
+        like u
+
         take previous-value, like u
         take current-value, like native-number
         take current-index, like native-number
         take array, like float32-array
-        free seed, like u
     take initial-value, like u
-    free seed, like u
 
   task reverse, name <reverse>
-    free seed, like float32-array
+    like float32-array
 
   task set, name <set>
+    like native-void
+
     take array
       like array-like
         like native-number
     take offset, like native-number
       void true
-    free seed, like native-void
 
   task slice, name <slice>
+    like float32-array
+
     take start, like native-number
       void true
     take end, like native-number
       void true
-    free seed, like float32-array
 
   task some, name <some>
+    like native-boolean
+
     take predicate
       like task
+        like unknown
+
         take value, like native-number
         take index, like native-number
         take array, like float32-array
-        free seed, like unknown
     take this-arg, like any
       void true
-    free seed, like native-boolean
 
   task sort, name <sort>
+    like native-this
+
     take compare-fn
       like task
+        like native-number
+
         take a, like native-number
         take b, like native-number
-        free seed, like native-number
       void true
-    free seed, like native-this
 
   task subarray, name <subarray>
+    like float32-array
+
     take begin, like native-number
       void true
     take end, like native-number
       void true
-    free seed, like float32-array
 
   task to-locale-string, name <toLocaleString>
-    free seed, like native-string
+    like native-string
 
   task to-string, name <toString>
-    free seed, like native-string
+    like native-string
 
   task value-of, name <valueOf>
-    free seed, like float32-array
+    like float32-array
 
   mesh index, like native-number
     like native-number
 
-face float32-array
+form float32-array
   hook self
     link prototype, name <prototype>
       like float32-array
@@ -270,19 +305,23 @@ face float32-array
       like native-number
 
     task of, name <of>
+      like float32-array
+
       take items
         like array
           like native-number
         rest true
-      free seed, like float32-array
 
     task from, name <from>
+      like float32-array
+
       take array-like
         like array-like
           like native-number
-      free seed, like float32-array
 
     task from, name <from>
+      like float32-array
+
       head t
 
       take array-like
@@ -290,29 +329,32 @@ face float32-array
           like t
       take mapfn
         like task
+          like native-number
+
           take v, like t
           take k, like native-number
-          free seed, like native-number
       take this-arg, like any
         void true
-      free seed, like float32-array
 
   hook make
+    like float32-array
+
     take length, like native-number
-    free seed, like float32-array
 
   hook make
+    like float32-array
+
     take array
       like or
         like array-like
           like native-number
         like array-buffer-like
-    free seed, like float32-array
 
   hook make
+    like float32-array
+
     take buffer, like array-buffer-like
     take byte-offset, like native-number
       void true
     take length, like native-number
       void true
-    free seed, like float32-array

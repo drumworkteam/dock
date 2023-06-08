@@ -1,19 +1,19 @@
 
-load @tunebond/moon
-  take suit or
+load @treesurf/moon
+  take form or
 
-load @tunebond/bolt/code/javascript/native
-  take face native-null
-  take face native-number
-  take face native-string
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face css-rule
-  take face css-rule-list
-  take face style-sheet
+load @treesurf/nest/code/javascript/dom
+  take form css-rule
+  take form css-rule-list
+  take form style-sheet
 
-face css-style-sheet, name <CSSStyleSheet>
+form css-style-sheet, name <CSSStyleSheet>
   base style-sheet
 
   link css-rules, name <cssRules>
@@ -26,25 +26,29 @@ face css-style-sheet, name <CSSStyleSheet>
     like css-rule-list
 
   task add-rule, name <addRule>
+    like native-number
+
     take selector, like native-string
       void true
     take style, like native-string
       void true
     take index, like native-number
       void true
-    free seed, like native-number
 
   task delete-rule, name <deleteRule>
+    like native-void
+
     take index, like native-number
-    free seed, like native-void
 
   task insert-rule, name <insertRule>
+    like native-number
+
     take rule, like native-string
     take index, like native-number
       void true
-    free seed, like native-number
 
   task remove-rule, name <removeRule>
+    like native-void
+
     take index, like native-number
       void true
-    free seed, like native-void

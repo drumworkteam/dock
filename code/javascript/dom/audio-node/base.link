@@ -1,16 +1,16 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-number
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-number
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face audio-param
-  take face base-audio-context
-  take face channel-count-mode
-  take face channel-interpretation
-  take face event-target
+load @treesurf/nest/code/javascript/dom
+  take form audio-param
+  take form base-audio-context
+  take form channel-count-mode
+  take form channel-interpretation
+  take form event-target
 
-face audio-node, name <AudioNode>
+form audio-node, name <AudioNode>
   base event-target
 
   link channel-count, name <channelCount>
@@ -30,46 +30,54 @@ face audio-node, name <AudioNode>
     like native-number
 
   task connect, name <connect>
+    like audio-node
+
     take destination-node, like audio-node
     take output, like native-number
       void true
     take input, like native-number
       void true
-    free seed, like audio-node
 
   task connect, name <connect>
+    like native-void
+
     take destination-param, like audio-param
     take output, like native-number
       void true
-    free seed, like native-void
 
   task disconnect, name <disconnect>
-    free seed, like native-void
+    like native-void
 
   task disconnect, name <disconnect>
+    like native-void
+
     take output, like native-number
-    free seed, like native-void
 
   task disconnect, name <disconnect>
+    like native-void
+
     take destination-node, like audio-node
-    free seed, like native-void
 
   task disconnect, name <disconnect>
+    like native-void
+
     take destination-node, like audio-node
     take output, like native-number
-    free seed, like native-void
 
   task disconnect, name <disconnect>
+    like native-void
+
     take destination-node, like audio-node
     take output, like native-number
     take input, like native-number
-    free seed, like native-void
 
   task disconnect, name <disconnect>
+    like native-void
+
     take destination-param, like audio-param
-    free seed, like native-void
 
   task disconnect, name <disconnect>
+    like native-void
+
     take destination-param, like audio-param
     take output, like native-number
-    free seed, like native-void

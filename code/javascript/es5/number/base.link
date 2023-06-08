@@ -1,44 +1,48 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face intl-number-format-options
-  take face native-number
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form intl-number-format-options
+  take form native-number
+  take form native-string
 
-load @tunebond/moon
-  take suit any
-  take suit or
+load @treesurf/moon
+  take form any
+  take form or
 
-load @tunebond/bolt/code/javascript/es5/number
-  take face number
+load @treesurf/nest/code/javascript/es5/number
+  take form number
 
-load @tunebond/bolt/code/javascript
-  take face array
+load @treesurf/nest/code/javascript
+  take form array
 
-face number, name <Number>
+form number, name <Number>
   task to-string, name <toString>
+    like native-string
+
     take radix, like native-number
       void true
-    free seed, like native-string
 
   task to-fixed, name <toFixed>
+    like native-string
+
     take fraction-digits, like native-number
       void true
-    free seed, like native-string
 
   task to-exponential, name <toExponential>
+    like native-string
+
     take fraction-digits, like native-number
       void true
-    free seed, like native-string
 
   task to-precision, name <toPrecision>
+    like native-string
+
     take precision, like native-number
       void true
-    free seed, like native-string
 
   task value-of, name <valueOf>
-    free seed, like native-number
+    like native-number
 
-face number
+form number
   hook self
     link prototype, name <prototype>
       like number
@@ -54,12 +58,15 @@ face number
       like native-number
 
   hook make
+    like number
+
     take value, like any
       void true
-    free seed, like number
 
-face number, name <Number>
+form number, name <Number>
   task to-locale-string, name <toLocaleString>
+    like native-string
+
     take locales
       like or
         like native-string
@@ -68,4 +75,3 @@ face number, name <Number>
       void true
     take options, like intl-number-format-options
       void true
-    free seed, like native-string

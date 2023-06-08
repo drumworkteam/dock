@@ -1,17 +1,17 @@
 
-load @tunebond/moon
-  take suit any
-  take suit like
-  take suit or
-  take suit task
+load @treesurf/moon
+  take form any
+  take form like
+  take form or
+  take form task
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-number
-  take face native-undefined
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-undefined
+  take form native-void
 
-face readonly-map, name <ReadonlyMap>
+form readonly-map, name <ReadonlyMap>
   head k
   head v
 
@@ -19,26 +19,29 @@ face readonly-map, name <ReadonlyMap>
     like native-number
 
   task for-each, name <forEach>
+    like native-void
+
     take callbackfn
       like task
+        like native-void
+
         take value, like v
         take key, like k
         take map
           like readonly-map
             like k
             like v
-        free seed, like native-void
     take this-arg, like any
       void true
-    free seed, like native-void
 
   task get, name <get>
+    like or
+      like v
+      like native-undefined
+
     take key, like k
-    free seed
-      like or
-        like v
-        like native-undefined
 
   task has, name <has>
+    like native-boolean
+
     take key, like k
-    free seed, like native-boolean

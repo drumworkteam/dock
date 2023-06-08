@@ -1,18 +1,19 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-string
 
-load @tunebond/bolt/code/javascript/dom
-  take face buffer-source
-  take face text-decode-options
-  take face text-decoder-common
+load @treesurf/nest/code/javascript/dom
+  take form buffer-source
+  take form text-decode-options
+  take form text-decoder-common
 
-face text-decoder, name <TextDecoder>
+form text-decoder, name <TextDecoder>
   base text-decoder-common
 
   task decode, name <decode>
+    like native-string
+
     take input, like buffer-source
       void true
     take options, like text-decode-options
       void true
-    free seed, like native-string

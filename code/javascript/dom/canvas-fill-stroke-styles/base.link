@@ -1,18 +1,18 @@
 
-load @tunebond/moon
-  take suit or
+load @treesurf/moon
+  take form or
 
-load @tunebond/bolt/code/javascript/native
-  take face native-null
-  take face native-number
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-null
+  take form native-number
+  take form native-string
 
-load @tunebond/bolt/code/javascript/dom
-  take face canvas-gradient
-  take face canvas-image-source
-  take face canvas-pattern
+load @treesurf/nest/code/javascript/dom
+  take form canvas-gradient
+  take form canvas-image-source
+  take form canvas-pattern
 
-face canvas-fill-stroke-styles, name <CanvasFillStrokeStyles>
+form canvas-fill-stroke-styles, name <CanvasFillStrokeStyles>
   link fill-style, name <fillStyle>
     like or
       like native-string
@@ -27,28 +27,30 @@ face canvas-fill-stroke-styles, name <CanvasFillStrokeStyles>
     flex true
 
   task create-linear-gradient, name <createLinearGradient>
+    like canvas-gradient
+
     take x0, like native-number
     take y0, like native-number
     take x1, like native-number
     take y1, like native-number
-    free seed, like canvas-gradient
 
   task create-pattern, name <createPattern>
+    like or
+      like canvas-pattern
+      like native-null
+
     take image, like canvas-image-source
     take repetition
       like or
         like native-string
         like native-null
-    free seed
-      like or
-        like canvas-pattern
-        like native-null
 
   task create-radial-gradient, name <createRadialGradient>
+    like canvas-gradient
+
     take x0, like native-number
     take y0, like native-number
     take r0, like native-number
     take x1, like native-number
     take y1, like native-number
     take r1, like native-number
-    free seed, like canvas-gradient

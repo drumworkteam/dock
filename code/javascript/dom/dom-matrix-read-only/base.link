@@ -1,23 +1,23 @@
 
-load @tunebond/moon
-  take suit any
+load @treesurf/moon
+  take form any
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-number
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-string
 
-load @tunebond/bolt/code/javascript/dom
-  take face dom-matrix
-  take face dom-matrix-init
-  take face dom-point
-  take face dom-point-init
+load @treesurf/nest/code/javascript/dom
+  take form dom-matrix
+  take form dom-matrix-init
+  take form dom-point
+  take form dom-point-init
 
-load @tunebond/bolt/code/javascript/es5
-  take face float32-array
-  take face float64-array
+load @treesurf/nest/code/javascript/es5
+  take form float32-array
+  take form float64-array
 
-face dom-matrix-read-only, name <DOMMatrixReadOnly>
+form dom-matrix-read-only, name <DOMMatrixReadOnly>
   link a, name <a>
     like native-number
   link b, name <b>
@@ -68,29 +68,33 @@ face dom-matrix-read-only, name <DOMMatrixReadOnly>
     like native-number
 
   task flip-x, name <flipX>
-    free seed, like dom-matrix
+    like dom-matrix
 
   task flip-y, name <flipY>
-    free seed, like dom-matrix
+    like dom-matrix
 
   task inverse, name <inverse>
-    free seed, like dom-matrix
+    like dom-matrix
 
   task multiply, name <multiply>
+    like dom-matrix
+
     take other, like dom-matrix-init
       void true
-    free seed, like dom-matrix
 
   task rotate, name <rotate>
+    like dom-matrix
+
     take rot-x, like native-number
       void true
     take rot-y, like native-number
       void true
     take rot-z, like native-number
       void true
-    free seed, like dom-matrix
 
   task rotate-axis-angle, name <rotateAxisAngle>
+    like dom-matrix
+
     take x, like native-number
       void true
     take y, like native-number
@@ -99,16 +103,18 @@ face dom-matrix-read-only, name <DOMMatrixReadOnly>
       void true
     take angle, like native-number
       void true
-    free seed, like dom-matrix
 
   task rotate-from-vector, name <rotateFromVector>
+    like dom-matrix
+
     take x, like native-number
       void true
     take y, like native-number
       void true
-    free seed, like dom-matrix
 
   task scale, name <scale>
+    like dom-matrix
+
     take scale-x, like native-number
       void true
     take scale-y, like native-number
@@ -121,9 +127,10 @@ face dom-matrix-read-only, name <DOMMatrixReadOnly>
       void true
     take origin-z, like native-number
       void true
-    free seed, like dom-matrix
 
   task scale3d, name <scale3d>
+    like dom-matrix
+
     take scale, like native-number
       void true
     take origin-x, like native-number
@@ -132,47 +139,51 @@ face dom-matrix-read-only, name <DOMMatrixReadOnly>
       void true
     take origin-z, like native-number
       void true
-    free seed, like dom-matrix
 
   task scale-non-uniform, name <scaleNonUniform>
+    like dom-matrix
+
     take scale-x, like native-number
       void true
     take scale-y, like native-number
       void true
-    free seed, like dom-matrix
 
   task skew-x, name <skewX>
+    like dom-matrix
+
     take sx, like native-number
       void true
-    free seed, like dom-matrix
 
   task skew-y, name <skewY>
+    like dom-matrix
+
     take sy, like native-number
       void true
-    free seed, like dom-matrix
 
   task to-float32-array, name <toFloat32Array>
-    free seed, like float32-array
+    like float32-array
 
   task to-float64-array, name <toFloat64Array>
-    free seed, like float64-array
+    like float64-array
 
   task to-json, name <toJSON>
-    free seed, like any
+    like any
 
   task transform-point, name <transformPoint>
+    like dom-point
+
     take point, like dom-point-init
       void true
-    free seed, like dom-point
 
   task translate, name <translate>
+    like dom-matrix
+
     take tx, like native-number
       void true
     take ty, like native-number
       void true
     take tz, like native-number
       void true
-    free seed, like dom-matrix
 
   task to-string, name <toString>
-    free seed, like native-string
+    like native-string

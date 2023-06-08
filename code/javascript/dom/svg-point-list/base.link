@@ -1,45 +1,51 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-number
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-number
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face dom-point
+load @treesurf/nest/code/javascript/dom
+  take form dom-point
 
-face svg-point-list, name <SVGPointList>
+form svg-point-list, name <SVGPointList>
   link length, name <length>
     like native-number
   link number-of-items, name <numberOfItems>
     like native-number
 
   task append-item, name <appendItem>
+    like dom-point
+
     take new-item, like dom-point
-    free seed, like dom-point
 
   task clear, name <clear>
-    free seed, like native-void
+    like native-void
 
   task get-item, name <getItem>
+    like dom-point
+
     take index, like native-number
-    free seed, like dom-point
 
   task initialize, name <initialize>
+    like dom-point
+
     take new-item, like dom-point
-    free seed, like dom-point
 
   task insert-item-before, name <insertItemBefore>
+    like dom-point
+
     take new-item, like dom-point
     take index, like native-number
-    free seed, like dom-point
 
   task remove-item, name <removeItem>
+    like dom-point
+
     take index, like native-number
-    free seed, like dom-point
 
   task replace-item, name <replaceItem>
+    like dom-point
+
     take new-item, like dom-point
     take index, like native-number
-    free seed, like dom-point
 
   mesh index, like native-number
     like dom-point

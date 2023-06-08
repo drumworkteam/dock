@@ -1,24 +1,24 @@
 
-load @tunebond/moon
-  take suit any
-  take suit or
+load @treesurf/moon
+  take form any
+  take form or
 
-load @tunebond/bolt/code/javascript/native
-  take face native-number
-  take face native-undefined
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-number
+  take form native-undefined
+  take form native-void
 
-load @tunebond/bolt/code/javascript/webworker
-  take face idb-cursor-direction
-  take face idb-index
-  take face idb-object-store
-  take face idb-request
-  take face idb-valid-key
+load @treesurf/nest/code/javascript/webworker
+  take form idb-cursor-direction
+  take form idb-index
+  take form idb-object-store
+  take form idb-request
+  take form idb-valid-key
 
-load @tunebond/bolt/code/javascript/dom/idb-cursor
-  take face idb-cursor
+load @treesurf/nest/code/javascript/dom/idb-cursor
+  take form idb-cursor
 
-face idb-cursor, name <IDBCursor>
+form idb-cursor, name <IDBCursor>
   link direction, name <direction>
     like idb-cursor-direction
   link key, name <key>
@@ -31,26 +31,28 @@ face idb-cursor, name <IDBCursor>
       like idb-index
 
   task advance, name <advance>
+    like native-void
+
     take count, like native-number
-    free seed, like native-void
 
   task continue, name <continue>
+    like native-void
+
     take key, like idb-valid-key
       void true
-    free seed, like native-void
 
   task continue-primary-key, name <continuePrimaryKey>
+    like native-void
+
     take key, like idb-valid-key
     take primary-key, like idb-valid-key
-    free seed, like native-void
 
   task delete, name <delete>
-    free seed
-      like idb-request
-        like native-undefined
+    like idb-request
+      like native-undefined
 
   task update, name <update>
+    like idb-request
+      like idb-valid-key
+
     take value, like any
-    free seed
-      like idb-request
-        like idb-valid-key

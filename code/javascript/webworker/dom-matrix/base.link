@@ -1,15 +1,15 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-number
+load @treesurf/nest/code/javascript/native
+  take form native-number
 
-load @tunebond/bolt/code/javascript/webworker
-  take face dom-matrix-init
-  take face dom-matrix-read-only
+load @treesurf/nest/code/javascript/webworker
+  take form dom-matrix-init
+  take form dom-matrix-read-only
 
-load @tunebond/bolt/code/javascript/dom/dom-matrix
-  take face dom-matrix
+load @treesurf/nest/code/javascript/dom/dom-matrix
+  take form dom-matrix
 
-face dom-matrix, name <DOMMatrix>
+form dom-matrix, name <DOMMatrix>
   base dom-matrix-read-only
 
   link a, name <a>
@@ -80,19 +80,23 @@ face dom-matrix, name <DOMMatrix>
     flex true
 
   task invert-self, name <invertSelf>
-    free seed, like dom-matrix
+    like dom-matrix
 
   task multiply-self, name <multiplySelf>
+    like dom-matrix
+
     take other, like dom-matrix-init
       void true
-    free seed, like dom-matrix
 
   task pre-multiply-self, name <preMultiplySelf>
+    like dom-matrix
+
     take other, like dom-matrix-init
       void true
-    free seed, like dom-matrix
 
   task rotate-axis-angle-self, name <rotateAxisAngleSelf>
+    like dom-matrix
+
     take x, like native-number
       void true
     take y, like native-number
@@ -101,25 +105,28 @@ face dom-matrix, name <DOMMatrix>
       void true
     take angle, like native-number
       void true
-    free seed, like dom-matrix
 
   task rotate-from-vector-self, name <rotateFromVectorSelf>
+    like dom-matrix
+
     take x, like native-number
       void true
     take y, like native-number
       void true
-    free seed, like dom-matrix
 
   task rotate-self, name <rotateSelf>
+    like dom-matrix
+
     take rot-x, like native-number
       void true
     take rot-y, like native-number
       void true
     take rot-z, like native-number
       void true
-    free seed, like dom-matrix
 
   task scale3d-self, name <scale3dSelf>
+    like dom-matrix
+
     take scale, like native-number
       void true
     take origin-x, like native-number
@@ -128,9 +135,10 @@ face dom-matrix, name <DOMMatrix>
       void true
     take origin-z, like native-number
       void true
-    free seed, like dom-matrix
 
   task scale-self, name <scaleSelf>
+    like dom-matrix
+
     take scale-x, like native-number
       void true
     take scale-y, like native-number
@@ -143,23 +151,25 @@ face dom-matrix, name <DOMMatrix>
       void true
     take origin-z, like native-number
       void true
-    free seed, like dom-matrix
 
   task skew-x-self, name <skewXSelf>
+    like dom-matrix
+
     take sx, like native-number
       void true
-    free seed, like dom-matrix
 
   task skew-y-self, name <skewYSelf>
+    like dom-matrix
+
     take sy, like native-number
       void true
-    free seed, like dom-matrix
 
   task translate-self, name <translateSelf>
+    like dom-matrix
+
     take tx, like native-number
       void true
     take ty, like native-number
       void true
     take tz, like native-number
       void true
-    free seed, like dom-matrix

@@ -1,20 +1,22 @@
 
-load @tunebond/moon
-  take suit or
+load @treesurf/moon
+  take form or
 
-load @tunebond/bolt/code/javascript/native
-  take face iterable
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form iterable
+  take form native-string
 
-load @tunebond/bolt/code/javascript/dom
-  take face idb-index
-  take face idb-index-parameters
+load @treesurf/nest/code/javascript/dom
+  take form idb-index
+  take form idb-index-parameters
 
-load @tunebond/bolt/code/javascript/dom/idb-object-store
-  take face idb-object-store
+load @treesurf/nest/code/javascript/dom/idb-object-store
+  take form idb-object-store
 
-face idb-object-store, name <IDBObjectStore>
+form idb-object-store, name <IDBObjectStore>
   task create-index, name <createIndex>
+    like idb-index
+
     take name, like native-string
     take key-path
       like or
@@ -23,4 +25,3 @@ face idb-object-store, name <IDBObjectStore>
           like native-string
     take options, like idb-index-parameters
       void true
-    free seed, like idb-index

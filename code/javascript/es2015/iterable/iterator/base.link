@@ -1,17 +1,17 @@
 
-load @tunebond/moon
-  take suit any
-  take suit like
-  take suit or
-  take suit tuple
+load @treesurf/moon
+  take form any
+  take form like
+  take form or
+  take form tuple
 
-load @tunebond/bolt/code/javascript/native
-  take face native-undefined
+load @treesurf/nest/code/javascript/native
+  take form native-undefined
 
-load @tunebond/bolt/code/javascript/es2015/iterable
-  take face iterator-result
+load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterator-result
 
-face iterator, name <Iterator>
+form iterator, name <Iterator>
   head t
   head t-return
     back any
@@ -19,29 +19,29 @@ face iterator, name <Iterator>
     back native-undefined
 
   task next, name <next>
+    like iterator-result
+      like t
+      like t-return
+
     take args
       like or
         like tuple
         like tuple
           like t-next
       rest true
-    free seed
-      like iterator-result
-        like t
-        like t-return
 
   task return, name <return>
+    like iterator-result
+      like t
+      like t-return
+
     take value, like t-return
       void true
-    free seed
-      like iterator-result
-        like t
-        like t-return
 
   task throw, name <throw>
+    like iterator-result
+      like t
+      like t-return
+
     take e, like any
       void true
-    free seed
-      like iterator-result
-        like t
-        like t-return

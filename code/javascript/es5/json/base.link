@@ -1,46 +1,52 @@
 
-load @tunebond/moon
-  take suit any
-  take suit or
-  take suit task
+load @treesurf/moon
+  take form any
+  take form or
+  take form task
 
-load @tunebond/bolt/code/javascript
-  take face array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @tunebond/bolt/code/javascript/native
-  take face native-null
-  take face native-number
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-null
+  take form native-number
+  take form native-string
 
-face json, name <JSON>
+form json, name <JSON>
   task parse, name <parse>
+    like any
+
     take text, like native-string
     take reviver
       like task
+        like any
+
         take this, like any
         take key, like native-string
         take value, like any
-        free seed, like any
       void true
-    free seed, like any
 
   task stringify, name <stringify>
+    like native-string
+
     take value, like any
     take replacer
       like task
+        like any
+
         take this, like any
         take key, like native-string
         take value, like any
-        free seed, like any
       void true
     take space
       like or
         like native-string
         like native-number
       void true
-    free seed, like native-string
 
   task stringify, name <stringify>
+    like native-string
+
     take value, like any
     take replacer
       like or
@@ -55,4 +61,3 @@ face json, name <JSON>
         like native-string
         like native-number
       void true
-    free seed, like native-string

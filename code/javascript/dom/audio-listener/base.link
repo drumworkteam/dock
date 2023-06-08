@@ -1,12 +1,12 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-number
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-number
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face audio-param
+load @treesurf/nest/code/javascript/dom
+  take form audio-param
 
-face audio-listener, name <AudioListener>
+form audio-listener, name <AudioListener>
   link forward-x, name <forwardX>
     like audio-param
   link forward-y, name <forwardY>
@@ -27,16 +27,18 @@ face audio-listener, name <AudioListener>
     like audio-param
 
   task set-orientation, name <setOrientation>
+    like native-void
+
     take x, like native-number
     take y, like native-number
     take z, like native-number
     take x-up, like native-number
     take y-up, like native-number
     take z-up, like native-number
-    free seed, like native-void
 
   task set-position, name <setPosition>
+    like native-void
+
     take x, like native-number
     take y, like native-number
     take z, like native-number
-    free seed, like native-void

@@ -1,22 +1,22 @@
 
-load @tunebond/moon
-  take suit any
-  take suit like
+load @treesurf/moon
+  take form any
+  take form like
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-void
 
-load @tunebond/bolt/code/javascript/es5
-  take face promise
+load @treesurf/nest/code/javascript/es5
+  take form promise
 
-load @tunebond/bolt/code/javascript/webworker
-  take face writable-stream-default-writer
+load @treesurf/nest/code/javascript/webworker
+  take form writable-stream-default-writer
 
-load @tunebond/bolt/code/javascript/dom/writable-stream
-  take face writable-stream
+load @treesurf/nest/code/javascript/dom/writable-stream
+  take form writable-stream
 
-face writable-stream, name <WritableStream>
+form writable-stream, name <WritableStream>
   head w
     back any
 
@@ -24,13 +24,12 @@ face writable-stream, name <WritableStream>
     like native-boolean
 
   task abort, name <abort>
+    like promise
+      like native-void
+
     take reason, like any
       void true
-    free seed
-      like promise
-        like native-void
 
   task get-writer, name <getWriter>
-    free seed
-      like writable-stream-default-writer
-        like w
+    like writable-stream-default-writer
+      like w

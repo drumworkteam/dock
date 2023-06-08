@@ -1,22 +1,27 @@
 
-load @tunebond/moon
-  take suit any
-  take suit like
-  take suit never
-  take suit or
-  take suit task
+load @treesurf/moon
+  take form any
+  take form like
+  take form never
+  take form or
+  take form task
 
-load @tunebond/bolt/code/javascript/native
-  take face native-null
-  take face native-undefined
+load @treesurf/nest/code/javascript/native
+  take form native-null
+  take form native-undefined
 
-load @tunebond/bolt/code/javascript/es5
-  take face promise-like
+load @treesurf/nest/code/javascript/es5
+  take form promise-like
 
-face promise, name <Promise>
+form promise, name <Promise>
   head t
 
   task then, name <then>
+    like promise
+      like or
+        like t-result1
+        like t-result2
+
     head t-result1
       back t
     head t-result2
@@ -25,51 +30,46 @@ face promise, name <Promise>
     take onfulfilled
       like or
         like task
-          take value, like t
-          free seed
-            like or
+          like or
+            like t-result1
+            like promise-like
               like t-result1
-              like promise-like
-                like t-result1
+
+          take value, like t
         like native-undefined
         like native-null
       void true
     take onrejected
       like or
         like task
-          take reason, like any
-          free seed
-            like or
+          like or
+            like t-result2
+            like promise-like
               like t-result2
-              like promise-like
-                like t-result2
+
+          take reason, like any
         like native-undefined
         like native-null
       void true
-    free seed
-      like promise
-        like or
-          like t-result1
-          like t-result2
 
   task catch, name <catch>
+    like promise
+      like or
+        like t
+        like t-result
+
     head t-result
       back never
 
     take onrejected
       like or
         like task
-          take reason, like any
-          free seed
-            like or
+          like or
+            like t-result
+            like promise-like
               like t-result
-              like promise-like
-                like t-result
+
+          take reason, like any
         like native-undefined
         like native-null
       void true
-    free seed
-      like promise
-        like or
-          like t
-          like t-result

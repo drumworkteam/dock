@@ -1,35 +1,37 @@
 
-bear @tunebond/bolt/code/javascript/es5/intl/collator-options
-bear @tunebond/bolt/code/javascript/es5/intl/resolved-collator-options
-bear @tunebond/bolt/code/javascript/es5/intl/collator
-bear @tunebond/bolt/code/javascript/es5/intl/number-format-options
-bear @tunebond/bolt/code/javascript/es5/intl/resolved-number-format-options
-bear @tunebond/bolt/code/javascript/es5/intl/number-format
-bear @tunebond/bolt/code/javascript/es5/intl/date-time-format-options
-bear @tunebond/bolt/code/javascript/es5/intl/resolved-date-time-format-options
-bear @tunebond/bolt/code/javascript/es5/intl/date-time-format
+bear @treesurf/nest/code/javascript/es5/intl/collator-options
+bear @treesurf/nest/code/javascript/es5/intl/resolved-collator-options
+bear @treesurf/nest/code/javascript/es5/intl/collator
+bear @treesurf/nest/code/javascript/es5/intl/number-format-options
+bear @treesurf/nest/code/javascript/es5/intl/resolved-number-format-options
+bear @treesurf/nest/code/javascript/es5/intl/number-format
+bear @treesurf/nest/code/javascript/es5/intl/date-time-format-options
+bear @treesurf/nest/code/javascript/es5/intl/resolved-date-time-format-options
+bear @treesurf/nest/code/javascript/es5/intl/date-time-format
 
-load @tunebond/moon
-  take suit form
-  take suit or
+load @treesurf/moon
+  take form form
+  take form or
 
-load @tunebond/bolt/code/javascript
-  take face array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @tunebond/bolt/code/javascript/native
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-string
 
-load @tunebond/bolt/code/javascript/es5
-  take face collator
-  take face collator-options
-  take face date-time-format
-  take face date-time-format-options
-  take face number-format
-  take face number-format-options
+load @treesurf/nest/code/javascript/es5
+  take form collator
+  take form collator-options
+  take form date-time-format
+  take form date-time-format-options
+  take form number-format
+  take form number-format-options
 
 host collator, name <Collator>
   like form
     hook make
+      like collator
+
       take locales
         like or
           like native-string
@@ -38,9 +40,11 @@ host collator, name <Collator>
         void true
       take options, like collator-options
         void true
-      free seed, like collator
 
     task supported-locales-of, name <supportedLocalesOf>
+      like array
+        like native-string
+
       take locales
         like or
           like native-string
@@ -48,13 +52,12 @@ host collator, name <Collator>
             like native-string
       take options, like collator-options
         void true
-      free seed
-        like array
-          like native-string
 
 host number-format, name <NumberFormat>
   like form
     hook make
+      like number-format
+
       take locales
         like or
           like native-string
@@ -63,9 +66,11 @@ host number-format, name <NumberFormat>
         void true
       take options, like number-format-options
         void true
-      free seed, like number-format
 
     task supported-locales-of, name <supportedLocalesOf>
+      like array
+        like native-string
+
       take locales
         like or
           like native-string
@@ -73,13 +78,12 @@ host number-format, name <NumberFormat>
             like native-string
       take options, like number-format-options
         void true
-      free seed
-        like array
-          like native-string
 
 host date-time-format, name <DateTimeFormat>
   like form
     hook make
+      like date-time-format
+
       take locales
         like or
           like native-string
@@ -88,9 +92,11 @@ host date-time-format, name <DateTimeFormat>
         void true
       take options, like date-time-format-options
         void true
-      free seed, like date-time-format
 
     task supported-locales-of, name <supportedLocalesOf>
+      like array
+        like native-string
+
       take locales
         like or
           like native-string
@@ -98,6 +104,3 @@ host date-time-format, name <DateTimeFormat>
             like native-string
       take options, like date-time-format-options
         void true
-      free seed
-        like array
-          like native-string

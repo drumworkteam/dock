@@ -1,36 +1,36 @@
 
-load @tunebond/moon
-  take suit and
-  take suit any
-  take suit index
-  take suit key-list
-  take suit like
-  take suit or
-  take suit task
+load @treesurf/moon
+  take form and
+  take form any
+  take form index
+  take form key-list
+  take form like
+  take form or
+  take form task
 
-load @tunebond/bolt/code/javascript
-  take face array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-null
-  take face native-string
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-string
+  take form native-void
 
-load @tunebond/bolt/code/javascript/webworker
-  take face add-event-listener-options
-  take face error-event
-  take face event
-  take face event-listener-options
-  take face event-listener-or-event-listener-object
-  take face event-target
-  take face promise-rejection-event
-  take face window-or-worker-global-scope
-  take face worker-global-scope-event-map
-  take face worker-location
-  take face worker-navigator
+load @treesurf/nest/code/javascript/webworker
+  take form add-event-listener-options
+  take form error-event
+  take form event
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form event-target
+  take form promise-rejection-event
+  take form window-or-worker-global-scope
+  take form worker-global-scope-event-map
+  take form worker-location
+  take form worker-navigator
 
-face worker-global-scope, name <WorkerGlobalScope>
+form worker-global-scope, name <WorkerGlobalScope>
   base event-target
   base window-or-worker-global-scope
 
@@ -41,49 +41,55 @@ face worker-global-scope, name <WorkerGlobalScope>
   link onerror, name <onerror>
     like or
       like task
+        like any
+
         take this, like worker-global-scope
         take ev, like error-event
-        free seed, like any
       like native-null
     flex true
   link onlanguagechange, name <onlanguagechange>
     like or
       like task
+        like any
+
         take this, like worker-global-scope
         take ev, like event
-        free seed, like any
       like native-null
     flex true
   link onoffline, name <onoffline>
     like or
       like task
+        like any
+
         take this, like worker-global-scope
         take ev, like event
-        free seed, like any
       like native-null
     flex true
   link ononline, name <ononline>
     like or
       like task
+        like any
+
         take this, like worker-global-scope
         take ev, like event
-        free seed, like any
       like native-null
     flex true
   link onrejectionhandled, name <onrejectionhandled>
     like or
       like task
+        like any
+
         take this, like worker-global-scope
         take ev, like promise-rejection-event
-        free seed, like any
       like native-null
     flex true
   link onunhandledrejection, name <onunhandledrejection>
     like or
       like task
+        like any
+
         take this, like worker-global-scope
         take ev, like promise-rejection-event
-        free seed, like any
       like native-null
     flex true
   link self, name <self>
@@ -92,13 +98,16 @@ face worker-global-scope, name <WorkerGlobalScope>
       like global-this
 
   task import-scripts, name <importScripts>
+    like native-void
+
     take urls
       like array
         like native-string
       rest true
-    free seed, like native-void
 
   task add-event-listener, name <addEventListener>
+    like native-void
+
     head k
       base key-list
         like worker-global-scope-event-map
@@ -106,20 +115,22 @@ face worker-global-scope, name <WorkerGlobalScope>
     take type, like k
     take listener
       like task
+        like any
+
         take this, like worker-global-scope
         take ev
           like index
             like worker-global-scope-event-map
             like k
-        free seed, like any
     take options
       like or
         like native-boolean
         like add-event-listener-options
       void true
-    free seed, like native-void
 
   task add-event-listener, name <addEventListener>
+    like native-void
+
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
@@ -127,9 +138,10 @@ face worker-global-scope, name <WorkerGlobalScope>
         like native-boolean
         like add-event-listener-options
       void true
-    free seed, like native-void
 
   task remove-event-listener, name <removeEventListener>
+    like native-void
+
     head k
       base key-list
         like worker-global-scope-event-map
@@ -137,20 +149,22 @@ face worker-global-scope, name <WorkerGlobalScope>
     take type, like k
     take listener
       like task
+        like any
+
         take this, like worker-global-scope
         take ev
           like index
             like worker-global-scope-event-map
             like k
-        free seed, like any
     take options
       like or
         like native-boolean
         like event-listener-options
       void true
-    free seed, like native-void
 
   task remove-event-listener, name <removeEventListener>
+    like native-void
+
     take type, like native-string
     take listener, like event-listener-or-event-listener-object
     take options
@@ -158,4 +172,3 @@ face worker-global-scope, name <WorkerGlobalScope>
         like native-boolean
         like event-listener-options
       void true
-    free seed, like native-void

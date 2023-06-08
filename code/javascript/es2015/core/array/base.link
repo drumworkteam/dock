@@ -1,106 +1,114 @@
 
-load @tunebond/moon
-  take suit any
-  take suit like
-  take suit or
-  take suit task
-  take suit unknown
+load @treesurf/moon
+  take form any
+  take form like
+  take form or
+  take form task
+  take form unknown
 
-load @tunebond/bolt/code/javascript
-  take face array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-number
-  take face native-this
-  take face native-undefined
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-this
+  take form native-undefined
+  take form native-void
 
-load @tunebond/bolt/code/javascript/es5
-  take face array-like
+load @treesurf/nest/code/javascript/es5
+  take form array-like
 
-face array, name <Array>
+form array, name <Array>
   head t
 
   task find, name <find>
+    like or
+      like s
+      like native-undefined
+
     head s
       base t
 
     take predicate
       like task
+        like native-boolean
+        rank value, like s
+
         take this, like native-void
         take value, like t
         take index, like native-number
         take obj
           like array
             like t
-        free seed
-          like native-boolean
-          rank value, like s
     take this-arg, like any
       void true
-    free seed
-      like or
-        like s
-        like native-undefined
 
   task find, name <find>
+    like or
+      like t
+      like native-undefined
+
     take predicate
       like task
+        like unknown
+
         take value, like t
         take index, like native-number
         take obj
           like array
             like t
-        free seed, like unknown
     take this-arg, like any
       void true
-    free seed
-      like or
-        like t
-        like native-undefined
 
   task find-index, name <findIndex>
+    like native-number
+
     take predicate
       like task
+        like unknown
+
         take value, like t
         take index, like native-number
         take obj
           like array
             like t
-        free seed, like unknown
     take this-arg, like any
       void true
-    free seed, like native-number
 
   task fill, name <fill>
+    like native-this
+
     take value, like t
     take start, like native-number
       void true
     take end, like native-number
       void true
-    free seed, like native-this
 
   task copy-within, name <copyWithin>
+    like native-this
+
     take target, like native-number
     take start, like native-number
     take end, like native-number
       void true
-    free seed, like native-this
 
-face array
+form array
   hook self
     task from, name <from>
+      like array
+        like t
+
       head t
 
       take array-like
         like array-like
           like t
-      free seed
-        like array
-          like t
 
     task from, name <from>
+      like array
+        like u
+
       head t
       head u
 
@@ -109,22 +117,20 @@ face array
           like t
       take mapfn
         like task
-          take v, like t
-          take k, like native-number
-          free seed, like u
-      take this-arg, like any
-        void true
-      free seed
-        like array
           like u
 
+          take v, like t
+          take k, like native-number
+      take this-arg, like any
+        void true
+
     task of, name <of>
+      like array
+        like t
+
       head t
 
       take items
         like array
           like t
         rest true
-      free seed
-        like array
-          like t

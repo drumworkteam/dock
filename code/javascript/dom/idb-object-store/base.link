@@ -1,32 +1,32 @@
 
-load @tunebond/moon
-  take suit any
-  take suit or
+load @treesurf/moon
+  take form any
+  take form or
 
-load @tunebond/bolt/code/javascript
-  take face array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-null
-  take face native-number
-  take face native-string
-  take face native-undefined
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-undefined
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face dom-string-list
-  take face idb-cursor
-  take face idb-cursor-direction
-  take face idb-cursor-with-value
-  take face idb-index
-  take face idb-index-parameters
-  take face idb-key-range
-  take face idb-request
-  take face idb-transaction
-  take face idb-valid-key
+load @treesurf/nest/code/javascript/dom
+  take form dom-string-list
+  take form idb-cursor
+  take form idb-cursor-direction
+  take form idb-cursor-with-value
+  take form idb-index
+  take form idb-index-parameters
+  take form idb-key-range
+  take form idb-request
+  take form idb-transaction
+  take form idb-valid-key
 
-face idb-object-store, name <IDBObjectStore>
+form idb-object-store, name <IDBObjectStore>
   link auto-increment, name <autoIncrement>
     like native-boolean
   link index-names, name <indexNames>
@@ -43,29 +43,30 @@ face idb-object-store, name <IDBObjectStore>
     like idb-transaction
 
   task add, name <add>
+    like idb-request
+      like idb-valid-key
+
     take value, like any
     take key, like idb-valid-key
       void true
-    free seed
-      like idb-request
-        like idb-valid-key
 
   task clear, name <clear>
-    free seed
-      like idb-request
-        like native-undefined
+    like idb-request
+      like native-undefined
 
   task count, name <count>
+    like idb-request
+      like native-number
+
     take query
       like or
         like idb-valid-key
         like idb-key-range
       void true
-    free seed
-      like idb-request
-        like native-number
 
   task create-index, name <createIndex>
+    like idb-index
+
     take name, like native-string
     take key-path
       like or
@@ -74,31 +75,35 @@ face idb-object-store, name <IDBObjectStore>
           like native-string
     take options, like idb-index-parameters
       void true
-    free seed, like idb-index
 
   task delete, name <delete>
+    like idb-request
+      like native-undefined
+
     take query
       like or
         like idb-valid-key
         like idb-key-range
-    free seed
-      like idb-request
-        like native-undefined
 
   task delete-index, name <deleteIndex>
+    like native-void
+
     take name, like native-string
-    free seed, like native-void
 
   task get, name <get>
+    like idb-request
+      like any
+
     take query
       like or
         like idb-valid-key
         like idb-key-range
-    free seed
-      like idb-request
-        like any
 
   task get-all, name <getAll>
+    like idb-request
+      like array
+        like any
+
     take query
       like or
         like idb-valid-key
@@ -107,12 +112,12 @@ face idb-object-store, name <IDBObjectStore>
       void true
     take count, like native-number
       void true
-    free seed
-      like idb-request
-        like array
-          like any
 
   task get-all-keys, name <getAllKeys>
+    like idb-request
+      like array
+        like idb-valid-key
+
     take query
       like or
         like idb-valid-key
@@ -121,27 +126,29 @@ face idb-object-store, name <IDBObjectStore>
       void true
     take count, like native-number
       void true
-    free seed
-      like idb-request
-        like array
-          like idb-valid-key
 
   task get-key, name <getKey>
+    like idb-request
+      like or
+        like idb-valid-key
+        like native-undefined
+
     take query
       like or
         like idb-valid-key
         like idb-key-range
-    free seed
-      like idb-request
-        like or
-          like idb-valid-key
-          like native-undefined
 
   task index, name <index>
+    like idb-index
+
     take name, like native-string
-    free seed, like idb-index
 
   task open-cursor, name <openCursor>
+    like idb-request
+      like or
+        like idb-cursor-with-value
+        like native-null
+
     take query
       like or
         like idb-valid-key
@@ -150,13 +157,13 @@ face idb-object-store, name <IDBObjectStore>
       void true
     take direction, like idb-cursor-direction
       void true
-    free seed
-      like idb-request
-        like or
-          like idb-cursor-with-value
-          like native-null
 
   task open-key-cursor, name <openKeyCursor>
+    like idb-request
+      like or
+        like idb-cursor
+        like native-null
+
     take query
       like or
         like idb-valid-key
@@ -165,16 +172,11 @@ face idb-object-store, name <IDBObjectStore>
       void true
     take direction, like idb-cursor-direction
       void true
-    free seed
-      like idb-request
-        like or
-          like idb-cursor
-          like native-null
 
   task put, name <put>
+    like idb-request
+      like idb-valid-key
+
     take value, like any
     take key, like idb-valid-key
       void true
-    free seed
-      like idb-request
-        like idb-valid-key

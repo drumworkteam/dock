@@ -1,12 +1,12 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-number
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-number
+  take form native-void
 
-load @tunebond/bolt/code/javascript/es5
-  take face float32-array
+load @treesurf/nest/code/javascript/es5
+  take form float32-array
 
-face audio-buffer, name <AudioBuffer>
+form audio-buffer, name <AudioBuffer>
   link duration, name <duration>
     like native-number
   link length, name <length>
@@ -17,19 +17,22 @@ face audio-buffer, name <AudioBuffer>
     like native-number
 
   task copy-from-channel, name <copyFromChannel>
+    like native-void
+
     take destination, like float32-array
     take channel-number, like native-number
     take buffer-offset, like native-number
       void true
-    free seed, like native-void
 
   task copy-to-channel, name <copyToChannel>
+    like native-void
+
     take source, like float32-array
     take channel-number, like native-number
     take buffer-offset, like native-number
       void true
-    free seed, like native-void
 
   task get-channel-data, name <getChannelData>
+    like float32-array
+
     take channel, like native-number
-    free seed, like float32-array

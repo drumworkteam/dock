@@ -1,41 +1,43 @@
 
-load @tunebond/moon
-  take suit or
+load @treesurf/moon
+  take form or
 
-load @tunebond/bolt/code/javascript/native
-  take face native-string
-  take face native-undefined
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-string
+  take form native-undefined
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face custom-element-constructor
-  take face element-definition-options
-  take face node
+load @treesurf/nest/code/javascript/dom
+  take form custom-element-constructor
+  take form element-definition-options
+  take form node
 
-load @tunebond/bolt/code/javascript/es5
-  take face promise
+load @treesurf/nest/code/javascript/es5
+  take form promise
 
-face custom-element-registry, name <CustomElementRegistry>
+form custom-element-registry, name <CustomElementRegistry>
   task define, name <define>
+    like native-void
+
     take name, like native-string
     take constructor, like custom-element-constructor
     take options, like element-definition-options
       void true
-    free seed, like native-void
 
   task get, name <get>
+    like or
+      like custom-element-constructor
+      like native-undefined
+
     take name, like native-string
-    free seed
-      like or
-        like custom-element-constructor
-        like native-undefined
 
   task upgrade, name <upgrade>
+    like native-void
+
     take root, like node
-    free seed, like native-void
 
   task when-defined, name <whenDefined>
+    like promise
+      like custom-element-constructor
+
     take name, like native-string
-    free seed
-      like promise
-        like custom-element-constructor

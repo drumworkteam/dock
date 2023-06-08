@@ -1,36 +1,34 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-string
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-string
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face clipboard-items
-  take face event-target
+load @treesurf/nest/code/javascript/dom
+  take form clipboard-items
+  take form event-target
 
-load @tunebond/bolt/code/javascript/es5
-  take face promise
+load @treesurf/nest/code/javascript/es5
+  take form promise
 
-face clipboard, name <Clipboard>
+form clipboard, name <Clipboard>
   base event-target
 
   task read, name <read>
-    free seed
-      like promise
-        like clipboard-items
+    like promise
+      like clipboard-items
 
   task read-text, name <readText>
-    free seed
-      like promise
-        like native-string
+    like promise
+      like native-string
 
   task write, name <write>
+    like promise
+      like native-void
+
     take data, like clipboard-items
-    free seed
-      like promise
-        like native-void
 
   task write-text, name <writeText>
+    like promise
+      like native-void
+
     take data, like native-string
-    free seed
-      like promise
-        like native-void

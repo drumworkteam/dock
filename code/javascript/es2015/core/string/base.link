@@ -1,128 +1,142 @@
 
-load @tunebond/moon
-  take suit any
-  take suit form
-  take suit or
+load @treesurf/moon
+  take form any
+  take form form
+  take form or
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-number
-  take face native-string
-  take face native-undefined
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-string
+  take form native-undefined
 
-load @tunebond/bolt/code/javascript/es5/string
-  take face string
+load @treesurf/nest/code/javascript/es5/string
+  take form string
 
-load @tunebond/bolt/code/javascript
-  take face array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @tunebond/bolt/code/javascript/es5
-  take face array-like
+load @treesurf/nest/code/javascript/es5
+  take form array-like
 
-load @tunebond/bolt/code/javascript/es2015/core/string
-  take face string
+load @treesurf/nest/code/javascript/es2015/core/string
+  take form string
 
-face string, name <String>
+form string, name <String>
   task code-point-at, name <codePointAt>
+    like or
+      like native-number
+      like native-undefined
+
     take pos, like native-number
-    free seed
-      like or
-        like native-number
-        like native-undefined
 
   task includes, name <includes>
+    like native-boolean
+
     take search-string, like native-string
     take position, like native-number
       void true
-    free seed, like native-boolean
 
   task ends-with, name <endsWith>
+    like native-boolean
+
     take search-string, like native-string
     take end-position, like native-number
       void true
-    free seed, like native-boolean
 
   task normalize, name <normalize>
+    like native-string
+
     take form
       like or
         text <NFC>
         text <NFD>
         text <NFKC>
         text <NFKD>
-    free seed, like native-string
 
   task normalize, name <normalize>
+    like native-string
+
     take form, like native-string
       void true
-    free seed, like native-string
 
   task repeat, name <repeat>
+    like native-string
+
     take count, like native-number
-    free seed, like native-string
 
   task starts-with, name <startsWith>
+    like native-boolean
+
     take search-string, like native-string
     take position, like native-number
       void true
-    free seed, like native-boolean
 
   task anchor, name <anchor>
+    like native-string
+
     take name, like native-string
-    free seed, like native-string
 
   task big, name <big>
-    free seed, like native-string
+    like native-string
 
   task blink, name <blink>
-    free seed, like native-string
+    like native-string
 
   task bold, name <bold>
-    free seed, like native-string
+    like native-string
 
   task fixed, name <fixed>
-    free seed, like native-string
+    like native-string
 
   task fontcolor, name <fontcolor>
+    like native-string
+
     take color, like native-string
-    free seed, like native-string
 
   task fontsize, name <fontsize>
+    like native-string
+
     take size, like native-number
-    free seed, like native-string
 
   task fontsize, name <fontsize>
+    like native-string
+
     take size, like native-string
-    free seed, like native-string
 
   task italics, name <italics>
-    free seed, like native-string
+    like native-string
 
   task link, name <link>
+    like native-string
+
     take url, like native-string
-    free seed, like native-string
 
   task small, name <small>
-    free seed, like native-string
+    like native-string
 
   task strike, name <strike>
-    free seed, like native-string
+    like native-string
 
   task sub, name <sub>
-    free seed, like native-string
+    like native-string
 
   task sup, name <sup>
-    free seed, like native-string
+    like native-string
 
-face string
+form string
   hook self
     task from-code-point, name <fromCodePoint>
+      like native-string
+
       take code-points
         like array
           like native-number
         rest true
-      free seed, like native-string
 
     task raw, name <raw>
+      like native-string
+
       take template
         like form
           link raw, name <raw>
@@ -136,4 +150,3 @@ face string
         like array
           like any
         rest true
-      free seed, like native-string

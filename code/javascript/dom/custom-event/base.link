@@ -1,17 +1,17 @@
 
-load @tunebond/moon
-  take suit any
-  take suit like
+load @treesurf/moon
+  take form any
+  take form like
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-string
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-string
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face event
+load @treesurf/nest/code/javascript/dom
+  take form event
 
-face custom-event, name <CustomEvent>
+form custom-event, name <CustomEvent>
   base event
 
   head t
@@ -21,6 +21,8 @@ face custom-event, name <CustomEvent>
     like t
 
   task init-custom-event, name <initCustomEvent>
+    like native-void
+
     take type, like native-string
     take bubbles, like native-boolean
       void true
@@ -28,4 +30,3 @@ face custom-event, name <CustomEvent>
       void true
     take detail, like t
       void true
-    free seed, like native-void

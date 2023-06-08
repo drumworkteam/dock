@@ -1,32 +1,33 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face iterable
-  take face native-boolean
-  take face native-number
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form iterable
+  take form native-boolean
+  take form native-number
+  take form native-string
 
-load @tunebond/bolt/code/javascript/dom
-  take face media-key-system-access
-  take face media-key-system-configuration
+load @treesurf/nest/code/javascript/dom
+  take form media-key-system-access
+  take form media-key-system-configuration
 
-load @tunebond/bolt/code/javascript/es5
-  take face promise
+load @treesurf/nest/code/javascript/es5
+  take form promise
 
-load @tunebond/bolt/code/javascript/dom/navigator
-  take face navigator
+load @treesurf/nest/code/javascript/dom/navigator
+  take form navigator
 
-face navigator, name <Navigator>
+form navigator, name <Navigator>
   task request-media-key-system-access, name <requestMediaKeySystemAccess>
+    like promise
+      like media-key-system-access
+
     take key-system, like native-string
     take supported-configurations
       like iterable
         like media-key-system-configuration
-    free seed
-      like promise
-        like media-key-system-access
 
   task vibrate, name <vibrate>
+    like native-boolean
+
     take pattern
       like iterable
         like native-number
-    free seed, like native-boolean

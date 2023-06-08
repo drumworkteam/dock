@@ -1,20 +1,20 @@
 
-load @tunebond/moon
-  take suit any
-  take suit like
-  take suit or
+load @treesurf/moon
+  take form any
+  take form like
+  take form or
 
-load @tunebond/bolt/code/javascript/native
-  take face native-object
-  take face native-undefined
+load @treesurf/nest/code/javascript/native
+  take form native-object
+  take form native-undefined
 
-load @tunebond/bolt/code/javascript/es2021/weakref/weak-ref
-  take face weak-ref
+load @treesurf/nest/code/javascript/es2021/weakref/weak-ref
+  take form weak-ref
 
-load @tunebond/bolt/code/javascript/esnext/weakref/weak-ref
-  take face weak-ref
+load @treesurf/nest/code/javascript/esnext/weakref/weak-ref
+  take form weak-ref
 
-face weak-ref, name <WeakRef>
+form weak-ref, name <WeakRef>
   head t
     base native-object
 
@@ -23,23 +23,22 @@ face weak-ref, name <WeakRef>
     work true
 
   task deref, name <deref>
-    free seed
-      like or
-        like t
-        like native-undefined
+    like or
+      like t
+      like native-undefined
 
-face weak-ref
+form weak-ref
   hook self
     link prototype, name <prototype>
       like weak-ref
         like any
 
   hook make
+    like weak-ref
+      like t
+
     head t
       base native-object
 
     take target, like t
       void true
-    free seed
-      like weak-ref
-        like t

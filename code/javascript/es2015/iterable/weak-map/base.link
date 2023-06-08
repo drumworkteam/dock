@@ -1,28 +1,32 @@
 
-load @tunebond/moon
-  take suit like
-  take suit tuple
+load @treesurf/moon
+  take form like
+  take form tuple
 
-load @tunebond/bolt/code/javascript/native
-  take face native-object
+load @treesurf/nest/code/javascript/native
+  take form native-object
 
-load @tunebond/bolt/code/javascript/es2015/collection/weak-map
-  take face weak-map
+load @treesurf/nest/code/javascript/es2015/collection/weak-map
+  take form weak-map
 
-load @tunebond/bolt/code/javascript/es2015/iterable
-  take face iterable
+load @treesurf/nest/code/javascript/es2015/iterable
+  take form iterable
 
-load @tunebond/bolt/code/javascript/es2015/iterable/weak-map
-  take face weak-map
+load @treesurf/nest/code/javascript/es2015/iterable/weak-map
+  take form weak-map
 
-face weak-map, name <WeakMap>
+form weak-map, name <WeakMap>
   head k
     base native-object
   head v
 
-face weak-map
+form weak-map
   hook self
   hook make
+    like weak-map
+      like k
+      like v
+
     head k
       base native-object
     head v
@@ -32,7 +36,3 @@ face weak-map
         like tuple
           like k
           like v
-    free seed
-      like weak-map
-        like k
-        like v

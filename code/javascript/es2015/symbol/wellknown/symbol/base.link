@@ -1,12 +1,12 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-string
-  take face native-symbol
+load @treesurf/nest/code/javascript/native
+  take form native-string
+  take form native-symbol
 
-load @tunebond/bolt/code/javascript/es2015/symbol/wellknown/symbol
-  take face symbol
+load @treesurf/nest/code/javascript/es2015/symbol/wellknown/symbol
+  take form symbol
 
-face symbol
+form symbol
   hook self
     link has-instance, name <hasInstance>
       like native-symbol
@@ -39,11 +39,12 @@ face symbol
       like native-symbol
         cool true
 
-face symbol, name <Symbol>
+form symbol, name <Symbol>
   link {symbol/to-string-tag}
     like native-string
     work true
 
   task {symbol/to-primitive}
+    like native-symbol
+
     take hint, like native-string
-    free seed, like native-symbol

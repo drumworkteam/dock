@@ -1,27 +1,30 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face iterable
-  take face native-number
+load @treesurf/nest/code/javascript/native
+  take form iterable
+  take form native-number
 
-load @tunebond/bolt/code/javascript/dom
-  take face iir-filter-node
-  take face periodic-wave
-  take face periodic-wave-constraints
+load @treesurf/nest/code/javascript/dom
+  take form iir-filter-node
+  take form periodic-wave
+  take form periodic-wave-constraints
 
-load @tunebond/bolt/code/javascript/dom/base-audio-context
-  take face base-audio-context
+load @treesurf/nest/code/javascript/dom/base-audio-context
+  take form base-audio-context
 
-face base-audio-context, name <BaseAudioContext>
+form base-audio-context, name <BaseAudioContext>
   task create-iir-filter, name <createIIRFilter>
+    like iir-filter-node
+
     take feedforward
       like iterable
         like native-number
     take feedback
       like iterable
         like native-number
-    free seed, like iir-filter-node
 
   task create-periodic-wave, name <createPeriodicWave>
+    like periodic-wave
+
     take real
       like iterable
         like native-number
@@ -30,4 +33,3 @@ face base-audio-context, name <BaseAudioContext>
         like native-number
     take constraints, like periodic-wave-constraints
       void true
-    free seed, like periodic-wave

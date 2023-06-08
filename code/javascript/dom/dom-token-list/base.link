@@ -1,20 +1,20 @@
 
-load @tunebond/moon
-  take suit any
-  take suit or
-  take suit task
+load @treesurf/moon
+  take form any
+  take form or
+  take form task
 
-load @tunebond/bolt/code/javascript
-  take face array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-null
-  take face native-number
-  take face native-string
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-void
 
-face dom-token-list, name <DOMTokenList>
+form dom-token-list, name <DOMTokenList>
   link length, name <length>
     like native-number
   link value, name <value>
@@ -22,58 +22,66 @@ face dom-token-list, name <DOMTokenList>
     flex true
 
   task to-string, name <toString>
-    free seed, like native-string
+    like native-string
 
   task add, name <add>
+    like native-void
+
     take tokens
       like array
         like native-string
       rest true
-    free seed, like native-void
 
   task contains, name <contains>
+    like native-boolean
+
     take token, like native-string
-    free seed, like native-boolean
 
   task item, name <item>
+    like or
+      like native-string
+      like native-null
+
     take index, like native-number
-    free seed
-      like or
-        like native-string
-        like native-null
 
   task remove, name <remove>
+    like native-void
+
     take tokens
       like array
         like native-string
       rest true
-    free seed, like native-void
 
   task replace, name <replace>
+    like native-boolean
+
     take token, like native-string
     take new-token, like native-string
-    free seed, like native-boolean
 
   task supports, name <supports>
+    like native-boolean
+
     take token, like native-string
-    free seed, like native-boolean
 
   task toggle, name <toggle>
+    like native-boolean
+
     take token, like native-string
     take force, like native-boolean
       void true
-    free seed, like native-boolean
 
   task for-each, name <forEach>
+    like native-void
+
     take callbackfn
       like task
+        like native-void
+
         take value, like native-string
         take key, like native-number
         take parent, like dom-token-list
-        free seed, like native-void
     take this-arg, like any
       void true
-    free seed, like native-void
 
   mesh index, like native-number
     like native-string

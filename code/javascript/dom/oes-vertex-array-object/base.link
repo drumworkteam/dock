@@ -1,43 +1,45 @@
 
-load @tunebond/moon
-  take suit or
+load @treesurf/moon
+  take form or
 
-load @tunebond/bolt/code/javascript/native
-  take face native-null
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-null
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face g-lboolean
-  take face g-lenum
-  take face web-gl-vertex-array-object-oes
+load @treesurf/nest/code/javascript/dom
+  take form g-lboolean
+  take form g-lenum
+  take form web-gl-vertex-array-object-oes
 
-face oes-vertex-array-object, name <OES_vertex_array_object>
+form oes-vertex-array-object, name <OES_vertex_array_object>
   link vertex-array-binding-oes, name <VERTEX_ARRAY_BINDING_OES>
     like g-lenum
 
   task bind-vertex-array-oes, name <bindVertexArrayOES>
+    like native-void
+
     take array-object
       like or
         like web-gl-vertex-array-object-oes
         like native-null
-    free seed, like native-void
 
   task create-vertex-array-oes, name <createVertexArrayOES>
-    free seed
-      like or
-        like web-gl-vertex-array-object-oes
-        like native-null
+    like or
+      like web-gl-vertex-array-object-oes
+      like native-null
 
   task delete-vertex-array-oes, name <deleteVertexArrayOES>
+    like native-void
+
     take array-object
       like or
         like web-gl-vertex-array-object-oes
         like native-null
-    free seed, like native-void
 
   task is-vertex-array-oes, name <isVertexArrayOES>
+    like g-lboolean
+
     take array-object
       like or
         like web-gl-vertex-array-object-oes
         like native-null
-    free seed, like g-lboolean

@@ -1,15 +1,16 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-number
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-number
+  take form native-string
 
-load @tunebond/bolt/code/javascript/es5
-  take face resolved-number-format-options
+load @treesurf/nest/code/javascript/es5
+  take form resolved-number-format-options
 
-face number-format, name <NumberFormat>
+form number-format, name <NumberFormat>
   task format, name <format>
+    like native-string
+
     take value, like native-number
-    free seed, like native-string
 
   task resolved-options, name <resolvedOptions>
-    free seed, like resolved-number-format-options
+    like resolved-number-format-options

@@ -1,18 +1,18 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-number
-  take face native-string
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-string
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face abstract-range
-  take face document-fragment
-  take face dom-rect
-  take face dom-rect-list
-  take face node
+load @treesurf/nest/code/javascript/dom
+  take form abstract-range
+  take form document-fragment
+  take form dom-rect
+  take form dom-rect-list
+  take form node
 
-face range, name <Range>
+form range, name <Range>
   base abstract-range
 
   link common-ancestor-container, name <commonAncestorContainer>
@@ -27,95 +27,111 @@ face range, name <Range>
     like native-number
 
   task clone-contents, name <cloneContents>
-    free seed, like document-fragment
+    like document-fragment
 
   task clone-range, name <cloneRange>
-    free seed, like range
+    like range
 
   task collapse, name <collapse>
+    like native-void
+
     take to-start, like native-boolean
       void true
-    free seed, like native-void
 
   task compare-boundary-points, name <compareBoundaryPoints>
+    like native-number
+
     take how, like native-number
     take source-range, like range
-    free seed, like native-number
 
   task compare-point, name <comparePoint>
+    like native-number
+
     take node, like node
     take offset, like native-number
-    free seed, like native-number
 
   task create-contextual-fragment, name <createContextualFragment>
+    like document-fragment
+
     take fragment, like native-string
-    free seed, like document-fragment
 
   task delete-contents, name <deleteContents>
-    free seed, like native-void
+    like native-void
 
   task detach, name <detach>
-    free seed, like native-void
+    like native-void
 
   task extract-contents, name <extractContents>
-    free seed, like document-fragment
+    like document-fragment
 
   task get-bounding-client-rect, name <getBoundingClientRect>
-    free seed, like dom-rect
+    like dom-rect
 
   task get-client-rects, name <getClientRects>
-    free seed, like dom-rect-list
+    like dom-rect-list
 
   task insert-node, name <insertNode>
+    like native-void
+
     take node, like node
-    free seed, like native-void
 
   task intersects-node, name <intersectsNode>
+    like native-boolean
+
     take node, like node
-    free seed, like native-boolean
 
   task is-point-in-range, name <isPointInRange>
+    like native-boolean
+
     take node, like node
     take offset, like native-number
-    free seed, like native-boolean
 
   task select-node, name <selectNode>
+    like native-void
+
     take node, like node
-    free seed, like native-void
 
   task select-node-contents, name <selectNodeContents>
+    like native-void
+
     take node, like node
-    free seed, like native-void
 
   task set-end, name <setEnd>
+    like native-void
+
     take node, like node
     take offset, like native-number
-    free seed, like native-void
 
   task set-end-after, name <setEndAfter>
+    like native-void
+
     take node, like node
-    free seed, like native-void
 
   task set-end-before, name <setEndBefore>
+    like native-void
+
     take node, like node
-    free seed, like native-void
 
   task set-start, name <setStart>
+    like native-void
+
     take node, like node
     take offset, like native-number
-    free seed, like native-void
 
   task set-start-after, name <setStartAfter>
+    like native-void
+
     take node, like node
-    free seed, like native-void
 
   task set-start-before, name <setStartBefore>
+    like native-void
+
     take node, like node
-    free seed, like native-void
 
   task surround-contents, name <surroundContents>
+    like native-void
+
     take new-parent, like node
-    free seed, like native-void
 
   task to-string, name <toString>
-    free seed, like native-string
+    like native-string

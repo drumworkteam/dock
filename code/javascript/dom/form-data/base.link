@@ -1,24 +1,26 @@
 
-load @tunebond/moon
-  take suit any
-  take suit or
-  take suit task
+load @treesurf/moon
+  take form any
+  take form or
+  take form task
 
-load @tunebond/bolt/code/javascript
-  take face array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-null
-  take face native-string
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-string
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face blob
-  take face form-data-entry-value
+load @treesurf/nest/code/javascript/dom
+  take form blob
+  take form form-data-entry-value
 
-face form-data, name <FormData>
+form form-data, name <FormData>
   task append, name <append>
+    like native-void
+
     take name, like native-string
     take value
       like or
@@ -26,30 +28,33 @@ face form-data, name <FormData>
         like blob
     take file-name, like native-string
       void true
-    free seed, like native-void
 
   task delete, name <delete>
+    like native-void
+
     take name, like native-string
-    free seed, like native-void
 
   task get, name <get>
+    like or
+      like form-data-entry-value
+      like native-null
+
     take name, like native-string
-    free seed
-      like or
-        like form-data-entry-value
-        like native-null
 
   task get-all, name <getAll>
+    like array
+      like form-data-entry-value
+
     take name, like native-string
-    free seed
-      like array
-        like form-data-entry-value
 
   task has, name <has>
+    like native-boolean
+
     take name, like native-string
-    free seed, like native-boolean
 
   task set, name <set>
+    like native-void
+
     take name, like native-string
     take value
       like or
@@ -57,15 +62,16 @@ face form-data, name <FormData>
         like blob
     take file-name, like native-string
       void true
-    free seed, like native-void
 
   task for-each, name <forEach>
+    like native-void
+
     take callbackfn
       like task
+        like native-void
+
         take value, like form-data-entry-value
         take key, like native-string
         take parent, like form-data
-        free seed, like native-void
     take this-arg, like any
       void true
-    free seed, like native-void

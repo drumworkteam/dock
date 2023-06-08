@@ -1,23 +1,24 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
 
-load @tunebond/moon
-  take suit any
+load @treesurf/moon
+  take form any
 
-load @tunebond/bolt/code/javascript/es5/boolean
-  take face boolean
+load @treesurf/nest/code/javascript/es5/boolean
+  take form boolean
 
-face boolean, name <Boolean>
+form boolean, name <Boolean>
   task value-of, name <valueOf>
-    free seed, like native-boolean
+    like native-boolean
 
-face boolean
+form boolean
   hook self
     link prototype, name <prototype>
       like boolean
 
   hook make
+    like boolean
+
     take value, like any
       void true
-    free seed, like boolean

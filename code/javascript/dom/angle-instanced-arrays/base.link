@@ -1,34 +1,37 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face g-lenum
-  take face g-lint
-  take face g-lintptr
-  take face g-lsizei
-  take face g-luint
+load @treesurf/nest/code/javascript/dom
+  take form g-lenum
+  take form g-lint
+  take form g-lintptr
+  take form g-lsizei
+  take form g-luint
 
-face angle-instanced-arrays, name <ANGLE_instanced_arrays>
+form angle-instanced-arrays, name <ANGLE_instanced_arrays>
   link vertex-attrib-array-divisor-angle, name <VERTEX_ATTRIB_ARRAY_DIVISOR_ANGLE>
     like g-lenum
 
   task draw-arrays-instanced-angle, name <drawArraysInstancedANGLE>
+    like native-void
+
     take mode, like g-lenum
     take first, like g-lint
     take count, like g-lsizei
     take primcount, like g-lsizei
-    free seed, like native-void
 
   task draw-elements-instanced-angle, name <drawElementsInstancedANGLE>
+    like native-void
+
     take mode, like g-lenum
     take count, like g-lsizei
     take type, like g-lenum
     take offset, like g-lintptr
     take primcount, like g-lsizei
-    free seed, like native-void
 
   task vertex-attrib-divisor-angle, name <vertexAttribDivisorANGLE>
+    like native-void
+
     take index, like g-luint
     take divisor, like g-luint
-    free seed, like native-void

@@ -1,20 +1,21 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face computed-effect-timing
-  take face effect-timing
-  take face optional-effect-timing
+load @treesurf/nest/code/javascript/dom
+  take form computed-effect-timing
+  take form effect-timing
+  take form optional-effect-timing
 
-face animation-effect, name <AnimationEffect>
+form animation-effect, name <AnimationEffect>
   task get-computed-timing, name <getComputedTiming>
-    free seed, like computed-effect-timing
+    like computed-effect-timing
 
   task get-timing, name <getTiming>
-    free seed, like effect-timing
+    like effect-timing
 
   task update-timing, name <updateTiming>
+    like native-void
+
     take timing, like optional-effect-timing
       void true
-    free seed, like native-void

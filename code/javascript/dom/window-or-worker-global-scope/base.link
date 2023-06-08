@@ -1,34 +1,34 @@
 
-load @tunebond/moon
-  take suit any
+load @treesurf/moon
+  take form any
 
-load @tunebond/bolt/code/javascript
-  take face array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-number
-  take face native-string
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-string
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face cache-storage
-  take face crypto
-  take face idb-factory
-  take face image-bitmap
-  take face image-bitmap-options
-  take face image-bitmap-source
-  take face performance
-  take face request-info
-  take face request-init
-  take face response
-  take face timer-handler
-  take face void-function
+load @treesurf/nest/code/javascript/dom
+  take form cache-storage
+  take form crypto
+  take form idb-factory
+  take form image-bitmap
+  take form image-bitmap-options
+  take form image-bitmap-source
+  take form performance
+  take form request-info
+  take form request-init
+  take form response
+  take form timer-handler
+  take form void-function
 
-load @tunebond/bolt/code/javascript/es5
-  take face promise
+load @treesurf/nest/code/javascript/es5
+  take form promise
 
-face window-or-worker-global-scope, name <WindowOrWorkerGlobalScope>
+form window-or-worker-global-scope, name <WindowOrWorkerGlobalScope>
   link caches, name <caches>
     like cache-storage
   link cross-origin-isolated, name <crossOriginIsolated>
@@ -45,32 +45,39 @@ face window-or-worker-global-scope, name <WindowOrWorkerGlobalScope>
     like performance
 
   task atob, name <atob>
+    like native-string
+
     take data, like native-string
-    free seed, like native-string
 
   task btoa, name <btoa>
+    like native-string
+
     take data, like native-string
-    free seed, like native-string
 
   task clear-interval, name <clearInterval>
+    like native-void
+
     take handle, like native-number
       void true
-    free seed, like native-void
 
   task clear-timeout, name <clearTimeout>
+    like native-void
+
     take handle, like native-number
       void true
-    free seed, like native-void
 
   task create-image-bitmap, name <createImageBitmap>
+    like promise
+      like image-bitmap
+
     take image, like image-bitmap-source
     take options, like image-bitmap-options
       void true
-    free seed
-      like promise
-        like image-bitmap
 
   task create-image-bitmap, name <createImageBitmap>
+    like promise
+      like image-bitmap
+
     take image, like image-bitmap-source
     take sx, like native-number
     take sy, like native-number
@@ -78,23 +85,23 @@ face window-or-worker-global-scope, name <WindowOrWorkerGlobalScope>
     take sh, like native-number
     take options, like image-bitmap-options
       void true
-    free seed
-      like promise
-        like image-bitmap
 
   task fetch, name <fetch>
+    like promise
+      like response
+
     take input, like request-info
     take init, like request-init
       void true
-    free seed
-      like promise
-        like response
 
   task queue-microtask, name <queueMicrotask>
+    like native-void
+
     take callback, like void-function
-    free seed, like native-void
 
   task set-interval, name <setInterval>
+    like native-number
+
     take handler, like timer-handler
     take timeout, like native-number
       void true
@@ -102,9 +109,10 @@ face window-or-worker-global-scope, name <WindowOrWorkerGlobalScope>
       like array
         like any
       rest true
-    free seed, like native-number
 
   task set-timeout, name <setTimeout>
+    like native-number
+
     take handler, like timer-handler
     take timeout, like native-number
       void true
@@ -112,4 +120,3 @@ face window-or-worker-global-scope, name <WindowOrWorkerGlobalScope>
       like array
         like any
       rest true
-    free seed, like native-number

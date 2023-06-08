@@ -1,46 +1,50 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-bigint
-  take face native-number
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-bigint
+  take form native-number
+  take form native-string
 
-load @tunebond/bolt/code/javascript/es2020/bigint
-  take face big-int-to-locale-string-options
+load @treesurf/nest/code/javascript/es2020/bigint
+  take form big-int-to-locale-string-options
 
-load @tunebond/bolt/code/javascript/es2020/bigint/big-int
-  take face big-int
+load @treesurf/nest/code/javascript/es2020/bigint/big-int
+  take form big-int
 
-face big-int, name <BigInt>
+form big-int, name <BigInt>
   link {symbol/to-string-tag}
     text <BigInt>
     work true
 
   task to-string, name <toString>
+    like native-string
+
     take radix, like native-number
       void true
-    free seed, like native-string
 
   task to-locale-string, name <toLocaleString>
+    like native-string
+
     take locales, like native-string
       void true
     take options, like big-int-to-locale-string-options
       void true
-    free seed, like native-string
 
   task value-of, name <valueOf>
-    free seed, like native-bigint
+    like native-bigint
 
-face big-int
+form big-int
   hook self
     link prototype, name <prototype>
       like big-int
 
     task as-int-n, name <asIntN>
+      like native-bigint
+
       take bits, like native-number
       take int, like native-bigint
-      free seed, like native-bigint
 
     task as-uint-n, name <asUintN>
+      like native-bigint
+
       take bits, like native-number
       take int, like native-bigint
-      free seed, like native-bigint

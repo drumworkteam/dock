@@ -1,17 +1,17 @@
 
-load @tunebond/moon
-  take suit or
+load @treesurf/moon
+  take form or
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-null
-  take face native-number
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
 
-load @tunebond/bolt/code/javascript/dom
-  take face node
+load @treesurf/nest/code/javascript/dom
+  take form node
 
-face x-path-result, name <XPathResult>
+form x-path-result, name <XPathResult>
   link boolean-value, name <booleanValue>
     like native-boolean
   link invalid-iterator-state, name <invalidIteratorState>
@@ -50,14 +50,13 @@ face x-path-result, name <XPathResult>
     like native-number
 
   task iterate-next, name <iterateNext>
-    free seed
-      like or
-        like node
-        like native-null
+    like or
+      like node
+      like native-null
 
   task snapshot-item, name <snapshotItem>
+    like or
+      like node
+      like native-null
+
     take index, like native-number
-    free seed
-      like or
-        like node
-        like native-null

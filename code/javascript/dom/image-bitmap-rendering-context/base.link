@@ -1,25 +1,26 @@
 
-load @tunebond/moon
-  take suit or
+load @treesurf/moon
+  take form or
 
-load @tunebond/bolt/code/javascript/native
-  take face native-null
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-null
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face html-canvas-element
-  take face image-bitmap
-  take face offscreen-canvas
+load @treesurf/nest/code/javascript/dom
+  take form html-canvas-element
+  take form image-bitmap
+  take form offscreen-canvas
 
-face image-bitmap-rendering-context, name <ImageBitmapRenderingContext>
+form image-bitmap-rendering-context, name <ImageBitmapRenderingContext>
   link canvas, name <canvas>
     like or
       like html-canvas-element
       like offscreen-canvas
 
   task transfer-from-image-bitmap, name <transferFromImageBitmap>
+    like native-void
+
     take bitmap
       like or
         like image-bitmap
         like native-null
-    free seed, like native-void

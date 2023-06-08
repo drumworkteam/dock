@@ -1,20 +1,20 @@
 
-load @tunebond/moon
-  take suit or
+load @treesurf/moon
+  take form or
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-null
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-string
 
-load @tunebond/bolt/code/javascript/es5
-  take face promise
+load @treesurf/nest/code/javascript/es5
+  take form promise
 
-load @tunebond/bolt/code/javascript/webworker
-  take face client
-  take face visibility-state
+load @treesurf/nest/code/javascript/webworker
+  take form client
+  take form visibility-state
 
-face window-client, name <WindowClient>
+form window-client, name <WindowClient>
   base client
 
   link focused, name <focused>
@@ -23,14 +23,13 @@ face window-client, name <WindowClient>
     like visibility-state
 
   task focus, name <focus>
-    free seed
-      like promise
-        like window-client
+    like promise
+      like window-client
 
   task navigate, name <navigate>
+    like promise
+      like or
+        like window-client
+        like native-null
+
     take url, like native-string
-    free seed
-      like promise
-        like or
-          like window-client
-          like native-null

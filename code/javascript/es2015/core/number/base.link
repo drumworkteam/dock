@@ -1,16 +1,16 @@
 
-load @tunebond/moon
-  take suit unknown
+load @treesurf/moon
+  take form unknown
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-number
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-string
 
-load @tunebond/bolt/code/javascript/es5/number
-  take face number
+load @treesurf/nest/code/javascript/es5/number
+  take form number
 
-face number
+form number
   hook self
     link epsilon, name <EPSILON>
       like native-number
@@ -20,27 +20,33 @@ face number
       like native-number
 
     task is-finite, name <isFinite>
+      like native-boolean
+
       take number, like unknown
-      free seed, like native-boolean
 
     task is-integer, name <isInteger>
+      like native-boolean
+
       take number, like unknown
-      free seed, like native-boolean
 
     task is-na-n, name <isNaN>
+      like native-boolean
+
       take number, like unknown
-      free seed, like native-boolean
 
     task is-safe-integer, name <isSafeInteger>
+      like native-boolean
+
       take number, like unknown
-      free seed, like native-boolean
 
     task parse-float, name <parseFloat>
+      like native-number
+
       take string, like native-string
-      free seed, like native-number
 
     task parse-int, name <parseInt>
+      like native-number
+
       take string, like native-string
       take radix, like native-number
         void true
-      free seed, like native-number

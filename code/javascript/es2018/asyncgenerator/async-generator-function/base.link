@@ -1,21 +1,21 @@
 
-load @tunebond/moon
-  take suit any
+load @treesurf/moon
+  take form any
 
-load @tunebond/bolt/code/javascript
-  take face array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @tunebond/bolt/code/javascript/native
-  take face native-number
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-number
+  take form native-string
 
-load @tunebond/bolt/code/javascript/es2018/asyncgenerator
-  take face async-generator
+load @treesurf/nest/code/javascript/es2018/asyncgenerator
+  take form async-generator
 
-load @tunebond/bolt/code/javascript/es2018/asyncgenerator/async-generator-function
-  take face async-generator-function
+load @treesurf/nest/code/javascript/es2018/asyncgenerator/async-generator-function
+  take form async-generator-function
 
-face async-generator-function, name <AsyncGeneratorFunction>
+form async-generator-function, name <AsyncGeneratorFunction>
   link length, name <length>
     like native-number
   link name, name <name>
@@ -24,13 +24,14 @@ face async-generator-function, name <AsyncGeneratorFunction>
     like async-generator
 
   hook make
+    like async-generator
+
     take args
       like array
         like any
       rest true
-    free seed, like async-generator
 
-face async-generator-function
+form async-generator-function
   hook self
     link length, name <length>
       like native-number
@@ -40,8 +41,9 @@ face async-generator-function
       like async-generator-function
 
   hook make
+    like async-generator-function
+
     take args
       like array
         like native-string
       rest true
-    free seed, like async-generator-function

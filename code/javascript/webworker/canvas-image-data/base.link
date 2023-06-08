@@ -1,38 +1,44 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-number
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-number
+  take form native-void
 
-load @tunebond/bolt/code/javascript/webworker
-  take face image-data
+load @treesurf/nest/code/javascript/webworker
+  take form image-data
 
-load @tunebond/bolt/code/javascript/dom/canvas-image-data
-  take face canvas-image-data
+load @treesurf/nest/code/javascript/dom/canvas-image-data
+  take form canvas-image-data
 
-face canvas-image-data, name <CanvasImageData>
+form canvas-image-data, name <CanvasImageData>
   task create-image-data, name <createImageData>
+    like image-data
+
     take sw, like native-number
     take sh, like native-number
-    free seed, like image-data
 
   task create-image-data, name <createImageData>
+    like image-data
+
     take imagedata, like image-data
-    free seed, like image-data
 
   task get-image-data, name <getImageData>
+    like image-data
+
     take sx, like native-number
     take sy, like native-number
     take sw, like native-number
     take sh, like native-number
-    free seed, like image-data
 
   task put-image-data, name <putImageData>
+    like native-void
+
     take imagedata, like image-data
     take dx, like native-number
     take dy, like native-number
-    free seed, like native-void
 
   task put-image-data, name <putImageData>
+    like native-void
+
     take imagedata, like image-data
     take dx, like native-number
     take dy, like native-number
@@ -40,4 +46,3 @@ face canvas-image-data, name <CanvasImageData>
     take dirty-y, like native-number
     take dirty-width, like native-number
     take dirty-height, like native-number
-    free seed, like native-void

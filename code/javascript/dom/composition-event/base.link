@@ -1,24 +1,26 @@
 
-load @tunebond/moon
-  take suit or
+load @treesurf/moon
+  take form or
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-null
-  take face native-string
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-string
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face ui-event
-  take face window-proxy
+load @treesurf/nest/code/javascript/dom
+  take form ui-event
+  take form window-proxy
 
-face composition-event, name <CompositionEvent>
+form composition-event, name <CompositionEvent>
   base ui-event
 
   link data, name <data>
     like native-string
 
   task init-composition-event, name <initCompositionEvent>
+    like native-void
+
     take type-arg, like native-string
     take bubbles-arg, like native-boolean
       void true
@@ -31,4 +33,3 @@ face composition-event, name <CompositionEvent>
       void true
     take data-arg, like native-string
       void true
-    free seed, like native-void

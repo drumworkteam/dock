@@ -1,16 +1,16 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-number
-  take face native-string
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-number
+  take form native-string
+  take form native-void
 
-load @tunebond/bolt/code/javascript/dom
-  take face child-node
-  take face document
-  take face node
-  take face non-document-type-child-node
+load @treesurf/nest/code/javascript/dom
+  take form child-node
+  take form document
+  take form node
+  take form non-document-type-child-node
 
-face character-data, name <CharacterData>
+form character-data, name <CharacterData>
   base node
   base child-node
   base non-document-type-child-node
@@ -24,26 +24,31 @@ face character-data, name <CharacterData>
     like document
 
   task append-data, name <appendData>
+    like native-void
+
     take data, like native-string
-    free seed, like native-void
 
   task delete-data, name <deleteData>
+    like native-void
+
     take offset, like native-number
     take count, like native-number
-    free seed, like native-void
 
   task insert-data, name <insertData>
+    like native-void
+
     take offset, like native-number
     take data, like native-string
-    free seed, like native-void
 
   task replace-data, name <replaceData>
+    like native-void
+
     take offset, like native-number
     take count, like native-number
     take data, like native-string
-    free seed, like native-void
 
   task substring-data, name <substringData>
+    like native-string
+
     take offset, like native-number
     take count, like native-number
-    free seed, like native-string

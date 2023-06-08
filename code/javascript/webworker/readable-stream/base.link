@@ -1,26 +1,26 @@
 
-load @tunebond/moon
-  take suit any
-  take suit like
-  take suit tuple
+load @treesurf/moon
+  take form any
+  take form like
+  take form tuple
 
-load @tunebond/bolt/code/javascript/native
-  take face native-boolean
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-boolean
+  take form native-void
 
-load @tunebond/bolt/code/javascript/es5
-  take face promise
+load @treesurf/nest/code/javascript/es5
+  take form promise
 
-load @tunebond/bolt/code/javascript/webworker
-  take face readable-stream-default-reader
-  take face readable-writable-pair
-  take face stream-pipe-options
-  take face writable-stream
+load @treesurf/nest/code/javascript/webworker
+  take form readable-stream-default-reader
+  take form readable-writable-pair
+  take form stream-pipe-options
+  take form writable-stream
 
-load @tunebond/bolt/code/javascript/dom/iterable/readable-stream
-  take face readable-stream
+load @treesurf/nest/code/javascript/dom/iterable/readable-stream
+  take form readable-stream
 
-face readable-stream, name <ReadableStream>
+form readable-stream, name <ReadableStream>
   head r
     back any
 
@@ -28,18 +28,20 @@ face readable-stream, name <ReadableStream>
     like native-boolean
 
   task cancel, name <cancel>
+    like promise
+      like native-void
+
     take reason, like any
       void true
-    free seed
-      like promise
-        like native-void
 
   task get-reader, name <getReader>
-    free seed
-      like readable-stream-default-reader
-        like r
+    like readable-stream-default-reader
+      like r
 
   task pipe-through, name <pipeThrough>
+    like readable-stream
+      like t
+
     head t
 
     take transform
@@ -48,24 +50,20 @@ face readable-stream, name <ReadableStream>
         like r
     take options, like stream-pipe-options
       void true
-    free seed
-      like readable-stream
-        like t
 
   task pipe-to, name <pipeTo>
+    like promise
+      like native-void
+
     take dest
       like writable-stream
         like r
     take options, like stream-pipe-options
       void true
-    free seed
-      like promise
-        like native-void
 
   task tee, name <tee>
-    free seed
-      like tuple
-        like readable-stream
-          like r
-        like readable-stream
-          like r
+    like tuple
+      like readable-stream
+        like r
+      like readable-stream
+        like r

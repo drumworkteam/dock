@@ -1,30 +1,34 @@
 
-load @tunebond/bolt/code/javascript/native
-  take face native-number
-  take face native-void
+load @treesurf/nest/code/javascript/native
+  take form native-number
+  take form native-void
 
-load @tunebond/bolt/code/javascript/webworker
-  take face canvas-image-source
+load @treesurf/nest/code/javascript/webworker
+  take form canvas-image-source
 
-load @tunebond/bolt/code/javascript/dom/canvas-draw-image
-  take face canvas-draw-image
+load @treesurf/nest/code/javascript/dom/canvas-draw-image
+  take form canvas-draw-image
 
-face canvas-draw-image, name <CanvasDrawImage>
+form canvas-draw-image, name <CanvasDrawImage>
   task draw-image, name <drawImage>
+    like native-void
+
     take image, like canvas-image-source
     take dx, like native-number
     take dy, like native-number
-    free seed, like native-void
 
   task draw-image, name <drawImage>
+    like native-void
+
     take image, like canvas-image-source
     take dx, like native-number
     take dy, like native-number
     take dw, like native-number
     take dh, like native-number
-    free seed, like native-void
 
   task draw-image, name <drawImage>
+    like native-void
+
     take image, like canvas-image-source
     take sx, like native-number
     take sy, like native-number
@@ -34,4 +38,3 @@ face canvas-draw-image, name <CanvasDrawImage>
     take dy, like native-number
     take dw, like native-number
     take dh, like native-number
-    free seed, like native-void

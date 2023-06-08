@@ -1,41 +1,44 @@
 
-load @tunebond/moon
-  take suit any
-  take suit or
-  take suit task
+load @treesurf/moon
+  take form any
+  take form or
+  take form task
 
-load @tunebond/bolt/code/javascript
-  take face array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @tunebond/bolt/code/javascript/native
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-string
 
-load @tunebond/bolt/code/javascript/es2020/symbol/wellknown
-  take face reg-exp
+load @treesurf/nest/code/javascript/es2020/symbol/wellknown
+  take form reg-exp
 
-load @tunebond/bolt/code/javascript/es2021/string/string
-  take face string
+load @treesurf/nest/code/javascript/es2021/string/string
+  take form string
 
-face string, name <String>
+form string, name <String>
   task replace-all, name <replaceAll>
+    like native-string
+
     take search-value
       like or
         like native-string
         like reg-exp
     take replace-value, like native-string
-    free seed, like native-string
 
   task replace-all, name <replaceAll>
+    like native-string
+
     take search-value
       like or
         like native-string
         like reg-exp
     take replacer
       like task
+        like native-string
+
         take substring, like native-string
         take args
           like array
             like any
           rest true
-        free seed, like native-string
-    free seed, like native-string

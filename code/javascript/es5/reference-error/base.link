@@ -1,18 +1,18 @@
 
-load @tunebond/bolt/code/javascript/es5
-  take face error
-  take face error-constructor
+load @treesurf/nest/code/javascript/es5
+  take form error
+  take form error-constructor
 
-load @tunebond/bolt/code/javascript/native
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-string
 
-load @tunebond/bolt/code/javascript/es5/reference-error
-  take face reference-error
+load @treesurf/nest/code/javascript/es5/reference-error
+  take form reference-error
 
-face reference-error, name <ReferenceError>
+form reference-error, name <ReferenceError>
   base error
 
-face reference-error
+form reference-error
   hook self
   base error-constructor
 
@@ -20,6 +20,7 @@ face reference-error
       like reference-error
 
   hook make
+    like reference-error
+
     take message, like native-string
       void true
-    free seed, like reference-error

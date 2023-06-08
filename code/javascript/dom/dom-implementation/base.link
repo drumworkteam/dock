@@ -1,22 +1,24 @@
 
-load @tunebond/moon
-  take suit any
-  take suit or
+load @treesurf/moon
+  take form any
+  take form or
 
-load @tunebond/bolt/code/javascript
-  take face array
+load @treesurf/nest/code/javascript
+  take form array
 
-load @tunebond/bolt/code/javascript/native
-  take face native-null
-  take face native-string
+load @treesurf/nest/code/javascript/native
+  take form native-null
+  take form native-string
 
-load @tunebond/bolt/code/javascript/dom
-  take face document
-  take face document-type
-  take face xml-document
+load @treesurf/nest/code/javascript/dom
+  take form document
+  take form document-type
+  take form xml-document
 
-face dom-implementation, name <DOMImplementation>
+form dom-implementation, name <DOMImplementation>
   task create-document, name <createDocument>
+    like xml-document
+
     take namespace
       like or
         like native-string
@@ -30,22 +32,24 @@ face dom-implementation, name <DOMImplementation>
         like document-type
         like native-null
       void true
-    free seed, like xml-document
 
   task create-document-type, name <createDocumentType>
+    like document-type
+
     take qualified-name, like native-string
     take public-id, like native-string
     take system-id, like native-string
-    free seed, like document-type
 
   task create-html-document, name <createHTMLDocument>
+    like document
+
     take title, like native-string
       void true
-    free seed, like document
 
   task has-feature, name <hasFeature>
+    text <true>
+
     take args
       like array
         like any
       rest true
-    free seed, text <true>
