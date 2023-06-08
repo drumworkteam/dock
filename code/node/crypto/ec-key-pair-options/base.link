@@ -1,0 +1,45 @@
+
+load @treesurf/moon
+  take form and
+  take form form
+  take form like
+  take form or
+
+load @tunebond/bolt/code/javascript
+  take form native-string
+
+load @tunebond/bolt/code/node/crypto
+  take form base-private-key-encoding-options
+  take form key-format
+
+form ec-key-pair-options, name <ECKeyPairOptions>
+  head pub-f
+    base key-format
+  head priv-f
+    base key-format
+
+  link named-curve, name <namedCurve>
+    like native-string
+    flex true
+  link public-key-encoding, name <publicKeyEncoding>
+    like form
+      link type, name <type>
+        like or
+          text <pkcs1>
+          text <spki>
+        flex true
+      link format, name <format>
+        like pub-f
+        flex true
+    flex true
+  link private-key-encoding, name <privateKeyEncoding>
+    like and
+      like base-private-key-encoding-options
+        like priv-f
+      like form
+        link type, name <type>
+          like or
+            text <sec1>
+            text <pkcs8>
+          flex true
+    flex true

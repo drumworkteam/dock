@@ -1,0 +1,61 @@
+
+load @treesurf/moon
+  take form any
+  take form or
+
+load @tunebond/bolt/code/javascript
+  take form native-boolean
+  take form native-string
+  take form native-undefined
+
+load @tunebond/bolt/code/node/buffer
+  take form buffer
+
+load @tunebond/bolt/code/node/vm
+  take form context
+  take form running-script-options
+  take form script-options
+
+form script, name <Script>
+  link cached-data-produced, name <cachedDataProduced>
+    like or
+      like native-boolean
+      like native-undefined
+  link cached-data-rejected, name <cachedDataRejected>
+    like or
+      like native-boolean
+      like native-undefined
+  link cached-data, name <cachedData>
+    like or
+      like buffer
+      like native-undefined
+
+  task run-in-context, name <runInContext>
+    like any
+
+    take contextified-object, like context
+    take options, like running-script-options
+      void true
+
+  task run-in-new-context, name <runInNewContext>
+    like any
+
+    take context-object, like context
+      void true
+    take options, like running-script-options
+      void true
+
+  task run-in-this-context, name <runInThisContext>
+    like any
+
+    take options, like running-script-options
+      void true
+
+  task create-cached-data, name <createCachedData>
+    like buffer
+
+form script-constructor
+  hook make
+    take code, like native-string
+    take options, like script-options
+      void true

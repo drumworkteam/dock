@@ -1,0 +1,132 @@
+
+bear @tunebond/bolt/code/javascript/node/http/incoming-http-headers
+bear @tunebond/bolt/code/javascript/node/http/outgoing-http-header
+bear @tunebond/bolt/code/javascript/node/http/outgoing-http-headers
+bear @tunebond/bolt/code/javascript/node/http/client-request-args
+bear @tunebond/bolt/code/javascript/node/http/server-options
+bear @tunebond/bolt/code/javascript/node/http/request-listener
+bear @tunebond/bolt/code/javascript/node/http/server
+bear @tunebond/bolt/code/javascript/node/http/outgoing-message
+bear @tunebond/bolt/code/javascript/node/http/server-response
+bear @tunebond/bolt/code/javascript/node/http/information-event
+bear @tunebond/bolt/code/javascript/node/http/client-request
+bear @tunebond/bolt/code/javascript/node/http/incoming-message
+bear @tunebond/bolt/code/javascript/node/http/agent-options
+bear @tunebond/bolt/code/javascript/node/http/agent
+bear @tunebond/bolt/code/javascript/node/http/request-options
+
+load @treesurf/moon
+  take form form
+  take form or
+  take form task
+
+load @tunebond/bolt/code/javascript
+  take form agent
+  take form array
+  take form client-request
+  take form incoming-message
+  take form native-number
+  take form native-string
+  take form native-undefined
+  take form native-void
+  take form server
+  take form url
+
+load @tunebond/bolt/code/node/http
+  take form request-listener
+  take form request-options
+  take form server-options
+
+host methods, name <METHODS>
+  like array
+    like native-string
+
+host status-codes, name <STATUS_CODES>
+  like form
+    mesh error-code, like native-number
+      like or
+        like native-string
+        like native-undefined
+    mesh error-code, like native-string
+      like or
+        like native-string
+        like native-undefined
+
+host global-agent, name <globalAgent>
+  like agent
+
+host max-header-size, name <maxHeaderSize>
+  like native-number
+
+task create-server, name <createServer>
+  like server
+
+  take request-listener, like request-listener
+    void true
+
+task create-server, name <createServer>
+  like server
+
+  take options, like server-options
+  take request-listener, like request-listener
+    void true
+
+task request, name <request>
+  like client-request
+
+  take options
+    like or
+      like request-options
+      like native-string
+      like url
+  take callback
+    like task
+      like native-void
+
+      take res, like incoming-message
+    void true
+
+task request, name <request>
+  like client-request
+
+  take url
+    like or
+      like native-string
+      like url
+  take options, like request-options
+  take callback
+    like task
+      like native-void
+
+      take res, like incoming-message
+    void true
+
+task get, name <get>
+  like client-request
+
+  take options
+    like or
+      like request-options
+      like native-string
+      like url
+  take callback
+    like task
+      like native-void
+
+      take res, like incoming-message
+    void true
+
+task get, name <get>
+  like client-request
+
+  take url
+    like or
+      like native-string
+      like url
+  take options, like request-options
+  take callback
+    like task
+      like native-void
+
+      take res, like incoming-message
+    void true

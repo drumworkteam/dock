@@ -1,0 +1,33 @@
+
+load @treesurf/moon
+  take form any
+  take form like
+  take form test
+
+load @tunebond/bolt/code/javascript
+  take form native-void
+  take form p
+  take form promise
+
+load @tunebond/bolt/code/node/stream/internal
+  take form pipeline-destination
+  take form pipeline-destination-promise-function
+
+form pipeline-promise, name <PipelinePromise>
+  head s
+    base pipeline-destination
+      like any
+      like any
+
+  like test
+    stem roll
+      like s
+      like pipeline-destination-promise-function
+        like any
+        name p
+      hook true
+        like promise
+          like p
+      hook false
+        like promise
+          like native-void

@@ -1,0 +1,71 @@
+
+bear @tunebond/bolt/code/javascript/node/v8/heap-space-info
+bear @tunebond/bolt/code/javascript/node/v8/does-zap-code-space-flag
+bear @tunebond/bolt/code/javascript/node/v8/heap-info
+bear @tunebond/bolt/code/javascript/node/v8/heap-code-statistics
+bear @tunebond/bolt/code/javascript/node/v8/serializer
+bear @tunebond/bolt/code/javascript/node/v8/default-serializer
+bear @tunebond/bolt/code/javascript/node/v8/deserializer
+bear @tunebond/bolt/code/javascript/node/v8/default-deserializer
+
+load @treesurf/moon
+  take form any
+
+load @tunebond/bolt/code/javascript
+  take form array
+  take form native-number
+  take form native-string
+  take form native-void
+  take form node-js-typed-array
+  take form readable
+
+load @tunebond/bolt/code/node/buffer
+  take form buffer
+
+load @tunebond/bolt/code/node/v8
+  take form heap-code-statistics
+  take form heap-info
+  take form heap-space-info
+
+task cached-data-version-tag, name <cachedDataVersionTag>
+  like native-number
+
+task get-heap-statistics, name <getHeapStatistics>
+  like heap-info
+
+task get-heap-space-statistics, name <getHeapSpaceStatistics>
+  like array
+    like heap-space-info
+
+task set-flags-from-string, name <setFlagsFromString>
+  like native-void
+
+  take flags, like native-string
+
+task get-heap-snapshot, name <getHeapSnapshot>
+  like readable
+
+task write-heap-snapshot, name <writeHeapSnapshot>
+  like native-string
+
+  take filename, like native-string
+    void true
+
+task get-heap-code-statistics, name <getHeapCodeStatistics>
+  like heap-code-statistics
+
+task serialize, name <serialize>
+  like buffer
+
+  take value, like any
+
+task deserialize, name <deserialize>
+  like any
+
+  take buffer, like node-js-typed-array
+
+task take-coverage, name <takeCoverage>
+  like native-void
+
+task stop-coverage, name <stopCoverage>
+  like native-void

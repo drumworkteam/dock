@@ -1,0 +1,20 @@
+
+load @treesurf/moon
+  take form or
+
+load @tunebond/bolt/code/javascript
+  take form native-undefined
+
+load @tunebond/bolt/code/node/inspector/runtime
+  take form exception-details
+  take form remote-object
+
+form run-script-return-type, name <RunScriptReturnType>
+  link result, name <result>
+    like remote-object
+    flex true
+  link exception-details, name <exceptionDetails>
+    like or
+      like exception-details
+      like native-undefined
+    flex true

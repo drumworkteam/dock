@@ -1,0 +1,27 @@
+
+load @treesurf/moon
+  take form or
+
+load @tunebond/bolt/code/javascript
+  take form native-boolean
+  take form native-string
+  take form native-undefined
+
+load @tunebond/bolt/code/node/inspector/runtime
+  take form execution-context-id
+
+form compile-script-parameter-type, name <CompileScriptParameterType>
+  link expression, name <expression>
+    like native-string
+    flex true
+  link source-url, name <sourceURL>
+    like native-string
+    flex true
+  link persist-script, name <persistScript>
+    like native-boolean
+    flex true
+  link execution-context-id, name <executionContextId>
+    like or
+      like execution-context-id
+      like native-undefined
+    flex true

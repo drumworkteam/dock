@@ -1,0 +1,72 @@
+
+load @treesurf/moon
+  take form or
+  take form task
+
+load @tunebond/bolt/code/javascript
+  take form array
+  take form incoming-message
+  take form native-number
+  take form native-string
+  take form native-this
+  take form native-void
+  take form socket
+
+load @tunebond/bolt/code/node/http
+  take form outgoing-http-header
+  take form outgoing-http-headers
+
+form server-response, name <ServerResponse>
+  base outgoing-message
+  link status-code, name <statusCode>, like native-number
+  link status-message, name <statusMessage>, like native-string
+
+  task assign-socket, name <assignSocket>
+    like native-void
+
+    take socket, like socket
+
+  task detach-socket, name <detachSocket>
+    like native-void
+
+    take socket, like socket
+
+  task write-continue, name <writeContinue>
+    like native-void
+
+    take callback
+      like task
+        like native-void
+
+      void true
+
+  task write-head, name <writeHead>
+    like native-this
+
+    take status-code, like native-number
+    take status-message, like native-string
+      void true
+    take headers
+      like or
+        like outgoing-http-headers
+        like array
+          like outgoing-http-header
+      void true
+
+  task write-head, name <writeHead>
+    like native-this
+
+    take status-code, like native-number
+    take headers
+      like or
+        like outgoing-http-headers
+        like array
+          like outgoing-http-header
+      void true
+
+  task write-processing, name <writeProcessing>
+    like native-void
+
+form server-response-constructor
+  hook make
+    take req, like incoming-message

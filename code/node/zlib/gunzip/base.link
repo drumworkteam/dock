@@ -1,0 +1,23 @@
+
+load @tunebond/bolt/code/node/zlib
+  take form input-type
+  take form zlib
+  take form zlib-options
+
+load @tunebond/bolt/code/javascript
+  take form promise
+
+load @tunebond/bolt/code/node/buffer
+  take form buffer
+
+form gunzip, name <Gunzip>
+  base stream-transform
+  base zlib
+
+task promisify, name <__promisify__>
+  like promise
+    like buffer
+
+  take buffer, like input-type
+  take options, like zlib-options
+    void true

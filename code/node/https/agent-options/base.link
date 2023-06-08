@@ -1,0 +1,26 @@
+
+load @treesurf/moon
+  take form or
+
+load @tunebond/bolt/code/javascript
+  take form native-boolean
+  take form native-number
+  take form native-undefined
+
+load @tunebond/bolt/code/node/http/agent-options
+  take form agent-options
+
+form agent-options, name <AgentOptions>
+  base http-agent-options
+  base tls-connection-options
+
+  link reject-unauthorized, name <rejectUnauthorized>
+    like or
+      like native-boolean
+      like native-undefined
+    flex true
+  link max-cached-sessions, name <maxCachedSessions>
+    like or
+      like native-number
+      like native-undefined
+    flex true

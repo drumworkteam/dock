@@ -1,0 +1,43 @@
+
+load @treesurf/moon
+  take form or
+
+load @tunebond/bolt/code/javascript
+  take form array
+  take form native-number
+  take form native-string
+  take form native-undefined
+  take form runtime-call-frame
+
+load @tunebond/bolt/code/node/inspector/profiler
+  take form position-tick-info
+
+form profile-node, name <ProfileNode>
+  link id, name <id>
+    like native-number
+    flex true
+  link call-frame, name <callFrame>
+    like runtime-call-frame
+    flex true
+  link hit-count, name <hitCount>
+    like or
+      like native-number
+      like native-undefined
+    flex true
+  link children, name <children>
+    like or
+      like array
+        like native-number
+      like native-undefined
+    flex true
+  link deopt-reason, name <deoptReason>
+    like or
+      like native-string
+      like native-undefined
+    flex true
+  link position-ticks, name <positionTicks>
+    like or
+      like array
+        like position-tick-info
+      like native-undefined
+    flex true

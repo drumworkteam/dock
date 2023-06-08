@@ -1,0 +1,20 @@
+
+load @tunebond/bolt/code/javascript
+  take form array
+  take form native-boolean
+  take form native-string
+
+load @tunebond/bolt/code/node/inspector/profiler
+  take form coverage-range
+
+form function-coverage, name <FunctionCoverage>
+  link function-name, name <functionName>
+    like native-string
+    flex true
+  link ranges, name <ranges>
+    like array
+      like coverage-range
+    flex true
+  link is-block-coverage, name <isBlockCoverage>
+    like native-boolean
+    flex true

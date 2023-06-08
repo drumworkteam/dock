@@ -1,0 +1,63 @@
+
+load @tunebond/bolt/code/javascript
+  take form native-boolean
+  take form native-number
+  take form native-string
+  take form native-void
+  take form socket-address
+
+load @tunebond/bolt/code/node/net
+  take form ip-version
+
+form block-list, name <BlockList>
+  task add-address, name <addAddress>
+    like native-void
+
+    take address, like native-string
+    take type, like ip-version
+      void true
+
+  task add-address, name <addAddress>
+    like native-void
+
+    take address, like socket-address
+
+  task add-range, name <addRange>
+    like native-void
+
+    take start, like native-string
+    take end, like native-string
+    take type, like ip-version
+      void true
+
+  task add-range, name <addRange>
+    like native-void
+
+    take start, like socket-address
+    take end, like socket-address
+
+  task add-subnet, name <addSubnet>
+    like native-void
+
+    take net, like socket-address
+    take prefix, like native-number
+
+  task add-subnet, name <addSubnet>
+    like native-void
+
+    take net, like native-string
+    take prefix, like native-number
+    take type, like ip-version
+      void true
+
+  task check, name <check>
+    like native-boolean
+
+    take address, like socket-address
+
+  task check, name <check>
+    like native-boolean
+
+    take address, like native-string
+    take type, like ip-version
+      void true

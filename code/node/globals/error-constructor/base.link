@@ -1,0 +1,38 @@
+
+load @treesurf/moon
+  take form any
+  take form or
+  take form task
+
+load @tunebond/bolt/code/javascript
+  take form array
+  take form error
+  take form function
+  take form native-number
+  take form native-object
+  take form native-undefined
+  take form native-void
+  take form node-js-call-site
+
+form error-constructor, name <ErrorConstructor>
+  link prepare-stack-trace, name <prepareStackTrace>
+    like or
+      like task
+        like any
+
+        take err, like error
+        take stack-traces
+          like array
+            like node-js-call-site
+      like native-undefined
+    flex true
+  link stack-trace-limit, name <stackTraceLimit>
+    like native-number
+    flex true
+
+  task capture-stack-trace, name <captureStackTrace>
+    like native-void
+
+    take target-object, like native-object
+    take constructor-opt, like function
+      void true

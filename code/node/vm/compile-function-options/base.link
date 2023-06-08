@@ -1,0 +1,41 @@
+
+load @treesurf/moon
+  take form or
+
+load @tunebond/bolt/code/javascript
+  take form array
+  take form native-boolean
+  take form native-undefined
+  take form object
+
+load @tunebond/bolt/code/node/buffer
+  take form buffer
+
+load @tunebond/bolt/code/node/vm
+  take form base-options
+  take form context
+
+form compile-function-options, name <CompileFunctionOptions>
+  base base-options
+
+  link cached-data, name <cachedData>
+    like or
+      like buffer
+      like native-undefined
+    flex true
+  link produce-cached-data, name <produceCachedData>
+    like or
+      like native-boolean
+      like native-undefined
+    flex true
+  link parsing-context, name <parsingContext>
+    like or
+      like context
+      like native-undefined
+    flex true
+  link context-extensions, name <contextExtensions>
+    like or
+      like array
+        like object
+      like native-undefined
+    flex true

@@ -1,0 +1,30 @@
+
+load @treesurf/moon
+  take form or
+
+load @tunebond/bolt/code/javascript
+  take form native-number
+  take form native-undefined
+  take form native-void
+  take form readable
+
+load @tunebond/bolt/code/node/buffer
+  take form buffer-encoding
+
+load @tunebond/bolt/code/node/stream/internal
+  take form stream-options
+
+form readable-options, name <ReadableOptions>
+  base stream-options
+
+  link encoding, name <encoding>
+    like or
+      like buffer-encoding
+      like native-undefined
+    flex true
+
+  task read, name <read>
+    like native-void
+
+    take this, like readable
+    take size, like native-number

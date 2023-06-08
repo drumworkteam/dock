@@ -1,0 +1,31 @@
+
+load @treesurf/moon
+  take form or
+
+load @tunebond/bolt/code/javascript
+  take form native-string
+  take form native-undefined
+
+load @tunebond/bolt/code/node/buffer
+  take form buffer
+
+load @tunebond/bolt/code/node/crypto
+  take form key-format
+
+form public-key-input, name <PublicKeyInput>
+  link key, name <key>
+    like or
+      like native-string
+      like buffer
+    flex true
+  link format, name <format>
+    like or
+      like key-format
+      like native-undefined
+    flex true
+  link type, name <type>
+    like or
+      text <pkcs1>
+      text <spki>
+      like native-undefined
+    flex true

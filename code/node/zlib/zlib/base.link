@@ -1,0 +1,52 @@
+
+load @treesurf/moon
+  take form or
+  take form task
+
+load @tunebond/bolt/code/javascript
+  take form native-boolean
+  take form native-number
+  take form native-string
+  take form native-undefined
+  take form native-void
+
+form zlib, name <Zlib>
+  link bytes-read, name <bytesRead>
+    like native-number
+  link bytes-written, name <bytesWritten>
+    like native-number
+  link shell, name <shell>
+    like or
+      like native-boolean
+      like native-string
+      like native-undefined
+    flex true
+
+  task close, name <close>
+    like native-void
+
+    take callback
+      like task
+        like native-void
+
+      void true
+
+  task flush, name <flush>
+    like native-void
+
+    take kind, like native-number
+      void true
+    take callback
+      like task
+        like native-void
+
+      void true
+
+  task flush, name <flush>
+    like native-void
+
+    take callback
+      like task
+        like native-void
+
+      void true

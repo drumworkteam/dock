@@ -1,0 +1,52 @@
+
+load @treesurf/moon
+  take form any
+
+load @tunebond/bolt/code/javascript
+  take form array-buffer
+  take form native-boolean
+  take form native-number
+  take form native-void
+  take form node-js-typed-array
+
+load @tunebond/bolt/code/node/buffer
+  take form buffer
+
+form serializer, name <Serializer>
+  task write-header, name <writeHeader>
+    like native-void
+
+  task write-value, name <writeValue>
+    like native-boolean
+
+    take val, like any
+
+  task release-buffer, name <releaseBuffer>
+    like buffer
+
+  task transfer-array-buffer, name <transferArrayBuffer>
+    like native-void
+
+    take id, like native-number
+    take array-buffer, like array-buffer
+
+  task write-uint32, name <writeUint32>
+    like native-void
+
+    take value, like native-number
+
+  task write-uint64, name <writeUint64>
+    like native-void
+
+    take hi, like native-number
+    take lo, like native-number
+
+  task write-double, name <writeDouble>
+    like native-void
+
+    take value, like native-number
+
+  task write-raw-bytes, name <writeRawBytes>
+    like native-void
+
+    take buffer, like node-js-typed-array

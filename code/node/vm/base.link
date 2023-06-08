@@ -1,0 +1,94 @@
+
+bear @tunebond/bolt/code/javascript/node/vm/context
+bear @tunebond/bolt/code/javascript/node/vm/base-options
+bear @tunebond/bolt/code/javascript/node/vm/script-options
+bear @tunebond/bolt/code/javascript/node/vm/running-script-options
+bear @tunebond/bolt/code/javascript/node/vm/compile-function-options
+bear @tunebond/bolt/code/javascript/node/vm/create-context-options
+bear @tunebond/bolt/code/javascript/node/vm/measure-memory-mode
+bear @tunebond/bolt/code/javascript/node/vm/measure-memory-options
+bear @tunebond/bolt/code/javascript/node/vm/memory-measurement
+bear @tunebond/bolt/code/javascript/node/vm/script
+
+load @treesurf/moon
+  take form any
+  take form or
+
+load @tunebond/bolt/code/javascript
+  take form function
+  take form native-boolean
+  take form native-string
+  take form promise
+  take form readonly-array
+
+load @tunebond/bolt/code/node/vm
+  take form compile-function-options
+  take form context
+  take form create-context-options
+  take form measure-memory-options
+  take form memory-measurement
+  take form running-script-options
+
+task create-context, name <createContext>
+  like context
+
+  take sandbox, like context
+    void true
+  take options, like create-context-options
+    void true
+
+task is-context, name <isContext>
+  like native-boolean
+
+  take sandbox, like context
+
+task run-in-context, name <runInContext>
+  like any
+
+  take code, like native-string
+  take contextified-object, like context
+  take options
+    like or
+      like running-script-options
+      like native-string
+    void true
+
+task run-in-new-context, name <runInNewContext>
+  like any
+
+  take code, like native-string
+  take context-object, like context
+    void true
+  take options
+    like or
+      like running-script-options
+      like native-string
+    void true
+
+task run-in-this-context, name <runInThisContext>
+  like any
+
+  take code, like native-string
+  take options
+    like or
+      like running-script-options
+      like native-string
+    void true
+
+task compile-function, name <compileFunction>
+  like function
+
+  take code, like native-string
+  take params
+    like readonly-array
+      like native-string
+    void true
+  take options, like compile-function-options
+    void true
+
+task measure-memory, name <measureMemory>
+  like promise
+    like memory-measurement
+
+  take options, like measure-memory-options
+    void true

@@ -1,0 +1,71 @@
+
+load @treesurf/moon
+  take form or
+
+load @tunebond/bolt/code/javascript
+  take form key-object
+  take form native-number
+  take form native-string
+  take form native-undefined
+  take form webcrypto-crypto-key
+
+load @tunebond/bolt/code/node/buffer
+  take form buffer
+
+load @tunebond/bolt/code/node/crypto
+  take form asymmetric-key-details
+  take form json-web-key
+  take form jwk-key-export-options
+  take form key-export-options
+  take form key-object-type
+  take form key-type
+
+form key-object, name <KeyObject>
+  link asymmetric-key-type, name <asymmetricKeyType>
+    like or
+      like key-type
+      like native-undefined
+  link asymmetric-key-size, name <asymmetricKeySize>
+    like or
+      like native-number
+      like native-undefined
+  link asymmetric-key-details, name <asymmetricKeyDetails>
+    like or
+      like asymmetric-key-details
+      like native-undefined
+  link symmetric-key-size, name <symmetricKeySize>
+    like or
+      like native-number
+      like native-undefined
+  link type, name <type>, like key-object-type
+
+  task export, name <export>
+    like or
+      like native-string
+      like buffer
+
+    take options
+      like key-export-options
+        text <pem>
+
+  task export, name <export>
+    like buffer
+
+    take options
+      like key-export-options
+        text <der>
+      void true
+
+  task export, name <export>
+    like json-web-key
+
+    take options, like jwk-key-export-options
+      void true
+
+form key-object-constructor
+  hook make
+
+  task from, name <from>
+    like key-object
+
+    take key, like webcrypto-crypto-key

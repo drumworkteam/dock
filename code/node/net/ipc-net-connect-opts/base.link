@@ -1,0 +1,21 @@
+
+load @treesurf/moon
+  take form or
+
+load @tunebond/bolt/code/javascript
+  take form native-number
+  take form native-undefined
+
+load @tunebond/bolt/code/node/net
+  take form ipc-socket-connect-opts
+  take form socket-constructor-opts
+
+form ipc-net-connect-opts, name <IpcNetConnectOpts>
+  base ipc-socket-connect-opts
+  base socket-constructor-opts
+
+  link timeout, name <timeout>
+    like or
+      like native-number
+      like native-undefined
+    flex true

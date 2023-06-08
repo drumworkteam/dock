@@ -1,0 +1,25 @@
+
+load @treesurf/moon
+  take form or
+
+load @tunebond/bolt/code/javascript
+  take form native-string
+  take form native-void
+  take form promise
+  take form uint8-array
+
+load @tunebond/bolt/code/node/fs
+  take form path-or-file-descriptor
+  take form write-file-options
+
+task promisify, name <__promisify__>
+  like promise
+    like native-void
+
+  take file, like path-or-file-descriptor
+  take data
+    like or
+      like native-string
+      like uint8-array
+  take options, like write-file-options
+    void true

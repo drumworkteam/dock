@@ -1,0 +1,64 @@
+
+load @treesurf/moon
+  take form form
+  take form like
+  take form or
+
+load @tunebond/bolt/code/javascript
+  take form native-null
+  take form native-number
+  take form native-string
+  take form node-js-array-buffer-view
+  take form promise
+
+load @tunebond/bolt/code/node/buffer
+  take form buffer-encoding
+
+task promisify, name <__promisify__>
+  like promise
+    like form
+      link bytes-written, name <bytesWritten>
+        like native-number
+        flex true
+      link buffer, name <buffer>
+        like t-buffer
+        flex true
+
+  head t-buffer
+    base node-js-array-buffer-view
+
+  take fd, like native-number
+  take buffer, like t-buffer
+    void true
+  take offset, like native-number
+    void true
+  take length, like native-number
+    void true
+  take position
+    like or
+      like native-number
+      like native-null
+    void true
+
+task promisify, name <__promisify__>
+  like promise
+    like form
+      link bytes-written, name <bytesWritten>
+        like native-number
+        flex true
+      link buffer, name <buffer>
+        like native-string
+        flex true
+
+  take fd, like native-number
+  take string, like native-string
+  take position
+    like or
+      like native-number
+      like native-null
+    void true
+  take encoding
+    like or
+      like buffer-encoding
+      like native-null
+    void true

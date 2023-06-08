@@ -1,0 +1,16 @@
+
+load @tunebond/bolt/code/javascript
+  take form native-void
+  take form node-js-errno-exception
+
+load @tunebond/bolt/code/node/http2
+  take form server-stream-file-response-options
+
+form server-stream-file-response-options-with-error
+  name <ServerStreamFileResponseOptionsWithError>
+  base server-stream-file-response-options
+
+  task on-error, name <onError>
+    like native-void
+
+    take err, like node-js-errno-exception
