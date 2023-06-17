@@ -1,24 +1,18 @@
 
-load @tunebond/moon
-  take form index
-  take form like
-  take form or
-  take form test
-
 load @tunebond/bolt/code/javascript/native
   take form native-null
   take form native-string
   take form native-undefined
   take form native-void
 
-load @tunebond/bolt/code/javascript/es5
-  take form promise
-  take form readonly-array
-
-load @tunebond/bolt/code/javascript/webworker
+load @tunebond/bolt/code/browser/webworker
   take form client
   take form client-query-options
   take form window-client
+
+load @tunebond/bolt/code/javascript/es5
+  take form promise
+  take form readonly-array
 
 form clients, name <Clients>
   task claim, name <claim>
@@ -31,7 +25,7 @@ form clients, name <Clients>
         like client
         like native-undefined
 
-    take id, like native-string
+    take id
 
   task match-all, name <matchAll>
     like promise
@@ -50,8 +44,7 @@ form clients, name <Clients>
     head t
       base client-query-options
 
-    take options, like t
-      void true
+    take options, like maybe, like t
 
   task open-window, name <openWindow>
     like promise
@@ -59,4 +52,4 @@ form clients, name <Clients>
         like window-client
         like native-null
 
-    take url, like native-string
+    take url

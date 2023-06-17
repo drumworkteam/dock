@@ -2,7 +2,7 @@
 load @tunebond/bolt/code/javascript/native
   take form native-string
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form text-encoder-common
   take form text-encoder-encode-into-result
 
@@ -15,11 +15,10 @@ form text-encoder, name <TextEncoder>
   task encode, name <encode>
     like uint8-array
 
-    take input, like native-string
-      void true
+    take input, like maybe, like native-string
 
   task encode-into, name <encodeInto>
     like text-encoder-encode-into-result
 
-    take source, like native-string
-    take destination, like uint8-array
+    take source
+    take destination

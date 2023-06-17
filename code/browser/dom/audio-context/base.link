@@ -1,19 +1,11 @@
 
-load @tunebond/moon
-  take form any
-  take form index
-  take form key-list
-  take form like
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-number
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form add-event-listener-options
   take form audio-timestamp
   take form base-audio-context
@@ -42,7 +34,7 @@ form audio-context, name <AudioContext>
   task create-media-element-source, name <createMediaElementSource>
     like media-element-audio-source-node
 
-    take media-element, like html-media-element
+    take media-element
 
   task create-media-stream-destination, name <createMediaStreamDestination>
     like media-stream-audio-destination-node
@@ -50,7 +42,7 @@ form audio-context, name <AudioContext>
   task create-media-stream-source, name <createMediaStreamSource>
     like media-stream-audio-source-node
 
-    take media-stream, like media-stream
+    take media-stream
 
   task get-output-timestamp, name <getOutputTimestamp>
     like audio-timestamp
@@ -70,32 +62,24 @@ form audio-context, name <AudioContext>
       base key-list
         like base-audio-context-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like audio-context
-        take ev
-          like index
-            like base-audio-context-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task add-event-listener, name <addEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
@@ -104,29 +88,21 @@ form audio-context, name <AudioContext>
       base key-list
         like base-audio-context-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like audio-context
-        take ev
-          like index
-            like base-audio-context-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

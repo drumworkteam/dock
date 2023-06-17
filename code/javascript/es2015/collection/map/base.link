@@ -1,11 +1,4 @@
 
-load @tunebond/moon
-  take form any
-  take form like
-  take form or
-  take form task
-  take form tuple
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-null
@@ -33,41 +26,31 @@ form map, name <Map>
   task delete, name <delete>
     like native-boolean
 
-    take key, like k
+    take key
 
   task for-each, name <forEach>
     like native-void
 
     take callbackfn
-      like task
-        like native-void
-
-        take value, like v
-        take key, like k
-        take map
-          like map
-            like k
-            like v
-    take this-arg, like any
-      void true
+    take this-arg, like maybe, like any
 
   task get, name <get>
     like or
       like v
       like native-undefined
 
-    take key, like k
+    take key
 
   task has, name <has>
     like native-boolean
 
-    take key, like k
+    take key
 
   task set, name <set>
     like native-this
 
-    take key, like k
-    take value, like v
+    take key
+    take value
 
 form map
   hook self
@@ -90,10 +73,10 @@ form map
     head v
 
     take entries
-      like or
-        like array
-          like tuple
-            like k
-            like v
-        like native-null
-      void true
+      like maybe
+        like or
+          like array
+            like tuple
+              like k
+              like v
+          like native-null

@@ -1,13 +1,10 @@
 
-load @tunebond/moon
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-string
   take form native-undefined
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form custom-element-constructor
   take form element-definition-options
   take form node
@@ -19,25 +16,24 @@ form custom-element-registry, name <CustomElementRegistry>
   task define, name <define>
     like native-void
 
-    take name, like native-string
-    take constructor, like custom-element-constructor
-    take options, like element-definition-options
-      void true
+    take name
+    take constructor
+    take options, like maybe, like element-definition-options
 
   task get, name <get>
     like or
       like custom-element-constructor
       like native-undefined
 
-    take name, like native-string
+    take name
 
   task upgrade, name <upgrade>
     like native-void
 
-    take root, like node
+    take root
 
   task when-defined, name <whenDefined>
     like promise
       like custom-element-constructor
 
-    take name, like native-string
+    take name

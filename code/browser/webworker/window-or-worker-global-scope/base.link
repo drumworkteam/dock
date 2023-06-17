@@ -2,19 +2,13 @@
 load @tunebond/bolt/code/javascript
   take form array
 
-load @tunebond/moon
-  take form any
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-number
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/es5
-  take form promise
-
-load @tunebond/bolt/code/javascript/webworker
+load @tunebond/bolt/code/browser/webworker
   take form cache-storage
   take form crypto
   take form idb-factory
@@ -28,7 +22,10 @@ load @tunebond/bolt/code/javascript/webworker
   take form timer-handler
   take form void-function
 
-load @tunebond/bolt/code/javascript/dom/window-or-worker-global-scope
+load @tunebond/bolt/code/javascript/es5
+  take form promise
+
+load @tunebond/bolt/code/browser/dom/window-or-worker-global-scope
   take form window-or-worker-global-scope
 
 form window-or-worker-global-scope, name <WindowOrWorkerGlobalScope>
@@ -48,64 +45,58 @@ form window-or-worker-global-scope, name <WindowOrWorkerGlobalScope>
   task atob, name <atob>
     like native-string
 
-    take data, like native-string
+    take data
 
   task btoa, name <btoa>
     like native-string
 
-    take data, like native-string
+    take data
 
   task clear-interval, name <clearInterval>
     like native-void
 
-    take handle, like native-number
-      void true
+    take handle, like maybe, like native-number
 
   task clear-timeout, name <clearTimeout>
     like native-void
 
-    take handle, like native-number
-      void true
+    take handle, like maybe, like native-number
 
   task create-image-bitmap, name <createImageBitmap>
     like promise
       like image-bitmap
 
-    take image, like image-bitmap-source
-    take options, like image-bitmap-options
-      void true
+    take image
+    take options, like maybe, like image-bitmap-options
 
   task create-image-bitmap, name <createImageBitmap>
     like promise
       like image-bitmap
 
-    take image, like image-bitmap-source
-    take sx, like native-number
-    take sy, like native-number
-    take sw, like native-number
-    take sh, like native-number
-    take options, like image-bitmap-options
-      void true
+    take image
+    take sx
+    take sy
+    take sw
+    take sh
+    take options, like maybe, like image-bitmap-options
 
   task fetch, name <fetch>
     like promise
       like response
 
-    take input, like request-info
-    take init, like request-init
-      void true
+    take input
+    take init, like maybe, like request-init
 
   task queue-microtask, name <queueMicrotask>
     like native-void
 
-    take callback, like void-function
+    take callback
 
   task set-interval, name <setInterval>
     like native-number
 
-    take handler, like timer-handler
-    take timeout, like native-number
-      void true
+    take handler
+    take timeout, like maybe, like native-number
     take arguments
       like array
         like any
@@ -114,9 +105,8 @@ form window-or-worker-global-scope, name <WindowOrWorkerGlobalScope>
   task set-timeout, name <setTimeout>
     like native-number
 
-    take handler, like timer-handler
-    take timeout, like native-number
-      void true
+    take handler
+    take timeout, like maybe, like native-number
     take arguments
       like array
         like any

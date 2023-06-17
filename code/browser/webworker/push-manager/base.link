@@ -1,19 +1,16 @@
 
-load @tunebond/moon
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-null
 
-load @tunebond/bolt/code/javascript/es5
-  take form promise
-
-load @tunebond/bolt/code/javascript/webworker
+load @tunebond/bolt/code/browser/webworker
   take form push-permission-state
   take form push-subscription
   take form push-subscription-options-init
 
-load @tunebond/bolt/code/javascript/dom/push-manager
+load @tunebond/bolt/code/javascript/es5
+  take form promise
+
+load @tunebond/bolt/code/browser/dom/push-manager
   take form push-manager
 
 form push-manager, name <PushManager>
@@ -27,12 +24,10 @@ form push-manager, name <PushManager>
     like promise
       like push-permission-state
 
-    take options, like push-subscription-options-init
-      void true
+    take options, like maybe, like push-subscription-options-init
 
   task subscribe, name <subscribe>
     like promise
       like push-subscription
 
-    take options, like push-subscription-options-init
-      void true
+    take options, like maybe, like push-subscription-options-init

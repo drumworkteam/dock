@@ -18,16 +18,13 @@ form big-int, name <BigInt>
   task to-string, name <toString>
     like native-string
 
-    take radix, like native-number
-      void true
+    take radix, like maybe, like native-number
 
   task to-locale-string, name <toLocaleString>
     like native-string
 
-    take locales, like native-string
-      void true
-    take options, like big-int-to-locale-string-options
-      void true
+    take locales, like maybe, like native-string
+    take options, like maybe, like big-int-to-locale-string-options
 
   task value-of, name <valueOf>
     like native-bigint
@@ -40,11 +37,11 @@ form big-int
     task as-int-n, name <asIntN>
       like native-bigint
 
-      take bits, like native-number
-      take int, like native-bigint
+      take bits
+      take int
 
     task as-uint-n, name <asUintN>
       like native-bigint
 
-      take bits, like native-number
-      take int, like native-bigint
+      take bits
+      take int

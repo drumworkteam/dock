@@ -1,12 +1,4 @@
 
-load @tunebond/moon
-  take form any
-  take form index
-  take form key-list
-  take form like
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-null
@@ -14,7 +6,7 @@ load @tunebond/bolt/code/javascript/native
   take form native-undefined
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form add-event-listener-options
   take form event
   take form event-listener-options
@@ -43,8 +35,8 @@ form service-worker-container, name <ServiceWorkerContainer>
       like task
         like any
 
-        take this, like service-worker-container
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link onmessage, name <onmessage>
@@ -52,8 +44,8 @@ form service-worker-container, name <ServiceWorkerContainer>
       like task
         like any
 
-        take this, like service-worker-container
-        take ev, like message-event
+        take this
+        take ev
       like native-null
     flex true
   link onmessageerror, name <onmessageerror>
@@ -61,8 +53,8 @@ form service-worker-container, name <ServiceWorkerContainer>
       like task
         like any
 
-        take this, like service-worker-container
-        take ev, like message-event
+        take this
+        take ev
       like native-null
     flex true
   link ready, name <ready>
@@ -76,10 +68,10 @@ form service-worker-container, name <ServiceWorkerContainer>
         like native-undefined
 
     take client-url
-      like or
-        like native-string
-        like url
-      void true
+      like maybe
+        like or
+          like native-string
+          like url
 
   task get-registrations, name <getRegistrations>
     like promise
@@ -91,11 +83,7 @@ form service-worker-container, name <ServiceWorkerContainer>
       like service-worker-registration
 
     take script-url
-      like or
-        like native-string
-        like url
-    take options, like registration-options
-      void true
+    take options, like maybe, like registration-options
 
   task start-messages, name <startMessages>
     like native-void
@@ -107,32 +95,24 @@ form service-worker-container, name <ServiceWorkerContainer>
       base key-list
         like service-worker-container-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like service-worker-container
-        take ev
-          like index
-            like service-worker-container-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task add-event-listener, name <addEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
@@ -141,29 +121,21 @@ form service-worker-container, name <ServiceWorkerContainer>
       base key-list
         like service-worker-container-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like service-worker-container
-        take ev
-          like index
-            like service-worker-container-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

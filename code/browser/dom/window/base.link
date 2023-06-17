@@ -2,15 +2,6 @@
 load @tunebond/bolt/code/javascript
   take form array
 
-load @tunebond/moon
-  take form and
-  take form any
-  take form index
-  take form key-list
-  take form like
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-null
@@ -19,7 +10,7 @@ load @tunebond/bolt/code/javascript/native
   take form native-undefined
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form add-event-listener-options
   take form animation-frame-provider
   take form bar-prop
@@ -110,8 +101,8 @@ form window, name <Window>
       like task
         like any
 
-        take this, like window
-        take ev, like device-motion-event
+        take this
+        take ev
       like native-null
     flex true
   link ondeviceorientation, name <ondeviceorientation>
@@ -119,8 +110,8 @@ form window, name <Window>
       like task
         like any
 
-        take this, like window
-        take ev, like device-orientation-event
+        take this
+        take ev
       like native-null
     flex true
   link onorientationchange, name <onorientationchange>
@@ -128,8 +119,8 @@ form window, name <Window>
       like task
         like any
 
-        take this, like window
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link opener, name <opener>
@@ -196,15 +187,11 @@ form window, name <Window>
 
   task location, name <location>
     take href
-      like or
-        like native-string
-        like location
 
   task alert, name <alert>
     like native-void
 
-    take message, like any
-      void true
+    take message, like maybe, like any
 
   task blur, name <blur>
     like native-void
@@ -212,7 +199,7 @@ form window, name <Window>
   task cancel-idle-callback, name <cancelIdleCallback>
     like native-void
 
-    take handle, like native-number
+    take handle
 
   task capture-events, name <captureEvents>
     like native-void
@@ -223,8 +210,7 @@ form window, name <Window>
   task confirm, name <confirm>
     like native-boolean
 
-    take message, like native-string
-      void true
+    take message, like maybe, like native-string
 
   task focus, name <focus>
     like native-void
@@ -232,12 +218,12 @@ form window, name <Window>
   task get-computed-style, name <getComputedStyle>
     like css-style-declaration
 
-    take elt, like element
+    take elt
     take pseudo-elt
-      like or
-        like native-string
-        like native-null
-      void true
+      like maybe
+        like or
+          like native-string
+          like native-null
 
   task get-selection, name <getSelection>
     like or
@@ -247,19 +233,19 @@ form window, name <Window>
   task match-media, name <matchMedia>
     like media-query-list
 
-    take query, like native-string
+    take query
 
   task move-by, name <moveBy>
     like native-void
 
-    take x, like native-number
-    take y, like native-number
+    take x
+    take y
 
   task move-to, name <moveTo>
     like native-void
 
-    take x, like native-number
-    take y, like native-number
+    take x
+    take y
 
   task open, name <open>
     like or
@@ -267,31 +253,28 @@ form window, name <Window>
       like native-null
 
     take url
-      like or
-        like native-string
-        like url
-      void true
-    take target, like native-string
-      void true
-    take features, like native-string
-      void true
+      like maybe
+        like or
+          like native-string
+          like url
+    take target, like maybe, like native-string
+    take features, like maybe, like native-string
 
   task post-message, name <postMessage>
     like native-void
 
-    take message, like any
-    take target-origin, like native-string
+    take message
+    take target-origin
     take transfer
-      like array
-        like transferable
-      void true
+      like maybe
+        like array
+          like transferable
 
   task post-message, name <postMessage>
     like native-void
 
-    take message, like any
-    take options, like window-post-message-options
-      void true
+    take message
+    take options, like maybe, like window-post-message-options
 
   task print, name <print>
     like native-void
@@ -301,10 +284,8 @@ form window, name <Window>
       like native-string
       like native-null
 
-    take message, like native-string
-      void true
-    take default, like native-string
-      void true
+    take message, like maybe, like native-string
+    take default, like maybe, like native-string
 
   task release-events, name <releaseEvents>
     like native-void
@@ -312,57 +293,53 @@ form window, name <Window>
   task request-idle-callback, name <requestIdleCallback>
     like native-number
 
-    take callback, like idle-request-callback
-    take options, like idle-request-options
-      void true
+    take callback
+    take options, like maybe, like idle-request-options
 
   task resize-by, name <resizeBy>
     like native-void
 
-    take x, like native-number
-    take y, like native-number
+    take x
+    take y
 
   task resize-to, name <resizeTo>
     like native-void
 
-    take width, like native-number
-    take height, like native-number
+    take width
+    take height
 
   task scroll, name <scroll>
     like native-void
 
-    take options, like scroll-to-options
-      void true
+    take options, like maybe, like scroll-to-options
 
   task scroll, name <scroll>
     like native-void
 
-    take x, like native-number
-    take y, like native-number
+    take x
+    take y
 
   task scroll-by, name <scrollBy>
     like native-void
 
-    take options, like scroll-to-options
-      void true
+    take options, like maybe, like scroll-to-options
 
   task scroll-by, name <scrollBy>
     like native-void
 
-    take x, like native-number
-    take y, like native-number
+    take x
+    take y
 
   task scroll-to, name <scrollTo>
     like native-void
 
-    take options, like scroll-to-options
-      void true
+    take options, like maybe, like scroll-to-options
 
   task scroll-to, name <scrollTo>
     like native-void
 
-    take x, like native-number
-    take y, like native-number
+    take x
+    take y
 
   task stop, name <stop>
     like native-void
@@ -374,32 +351,24 @@ form window, name <Window>
       base key-list
         like window-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like window
-        take ev
-          like index
-            like window-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task add-event-listener, name <addEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
@@ -408,32 +377,24 @@ form window, name <Window>
       base key-list
         like window-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like window
-        take ev
-          like index
-            like window-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
 
-  mesh index, like native-number
+  mesh index
     like window

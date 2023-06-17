@@ -1,19 +1,11 @@
 
-load @tunebond/moon
-  take form any
-  take form index
-  take form key-list
-  take form like
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-null
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/webworker
+load @tunebond/bolt/code/browser/webworker
   take form add-event-listener-options
   take form broadcast-channel-event-map
   take form event-listener-options
@@ -21,7 +13,7 @@ load @tunebond/bolt/code/javascript/webworker
   take form event-target
   take form message-event
 
-load @tunebond/bolt/code/javascript/dom/broadcast-channel
+load @tunebond/bolt/code/browser/dom/broadcast-channel
   take form broadcast-channel
 
 form broadcast-channel, name <BroadcastChannel>
@@ -34,8 +26,8 @@ form broadcast-channel, name <BroadcastChannel>
       like task
         like any
 
-        take this, like broadcast-channel
-        take ev, like message-event
+        take this
+        take ev
       like native-null
     flex true
   link onmessageerror, name <onmessageerror>
@@ -43,8 +35,8 @@ form broadcast-channel, name <BroadcastChannel>
       like task
         like any
 
-        take this, like broadcast-channel
-        take ev, like message-event
+        take this
+        take ev
       like native-null
     flex true
 
@@ -54,7 +46,7 @@ form broadcast-channel, name <BroadcastChannel>
   task post-message, name <postMessage>
     like native-void
 
-    take message, like any
+    take message
 
   task add-event-listener, name <addEventListener>
     like native-void
@@ -63,32 +55,24 @@ form broadcast-channel, name <BroadcastChannel>
       base key-list
         like broadcast-channel-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like broadcast-channel
-        take ev
-          like index
-            like broadcast-channel-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task add-event-listener, name <addEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
@@ -97,29 +81,21 @@ form broadcast-channel, name <BroadcastChannel>
       base key-list
         like broadcast-channel-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like broadcast-channel
-        take ev
-          like index
-            like broadcast-channel-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

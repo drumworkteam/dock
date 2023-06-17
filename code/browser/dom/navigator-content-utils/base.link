@@ -1,20 +1,14 @@
 
-load @tunebond/moon
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form url
 
 form navigator-content-utils, name <NavigatorContentUtils>
   task register-protocol-handler, name <registerProtocolHandler>
     like native-void
 
-    take scheme, like native-string
+    take scheme
     take url
-      like or
-        like native-string
-        like url

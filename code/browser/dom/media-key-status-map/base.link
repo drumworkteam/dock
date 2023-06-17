@@ -1,16 +1,11 @@
 
-load @tunebond/moon
-  take form any
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-number
   take form native-undefined
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form buffer-source
   take form media-key-status
 
@@ -23,22 +18,15 @@ form media-key-status-map, name <MediaKeyStatusMap>
       like media-key-status
       like native-undefined
 
-    take key-id, like buffer-source
+    take key-id
 
   task has, name <has>
     like native-boolean
 
-    take key-id, like buffer-source
+    take key-id
 
   task for-each, name <forEach>
     like native-void
 
     take callbackfn
-      like task
-        like native-void
-
-        take value, like media-key-status
-        take key, like buffer-source
-        take parent, like media-key-status-map
-    take this-arg, like any
-      void true
+    take this-arg, like maybe, like any

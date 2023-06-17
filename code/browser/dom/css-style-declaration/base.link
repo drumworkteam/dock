@@ -1,14 +1,11 @@
 
-load @tunebond/moon
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-null
   take form native-number
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form css-rule
 
 form css-style-declaration, name <CSSStyleDeclaration>
@@ -1357,33 +1354,29 @@ form css-style-declaration, name <CSSStyleDeclaration>
   task get-property-priority, name <getPropertyPriority>
     like native-string
 
-    take property, like native-string
+    take property
 
   task get-property-value, name <getPropertyValue>
     like native-string
 
-    take property, like native-string
+    take property
 
   task item, name <item>
     like native-string
 
-    take index, like native-number
+    take index
 
   task remove-property, name <removeProperty>
     like native-string
 
-    take property, like native-string
+    take property
 
   task set-property, name <setProperty>
     like native-void
 
-    take property, like native-string
+    take property
     take value
-      like or
-        like native-string
-        like native-null
-    take priority, like native-string
-      void true
+    take priority, like maybe, like native-string
 
-  mesh index, like native-number
+  mesh index
     like native-string

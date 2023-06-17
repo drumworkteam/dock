@@ -1,12 +1,9 @@
 
-load @tunebond/moon
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-null
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form credential
   take form credential-creation-options
   take form credential-request-options
@@ -21,8 +18,7 @@ form credentials-container, name <CredentialsContainer>
         like credential
         like native-null
 
-    take options, like credential-creation-options
-      void true
+    take options, like maybe, like credential-creation-options
 
   task get, name <get>
     like promise
@@ -30,8 +26,7 @@ form credentials-container, name <CredentialsContainer>
         like credential
         like native-null
 
-    take options, like credential-request-options
-      void true
+    take options, like maybe, like credential-request-options
 
   task prevent-silent-access, name <preventSilentAccess>
     like promise
@@ -41,4 +36,4 @@ form credentials-container, name <CredentialsContainer>
     like promise
       like credential
 
-    take credential, like credential
+    take credential

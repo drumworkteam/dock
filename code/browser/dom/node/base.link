@@ -1,9 +1,4 @@
 
-load @tunebond/moon
-  take form and
-  take form like
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-null
@@ -11,7 +6,7 @@ load @tunebond/bolt/code/javascript/native
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form child-node
   take form document
   take form event-target
@@ -128,32 +123,27 @@ form node, name <Node>
     head t
       base node
 
-    take node, like t
+    take node
 
   task clone-node, name <cloneNode>
     like node
 
-    take deep, like native-boolean
-      void true
+    take deep, like maybe, like native-boolean
 
   task compare-document-position, name <compareDocumentPosition>
     like native-number
 
-    take other, like node
+    take other
 
   task contains, name <contains>
     like native-boolean
 
     take other
-      like or
-        like node
-        like native-null
 
   task get-root-node, name <getRootNode>
     like node
 
-    take options, like get-root-node-options
-      void true
+    take options, like maybe, like get-root-node-options
 
   task has-child-nodes, name <hasChildNodes>
     like native-boolean
@@ -164,35 +154,23 @@ form node, name <Node>
     head t
       base node
 
-    take node, like t
+    take node
     take child
-      like or
-        like node
-        like native-null
 
   task is-default-namespace, name <isDefaultNamespace>
     like native-boolean
 
     take namespace
-      like or
-        like native-string
-        like native-null
 
   task is-equal-node, name <isEqualNode>
     like native-boolean
 
     take other-node
-      like or
-        like node
-        like native-null
 
   task is-same-node, name <isSameNode>
     like native-boolean
 
     take other-node
-      like or
-        like node
-        like native-null
 
   task lookup-namespace-uri, name <lookupNamespaceURI>
     like or
@@ -200,9 +178,6 @@ form node, name <Node>
       like native-null
 
     take prefix
-      like or
-        like native-string
-        like native-null
 
   task lookup-prefix, name <lookupPrefix>
     like or
@@ -210,9 +185,6 @@ form node, name <Node>
       like native-null
 
     take namespace
-      like or
-        like native-string
-        like native-null
 
   task normalize, name <normalize>
     like native-void
@@ -223,7 +195,7 @@ form node, name <Node>
     head t
       base node
 
-    take child, like t
+    take child
 
   task replace-child, name <replaceChild>
     like t
@@ -231,5 +203,5 @@ form node, name <Node>
     head t
       base node
 
-    take node, like node
-    take child, like t
+    take node
+    take child

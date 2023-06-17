@@ -1,26 +1,22 @@
 
-load @tunebond/moon
-  take form any
-  take form like
-
 load @tunebond/bolt/code/javascript/native
   take form native-void
+
+load @tunebond/bolt/code/browser/webworker
+  take form readable-stream-default-read-result
+  take form readable-stream-generic-reader
 
 load @tunebond/bolt/code/javascript/es5
   take form promise
 
-load @tunebond/bolt/code/javascript/webworker
-  take form readable-stream-default-read-result
-  take form readable-stream-generic-reader
-
-load @tunebond/bolt/code/javascript/dom/readable-stream-default-reader
+load @tunebond/bolt/code/browser/dom/readable-stream-default-reader
   take form readable-stream-default-reader
 
 form readable-stream-default-reader, name <ReadableStreamDefaultReader>
   base readable-stream-generic-reader
 
   head r
-    back any
+    fall any
 
   task read, name <read>
     like promise

@@ -1,12 +1,9 @@
 
-load @tunebond/moon
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-null
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form media-metadata
   take form media-position-state
   take form media-session-action
@@ -26,14 +23,10 @@ form media-session, name <MediaSession>
   task set-action-handler, name <setActionHandler>
     like native-void
 
-    take action, like media-session-action
+    take action
     take handler
-      like or
-        like media-session-action-handler
-        like native-null
 
   task set-position-state, name <setPositionState>
     like native-void
 
-    take state, like media-position-state
-      void true
+    take state, like maybe, like media-position-state

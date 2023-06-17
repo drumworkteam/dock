@@ -2,19 +2,12 @@
 load @tunebond/bolt/code/javascript
   take form array
 
-load @tunebond/moon
-  take form any
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-null
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/es5
-  take form array-buffer-view
-
-load @tunebond/bolt/code/javascript/webworker
+load @tunebond/bolt/code/browser/webworker
   take form float32-list
   take form g-lbitfield
   take form g-lboolean
@@ -41,7 +34,10 @@ load @tunebond/bolt/code/javascript/webworker
   take form web-gl-uniform-location
   take form web-gl-vertex-array-object
 
-load @tunebond/bolt/code/javascript/dom/iterable/web-gl2-rendering-context-base
+load @tunebond/bolt/code/javascript/es5
+  take form array-buffer-view
+
+load @tunebond/bolt/code/browser/dom/iterable/web-gl2-rendering-context-base
   take form web-gl2-rendering-context-base
 
 form web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
@@ -579,201 +575,179 @@ form web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
   task begin-query, name <beginQuery>
     like native-void
 
-    take target, like g-lenum
-    take query, like web-gl-query
+    take target
+    take query
 
   task begin-transform-feedback, name <beginTransformFeedback>
     like native-void
 
-    take primitive-mode, like g-lenum
+    take primitive-mode
 
   task bind-buffer-base, name <bindBufferBase>
     like native-void
 
-    take target, like g-lenum
-    take index, like g-luint
+    take target
+    take index
     take buffer
-      like or
-        like web-gl-buffer
-        like native-null
 
   task bind-buffer-range, name <bindBufferRange>
     like native-void
 
-    take target, like g-lenum
-    take index, like g-luint
+    take target
+    take index
     take buffer
-      like or
-        like web-gl-buffer
-        like native-null
-    take offset, like g-lintptr
-    take size, like g-lsizeiptr
+    take offset
+    take size
 
   task bind-sampler, name <bindSampler>
     like native-void
 
-    take unit, like g-luint
+    take unit
     take sampler
-      like or
-        like web-gl-sampler
-        like native-null
 
   task bind-transform-feedback, name <bindTransformFeedback>
     like native-void
 
-    take target, like g-lenum
+    take target
     take tf
-      like or
-        like web-gl-transform-feedback
-        like native-null
 
   task bind-vertex-array, name <bindVertexArray>
     like native-void
 
     take array
-      like or
-        like web-gl-vertex-array-object
-        like native-null
 
   task blit-framebuffer, name <blitFramebuffer>
     like native-void
 
-    take src-x0, like g-lint
-    take src-y0, like g-lint
-    take src-x1, like g-lint
-    take src-y1, like g-lint
-    take dst-x0, like g-lint
-    take dst-y0, like g-lint
-    take dst-x1, like g-lint
-    take dst-y1, like g-lint
-    take mask, like g-lbitfield
-    take filter, like g-lenum
+    take src-x0
+    take src-y0
+    take src-x1
+    take src-y1
+    take dst-x0
+    take dst-y0
+    take dst-x1
+    take dst-y1
+    take mask
+    take filter
 
   task clear-bufferfi, name <clearBufferfi>
     like native-void
 
-    take buffer, like g-lenum
-    take drawbuffer, like g-lint
-    take depth, like g-lfloat
-    take stencil, like g-lint
+    take buffer
+    take drawbuffer
+    take depth
+    take stencil
 
   task clear-bufferfv, name <clearBufferfv>
     like native-void
 
-    take buffer, like g-lenum
-    take drawbuffer, like g-lint
-    take values, like float32-list
-    take src-offset, like g-luint
-      void true
+    take buffer
+    take drawbuffer
+    take values
+    take src-offset, like maybe, like g-luint
 
   task clear-bufferiv, name <clearBufferiv>
     like native-void
 
-    take buffer, like g-lenum
-    take drawbuffer, like g-lint
-    take values, like int32-list
-    take src-offset, like g-luint
-      void true
+    take buffer
+    take drawbuffer
+    take values
+    take src-offset, like maybe, like g-luint
 
   task clear-bufferuiv, name <clearBufferuiv>
     like native-void
 
-    take buffer, like g-lenum
-    take drawbuffer, like g-lint
-    take values, like uint32-list
-    take src-offset, like g-luint
-      void true
+    take buffer
+    take drawbuffer
+    take values
+    take src-offset, like maybe, like g-luint
 
   task client-wait-sync, name <clientWaitSync>
     like g-lenum
 
-    take sync, like web-gl-sync
-    take flags, like g-lbitfield
-    take timeout, like g-luint64
+    take sync
+    take flags
+    take timeout
 
   task compressed-tex-image3-d, name <compressedTexImage3D>
     like native-void
 
-    take target, like g-lenum
-    take level, like g-lint
-    take internalformat, like g-lenum
-    take width, like g-lsizei
-    take height, like g-lsizei
-    take depth, like g-lsizei
-    take border, like g-lint
-    take image-size, like g-lsizei
-    take offset, like g-lintptr
+    take target
+    take level
+    take internalformat
+    take width
+    take height
+    take depth
+    take border
+    take image-size
+    take offset
 
   task compressed-tex-image3-d, name <compressedTexImage3D>
     like native-void
 
-    take target, like g-lenum
-    take level, like g-lint
-    take internalformat, like g-lenum
-    take width, like g-lsizei
-    take height, like g-lsizei
-    take depth, like g-lsizei
-    take border, like g-lint
-    take src-data, like array-buffer-view
-    take src-offset, like g-luint
-      void true
-    take src-length-override, like g-luint
-      void true
+    take target
+    take level
+    take internalformat
+    take width
+    take height
+    take depth
+    take border
+    take src-data
+    take src-offset, like maybe, like g-luint
+    take src-length-override, like maybe, like g-luint
 
   task compressed-tex-sub-image3-d, name <compressedTexSubImage3D>
     like native-void
 
-    take target, like g-lenum
-    take level, like g-lint
-    take xoffset, like g-lint
-    take yoffset, like g-lint
-    take zoffset, like g-lint
-    take width, like g-lsizei
-    take height, like g-lsizei
-    take depth, like g-lsizei
-    take format, like g-lenum
-    take image-size, like g-lsizei
-    take offset, like g-lintptr
+    take target
+    take level
+    take xoffset
+    take yoffset
+    take zoffset
+    take width
+    take height
+    take depth
+    take format
+    take image-size
+    take offset
 
   task compressed-tex-sub-image3-d, name <compressedTexSubImage3D>
     like native-void
 
-    take target, like g-lenum
-    take level, like g-lint
-    take xoffset, like g-lint
-    take yoffset, like g-lint
-    take zoffset, like g-lint
-    take width, like g-lsizei
-    take height, like g-lsizei
-    take depth, like g-lsizei
-    take format, like g-lenum
-    take src-data, like array-buffer-view
-    take src-offset, like g-luint
-      void true
-    take src-length-override, like g-luint
-      void true
+    take target
+    take level
+    take xoffset
+    take yoffset
+    take zoffset
+    take width
+    take height
+    take depth
+    take format
+    take src-data
+    take src-offset, like maybe, like g-luint
+    take src-length-override, like maybe, like g-luint
 
   task copy-buffer-sub-data, name <copyBufferSubData>
     like native-void
 
-    take read-target, like g-lenum
-    take write-target, like g-lenum
-    take read-offset, like g-lintptr
-    take write-offset, like g-lintptr
-    take size, like g-lsizeiptr
+    take read-target
+    take write-target
+    take read-offset
+    take write-offset
+    take size
 
   task copy-tex-sub-image3-d, name <copyTexSubImage3D>
     like native-void
 
-    take target, like g-lenum
-    take level, like g-lint
-    take xoffset, like g-lint
-    take yoffset, like g-lint
-    take zoffset, like g-lint
-    take x, like g-lint
-    take y, like g-lint
-    take width, like g-lsizei
-    take height, like g-lsizei
+    take target
+    take level
+    take xoffset
+    take yoffset
+    take zoffset
+    take x
+    take y
+    take width
+    take height
 
   task create-query, name <createQuery>
     like or
@@ -799,80 +773,63 @@ form web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
     like native-void
 
     take query
-      like or
-        like web-gl-query
-        like native-null
 
   task delete-sampler, name <deleteSampler>
     like native-void
 
     take sampler
-      like or
-        like web-gl-sampler
-        like native-null
 
   task delete-sync, name <deleteSync>
     like native-void
 
     take sync
-      like or
-        like web-gl-sync
-        like native-null
 
   task delete-transform-feedback, name <deleteTransformFeedback>
     like native-void
 
     take tf
-      like or
-        like web-gl-transform-feedback
-        like native-null
 
   task delete-vertex-array, name <deleteVertexArray>
     like native-void
 
     take vertex-array
-      like or
-        like web-gl-vertex-array-object
-        like native-null
 
   task draw-arrays-instanced, name <drawArraysInstanced>
     like native-void
 
-    take mode, like g-lenum
-    take first, like g-lint
-    take count, like g-lsizei
-    take instance-count, like g-lsizei
+    take mode
+    take first
+    take count
+    take instance-count
 
   task draw-buffers, name <drawBuffers>
     like native-void
 
     take buffers
-      like array
-        like g-lenum
 
   task draw-elements-instanced, name <drawElementsInstanced>
     like native-void
 
-    take mode, like g-lenum
-    take count, like g-lsizei
-    take type, like g-lenum
-    take offset, like g-lintptr
-    take instance-count, like g-lsizei
+    take mode
+    take count
+    take type
+    take offset
+    take instance-count
 
   task draw-range-elements, name <drawRangeElements>
     like native-void
 
-    take mode, like g-lenum
-    take start, like g-luint
-    take end, like g-luint
-    take count, like g-lsizei
-    take type, like g-lenum
-    take offset, like g-lintptr
+    take mode
+    take start
+    take end
+    take count
+    take type
+    take offset
 
   task end-query, name <endQuery>
     like native-void
 
-    take target, like g-lenum
+    take target
 
   task end-transform-feedback, name <endTransformFeedback>
     like native-void
@@ -882,114 +839,107 @@ form web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
       like web-gl-sync
       like native-null
 
-    take condition, like g-lenum
-    take flags, like g-lbitfield
+    take condition
+    take flags
 
   task framebuffer-texture-layer, name <framebufferTextureLayer>
     like native-void
 
-    take target, like g-lenum
-    take attachment, like g-lenum
+    take target
+    take attachment
     take texture
-      like or
-        like web-gl-texture
-        like native-null
-    take level, like g-lint
-    take layer, like g-lint
+    take level
+    take layer
 
   task get-active-uniform-block-name, name <getActiveUniformBlockName>
     like or
       like native-string
       like native-null
 
-    take program, like web-gl-program
-    take uniform-block-index, like g-luint
+    take program
+    take uniform-block-index
 
   task get-active-uniform-block-parameter, name <getActiveUniformBlockParameter>
     like any
 
-    take program, like web-gl-program
-    take uniform-block-index, like g-luint
-    take pname, like g-lenum
+    take program
+    take uniform-block-index
+    take pname
 
   task get-active-uniforms, name <getActiveUniforms>
     like any
 
-    take program, like web-gl-program
+    take program
     take uniform-indices
-      like array
-        like g-luint
-    take pname, like g-lenum
+    take pname
 
   task get-buffer-sub-data, name <getBufferSubData>
     like native-void
 
-    take target, like g-lenum
-    take src-byte-offset, like g-lintptr
-    take dst-buffer, like array-buffer-view
-    take dst-offset, like g-luint
-      void true
-    take length, like g-luint
-      void true
+    take target
+    take src-byte-offset
+    take dst-buffer
+    take dst-offset, like maybe, like g-luint
+    take length, like maybe, like g-luint
 
   task get-frag-data-location, name <getFragDataLocation>
     like g-lint
 
-    take program, like web-gl-program
-    take name, like native-string
+    take program
+    take name
 
   task get-indexed-parameter, name <getIndexedParameter>
     like any
 
-    take target, like g-lenum
-    take index, like g-luint
+    take target
+    take index
 
   task get-internalformat-parameter, name <getInternalformatParameter>
     like any
 
-    take target, like g-lenum
-    take internalformat, like g-lenum
-    take pname, like g-lenum
+    take target
+    take internalformat
+    take pname
 
   task get-query, name <getQuery>
     like or
       like web-gl-query
       like native-null
 
-    take target, like g-lenum
-    take pname, like g-lenum
+    take target
+    take pname
 
   task get-query-parameter, name <getQueryParameter>
     like any
 
-    take query, like web-gl-query
-    take pname, like g-lenum
+    take query
+    take pname
 
   task get-sampler-parameter, name <getSamplerParameter>
     like any
 
-    take sampler, like web-gl-sampler
-    take pname, like g-lenum
+    take sampler
+    take pname
 
   task get-sync-parameter, name <getSyncParameter>
     like any
 
-    take sync, like web-gl-sync
-    take pname, like g-lenum
+    take sync
+    take pname
 
   task get-transform-feedback-varying, name <getTransformFeedbackVarying>
     like or
       like web-gl-active-info
       like native-null
 
-    take program, like web-gl-program
-    take index, like g-luint
+    take program
+    take index
 
   task get-uniform-block-index, name <getUniformBlockIndex>
     like g-luint
 
-    take program, like web-gl-program
-    take uniform-block-name, like native-string
+    take program
+    take uniform-block-name
 
   task get-uniform-indices, name <getUniformIndices>
     like or
@@ -997,70 +947,49 @@ form web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
         like g-luint
       like native-null
 
-    take program, like web-gl-program
+    take program
     take uniform-names
-      like array
-        like native-string
 
   task invalidate-framebuffer, name <invalidateFramebuffer>
     like native-void
 
-    take target, like g-lenum
+    take target
     take attachments
-      like array
-        like g-lenum
 
   task invalidate-sub-framebuffer, name <invalidateSubFramebuffer>
     like native-void
 
-    take target, like g-lenum
+    take target
     take attachments
-      like array
-        like g-lenum
-    take x, like g-lint
-    take y, like g-lint
-    take width, like g-lsizei
-    take height, like g-lsizei
+    take x
+    take y
+    take width
+    take height
 
   task is-query, name <isQuery>
     like g-lboolean
 
     take query
-      like or
-        like web-gl-query
-        like native-null
 
   task is-sampler, name <isSampler>
     like g-lboolean
 
     take sampler
-      like or
-        like web-gl-sampler
-        like native-null
 
   task is-sync, name <isSync>
     like g-lboolean
 
     take sync
-      like or
-        like web-gl-sync
-        like native-null
 
   task is-transform-feedback, name <isTransformFeedback>
     like g-lboolean
 
     take tf
-      like or
-        like web-gl-transform-feedback
-        like native-null
 
   task is-vertex-array, name <isVertexArray>
     like g-lboolean
 
     take vertex-array
-      like or
-        like web-gl-vertex-array-object
-        like native-null
 
   task pause-transform-feedback, name <pauseTransformFeedback>
     like native-void
@@ -1068,16 +997,16 @@ form web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
   task read-buffer, name <readBuffer>
     like native-void
 
-    take src, like g-lenum
+    take src
 
   task renderbuffer-storage-multisample, name <renderbufferStorageMultisample>
     like native-void
 
-    take target, like g-lenum
-    take samples, like g-lsizei
-    take internalformat, like g-lenum
-    take width, like g-lsizei
-    take height, like g-lsizei
+    take target
+    take samples
+    take internalformat
+    take width
+    take height
 
   task resume-transform-feedback, name <resumeTransformFeedback>
     like native-void
@@ -1085,388 +1014,317 @@ form web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
   task sampler-parameterf, name <samplerParameterf>
     like native-void
 
-    take sampler, like web-gl-sampler
-    take pname, like g-lenum
-    take param, like g-lfloat
+    take sampler
+    take pname
+    take param
 
   task sampler-parameteri, name <samplerParameteri>
     like native-void
 
-    take sampler, like web-gl-sampler
-    take pname, like g-lenum
-    take param, like g-lint
+    take sampler
+    take pname
+    take param
 
   task tex-image3-d, name <texImage3D>
     like native-void
 
-    take target, like g-lenum
-    take level, like g-lint
-    take internalformat, like g-lint
-    take width, like g-lsizei
-    take height, like g-lsizei
-    take depth, like g-lsizei
-    take border, like g-lint
-    take format, like g-lenum
-    take type, like g-lenum
-    take pbo-offset, like g-lintptr
+    take target
+    take level
+    take internalformat
+    take width
+    take height
+    take depth
+    take border
+    take format
+    take type
+    take pbo-offset
 
   task tex-image3-d, name <texImage3D>
     like native-void
 
-    take target, like g-lenum
-    take level, like g-lint
-    take internalformat, like g-lint
-    take width, like g-lsizei
-    take height, like g-lsizei
-    take depth, like g-lsizei
-    take border, like g-lint
-    take format, like g-lenum
-    take type, like g-lenum
-    take source, like tex-image-source
+    take target
+    take level
+    take internalformat
+    take width
+    take height
+    take depth
+    take border
+    take format
+    take type
+    take source
 
   task tex-image3-d, name <texImage3D>
     like native-void
 
-    take target, like g-lenum
-    take level, like g-lint
-    take internalformat, like g-lint
-    take width, like g-lsizei
-    take height, like g-lsizei
-    take depth, like g-lsizei
-    take border, like g-lint
-    take format, like g-lenum
-    take type, like g-lenum
+    take target
+    take level
+    take internalformat
+    take width
+    take height
+    take depth
+    take border
+    take format
+    take type
     take src-data
-      like or
-        like array-buffer-view
-        like native-null
 
   task tex-image3-d, name <texImage3D>
     like native-void
 
-    take target, like g-lenum
-    take level, like g-lint
-    take internalformat, like g-lint
-    take width, like g-lsizei
-    take height, like g-lsizei
-    take depth, like g-lsizei
-    take border, like g-lint
-    take format, like g-lenum
-    take type, like g-lenum
-    take src-data, like array-buffer-view
-    take src-offset, like g-luint
+    take target
+    take level
+    take internalformat
+    take width
+    take height
+    take depth
+    take border
+    take format
+    take type
+    take src-data
+    take src-offset
 
   task tex-storage2-d, name <texStorage2D>
     like native-void
 
-    take target, like g-lenum
-    take levels, like g-lsizei
-    take internalformat, like g-lenum
-    take width, like g-lsizei
-    take height, like g-lsizei
+    take target
+    take levels
+    take internalformat
+    take width
+    take height
 
   task tex-storage3-d, name <texStorage3D>
     like native-void
 
-    take target, like g-lenum
-    take levels, like g-lsizei
-    take internalformat, like g-lenum
-    take width, like g-lsizei
-    take height, like g-lsizei
-    take depth, like g-lsizei
+    take target
+    take levels
+    take internalformat
+    take width
+    take height
+    take depth
 
   task tex-sub-image3-d, name <texSubImage3D>
     like native-void
 
-    take target, like g-lenum
-    take level, like g-lint
-    take xoffset, like g-lint
-    take yoffset, like g-lint
-    take zoffset, like g-lint
-    take width, like g-lsizei
-    take height, like g-lsizei
-    take depth, like g-lsizei
-    take format, like g-lenum
-    take type, like g-lenum
-    take pbo-offset, like g-lintptr
+    take target
+    take level
+    take xoffset
+    take yoffset
+    take zoffset
+    take width
+    take height
+    take depth
+    take format
+    take type
+    take pbo-offset
 
   task tex-sub-image3-d, name <texSubImage3D>
     like native-void
 
-    take target, like g-lenum
-    take level, like g-lint
-    take xoffset, like g-lint
-    take yoffset, like g-lint
-    take zoffset, like g-lint
-    take width, like g-lsizei
-    take height, like g-lsizei
-    take depth, like g-lsizei
-    take format, like g-lenum
-    take type, like g-lenum
-    take source, like tex-image-source
+    take target
+    take level
+    take xoffset
+    take yoffset
+    take zoffset
+    take width
+    take height
+    take depth
+    take format
+    take type
+    take source
 
   task tex-sub-image3-d, name <texSubImage3D>
     like native-void
 
-    take target, like g-lenum
-    take level, like g-lint
-    take xoffset, like g-lint
-    take yoffset, like g-lint
-    take zoffset, like g-lint
-    take width, like g-lsizei
-    take height, like g-lsizei
-    take depth, like g-lsizei
-    take format, like g-lenum
-    take type, like g-lenum
+    take target
+    take level
+    take xoffset
+    take yoffset
+    take zoffset
+    take width
+    take height
+    take depth
+    take format
+    take type
     take src-data
-      like or
-        like array-buffer-view
-        like native-null
-    take src-offset, like g-luint
-      void true
+    take src-offset, like maybe, like g-luint
 
   task transform-feedback-varyings, name <transformFeedbackVaryings>
     like native-void
 
-    take program, like web-gl-program
+    take program
     take varyings
-      like array
-        like native-string
-    take buffer-mode, like g-lenum
+    take buffer-mode
 
   task uniform1ui, name <uniform1ui>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take v0, like g-luint
+    take v0
 
   task uniform1uiv, name <uniform1uiv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take data, like uint32-list
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take data
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task uniform2ui, name <uniform2ui>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take v0, like g-luint
-    take v1, like g-luint
+    take v0
+    take v1
 
   task uniform2uiv, name <uniform2uiv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take data, like uint32-list
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take data
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task uniform3ui, name <uniform3ui>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take v0, like g-luint
-    take v1, like g-luint
-    take v2, like g-luint
+    take v0
+    take v1
+    take v2
 
   task uniform3uiv, name <uniform3uiv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take data, like uint32-list
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take data
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task uniform4ui, name <uniform4ui>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take v0, like g-luint
-    take v1, like g-luint
-    take v2, like g-luint
-    take v3, like g-luint
+    take v0
+    take v1
+    take v2
+    take v3
 
   task uniform4uiv, name <uniform4uiv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take data, like uint32-list
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take data
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task uniform-block-binding, name <uniformBlockBinding>
     like native-void
 
-    take program, like web-gl-program
-    take uniform-block-index, like g-luint
-    take uniform-block-binding, like g-luint
+    take program
+    take uniform-block-index
+    take uniform-block-binding
 
   task uniform-matrix2x3fv, name <uniformMatrix2x3fv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take transpose, like g-lboolean
-    take data, like float32-list
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take transpose
+    take data
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task uniform-matrix2x4fv, name <uniformMatrix2x4fv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take transpose, like g-lboolean
-    take data, like float32-list
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take transpose
+    take data
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task uniform-matrix3x2fv, name <uniformMatrix3x2fv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take transpose, like g-lboolean
-    take data, like float32-list
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take transpose
+    take data
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task uniform-matrix3x4fv, name <uniformMatrix3x4fv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take transpose, like g-lboolean
-    take data, like float32-list
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take transpose
+    take data
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task uniform-matrix4x2fv, name <uniformMatrix4x2fv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take transpose, like g-lboolean
-    take data, like float32-list
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take transpose
+    take data
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task uniform-matrix4x3fv, name <uniformMatrix4x3fv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take transpose, like g-lboolean
-    take data, like float32-list
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take transpose
+    take data
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task vertex-attrib-divisor, name <vertexAttribDivisor>
     like native-void
 
-    take index, like g-luint
-    take divisor, like g-luint
+    take index
+    take divisor
 
   task vertex-attrib-i4i, name <vertexAttribI4i>
     like native-void
 
-    take index, like g-luint
-    take x, like g-lint
-    take y, like g-lint
-    take z, like g-lint
-    take w, like g-lint
+    take index
+    take x
+    take y
+    take z
+    take w
 
   task vertex-attrib-i4iv, name <vertexAttribI4iv>
     like native-void
 
-    take index, like g-luint
-    take values, like int32-list
+    take index
+    take values
 
   task vertex-attrib-i4ui, name <vertexAttribI4ui>
     like native-void
 
-    take index, like g-luint
-    take x, like g-luint
-    take y, like g-luint
-    take z, like g-luint
-    take w, like g-luint
+    take index
+    take x
+    take y
+    take z
+    take w
 
   task vertex-attrib-i4uiv, name <vertexAttribI4uiv>
     like native-void
 
-    take index, like g-luint
-    take values, like uint32-list
+    take index
+    take values
 
   task vertex-attrib-i-pointer, name <vertexAttribIPointer>
     like native-void
 
-    take index, like g-luint
-    take size, like g-lint
-    take type, like g-lenum
-    take stride, like g-lsizei
-    take offset, like g-lintptr
+    take index
+    take size
+    take type
+    take stride
+    take offset
 
   task wait-sync, name <waitSync>
     like native-void
 
-    take sync, like web-gl-sync
-    take flags, like g-lbitfield
-    take timeout, like g-lint64
+    take sync
+    take flags
+    take timeout

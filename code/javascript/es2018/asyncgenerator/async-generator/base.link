@@ -1,11 +1,4 @@
 
-load @tunebond/moon
-  take form any
-  take form like
-  take form or
-  take form tuple
-  take form unknown
-
 load @tunebond/bolt/code/javascript/es2015/iterable
   take form iterator-result
 
@@ -22,11 +15,11 @@ form async-generator, name <AsyncGenerator>
   base async-iterator
 
   head t
-    back unknown
+    fall unknown
   head t-return
-    back any
+    fall any
   head t-next
-    back unknown
+    fall unknown
 
   task next, name <next>
     like promise
@@ -48,10 +41,6 @@ form async-generator, name <AsyncGenerator>
         like t-return
 
     take value
-      like or
-        like t-return
-        like promise-like
-          like t-return
 
   task throw, name <throw>
     like promise
@@ -59,7 +48,7 @@ form async-generator, name <AsyncGenerator>
         like t
         like t-return
 
-    take e, like any
+    take e
 
   task {symbol/async-iterator}
     like async-generator

@@ -2,7 +2,7 @@
 load @tunebond/bolt/code/javascript/native
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form error-callback
   take form file-callback
   take form file-system-entry
@@ -13,6 +13,5 @@ form file-system-file-entry, name <FileSystemFileEntry>
   task file, name <file>
     like native-void
 
-    take success-callback, like file-callback
-    take error-callback, like error-callback
-      void true
+    take success-callback
+    take error-callback, like maybe, like error-callback

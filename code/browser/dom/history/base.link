@@ -1,15 +1,11 @@
 
-load @tunebond/moon
-  take form any
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-null
   take form native-number
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form scroll-restoration
   take form url
 
@@ -31,29 +27,28 @@ form history, name <History>
   task go, name <go>
     like native-void
 
-    take delta, like native-number
-      void true
+    take delta, like maybe, like native-number
 
   task push-state, name <pushState>
     like native-void
 
-    take data, like any
-    take unused, like native-string
+    take data
+    take unused
     take url
-      like or
-        like native-string
-        like url
-        like native-null
-      void true
+      like maybe
+        like or
+          like native-string
+          like url
+          like native-null
 
   task replace-state, name <replaceState>
     like native-void
 
-    take data, like any
-    take unused, like native-string
+    take data
+    take unused
     take url
-      like or
-        like native-string
-        like url
-        like native-null
-      void true
+      like maybe
+        like or
+          like native-string
+          like url
+          like native-null

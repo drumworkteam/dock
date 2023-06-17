@@ -1,9 +1,4 @@
 
-load @tunebond/moon
-  take form any
-  take form form
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-number
@@ -28,54 +23,45 @@ form string, name <String>
       like native-number
       like native-undefined
 
-    take pos, like native-number
+    take pos
 
   task includes, name <includes>
     like native-boolean
 
-    take search-string, like native-string
-    take position, like native-number
-      void true
+    take search-string
+    take position, like maybe, like native-number
 
   task ends-with, name <endsWith>
     like native-boolean
 
-    take search-string, like native-string
-    take end-position, like native-number
-      void true
+    take search-string
+    take end-position, like maybe, like native-number
 
   task normalize, name <normalize>
     like native-string
 
     take form
-      like or
-        text <NFC>
-        text <NFD>
-        text <NFKC>
-        text <NFKD>
 
   task normalize, name <normalize>
     like native-string
 
-    take form, like native-string
-      void true
+    take form, like maybe, like native-string
 
   task repeat, name <repeat>
     like native-string
 
-    take count, like native-number
+    take count
 
   task starts-with, name <startsWith>
     like native-boolean
 
-    take search-string, like native-string
-    take position, like native-number
-      void true
+    take search-string
+    take position, like maybe, like native-number
 
   task anchor, name <anchor>
     like native-string
 
-    take name, like native-string
+    take name
 
   task big, name <big>
     like native-string
@@ -92,17 +78,17 @@ form string, name <String>
   task fontcolor, name <fontcolor>
     like native-string
 
-    take color, like native-string
+    take color
 
   task fontsize, name <fontsize>
     like native-string
 
-    take size, like native-number
+    take size
 
   task fontsize, name <fontsize>
     like native-string
 
-    take size, like native-string
+    take size
 
   task italics, name <italics>
     like native-string
@@ -110,7 +96,7 @@ form string, name <String>
   task link, name <link>
     like native-string
 
-    take url, like native-string
+    take url
 
   task small, name <small>
     like native-string
@@ -138,14 +124,6 @@ form string
       like native-string
 
       take template
-        like form
-          link raw, name <raw>
-            like or
-              like array
-                like native-string
-              like array-like
-                like native-string
-            flex true
       take substitutions
         like array
           like any

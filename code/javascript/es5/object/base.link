@@ -17,12 +17,6 @@ load @tunebond/bolt/code/javascript/es5
 load @tunebond/bolt/code/javascript
   take form array
 
-load @tunebond/moon
-  take form and
-  take form any
-  take form like
-  take form or
-
 load @tunebond/bolt/code/javascript/es5/object
   take form object
 
@@ -43,17 +37,17 @@ form object, name <Object>
   task has-own-property, name <hasOwnProperty>
     like native-boolean
 
-    take v, like property-key
+    take v
 
   task is-prototype-of, name <isPrototypeOf>
     like native-boolean
 
-    take v, like object
+    take v
 
   task property-is-enumerable, name <propertyIsEnumerable>
     like native-boolean
 
-    take v, like property-key
+    take v
 
 form object
   hook self
@@ -63,74 +57,56 @@ form object
     task get-prototype-of, name <getPrototypeOf>
       like any
 
-      take o, like any
+      take o
 
     task get-own-property-descriptor, name <getOwnPropertyDescriptor>
       like or
         like property-descriptor
         like native-undefined
 
-      take o, like any
-      take p, like property-key
+      take o
+      take p
 
     task get-own-property-names, name <getOwnPropertyNames>
       like array
         like native-string
 
-      take o, like any
+      take o
 
     task create, name <create>
       like any
 
       take o
-        like or
-          like native-object
-          like native-null
 
     task create, name <create>
       like any
 
       take o
-        like or
-          like native-object
-          like native-null
       take properties
-        like and
-          like property-descriptor-map
-          like this-type
-            like any
 
     task define-property, name <defineProperty>
       like t
 
       head t
 
-      take o, like t
-      take p, like property-key
+      take o
+      take p
       take attributes
-        like and
-          like property-descriptor
-          like this-type
-            like any
 
     task define-properties, name <defineProperties>
       like t
 
       head t
 
-      take o, like t
+      take o
       take properties
-        like and
-          like property-descriptor-map
-          like this-type
-            like any
 
     task seal, name <seal>
       like t
 
       head t
 
-      take o, like t
+      take o
 
     task freeze, name <freeze>
       like array
@@ -139,8 +115,6 @@ form object
       head t
 
       take a
-        like array
-          like t
 
     task freeze, name <freeze>
       like t
@@ -148,7 +122,7 @@ form object
       head t
         base function
 
-      take f, like t
+      take f
 
     task freeze, name <freeze>
       like readonly
@@ -156,38 +130,37 @@ form object
 
       head t
 
-      take o, like t
+      take o
 
     task prevent-extensions, name <preventExtensions>
       like t
 
       head t
 
-      take o, like t
+      take o
 
     task is-sealed, name <isSealed>
       like native-boolean
 
-      take o, like any
+      take o
 
     task is-frozen, name <isFrozen>
       like native-boolean
 
-      take o, like any
+      take o
 
     task is-extensible, name <isExtensible>
       like native-boolean
 
-      take o, like any
+      take o
 
     task keys, name <keys>
       like array
         like native-string
 
-      take o, like native-object
+      take o
 
   hook make
     like object
 
-    take value, like any
-      void true
+    take value, like maybe, like any

@@ -1,9 +1,4 @@
 
-load @tunebond/moon
-  take form any
-  take form like
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-null
   take form native-number
@@ -15,7 +10,7 @@ load @tunebond/bolt/code/javascript/es5
 
 form writable-stream-default-writer, name <WritableStreamDefaultWriter>
   head w
-    back any
+    fall any
 
   link closed, name <closed>
     like promise
@@ -32,8 +27,7 @@ form writable-stream-default-writer, name <WritableStreamDefaultWriter>
     like promise
       like native-void
 
-    take reason, like any
-      void true
+    take reason, like maybe, like any
 
   task close, name <close>
     like promise
@@ -46,5 +40,4 @@ form writable-stream-default-writer, name <WritableStreamDefaultWriter>
     like promise
       like native-void
 
-    take chunk, like w
-      void true
+    take chunk, like maybe, like w

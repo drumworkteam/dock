@@ -2,29 +2,12 @@
 load @tunebond/bolt/code/javascript
   take form array
 
-load @tunebond/moon
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-number
   take form native-string
 
-load @tunebond/bolt/code/javascript/es5
-  take form array-buffer
-  take form data-view
-  take form float32-array
-  take form float64-array
-  take form int16-array
-  take form int32-array
-  take form int8-array
-  take form promise
-  take form uint16-array
-  take form uint32-array
-  take form uint8-array
-  take form uint8-clamped-array
-
-load @tunebond/bolt/code/javascript/webworker
+load @tunebond/bolt/code/browser/webworker
   take form aes-cbc-params
   take form aes-cfb-params
   take form aes-cmac-params
@@ -55,7 +38,21 @@ load @tunebond/bolt/code/javascript/webworker
   take form rsa-oaep-params
   take form rsa-pss-params
 
-load @tunebond/bolt/code/javascript/dom/iterable/subtle-crypto
+load @tunebond/bolt/code/javascript/es5
+  take form array-buffer
+  take form data-view
+  take form float32-array
+  take form float64-array
+  take form int16-array
+  take form int32-array
+  take form int8-array
+  take form promise
+  take form uint16-array
+  take form uint32-array
+  take form uint8-array
+  take form uint8-clamped-array
+
+load @tunebond/bolt/code/browser/dom/iterable/subtle-crypto
   take form subtle-crypto
 
 form subtle-crypto, name <SubtleCrypto>
@@ -64,134 +61,55 @@ form subtle-crypto, name <SubtleCrypto>
       like array-buffer
 
     take algorithm
-      like or
-        like algorithm-identifier
-        like rsa-oaep-params
-        like aes-ctr-params
-        like aes-cbc-params
-        like aes-cmac-params
-        like aes-gcm-params
-        like aes-cfb-params
-    take key, like crypto-key
+    take key
     take data
-      like or
-        like int8-array
-        like int16-array
-        like int32-array
-        like uint8-array
-        like uint16-array
-        like uint32-array
-        like uint8-clamped-array
-        like float32-array
-        like float64-array
-        like data-view
-        like array-buffer
 
   task derive-bits, name <deriveBits>
     like promise
       like array-buffer
 
     take algorithm
-      like or
-        like algorithm-identifier
-        like ecdh-key-derive-params
-        like dh-key-derive-params
-        like concat-params
-        like hkdf-params
-        like pbkdf2-params
-    take base-key, like crypto-key
-    take length, like native-number
+    take base-key
+    take length
 
   task derive-key, name <deriveKey>
     like promise
       like crypto-key
 
     take algorithm
-      like or
-        like algorithm-identifier
-        like ecdh-key-derive-params
-        like dh-key-derive-params
-        like concat-params
-        like hkdf-params
-        like pbkdf2-params
-    take base-key, like crypto-key
+    take base-key
     take derived-key-type
-      like or
-        like native-string
-        like aes-derived-key-params
-        like hmac-import-params
-        like concat-params
-        like hkdf-params
-        like pbkdf2-params
-    take extractable, like native-boolean
+    take extractable
     take key-usages
-      like array
-        like key-usage
 
   task digest, name <digest>
     like promise
       like array-buffer
 
-    take algorithm, like algorithm-identifier
+    take algorithm
     take data
-      like or
-        like int8-array
-        like int16-array
-        like int32-array
-        like uint8-array
-        like uint16-array
-        like uint32-array
-        like uint8-clamped-array
-        like float32-array
-        like float64-array
-        like data-view
-        like array-buffer
 
   task encrypt, name <encrypt>
     like promise
       like array-buffer
 
     take algorithm
-      like or
-        like algorithm-identifier
-        like rsa-oaep-params
-        like aes-ctr-params
-        like aes-cbc-params
-        like aes-cmac-params
-        like aes-gcm-params
-        like aes-cfb-params
-    take key, like crypto-key
+    take key
     take data
-      like or
-        like int8-array
-        like int16-array
-        like int32-array
-        like uint8-array
-        like uint16-array
-        like uint32-array
-        like uint8-clamped-array
-        like float32-array
-        like float64-array
-        like data-view
-        like array-buffer
 
   task export-key, name <exportKey>
     like promise
       like json-web-key
 
-    take format, text <jwk>
-    take key, like crypto-key
+    take format
+    take key
 
   task export-key, name <exportKey>
     like promise
       like array-buffer
 
     take format
-      like or
-        text <raw>
-        text <pkcs8>
-        text <spki>
-    take key, like crypto-key
+    take key
 
   task export-key, name <exportKey>
     like promise
@@ -199,36 +117,24 @@ form subtle-crypto, name <SubtleCrypto>
         like json-web-key
         like array-buffer
 
-    take format, like native-string
-    take key, like crypto-key
+    take format
+    take key
 
   task generate-key, name <generateKey>
     like promise
       like crypto-key-pair
 
     take algorithm
-      like or
-        like rsa-hashed-key-gen-params
-        like ec-key-gen-params
-        like dh-key-gen-params
-    take extractable, like native-boolean
+    take extractable
     take key-usages
-      like array
-        like key-usage
 
   task generate-key, name <generateKey>
     like promise
       like crypto-key
 
     take algorithm
-      like or
-        like aes-key-gen-params
-        like hmac-key-gen-params
-        like pbkdf2-params
-    take extractable, like native-boolean
+    take extractable
     take key-usages
-      like array
-        like key-usage
 
   task generate-key, name <generateKey>
     like promise
@@ -236,227 +142,74 @@ form subtle-crypto, name <SubtleCrypto>
         like crypto-key-pair
         like crypto-key
 
-    take algorithm, like algorithm-identifier
-    take extractable, like native-boolean
-    take key-usages
-      like array
-        like key-usage
-
-  task import-key, name <importKey>
-    like promise
-      like crypto-key
-
-    take format, text <jwk>
-    take key-data, like json-web-key
     take algorithm
-      like or
-        like algorithm-identifier
-        like rsa-hashed-import-params
-        like ec-key-import-params
-        like hmac-import-params
-        like dh-import-key-params
-        like aes-key-algorithm
-    take extractable, like native-boolean
+    take extractable
     take key-usages
-      like array
-        like key-usage
 
   task import-key, name <importKey>
     like promise
       like crypto-key
 
     take format
-      like or
-        text <raw>
-        text <pkcs8>
-        text <spki>
     take key-data
-      like or
-        like int8-array
-        like int16-array
-        like int32-array
-        like uint8-array
-        like uint16-array
-        like uint32-array
-        like uint8-clamped-array
-        like float32-array
-        like float64-array
-        like data-view
-        like array-buffer
     take algorithm
-      like or
-        like algorithm-identifier
-        like rsa-hashed-import-params
-        like ec-key-import-params
-        like hmac-import-params
-        like dh-import-key-params
-        like aes-key-algorithm
-    take extractable, like native-boolean
+    take extractable
     take key-usages
-      like array
-        like key-usage
 
   task import-key, name <importKey>
     like promise
       like crypto-key
 
-    take format, like native-string
+    take format
     take key-data
-      like or
-        like json-web-key
-        like int8-array
-        like int16-array
-        like int32-array
-        like uint8-array
-        like uint16-array
-        like uint32-array
-        like uint8-clamped-array
-        like float32-array
-        like float64-array
-        like data-view
-        like array-buffer
     take algorithm
-      like or
-        like algorithm-identifier
-        like rsa-hashed-import-params
-        like ec-key-import-params
-        like hmac-import-params
-        like dh-import-key-params
-        like aes-key-algorithm
-    take extractable, like native-boolean
+    take extractable
     take key-usages
-      like array
-        like key-usage
+
+  task import-key, name <importKey>
+    like promise
+      like crypto-key
+
+    take format
+    take key-data
+    take algorithm
+    take extractable
+    take key-usages
 
   task sign, name <sign>
     like promise
       like array-buffer
 
     take algorithm
-      like or
-        like algorithm-identifier
-        like rsa-pss-params
-        like ecdsa-params
-        like aes-cmac-params
-    take key, like crypto-key
+    take key
     take data
-      like or
-        like int8-array
-        like int16-array
-        like int32-array
-        like uint8-array
-        like uint16-array
-        like uint32-array
-        like uint8-clamped-array
-        like float32-array
-        like float64-array
-        like data-view
-        like array-buffer
 
   task unwrap-key, name <unwrapKey>
     like promise
       like crypto-key
 
     take format
-      like or
-        text <raw>
-        text <pkcs8>
-        text <spki>
-        text <jwk>
-        like native-string
     take wrapped-key
-      like or
-        like int8-array
-        like int16-array
-        like int32-array
-        like uint8-array
-        like uint16-array
-        like uint32-array
-        like uint8-clamped-array
-        like float32-array
-        like float64-array
-        like data-view
-        like array-buffer
-    take unwrapping-key, like crypto-key
+    take unwrapping-key
     take unwrap-algorithm
-      like or
-        like algorithm-identifier
-        like rsa-oaep-params
-        like aes-ctr-params
-        like aes-cbc-params
-        like aes-cmac-params
-        like aes-gcm-params
-        like aes-cfb-params
     take unwrapped-key-algorithm
-      like or
-        like algorithm-identifier
-        like rsa-hashed-import-params
-        like ec-key-import-params
-        like hmac-import-params
-        like dh-import-key-params
-        like aes-key-algorithm
-    take extractable, like native-boolean
+    take extractable
     take key-usages
-      like array
-        like key-usage
 
   task verify, name <verify>
     like promise
       like native-boolean
 
     take algorithm
-      like or
-        like algorithm-identifier
-        like rsa-pss-params
-        like ecdsa-params
-        like aes-cmac-params
-    take key, like crypto-key
+    take key
     take signature
-      like or
-        like int8-array
-        like int16-array
-        like int32-array
-        like uint8-array
-        like uint16-array
-        like uint32-array
-        like uint8-clamped-array
-        like float32-array
-        like float64-array
-        like data-view
-        like array-buffer
     take data
-      like or
-        like int8-array
-        like int16-array
-        like int32-array
-        like uint8-array
-        like uint16-array
-        like uint32-array
-        like uint8-clamped-array
-        like float32-array
-        like float64-array
-        like data-view
-        like array-buffer
 
   task wrap-key, name <wrapKey>
     like promise
       like array-buffer
 
     take format
-      like or
-        text <raw>
-        text <pkcs8>
-        text <spki>
-        text <jwk>
-        like native-string
-    take key, like crypto-key
-    take wrapping-key, like crypto-key
+    take key
+    take wrapping-key
     take wrap-algorithm
-      like or
-        like algorithm-identifier
-        like rsa-oaep-params
-        like aes-ctr-params
-        like aes-cbc-params
-        like aes-cmac-params
-        like aes-gcm-params
-        like aes-cfb-params

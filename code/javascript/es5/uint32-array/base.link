@@ -1,11 +1,4 @@
 
-load @tunebond/moon
-  take form any
-  take form like
-  take form or
-  take form task
-  take form unknown
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-number
@@ -39,45 +32,28 @@ form uint32-array, name <Uint32Array>
   task copy-within, name <copyWithin>
     like native-this
 
-    take target, like native-number
-    take start, like native-number
-    take end, like native-number
-      void true
+    take target
+    take start
+    take end, like maybe, like native-number
 
   task every, name <every>
     like native-boolean
 
     take predicate
-      like task
-        like unknown
-
-        take value, like native-number
-        take index, like native-number
-        take array, like uint32-array
-    take this-arg, like any
-      void true
+    take this-arg, like maybe, like any
 
   task fill, name <fill>
     like native-this
 
-    take value, like native-number
-    take start, like native-number
-      void true
-    take end, like native-number
-      void true
+    take value
+    take start, like maybe, like native-number
+    take end, like maybe, like native-number
 
   task filter, name <filter>
     like uint32-array
 
     take predicate
-      like task
-        like any
-
-        take value, like native-number
-        take index, like native-number
-        take array, like uint32-array
-    take this-arg, like any
-      void true
+    take this-arg, like maybe, like any
 
   task find, name <find>
     like or
@@ -85,98 +61,53 @@ form uint32-array, name <Uint32Array>
       like native-undefined
 
     take predicate
-      like task
-        like native-boolean
-
-        take value, like native-number
-        take index, like native-number
-        take obj, like uint32-array
-    take this-arg, like any
-      void true
+    take this-arg, like maybe, like any
 
   task find-index, name <findIndex>
     like native-number
 
     take predicate
-      like task
-        like native-boolean
-
-        take value, like native-number
-        take index, like native-number
-        take obj, like uint32-array
-    take this-arg, like any
-      void true
+    take this-arg, like maybe, like any
 
   task for-each, name <forEach>
     like native-void
 
     take callbackfn
-      like task
-        like native-void
-
-        take value, like native-number
-        take index, like native-number
-        take array, like uint32-array
-    take this-arg, like any
-      void true
+    take this-arg, like maybe, like any
 
   task index-of, name <indexOf>
     like native-number
 
-    take search-element, like native-number
-    take from-index, like native-number
-      void true
+    take search-element
+    take from-index, like maybe, like native-number
 
   task join, name <join>
     like native-string
 
-    take separator, like native-string
-      void true
+    take separator, like maybe, like native-string
 
   task last-index-of, name <lastIndexOf>
     like native-number
 
-    take search-element, like native-number
-    take from-index, like native-number
-      void true
+    take search-element
+    take from-index, like maybe, like native-number
 
   task map, name <map>
     like uint32-array
 
     take callbackfn
-      like task
-        like native-number
-
-        take value, like native-number
-        take index, like native-number
-        take array, like uint32-array
-    take this-arg, like any
-      void true
+    take this-arg, like maybe, like any
 
   task reduce, name <reduce>
     like native-number
 
     take callbackfn
-      like task
-        like native-number
-
-        take previous-value, like native-number
-        take current-value, like native-number
-        take current-index, like native-number
-        take array, like uint32-array
 
   task reduce, name <reduce>
     like native-number
 
     take callbackfn
-      like task
-        like native-number
-
-        take previous-value, like native-number
-        take current-value, like native-number
-        take current-index, like native-number
-        take array, like uint32-array
-    take initial-value, like native-number
+    take initial-value
 
   task reduce, name <reduce>
     like u
@@ -184,39 +115,18 @@ form uint32-array, name <Uint32Array>
     head u
 
     take callbackfn
-      like task
-        like u
-
-        take previous-value, like u
-        take current-value, like native-number
-        take current-index, like native-number
-        take array, like uint32-array
-    take initial-value, like u
+    take initial-value
 
   task reduce-right, name <reduceRight>
     like native-number
 
     take callbackfn
-      like task
-        like native-number
-
-        take previous-value, like native-number
-        take current-value, like native-number
-        take current-index, like native-number
-        take array, like uint32-array
 
   task reduce-right, name <reduceRight>
     like native-number
 
     take callbackfn
-      like task
-        like native-number
-
-        take previous-value, like native-number
-        take current-value, like native-number
-        take current-index, like native-number
-        take array, like uint32-array
-    take initial-value, like native-number
+    take initial-value
 
   task reduce-right, name <reduceRight>
     like u
@@ -224,14 +134,7 @@ form uint32-array, name <Uint32Array>
     head u
 
     take callbackfn
-      like task
-        like u
-
-        take previous-value, like u
-        take current-value, like native-number
-        take current-index, like native-number
-        take array, like uint32-array
-    take initial-value, like u
+    take initial-value
 
   task reverse, name <reverse>
     like uint32-array
@@ -240,50 +143,36 @@ form uint32-array, name <Uint32Array>
     like native-void
 
     take array
-      like array-like
-        like native-number
-    take offset, like native-number
-      void true
+    take offset, like maybe, like native-number
 
   task slice, name <slice>
     like uint32-array
 
-    take start, like native-number
-      void true
-    take end, like native-number
-      void true
+    take start, like maybe, like native-number
+    take end, like maybe, like native-number
 
   task some, name <some>
     like native-boolean
 
     take predicate
-      like task
-        like unknown
-
-        take value, like native-number
-        take index, like native-number
-        take array, like uint32-array
-    take this-arg, like any
-      void true
+    take this-arg, like maybe, like any
 
   task sort, name <sort>
     like native-this
 
     take compare-fn
-      like task
-        like native-number
+      like maybe
+        like task
+          like native-number
 
-        take a, like native-number
-        take b, like native-number
-      void true
+          take a
+          take b
 
   task subarray, name <subarray>
     like uint32-array
 
-    take begin, like native-number
-      void true
-    take end, like native-number
-      void true
+    take begin, like maybe, like native-number
+    take end, like maybe, like native-number
 
   task to-locale-string, name <toLocaleString>
     like native-string
@@ -294,7 +183,7 @@ form uint32-array, name <Uint32Array>
   task value-of, name <valueOf>
     like uint32-array
 
-  mesh index, like native-number
+  mesh index
     like native-number
 
 form uint32-array
@@ -316,8 +205,6 @@ form uint32-array
       like uint32-array
 
       take array-like
-        like array-like
-          like native-number
 
     task from, name <from>
       like uint32-array
@@ -325,36 +212,22 @@ form uint32-array
       head t
 
       take array-like
-        like array-like
-          like t
       take mapfn
-        like task
-          like native-number
-
-          take v, like t
-          take k, like native-number
-      take this-arg, like any
-        void true
+      take this-arg, like maybe, like any
 
   hook make
     like uint32-array
 
-    take length, like native-number
+    take length
 
   hook make
     like uint32-array
 
     take array
-      like or
-        like array-like
-          like native-number
-        like array-buffer-like
 
   hook make
     like uint32-array
 
-    take buffer, like array-buffer-like
-    take byte-offset, like native-number
-      void true
-    take length, like native-number
-      void true
+    take buffer
+    take byte-offset, like maybe, like native-number
+    take length, like maybe, like native-number

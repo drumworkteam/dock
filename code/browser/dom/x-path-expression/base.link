@@ -1,12 +1,9 @@
 
-load @tunebond/moon
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-null
   take form native-number
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form node
   take form x-path-result
 
@@ -14,11 +11,10 @@ form x-path-expression, name <XPathExpression>
   task evaluate, name <evaluate>
     like x-path-result
 
-    take context-node, like node
-    take type, like native-number
-      void true
+    take context-node
+    take type, like maybe, like native-number
     take result
-      like or
-        like x-path-result
-        like native-null
-      void true
+      like maybe
+        like or
+          like x-path-result
+          like native-null

@@ -1,9 +1,4 @@
 
-load @tunebond/moon
-  take form any
-  take form like
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-object
   take form native-void
@@ -21,15 +16,14 @@ form finalization-registry, name <FinalizationRegistry>
   task register, name <register>
     like native-void
 
-    take target, like native-object
-    take held-value, like t
-    take unregister-token, like native-object
-      void true
+    take target
+    take held-value
+    take unregister-token, like maybe, like native-object
 
   task unregister, name <unregister>
     like native-void
 
-    take unregister-token, like native-object
+    take unregister-token
 
 form finalization-registry
   hook self
@@ -44,7 +38,3 @@ form finalization-registry
     head t
 
     take cleanup-callback
-      like task
-        like native-void
-
-        take held-value, like t

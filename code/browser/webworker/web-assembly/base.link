@@ -22,21 +22,11 @@ bear @tunebond/bolt/code/javascript/webworker/web-assembly/imports
 load @tunebond/bolt/code/javascript
   take form array
 
-load @tunebond/moon
-  take form any
-  take form form
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-string
 
-load @tunebond/bolt/code/javascript/es5
-  take form array-buffer
-  take form promise
-  take form promise-like
-
-load @tunebond/bolt/code/javascript/webworker
+load @tunebond/bolt/code/browser/webworker
   take form buffer-source
   take form global
   take form global-descriptor
@@ -52,6 +42,11 @@ load @tunebond/bolt/code/javascript/webworker
   take form table-descriptor
   take form web-assembly-instantiated-source
 
+load @tunebond/bolt/code/javascript/es5
+  take form array-buffer
+  take form promise
+  take form promise-like
+
 host global, name <Global>
   like form
     link prototype, name <prototype>
@@ -60,9 +55,8 @@ host global, name <Global>
     hook make
       like global
 
-      take descriptor, like global-descriptor
-      take v, like any
-        void true
+      take descriptor
+      take v, like maybe, like any
 
 host instance, name <Instance>
   like form
@@ -72,9 +66,8 @@ host instance, name <Instance>
     hook make
       like instance
 
-      take module, like module
-      take import-object, like imports
-        void true
+      take module
+      take import-object, like maybe, like imports
 
 host memory, name <Memory>
   like form
@@ -84,7 +77,7 @@ host memory, name <Memory>
     hook make
       like memory
 
-      take descriptor, like memory-descriptor
+      take descriptor
 
 host module, name <Module>
   like form
@@ -94,26 +87,26 @@ host module, name <Module>
     hook make
       like module
 
-      take bytes, like buffer-source
+      take bytes
 
     task custom-sections, name <customSections>
       like array
         like array-buffer
 
-      take module-object, like module
-      take section-name, like native-string
+      take module-object
+      take section-name
 
     task exports, name <exports>
       like array
         like module-export-descriptor
 
-      take module-object, like module
+      take module-object
 
     task imports, name <imports>
       like array
         like module-import-descriptor
 
-      take module-object, like module
+      take module-object
 
 host table, name <Table>
   like form
@@ -123,53 +116,42 @@ host table, name <Table>
     hook make
       like table
 
-      take descriptor, like table-descriptor
+      take descriptor
 
 task compile, name <compile>
   like promise
     like module
 
-  take bytes, like buffer-source
+  take bytes
 
 task compile-streaming, name <compileStreaming>
   like promise
     like module
 
   take source
-    like or
-      like response
-      like promise
-        like response
 
 task instantiate, name <instantiate>
   like promise
     like web-assembly-instantiated-source
 
-  take bytes, like buffer-source
-  take import-object, like imports
-    void true
+  take bytes
+  take import-object, like maybe, like imports
 
 task instantiate, name <instantiate>
   like promise
     like instance
 
-  take module-object, like module
-  take import-object, like imports
-    void true
+  take module-object
+  take import-object, like maybe, like imports
 
 task instantiate-streaming, name <instantiateStreaming>
   like promise
     like web-assembly-instantiated-source
 
   take response
-    like or
-      like response
-      like promise-like
-        like response
-  take import-object, like imports
-    void true
+  take import-object, like maybe, like imports
 
 task validate, name <validate>
   like native-boolean
 
-  take bytes, like buffer-source
+  take bytes

@@ -1,19 +1,11 @@
 
-load @tunebond/moon
-  take form any
-  take form index
-  take form key-list
-  take form like
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-number
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form add-event-listener-options
   take form dom-point
   take form dom-point-init
@@ -42,8 +34,7 @@ form svg-text-content-element, name <SVGTextContentElement>
   task get-char-num-at-position, name <getCharNumAtPosition>
     like native-number
 
-    take point, like dom-point-init
-      void true
+    take point, like maybe, like dom-point-init
 
   task get-computed-text-length, name <getComputedTextLength>
     like native-number
@@ -51,12 +42,12 @@ form svg-text-content-element, name <SVGTextContentElement>
   task get-end-position-of-char, name <getEndPositionOfChar>
     like dom-point
 
-    take charnum, like native-number
+    take charnum
 
   task get-extent-of-char, name <getExtentOfChar>
     like dom-rect
 
-    take charnum, like native-number
+    take charnum
 
   task get-number-of-chars, name <getNumberOfChars>
     like native-number
@@ -64,24 +55,24 @@ form svg-text-content-element, name <SVGTextContentElement>
   task get-rotation-of-char, name <getRotationOfChar>
     like native-number
 
-    take charnum, like native-number
+    take charnum
 
   task get-start-position-of-char, name <getStartPositionOfChar>
     like dom-point
 
-    take charnum, like native-number
+    take charnum
 
   task get-sub-string-length, name <getSubStringLength>
     like native-number
 
-    take charnum, like native-number
-    take nchars, like native-number
+    take charnum
+    take nchars
 
   task select-sub-string, name <selectSubString>
     like native-void
 
-    take charnum, like native-number
-    take nchars, like native-number
+    take charnum
+    take nchars
 
   task add-event-listener, name <addEventListener>
     like native-void
@@ -90,32 +81,24 @@ form svg-text-content-element, name <SVGTextContentElement>
       base key-list
         like svg-element-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like svg-text-content-element
-        take ev
-          like index
-            like svg-element-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task add-event-listener, name <addEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
@@ -124,29 +107,21 @@ form svg-text-content-element, name <SVGTextContentElement>
       base key-list
         like svg-element-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like svg-text-content-element
-        take ev
-          like index
-            like svg-element-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

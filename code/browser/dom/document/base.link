@@ -2,15 +2,6 @@
 load @tunebond/bolt/code/javascript
   take form array
 
-load @tunebond/moon
-  take form and
-  take form any
-  take form index
-  take form key-list
-  take form like
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-null
@@ -18,7 +9,7 @@ load @tunebond/bolt/code/javascript/native
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form add-event-listener-options
   take form animation-event
   take form animation-playback-event
@@ -233,8 +224,8 @@ form document, name <Document>
       like task
         like any
 
-        take this, like document
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link onfullscreenerror, name <onfullscreenerror>
@@ -242,8 +233,8 @@ form document, name <Document>
       like task
         like any
 
-        take this, like document
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link onpointerlockchange, name <onpointerlockchange>
@@ -251,8 +242,8 @@ form document, name <Document>
       like task
         like any
 
-        take this, like document
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link onpointerlockerror, name <onpointerlockerror>
@@ -260,8 +251,8 @@ form document, name <Document>
       like task
         like any
 
-        take this, like document
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link onreadystatechange, name <onreadystatechange>
@@ -269,8 +260,8 @@ form document, name <Document>
       like task
         like any
 
-        take this, like document
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link onvisibilitychange, name <onvisibilitychange>
@@ -278,8 +269,8 @@ form document, name <Document>
       like task
         like any
 
-        take this, like document
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link owner-document, name <ownerDocument>
@@ -316,9 +307,6 @@ form document, name <Document>
 
   task location, name <location>
     take href
-      like or
-        like native-string
-        like location
 
   task adopt-node, name <adoptNode>
     like t
@@ -326,7 +314,7 @@ form document, name <Document>
     head t
       base node
 
-    take node, like t
+    take node
 
   task capture-events, name <captureEvents>
     like native-void
@@ -340,26 +328,23 @@ form document, name <Document>
   task create-attribute, name <createAttribute>
     like attr
 
-    take local-name, like native-string
+    take local-name
 
   task create-attribute-ns, name <createAttributeNS>
     like attr
 
     take namespace
-      like or
-        like native-string
-        like native-null
-    take qualified-name, like native-string
+    take qualified-name
 
   task create-cdata-section, name <createCDATASection>
     like cdata-section
 
-    take data, like native-string
+    take data
 
   task create-comment, name <createComment>
     like comment
 
-    take data, like native-string
+    take data
 
   task create-document-fragment, name <createDocumentFragment>
     like document-fragment
@@ -373,9 +358,8 @@ form document, name <Document>
       base key-list
         like html-element-tag-name-map
 
-    take tag-name, like k
-    take options, like element-creation-options
-      void true
+    take tag-name
+    take options, like maybe, like element-creation-options
 
   task create-element, name <createElement>
     like index
@@ -386,22 +370,20 @@ form document, name <Document>
       base key-list
         like html-element-deprecated-tag-name-map
 
-    take tag-name, like k
-    take options, like element-creation-options
-      void true
+    take tag-name
+    take options, like maybe, like element-creation-options
 
   task create-element, name <createElement>
     like html-element
 
-    take tag-name, like native-string
-    take options, like element-creation-options
-      void true
+    take tag-name
+    take options, like maybe, like element-creation-options
 
   task create-element-ns, name <createElementNS>
     like html-element
 
-    take namespace-uri, text <http://www.w3.org/1999/xhtml>
-    take qualified-name, like native-string
+    take namespace-uri
+    take qualified-name
 
   task create-element-ns, name <createElementNS>
     like index
@@ -412,347 +394,339 @@ form document, name <Document>
       base key-list
         like svg-element-tag-name-map
 
-    take namespace-uri, text <http://www.w3.org/2000/svg>
-    take qualified-name, like k
+    take namespace-uri
+    take qualified-name
 
   task create-element-ns, name <createElementNS>
     like svg-element
 
-    take namespace-uri, text <http://www.w3.org/2000/svg>
-    take qualified-name, like native-string
+    take namespace-uri
+    take qualified-name
 
   task create-element-ns, name <createElementNS>
     like element
 
     take namespace-uri
-      like or
-        like native-string
-        like native-null
-    take qualified-name, like native-string
-    take options, like element-creation-options
-      void true
+    take qualified-name
+    take options, like maybe, like element-creation-options
 
   task create-element-ns, name <createElementNS>
     like element
 
     take namespace
-      like or
-        like native-string
-        like native-null
-    take qualified-name, like native-string
+    take qualified-name
     take options
-      like or
-        like native-string
-        like element-creation-options
-      void true
+      like maybe
+        like or
+          like native-string
+          like element-creation-options
 
   task create-event, name <createEvent>
     like animation-event
 
-    take event-interface, text <AnimationEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like animation-playback-event
 
-    take event-interface, text <AnimationPlaybackEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like audio-processing-event
 
-    take event-interface, text <AudioProcessingEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like before-unload-event
 
-    take event-interface, text <BeforeUnloadEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like blob-event
 
-    take event-interface, text <BlobEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like clipboard-event
 
-    take event-interface, text <ClipboardEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like close-event
 
-    take event-interface, text <CloseEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like composition-event
 
-    take event-interface, text <CompositionEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like custom-event
 
-    take event-interface, text <CustomEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like device-motion-event
 
-    take event-interface, text <DeviceMotionEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like device-orientation-event
 
-    take event-interface, text <DeviceOrientationEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like drag-event
 
-    take event-interface, text <DragEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like error-event
 
-    take event-interface, text <ErrorEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like focus-event
 
-    take event-interface, text <FocusEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like font-face-set-load-event
 
-    take event-interface, text <FontFaceSetLoadEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like form-data-event
 
-    take event-interface, text <FormDataEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like gamepad-event
 
-    take event-interface, text <GamepadEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like hash-change-event
 
-    take event-interface, text <HashChangeEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like idb-version-change-event
 
-    take event-interface, text <IDBVersionChangeEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like input-event
 
-    take event-interface, text <InputEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like keyboard-event
 
-    take event-interface, text <KeyboardEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like media-encrypted-event
 
-    take event-interface, text <MediaEncryptedEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like media-key-message-event
 
-    take event-interface, text <MediaKeyMessageEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like media-query-list-event
 
-    take event-interface, text <MediaQueryListEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like media-recorder-error-event
 
-    take event-interface, text <MediaRecorderErrorEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like media-stream-track-event
 
-    take event-interface, text <MediaStreamTrackEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like message-event
 
-    take event-interface, text <MessageEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like mouse-event
 
-    take event-interface, text <MouseEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like mouse-event
 
-    take event-interface, text <MouseEvents>
+    take event-interface
 
   task create-event, name <createEvent>
     like mutation-event
 
-    take event-interface, text <MutationEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like mutation-event
 
-    take event-interface, text <MutationEvents>
+    take event-interface
 
   task create-event, name <createEvent>
     like offline-audio-completion-event
 
-    take event-interface, text <OfflineAudioCompletionEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like page-transition-event
 
-    take event-interface, text <PageTransitionEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like payment-method-change-event
 
-    take event-interface, text <PaymentMethodChangeEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like payment-request-update-event
 
-    take event-interface, text <PaymentRequestUpdateEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like pointer-event
 
-    take event-interface, text <PointerEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like pop-state-event
 
-    take event-interface, text <PopStateEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like progress-event
 
-    take event-interface, text <ProgressEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like promise-rejection-event
 
-    take event-interface, text <PromiseRejectionEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like rtcdtmf-tone-change-event
 
-    take event-interface, text <RTCDTMFToneChangeEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like rtc-data-channel-event
 
-    take event-interface, text <RTCDataChannelEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like rtc-peer-connection-ice-error-event
 
-    take event-interface, text <RTCPeerConnectionIceErrorEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like rtc-peer-connection-ice-event
 
-    take event-interface, text <RTCPeerConnectionIceEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like rtc-track-event
 
-    take event-interface, text <RTCTrackEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like security-policy-violation-event
 
-    take event-interface, text <SecurityPolicyViolationEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like speech-recognition-error-event
 
-    take event-interface, text <SpeechRecognitionErrorEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like speech-synthesis-error-event
 
-    take event-interface, text <SpeechSynthesisErrorEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like speech-synthesis-event
 
-    take event-interface, text <SpeechSynthesisEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like storage-event
 
-    take event-interface, text <StorageEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like submit-event
 
-    take event-interface, text <SubmitEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like touch-event
 
-    take event-interface, text <TouchEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like track-event
 
-    take event-interface, text <TrackEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like transition-event
 
-    take event-interface, text <TransitionEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like ui-event
 
-    take event-interface, text <UIEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like ui-event
 
-    take event-interface, text <UIEvents>
+    take event-interface
 
   task create-event, name <createEvent>
     like web-gl-context-event
 
-    take event-interface, text <WebGLContextEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like wheel-event
 
-    take event-interface, text <WheelEvent>
+    take event-interface
 
   task create-event, name <createEvent>
     like event
 
-    take event-interface, like native-string
+    take event-interface
 
   task create-node-iterator, name <createNodeIterator>
     like node-iterator
 
-    take root, like node
-    take what-to-show, like native-number
-      void true
+    take root
+    take what-to-show, like maybe, like native-number
     take filter
-      like or
-        like node-filter
-        like native-null
-      void true
+      like maybe
+        like or
+          like node-filter
+          like native-null
 
   task create-processing-instruction, name <createProcessingInstruction>
     like processing-instruction
 
-    take target, like native-string
-    take data, like native-string
+    take target
+    take data
 
   task create-range, name <createRange>
     like range
@@ -760,43 +734,40 @@ form document, name <Document>
   task create-text-node, name <createTextNode>
     like text
 
-    take data, like native-string
+    take data
 
   task create-tree-walker, name <createTreeWalker>
     like tree-walker
 
-    take root, like node
-    take what-to-show, like native-number
-      void true
+    take root
+    take what-to-show, like maybe, like native-number
     take filter
-      like or
-        like node-filter
-        like native-null
-      void true
+      like maybe
+        like or
+          like node-filter
+          like native-null
 
   task element-from-point, name <elementFromPoint>
     like or
       like element
       like native-null
 
-    take x, like native-number
-    take y, like native-number
+    take x
+    take y
 
   task elements-from-point, name <elementsFromPoint>
     like array
       like element
 
-    take x, like native-number
-    take y, like native-number
+    take x
+    take y
 
   task exec-command, name <execCommand>
     like native-boolean
 
-    take command-id, like native-string
-    take show-ui, like native-boolean
-      void true
-    take value, like native-string
-      void true
+    take command-id
+    take show-ui, like maybe, like native-boolean
+    take value, like maybe, like native-string
 
   task exit-fullscreen, name <exitFullscreen>
     like promise
@@ -814,19 +785,19 @@ form document, name <Document>
       like html-element
       like native-null
 
-    take element-id, like native-string
+    take element-id
 
   task get-elements-by-class-name, name <getElementsByClassName>
     like html-collection-of
       like element
 
-    take class-names, like native-string
+    take class-names
 
   task get-elements-by-name, name <getElementsByName>
     like node-list-of
       like html-element
 
-    take element-name, like native-string
+    take element-name
 
   task get-elements-by-tag-name, name <getElementsByTagName>
     like html-collection-of
@@ -838,7 +809,7 @@ form document, name <Document>
       base key-list
         like html-element-tag-name-map
 
-    take qualified-name, like k
+    take qualified-name
 
   task get-elements-by-tag-name, name <getElementsByTagName>
     like html-collection-of
@@ -850,37 +821,34 @@ form document, name <Document>
       base key-list
         like svg-element-tag-name-map
 
-    take qualified-name, like k
+    take qualified-name
 
   task get-elements-by-tag-name, name <getElementsByTagName>
     like html-collection-of
       like element
 
-    take qualified-name, like native-string
+    take qualified-name
 
   task get-elements-by-tag-name-ns, name <getElementsByTagNameNS>
     like html-collection-of
       like html-element
 
-    take namespace-uri, text <http://www.w3.org/1999/xhtml>
-    take local-name, like native-string
+    take namespace-uri
+    take local-name
 
   task get-elements-by-tag-name-ns, name <getElementsByTagNameNS>
     like html-collection-of
       like svg-element
 
-    take namespace-uri, text <http://www.w3.org/2000/svg>
-    take local-name, like native-string
+    take namespace-uri
+    take local-name
 
   task get-elements-by-tag-name-ns, name <getElementsByTagNameNS>
     like html-collection-of
       like element
 
     take namespace
-      like or
-        like native-string
-        like native-null
-    take local-name, like native-string
+    take local-name
 
   task get-selection, name <getSelection>
     like or
@@ -900,17 +868,14 @@ form document, name <Document>
     head t
       base node
 
-    take node, like t
-    take deep, like native-boolean
-      void true
+    take node
+    take deep, like maybe, like native-boolean
 
   task open, name <open>
     like document
 
-    take unused1, like native-string
-      void true
-    take unused2, like native-string
-      void true
+    take unused1, like maybe, like native-string
+    take unused2, like maybe, like native-string
 
   task open, name <open>
     like or
@@ -918,36 +883,33 @@ form document, name <Document>
       like native-null
 
     take url
-      like or
-        like native-string
-        like url
-    take name, like native-string
-    take features, like native-string
+    take name
+    take features
 
   task query-command-enabled, name <queryCommandEnabled>
     like native-boolean
 
-    take command-id, like native-string
+    take command-id
 
   task query-command-indeterm, name <queryCommandIndeterm>
     like native-boolean
 
-    take command-id, like native-string
+    take command-id
 
   task query-command-state, name <queryCommandState>
     like native-boolean
 
-    take command-id, like native-string
+    take command-id
 
   task query-command-supported, name <queryCommandSupported>
     like native-boolean
 
-    take command-id, like native-string
+    take command-id
 
   task query-command-value, name <queryCommandValue>
     like native-string
 
-    take command-id, like native-string
+    take command-id
 
   task release-events, name <releaseEvents>
     like native-void
@@ -979,32 +941,24 @@ form document, name <Document>
       base key-list
         like document-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like document
-        take ev
-          like index
-            like document-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task add-event-listener, name <addEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
@@ -1013,29 +967,21 @@ form document, name <Document>
       base key-list
         like document-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like document
-        take ev
-          like index
-            like document-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

@@ -3,12 +3,12 @@ load @tunebond/bolt/code/javascript/native
   take form iterable
   take form native-number
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form iir-filter-node
   take form periodic-wave
   take form periodic-wave-constraints
 
-load @tunebond/bolt/code/javascript/dom/base-audio-context
+load @tunebond/bolt/code/browser/dom/base-audio-context
   take form base-audio-context
 
 form base-audio-context, name <BaseAudioContext>
@@ -16,20 +16,11 @@ form base-audio-context, name <BaseAudioContext>
     like iir-filter-node
 
     take feedforward
-      like iterable
-        like native-number
     take feedback
-      like iterable
-        like native-number
 
   task create-periodic-wave, name <createPeriodicWave>
     like periodic-wave
 
     take real
-      like iterable
-        like native-number
     take imag
-      like iterable
-        like native-number
-    take constraints, like periodic-wave-constraints
-      void true
+    take constraints, like maybe, like periodic-wave-constraints

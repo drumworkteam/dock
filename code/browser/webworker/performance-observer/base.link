@@ -2,11 +2,11 @@
 load @tunebond/bolt/code/javascript/native
   take form native-void
 
-load @tunebond/bolt/code/javascript/webworker
+load @tunebond/bolt/code/browser/webworker
   take form performance-entry-list
   take form performance-observer-init
 
-load @tunebond/bolt/code/javascript/dom/performance-observer
+load @tunebond/bolt/code/browser/dom/performance-observer
   take form performance-observer
 
 form performance-observer, name <PerformanceObserver>
@@ -16,8 +16,7 @@ form performance-observer, name <PerformanceObserver>
   task observe, name <observe>
     like native-void
 
-    take options, like performance-observer-init
-      void true
+    take options, like maybe, like performance-observer-init
 
   task take-records, name <takeRecords>
     like performance-entry-list

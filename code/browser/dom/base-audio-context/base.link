@@ -2,14 +2,6 @@
 load @tunebond/bolt/code/javascript
   take form array
 
-load @tunebond/moon
-  take form any
-  take form index
-  take form key-list
-  take form like
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-null
@@ -17,7 +9,7 @@ load @tunebond/bolt/code/javascript/native
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form add-event-listener-options
   take form analyser-node
   take form audio-buffer
@@ -71,8 +63,8 @@ form base-audio-context, name <BaseAudioContext>
       like task
         like any
 
-        take this, like base-audio-context
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link sample-rate, name <sampleRate>
@@ -89,9 +81,9 @@ form base-audio-context, name <BaseAudioContext>
   task create-buffer, name <createBuffer>
     like audio-buffer
 
-    take number-of-channels, like native-number
-    take length, like native-number
-    take sample-rate, like native-number
+    take number-of-channels
+    take length
+    take sample-rate
 
   task create-buffer-source, name <createBufferSource>
     like audio-buffer-source-node
@@ -99,14 +91,12 @@ form base-audio-context, name <BaseAudioContext>
   task create-channel-merger, name <createChannelMerger>
     like channel-merger-node
 
-    take number-of-inputs, like native-number
-      void true
+    take number-of-inputs, like maybe, like native-number
 
   task create-channel-splitter, name <createChannelSplitter>
     like channel-splitter-node
 
-    take number-of-outputs, like native-number
-      void true
+    take number-of-outputs, like maybe, like native-number
 
   task create-constant-source, name <createConstantSource>
     like constant-source-node
@@ -117,8 +107,7 @@ form base-audio-context, name <BaseAudioContext>
   task create-delay, name <createDelay>
     like delay-node
 
-    take max-delay-time, like native-number
-      void true
+    take max-delay-time, like maybe, like native-number
 
   task create-dynamics-compressor, name <createDynamicsCompressor>
     like dynamics-compressor-node
@@ -130,11 +119,7 @@ form base-audio-context, name <BaseAudioContext>
     like iir-filter-node
 
     take feedforward
-      like array
-        like native-number
     take feedback
-      like array
-        like native-number
 
   task create-oscillator, name <createOscillator>
     like oscillator-node
@@ -146,27 +131,15 @@ form base-audio-context, name <BaseAudioContext>
     like periodic-wave
 
     take real
-      like or
-        like array
-          like native-number
-        like float32-array
     take imag
-      like or
-        like array
-          like native-number
-        like float32-array
-    take constraints, like periodic-wave-constraints
-      void true
+    take constraints, like maybe, like periodic-wave-constraints
 
   task create-script-processor, name <createScriptProcessor>
     like script-processor-node
 
-    take buffer-size, like native-number
-      void true
-    take number-of-input-channels, like native-number
-      void true
-    take number-of-output-channels, like native-number
-      void true
+    take buffer-size, like maybe, like native-number
+    take number-of-input-channels, like maybe, like native-number
+    take number-of-output-channels, like maybe, like native-number
 
   task create-stereo-panner, name <createStereoPanner>
     like stereo-panner-node
@@ -178,17 +151,17 @@ form base-audio-context, name <BaseAudioContext>
     like promise
       like audio-buffer
 
-    take audio-data, like array-buffer
+    take audio-data
     take success-callback
-      like or
-        like decode-success-callback
-        like native-null
-      void true
+      like maybe
+        like or
+          like decode-success-callback
+          like native-null
     take error-callback
-      like or
-        like decode-error-callback
-        like native-null
-      void true
+      like maybe
+        like or
+          like decode-error-callback
+          like native-null
 
   task add-event-listener, name <addEventListener>
     like native-void
@@ -197,32 +170,24 @@ form base-audio-context, name <BaseAudioContext>
       base key-list
         like base-audio-context-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like base-audio-context
-        take ev
-          like index
-            like base-audio-context-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task add-event-listener, name <addEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
@@ -231,29 +196,21 @@ form base-audio-context, name <BaseAudioContext>
       base key-list
         like base-audio-context-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like base-audio-context
-        take ev
-          like index
-            like base-audio-context-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

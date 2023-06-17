@@ -1,12 +1,4 @@
 
-load @tunebond/moon
-  take form any
-  take form index
-  take form key-list
-  take form like
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-null
@@ -14,7 +6,7 @@ load @tunebond/bolt/code/javascript/native
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form add-event-listener-options
   take form binary-type
   take form blob
@@ -45,8 +37,8 @@ form web-socket, name <WebSocket>
       like task
         like any
 
-        take this, like web-socket
-        take ev, like close-event
+        take this
+        take ev
       like native-null
     flex true
   link onerror, name <onerror>
@@ -54,8 +46,8 @@ form web-socket, name <WebSocket>
       like task
         like any
 
-        take this, like web-socket
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link onmessage, name <onmessage>
@@ -63,8 +55,8 @@ form web-socket, name <WebSocket>
       like task
         like any
 
-        take this, like web-socket
-        take ev, like message-event
+        take this
+        take ev
       like native-null
     flex true
   link onopen, name <onopen>
@@ -72,8 +64,8 @@ form web-socket, name <WebSocket>
       like task
         like any
 
-        take this, like web-socket
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link protocol, name <protocol>
@@ -94,20 +86,13 @@ form web-socket, name <WebSocket>
   task close, name <close>
     like native-void
 
-    take code, like native-number
-      void true
-    take reason, like native-string
-      void true
+    take code, like maybe, like native-number
+    take reason, like maybe, like native-string
 
   task send, name <send>
     like native-void
 
     take data
-      like or
-        like native-string
-        like array-buffer-like
-        like blob
-        like array-buffer-view
 
   task add-event-listener, name <addEventListener>
     like native-void
@@ -116,32 +101,24 @@ form web-socket, name <WebSocket>
       base key-list
         like web-socket-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like web-socket
-        take ev
-          like index
-            like web-socket-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task add-event-listener, name <addEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
@@ -150,29 +127,21 @@ form web-socket, name <WebSocket>
       base key-list
         like web-socket-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like web-socket
-        take ev
-          like index
-            like web-socket-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

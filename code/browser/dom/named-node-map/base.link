@@ -1,13 +1,10 @@
 
-load @tunebond/moon
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-null
   take form native-number
   take form native-string
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form attr
 
 form named-node-map, name <NamedNodeMap>
@@ -19,7 +16,7 @@ form named-node-map, name <NamedNodeMap>
       like attr
       like native-null
 
-    take qualified-name, like native-string
+    take qualified-name
 
   task get-named-item-ns, name <getNamedItemNS>
     like or
@@ -27,45 +24,39 @@ form named-node-map, name <NamedNodeMap>
       like native-null
 
     take namespace
-      like or
-        like native-string
-        like native-null
-    take local-name, like native-string
+    take local-name
 
   task item, name <item>
     like or
       like attr
       like native-null
 
-    take index, like native-number
+    take index
 
   task remove-named-item, name <removeNamedItem>
     like attr
 
-    take qualified-name, like native-string
+    take qualified-name
 
   task remove-named-item-ns, name <removeNamedItemNS>
     like attr
 
     take namespace
-      like or
-        like native-string
-        like native-null
-    take local-name, like native-string
+    take local-name
 
   task set-named-item, name <setNamedItem>
     like or
       like attr
       like native-null
 
-    take attr, like attr
+    take attr
 
   task set-named-item-ns, name <setNamedItemNS>
     like or
       like attr
       like native-null
 
-    take attr, like attr
+    take attr
 
-  mesh index, like native-number
+  mesh index
     like attr

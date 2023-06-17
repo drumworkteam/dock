@@ -3,14 +3,14 @@ load @tunebond/bolt/code/javascript/native
   take form native-number
   take form native-string
 
+load @tunebond/bolt/code/browser/webworker
+  take form readable-stream
+
 load @tunebond/bolt/code/javascript/es5
   take form array-buffer
   take form promise
 
-load @tunebond/bolt/code/javascript/webworker
-  take form readable-stream
-
-load @tunebond/bolt/code/javascript/dom/blob
+load @tunebond/bolt/code/browser/dom/blob
   take form blob
 
 form blob, name <Blob>
@@ -26,12 +26,9 @@ form blob, name <Blob>
   task slice, name <slice>
     like blob
 
-    take start, like native-number
-      void true
-    take end, like native-number
-      void true
-    take content-type, like native-string
-      void true
+    take start, like maybe, like native-number
+    take end, like maybe, like native-number
+    take content-type, like maybe, like native-string
 
   task stream, name <stream>
     like readable-stream

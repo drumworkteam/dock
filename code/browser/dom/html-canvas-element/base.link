@@ -1,12 +1,4 @@
 
-load @tunebond/moon
-  take form any
-  take form index
-  take form key-list
-  take form like
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-null
@@ -14,7 +6,7 @@ load @tunebond/bolt/code/javascript/native
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form add-event-listener-options
   take form blob-callback
   take form canvas-rendering-context2-d
@@ -44,70 +36,60 @@ form html-canvas-element, name <HTMLCanvasElement>
   task capture-stream, name <captureStream>
     like media-stream
 
-    take frame-request-rate, like native-number
-      void true
+    take frame-request-rate, like maybe, like native-number
 
   task get-context, name <getContext>
     like or
       like canvas-rendering-context2-d
       like native-null
 
-    take context-id, text <2d>
-    take options, like canvas-rendering-context2-d-settings
-      void true
+    take context-id
+    take options, like maybe, like canvas-rendering-context2-d-settings
 
   task get-context, name <getContext>
     like or
       like image-bitmap-rendering-context
       like native-null
 
-    take context-id, text <bitmaprenderer>
-    take options, like image-bitmap-rendering-context-settings
-      void true
+    take context-id
+    take options, like maybe, like image-bitmap-rendering-context-settings
 
   task get-context, name <getContext>
     like or
       like web-gl-rendering-context
       like native-null
 
-    take context-id, text <webgl>
-    take options, like web-gl-context-attributes
-      void true
+    take context-id
+    take options, like maybe, like web-gl-context-attributes
 
   task get-context, name <getContext>
     like or
       like web-gl2-rendering-context
       like native-null
 
-    take context-id, text <webgl2>
-    take options, like web-gl-context-attributes
-      void true
+    take context-id
+    take options, like maybe, like web-gl-context-attributes
 
   task get-context, name <getContext>
     like or
       like rendering-context
       like native-null
 
-    take context-id, like native-string
-    take options, like any
-      void true
+    take context-id
+    take options, like maybe, like any
 
   task to-blob, name <toBlob>
     like native-void
 
-    take callback, like blob-callback
-    take type, like native-string
-      void true
-    take quality, like any
-      void true
+    take callback
+    take type, like maybe, like native-string
+    take quality, like maybe, like any
 
   task to-data-url, name <toDataURL>
     like native-string
 
-    take type, like native-string
-      void true
-    take quality, like any
-      void true
+    take type, like maybe, like native-string
+    take quality, like maybe, like any
 
   task add-event-listener, name <addEventListener>
     like native-void
@@ -116,32 +98,24 @@ form html-canvas-element, name <HTMLCanvasElement>
       base key-list
         like html-element-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like html-canvas-element
-        take ev
-          like index
-            like html-element-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task add-event-listener, name <addEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
@@ -150,29 +124,21 @@ form html-canvas-element, name <HTMLCanvasElement>
       base key-list
         like html-element-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like html-canvas-element
-        take ev
-          like index
-            like html-element-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

@@ -2,7 +2,7 @@
 load @tunebond/bolt/code/javascript/native
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form error-callback
   take form file-system-entries-callback
 
@@ -10,6 +10,5 @@ form file-system-directory-reader, name <FileSystemDirectoryReader>
   task read-entries, name <readEntries>
     like native-void
 
-    take success-callback, like file-system-entries-callback
-    take error-callback, like error-callback
-      void true
+    take success-callback
+    take error-callback, like maybe, like error-callback

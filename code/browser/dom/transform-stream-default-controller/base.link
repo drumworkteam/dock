@@ -1,9 +1,4 @@
 
-load @tunebond/moon
-  take form any
-  take form like
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-null
   take form native-number
@@ -11,7 +6,7 @@ load @tunebond/bolt/code/javascript/native
 
 form transform-stream-default-controller, name <TransformStreamDefaultController>
   head o
-    back any
+    fall any
 
   link desired-size, name <desiredSize>
     like or
@@ -21,14 +16,12 @@ form transform-stream-default-controller, name <TransformStreamDefaultController
   task enqueue, name <enqueue>
     like native-void
 
-    take chunk, like o
-      void true
+    take chunk, like maybe, like o
 
   task error, name <error>
     like native-void
 
-    take reason, like any
-      void true
+    take reason, like maybe, like any
 
   task terminate, name <terminate>
     like native-void

@@ -1,12 +1,4 @@
 
-load @tunebond/moon
-  take form any
-  take form index
-  take form key-list
-  take form like
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-null
@@ -14,7 +6,7 @@ load @tunebond/bolt/code/javascript/native
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form add-event-listener-options
   take form end-of-stream-error
   take form event
@@ -39,8 +31,8 @@ form media-source, name <MediaSource>
       like task
         like any
 
-        take this, like media-source
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link onsourceended, name <onsourceended>
@@ -48,8 +40,8 @@ form media-source, name <MediaSource>
       like task
         like any
 
-        take this, like media-source
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link onsourceopen, name <onsourceopen>
@@ -57,8 +49,8 @@ form media-source, name <MediaSource>
       like task
         like any
 
-        take this, like media-source
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link ready-state, name <readyState>
@@ -69,7 +61,7 @@ form media-source, name <MediaSource>
   task add-source-buffer, name <addSourceBuffer>
     like source-buffer
 
-    take type, like native-string
+    take type
 
   task clear-live-seekable-range, name <clearLiveSeekableRange>
     like native-void
@@ -77,19 +69,18 @@ form media-source, name <MediaSource>
   task end-of-stream, name <endOfStream>
     like native-void
 
-    take error, like end-of-stream-error
-      void true
+    take error, like maybe, like end-of-stream-error
 
   task remove-source-buffer, name <removeSourceBuffer>
     like native-void
 
-    take source-buffer, like source-buffer
+    take source-buffer
 
   task set-live-seekable-range, name <setLiveSeekableRange>
     like native-void
 
-    take start, like native-number
-    take end, like native-number
+    take start
+    take end
 
   task add-event-listener, name <addEventListener>
     like native-void
@@ -98,32 +89,24 @@ form media-source, name <MediaSource>
       base key-list
         like media-source-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like media-source
-        take ev
-          like index
-            like media-source-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task add-event-listener, name <addEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
@@ -132,29 +115,21 @@ form media-source, name <MediaSource>
       base key-list
         like media-source-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like media-source
-        take ev
-          like index
-            like media-source-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

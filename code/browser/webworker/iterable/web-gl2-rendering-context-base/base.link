@@ -1,15 +1,11 @@
 
-load @tunebond/moon
-  take form any
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form iterable
   take form native-null
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/webworker
+load @tunebond/bolt/code/browser/webworker
   take form g-lboolean
   take form g-lenum
   take form g-lfloat
@@ -19,58 +15,45 @@ load @tunebond/bolt/code/javascript/webworker
   take form web-gl-program
   take form web-gl-uniform-location
 
-load @tunebond/bolt/code/javascript/webworker/web-gl2-rendering-context-base
+load @tunebond/bolt/code/browser/webworker/web-gl2-rendering-context-base
   take form web-gl2-rendering-context-base
 
 form web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
   task clear-bufferfv, name <clearBufferfv>
     like native-void
 
-    take buffer, like g-lenum
-    take drawbuffer, like g-lint
+    take buffer
+    take drawbuffer
     take values
-      like iterable
-        like g-lfloat
-    take src-offset, like g-luint
-      void true
+    take src-offset, like maybe, like g-luint
 
   task clear-bufferiv, name <clearBufferiv>
     like native-void
 
-    take buffer, like g-lenum
-    take drawbuffer, like g-lint
+    take buffer
+    take drawbuffer
     take values
-      like iterable
-        like g-lint
-    take src-offset, like g-luint
-      void true
+    take src-offset, like maybe, like g-luint
 
   task clear-bufferuiv, name <clearBufferuiv>
     like native-void
 
-    take buffer, like g-lenum
-    take drawbuffer, like g-lint
+    take buffer
+    take drawbuffer
     take values
-      like iterable
-        like g-luint
-    take src-offset, like g-luint
-      void true
+    take src-offset, like maybe, like g-luint
 
   task draw-buffers, name <drawBuffers>
     like native-void
 
     take buffers
-      like iterable
-        like g-lenum
 
   task get-active-uniforms, name <getActiveUniforms>
     like any
 
-    take program, like web-gl-program
+    take program
     take uniform-indices
-      like iterable
-        like g-luint
-    take pname, like g-lenum
+    take pname
 
   task get-uniform-indices, name <getUniformIndices>
     like or
@@ -78,208 +61,126 @@ form web-gl2-rendering-context-base, name <WebGL2RenderingContextBase>
         like g-luint
       like native-null
 
-    take program, like web-gl-program
+    take program
     take uniform-names
-      like iterable
-        like native-string
 
   task invalidate-framebuffer, name <invalidateFramebuffer>
     like native-void
 
-    take target, like g-lenum
+    take target
     take attachments
-      like iterable
-        like g-lenum
 
   task invalidate-sub-framebuffer, name <invalidateSubFramebuffer>
     like native-void
 
-    take target, like g-lenum
+    take target
     take attachments
-      like iterable
-        like g-lenum
-    take x, like g-lint
-    take y, like g-lint
-    take width, like g-lsizei
-    take height, like g-lsizei
+    take x
+    take y
+    take width
+    take height
 
   task transform-feedback-varyings, name <transformFeedbackVaryings>
     like native-void
 
-    take program, like web-gl-program
+    take program
     take varyings
-      like iterable
-        like native-string
-    take buffer-mode, like g-lenum
+    take buffer-mode
 
   task uniform1uiv, name <uniform1uiv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
     take data
-      like iterable
-        like g-luint
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task uniform2uiv, name <uniform2uiv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
     take data
-      like iterable
-        like g-luint
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task uniform3uiv, name <uniform3uiv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
     take data
-      like iterable
-        like g-luint
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task uniform4uiv, name <uniform4uiv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
     take data
-      like iterable
-        like g-luint
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task uniform-matrix2x3fv, name <uniformMatrix2x3fv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take transpose, like g-lboolean
+    take transpose
     take data
-      like iterable
-        like g-lfloat
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task uniform-matrix2x4fv, name <uniformMatrix2x4fv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take transpose, like g-lboolean
+    take transpose
     take data
-      like iterable
-        like g-lfloat
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task uniform-matrix3x2fv, name <uniformMatrix3x2fv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take transpose, like g-lboolean
+    take transpose
     take data
-      like iterable
-        like g-lfloat
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task uniform-matrix3x4fv, name <uniformMatrix3x4fv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take transpose, like g-lboolean
+    take transpose
     take data
-      like iterable
-        like g-lfloat
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task uniform-matrix4x2fv, name <uniformMatrix4x2fv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take transpose, like g-lboolean
+    take transpose
     take data
-      like iterable
-        like g-lfloat
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task uniform-matrix4x3fv, name <uniformMatrix4x3fv>
     like native-void
 
     take location
-      like or
-        like web-gl-uniform-location
-        like native-null
-    take transpose, like g-lboolean
+    take transpose
     take data
-      like iterable
-        like g-lfloat
-    take src-offset, like g-luint
-      void true
-    take src-length, like g-luint
-      void true
+    take src-offset, like maybe, like g-luint
+    take src-length, like maybe, like g-luint
 
   task vertex-attrib-i4iv, name <vertexAttribI4iv>
     like native-void
 
-    take index, like g-luint
+    take index
     take values
-      like iterable
-        like g-lint
 
   task vertex-attrib-i4uiv, name <vertexAttribI4uiv>
     like native-void
 
-    take index, like g-luint
+    take index
     take values
-      like iterable
-        like g-luint

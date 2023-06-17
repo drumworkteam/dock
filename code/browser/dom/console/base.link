@@ -2,9 +2,6 @@
 load @tunebond/bolt/code/javascript
   take form array
 
-load @tunebond/moon
-  take form any
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-string
@@ -14,8 +11,7 @@ form console, name <Console>
   task assert, name <assert>
     like native-void
 
-    take condition, like native-boolean
-      void true
+    take condition, like maybe, like native-boolean
     take data
       like array
         like any
@@ -27,14 +23,12 @@ form console, name <Console>
   task count, name <count>
     like native-void
 
-    take label, like native-string
-      void true
+    take label, like maybe, like native-string
 
   task count-reset, name <countReset>
     like native-void
 
-    take label, like native-string
-      void true
+    take label, like maybe, like native-string
 
   task debug, name <debug>
     like native-void
@@ -47,10 +41,8 @@ form console, name <Console>
   task dir, name <dir>
     like native-void
 
-    take item, like any
-      void true
-    take options, like any
-      void true
+    take item, like maybe, like any
+    take options, like maybe, like any
 
   task dirxml, name <dirxml>
     like native-void
@@ -106,30 +98,26 @@ form console, name <Console>
   task table, name <table>
     like native-void
 
-    take tabular-data, like any
-      void true
+    take tabular-data, like maybe, like any
     take properties
-      like array
-        like native-string
-      void true
+      like maybe
+        like array
+          like native-string
 
   task time, name <time>
     like native-void
 
-    take label, like native-string
-      void true
+    take label, like maybe, like native-string
 
   task time-end, name <timeEnd>
     like native-void
 
-    take label, like native-string
-      void true
+    take label, like maybe, like native-string
 
   task time-log, name <timeLog>
     like native-void
 
-    take label, like native-string
-      void true
+    take label, like maybe, like native-string
     take data
       like array
         like any
@@ -138,8 +126,7 @@ form console, name <Console>
   task time-stamp, name <timeStamp>
     like native-void
 
-    take label, like native-string
-      void true
+    take label, like maybe, like native-string
 
   task trace, name <trace>
     like native-void

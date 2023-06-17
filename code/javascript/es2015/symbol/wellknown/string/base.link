@@ -2,12 +2,6 @@
 load @tunebond/bolt/code/javascript
   take form array
 
-load @tunebond/moon
-  take form any
-  take form form
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-null
   take form native-number
@@ -26,79 +20,27 @@ form string, name <String>
       like native-null
 
     take matcher
-      like form
-        task {symbol/match}
-          like or
-            like reg-exp-match-array
-            like native-null
-
-          take string, like native-string
 
   task replace, name <replace>
     like native-string
 
     take search-value
-      like form
-        task {symbol/replace}
-          like native-string
-
-          take string, like native-string
-          take replace-value, like native-string
-
-    take replace-value, like native-string
+    take replace-value
 
   task replace, name <replace>
     like native-string
 
     take search-value
-      like form
-        task {symbol/replace}
-          like native-string
-
-          take string, like native-string
-          take replacer
-            like task
-              like native-string
-
-              take substring, like native-string
-              take args
-                like array
-                  like any
-                rest true
-
     take replacer
-      like task
-        like native-string
-
-        take substring, like native-string
-        take args
-          like array
-            like any
-          rest true
 
   task search, name <search>
     like native-number
 
     take searcher
-      like form
-        task {symbol/search}
-          like native-number
-
-          take string, like native-string
 
   task split, name <split>
     like array
       like native-string
 
     take splitter
-      like form
-        task {symbol/split}
-          like array
-            like native-string
-
-          take string, like native-string
-          take limit, like native-number
-            void true
-
-    take limit, like native-number
-      void true
+    take limit, like maybe, like native-number

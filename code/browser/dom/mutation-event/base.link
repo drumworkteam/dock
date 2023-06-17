@@ -1,7 +1,4 @@
 
-load @tunebond/moon
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-null
@@ -9,7 +6,7 @@ load @tunebond/bolt/code/javascript/native
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form event
   take form node
 
@@ -38,21 +35,15 @@ form mutation-event, name <MutationEvent>
   task init-mutation-event, name <initMutationEvent>
     like native-void
 
-    take type-arg, like native-string
-    take bubbles-arg, like native-boolean
-      void true
-    take cancelable-arg, like native-boolean
-      void true
+    take type-arg
+    take bubbles-arg, like maybe, like native-boolean
+    take cancelable-arg, like maybe, like native-boolean
     take related-node-arg
-      like or
-        like node
-        like native-null
-      void true
-    take prev-value-arg, like native-string
-      void true
-    take new-value-arg, like native-string
-      void true
-    take attr-name-arg, like native-string
-      void true
-    take attr-change-arg, like native-number
-      void true
+      like maybe
+        like or
+          like node
+          like native-null
+    take prev-value-arg, like maybe, like native-string
+    take new-value-arg, like maybe, like native-string
+    take attr-name-arg, like maybe, like native-string
+    take attr-change-arg, like maybe, like native-number

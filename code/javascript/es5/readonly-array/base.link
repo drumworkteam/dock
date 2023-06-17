@@ -2,13 +2,6 @@
 load @tunebond/bolt/code/javascript
   take form array
 
-load @tunebond/moon
-  take form any
-  take form like
-  take form or
-  take form task
-  take form unknown
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-number
@@ -55,31 +48,26 @@ form readonly-array, name <ReadonlyArray>
   task join, name <join>
     like native-string
 
-    take separator, like native-string
-      void true
+    take separator, like maybe, like native-string
 
   task slice, name <slice>
     like array
       like t
 
-    take start, like native-number
-      void true
-    take end, like native-number
-      void true
+    take start, like maybe, like native-number
+    take end, like maybe, like native-number
 
   task index-of, name <indexOf>
     like native-number
 
-    take search-element, like t
-    take from-index, like native-number
-      void true
+    take search-element
+    take from-index, like maybe, like native-number
 
   task last-index-of, name <lastIndexOf>
     like native-number
 
-    take search-element, like t
-    take from-index, like native-number
-      void true
+    take search-element
+    take from-index, like maybe, like native-number
 
   task every, name <every>
     like native-boolean
@@ -91,62 +79,25 @@ form readonly-array, name <ReadonlyArray>
       base t
 
     take predicate
-      like task
-        like native-boolean
-        rank value, like s
-
-        take value, like t
-        take index, like native-number
-        take array
-          like array
-            like t
-    take this-arg, like any
-      void true
+    take this-arg, like maybe, like any
 
   task every, name <every>
     like native-boolean
 
     take predicate
-      like task
-        like unknown
-
-        take value, like t
-        take index, like native-number
-        take array
-          like array
-            like t
-    take this-arg, like any
-      void true
+    take this-arg, like maybe, like any
 
   task some, name <some>
     like native-boolean
 
     take predicate
-      like task
-        like unknown
-
-        take value, like t
-        take index, like native-number
-        take array
-          like array
-            like t
-    take this-arg, like any
-      void true
+    take this-arg, like maybe, like any
 
   task for-each, name <forEach>
     like native-void
 
     take callbackfn
-      like task
-        like native-void
-
-        take value, like t
-        take index, like native-number
-        take array
-          like array
-            like t
-    take this-arg, like any
-      void true
+    take this-arg, like maybe, like any
 
   task map, name <map>
     like array
@@ -155,16 +106,7 @@ form readonly-array, name <ReadonlyArray>
     head u
 
     take callbackfn
-      like task
-        like u
-
-        take value, like t
-        take index, like native-number
-        take array
-          like array
-            like t
-    take this-arg, like any
-      void true
+    take this-arg, like maybe, like any
 
   task filter, name <filter>
     like array
@@ -174,62 +116,25 @@ form readonly-array, name <ReadonlyArray>
       base t
 
     take predicate
-      like task
-        like native-boolean
-        rank value, like s
-
-        take value, like t
-        take index, like native-number
-        take array
-          like array
-            like t
-    take this-arg, like any
-      void true
+    take this-arg, like maybe, like any
 
   task filter, name <filter>
     like array
       like t
 
     take predicate
-      like task
-        like unknown
-
-        take value, like t
-        take index, like native-number
-        take array
-          like array
-            like t
-    take this-arg, like any
-      void true
+    take this-arg, like maybe, like any
 
   task reduce, name <reduce>
     like t
 
     take callbackfn
-      like task
-        like t
-
-        take previous-value, like t
-        take current-value, like t
-        take current-index, like native-number
-        take array
-          like array
-            like t
 
   task reduce, name <reduce>
     like t
 
     take callbackfn
-      like task
-        like t
-
-        take previous-value, like t
-        take current-value, like t
-        take current-index, like native-number
-        take array
-          like array
-            like t
-    take initial-value, like t
+    take initial-value
 
   task reduce, name <reduce>
     like u
@@ -237,45 +142,18 @@ form readonly-array, name <ReadonlyArray>
     head u
 
     take callbackfn
-      like task
-        like u
-
-        take previous-value, like u
-        take current-value, like t
-        take current-index, like native-number
-        take array
-          like array
-            like t
-    take initial-value, like u
+    take initial-value
 
   task reduce-right, name <reduceRight>
     like t
 
     take callbackfn
-      like task
-        like t
-
-        take previous-value, like t
-        take current-value, like t
-        take current-index, like native-number
-        take array
-          like array
-            like t
 
   task reduce-right, name <reduceRight>
     like t
 
     take callbackfn
-      like task
-        like t
-
-        take previous-value, like t
-        take current-value, like t
-        take current-index, like native-number
-        take array
-          like array
-            like t
-    take initial-value, like t
+    take initial-value
 
   task reduce-right, name <reduceRight>
     like u
@@ -283,16 +161,7 @@ form readonly-array, name <ReadonlyArray>
     head u
 
     take callbackfn
-      like task
-        like u
+    take initial-value
 
-        take previous-value, like u
-        take current-value, like t
-        take current-index, like native-number
-        take array
-          like array
-            like t
-    take initial-value, like u
-
-  mesh n, like native-number
+  mesh n
     like t

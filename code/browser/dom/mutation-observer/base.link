@@ -5,7 +5,7 @@ load @tunebond/bolt/code/javascript
 load @tunebond/bolt/code/javascript/native
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form mutation-observer-init
   take form mutation-record
   take form node
@@ -17,9 +17,8 @@ form mutation-observer, name <MutationObserver>
   task observe, name <observe>
     like native-void
 
-    take target, like node
-    take options, like mutation-observer-init
-      void true
+    take target
+    take options, like maybe, like mutation-observer-init
 
   task take-records, name <takeRecords>
     like array

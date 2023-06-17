@@ -2,7 +2,7 @@
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form buffer-source
   take form media-key-session
   take form media-key-session-type
@@ -14,11 +14,10 @@ form media-keys, name <MediaKeys>
   task create-session, name <createSession>
     like media-key-session
 
-    take session-type, like media-key-session-type
-      void true
+    take session-type, like maybe, like media-key-session-type
 
   task set-server-certificate, name <setServerCertificate>
     like promise
       like native-boolean
 
-    take server-certificate, like buffer-source
+    take server-certificate

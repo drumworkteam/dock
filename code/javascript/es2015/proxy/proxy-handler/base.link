@@ -2,11 +2,6 @@
 load @tunebond/bolt/code/javascript
   take form array
 
-load @tunebond/moon
-  take form any
-  take form like
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-null
@@ -29,81 +24,62 @@ form proxy-handler, name <ProxyHandler>
   task apply, name <apply>
     like any
 
-    take target, like t
-    take this-arg, like any
+    take target
+    take this-arg
     take arg-array
-      like array
-        like any
 
   task construct, name <construct>
     like native-object
 
-    take target, like t
+    take target
     take arg-array
-      like array
-        like any
-    take new-target, like function
+    take new-target
 
   task define-property, name <defineProperty>
     like native-boolean
 
-    take target, like t
+    take target
     take p
-      like or
-        like native-string
-        like native-symbol
-    take attributes, like property-descriptor
+    take attributes
 
   task delete-property, name <deleteProperty>
     like native-boolean
 
-    take target, like t
+    take target
     take p
-      like or
-        like native-string
-        like native-symbol
 
   task get, name <get>
     like any
 
-    take target, like t
+    take target
     take p
-      like or
-        like native-string
-        like native-symbol
-    take receiver, like any
+    take receiver
 
   task get-own-property-descriptor, name <getOwnPropertyDescriptor>
     like or
       like property-descriptor
       like native-undefined
 
-    take target, like t
+    take target
     take p
-      like or
-        like native-string
-        like native-symbol
 
   task get-prototype-of, name <getPrototypeOf>
     like or
       like native-object
       like native-null
 
-    take target, like t
+    take target
 
   task has, name <has>
     like native-boolean
 
-    take target, like t
+    take target
     take p
-      like or
-        like native-string
-        like native-symbol
 
   task is-extensible, name <isExtensible>
     like native-boolean
 
-    take target, like t
+    take target
 
   task own-keys, name <ownKeys>
     like array-like
@@ -111,29 +87,23 @@ form proxy-handler, name <ProxyHandler>
         like native-string
         like native-symbol
 
-    take target, like t
+    take target
 
   task prevent-extensions, name <preventExtensions>
     like native-boolean
 
-    take target, like t
+    take target
 
   task set, name <set>
     like native-boolean
 
-    take target, like t
+    take target
     take p
-      like or
-        like native-string
-        like native-symbol
-    take value, like any
-    take receiver, like any
+    take value
+    take receiver
 
   task set-prototype-of, name <setPrototypeOf>
     like native-boolean
 
-    take target, like t
+    take target
     take v
-      like or
-        like native-object
-        like native-null

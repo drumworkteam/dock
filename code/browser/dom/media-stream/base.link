@@ -2,21 +2,13 @@
 load @tunebond/bolt/code/javascript
   take form array
 
-load @tunebond/moon
-  take form any
-  take form index
-  take form key-list
-  take form like
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-null
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form add-event-listener-options
   take form event-listener-options
   take form event-listener-or-event-listener-object
@@ -37,8 +29,8 @@ form media-stream, name <MediaStream>
       like task
         like any
 
-        take this, like media-stream
-        take ev, like media-stream-track-event
+        take this
+        take ev
       like native-null
     flex true
   link onremovetrack, name <onremovetrack>
@@ -46,15 +38,15 @@ form media-stream, name <MediaStream>
       like task
         like any
 
-        take this, like media-stream
-        take ev, like media-stream-track-event
+        take this
+        take ev
       like native-null
     flex true
 
   task add-track, name <addTrack>
     like native-void
 
-    take track, like media-stream-track
+    take track
 
   task clone, name <clone>
     like media-stream
@@ -68,7 +60,7 @@ form media-stream, name <MediaStream>
       like media-stream-track
       like native-null
 
-    take track-id, like native-string
+    take track-id
 
   task get-tracks, name <getTracks>
     like array
@@ -81,7 +73,7 @@ form media-stream, name <MediaStream>
   task remove-track, name <removeTrack>
     like native-void
 
-    take track, like media-stream-track
+    take track
 
   task add-event-listener, name <addEventListener>
     like native-void
@@ -90,32 +82,24 @@ form media-stream, name <MediaStream>
       base key-list
         like media-stream-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like media-stream
-        take ev
-          like index
-            like media-stream-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task add-event-listener, name <addEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
@@ -124,29 +108,21 @@ form media-stream, name <MediaStream>
       base key-list
         like media-stream-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like media-stream
-        take ev
-          like index
-            like media-stream-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

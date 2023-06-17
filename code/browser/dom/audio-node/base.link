@@ -3,7 +3,7 @@ load @tunebond/bolt/code/javascript/native
   take form native-number
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form audio-param
   take form base-audio-context
   take form channel-count-mode
@@ -32,18 +32,15 @@ form audio-node, name <AudioNode>
   task connect, name <connect>
     like audio-node
 
-    take destination-node, like audio-node
-    take output, like native-number
-      void true
-    take input, like native-number
-      void true
+    take destination-node
+    take output, like maybe, like native-number
+    take input, like maybe, like native-number
 
   task connect, name <connect>
     like native-void
 
-    take destination-param, like audio-param
-    take output, like native-number
-      void true
+    take destination-param
+    take output, like maybe, like native-number
 
   task disconnect, name <disconnect>
     like native-void
@@ -51,33 +48,33 @@ form audio-node, name <AudioNode>
   task disconnect, name <disconnect>
     like native-void
 
-    take output, like native-number
+    take output
 
   task disconnect, name <disconnect>
     like native-void
 
-    take destination-node, like audio-node
+    take destination-node
 
   task disconnect, name <disconnect>
     like native-void
 
-    take destination-node, like audio-node
-    take output, like native-number
+    take destination-node
+    take output
 
   task disconnect, name <disconnect>
     like native-void
 
-    take destination-node, like audio-node
-    take output, like native-number
-    take input, like native-number
+    take destination-node
+    take output
+    take input
 
   task disconnect, name <disconnect>
     like native-void
 
-    take destination-param, like audio-param
+    take destination-param
 
   task disconnect, name <disconnect>
     like native-void
 
-    take destination-param, like audio-param
-    take output, like native-number
+    take destination-param
+    take output

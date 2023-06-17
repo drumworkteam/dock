@@ -2,11 +2,6 @@
 load @tunebond/bolt/code/javascript
   take form array
 
-load @tunebond/moon
-  take form any
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form intl-collator-options
   take form native-null
@@ -30,12 +25,12 @@ form string, name <String>
   task char-at, name <charAt>
     like native-string
 
-    take pos, like native-number
+    take pos
 
   task char-code-at, name <charCodeAt>
     like native-number
 
-    take index, like native-number
+    take index
 
   task concat, name <concat>
     like native-string
@@ -48,21 +43,19 @@ form string, name <String>
   task index-of, name <indexOf>
     like native-number
 
-    take search-string, like native-string
-    take position, like native-number
-      void true
+    take search-string
+    take position, like maybe, like native-number
 
   task last-index-of, name <lastIndexOf>
     like native-number
 
-    take search-string, like native-string
-    take position, like native-number
-      void true
+    take search-string
+    take position, like maybe, like native-number
 
   task locale-compare, name <localeCompare>
     like native-number
 
-    take that, like native-string
+    take that
 
   task match, name <match>
     like or
@@ -70,69 +63,42 @@ form string, name <String>
       like native-null
 
     take regexp
-      like or
-        like native-string
-        like reg-exp
 
   task replace, name <replace>
     like native-string
 
     take search-value
-      like or
-        like native-string
-        like reg-exp
-    take replace-value, like native-string
+    take replace-value
 
   task replace, name <replace>
     like native-string
 
     take search-value
-      like or
-        like native-string
-        like reg-exp
     take replacer
-      like task
-        like native-string
-
-        take substring, like native-string
-        take args
-          like array
-            like any
-          rest true
 
   task search, name <search>
     like native-number
 
     take regexp
-      like or
-        like native-string
-        like reg-exp
 
   task slice, name <slice>
     like native-string
 
-    take start, like native-number
-      void true
-    take end, like native-number
-      void true
+    take start, like maybe, like native-number
+    take end, like maybe, like native-number
 
   task split, name <split>
     like array
       like native-string
 
     take separator
-      like or
-        like native-string
-        like reg-exp
-    take limit, like native-number
-      void true
+    take limit, like maybe, like native-number
 
   task substring, name <substring>
     like native-string
 
-    take start, like native-number
-    take end, like native-number
-      void true
+    take start
+    take end, like maybe, like native-number
 
   task to-lower-case, name <toLowerCase>
     like native-string
@@ -141,11 +107,11 @@ form string, name <String>
     like native-string
 
     take locales
-      like or
-        like native-string
-        like array
+      like maybe
+        like or
           like native-string
-      void true
+          like array
+            like native-string
 
   task to-upper-case, name <toUpperCase>
     like native-string
@@ -154,11 +120,11 @@ form string, name <String>
     like native-string
 
     take locales
-      like or
-        like native-string
-        like array
+      like maybe
+        like or
           like native-string
-      void true
+          like array
+            like native-string
 
   task trim, name <trim>
     like native-string
@@ -166,14 +132,13 @@ form string, name <String>
   task substr, name <substr>
     like native-string
 
-    take from, like native-number
-    take length, like native-number
-      void true
+    take from
+    take length, like maybe, like native-number
 
   task value-of, name <valueOf>
     like native-string
 
-  mesh index, like native-number
+  mesh index
     like native-string
 
 form string
@@ -192,19 +157,17 @@ form string
   hook make
     like string
 
-    take value, like any
-      void true
+    take value, like maybe, like any
 
 form string, name <String>
   task locale-compare, name <localeCompare>
     like native-number
 
-    take that, like native-string
+    take that
     take locales
-      like or
-        like native-string
-        like array
+      like maybe
+        like or
           like native-string
-      void true
-    take options, like intl-collator-options
-      void true
+          like array
+            like native-string
+    take options, like maybe, like intl-collator-options

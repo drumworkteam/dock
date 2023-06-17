@@ -1,9 +1,4 @@
 
-load @tunebond/moon
-  take form any
-  take form task
-  take form tuple
-
 load @tunebond/bolt/code/javascript/native
   take form native-number
 
@@ -42,21 +37,16 @@ form int16-array
       like int16-array
 
       take array-like
-        like iterable
-          like native-number
       take mapfn
-        like task
-          like native-number
+        like maybe
+          like task
+            like native-number
 
-          take v, like native-number
-          take k, like native-number
-        void true
-      take this-arg, like any
-        void true
+            take v
+            take k
+      take this-arg, like maybe, like any
 
   hook make
     like int16-array
 
     take elements
-      like iterable
-        like native-number

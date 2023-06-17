@@ -2,11 +2,6 @@
 load @tunebond/bolt/code/javascript
   take form array
 
-load @tunebond/moon
-  take form any
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-null
   take form native-number
@@ -30,40 +25,31 @@ form reg-exp, name <RegExp>
       like reg-exp-match-array
       like native-null
 
-    take string, like native-string
+    take string
 
   task {symbol/replace}
     like native-string
 
-    take string, like native-string
-    take replace-value, like native-string
+    take string
+    take replace-value
 
   task {symbol/replace}
     like native-string
 
-    take string, like native-string
+    take string
     take replacer
-      like task
-        like native-string
-
-        take substring, like native-string
-        take args
-          like array
-            like any
-          rest true
 
   task {symbol/search}
     like native-number
 
-    take string, like native-string
+    take string
 
   task {symbol/split}
     like array
       like native-string
 
-    take string, like native-string
-    take limit, like native-number
-      void true
+    take string
+    take limit, like maybe, like native-number
 
 form reg-exp
   hook self

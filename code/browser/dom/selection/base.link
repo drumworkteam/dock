@@ -1,7 +1,4 @@
 
-load @tunebond/moon
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-null
@@ -9,7 +6,7 @@ load @tunebond/bolt/code/javascript/native
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form node
   take form range
 
@@ -36,17 +33,13 @@ form selection, name <Selection>
   task add-range, name <addRange>
     like native-void
 
-    take range, like range
+    take range
 
   task collapse, name <collapse>
     like native-void
 
     take node
-      like or
-        like node
-        like native-null
-    take offset, like native-number
-      void true
+    take offset, like maybe, like native-number
 
   task collapse-to-end, name <collapseToEnd>
     like native-void
@@ -57,9 +50,8 @@ form selection, name <Selection>
   task contains-node, name <containsNode>
     like native-boolean
 
-    take node, like node
-    take allow-partial-containment, like native-boolean
-      void true
+    take node
+    take allow-partial-containment, like maybe, like native-boolean
 
   task delete-from-document, name <deleteFromDocument>
     like native-void
@@ -70,14 +62,13 @@ form selection, name <Selection>
   task extend, name <extend>
     like native-void
 
-    take node, like node
-    take offset, like native-number
-      void true
+    take node
+    take offset, like maybe, like native-number
 
   task get-range-at, name <getRangeAt>
     like range
 
-    take index, like native-number
+    take index
 
   task remove-all-ranges, name <removeAllRanges>
     like native-void
@@ -85,30 +76,26 @@ form selection, name <Selection>
   task remove-range, name <removeRange>
     like native-void
 
-    take range, like range
+    take range
 
   task select-all-children, name <selectAllChildren>
     like native-void
 
-    take node, like node
+    take node
 
   task set-base-and-extent, name <setBaseAndExtent>
     like native-void
 
-    take anchor-node, like node
-    take anchor-offset, like native-number
-    take focus-node, like node
-    take focus-offset, like native-number
+    take anchor-node
+    take anchor-offset
+    take focus-node
+    take focus-offset
 
   task set-position, name <setPosition>
     like native-void
 
     take node
-      like or
-        like node
-        like native-null
-    take offset, like native-number
-      void true
+    take offset, like maybe, like native-number
 
   task to-string, name <toString>
     like native-string

@@ -1,12 +1,4 @@
 
-load @tunebond/moon
-  take form any
-  take form index
-  take form key-list
-  take form like
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-null
@@ -14,7 +6,7 @@ load @tunebond/bolt/code/javascript/native
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form add-event-listener-options
   take form blob-event
   take form event
@@ -37,8 +29,8 @@ form media-recorder, name <MediaRecorder>
       like task
         like any
 
-        take this, like media-recorder
-        take ev, like blob-event
+        take this
+        take ev
       like native-null
     flex true
   link onerror, name <onerror>
@@ -46,8 +38,8 @@ form media-recorder, name <MediaRecorder>
       like task
         like any
 
-        take this, like media-recorder
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link onpause, name <onpause>
@@ -55,8 +47,8 @@ form media-recorder, name <MediaRecorder>
       like task
         like any
 
-        take this, like media-recorder
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link onresume, name <onresume>
@@ -64,8 +56,8 @@ form media-recorder, name <MediaRecorder>
       like task
         like any
 
-        take this, like media-recorder
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link onstart, name <onstart>
@@ -73,8 +65,8 @@ form media-recorder, name <MediaRecorder>
       like task
         like any
 
-        take this, like media-recorder
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link onstop, name <onstop>
@@ -82,8 +74,8 @@ form media-recorder, name <MediaRecorder>
       like task
         like any
 
-        take this, like media-recorder
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link state, name <state>
@@ -105,8 +97,7 @@ form media-recorder, name <MediaRecorder>
   task start, name <start>
     like native-void
 
-    take timeslice, like native-number
-      void true
+    take timeslice, like maybe, like native-number
 
   task stop, name <stop>
     like native-void
@@ -118,32 +109,24 @@ form media-recorder, name <MediaRecorder>
       base key-list
         like media-recorder-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like media-recorder
-        take ev
-          like index
-            like media-recorder-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task add-event-listener, name <addEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
@@ -152,29 +135,21 @@ form media-recorder, name <MediaRecorder>
       base key-list
         like media-recorder-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like media-recorder
-        take ev
-          like index
-            like media-recorder-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

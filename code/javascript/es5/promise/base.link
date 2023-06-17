@@ -1,11 +1,4 @@
 
-load @tunebond/moon
-  take form any
-  take form like
-  take form never
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-null
   take form native-undefined
@@ -23,34 +16,34 @@ form promise, name <Promise>
         like t-result2
 
     head t-result1
-      back t
+      fall t
     head t-result2
-      back never
+      fall never
 
     take onfulfilled
-      like or
-        like task
-          like or
-            like t-result1
-            like promise-like
+      like maybe
+        like or
+          like task
+            like or
               like t-result1
+              like promise-like
+                like t-result1
 
-          take value, like t
-        like native-undefined
-        like native-null
-      void true
+            take value
+          like native-undefined
+          like native-null
     take onrejected
-      like or
-        like task
-          like or
-            like t-result2
-            like promise-like
+      like maybe
+        like or
+          like task
+            like or
               like t-result2
+              like promise-like
+                like t-result2
 
-          take reason, like any
-        like native-undefined
-        like native-null
-      void true
+            take reason
+          like native-undefined
+          like native-null
 
   task catch, name <catch>
     like promise
@@ -59,17 +52,17 @@ form promise, name <Promise>
         like t-result
 
     head t-result
-      back never
+      fall never
 
     take onrejected
-      like or
-        like task
-          like or
-            like t-result
-            like promise-like
+      like maybe
+        like or
+          like task
+            like or
               like t-result
+              like promise-like
+                like t-result
 
-          take reason, like any
-        like native-undefined
-        like native-null
-      void true
+            take reason
+          like native-undefined
+          like native-null

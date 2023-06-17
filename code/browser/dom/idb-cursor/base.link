@@ -1,14 +1,10 @@
 
-load @tunebond/moon
-  take form any
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-number
   take form native-undefined
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form idb-cursor-direction
   take form idb-index
   take form idb-object-store
@@ -32,19 +28,18 @@ form idb-cursor, name <IDBCursor>
   task advance, name <advance>
     like native-void
 
-    take count, like native-number
+    take count
 
   task continue, name <continue>
     like native-void
 
-    take key, like idb-valid-key
-      void true
+    take key, like maybe, like idb-valid-key
 
   task continue-primary-key, name <continuePrimaryKey>
     like native-void
 
-    take key, like idb-valid-key
-    take primary-key, like idb-valid-key
+    take key
+    take primary-key
 
   task delete, name <delete>
     like idb-request
@@ -54,4 +49,4 @@ form idb-cursor, name <IDBCursor>
     like idb-request
       like idb-valid-key
 
-    take value, like any
+    take value

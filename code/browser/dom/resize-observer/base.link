@@ -2,7 +2,7 @@
 load @tunebond/bolt/code/javascript/native
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form element
   take form resize-observer-options
 
@@ -13,11 +13,10 @@ form resize-observer, name <ResizeObserver>
   task observe, name <observe>
     like native-void
 
-    take target, like element
-    take options, like resize-observer-options
-      void true
+    take target
+    take options, like maybe, like resize-observer-options
 
   task unobserve, name <unobserve>
     like native-void
 
-    take target, like element
+    take target

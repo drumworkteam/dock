@@ -1,14 +1,9 @@
 
-load @tunebond/moon
-  take form any
-  take form like
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-number
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form node
   take form node-list
 
@@ -21,22 +16,13 @@ form node-list-of, name <NodeListOf>
   task item, name <item>
     like t-node
 
-    take index, like native-number
+    take index
 
   task for-each, name <forEach>
     like native-void
 
     take callbackfn
-      like task
-        like native-void
+    take this-arg, like maybe, like any
 
-        take value, like t-node
-        take key, like native-number
-        take parent
-          like node-list-of
-            like t-node
-    take this-arg, like any
-      void true
-
-  mesh index, like native-number
+  mesh index
     like t-node

@@ -2,10 +2,6 @@
 load @tunebond/bolt/code/javascript
   take form array
 
-load @tunebond/moon
-  take form any
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-null
@@ -25,68 +21,62 @@ load @tunebond/bolt/code/javascript/es5
 task apply, name <apply>
   like any
 
-  take target, like function
-  take this-argument, like any
+  take target
+  take this-argument
   take arguments-list
-    like array-like
-      like any
 
 task construct, name <construct>
   like any
 
-  take target, like function
+  take target
   take arguments-list
-    like array-like
-      like any
-  take new-target, like function
-    void true
+  take new-target, like maybe, like function
 
 task define-property, name <defineProperty>
   like native-boolean
 
-  take target, like native-object
-  take property-key, like property-key
-  take attributes, like property-descriptor
+  take target
+  take property-key
+  take attributes
 
 task delete-property, name <deleteProperty>
   like native-boolean
 
-  take target, like native-object
-  take property-key, like property-key
+  take target
+  take property-key
 
 task get, name <get>
   like any
 
-  take target, like native-object
-  take property-key, like property-key
-  take receiver, like any
-    void true
+  take target
+  take property-key
+  take receiver, like maybe, like any
 
 task get-own-property-descriptor, name <getOwnPropertyDescriptor>
   like or
     like property-descriptor
     like native-undefined
 
-  take target, like native-object
-  take property-key, like property-key
+  take target
+  take property-key
 
 task get-prototype-of, name <getPrototypeOf>
   like or
     like native-object
     like native-null
 
-  take target, like native-object
+  take target
 
 task has, name <has>
   like native-boolean
 
-  take target, like native-object
-  take property-key, like property-key
+  take target
+  take property-key
 
 task is-extensible, name <isExtensible>
   like native-boolean
 
-  take target, like native-object
+  take target
 
 task own-keys, name <ownKeys>
   like array
@@ -94,27 +84,23 @@ task own-keys, name <ownKeys>
       like native-string
       like native-symbol
 
-  take target, like native-object
+  take target
 
 task prevent-extensions, name <preventExtensions>
   like native-boolean
 
-  take target, like native-object
+  take target
 
 task set, name <set>
   like native-boolean
 
-  take target, like native-object
-  take property-key, like property-key
-  take value, like any
-  take receiver, like any
-    void true
+  take target
+  take property-key
+  take value
+  take receiver, like maybe, like any
 
 task set-prototype-of, name <setPrototypeOf>
   like native-boolean
 
-  take target, like native-object
+  take target
   take proto
-    like or
-      like native-object
-      like native-null

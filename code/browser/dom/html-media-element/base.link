@@ -1,12 +1,4 @@
 
-load @tunebond/moon
-  take form any
-  take form index
-  take form key-list
-  take form like
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-null
@@ -14,7 +6,7 @@ load @tunebond/bolt/code/javascript/native
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form add-event-listener-options
   take form can-play-type-result
   take form event
@@ -90,8 +82,8 @@ form html-media-element, name <HTMLMediaElement>
       like task
         like any
 
-        take this, like html-media-element
-        take ev, like media-encrypted-event
+        take this
+        take ev
       like native-null
     flex true
   link onwaitingforkey, name <onwaitingforkey>
@@ -99,8 +91,8 @@ form html-media-element, name <HTMLMediaElement>
       like task
         like any
 
-        take this, like html-media-element
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link paused, name <paused>
@@ -156,21 +148,19 @@ form html-media-element, name <HTMLMediaElement>
   task add-text-track, name <addTextTrack>
     like text-track
 
-    take kind, like text-track-kind
-    take label, like native-string
-      void true
-    take language, like native-string
-      void true
+    take kind
+    take label, like maybe, like native-string
+    take language, like maybe, like native-string
 
   task can-play-type, name <canPlayType>
     like can-play-type-result
 
-    take type, like native-string
+    take type
 
   task fast-seek, name <fastSeek>
     like native-void
 
-    take time, like native-number
+    take time
 
   task load, name <load>
     like native-void
@@ -187,9 +177,6 @@ form html-media-element, name <HTMLMediaElement>
       like native-void
 
     take media-keys
-      like or
-        like media-keys
-        like native-null
 
   task add-event-listener, name <addEventListener>
     like native-void
@@ -198,32 +185,24 @@ form html-media-element, name <HTMLMediaElement>
       base key-list
         like html-media-element-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like html-media-element
-        take ev
-          like index
-            like html-media-element-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task add-event-listener, name <addEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
@@ -232,29 +211,21 @@ form html-media-element, name <HTMLMediaElement>
       base key-list
         like html-media-element-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like html-media-element
-        take ev
-          like index
-            like html-media-element-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

@@ -1,13 +1,10 @@
 
-load @tunebond/moon
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-null
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form error-callback
   take form file-system-directory-reader
   take form file-system-entry
@@ -24,28 +21,22 @@ form file-system-directory-entry, name <FileSystemDirectoryEntry>
     like native-void
 
     take path
-      like or
-        like native-string
-        like native-null
-      void true
-    take options, like file-system-flags
-      void true
-    take success-callback, like file-system-entry-callback
-      void true
-    take error-callback, like error-callback
-      void true
+      like maybe
+        like or
+          like native-string
+          like native-null
+    take options, like maybe, like file-system-flags
+    take success-callback, like maybe, like file-system-entry-callback
+    take error-callback, like maybe, like error-callback
 
   task get-file, name <getFile>
     like native-void
 
     take path
-      like or
-        like native-string
-        like native-null
-      void true
-    take options, like file-system-flags
-      void true
-    take success-callback, like file-system-entry-callback
-      void true
-    take error-callback, like error-callback
-      void true
+      like maybe
+        like or
+          like native-string
+          like native-null
+    take options, like maybe, like file-system-flags
+    take success-callback, like maybe, like file-system-entry-callback
+    take error-callback, like maybe, like error-callback

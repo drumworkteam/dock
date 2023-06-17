@@ -2,14 +2,11 @@
 load @tunebond/bolt/code/javascript
   take form array
 
-load @tunebond/moon
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form iterable
   take form native-boolean
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form aes-cbc-params
   take form aes-ctr-params
   take form aes-derived-key-params
@@ -38,7 +35,7 @@ load @tunebond/bolt/code/javascript/es5
   take form exclude
   take form promise
 
-load @tunebond/bolt/code/javascript/dom/subtle-crypto
+load @tunebond/bolt/code/browser/dom/subtle-crypto
   take form subtle-crypto
 
 form subtle-crypto, name <SubtleCrypto>
@@ -47,50 +44,26 @@ form subtle-crypto, name <SubtleCrypto>
       like crypto-key
 
     take algorithm
-      like or
-        like algorithm-identifier
-        like ecdh-key-derive-params
-        like hkdf-params
-        like pbkdf2-params
-    take base-key, like crypto-key
+    take base-key
     take derived-key-type
-      like or
-        like algorithm-identifier
-        like aes-derived-key-params
-        like hmac-import-params
-        like hkdf-params
-        like pbkdf2-params
-    take extractable, like native-boolean
+    take extractable
     take key-usages
-      like iterable
-        like key-usage
 
   task generate-key, name <generateKey>
     like promise
       like crypto-key-pair
 
     take algorithm
-      like or
-        like rsa-hashed-key-gen-params
-        like ec-key-gen-params
-    take extractable, like native-boolean
+    take extractable
     take key-usages
-      like array
-        like key-usage
 
   task generate-key, name <generateKey>
     like promise
       like crypto-key
 
     take algorithm
-      like or
-        like aes-key-gen-params
-        like hmac-key-gen-params
-        like pbkdf2-params
-    take extractable, like native-boolean
+    take extractable
     take key-usages
-      like array
-        like key-usage
 
   task generate-key, name <generateKey>
     like promise
@@ -98,73 +71,38 @@ form subtle-crypto, name <SubtleCrypto>
         like crypto-key-pair
         like crypto-key
 
-    take algorithm, like algorithm-identifier
-    take extractable, like native-boolean
-    take key-usages
-      like iterable
-        like key-usage
-
-  task import-key, name <importKey>
-    like promise
-      like crypto-key
-
-    take format, text <jwk>
-    take key-data, like json-web-key
     take algorithm
-      like or
-        like algorithm-identifier
-        like rsa-hashed-import-params
-        like ec-key-import-params
-        like hmac-import-params
-        like aes-key-algorithm
-    take extractable, like native-boolean
+    take extractable
     take key-usages
-      like array
-        like key-usage
 
   task import-key, name <importKey>
     like promise
       like crypto-key
 
     take format
-      like exclude
-        like key-format
-        text <jwk>
-    take key-data, like buffer-source
+    take key-data
     take algorithm
-      like or
-        like algorithm-identifier
-        like rsa-hashed-import-params
-        like ec-key-import-params
-        like hmac-import-params
-        like aes-key-algorithm
-    take extractable, like native-boolean
+    take extractable
     take key-usages
-      like iterable
-        like key-usage
+
+  task import-key, name <importKey>
+    like promise
+      like crypto-key
+
+    take format
+    take key-data
+    take algorithm
+    take extractable
+    take key-usages
 
   task unwrap-key, name <unwrapKey>
     like promise
       like crypto-key
 
-    take format, like key-format
-    take wrapped-key, like buffer-source
-    take unwrapping-key, like crypto-key
+    take format
+    take wrapped-key
+    take unwrapping-key
     take unwrap-algorithm
-      like or
-        like algorithm-identifier
-        like rsa-oaep-params
-        like aes-ctr-params
-        like aes-cbc-params
-        like aes-gcm-params
     take unwrapped-key-algorithm
-      like or
-        like algorithm-identifier
-        like rsa-hashed-import-params
-        like ec-key-import-params
-        like hmac-import-params
-        like aes-key-algorithm
-    take extractable, like native-boolean
+    take extractable
     take key-usages
-      like iterable
-        like key-usage

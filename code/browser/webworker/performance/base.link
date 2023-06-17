@@ -1,12 +1,4 @@
 
-load @tunebond/moon
-  take form any
-  take form index
-  take form key-list
-  take form like
-  take form or
-  take form task
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-null
@@ -14,7 +6,7 @@ load @tunebond/bolt/code/javascript/native
   take form native-string
   take form native-void
 
-load @tunebond/bolt/code/javascript/webworker
+load @tunebond/bolt/code/browser/webworker
   take form add-event-listener-options
   take form event
   take form event-listener-options
@@ -23,7 +15,7 @@ load @tunebond/bolt/code/javascript/webworker
   take form performance-entry-list
   take form performance-event-map
 
-load @tunebond/bolt/code/javascript/dom/performance
+load @tunebond/bolt/code/browser/dom/performance
   take form performance
 
 form performance, name <Performance>
@@ -34,8 +26,8 @@ form performance, name <Performance>
       like task
         like any
 
-        take this, like performance
-        take ev, like event
+        take this
+        take ev
       like native-null
     flex true
   link time-origin, name <timeOrigin>
@@ -44,14 +36,12 @@ form performance, name <Performance>
   task clear-marks, name <clearMarks>
     like native-void
 
-    take mark-name, like native-string
-      void true
+    take mark-name, like maybe, like native-string
 
   task clear-measures, name <clearMeasures>
     like native-void
 
-    take measure-name, like native-string
-      void true
+    take measure-name, like maybe, like native-string
 
   task clear-resource-timings, name <clearResourceTimings>
     like native-void
@@ -62,28 +52,25 @@ form performance, name <Performance>
   task get-entries-by-name, name <getEntriesByName>
     like performance-entry-list
 
-    take name, like native-string
-    take type, like native-string
-      void true
+    take name
+    take type, like maybe, like native-string
 
   task get-entries-by-type, name <getEntriesByType>
     like performance-entry-list
 
-    take type, like native-string
+    take type
 
   task mark, name <mark>
     like native-void
 
-    take mark-name, like native-string
+    take mark-name
 
   task measure, name <measure>
     like native-void
 
-    take measure-name, like native-string
-    take start-mark, like native-string
-      void true
-    take end-mark, like native-string
-      void true
+    take measure-name
+    take start-mark, like maybe, like native-string
+    take end-mark, like maybe, like native-string
 
   task now, name <now>
     like native-number
@@ -91,7 +78,7 @@ form performance, name <Performance>
   task set-resource-timing-buffer-size, name <setResourceTimingBufferSize>
     like native-void
 
-    take max-size, like native-number
+    take max-size
 
   task to-json, name <toJSON>
     like any
@@ -103,32 +90,24 @@ form performance, name <Performance>
       base key-list
         like performance-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like performance
-        take ev
-          like index
-            like performance-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task add-event-listener, name <addEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like add-event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
@@ -137,29 +116,21 @@ form performance, name <Performance>
       base key-list
         like performance-event-map
 
-    take type, like k
+    take type
     take listener
-      like task
-        like any
-
-        take this, like performance
-        take ev
-          like index
-            like performance-event-map
-            like k
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
 
   task remove-event-listener, name <removeEventListener>
     like native-void
 
-    take type, like native-string
-    take listener, like event-listener-or-event-listener-object
+    take type
+    take listener
     take options
-      like or
-        like native-boolean
-        like event-listener-options
-      void true
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

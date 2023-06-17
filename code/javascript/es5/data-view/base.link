@@ -22,114 +22,102 @@ form data-view, name <DataView>
   task get-float32, name <getFloat32>
     like native-number
 
-    take byte-offset, like native-number
-    take little-endian, like native-boolean
-      void true
+    take byte-offset
+    take little-endian, like maybe, like native-boolean
 
   task get-float64, name <getFloat64>
     like native-number
 
-    take byte-offset, like native-number
-    take little-endian, like native-boolean
-      void true
+    take byte-offset
+    take little-endian, like maybe, like native-boolean
 
   task get-int8, name <getInt8>
     like native-number
 
-    take byte-offset, like native-number
+    take byte-offset
 
   task get-int16, name <getInt16>
     like native-number
 
-    take byte-offset, like native-number
-    take little-endian, like native-boolean
-      void true
+    take byte-offset
+    take little-endian, like maybe, like native-boolean
 
   task get-int32, name <getInt32>
     like native-number
 
-    take byte-offset, like native-number
-    take little-endian, like native-boolean
-      void true
+    take byte-offset
+    take little-endian, like maybe, like native-boolean
 
   task get-uint8, name <getUint8>
     like native-number
 
-    take byte-offset, like native-number
+    take byte-offset
 
   task get-uint16, name <getUint16>
     like native-number
 
-    take byte-offset, like native-number
-    take little-endian, like native-boolean
-      void true
+    take byte-offset
+    take little-endian, like maybe, like native-boolean
 
   task get-uint32, name <getUint32>
     like native-number
 
-    take byte-offset, like native-number
-    take little-endian, like native-boolean
-      void true
+    take byte-offset
+    take little-endian, like maybe, like native-boolean
 
   task set-float32, name <setFloat32>
     like native-void
 
-    take byte-offset, like native-number
-    take value, like native-number
-    take little-endian, like native-boolean
-      void true
+    take byte-offset
+    take value
+    take little-endian, like maybe, like native-boolean
 
   task set-float64, name <setFloat64>
     like native-void
 
-    take byte-offset, like native-number
-    take value, like native-number
-    take little-endian, like native-boolean
-      void true
+    take byte-offset
+    take value
+    take little-endian, like maybe, like native-boolean
 
   task set-int8, name <setInt8>
     like native-void
 
-    take byte-offset, like native-number
-    take value, like native-number
+    take byte-offset
+    take value
 
   task set-int16, name <setInt16>
     like native-void
 
-    take byte-offset, like native-number
-    take value, like native-number
-    take little-endian, like native-boolean
-      void true
+    take byte-offset
+    take value
+    take little-endian, like maybe, like native-boolean
 
   task set-int32, name <setInt32>
     like native-void
 
-    take byte-offset, like native-number
-    take value, like native-number
-    take little-endian, like native-boolean
-      void true
+    take byte-offset
+    take value
+    take little-endian, like maybe, like native-boolean
 
   task set-uint8, name <setUint8>
     like native-void
 
-    take byte-offset, like native-number
-    take value, like native-number
+    take byte-offset
+    take value
 
   task set-uint16, name <setUint16>
     like native-void
 
-    take byte-offset, like native-number
-    take value, like native-number
-    take little-endian, like native-boolean
-      void true
+    take byte-offset
+    take value
+    take little-endian, like maybe, like native-boolean
 
   task set-uint32, name <setUint32>
     like native-void
 
-    take byte-offset, like native-number
-    take value, like native-number
-    take little-endian, like native-boolean
-      void true
+    take byte-offset
+    take value
+    take little-endian, like maybe, like native-boolean
 
 form data-view
   hook self
@@ -139,8 +127,6 @@ form data-view
   hook make
     like data-view
 
-    take buffer, like array-buffer-like
-    take byte-offset, like native-number
-      void true
-    take byte-length, like native-number
-      void true
+    take buffer
+    take byte-offset, like maybe, like native-number
+    take byte-length, like maybe, like native-number

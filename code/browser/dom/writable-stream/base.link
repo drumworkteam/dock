@@ -1,13 +1,9 @@
 
-load @tunebond/moon
-  take form any
-  take form like
-
 load @tunebond/bolt/code/javascript/native
   take form native-boolean
   take form native-void
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form writable-stream-default-writer
 
 load @tunebond/bolt/code/javascript/es5
@@ -15,7 +11,7 @@ load @tunebond/bolt/code/javascript/es5
 
 form writable-stream, name <WritableStream>
   head w
-    back any
+    fall any
 
   link locked, name <locked>
     like native-boolean
@@ -24,8 +20,7 @@ form writable-stream, name <WritableStream>
     like promise
       like native-void
 
-    take reason, like any
-      void true
+    take reason, like maybe, like any
 
   task close, name <close>
     like promise

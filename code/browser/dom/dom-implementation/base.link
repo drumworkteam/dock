@@ -2,15 +2,11 @@
 load @tunebond/bolt/code/javascript
   take form array
 
-load @tunebond/moon
-  take form any
-  take form or
-
 load @tunebond/bolt/code/javascript/native
   take form native-null
   take form native-string
 
-load @tunebond/bolt/code/javascript/dom
+load @tunebond/bolt/code/browser/dom
   take form document
   take form document-type
   take form xml-document
@@ -20,31 +16,24 @@ form dom-implementation, name <DOMImplementation>
     like xml-document
 
     take namespace
-      like or
-        like native-string
-        like native-null
     take qualified-name
-      like or
-        like native-string
-        like native-null
     take doctype
-      like or
-        like document-type
-        like native-null
-      void true
+      like maybe
+        like or
+          like document-type
+          like native-null
 
   task create-document-type, name <createDocumentType>
     like document-type
 
-    take qualified-name, like native-string
-    take public-id, like native-string
-    take system-id, like native-string
+    take qualified-name
+    take public-id
+    take system-id
 
   task create-html-document, name <createHTMLDocument>
     like document
 
-    take title, like native-string
-      void true
+    take title, like maybe, like native-string
 
   task has-feature, name <hasFeature>
     text <true>
