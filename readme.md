@@ -12,7 +12,7 @@
 
 <h3 align='center'>bolt.link</h3>
 <p align='center'>
-  Base Link Platform Bindings
+  The Base Link Platform Binding Library
 </p>
 
 <br/>
