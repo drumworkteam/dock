@@ -12,7 +12,7 @@
 
 <h3 align='center'>bolt.link</h3>
 <p align='center'>
-  Base Link Platform Drivers
+  Base Link Platform Bindings
 </p>
 
 <br/>
@@ -21,7 +21,7 @@
 
 ## Welcome
 
-This `bolt.link` project is a collection of low-level environment APIs, such as those for JavaScript, Node.js, Rust, Swift, etc.. They are simply the type definitions for most of the useful features of the environment, for use in code. We use them to generate the appropriate environment code in the `base.link` compiler.
+This `bolt.link` project is a collection of low-level environment APIs, such as those for JavaScript, Node.js, Rust, Swift, etc.. They are simply the type definitions for most of the useful features of the environment, for use in code. We use them to generate the appropriate environment code in the `base.link` compiler. In addition, it has the base types used by the environments, such as `any` and `text`.
 
 ## License
 
