@@ -19,11 +19,11 @@
 <br/>
 <br/>
 
-### Welcome
+## Welcome
 
 This `bolt.link` project is a collection of low-level environment APIs, such as those for JavaScript, Node.js, Rust, Swift, etc.. They are simply the type definitions for most of the useful features of the environment, for use in code. We use them to generate the appropriate environment code in the `base.link` compiler.
 
-### License
+## License
 
 Copyright 2021-2023 <a href='https://tune.bond'>TuneBond</a>
 
@@ -39,6 +39,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-### TuneBond
+## TuneBond
 
 This is being developed by the folks at [TuneBond](https://tune.bond), a California-based project for helping humanity master information and computation. TuneBond started off in the winter of 2008 as a spark of an idea, to forming a company 10 years later in the winter of 2018, to a seed of a project just beginning its development phases. It is entirely bootstrapped by working full time and running [Etsy](https://etsy.com/shop/mountbuild) and [Amazon](https://www.amazon.com/s?rh=p_27%3AMount+Build) shops. Also find us on [Facebook](https://www.facebook.com/tunebond), [Twitter](https://twitter.com/tunebond), and [LinkedIn](https://www.linkedin.com/company/tunebond). Check out our other GitHub projects as well!
