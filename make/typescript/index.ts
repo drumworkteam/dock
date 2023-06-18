@@ -53,7 +53,9 @@ type Imports = Record<
   | number
   | Array<string>
   | boolean
->
+> & {
+  __ME__?: string
+}
 
 type Heads = Record<string, boolean>
 
@@ -68,16 +70,16 @@ type HostsAndTasks = {
   tasks: Array<string>
 }
 
+const importsPerFile: Record<string, Record<string, string>> = {}
+
 const PATHS = [
   'src/lib/dom.generated.d.ts',
   'src/lib/dom.iterable.d.ts',
   'src/lib/dom.iterable.generated.d.ts',
   'src/lib/es5.d.ts',
   'src/lib/es5.full.d.ts',
-  'src/lib/es2015.collection.d.ts',
   'src/lib/es2015.core.d.ts',
-  'src/lib/es2015.d.ts',
-  'src/lib/es2015.full.d.ts',
+  'src/lib/es2015.collection.d.ts',
   'src/lib/es2015.generator.d.ts',
   'src/lib/es2015.iterable.d.ts',
   'src/lib/es2015.promise.d.ts',
@@ -85,6 +87,8 @@ const PATHS = [
   'src/lib/es2015.reflect.d.ts',
   'src/lib/es2015.symbol.d.ts',
   'src/lib/es2015.symbol.wellknown.d.ts',
+  'src/lib/es2015.d.ts',
+  'src/lib/es2015.full.d.ts',
   'src/lib/es2016.array.include.d.ts',
   'src/lib/es2016.d.ts',
   'src/lib/es2016.full.d.ts',
@@ -149,7 +153,9 @@ const PATHS = [
   'src/lib/webworker.iterable.generated.d.ts',
 ].map(x => `${__dirname}/TypeScript/${x}`)
 
+let NAME_SUFFIX = ''
 let OUTPUT_PATH = ''
+let FILE = ''
 let defined: Declared = {}
 let writes: Record<
   string,
@@ -181,7 +187,14 @@ function process() {
         OUTPUT_PATH_ARRAY[i] = null
       }
     })
-    OUTPUT_PATH = OUTPUT_PATH_ARRAY.filter(x => x).join('/')
+    OUTPUT_PATH = OUTPUT_PATH_ARRAY.filter(x => x).join('/') + '/suit'
+
+    if (OUTPUT_PATH_ARRAY[0]?.match(/^es/)) {
+      NAME_SUFFIX = OUTPUT_PATH_ARRAY[0]
+    }
+
+    FILE = OUTPUT_PATH
+
     // console.log(OUTPUT_PATH)
     // console.log('output', OUTPUT_PATH)
 
@@ -304,6 +317,14 @@ function process() {
     })
 
     imports.push('')
+
+    // if (
+    //   path.match('dom') &&
+    //   imports.join('\n').match('javascript/') &&
+    //   !imports.join('\n').match('javascript/native')
+    // ) {
+    //   console.log(imports.join('\n'))
+    // }
 
     fs.writeFileSync(
       `${path}/base.link`,
@@ -505,9 +526,22 @@ function makeClass(
   declared: Declared,
   isGlobal?: boolean,
 ) {
-  const imports = {}
+  const imports: Imports = {}
   const heads: Heads = {}
   let name = makeName(node.id.name)
+  const baseName = name
+
+  if (NAME_SUFFIX) {
+    name += `-${NAME_SUFFIX}`
+  }
+
+  const f = (importsPerFile[FILE] ??= {})
+  f[baseName] = name
+
+  Object.defineProperty(imports, '__ME__', {
+    enumerable: false,
+    value: name,
+  })
   const typeParams =
     node.typeParameters?.type === 'TSTypeParameterDeclaration'
       ? makeTypeParameters('', node.typeParameters, imports, heads)
@@ -538,10 +572,10 @@ function makeClass(
     name = name.replace('-constructor', '')
     mod = mod ? mod.replace('-constructor', '') : null
   } else {
-    if (`form ${name}, name <${node.id.name}>`.length <= 96) {
-      text.push(`form ${name}, name <${node.id.name}>`)
+    if (`suit ${name}, name <${node.id.name}>`.length <= 96) {
+      text.push(`suit ${name}, name <${node.id.name}>`)
     } else {
-      text.push(`form ${name}`)
+      text.push(`suit ${name}`)
       text.push(`  name <${node.id.name}>`)
     }
   }
@@ -1220,10 +1254,20 @@ function makeAlias(
 
   const text = []
 
-  if (`form ${makeName(typeName)}, name <${typeName}>`.length <= 96) {
-    text.push(`form ${makeName(typeName)}, name <${typeName}>`)
+  let suitName = makeName(typeName)
+  const baseName = suitName
+
+  if (NAME_SUFFIX) {
+    suitName += `-${NAME_SUFFIX}`
+  }
+
+  const f = (importsPerFile[FILE] ??= {})
+  f[baseName] = suitName
+
+  if (`suit ${suitName}, name <${typeName}>`.length <= 96) {
+    text.push(`suit ${suitName}, name <${typeName}>`)
   } else {
-    text.push(`form ${makeName(typeName)}`)
+    text.push(`suit ${suitName}`)
     text.push(`  name <${typeName}>`)
   }
   if (isGlobal) {
@@ -1319,7 +1363,10 @@ function makeTypeExtends(
       case 'TSExpressionWithTypeArguments':
         switch (node.expression.type) {
           case 'Identifier':
-            imports[makeName(node.expression.name)] = true
+            const n = makeName(node.expression.name)
+            if (imports.__ME__ !== n) {
+              imports[n] = true
+            }
             text.push(`base ${makeName(node.expression.name)}`)
             break
           case 'TSQualifiedName':
@@ -1364,6 +1411,12 @@ function makeInterface(
     mod = mod ? mod.replace('-constructor', '') : ''
   }
   const imports: Imports = {}
+
+  Object.defineProperty(imports, '__ME__', {
+    enumerable: false,
+    value: _typeName,
+  })
+
   if (defined[_typeName]) {
     imports[_typeName] = { value: defined[_typeName], fromFile: true }
   }
@@ -1373,16 +1426,24 @@ function makeInterface(
     ? makeTypeParameters(typeName, node.typeParameters, imports, heads)
     : []
 
+  let suitName = _typeName
+  if (NAME_SUFFIX) {
+    suitName += `-${NAME_SUFFIX}`
+  }
+
+  const f = (importsPerFile[FILE] ??= {})
+  f[_typeName] = suitName
+
   const text = []
 
   if (isConstructor) {
-    text.push(`form ${_typeName}`)
+    text.push(`suit ${suitName}`)
     text.push(`  hook self`)
   } else {
-    if (`form ${_typeName}, name <${typeName}>`.length <= 96) {
-      text.push(`form ${_typeName}, name <${typeName}>`)
+    if (`suit ${suitName}, name <${typeName}>`.length <= 96) {
+      text.push(`suit ${suitName}, name <${typeName}>`)
     } else {
-      text.push(`form ${_typeName}`)
+      text.push(`suit ${suitName}`)
       text.push(`  name <${typeName}>`)
     }
   }
@@ -2013,7 +2074,7 @@ function makeTypeReference(
   switch (node.typeName.type) {
     case 'Identifier': {
       const key = makeName(node.typeName.name)
-      if (!heads[key]) {
+      if (!heads[key] && imports.__ME__ !== key) {
         imports[key] = true
       }
       text.push(`${type} ${makeName(node.typeName.name)}`)
@@ -2021,7 +2082,7 @@ function makeTypeReference(
     }
     case 'TSQualifiedName': {
       const key = getQualifiedName(node.typeName)
-      if (!heads[key]) {
+      if (!heads[key] && imports.__ME__ !== key) {
         imports[key] = true
       }
       text.push(`${type} ${key}`)
@@ -2272,7 +2333,7 @@ function makeTypeAnnotation(
       switch (node.typeParameter.type) {
         case 'TSTypeParameter':
           const key = makeName(node.typeParameter.name)
-          if (!heads[key]) {
+          if (!heads[key] && imports.__ME__ !== key) {
             imports[key] = true
           }
           text.push(`name ${key}`)
