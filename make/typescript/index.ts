@@ -167,7 +167,7 @@ function process() {
     // console.log(path)
     const code = fs.readFileSync(path, 'utf-8')
     const OUTPUT_PATH_ARRAY: Array<string | null> = path
-      .replace(`${__dirname}/TypeScript/`, '')
+      .replace(`${__dirname}/TypeScript/src/lib/`, '')
       .split('.')
       .map(x =>
         x
@@ -175,7 +175,6 @@ function process() {
           .map(y => makeName(y))
           .join('/'),
       )
-    OUTPUT_PATH_ARRAY.shift()
     OUTPUT_PATH_ARRAY.pop()
     OUTPUT_PATH_ARRAY.forEach((x, i) => {
       if (x === 'd') {
@@ -184,6 +183,7 @@ function process() {
     })
     OUTPUT_PATH = OUTPUT_PATH_ARRAY.filter(x => x).join('/')
     // console.log(OUTPUT_PATH)
+    // console.log('output', OUTPUT_PATH)
 
     const ast = babel.parse(code, {
       sourceType: 'module',
@@ -1853,9 +1853,10 @@ function makeProperty(
         'name' in node.key
           ? node.key.name
           : 'value' in node.key
-          ? node.key.value
+          ? String(node.key.value)
           : undefined
 
+      // console.log(node.key)
       haveText(name, 'name')
 
       if (`  link ${makeName(name)}, name <${name}>`.length <= 96) {
@@ -1991,6 +1992,7 @@ function makeIntersectionType(
       //   break
       case 'TSStringKeyword':
       case 'TSVoidKeyword':
+      case 'TSObjectKeyword':
         break
       default:
         console.log(node)
@@ -2140,7 +2142,9 @@ function makeTypeAnnotation(
       if ('value' in node.literal) {
         text.push(`text <${node.literal.value}>`)
       } else {
-        throw new Error('TODO')
+        // console.log(node.literal)
+        // throw new Error('TODO')
+        text.push(`text <UNKNOWN>`)
       }
       break
     case 'TSThisType':
@@ -2323,6 +2327,8 @@ function makeTypeAnnotation(
       break
     case 'TSTypeReference':
       text.push(...makeTypeReference(name, node, type, imports, heads))
+      break
+    case 'TSRestType':
       break
     default:
       console.log(node)
