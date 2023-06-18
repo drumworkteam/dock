@@ -3,18 +3,40 @@ import { paramCase } from 'change-case'
 import babel from '@babel/parser'
 import {
   ClassDeclaration,
-  Declaration,
+  RestElement,
   TSTypeLiteral,
+  VariableDeclaration,
   ExportNamedDeclaration,
   ModuleDeclaration,
   Node,
+  MemberExpression,
+  TSFunctionType,
+  TSDeclareMethod,
+  TSTypePredicate,
+  TSMappedType,
+  TSTypeReference,
+  TSIntersectionType,
+  TSIndexSignature,
+  TSPropertySignature,
+  TSMethodSignature,
+  TSConstructSignatureDeclaration,
+  TSQualifiedName,
   TSInterfaceDeclaration,
   TSModuleDeclaration,
   TSTypeAliasDeclaration,
   TSTypeParameterDeclaration,
   TypeParameterDeclaration,
   FunctionDeclaration,
+  TSConditionalType,
+  TSDeclareFunction,
+  TSUnionType,
+  Identifier,
 } from '@babel/types'
+import { haveText } from '@tunebond/have'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 type Mod = string | null | undefined
 
@@ -23,11 +45,14 @@ type DeclaredValue = {
   mod: string | null | undefined
 }
 
-type Declared = Record<string, DeclaredValue>
+type Declared = Record<string, DeclaredValue | undefined>
 
 type Imports = Record<
   string,
-  { value: DeclaredValue; fromFile: boolean } | number
+  | { value: DeclaredValue | undefined; fromFile: boolean }
+  | number
+  | Array<string>
+  | boolean
 >
 
 type Heads = Record<string, boolean>
@@ -44,75 +69,92 @@ type HostsAndTasks = {
 }
 
 const PATHS = [
-  'lib.es5.d.ts',
-  'lib.dom.d.ts',
-  'lib.dom.iterable.d.ts',
-  'lib.webworker.d.ts',
-  'lib.webworker.importscripts.d.ts',
-  'lib.webworker.iterable.d.ts',
-  'lib.scripthost.d.ts',
-  'lib.es2015.collection.d.ts',
-  'lib.es2015.core.d.ts',
-  'lib.es2015.generator.d.ts',
-  'lib.es2015.iterable.d.ts',
-  'lib.es2015.promise.d.ts',
-  'lib.es2015.proxy.d.ts',
-  'lib.es2015.reflect.d.ts',
-  'lib.es2015.symbol.d.ts',
-  'lib.es2015.symbol.wellknown.d.ts',
-  'lib.es2015.d.ts',
-  'lib.es6.d.ts',
-  'lib.es2016.array.include.d.ts',
-  'lib.es2016.d.ts',
-  'lib.es2016.full.d.ts',
-  'lib.es2017.intl.d.ts',
-  'lib.es2017.object.d.ts',
-  'lib.es2017.sharedmemory.d.ts',
-  'lib.es2017.string.d.ts',
-  'lib.es2017.typedarrays.d.ts',
-  'lib.es2017.d.ts',
-  'lib.es2017.full.d.ts',
-  'lib.es2018.asyncgenerator.d.ts',
-  'lib.es2018.asynciterable.d.ts',
-  'lib.es2018.intl.d.ts',
-  'lib.es2018.promise.d.ts',
-  'lib.es2018.regexp.d.ts',
-  'lib.es2018.d.ts',
-  'lib.es2018.full.d.ts',
-  'lib.es2019.array.d.ts',
-  'lib.es2019.object.d.ts',
-  'lib.es2019.string.d.ts',
-  'lib.es2019.symbol.d.ts',
-  'lib.es2019.d.ts',
-  'lib.es2019.full.d.ts',
-  'lib.es2020.bigint.d.ts',
-  'lib.es2020.intl.d.ts',
-  'lib.es2020.promise.d.ts',
-  'lib.es2020.sharedmemory.d.ts',
-  'lib.es2020.string.d.ts',
-  'lib.es2020.symbol.wellknown.d.ts',
-  'lib.es2020.d.ts',
-  'lib.es2020.full.d.ts',
-  'lib.es2021.promise.d.ts',
-  'lib.es2021.string.d.ts',
-  'lib.es2021.weakref.d.ts',
-  'lib.es2021.d.ts',
-  'lib.es2021.full.d.ts',
-  'lib.esnext.intl.d.ts',
-  'lib.esnext.d.ts',
-  'lib.esnext.promise.d.ts',
-  'lib.esnext.string.d.ts',
-  'lib.esnext.weakref.d.ts',
-  'lib.esnext.full.d.ts',
-  'typescript.d.ts',
-].map(x => `${__dirname}/TypeScript/lib/${x}`)
+  'src/lib/dom.generated.d.ts',
+  'src/lib/dom.iterable.d.ts',
+  'src/lib/dom.iterable.generated.d.ts',
+  'src/lib/es5.d.ts',
+  'src/lib/es5.full.d.ts',
+  'src/lib/es2015.collection.d.ts',
+  'src/lib/es2015.core.d.ts',
+  'src/lib/es2015.d.ts',
+  'src/lib/es2015.full.d.ts',
+  'src/lib/es2015.generator.d.ts',
+  'src/lib/es2015.iterable.d.ts',
+  'src/lib/es2015.promise.d.ts',
+  'src/lib/es2015.proxy.d.ts',
+  'src/lib/es2015.reflect.d.ts',
+  'src/lib/es2015.symbol.d.ts',
+  'src/lib/es2015.symbol.wellknown.d.ts',
+  'src/lib/es2016.array.include.d.ts',
+  'src/lib/es2016.d.ts',
+  'src/lib/es2016.full.d.ts',
+  'src/lib/es2017.d.ts',
+  'src/lib/es2017.date.d.ts',
+  'src/lib/es2017.full.d.ts',
+  'src/lib/es2017.intl.d.ts',
+  'src/lib/es2017.object.d.ts',
+  'src/lib/es2017.sharedmemory.d.ts',
+  'src/lib/es2017.string.d.ts',
+  'src/lib/es2017.typedarrays.d.ts',
+  'src/lib/es2018.asyncgenerator.d.ts',
+  'src/lib/es2018.asynciterable.d.ts',
+  'src/lib/es2018.d.ts',
+  'src/lib/es2018.full.d.ts',
+  'src/lib/es2018.intl.d.ts',
+  'src/lib/es2018.promise.d.ts',
+  'src/lib/es2018.regexp.d.ts',
+  'src/lib/es2019.array.d.ts',
+  'src/lib/es2019.d.ts',
+  'src/lib/es2019.full.d.ts',
+  'src/lib/es2019.intl.d.ts',
+  'src/lib/es2019.object.d.ts',
+  'src/lib/es2019.string.d.ts',
+  'src/lib/es2019.symbol.d.ts',
+  'src/lib/es2020.bigint.d.ts',
+  'src/lib/es2020.d.ts',
+  'src/lib/es2020.date.d.ts',
+  'src/lib/es2020.full.d.ts',
+  'src/lib/es2020.intl.d.ts',
+  'src/lib/es2020.number.d.ts',
+  'src/lib/es2020.promise.d.ts',
+  'src/lib/es2020.sharedmemory.d.ts',
+  'src/lib/es2020.string.d.ts',
+  'src/lib/es2020.symbol.wellknown.d.ts',
+  'src/lib/es2021.d.ts',
+  'src/lib/es2021.full.d.ts',
+  'src/lib/es2021.intl.d.ts',
+  'src/lib/es2021.promise.d.ts',
+  'src/lib/es2021.string.d.ts',
+  'src/lib/es2021.weakref.d.ts',
+  'src/lib/es2022.array.d.ts',
+  'src/lib/es2022.d.ts',
+  'src/lib/es2022.error.d.ts',
+  'src/lib/es2022.full.d.ts',
+  'src/lib/es2022.intl.d.ts',
+  'src/lib/es2022.object.d.ts',
+  'src/lib/es2022.regexp.d.ts',
+  'src/lib/es2022.sharedmemory.d.ts',
+  'src/lib/es2022.string.d.ts',
+  'src/lib/es2023.array.d.ts',
+  'src/lib/es2023.collection.d.ts',
+  'src/lib/es2023.d.ts',
+  'src/lib/es2023.full.d.ts',
+  'src/lib/esnext.d.ts',
+  'src/lib/esnext.full.d.ts',
+  'src/lib/esnext.intl.d.ts',
+  'src/lib/header.d.ts',
+  'src/lib/scripthost.d.ts',
+  'src/lib/webworker.generated.d.ts',
+  'src/lib/webworker.importscripts.d.ts',
+  'src/lib/webworker.iterable.generated.d.ts',
+].map(x => `${__dirname}/TypeScript/${x}`)
 
 let OUTPUT_PATH = ''
 let defined: Declared = {}
 let writes: Record<
   string,
   {
-    i: Array<Record<string, string>>
+    i: Array<Record<string, Record<string, boolean>>>
     t: Array<string>
     b: Array<string>
   }
@@ -125,7 +167,7 @@ function process() {
     // console.log(path)
     const code = fs.readFileSync(path, 'utf-8')
     const OUTPUT_PATH_ARRAY: Array<string | null> = path
-      .replace(`${__dirname}/TypeScript/lib/`, '')
+      .replace(`${__dirname}/TypeScript/`, '')
       .split('.')
       .map(x =>
         x
@@ -198,11 +240,18 @@ function process() {
     write.i.push(finalImportText)
     write.t.push('\n', ...t)
 
-    code.replace(/\/\/\/\s+<reference\s+lib="([^"]+)"/g, (_, $1) => {
-      write.b.push(
-        `bear @tunebond/bolt/code/javascript/${$1.replace(/\./g, '/')}`,
-      )
-    })
+    code.replace(
+      /\/\/\/\s+<reference\s+lib="([^"]+)"/g,
+      (_, $1: string) => {
+        write.b.push(
+          `bear @tunebond/bolt/code/javascript/${$1.replace(
+            /\./g,
+            '/',
+          )}`,
+        )
+        return ''
+      },
+    )
   })
 
   Object.keys(writes).forEach(path => {
@@ -237,9 +286,9 @@ function process() {
 
     i.forEach(importMap2 => {
       Object.keys(importMap2).forEach(p => {
-        importMap[p] = importMap[p] ?? {}
+        const x = (importMap[p] = importMap[p] ?? {})
         Object.keys(importMap2[p]).forEach(t => {
-          importMap[p][t] = true
+          x[t] = true
         })
       })
     })
@@ -321,8 +370,8 @@ function handleImports(
 
 function makeExportNamedImports(
   node: ExportNamedDeclaration,
-  mod,
-  declared,
+  mod: Mod,
+  declared: Declared,
 ) {
   if (node.specifiers?.length) {
     return
@@ -527,7 +576,7 @@ function makeClass(
               )
             : []
         const params = makeFunctionParams(
-          mod,
+          mod ?? '',
           node,
           imports,
           methodHeads,
@@ -621,26 +670,41 @@ function makeClass(
       case 'ClassProperty': {
         const t = node.static ? staticProperties : instanceProperties
         const type =
-          node.typeAnnotation?.type === 'TSTypeAnnotation' &&
-          makeTypeAnnotation(
-            '',
-            node.typeAnnotation.typeAnnotation,
-            `like`,
-            imports,
-            heads,
-          )
+          node.typeAnnotation?.type === 'TSTypeAnnotation'
+            ? makeTypeAnnotation(
+                '',
+                node.typeAnnotation.typeAnnotation,
+                `like`,
+                imports,
+                heads,
+              )
+            : []
+
         const indent = isConstructor ? `    ` : '  '
         if (node.computed) {
-          const left = makeName(node.key.object.name)
-          const right = makeName(node.key.property.name)
-          const name = [left, right].join('/')
+          const left =
+            'object' in node.key &&
+            'name' in node.key.object &&
+            node.key.object.name
+
+          const right =
+            'property' in node.key &&
+            'name' in node.key.property &&
+            node.key.property.name
+
+          const name = [
+            makeName(left || ''),
+            makeName(right || ''),
+          ].join('/')
+
           t.push(`  link {${name}}`)
           type.forEach(line => {
             t.push(`    ${line}`)
           })
         } else {
-          const name = makeName(node.key.name)
-          t.push(`${indent}link ${name}, name <${node.key.name}>`)
+          const MethodName = 'name' in node.key && node.key.name
+          const name = makeName(MethodName || '')
+          t.push(`${indent}link ${name}, name <${MethodName}>`)
           if (type.length === 1) {
             t[t.length - 1] += `, ${type[0]}`
           } else {
@@ -683,17 +747,17 @@ function makeClass(
     ? `tmp/${OUTPUT_PATH}/${mod}/${makeName(name)}`
     : `tmp/${OUTPUT_PATH}/${makeName(name)}`
 
-  writes[path] = writes[path] ?? { i: [], t: [], b: [] }
-  writes[path].i.push(finalImportText)
-  writes[path].t.push('\n', ...text)
+  const write = (writes[path] = writes[path] ?? { i: [], t: [], b: [] })
+  write.i.push(finalImportText)
+  write.t.push('\n', ...text)
 }
 
 function makeExportNamed(
   node: ExportNamedDeclaration,
-  mod,
-  declared,
-  isGlobal,
-  hostsAndTasks,
+  mod: Mod,
+  declared: Declared,
+  isGlobal: boolean,
+  hostsAndTasks: HostsAndTasks,
 ) {
   if (node.specifiers?.length) {
     // console.log(node)
@@ -711,7 +775,7 @@ function makeExportNamed(
         )
         break
       case 'TSInterfaceDeclaration':
-        makeInterface(node.declaration, mod, declared)
+        makeInterface(node.declaration, mod, declared, isGlobal)
         break
       case 'VariableDeclaration':
         makeVariable(
@@ -724,7 +788,14 @@ function makeExportNamed(
         )
         break
       case 'TSModuleDeclaration':
-        makeModule(node.declaration, mod, declared)
+        makeModule(
+          node.declaration,
+          mod,
+          declared,
+          false,
+          isGlobal,
+          hostsAndTasks,
+        )
         break
       case 'ClassDeclaration':
         // console.log('ClassDeclaration')
@@ -747,7 +818,7 @@ function makeExportNamed(
 }
 
 function makeFunction(
-  node: FunctionDeclaration,
+  node: TSDeclareFunction,
   mod: Mod,
   imports: Imports,
   declared: Declared,
@@ -755,7 +826,7 @@ function makeFunction(
   hostsAndTasks: HostsAndTasks,
 ) {
   const heads = {}
-  const name = node.id.name
+  const name = node.id?.name
   if (!name) {
     console.log(node)
     throw new Error()
@@ -765,15 +836,19 @@ function makeFunction(
       ? makeTypeParameters('', node.typeParameters, imports, heads)
       : []
   const functionParams = makeFunctionParams('', node, imports, heads)
-  const returnType = makeTypeAnnotation(
-    '',
-    node.returnType.typeAnnotation,
-    `like`,
-    imports,
-    heads,
-  )
-  const t = []
-  const globalsText = []
+  const returnType =
+    node.returnType?.type === 'TSTypeAnnotation'
+      ? makeTypeAnnotation(
+          '',
+          node.returnType.typeAnnotation,
+          `like`,
+          imports,
+          heads,
+        )
+      : []
+
+  const t: Array<string> = []
+  const globalsText: Array<string> = []
 
   if (`task ${makeName(name)}, name <${name}>`.length <= 96) {
     t.push(`task ${makeName(name)}, name <${name}>`)
@@ -785,7 +860,7 @@ function makeFunction(
     t.push(`  home true`)
   }
 
-  let x = []
+  let x: Array<string> = []
   returnType.forEach(line => {
     x.push(`  ${line}`)
   })
@@ -832,7 +907,7 @@ function handleBodyNames(
       makeModuleNames(node, mod, declared, isTop, isGlobal)
       break
     case 'VariableDeclaration':
-      makeVariableNames(node, mod, declared, isGlobal)
+      makeVariableNames(node, mod, declared)
       break
     case 'TSExportAssignment':
       // console.log('TSExportAssignment')
@@ -844,7 +919,7 @@ function handleBodyNames(
       // console.log('ExportAllDeclaration')
       break
     case 'TSDeclareFunction':
-      makeFunctionNames(node, mod, declared, isGlobal)
+      makeFunctionNames(node, mod, declared)
       break
     case 'TSTypeAliasDeclaration':
       makeAliasNames(node, mod, declared, isGlobal)
@@ -867,59 +942,59 @@ function makeInterfaceNames(
   isGlobal?: boolean,
 ) {
   return
-  const typeName = node.id.name
-  const _typeName = makeName(typeName)
-  const text = [`form ${_typeName}, text <${typeName}>`]
-  let hasLink = false
+  // const typeName = node.id.name
+  // const _typeName = makeName(typeName)
+  // const text = [`form ${_typeName}, text <${typeName}>`]
+  // let hasLink = false
 
-  let done = {}
+  // let done = {}
 
-  node.body.body.forEach(node => {
-    switch (node.type) {
-      case 'TSPropertySignature': {
-        if (node.key.type === 'MemberExpression') {
-          break
-        }
-        const name = node.key.name ?? node.key.value
-        if (done[name]) {
-          break
-        }
-        done[name] = true
-        text.push(`  link ${makeName(name)}, text <${name}>`)
-        hasLink = true
-        break
-      }
-    }
-  })
+  // node.body.body.forEach(node => {
+  //   switch (node.type) {
+  //     case 'TSPropertySignature': {
+  //       if (node.key.type === 'MemberExpression') {
+  //         break
+  //       }
+  //       const name = node.key.name ?? node.key.value
+  //       if (done[name]) {
+  //         break
+  //       }
+  //       done[name] = true
+  //       text.push(`  link ${makeName(name)}, text <${name}>`)
+  //       hasLink = true
+  //       break
+  //     }
+  //   }
+  // })
 
-  if (hasLink) {
-    text.push('')
-  }
+  // if (hasLink) {
+  //   text.push('')
+  // }
 
-  node.body.body.forEach(node => {
-    switch (node.type) {
-      case 'TSMethodSignature': {
-        if (node.key.type === 'MemberExpression') {
-          break
-        }
-        const name = node.key.name
-        // if (done[name]) break
-        // done[name] = true
-        text.push(`  task ${makeName(name)}, text <${name}>`)
-        console.log(node)
-        // text.push(...makeMethod(name, node, imports, heads))
-        // text.push(``)
-        break
-      }
-    }
-  })
+  // node.body.body.forEach(node => {
+  //   switch (node.type) {
+  //     case 'TSMethodSignature': {
+  //       if (node.key.type === 'MemberExpression') {
+  //         break
+  //       }
+  //       const name = node.key.name
+  //       // if (done[name]) break
+  //       // done[name] = true
+  //       text.push(`  task ${makeName(name)}, text <${name}>`)
+  //       console.log(node)
+  //       // text.push(...makeMethod(name, node, imports, heads))
+  //       // text.push(``)
+  //       break
+  //     }
+  //   }
+  // })
 
-  const path = mod
-    ? `tmp/${OUTPUT_PATH}/${mod}/${makeName(typeName)}/name`
-    : `tmp/${OUTPUT_PATH}/${makeName(typeName)}/name`
+  // const path = mod
+  //   ? `tmp/${OUTPUT_PATH}/${mod}/${makeName(typeName)}/name`
+  //   : `tmp/${OUTPUT_PATH}/${makeName(typeName)}/name`
 
-  fs.mkdirSync(path, { recursive: true })
-  fs.appendFileSync(`${path}/base.link`, cleanText(text.join('\n')))
+  // fs.mkdirSync(path, { recursive: true })
+  // fs.appendFileSync(`${path}/base.link`, cleanText(text.join('\n')))
 }
 
 function makeModuleNames(
@@ -930,47 +1005,47 @@ function makeModuleNames(
   isGlobal?: boolean,
 ) {
   return
-  const name = makeName(node.id.name ?? node.id.value)
-  isGlobal = isGlobal || name === 'global'
-  let n = isGlobal ? null : name
-  const p = isTop ? mod : [mod, n].filter(x => x).join('/')
-  if (node.body.type === 'TSModuleDeclaration') {
-    makeModuleNames(node.body, p, declared, false, isGlobal)
-  } else {
-    node.body.body.forEach(node => {
-      handleBodyNames(node, p, declared, false, isGlobal)
-    })
-  }
+  // const name = makeName(node.id.name ?? node.id.value)
+  // isGlobal = isGlobal || name === 'global'
+  // let n = isGlobal ? null : name
+  // const p = isTop ? mod : [mod, n].filter(x => x).join('/')
+  // if (node.body.type === 'TSModuleDeclaration') {
+  //   makeModuleNames(node.body, p, declared, false, isGlobal)
+  // } else {
+  //   node.body.body.forEach(node => {
+  //     handleBodyNames(node, p, declared, false, isGlobal)
+  //   })
+  // }
 }
 
 function makeFunctionNames(node: Node, mod: Mod, declared: Declared) {
   return
-  const typeName = node.id.name
-  const _typeName = makeName(typeName)
-  const text = [`task ${_typeName}, text <${typeName}>`]
+  // const typeName = node.id.name
+  // const _typeName = makeName(typeName)
+  // const text = [`task ${_typeName}, text <${typeName}>`]
 
-  const path = mod
-    ? `tmp/${OUTPUT_PATH}/${mod}/${makeName(typeName)}/name`
-    : `tmp/${OUTPUT_PATH}/${makeName(typeName)}/name`
+  // const path = mod
+  //   ? `tmp/${OUTPUT_PATH}/${mod}/${makeName(typeName)}/name`
+  //   : `tmp/${OUTPUT_PATH}/${makeName(typeName)}/name`
 
-  fs.mkdirSync(path, { recursive: true })
-  fs.appendFileSync(`${path}/base.link`, cleanText(text.join('\n')))
+  // fs.mkdirSync(path, { recursive: true })
+  // fs.appendFileSync(`${path}/base.link`, cleanText(text.join('\n')))
 }
 
 function makeVariableNames(node: Node, mod: Mod, declared: Declared) {
   return
-  node.declarations.forEach(dec => {
-    const typeName = dec.id.name
-    const _typeName = makeName(typeName)
-    const text = [`host ${_typeName}, text <${typeName}>`]
+  // node.declarations.forEach(dec => {
+  //   const typeName = dec.id.name
+  //   const _typeName = makeName(typeName)
+  //   const text = [`host ${_typeName}, text <${typeName}>`]
 
-    const path = mod
-      ? `tmp/${OUTPUT_PATH}/${mod}/${makeName(typeName)}/name`
-      : `tmp/${OUTPUT_PATH}/${makeName(typeName)}/name`
+  //   const path = mod
+  //     ? `tmp/${OUTPUT_PATH}/${mod}/${makeName(typeName)}/name`
+  //     : `tmp/${OUTPUT_PATH}/${makeName(typeName)}/name`
 
-    fs.mkdirSync(path, { recursive: true })
-    fs.appendFileSync(`${path}/base.link`, cleanText(text.join('\n')))
-  })
+  //   fs.mkdirSync(path, { recursive: true })
+  //   fs.appendFileSync(`${path}/base.link`, cleanText(text.join('\n')))
+  // })
 }
 
 function makeAliasNames(
@@ -980,25 +1055,25 @@ function makeAliasNames(
   isGlobal?: boolean,
 ) {
   return
-  const typeName = node.id.name
-  const _typeName = makeName(typeName)
-  const text = [`form ${_typeName}, text <${typeName}>`]
+  // const typeName = node.id.name
+  // const _typeName = makeName(typeName)
+  // const text = [`form ${_typeName}, text <${typeName}>`]
 
-  const path = mod
-    ? `tmp/${OUTPUT_PATH}/${mod}/${makeName(typeName)}/name`
-    : `tmp/${OUTPUT_PATH}/${makeName(typeName)}/name`
+  // const path = mod
+  //   ? `tmp/${OUTPUT_PATH}/${mod}/${makeName(typeName)}/name`
+  //   : `tmp/${OUTPUT_PATH}/${makeName(typeName)}/name`
 
-  fs.mkdirSync(path, { recursive: true })
-  fs.appendFileSync(`${path}/base.link`, cleanText(text.join('\n')))
+  // fs.mkdirSync(path, { recursive: true })
+  // fs.appendFileSync(`${path}/base.link`, cleanText(text.join('\n')))
 }
 
 function makeModule(
   node: TSModuleDeclaration,
   mod: Mod,
   declared: Declared,
-  isTop?: boolean,
-  isGlobal?: boolean,
-  hostsAndTasks,
+  isTop: boolean,
+  isGlobal: boolean,
+  hostsAndTasks: HostsAndTasks,
 ) {
   const name =
     node.id.type === 'Identifier'
@@ -1179,24 +1254,26 @@ function makeAlias(
     ? `tmp/${OUTPUT_PATH}/${mod}/${makeName(typeName)}`
     : `tmp/${OUTPUT_PATH}/${makeName(typeName)}`
 
-  writes[path] = writes[path] ?? { i: [], t: [], b: [] }
-  writes[path].i.push(finalImportText)
-  writes[path].t.push('\n', ...text)
+  const write = (writes[path] = writes[path] ?? { i: [], t: [], b: [] })
+  write.i.push(finalImportText)
+  write.t.push('\n', ...text)
 }
 
 function makeVariable(
-  node: Declaration,
-  mod,
-  imports,
-  declared,
-  isGlobal,
-  hostsAndTasks,
+  node: VariableDeclaration,
+  mod: Mod,
+  imports: Imports,
+  declared: Declared,
+  isGlobal: boolean,
+  hostsAndTasks: HostsAndTasks,
 ) {
-  const text = []
-  const globalsText = []
+  const text: Array<string> = []
+  const globalsText: Array<string> = []
 
   node.declarations.forEach(dec => {
-    const name = dec.id.name
+    const name = 'name' in dec.id && dec.id.name
+
+    haveText(name, 'name')
 
     if (`host ${makeName(name)}, name <${name}>`.length <= 96) {
       text.push(`host ${makeName(name)}, name <${name}>`)
@@ -1208,7 +1285,10 @@ function makeVariable(
       text.push(`  home true`)
     }
 
-    if (dec.id.typeAnnotation) {
+    if (
+      'typeAnnotation' in dec.id &&
+      dec.id.typeAnnotation?.type === 'TSTypeAnnotation'
+    ) {
       const like = makeTypeAnnotation(
         name,
         dec.id.typeAnnotation.typeAnnotation,
@@ -1228,9 +1308,13 @@ function makeVariable(
   hostsAndTasks.hosts.push(...text)
 }
 
-function makeTypeExtends(name, node, imports) {
-  const text = []
-  node.extends.forEach(node => {
+function makeTypeExtends(
+  name: string,
+  node: TSInterfaceDeclaration,
+  imports: Imports,
+) {
+  const text: Array<string> = []
+  node.extends?.forEach(node => {
     switch (node.type) {
       case 'TSExpressionWithTypeArguments':
         switch (node.expression.type) {
@@ -1256,7 +1340,11 @@ function makeTypeExtends(name, node, imports) {
   return text
 }
 
-function makeInterfaceImports(node, mod, declared) {
+function makeInterfaceImports(
+  node: TSInterfaceDeclaration,
+  mod: Mod,
+  declared: Declared,
+) {
   const typeName = node.id.name
   const _typeName = makeName(typeName)
   declared[_typeName] = { OUTPUT_PATH, mod }
@@ -1275,7 +1363,7 @@ function makeInterface(
     _typeName = _typeName.replace('-constructor', '')
     mod = mod ? mod.replace('-constructor', '') : ''
   }
-  const imports = {}
+  const imports: Imports = {}
   if (defined[_typeName]) {
     imports[_typeName] = { value: defined[_typeName], fromFile: true }
   }
@@ -1336,6 +1424,8 @@ function makeInterface(
         )
         hasLink = true
         break
+      default:
+        break
     }
   })
 
@@ -1352,6 +1442,8 @@ function makeInterface(
           ),
         )
         text.push(``)
+        break
+      default:
         break
     }
   })
@@ -1382,13 +1474,13 @@ function makeInterface(
     ? `tmp/${OUTPUT_PATH}/${mod}/${_typeName}`
     : `tmp/${OUTPUT_PATH}/${_typeName}`
 
-  writes[path] = writes[path] ?? { i: [], t: [], b: [] }
-  writes[path].i.push(finalImportText)
-  writes[path].t.push('\n', ...text)
+  const write = (writes[path] = writes[path] ?? { i: [], t: [], b: [] })
+  write.i.push(finalImportText)
+  write.t.push('\n', ...text)
 }
 
-function getImportText(imports, declared) {
-  const importMap = {}
+function getImportText(imports: Imports, declared: Declared) {
+  const importMap: Record<string, Array<string>> = {}
   Object.keys(imports).forEach(key => {
     let out
     let mod
@@ -1398,9 +1490,9 @@ function getImportText(imports, declared) {
     }
     const x = imports[key]
     let val
-    if (x && x.fromFile) {
-      out = x.value.OUTPUT_PATH
-      mod = x.value.mod
+    if (x && typeof x === 'object' && 'fromFile' in x && x.fromFile) {
+      out = x.value?.OUTPUT_PATH
+      mod = x.value?.mod
       const parts = [out, mod].filter(x => x).join('/')
       let p = `load @tunebond/bolt/code/javascript/${parts}/${key}`
       if (p.match(/javascript\/(dom|scripthost|webworker)/)) {
@@ -1409,13 +1501,13 @@ function getImportText(imports, declared) {
           (_, $1) => `/browser/${$1}`,
         )
       }
-      importMap[`4:${p}`] = importMap[`4:${p}`] ?? []
-      importMap[`4:${p}`].push(`\n  take form ${key}`)
+      const map = (importMap[`4:${p}`] = importMap[`4:${p}`] ?? [])
+      map.push(`\n  take form ${key}`)
     } else if (x === true) {
-      let v = declared[key] ?? defined[key] ?? {}
-      out = v.OUTPUT_PATH ?? 'native'
+      let v = declared[key] || defined[key] || {}
+      out = 'OUTPUT_PATH' in v ? v.OUTPUT_PATH : 'native'
       // console.log('out', out, key)
-      mod = v.mod
+      mod = 'mod' in v && v.mod
       const parts = [out, mod].filter(x => x).join('/')
       let p = `load @tunebond/bolt/code/javascript`
       if (parts) {
@@ -1427,13 +1519,13 @@ function getImportText(imports, declared) {
           (_, $1) => `/browser/${$1}`,
         )
       }
-      importMap[`3:${p}`] = importMap[`3:${p}`] ?? []
-      importMap[`3:${p}`].push(`\n  take form ${key}`)
+      const map = (importMap[`3:${p}`] = importMap[`3:${p}`] ?? [])
+      map.push(`\n  take form ${key}`)
     } else if (x === 1) {
       let v = declared[key] ?? defined[key] ?? {}
-      out = v.OUTPUT_PATH ?? 'native'
-      // console.log('out2', out, key)
-      mod = v.mod
+      out = 'OUTPUT_PATH' in v ? v.OUTPUT_PATH : 'native'
+      // console.log('out', out, key)
+      mod = 'mod' in v && v.mod
       const parts = [out, mod].filter(x => x).join('/')
       let p = `load @tunebond/bolt/code/javascript`
       if (parts) {
@@ -1445,60 +1537,76 @@ function getImportText(imports, declared) {
           (_, $1) => `/browser/${$1}`,
         )
       }
-      importMap[`2:${p}`] = importMap[`2:${p}`] ?? []
-      importMap[`2:${p}`].push(`\n  take form ${key}`)
-    } else {
-      val = importMap[`1:${imports[key][0]}`] =
-        importMap[`1:${imports[key][0]}`] ?? []
-      val.push(imports[key][1])
+      const map = (importMap[`2:${p}`] = importMap[`2:${p}`] ?? [])
+      map.push(`\n  take form ${key}`)
+    } else if (Array.isArray(x)) {
+      val = importMap[`1:${x[0]}`] = importMap[`1:${x[0]}`] ?? []
+      const a = x[1]
+      if (a) {
+        val.push(a)
+      }
     }
   })
 
-  const importMap2 = {}
+  const importMap2: Record<string, Record<string, boolean>> = {}
   Object.keys(importMap)
     .sort()
     .forEach(pn => {
       const [n, p] = pn.split(':')
-      importMap2[p] = importMap2[p] ?? {}
-      importMap[pn].forEach(key => {
-        importMap2[p][key] = true
-      })
+      if (p) {
+        const pmap = (importMap2[p] = importMap2[p] ?? {})
+        importMap[pn]?.forEach(key => {
+          pmap[key] = true
+        })
+      }
     })
 
   return importMap2
 }
 
-function makeIndex(typeName, node, imports, heads) {
+function makeIndex(
+  typeName: string,
+  node: TSIndexSignature,
+  imports: Imports,
+  heads: Heads,
+) {
   if (node.parameters.length > 1) {
     throw new Error('Unknown index type')
   }
 
-  const t = []
+  const t: Array<string> = []
 
-  makeIdentifier(
-    typeName,
-    node.parameters[0],
-    'mesh',
-    imports,
-    heads,
-  ).forEach(line => {
-    t.push(`  ${line}`)
-  })
-  makeTypeAnnotation(
-    typeName,
-    node.typeAnnotation.typeAnnotation,
-    'like',
-    imports,
-    heads,
-  ).forEach(line => {
-    t.push(`    ${line}`)
-  })
+  const id = node.parameters[0]
+
+  if (id) {
+    makeIdentifier(typeName, id, 'mesh', imports, heads).forEach(
+      line => {
+        t.push(`  ${line}`)
+      },
+    )
+  }
+
+  if (node.typeAnnotation?.type === 'TSTypeAnnotation') {
+    makeTypeAnnotation(
+      typeName,
+      node.typeAnnotation.typeAnnotation,
+      'like',
+      imports,
+      heads,
+    ).forEach(line => {
+      t.push(`    ${line}`)
+    })
+  }
 
   return t
 }
 
-function makeConstructor(typeName, node, imports, heads) {
-  const computed = node.computed
+function makeConstructor(
+  typeName: string,
+  node: TSConstructSignatureDeclaration,
+  imports: Imports,
+  heads: Heads,
+) {
   const constructorHeads = { ...heads }
   const typeParams = node.typeParameters
     ? makeTypeParameters(
@@ -1514,16 +1622,20 @@ function makeConstructor(typeName, node, imports, heads) {
     imports,
     constructorHeads,
   )
-  const returnType = makeTypeAnnotation(
-    typeName,
-    node.typeAnnotation.typeAnnotation,
-    `like`,
-    imports,
-    constructorHeads,
-  )
+  const returnType =
+    node.typeAnnotation?.type === 'TSTypeAnnotation'
+      ? makeTypeAnnotation(
+          typeName,
+          node.typeAnnotation.typeAnnotation,
+          `like`,
+          imports,
+          constructorHeads,
+        )
+      : []
+
   const t = []
   t.push(`  hook make`)
-  let x = []
+  let x: Array<string> = []
   returnType.forEach(line => {
     x.push(`    ${line}`)
   })
@@ -1545,10 +1657,15 @@ function makeConstructor(typeName, node, imports, heads) {
   return t
 }
 
-function makeMethod(typeName, node, imports, heads) {
-  const methodHeads = { ...heads }
+function makeMethod(
+  typeName: string,
+  node: TSMethodSignature,
+  imports: Imports,
+  heads: Heads,
+) {
+  const methodHeads: Heads = { ...heads }
   const computed = node.computed
-  const text = []
+  const text: Array<string> = []
 
   // if (computed) {
   //   console.log(node)
@@ -1557,9 +1674,20 @@ function makeMethod(typeName, node, imports, heads) {
 
   switch (node.key.type) {
     case 'MemberExpression': {
-      const left = node.key.object.name
-      const right = node.key.property.name
-      const name = [makeName(left), makeName(right)].join('/')
+      const left =
+        'object' in node.key &&
+        'name' in node.key.object &&
+        node.key.object.name
+
+      const right =
+        'property' in node.key &&
+        'name' in node.key.property &&
+        node.key.property.name
+
+      const name = [makeName(left || ''), makeName(right || '')].join(
+        '/',
+      )
+
       const typeParams = node.typeParameters
         ? makeTypeParameters(
             typeName,
@@ -1578,14 +1706,18 @@ function makeMethod(typeName, node, imports, heads) {
       if (node.kind === 'set') {
         // text.push(`    free seed, like void`)
       } else {
-        const returnType = makeTypeAnnotation(
-          typeName,
-          node.typeAnnotation.typeAnnotation,
-          `like`,
-          imports,
-          methodHeads,
-        )
-        let x = []
+        const returnType =
+          node.typeAnnotation?.type === 'TSTypeAnnotation'
+            ? makeTypeAnnotation(
+                typeName,
+                node.typeAnnotation.typeAnnotation,
+                `like`,
+                imports,
+                methodHeads,
+              )
+            : []
+
+        let x: Array<string> = []
         returnType.forEach(line => {
           x.push(`    ${line}`)
         })
@@ -1606,9 +1738,8 @@ function makeMethod(typeName, node, imports, heads) {
       break
     }
     default: {
-      const name = node.key.name
-      const loan = computed ? `loan ` : ``
-      if (computed) {
+      const name = 'name' in node.key && node.key.name
+      if (computed || !name) {
         throw new Error('computed')
       }
       const typeParams = node.typeParameters
@@ -1634,14 +1765,18 @@ function makeMethod(typeName, node, imports, heads) {
       if (node.kind === 'set') {
         // text.push(`    free seed, like void`)
       } else {
-        const returnType = makeTypeAnnotation(
-          typeName,
-          node.typeAnnotation.typeAnnotation,
-          `like`,
-          imports,
-          methodHeads,
-        )
-        let x = []
+        const returnType =
+          node.typeAnnotation?.type === 'TSTypeAnnotation'
+            ? makeTypeAnnotation(
+                typeName,
+                node.typeAnnotation.typeAnnotation,
+                `like`,
+                imports,
+                methodHeads,
+              )
+            : []
+
+        let x: Array<string> = []
         returnType.forEach(line => {
           x.push(`    ${line}`)
         })
@@ -1665,22 +1800,40 @@ function makeMethod(typeName, node, imports, heads) {
   return text
 }
 
-function makeProperty(node, imports, heads) {
+function makeProperty(
+  node: TSPropertySignature,
+  imports: Imports,
+  heads: Heads,
+) {
   const t = []
   const propHeads = { ...heads }
   switch (node.key.type) {
     case 'MemberExpression': {
-      const left = node.key.object.name
-      const right = node.key.property.name
-      const name = [makeName(left), makeName(right)].join('/')
-      t.push(`  link {${name}}`)
-      const like = makeTypeAnnotation(
-        name,
-        node.typeAnnotation.typeAnnotation,
-        'like',
-        imports,
-        propHeads,
+      const left =
+        'object' in node.key &&
+        'name' in node.key.object &&
+        node.key.object.name
+
+      const right =
+        'property' in node.key &&
+        'name' in node.key.property &&
+        node.key.property.name
+
+      const name = [makeName(left || ''), makeName(right || '')].join(
+        '/',
       )
+      t.push(`  link {${name}}`)
+      const like =
+        node.typeAnnotation?.type === 'TSTypeAnnotation'
+          ? makeTypeAnnotation(
+              name,
+              node.typeAnnotation.typeAnnotation,
+              'like',
+              imports,
+              propHeads,
+            )
+          : []
+
       like.forEach(line => {
         t.push(`    ${line}`)
       })
@@ -1693,24 +1846,35 @@ function makeProperty(node, imports, heads) {
       break
     }
     default: {
-      const name = node.key.name ?? node.key.value
-      const loan = node.computed ? `loan ` : ``
       if (node.computed) {
         throw new Error('computed')
       }
+      const name =
+        'name' in node.key
+          ? node.key.name
+          : 'value' in node.key
+          ? node.key.value
+          : undefined
+
+      haveText(name, 'name')
+
       if (`  link ${makeName(name)}, name <${name}>`.length <= 96) {
         t.push(`  link ${makeName(name)}, name <${name}>`)
       } else {
         t.push(`  link ${makeName(name)}`)
         t.push(`    name <${name}>`)
       }
-      const like = makeTypeAnnotation(
-        name,
-        node.typeAnnotation.typeAnnotation,
-        'like',
-        imports,
-        propHeads,
-      )
+      const like =
+        node.typeAnnotation?.type === 'TSTypeAnnotation'
+          ? makeTypeAnnotation(
+              name,
+              node.typeAnnotation.typeAnnotation,
+              'like',
+              imports,
+              propHeads,
+            )
+          : []
+
       like.forEach(line => {
         t.push(`    ${line}`)
       })
@@ -1726,11 +1890,11 @@ function makeProperty(node, imports, heads) {
 }
 
 function makeIdentifier(
-  name,
-  node,
+  name: string,
+  node: Identifier,
   type = 'take',
-  imports,
-  heads,
+  imports: Imports,
+  heads: Heads,
   isLink = false,
 ) {
   const text = []
@@ -1738,8 +1902,16 @@ function makeIdentifier(
   if (isLink) {
     text[0] += `, name <${node.name}>`
   }
-  const tsType = node.typeAnnotation.typeAnnotation
-  const like = makeTypeAnnotation(name, tsType, 'like', imports, heads)
+  const like =
+    node.typeAnnotation?.type === 'TSTypeAnnotation'
+      ? makeTypeAnnotation(
+          name,
+          node.typeAnnotation.typeAnnotation,
+          'like',
+          imports,
+          heads,
+        )
+      : []
 
   const likeWithVoid = []
   if (node.optional) {
@@ -1768,11 +1940,11 @@ function makeIdentifier(
 }
 
 function makeIntersectionType(
-  name,
-  node,
+  name: string,
+  node: TSIntersectionType,
   type = 'like',
-  imports,
-  heads,
+  imports: Imports,
+  heads: Heads,
 ) {
   const text = []
   // imports['and'] = [`load @tunebond/moon`, `\n  take form and`]
@@ -1789,11 +1961,11 @@ function makeIntersectionType(
       case 'TSTypeQuery':
         let k
         if (node.exprName.type === 'TSQualifiedName') {
-          k = `${makeName(node.exprName.left.name)}-${makeName(
-            node.exprName.right.name,
-          )}`
-        } else {
+          k = makeName(getQualifiedName(node.exprName))
+        } else if (node.exprName.type === 'Identifier') {
           k = makeName(node.exprName.name)
+        } else {
+          throw new Error('TODO')
         }
         text.push(`  like ${k}`)
         break
@@ -1812,11 +1984,11 @@ function makeIntersectionType(
           },
         )
         break
-      case 'TSPropertySignature':
-        makeProperty(node, imports, heads).forEach(line => {
-          text.push(`  ${line}`)
-        })
-        break
+      // case 'TSPropertySignature':
+      //   makeProperty(node, imports, heads).forEach(line => {
+      //     text.push(`  ${line}`)
+      //   })
+      //   break
       case 'TSStringKeyword':
       case 'TSVoidKeyword':
         break
@@ -1828,7 +2000,13 @@ function makeIntersectionType(
   return text
 }
 
-function makeTypeReference(name, node, type = 'like', imports, heads) {
+function makeTypeReference(
+  name: string,
+  node: TSTypeReference,
+  type = 'like',
+  imports: Imports,
+  heads: Heads,
+) {
   const text = []
   switch (node.typeName.type) {
     case 'Identifier': {
@@ -1865,22 +2043,24 @@ function makeTypeReference(name, node, type = 'like', imports, heads) {
   return text
 }
 
-function getQualifiedName(node) {
-  let name = []
+function getQualifiedName(node: TSQualifiedName): string {
+  let name: Array<string> = []
   if (node.left.type === 'TSQualifiedName') {
     name.push(getQualifiedName(node.left))
   } else {
     name.push(makeName(node.left.name))
   }
-  if (node.right.type === 'TSQualifiedName') {
-    name.push(getQualifiedName(node.right))
-  } else {
-    name.push(makeName(node.right.name))
-  }
+  name.push(makeName(node.right.name))
   return name.join('-')
 }
 
-function makeUnionType(name, node, type = 'like', imports, heads) {
+function makeUnionType(
+  name: string,
+  node: TSUnionType,
+  type = 'like',
+  imports: Imports,
+  heads: Heads,
+) {
   const text = [`${type} or`]
   // imports['or'] = [`load @tunebond/moon`, `\n  take form or`]
   node.types.forEach(child => {
@@ -1898,7 +2078,7 @@ function makeTypeAnnotation(
   node: Node,
   type = 'like',
   imports: Imports,
-  heads,
+  heads: Heads,
 ) {
   const text: Array<string> = []
   switch (node.type) {
@@ -1929,11 +2109,11 @@ function makeTypeAnnotation(
     case 'TSTypeQuery':
       let k
       if (node.exprName.type === 'TSQualifiedName') {
-        k = `${makeName(node.exprName.left.name)}-${makeName(
-          node.exprName.right.name,
-        )}`
-      } else {
+        k = makeName(getQualifiedName(node.exprName))
+      } else if (node.exprName.type === 'Identifier') {
         k = makeName(node.exprName.name)
+      } else {
+        throw new Error('TODO')
       }
       text.push(`${type} ${k}`)
       break
@@ -1957,7 +2137,11 @@ function makeTypeAnnotation(
       break
     }
     case 'TSLiteralType':
-      text.push(`text <${node.literal.value}>`)
+      if ('value' in node.literal) {
+        text.push(`text <${node.literal.value}>`)
+      } else {
+        throw new Error('TODO')
+      }
       break
     case 'TSThisType':
       imports['native-this'] = 1
@@ -1978,7 +2162,7 @@ function makeTypeAnnotation(
       text.push(`intrinsic`)
       break
     case 'TSTypePredicate':
-      text.push(...makePredicate(name, node, type, imports, heads))
+      // text.push(...makePredicate(name, node, type, imports, heads))
       break
     case 'TSTypeOperator':
       switch (node.operator) {
@@ -2021,9 +2205,12 @@ function makeTypeAnnotation(
           break
         default:
           console.log(node)
-          throw new Error(
-            `Unknown type operator ${node.operator} on ${node.name}`,
-          )
+          if ('name' in node) {
+            throw new Error(
+              `Unknown type operator ${node.operator} on ${node.name}`,
+            )
+          }
+          throw new Error(`Unknown type operator ${node.operator}`)
       }
       break
     case 'TSFunctionType':
@@ -2155,17 +2342,25 @@ function makeTypeAnnotation(
 //           like t
 //           like p
 //         void take
-function makeMappedType(name, node, type, imports, heads) {
+function makeMappedType(
+  name: string,
+  node: TSMappedType,
+  type: string,
+  imports: Imports,
+  heads: Heads,
+) {
   const text = []
   const paramName = makeName(node.typeParameter.name)
   const childHeads = { ...heads, [paramName]: true }
-  const constraint = makeTypeAnnotation(
-    name,
-    node.typeParameter.constraint,
-    'like',
-    imports,
-    childHeads,
-  )
+  const constraint = node.typeParameter.constraint
+    ? makeTypeAnnotation(
+        name,
+        node.typeParameter.constraint,
+        'like',
+        imports,
+        childHeads,
+      )
+    : []
   text.push(`slot self`)
   text.push(`walk link-name-like-list`)
   text.push(`  loan`)
@@ -2180,16 +2375,19 @@ function makeMappedType(name, node, type, imports, heads) {
   text.push(`  take ${paramName}`)
   text.push(`  beam self`)
   text.push(`    take {name}`)
-  const anno = makeTypeAnnotation(
-    name,
-    node.typeAnnotation,
-    'like',
-    imports,
-    childHeads,
-  )
-  anno.forEach(line => {
-    text.push(`      ${line}`)
-  })
+
+  if (node.typeAnnotation) {
+    const anno = makeTypeAnnotation(
+      name,
+      node.typeAnnotation,
+      'like',
+      imports,
+      childHeads,
+    )
+    anno.forEach(line => {
+      text.push(`      ${line}`)
+    })
+  }
 
   return text
 }
@@ -2197,9 +2395,9 @@ function makeMappedType(name, node, type, imports, heads) {
 function makeTypeLiteral(
   name: string,
   node: TSTypeLiteral,
-  type,
-  imports,
-  heads,
+  type: string,
+  imports: Imports,
+  heads: Heads,
 ) {
   const text = []
   text.push(`${type} form`)
@@ -2241,7 +2439,13 @@ function makeTypeLiteral(
 //         like e
 //       hook free
 //         like a
-function makeConditionalType(name, node, type, imports, heads) {
+function makeConditionalType(
+  name: string,
+  node: TSConditionalType,
+  type: string,
+  imports: Imports,
+  heads: Heads,
+) {
   const text = []
   text.push(`${type} test`)
   // imports['test'] = [`load @tunebond/moon`, `\n  take form test`]
@@ -2292,7 +2496,13 @@ function makeConditionalType(name, node, type, imports, heads) {
   return text
 }
 
-function makePredicate(name, node, type, imports, heads) {
+function makePredicate(
+  name: string,
+  node: TSTypePredicate,
+  type: string,
+  imports: Imports,
+  heads: Heads,
+) {
   imports['native-boolean'] = 1
   const text = [`like native-boolean`]
   switch (node.parameterName.type) {
@@ -2327,18 +2537,41 @@ function makePredicate(name, node, type, imports, heads) {
   return text
 }
 
-function makeFunctionType(name, node, type = 'like', imports, heads) {
+function makeFunctionType(
+  name: string,
+  node: TSFunctionType,
+  type = 'like',
+  imports: Imports,
+  heads: Heads,
+) {
   const text = [`${type} task`]
   // imports['task'] = [`load @tunebond/moon`, `\n  take form task`]
   const functionHeads = { ...heads }
-  const returnType = makeTypeAnnotation(
-    name,
-    node.typeAnnotation?.typeAnnotation ?? node.typeAnnotation,
-    `like`,
-    imports,
-    functionHeads,
-  )
-  let x = []
+  const returnType: Array<string> = []
+
+  if (node.typeAnnotation?.typeAnnotation) {
+    returnType.push(
+      ...makeTypeAnnotation(
+        name,
+        node.typeAnnotation.typeAnnotation,
+        `like`,
+        imports,
+        functionHeads,
+      ),
+    )
+  } else if (node.typeAnnotation) {
+    returnType.push(
+      ...makeTypeAnnotation(
+        name,
+        node.typeAnnotation,
+        `like`,
+        imports,
+        functionHeads,
+      ),
+    )
+  }
+
+  let x: Array<string> = []
   returnType.forEach(line => {
     x.push(`  ${line}`)
   })
@@ -2368,10 +2601,28 @@ function makeFunctionType(name, node, type = 'like', imports, heads) {
   return text
 }
 
-function makeFunctionParams(name, node, imports, heads) {
-  const text = []
+function makeFunctionParams(
+  name: string,
+  node:
+    | TSFunctionType
+    | TSDeclareMethod
+    | TSDeclareFunction
+    | TSConstructSignatureDeclaration
+    | MemberExpression
+    | TSMethodSignature,
+  imports: Imports,
+  heads: Heads,
+) {
+  const text: Array<string> = []
   let x = 1
-  ;(node.parameters ?? node.params).forEach(node => {
+  const nodes = []
+  if ('parameters' in node) {
+    nodes.push(...node.parameters)
+  } else if ('params' in node) {
+    nodes.push(...node.params)
+  }
+
+  nodes.forEach(node => {
     switch (node.type) {
       case 'Identifier':
         text.push(...makeIdentifier(name, node, 'take', imports, heads))
@@ -2383,15 +2634,20 @@ function makeFunctionParams(name, node, imports, heads) {
         let xName = `x${x++}`
         text.push(`take ${xName}, like form`)
         // imports['form'] = [`load @tunebond/moon`, `\n  take form form`]
-        makeTypeAnnotation(
-          name,
-          node.typeAnnotation.typeAnnotation,
-          'like',
-          imports,
-          heads,
-        ).forEach(line => {
-          text.push(`  ${line}`)
-        })
+        if (
+          node.typeAnnotation?.type === 'TSTypeAnnotation' &&
+          node.typeAnnotation.typeAnnotation
+        ) {
+          makeTypeAnnotation(
+            name,
+            node.typeAnnotation.typeAnnotation,
+            'like',
+            imports,
+            heads,
+          ).forEach(line => {
+            text.push(`  ${line}`)
+          })
+        }
         // node.properties.forEach(prop => {
         //   const name = prop.key.name
         //   switch (prop.value.type) {
@@ -2412,7 +2668,12 @@ function makeFunctionParams(name, node, imports, heads) {
   return text
 }
 
-function makeRestElement(name, node, imports, heads) {
+function makeRestElement(
+  name: string,
+  node: RestElement,
+  imports: Imports,
+  heads: Heads,
+) {
   const text = []
   switch (node.argument.type) {
     case 'Identifier':
@@ -2422,8 +2683,12 @@ function makeRestElement(name, node, imports, heads) {
       console.log(node)
       throw new Error(`Unknown rest arg type on ${name}`)
   }
-  const tsType = node.typeAnnotation.typeAnnotation
-  const like = makeTypeAnnotation(name, tsType, 'like', imports, heads)
+  const tsType =
+    node.typeAnnotation?.type === 'TSTypeAnnotation' &&
+    node.typeAnnotation.typeAnnotation
+  const like = tsType
+    ? makeTypeAnnotation(name, tsType, 'like', imports, heads)
+    : []
 
   if (like.length === 1) {
     text[0] += `, ${like[0]}`
@@ -2442,7 +2707,7 @@ function makeTypeParameters(
   name: string,
   node: TSTypeParameterDeclaration,
   imports: Imports,
-  heads,
+  heads: Heads,
 ) {
   const text: Array<string> = []
   node.params.forEach(tsTypeParam => {
