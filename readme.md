@@ -6,6 +6,10 @@
 <br/>
 <br/>
 
+<p align='center'>
+  <img src='https://github.com/tunebond/bind.link/blob/make/view/view.svg?raw=true' height='256'>
+</p>
+
 <h3 align='center'>bind.link</h3>
 <p align='center'>
   The Base Link Platform Binding Library
