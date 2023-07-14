@@ -12,7 +12,7 @@
 
 <h3 align='center'>bind.link</h3>
 <p align='center'>
-  The BaseLink Platform Binding Library
+  The BaseLink Environment Binding Library
 </p>
 
 <br/>
