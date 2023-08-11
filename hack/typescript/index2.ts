@@ -325,7 +325,7 @@ function makeTypeAnnotation(
       }
       break
     case 'TSUnknownKeyword':
-      // loadHash['unknown'] = [`load @tunebond/moon`, `\n  take form unknown`]
+      // loadHash['unknown'] = [`load @nerdbond/moon`, `\n  take form unknown`]
       return {
         form: 'rise-like',
         link: {
@@ -382,7 +382,7 @@ function makeTypeAnnotation(
     //     text.push(...makeTypeLiteral(name, node, type, loadHash, heads))
     //     break
     //   case 'TSNeverKeyword':
-    //     // loadHash['never'] = [`load @tunebond/moon`, `\n  take form never`]
+    //     // loadHash['never'] = [`load @nerdbond/moon`, `\n  take form never`]
     //     text.push(`${type} never`)
     //     break
     //   case 'TSBooleanKeyword':
@@ -422,7 +422,7 @@ function makeTypeAnnotation(
     //         text.push(`  cool true`)
     //         break
     //       case 'keyof':
-    //         // loadHash['key-list'] = [`load @tunebond/moon`, `\n  take form key-list`]
+    //         // loadHash['key-list'] = [`load @nerdbond/moon`, `\n  take form key-list`]
     //         text.push(`${type} key-list`)
     //         makeTypeAnnotation(
     //           name,
@@ -448,7 +448,7 @@ function makeTypeAnnotation(
     //     text.push(...makeFunctionType(name, node, type, loadHash, heads))
     //     break
     //   case 'TSIndexedAccessType':
-    //     // loadHash['index'] = [`load @tunebond/moon`, `\n  take form index`]
+    //     // loadHash['index'] = [`load @nerdbond/moon`, `\n  take form index`]
     //     text.push(`${type} index`)
     //     makeTypeAnnotation(
     //       name,
@@ -526,7 +526,7 @@ function makeTypeAnnotation(
     //     })
     //     break
     //   case 'TSTupleType':
-    //     // loadHash['tuple'] = [`load @tunebond/moon`, `\n  take form tuple`]
+    //     // loadHash['tuple'] = [`load @nerdbond/moon`, `\n  take form tuple`]
     //     text.push(`${type} tuple`)
     //     node.elementTypes.forEach(node => {
     //       makeTypeAnnotation(name, node, 'like', loadHash, heads).forEach(
@@ -541,7 +541,7 @@ function makeTypeAnnotation(
     //     text.push(`${type} native-number`)
     //     break
     //   case 'TSAnyKeyword':
-    //     // loadHash['any'] = [`load @tunebond/moon`, `\n  take form any`]
+    //     // loadHash['any'] = [`load @nerdbond/moon`, `\n  take form any`]
     //     text.push(`${type} any`)
     //     break
     //   case 'TSUnionType':

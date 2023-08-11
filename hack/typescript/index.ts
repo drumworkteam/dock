@@ -32,7 +32,7 @@ import {
   TSUnionType,
   Identifier,
 } from '@babel/types'
-import { haveText } from '@tunebond/have'
+import { haveText } from '@nerdbond/have'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 
@@ -257,7 +257,7 @@ function process() {
       /\/\/\/\s+<reference\s+lib="([^"]+)"/g,
       (_, $1: string) => {
         write.b.push(
-          `bear @tunebond/bolt/code/javascript/${$1.replace(
+          `bear @nerdbond/bolt/code/javascript/${$1.replace(
             /\./g,
             '/',
           )}`,
@@ -274,7 +274,7 @@ function process() {
     // if (parentPath === 'tmp') throw new Error(path)
     let importPath = path.replace(
       /^tmp/,
-      'bear @tunebond/bolt/code/javascript',
+      'bear @nerdbond/bolt/code/javascript',
     )
     const write = (writes[parentPath] = writes[parentPath] ?? {
       b: [],
@@ -1555,7 +1555,7 @@ function getImportText(imports: Imports, declared: Declared) {
       out = x.value?.OUTPUT_PATH
       mod = x.value?.mod
       const parts = [out, mod].filter(x => x).join('/')
-      let p = `load @tunebond/bolt/code/javascript/${parts}/${key}`
+      let p = `load @nerdbond/bolt/code/javascript/${parts}/${key}`
       if (p.match(/javascript\/(dom|scripthost|webworker)/)) {
         p = p.replace(
           /\/javascript\/(dom|scripthost|webworker)/,
@@ -1570,7 +1570,7 @@ function getImportText(imports: Imports, declared: Declared) {
       // console.log('out', out, key)
       mod = 'mod' in v && v.mod
       const parts = [out, mod].filter(x => x).join('/')
-      let p = `load @tunebond/bolt/code/javascript`
+      let p = `load @nerdbond/bolt/code/javascript`
       if (parts) {
         p += `/${parts}`
       }
@@ -1588,7 +1588,7 @@ function getImportText(imports: Imports, declared: Declared) {
       // console.log('out', out, key)
       mod = 'mod' in v && v.mod
       const parts = [out, mod].filter(x => x).join('/')
-      let p = `load @tunebond/bolt/code/javascript`
+      let p = `load @nerdbond/bolt/code/javascript`
       if (parts) {
         p += `/${parts}`
       }
@@ -2009,7 +2009,7 @@ function makeIntersectionType(
   heads: Heads,
 ) {
   const text = []
-  // imports['and'] = [`load @tunebond/moon`, `\n  take form and`]
+  // imports['and'] = [`load @nerdbond/moon`, `\n  take form and`]
   text.push(`${type} and`)
   node.types.forEach(node => {
     switch (node.type) {
@@ -2125,7 +2125,7 @@ function makeUnionType(
   heads: Heads,
 ) {
   const text = [`${type} or`]
-  // imports['or'] = [`load @tunebond/moon`, `\n  take form or`]
+  // imports['or'] = [`load @nerdbond/moon`, `\n  take form or`]
   node.types.forEach(child => {
     makeTypeAnnotation(name, child, 'like', imports, heads).forEach(
       line => {
@@ -2151,7 +2151,7 @@ function makeTypeAnnotation(
       break
     case 'TSArrayType':
       imports['array'] = [
-        `load @tunebond/bolt/code/javascript`,
+        `load @nerdbond/bolt/code/javascript`,
         `\n  take form array`,
       ]
       text.push(`${type} array`)
@@ -2166,7 +2166,7 @@ function makeTypeAnnotation(
       })
       break
     case 'TSUnknownKeyword':
-      // imports['unknown'] = [`load @tunebond/moon`, `\n  take form unknown`]
+      // imports['unknown'] = [`load @nerdbond/moon`, `\n  take form unknown`]
       text.push(`${type} unknown`)
       break
     case 'TSTypeQuery':
@@ -2216,7 +2216,7 @@ function makeTypeAnnotation(
       text.push(...makeTypeLiteral(name, node, type, imports, heads))
       break
     case 'TSNeverKeyword':
-      // imports['never'] = [`load @tunebond/moon`, `\n  take form never`]
+      // imports['never'] = [`load @nerdbond/moon`, `\n  take form never`]
       text.push(`${type} never`)
       break
     case 'TSBooleanKeyword':
@@ -2256,7 +2256,7 @@ function makeTypeAnnotation(
           text.push(`  cool true`)
           break
         case 'keyof':
-          // imports['key-list'] = [`load @tunebond/moon`, `\n  take form key-list`]
+          // imports['key-list'] = [`load @nerdbond/moon`, `\n  take form key-list`]
           text.push(`${type} key-list`)
           makeTypeAnnotation(
             name,
@@ -2282,7 +2282,7 @@ function makeTypeAnnotation(
       text.push(...makeFunctionType(name, node, type, imports, heads))
       break
     case 'TSIndexedAccessType':
-      // imports['index'] = [`load @tunebond/moon`, `\n  take form index`]
+      // imports['index'] = [`load @nerdbond/moon`, `\n  take form index`]
       text.push(`${type} index`)
       makeTypeAnnotation(
         name,
@@ -2360,7 +2360,7 @@ function makeTypeAnnotation(
       })
       break
     case 'TSTupleType':
-      // imports['tuple'] = [`load @tunebond/moon`, `\n  take form tuple`]
+      // imports['tuple'] = [`load @nerdbond/moon`, `\n  take form tuple`]
       text.push(`${type} tuple`)
       node.elementTypes.forEach(node => {
         makeTypeAnnotation(name, node, 'like', imports, heads).forEach(
@@ -2375,7 +2375,7 @@ function makeTypeAnnotation(
       text.push(`${type} native-number`)
       break
     case 'TSAnyKeyword':
-      // imports['any'] = [`load @tunebond/moon`, `\n  take form any`]
+      // imports['any'] = [`load @nerdbond/moon`, `\n  take form any`]
       text.push(`${type} any`)
       break
     case 'TSUnionType':
@@ -2468,7 +2468,7 @@ function makeTypeLiteral(
 ) {
   const text = []
   text.push(`${type} form`)
-  // imports['form'] = [`load @tunebond/moon`, `\n  take form form`]
+  // imports['form'] = [`load @nerdbond/moon`, `\n  take form form`]
   node.members.forEach(node => {
     switch (node.type) {
       case 'TSPropertySignature':
@@ -2515,7 +2515,7 @@ function makeConditionalType(
 ) {
   const text = []
   text.push(`${type} test`)
-  // imports['test'] = [`load @tunebond/moon`, `\n  take form test`]
+  // imports['test'] = [`load @nerdbond/moon`, `\n  take form test`]
   text.push(`  fork roll`)
 
   makeTypeAnnotation(
@@ -2612,7 +2612,7 @@ function makeFunctionType(
   heads: Heads,
 ) {
   const text = [`${type} task`]
-  // imports['task'] = [`load @tunebond/moon`, `\n  take form task`]
+  // imports['task'] = [`load @nerdbond/moon`, `\n  take form task`]
   const functionHeads = { ...heads }
   const returnType: Array<string> = []
 
@@ -2700,7 +2700,7 @@ function makeFunctionParams(
       case 'ObjectPattern':
         let xName = `x${x++}`
         text.push(`take ${xName}, like form`)
-        // imports['form'] = [`load @tunebond/moon`, `\n  take form form`]
+        // imports['form'] = [`load @nerdbond/moon`, `\n  take form form`]
         if (
           node.typeAnnotation?.type === 'TSTypeAnnotation' &&
           node.typeAnnotation.typeAnnotation
@@ -2778,7 +2778,7 @@ function makeTypeParameters(
 ) {
   const text: Array<string> = []
   node.params.forEach(tsTypeParam => {
-    // imports['like'] = [`load @tunebond/moon`, `\n  take form like`]
+    // imports['like'] = [`load @nerdbond/moon`, `\n  take form like`]
     heads[makeName(tsTypeParam.name)] = true
     text.push(`head ${makeName(tsTypeParam.name)}`)
     if (tsTypeParam.constraint) {
