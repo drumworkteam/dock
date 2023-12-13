@@ -7,10 +7,10 @@
 <br/>
 
 <p align='center'>
-  <img src='https://github.com/termsurf/bind.link/blob/make/view/view.svg?raw=true' height='192'>
+  <img src='https://github.com/termsurf/bind.note/blob/make/view/view.svg?raw=true' height='192'>
 </p>
 
-<h3 align='center'>bind.link</h3>
+<h3 align='center'>bind.note</h3>
 <p align='center'>
   The BaseLink Environment Binding Library
 </p>
@@ -21,11 +21,11 @@
 
 ## Welcome
 
-This `bind.link` project is a collection of low-level environment APIs,
+This `bind.note` project is a collection of low-level environment APIs,
 specifically those for JavaScript, Node.js, Rust, Swift, etc.. They are
 simply the type definitions for most of the useful features of the
 environment, for use in code. We use them to generate the appropriate
-environment code in the `base.link` compiler. In addition, it has the
+environment code in the `base.note` compiler. In addition, it has the
 base types used by the environments, such as `any` and `text`.
 
 ## License
