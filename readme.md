@@ -12,7 +12,7 @@
 
 <h3 align='center'>bind.note</h3>
 <p align='center'>
-  The BaseLink Environment Binding Library
+  The BaseNote Environment Binding Library
 </p>
 
 <br/>
