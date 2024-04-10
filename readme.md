@@ -7,12 +7,12 @@
 <br/>
 
 <p align='center'>
-  <img src='https://github.com/termsurf/bind.star/blob/make/view/view.svg?raw=true' height='192'>
+  <img src='https://github.com/termsurf/bind.tree/blob/make/view/view.svg?raw=true' height='192'>
 </p>
 
-<h3 align='center'>bind.star</h3>
+<h3 align='center'>bind.tree</h3>
 <p align='center'>
-  The Star Environment Binding Library
+  The BaseTree Environment Binding Library
 </p>
 
 <br/>
@@ -21,11 +21,11 @@
 
 ## Welcome
 
-This `bind.star` project is a collection of low-level environment APIs,
+This `bind.tree` project is a collection of low-level environment APIs,
 specifically those for JavaScript, Node.js, Rust, Swift, etc.. They are
 simply the type definitions for most of the useful features of the
 environment, for use in code. We use them to generate the appropriate
-environment code in the `seed.star` compiler. In addition, it has the
+environment code in the `seed.tree` compiler. In addition, it has the
 base types used by the environments, such as `any` and `text`.
 
 ## License
