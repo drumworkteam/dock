@@ -1,0 +1,35 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-object
+  take form native-void
+
+load @termsurf/base/code/javascript/es2015/proxy
+  take form proxy-handler
+
+form proxy
+  hook self
+    task revocable, name <revocable>
+      like form
+        link proxy, name <proxy>
+          like t
+          flex true
+        link revoke, name <revoke>
+          like task
+            like native-void
+
+          flex true
+
+      head t
+        base native-object
+
+      take target
+      take handler
+
+  hook make
+    like t
+
+    head t
+      base native-object
+
+    take target
+    take handler

@@ -1,0 +1,32 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+
+load @termsurf/base/code/javascript/es2017/sharedmemory/shared-array-buffer
+  take form shared-array-buffer
+
+form shared-array-buffer, name <SharedArrayBuffer>
+  link byte-length, name <byteLength>
+    like native-number
+  link {symbol/species}
+    like shared-array-buffer
+    work true
+  link {symbol/to-string-tag}
+    text <SharedArrayBuffer>
+    work true
+
+  task slice, name <slice>
+    like shared-array-buffer
+
+    take begin
+    take end, like maybe, like native-number
+
+form shared-array-buffer
+  hook self
+    link prototype, name <prototype>
+      like shared-array-buffer
+
+  hook make
+    like shared-array-buffer
+
+    take byte-length

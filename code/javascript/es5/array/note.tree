@@ -1,0 +1,268 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-string
+  take form native-this
+  take form native-undefined
+  take form native-void
+
+load @termsurf/base/code/javascript/es5
+  take form concat-array
+
+form array, name <Array>
+  head t
+
+  link length, name <length>
+    like native-number
+    flex true
+
+  task to-string, name <toString>
+    like native-string
+
+  task to-locale-string, name <toLocaleString>
+    like native-string
+
+  task pop, name <pop>
+    like or
+      like t
+      like native-undefined
+
+  task push, name <push>
+    like native-number
+
+    take items
+      like array
+        like t
+      rest true
+
+  task concat, name <concat>
+    like array
+      like t
+
+    take items
+      like array
+        like concat-array
+          like t
+      rest true
+
+  task concat, name <concat>
+    like array
+      like t
+
+    take items
+      like array
+        like or
+          like t
+          like concat-array
+            like t
+      rest true
+
+  task join, name <join>
+    like native-string
+
+    take separator, like maybe, like native-string
+
+  task reverse, name <reverse>
+    like array
+      like t
+
+  task shift, name <shift>
+    like or
+      like t
+      like native-undefined
+
+  task slice, name <slice>
+    like array
+      like t
+
+    take start, like maybe, like native-number
+    take end, like maybe, like native-number
+
+  task sort, name <sort>
+    like native-this
+
+    take compare-fn
+      like maybe
+        like task
+          like native-number
+
+          take a
+          take b
+
+  task splice, name <splice>
+    like array
+      like t
+
+    take start
+    take delete-count, like maybe, like native-number
+
+  task splice, name <splice>
+    like array
+      like t
+
+    take start
+    take delete-count
+    take items
+      like array
+        like t
+      rest true
+
+  task unshift, name <unshift>
+    like native-number
+
+    take items
+      like array
+        like t
+      rest true
+
+  task index-of, name <indexOf>
+    like native-number
+
+    take search-element
+    take from-index, like maybe, like native-number
+
+  task last-index-of, name <lastIndexOf>
+    like native-number
+
+    take search-element
+    take from-index, like maybe, like native-number
+
+  task every, name <every>
+    like native-boolean
+    rank self
+      like array
+        like s
+
+    head s
+      base t
+
+    take predicate
+    take this-arg, like maybe, like any
+
+  task every, name <every>
+    like native-boolean
+
+    take predicate
+    take this-arg, like maybe, like any
+
+  task some, name <some>
+    like native-boolean
+
+    take predicate
+    take this-arg, like maybe, like any
+
+  task for-each, name <forEach>
+    like native-void
+
+    take callbackfn
+    take this-arg, like maybe, like any
+
+  task map, name <map>
+    like array
+      like u
+
+    head u
+
+    take callbackfn
+    take this-arg, like maybe, like any
+
+  task filter, name <filter>
+    like array
+      like s
+
+    head s
+      base t
+
+    take predicate
+    take this-arg, like maybe, like any
+
+  task filter, name <filter>
+    like array
+      like t
+
+    take predicate
+    take this-arg, like maybe, like any
+
+  task reduce, name <reduce>
+    like t
+
+    take callbackfn
+
+  task reduce, name <reduce>
+    like t
+
+    take callbackfn
+    take initial-value
+
+  task reduce, name <reduce>
+    like u
+
+    head u
+
+    take callbackfn
+    take initial-value
+
+  task reduce-right, name <reduceRight>
+    like t
+
+    take callbackfn
+
+  task reduce-right, name <reduceRight>
+    like t
+
+    take callbackfn
+    take initial-value
+
+  task reduce-right, name <reduceRight>
+    like u
+
+    head u
+
+    take callbackfn
+    take initial-value
+
+  mesh n
+    like t
+
+form array
+  hook self
+    link prototype, name <prototype>
+      like array
+        like any
+
+    task is-array, name <isArray>
+      like native-boolean
+      rank arg
+        like array
+          like any
+
+      take arg
+
+  hook make
+    like array
+      like any
+
+    take array-length, like maybe, like native-number
+
+  hook make
+    like array
+      like t
+
+    head t
+
+    take array-length
+
+  hook make
+    like array
+      like t
+
+    head t
+
+    take items
+      like array
+        like t
+      rest true

@@ -1,0 +1,18 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form frame-request-callback
+
+form animation-frame-provider, name <AnimationFrameProvider>
+  task cancel-animation-frame, name <cancelAnimationFrame>
+    like native-void
+
+    take handle
+
+  task request-animation-frame, name <requestAnimationFrame>
+    like native-number
+
+    take callback

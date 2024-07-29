@@ -1,0 +1,28 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+
+load @termsurf/base/code/browser/dom
+  take form media-session-action
+
+form media-session-action-details, name <MediaSessionActionDetails>
+  link action, name <action>
+    like media-session-action
+    flex true
+  link fast-seek, name <fastSeek>
+    like or
+      like native-boolean
+      like native-null
+    flex true
+  link seek-offset, name <seekOffset>
+    like or
+      like native-number
+      like native-null
+    flex true
+  link seek-time, name <seekTime>
+    like or
+      like native-number
+      like native-null
+    flex true

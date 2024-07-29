@@ -1,0 +1,37 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form idb-database-info
+  take form idb-open-db-request
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+
+form idb-factory, name <IDBFactory>
+  task cmp, name <cmp>
+    like native-number
+
+    take first
+    take second
+
+  task databases, name <databases>
+    like promise
+      like array
+        like idb-database-info
+
+  task delete-database, name <deleteDatabase>
+    like idb-open-db-request
+
+    take name
+
+  task open, name <open>
+    like idb-open-db-request
+
+    take name
+    take version, like maybe, like native-number

@@ -1,0 +1,26 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-string
+
+load @termsurf/base/code/javascript/es5/reg-exp
+  take form reg-exp
+
+load @termsurf/base/code/javascript/es2015/core/reg-exp
+  take form reg-exp
+
+form reg-exp, name <RegExp>
+  link flags, name <flags>
+    like native-string
+  link sticky, name <sticky>
+    like native-boolean
+  link unicode, name <unicode>
+    like native-boolean
+
+form reg-exp
+  hook self
+  hook make
+    like reg-exp
+
+    take pattern
+    take flags, like maybe, like native-string

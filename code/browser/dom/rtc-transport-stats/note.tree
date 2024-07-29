@@ -1,0 +1,42 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form rtc-dtls-transport-state
+  take form rtc-stats
+
+form rtc-transport-stats, name <RTCTransportStats>
+  base rtc-stats
+
+  link bytes-received, name <bytesReceived>
+    like native-number
+    flex true
+  link bytes-sent, name <bytesSent>
+    like native-number
+    flex true
+  link dtls-cipher, name <dtlsCipher>
+    like native-string
+    flex true
+  link dtls-state, name <dtlsState>
+    like rtc-dtls-transport-state
+    flex true
+  link local-certificate-id, name <localCertificateId>
+    like native-string
+    flex true
+  link remote-certificate-id, name <remoteCertificateId>
+    like native-string
+    flex true
+  link rtcp-transport-stats-id, name <rtcpTransportStatsId>
+    like native-string
+    flex true
+  link selected-candidate-pair-id, name <selectedCandidatePairId>
+    like native-string
+    flex true
+  link srtp-cipher, name <srtpCipher>
+    like native-string
+    flex true
+  link tls-version, name <tlsVersion>
+    like native-string
+    flex true

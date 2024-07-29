@@ -257,7 +257,7 @@ function process() {
       /\/\/\/\s+<reference\s+lib="([^"]+)"/g,
       (_, $1: string) => {
         write.b.push(
-          `bear @nerdbond/bolt/code/javascript/${$1.replace(
+          `bear @nerdbond/base/code/javascript/${$1.replace(
             /\./g,
             '/',
           )}`,
@@ -274,7 +274,7 @@ function process() {
     // if (parentPath === 'tmp') throw new Error(path)
     let importPath = path.replace(
       /^tmp/,
-      'bear @nerdbond/bolt/code/javascript',
+      'bear @nerdbond/base/code/javascript',
     )
     const write = (writes[parentPath] = writes[parentPath] ?? {
       b: [],
@@ -1555,7 +1555,7 @@ function getImportText(imports: Imports, declared: Declared) {
       out = x.value?.OUTPUT_PATH
       mod = x.value?.mod
       const parts = [out, mod].filter(x => x).join('/')
-      let p = `load @nerdbond/bolt/code/javascript/${parts}/${key}`
+      let p = `load @nerdbond/base/code/javascript/${parts}/${key}`
       if (p.match(/javascript\/(dom|scripthost|webworker)/)) {
         p = p.replace(
           /\/javascript\/(dom|scripthost|webworker)/,
@@ -1570,7 +1570,7 @@ function getImportText(imports: Imports, declared: Declared) {
       // console.log('out', out, key)
       mod = 'mod' in v && v.mod
       const parts = [out, mod].filter(x => x).join('/')
-      let p = `load @nerdbond/bolt/code/javascript`
+      let p = `load @nerdbond/base/code/javascript`
       if (parts) {
         p += `/${parts}`
       }
@@ -1588,7 +1588,7 @@ function getImportText(imports: Imports, declared: Declared) {
       // console.log('out', out, key)
       mod = 'mod' in v && v.mod
       const parts = [out, mod].filter(x => x).join('/')
-      let p = `load @nerdbond/bolt/code/javascript`
+      let p = `load @nerdbond/base/code/javascript`
       if (parts) {
         p += `/${parts}`
       }
@@ -2151,7 +2151,7 @@ function makeTypeAnnotation(
       break
     case 'TSArrayType':
       imports['array'] = [
-        `load @nerdbond/bolt/code/javascript`,
+        `load @nerdbond/base/code/javascript`,
         `\n  take form array`,
       ]
       text.push(`${type} array`)

@@ -1,0 +1,39 @@
+
+load @termsurf/base/code/javascript
+  take form array
+  take form native-string
+  take form native-undefined
+
+load @termsurf/moon
+  take form or
+
+load @termsurf/base/code/node/inspector/runtime
+  take form execution-context-id
+  take form remote-object
+  take form stack-trace
+  take form timestamp
+
+form console-api-called-event-data-type, name <ConsoleAPICalledEventDataType>
+  link type, name <type>
+    like native-string
+    flex true
+  link args, name <args>
+    like array
+      like remote-object
+    flex true
+  link execution-context-id, name <executionContextId>
+    like execution-context-id
+    flex true
+  link timestamp, name <timestamp>
+    like timestamp
+    flex true
+  link stack-trace, name <stackTrace>
+    like or
+      like stack-trace
+      like native-undefined
+    flex true
+  link context, name <context>
+    like or
+      like native-string
+      like native-undefined
+    flex true

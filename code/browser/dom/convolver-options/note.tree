@@ -1,0 +1,20 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+
+load @termsurf/base/code/browser/dom
+  take form audio-buffer
+  take form audio-node-options
+
+form convolver-options, name <ConvolverOptions>
+  base audio-node-options
+
+  link buffer, name <buffer>
+    like or
+      like audio-buffer
+      like native-null
+    flex true
+  link disable-normalization, name <disableNormalization>
+    like native-boolean
+    flex true

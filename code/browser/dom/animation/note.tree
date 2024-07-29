@@ -1,0 +1,170 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form animation-effect
+  take form animation-event-map
+  take form animation-play-state
+  take form animation-playback-event
+  take form animation-replace-state
+  take form animation-timeline
+  take form event
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form event-target
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+
+form animation, name <Animation>
+  base event-target
+
+  link current-time, name <currentTime>
+    like or
+      like native-number
+      like native-null
+    flex true
+  link effect, name <effect>
+    like or
+      like animation-effect
+      like native-null
+    flex true
+  link finished, name <finished>
+    like promise
+      like animation
+  link id, name <id>
+    like native-string
+    flex true
+  link oncancel, name <oncancel>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onfinish, name <onfinish>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onremove, name <onremove>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link pending, name <pending>
+    like native-boolean
+  link play-state, name <playState>
+    like animation-play-state
+  link playback-rate, name <playbackRate>
+    like native-number
+    flex true
+  link ready, name <ready>
+    like promise
+      like animation
+  link replace-state, name <replaceState>
+    like animation-replace-state
+  link start-time, name <startTime>
+    like or
+      like native-number
+      like native-null
+    flex true
+  link timeline, name <timeline>
+    like or
+      like animation-timeline
+      like native-null
+    flex true
+
+  task cancel, name <cancel>
+    like native-void
+
+  task commit-styles, name <commitStyles>
+    like native-void
+
+  task finish, name <finish>
+    like native-void
+
+  task pause, name <pause>
+    like native-void
+
+  task persist, name <persist>
+    like native-void
+
+  task play, name <play>
+    like native-void
+
+  task reverse, name <reverse>
+    like native-void
+
+  task update-playback-rate, name <updatePlaybackRate>
+    like native-void
+
+    take playback-rate
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like animation-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like animation-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

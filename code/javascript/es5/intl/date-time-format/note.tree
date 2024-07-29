@@ -1,0 +1,21 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form native-string
+
+load @termsurf/base/code/javascript/es5
+  take form date
+  take form resolved-date-time-format-options
+
+form date-time-format, name <DateTimeFormat>
+  task format, name <format>
+    like native-string
+
+    take date
+      like maybe
+        like or
+          like date
+          like native-number
+
+  task resolved-options, name <resolvedOptions>
+    like resolved-date-time-format-options

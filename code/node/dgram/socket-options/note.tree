@@ -1,0 +1,64 @@
+
+load @termsurf/moon
+  take form or
+  take form task
+
+load @termsurf/base/code/javascript
+  take form abortable
+  take form dns-lookup-one-options
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-undefined
+  take form native-void
+  take form node-js-errno-exception
+
+load @termsurf/base/code/node/dgram
+  take form socket-type
+
+form socket-options, name <SocketOptions>
+  base abortable
+
+  link type, name <type>
+    like socket-type
+    flex true
+  link reuse-addr, name <reuseAddr>
+    like or
+      like native-boolean
+      like native-undefined
+    flex true
+  link ipv6-only, name <ipv6Only>
+    like or
+      like native-boolean
+      like native-undefined
+    flex true
+  link recv-buffer-size, name <recvBufferSize>
+    like or
+      like native-number
+      like native-undefined
+    flex true
+  link send-buffer-size, name <sendBufferSize>
+    like or
+      like native-number
+      like native-undefined
+    flex true
+  link lookup, name <lookup>
+    like or
+      like task
+        like native-void
+
+        take hostname, like native-string
+        take options, like dns-lookup-one-options
+        take callback
+          like task
+            like native-void
+
+            take err
+              like or
+                like node-js-errno-exception
+                like native-null
+            take address, like native-string
+            take family, like native-number
+      like native-undefined
+    flex true

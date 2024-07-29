@@ -1,0 +1,24 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-undefined
+  take form native-void
+
+load @termsurf/base/code/javascript/es2015/symbol/wellknown/promise
+  take form promise
+
+form promise, name <Promise>
+  head t
+
+  task finally, name <finally>
+    like promise
+      like t
+
+    take onfinally
+      like maybe
+        like or
+          like task
+            like native-void
+
+          like native-undefined
+          like native-null

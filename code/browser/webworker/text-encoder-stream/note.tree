@@ -1,0 +1,26 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-string
+
+load @termsurf/base/code/browser/webworker
+  take form generic-transform-stream
+  take form readable-stream
+  take form text-encoder-common
+  take form writable-stream
+
+load @termsurf/base/code/javascript/es5
+  take form uint8-array
+
+load @termsurf/base/code/browser/dom/text-encoder-stream
+  take form text-encoder-stream
+
+form text-encoder-stream, name <TextEncoderStream>
+  base generic-transform-stream
+  base text-encoder-common
+
+  link readable, name <readable>
+    like readable-stream
+      like uint8-array
+  link writable, name <writable>
+    like writable-stream
+      like native-string

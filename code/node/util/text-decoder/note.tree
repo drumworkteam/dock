@@ -1,0 +1,53 @@
+
+load @termsurf/moon
+  take form form
+  take form or
+
+load @termsurf/base/code/javascript
+  take form array-buffer
+  take form native-boolean
+  take form native-null
+  take form native-string
+  take form native-undefined
+  take form node-js-array-buffer-view
+
+form text-decoder, name <TextDecoder>
+  link encoding, name <encoding>, like native-string
+  link fatal, name <fatal>, like native-boolean
+  link ignore-bom, name <ignoreBOM>, like native-boolean
+
+  task decode, name <decode>
+    like native-string
+
+    take input
+      like or
+        like node-js-array-buffer-view
+        like array-buffer
+        like native-null
+      void true
+    take options
+      like form
+        link stream, name <stream>
+          like or
+            like native-boolean
+            like native-undefined
+          flex true
+      void true
+
+form text-decoder-constructor
+  hook make
+    take encoding, like native-string
+      void true
+    take options
+      like form
+        link fatal, name <fatal>
+          like or
+            like native-boolean
+            like native-undefined
+          flex true
+        link ignore-bom, name <ignoreBOM>
+          like or
+            like native-boolean
+            like native-undefined
+          flex true
+      void true

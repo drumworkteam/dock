@@ -1,0 +1,175 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form element
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form html-collection-of
+  take form html-element
+  take form html-element-event-map
+  take form html-form-element
+  take form html-label-element
+  take form html-opt-group-element
+  take form html-option-element
+  take form html-options-collection
+  take form node-list-of
+  take form validity-state
+
+form html-select-element, name <HTMLSelectElement>
+  base html-element
+
+  link autocomplete, name <autocomplete>
+    like native-string
+    flex true
+  link disabled, name <disabled>
+    like native-boolean
+    flex true
+  link form, name <form>
+    like or
+      like html-form-element
+      like native-null
+  link labels, name <labels>
+    like node-list-of
+      like html-label-element
+  link length, name <length>
+    like native-number
+    flex true
+  link multiple, name <multiple>
+    like native-boolean
+    flex true
+  link name, name <name>
+    like native-string
+    flex true
+  link options, name <options>
+    like html-options-collection
+  link required, name <required>
+    like native-boolean
+    flex true
+  link selected-index, name <selectedIndex>
+    like native-number
+    flex true
+  link selected-options, name <selectedOptions>
+    like html-collection-of
+      like html-option-element
+  link size, name <size>
+    like native-number
+    flex true
+  link type, name <type>
+    like native-string
+  link validation-message, name <validationMessage>
+    like native-string
+  link validity, name <validity>
+    like validity-state
+  link value, name <value>
+    like native-string
+    flex true
+  link will-validate, name <willValidate>
+    like native-boolean
+
+  task add, name <add>
+    like native-void
+
+    take element
+    take before
+      like maybe
+        like or
+          like html-element
+          like native-number
+          like native-null
+
+  task check-validity, name <checkValidity>
+    like native-boolean
+
+  task item, name <item>
+    like or
+      like element
+      like native-null
+
+    take index
+
+  task named-item, name <namedItem>
+    like or
+      like html-option-element
+      like native-null
+
+    take name
+
+  task remove, name <remove>
+    like native-void
+
+  task remove, name <remove>
+    like native-void
+
+    take index
+
+  task report-validity, name <reportValidity>
+    like native-boolean
+
+  task set-custom-validity, name <setCustomValidity>
+    like native-void
+
+    take error
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like html-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like html-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  mesh name
+    like or
+      like html-option-element
+      like html-opt-group-element

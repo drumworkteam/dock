@@ -1,0 +1,27 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-string
+
+load @termsurf/base/code/browser/webworker
+  take form text-encoder-common
+  take form text-encoder-encode-into-result
+
+load @termsurf/base/code/javascript/es5
+  take form uint8-array
+
+load @termsurf/base/code/browser/dom/text-encoder
+  take form text-encoder
+
+form text-encoder, name <TextEncoder>
+  base text-encoder-common
+
+  task encode, name <encode>
+    like uint8-array
+
+    take input, like maybe, like native-string
+
+  task encode-into, name <encodeInto>
+    like text-encoder-encode-into-result
+
+    take source
+    take destination

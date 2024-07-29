@@ -1,0 +1,20 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+
+load @termsurf/base/code/javascript/es5/boolean
+  take form boolean
+
+form boolean, name <Boolean>
+  task value-of, name <valueOf>
+    like native-boolean
+
+form boolean
+  hook self
+    link prototype, name <prototype>
+      like boolean
+
+  hook make
+    like boolean
+
+    take value, like maybe, like any

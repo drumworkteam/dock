@@ -1,0 +1,30 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-string
+
+load @termsurf/base/code/browser/webworker
+  take form extendable-event-init
+  take form request
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+
+form fetch-event-init, name <FetchEventInit>
+  base extendable-event-init
+
+  link client-id, name <clientId>
+    like native-string
+    flex true
+  link preload-response, name <preloadResponse>
+    like promise
+      like any
+    flex true
+  link replaces-client-id, name <replacesClientId>
+    like native-string
+    flex true
+  link request, name <request>
+    like request
+    flex true
+  link resulting-client-id, name <resultingClientId>
+    like native-string
+    flex true

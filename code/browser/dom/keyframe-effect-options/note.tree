@@ -1,0 +1,24 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form composite-operation
+  take form effect-timing
+  take form iteration-composite-operation
+
+form keyframe-effect-options, name <KeyframeEffectOptions>
+  base effect-timing
+
+  link composite, name <composite>
+    like composite-operation
+    flex true
+  link iteration-composite, name <iterationComposite>
+    like iteration-composite-operation
+    flex true
+  link pseudo-element, name <pseudoElement>
+    like or
+      like native-string
+      like native-null
+    flex true

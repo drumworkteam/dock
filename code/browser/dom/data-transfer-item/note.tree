@@ -1,0 +1,31 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form file
+  take form file-system-entry
+  take form function-string-callback
+
+form data-transfer-item, name <DataTransferItem>
+  link kind, name <kind>
+    like native-string
+  link type, name <type>
+    like native-string
+
+  task get-as-file, name <getAsFile>
+    like or
+      like file
+      like native-null
+
+  task get-as-string, name <getAsString>
+    like native-void
+
+    take callback
+
+  task webkit-get-as-entry, name <webkitGetAsEntry>
+    like or
+      like file-system-entry
+      like native-null

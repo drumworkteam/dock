@@ -1,0 +1,35 @@
+
+load @termsurf/base/code/javascript/es5
+  take form this-parameter-type
+
+load @termsurf/base/code/javascript/native
+  take form a
+  take form r
+
+form omit-this-parameter, name <OmitThisParameter>
+  head t
+
+  like test
+    fork roll
+      like unknown
+      like this-parameter-type
+        like t
+      hook true
+        like t
+      hook false
+        like test
+          fork roll
+            like t
+            like task
+              name r
+
+              take args, name a
+                rest true
+            hook true
+              like task
+                like r
+
+                take args, like a
+                  rest true
+            hook false
+              like t

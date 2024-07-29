@@ -1,0 +1,18 @@
+
+load @termsurf/moon
+  take form or
+
+load @termsurf/base/code/javascript
+  take form native-undefined
+  take form runtime-exception-details
+  take form runtime-remote-object
+
+form evaluate-on-call-frame-return-type, name <EvaluateOnCallFrameReturnType>
+  link result, name <result>
+    like runtime-remote-object
+    flex true
+  link exception-details, name <exceptionDetails>
+    like or
+      like runtime-exception-details
+      like native-undefined
+    flex true

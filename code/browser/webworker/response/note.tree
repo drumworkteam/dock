@@ -1,0 +1,40 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-string
+
+load @termsurf/base/code/browser/webworker
+  take form body
+  take form headers
+  take form response-type
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+
+load @termsurf/base/code/browser/dom/response
+  take form response
+
+form response, name <Response>
+  base body
+
+  link headers, name <headers>
+    like headers
+  link ok, name <ok>
+    like native-boolean
+  link redirected, name <redirected>
+    like native-boolean
+  link status, name <status>
+    like native-number
+  link status-text, name <statusText>
+    like native-string
+  link trailer, name <trailer>
+    like promise
+      like headers
+  link type, name <type>
+    like response-type
+  link url, name <url>
+    like native-string
+
+  task clone, name <clone>
+    like response

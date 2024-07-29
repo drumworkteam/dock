@@ -1,0 +1,207 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form child-node
+  take form document
+  take form event-target
+  take form get-root-node-options
+  take form html-element
+  take form node-list-of
+  take form parent-node
+
+form node, name <Node>
+  base event-target
+
+  link base-uri, name <baseURI>
+    like native-string
+  link child-nodes, name <childNodes>
+    like node-list-of
+      like and
+        like child-node
+        like node
+  link first-child, name <firstChild>
+    like or
+      like and
+        like child-node
+        like node
+      like native-null
+  link is-connected, name <isConnected>
+    like native-boolean
+  link last-child, name <lastChild>
+    like or
+      like and
+        like child-node
+        like node
+      like native-null
+  link next-sibling, name <nextSibling>
+    like or
+      like and
+        like child-node
+        like node
+      like native-null
+  link node-name, name <nodeName>
+    like native-string
+  link node-type, name <nodeType>
+    like native-number
+  link node-value, name <nodeValue>
+    like or
+      like native-string
+      like native-null
+    flex true
+  link owner-document, name <ownerDocument>
+    like or
+      like document
+      like native-null
+  link parent-element, name <parentElement>
+    like or
+      like html-element
+      like native-null
+  link parent-node, name <parentNode>
+    like or
+      like and
+        like node
+        like parent-node
+      like native-null
+  link previous-sibling, name <previousSibling>
+    like or
+      like and
+        like child-node
+        like node
+      like native-null
+  link text-content, name <textContent>
+    like or
+      like native-string
+      like native-null
+    flex true
+  link attribute-node, name <ATTRIBUTE_NODE>
+    like native-number
+  link cdata-section-node, name <CDATA_SECTION_NODE>
+    like native-number
+  link comment-node, name <COMMENT_NODE>
+    like native-number
+  link document-fragment-node, name <DOCUMENT_FRAGMENT_NODE>
+    like native-number
+  link document-node, name <DOCUMENT_NODE>
+    like native-number
+  link document-position-contained-by, name <DOCUMENT_POSITION_CONTAINED_BY>
+    like native-number
+  link document-position-contains, name <DOCUMENT_POSITION_CONTAINS>
+    like native-number
+  link document-position-disconnected, name <DOCUMENT_POSITION_DISCONNECTED>
+    like native-number
+  link document-position-following, name <DOCUMENT_POSITION_FOLLOWING>
+    like native-number
+  link document-position-implementation-specific
+    name <DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC>
+    like native-number
+  link document-position-preceding, name <DOCUMENT_POSITION_PRECEDING>
+    like native-number
+  link document-type-node, name <DOCUMENT_TYPE_NODE>
+    like native-number
+  link element-node, name <ELEMENT_NODE>
+    like native-number
+  link entity-node, name <ENTITY_NODE>
+    like native-number
+  link entity-reference-node, name <ENTITY_REFERENCE_NODE>
+    like native-number
+  link notation-node, name <NOTATION_NODE>
+    like native-number
+  link processing-instruction-node, name <PROCESSING_INSTRUCTION_NODE>
+    like native-number
+  link text-node, name <TEXT_NODE>
+    like native-number
+
+  task append-child, name <appendChild>
+    like t
+
+    head t
+      base node
+
+    take node
+
+  task clone-node, name <cloneNode>
+    like node
+
+    take deep, like maybe, like native-boolean
+
+  task compare-document-position, name <compareDocumentPosition>
+    like native-number
+
+    take other
+
+  task contains, name <contains>
+    like native-boolean
+
+    take other
+
+  task get-root-node, name <getRootNode>
+    like node
+
+    take options, like maybe, like get-root-node-options
+
+  task has-child-nodes, name <hasChildNodes>
+    like native-boolean
+
+  task insert-before, name <insertBefore>
+    like t
+
+    head t
+      base node
+
+    take node
+    take child
+
+  task is-default-namespace, name <isDefaultNamespace>
+    like native-boolean
+
+    take namespace
+
+  task is-equal-node, name <isEqualNode>
+    like native-boolean
+
+    take other-node
+
+  task is-same-node, name <isSameNode>
+    like native-boolean
+
+    take other-node
+
+  task lookup-namespace-uri, name <lookupNamespaceURI>
+    like or
+      like native-string
+      like native-null
+
+    take prefix
+
+  task lookup-prefix, name <lookupPrefix>
+    like or
+      like native-string
+      like native-null
+
+    take namespace
+
+  task normalize, name <normalize>
+    like native-void
+
+  task remove-child, name <removeChild>
+    like t
+
+    head t
+      base node
+
+    take child
+
+  task replace-child, name <replaceChild>
+    like t
+
+    head t
+      base node
+
+    take node
+    take child

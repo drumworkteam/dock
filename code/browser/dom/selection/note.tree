@@ -1,0 +1,101 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form node
+  take form range
+
+form selection, name <Selection>
+  link anchor-node, name <anchorNode>
+    like or
+      like node
+      like native-null
+  link anchor-offset, name <anchorOffset>
+    like native-number
+  link focus-node, name <focusNode>
+    like or
+      like node
+      like native-null
+  link focus-offset, name <focusOffset>
+    like native-number
+  link is-collapsed, name <isCollapsed>
+    like native-boolean
+  link range-count, name <rangeCount>
+    like native-number
+  link type, name <type>
+    like native-string
+
+  task add-range, name <addRange>
+    like native-void
+
+    take range
+
+  task collapse, name <collapse>
+    like native-void
+
+    take node
+    take offset, like maybe, like native-number
+
+  task collapse-to-end, name <collapseToEnd>
+    like native-void
+
+  task collapse-to-start, name <collapseToStart>
+    like native-void
+
+  task contains-node, name <containsNode>
+    like native-boolean
+
+    take node
+    take allow-partial-containment, like maybe, like native-boolean
+
+  task delete-from-document, name <deleteFromDocument>
+    like native-void
+
+  task empty, name <empty>
+    like native-void
+
+  task extend, name <extend>
+    like native-void
+
+    take node
+    take offset, like maybe, like native-number
+
+  task get-range-at, name <getRangeAt>
+    like range
+
+    take index
+
+  task remove-all-ranges, name <removeAllRanges>
+    like native-void
+
+  task remove-range, name <removeRange>
+    like native-void
+
+    take range
+
+  task select-all-children, name <selectAllChildren>
+    like native-void
+
+    take node
+
+  task set-base-and-extent, name <setBaseAndExtent>
+    like native-void
+
+    take anchor-node
+    take anchor-offset
+    take focus-node
+    take focus-offset
+
+  task set-position, name <setPosition>
+    like native-void
+
+    take node
+    take offset, like maybe, like native-number
+
+  task to-string, name <toString>
+    like native-string

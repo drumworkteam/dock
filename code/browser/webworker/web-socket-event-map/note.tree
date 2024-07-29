@@ -1,0 +1,22 @@
+
+load @termsurf/base/code/browser/webworker
+  take form close-event
+  take form event
+  take form message-event
+
+load @termsurf/base/code/browser/dom/web-socket-event-map
+  take form web-socket-event-map
+
+form web-socket-event-map, name <WebSocketEventMap>
+  link close, name <close>
+    like close-event
+    flex true
+  link error, name <error>
+    like event
+    flex true
+  link message, name <message>
+    like message-event
+    flex true
+  link open, name <open>
+    like event
+    flex true

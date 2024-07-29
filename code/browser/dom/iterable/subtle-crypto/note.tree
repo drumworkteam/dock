@@ -1,0 +1,108 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form iterable
+  take form native-boolean
+
+load @termsurf/base/code/browser/dom
+  take form aes-cbc-params
+  take form aes-ctr-params
+  take form aes-derived-key-params
+  take form aes-gcm-params
+  take form aes-key-algorithm
+  take form aes-key-gen-params
+  take form algorithm-identifier
+  take form buffer-source
+  take form crypto-key
+  take form crypto-key-pair
+  take form ec-key-gen-params
+  take form ec-key-import-params
+  take form ecdh-key-derive-params
+  take form hkdf-params
+  take form hmac-import-params
+  take form hmac-key-gen-params
+  take form json-web-key
+  take form key-format
+  take form key-usage
+  take form pbkdf2-params
+  take form rsa-hashed-import-params
+  take form rsa-hashed-key-gen-params
+  take form rsa-oaep-params
+
+load @termsurf/base/code/javascript/es5
+  take form exclude
+  take form promise
+
+load @termsurf/base/code/browser/dom/subtle-crypto
+  take form subtle-crypto
+
+form subtle-crypto, name <SubtleCrypto>
+  task derive-key, name <deriveKey>
+    like promise
+      like crypto-key
+
+    take algorithm
+    take base-key
+    take derived-key-type
+    take extractable
+    take key-usages
+
+  task generate-key, name <generateKey>
+    like promise
+      like crypto-key-pair
+
+    take algorithm
+    take extractable
+    take key-usages
+
+  task generate-key, name <generateKey>
+    like promise
+      like crypto-key
+
+    take algorithm
+    take extractable
+    take key-usages
+
+  task generate-key, name <generateKey>
+    like promise
+      like or
+        like crypto-key-pair
+        like crypto-key
+
+    take algorithm
+    take extractable
+    take key-usages
+
+  task import-key, name <importKey>
+    like promise
+      like crypto-key
+
+    take format
+    take key-data
+    take algorithm
+    take extractable
+    take key-usages
+
+  task import-key, name <importKey>
+    like promise
+      like crypto-key
+
+    take format
+    take key-data
+    take algorithm
+    take extractable
+    take key-usages
+
+  task unwrap-key, name <unwrapKey>
+    like promise
+      like crypto-key
+
+    take format
+    take wrapped-key
+    take unwrapping-key
+    take unwrap-algorithm
+    take unwrapped-key-algorithm
+    take extractable
+    take key-usages

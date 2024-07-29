@@ -1,0 +1,138 @@
+
+bear @termsurf/base/code/javascript/node/net/lookup-function
+bear @termsurf/base/code/javascript/node/net/address-info
+bear @termsurf/base/code/javascript/node/net/socket-constructor-opts
+bear @termsurf/base/code/javascript/node/net/on-read-opts
+bear @termsurf/base/code/javascript/node/net/connect-opts
+bear @termsurf/base/code/javascript/node/net/tcp-socket-connect-opts
+bear @termsurf/base/code/javascript/node/net/ipc-socket-connect-opts
+bear @termsurf/base/code/javascript/node/net/socket-connect-opts
+bear @termsurf/base/code/javascript/node/net/socket
+bear @termsurf/base/code/javascript/node/net/listen-options
+bear @termsurf/base/code/javascript/node/net/server-opts
+bear @termsurf/base/code/javascript/node/net/server
+bear @termsurf/base/code/javascript/node/net/ip-version
+bear @termsurf/base/code/javascript/node/net/block-list
+bear @termsurf/base/code/javascript/node/net/tcp-net-connect-opts
+bear @termsurf/base/code/javascript/node/net/ipc-net-connect-opts
+bear @termsurf/base/code/javascript/node/net/net-connect-opts
+bear @termsurf/base/code/javascript/node/net/socket-address-init-options
+bear @termsurf/base/code/javascript/node/net/socket-address
+
+load @termsurf/moon
+  take form task
+
+load @termsurf/base/code/javascript
+  take form native-boolean
+  take form native-number
+  take form native-string
+  take form native-void
+  take form socket
+
+load @termsurf/base/code/node/https
+  take form server
+
+load @termsurf/base/code/node/net
+  take form net-connect-opts
+  take form server-opts
+
+task create-server, name <createServer>
+  like server
+
+  take connection-listener
+    like task
+      like native-void
+
+      take socket, like socket
+    void true
+
+task create-server, name <createServer>
+  like server
+
+  take options, like server-opts
+    void true
+  take connection-listener
+    like task
+      like native-void
+
+      take socket, like socket
+    void true
+
+task connect, name <connect>
+  like socket
+
+  take options, like net-connect-opts
+  take connection-listener
+    like task
+      like native-void
+
+    void true
+
+task connect, name <connect>
+  like socket
+
+  take port, like native-number
+  take host, like native-string
+    void true
+  take connection-listener
+    like task
+      like native-void
+
+    void true
+
+task connect, name <connect>
+  like socket
+
+  take path, like native-string
+  take connection-listener
+    like task
+      like native-void
+
+    void true
+
+task create-connection, name <createConnection>
+  like socket
+
+  take options, like net-connect-opts
+  take connection-listener
+    like task
+      like native-void
+
+    void true
+
+task create-connection, name <createConnection>
+  like socket
+
+  take port, like native-number
+  take host, like native-string
+    void true
+  take connection-listener
+    like task
+      like native-void
+
+    void true
+
+task create-connection, name <createConnection>
+  like socket
+
+  take path, like native-string
+  take connection-listener
+    like task
+      like native-void
+
+    void true
+
+task is-ip, name <isIP>
+  like native-number
+
+  take input, like native-string
+
+task is-i-pv4, name <isIPv4>
+  like native-boolean
+
+  take input, like native-string
+
+task is-i-pv6, name <isIPv6>
+  like native-boolean
+
+  take input, like native-string

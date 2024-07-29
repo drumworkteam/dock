@@ -1,0 +1,25 @@
+
+load @termsurf/base/code/javascript/es5
+  take form error
+  take form error-constructor
+
+load @termsurf/base/code/javascript/native
+  take form native-string
+
+load @termsurf/base/code/javascript/es5/uri-error
+  take form uri-error
+
+form uri-error, name <URIError>
+  base error
+
+form uri-error
+  hook self
+  base error-constructor
+
+    link prototype, name <prototype>
+      like uri-error
+
+  hook make
+    like uri-error
+
+    take message, like maybe, like native-string

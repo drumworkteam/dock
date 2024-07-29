@@ -1,0 +1,19 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form performance-entry-list
+  take form performance-observer-init
+
+form performance-observer, name <PerformanceObserver>
+  task disconnect, name <disconnect>
+    like native-void
+
+  task observe, name <observe>
+    like native-void
+
+    take options, like maybe, like performance-observer-init
+
+  task take-records, name <takeRecords>
+    like performance-entry-list

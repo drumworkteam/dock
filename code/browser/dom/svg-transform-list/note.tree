@@ -1,0 +1,63 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-number
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form dom-matrix2-d-init
+  take form svg-transform
+
+form svg-transform-list, name <SVGTransformList>
+  link length, name <length>
+    like native-number
+  link number-of-items, name <numberOfItems>
+    like native-number
+
+  task append-item, name <appendItem>
+    like svg-transform
+
+    take new-item
+
+  task clear, name <clear>
+    like native-void
+
+  task consolidate, name <consolidate>
+    like or
+      like svg-transform
+      like native-null
+
+  task create-svg-transform-from-matrix, name <createSVGTransformFromMatrix>
+    like svg-transform
+
+    take matrix, like maybe, like dom-matrix2-d-init
+
+  task get-item, name <getItem>
+    like svg-transform
+
+    take index
+
+  task initialize, name <initialize>
+    like svg-transform
+
+    take new-item
+
+  task insert-item-before, name <insertItemBefore>
+    like svg-transform
+
+    take new-item
+    take index
+
+  task remove-item, name <removeItem>
+    like svg-transform
+
+    take index
+
+  task replace-item, name <replaceItem>
+    like svg-transform
+
+    take new-item
+    take index
+
+  mesh index
+    like svg-transform

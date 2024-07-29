@@ -1,0 +1,52 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form document
+  take form document-fragment
+  take form node
+
+form xslt-processor, name <XSLTProcessor>
+  task clear-parameters, name <clearParameters>
+    like native-void
+
+  task get-parameter, name <getParameter>
+    like any
+
+    take namespace-uri
+    take local-name
+
+  task import-stylesheet, name <importStylesheet>
+    like native-void
+
+    take style
+
+  task remove-parameter, name <removeParameter>
+    like native-void
+
+    take namespace-uri
+    take local-name
+
+  task reset, name <reset>
+    like native-void
+
+  task set-parameter, name <setParameter>
+    like native-void
+
+    take namespace-uri
+    take local-name
+    take value
+
+  task transform-to-document, name <transformToDocument>
+    like document
+
+    take source
+
+  task transform-to-fragment, name <transformToFragment>
+    like document-fragment
+
+    take source
+    take output

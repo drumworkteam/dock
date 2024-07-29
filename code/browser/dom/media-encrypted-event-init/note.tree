@@ -1,0 +1,22 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form event-init
+
+load @termsurf/base/code/javascript/es5
+  take form array-buffer
+
+form media-encrypted-event-init, name <MediaEncryptedEventInit>
+  base event-init
+
+  link init-data, name <initData>
+    like or
+      like array-buffer
+      like native-null
+    flex true
+  link init-data-type, name <initDataType>
+    like native-string
+    flex true

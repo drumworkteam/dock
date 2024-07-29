@@ -1,0 +1,157 @@
+
+bear @termsurf/base/code/javascript/webworker/web-assembly/global
+bear @termsurf/base/code/javascript/webworker/web-assembly/instance
+bear @termsurf/base/code/javascript/webworker/web-assembly/memory
+bear @termsurf/base/code/javascript/webworker/web-assembly/module
+bear @termsurf/base/code/javascript/webworker/web-assembly/table
+bear @termsurf/base/code/javascript/webworker/web-assembly/global-descriptor
+bear @termsurf/base/code/javascript/webworker/web-assembly/memory-descriptor
+bear @termsurf/base/code/javascript/webworker/web-assembly/module-export-descriptor
+bear @termsurf/base/code/javascript/webworker/web-assembly/module-import-descriptor
+bear @termsurf/base/code/javascript/webworker/web-assembly/table-descriptor
+bear @termsurf/base/code/javascript/webworker/web-assembly/web-assembly-instantiated-source
+bear @termsurf/base/code/javascript/webworker/web-assembly/import-export-kind
+bear @termsurf/base/code/javascript/webworker/web-assembly/table-kind
+bear @termsurf/base/code/javascript/webworker/web-assembly/value-type
+bear @termsurf/base/code/javascript/webworker/web-assembly/export-value
+bear @termsurf/base/code/javascript/webworker/web-assembly/exports
+bear @termsurf/base/code/javascript/webworker/web-assembly/import-value
+bear @termsurf/base/code/javascript/webworker/web-assembly/module-imports
+bear @termsurf/base/code/javascript/webworker/web-assembly/imports
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-string
+
+load @termsurf/base/code/browser/webworker
+  take form buffer-source
+  take form global
+  take form global-descriptor
+  take form imports
+  take form instance
+  take form memory
+  take form memory-descriptor
+  take form module
+  take form module-export-descriptor
+  take form module-import-descriptor
+  take form response
+  take form table
+  take form table-descriptor
+  take form web-assembly-instantiated-source
+
+load @termsurf/base/code/javascript/es5
+  take form array-buffer
+  take form promise
+  take form promise-like
+
+host global, name <Global>
+  like form
+    link prototype, name <prototype>
+      like global
+      flex true
+    hook make
+      like global
+
+      take descriptor
+      take v, like maybe, like any
+
+host instance, name <Instance>
+  like form
+    link prototype, name <prototype>
+      like instance
+      flex true
+    hook make
+      like instance
+
+      take module
+      take import-object, like maybe, like imports
+
+host memory, name <Memory>
+  like form
+    link prototype, name <prototype>
+      like memory
+      flex true
+    hook make
+      like memory
+
+      take descriptor
+
+host module, name <Module>
+  like form
+    link prototype, name <prototype>
+      like module
+      flex true
+    hook make
+      like module
+
+      take bytes
+
+    task custom-sections, name <customSections>
+      like array
+        like array-buffer
+
+      take module-object
+      take section-name
+
+    task exports, name <exports>
+      like array
+        like module-export-descriptor
+
+      take module-object
+
+    task imports, name <imports>
+      like array
+        like module-import-descriptor
+
+      take module-object
+
+host table, name <Table>
+  like form
+    link prototype, name <prototype>
+      like table
+      flex true
+    hook make
+      like table
+
+      take descriptor
+
+task compile, name <compile>
+  like promise
+    like module
+
+  take bytes
+
+task compile-streaming, name <compileStreaming>
+  like promise
+    like module
+
+  take source
+
+task instantiate, name <instantiate>
+  like promise
+    like web-assembly-instantiated-source
+
+  take bytes
+  take import-object, like maybe, like imports
+
+task instantiate, name <instantiate>
+  like promise
+    like instance
+
+  take module-object
+  take import-object, like maybe, like imports
+
+task instantiate-streaming, name <instantiateStreaming>
+  like promise
+    like web-assembly-instantiated-source
+
+  take response
+  take import-object, like maybe, like imports
+
+task validate, name <validate>
+  like native-boolean
+
+  take bytes

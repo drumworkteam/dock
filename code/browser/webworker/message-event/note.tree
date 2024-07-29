@@ -1,0 +1,35 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-string
+
+load @termsurf/base/code/browser/webworker
+  take form event
+  take form message-event-source
+  take form message-port
+
+load @termsurf/base/code/javascript/es5
+  take form readonly-array
+
+load @termsurf/base/code/browser/dom/iterable/message-event
+  take form message-event
+
+form message-event, name <MessageEvent>
+  base event
+
+  head t
+    fall any
+
+  link data, name <data>
+    like t
+  link last-event-id, name <lastEventId>
+    like native-string
+  link origin, name <origin>
+    like native-string
+  link ports, name <ports>
+    like readonly-array
+      like message-port
+  link source, name <source>
+    like or
+      like message-event-source
+      like native-null

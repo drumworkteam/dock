@@ -1,0 +1,121 @@
+
+bear @termsurf/base/code/javascript/scripthost/active-x-object
+bear @termsurf/base/code/javascript/scripthost/i-text-writer
+bear @termsurf/base/code/javascript/scripthost/text-stream-base
+bear @termsurf/base/code/javascript/scripthost/text-stream-writer
+bear @termsurf/base/code/javascript/scripthost/text-stream-reader
+bear @termsurf/base/code/javascript/scripthost/safe-array
+bear @termsurf/base/code/javascript/scripthost/enumerator
+bear @termsurf/base/code/javascript/scripthost/vb-array
+bear @termsurf/base/code/javascript/scripthost/var-date
+bear @termsurf/base/code/javascript/scripthost/date
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/scripthost
+  take form active-x-object
+  take form enumerator-constructor
+  take form text-stream-reader
+  take form text-stream-writer
+  take form vb-array-constructor
+
+host active-x-object, name <ActiveXObject>
+  like active-x-object
+
+host w-script, name <WScript>
+  like form
+    task echo, name <Echo>
+      like native-void
+
+      take s
+
+    link std-err, name <StdErr>
+      like text-stream-writer
+      flex true
+    link std-out, name <StdOut>
+      like text-stream-writer
+      flex true
+    link arguments, name <Arguments>
+      like form
+        link length, name <length>
+          like native-number
+          flex true
+        task item, name <Item>
+          like native-string
+
+          take n
+
+      flex true
+    link script-full-name, name <ScriptFullName>
+      like native-string
+      flex true
+    task quit, name <Quit>
+      like native-number
+
+      take exit-code, like maybe, like native-number
+
+    link build-version, name <BuildVersion>
+      like native-number
+      flex true
+    link full-name, name <FullName>
+      like native-string
+      flex true
+    link interactive, name <Interactive>
+      like native-boolean
+      flex true
+    link name, name <Name>
+      like native-string
+      flex true
+    link path, name <Path>
+      like native-string
+      flex true
+    link script-name, name <ScriptName>
+      like native-string
+      flex true
+    link std-in, name <StdIn>
+      like text-stream-reader
+      flex true
+    link version, name <Version>
+      like native-string
+      flex true
+    task connect-object, name <ConnectObject>
+      like native-void
+
+      take obj-event-source
+      take str-prefix
+
+    task create-object, name <CreateObject>
+      like any
+
+      take str-prog-id
+      take str-prefix, like maybe, like native-string
+
+    task disconnect-object, name <DisconnectObject>
+      like native-void
+
+      take obj
+
+    task get-object, name <GetObject>
+      like any
+
+      take str-pathname
+      take str-prog-id, like maybe, like native-string
+      take str-prefix, like maybe, like native-string
+
+    task sleep, name <Sleep>
+      like native-void
+
+      take int-time
+
+host wsh, name <WSH>
+  like w-script
+
+host enumerator, name <Enumerator>
+  like enumerator-constructor
+
+host vb-array, name <VBArray>
+  like vb-array-constructor

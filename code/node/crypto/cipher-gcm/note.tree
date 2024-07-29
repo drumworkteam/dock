@@ -1,0 +1,29 @@
+
+load @termsurf/moon
+  take form form
+
+load @termsurf/base/code/javascript
+  take form cipher
+  take form native-number
+  take form native-this
+  take form node-js-array-buffer-view
+
+load @termsurf/base/code/node/buffer
+  take form buffer
+
+form cipher-gcm, name <CipherGCM>
+  base cipher
+
+  task set-aad, name <setAAD>
+    like native-this
+
+    take buffer, like node-js-array-buffer-view
+    take options
+      like form
+        link plaintext-length, name <plaintextLength>
+          like native-number
+          flex true
+      void true
+
+  task get-auth-tag, name <getAuthTag>
+    like buffer

@@ -1,0 +1,235 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form before-unload-event
+  take form event
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form message-event
+  take form page-transition-event
+  take form pop-state-event
+  take form promise-rejection-event
+  take form storage-event
+  take form window-event-handlers-event-map
+
+form window-event-handlers, name <WindowEventHandlers>
+  link onafterprint, name <onafterprint>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onbeforeprint, name <onbeforeprint>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onbeforeunload, name <onbeforeunload>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link ongamepadconnected, name <ongamepadconnected>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link ongamepaddisconnected, name <ongamepaddisconnected>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onhashchange, name <onhashchange>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onlanguagechange, name <onlanguagechange>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onmessage, name <onmessage>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onmessageerror, name <onmessageerror>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onoffline, name <onoffline>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link ononline, name <ononline>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onpagehide, name <onpagehide>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onpageshow, name <onpageshow>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onpopstate, name <onpopstate>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onrejectionhandled, name <onrejectionhandled>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onstorage, name <onstorage>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onunhandledrejection, name <onunhandledrejection>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onunload, name <onunload>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like window-event-handlers-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like window-event-handlers-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

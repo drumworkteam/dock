@@ -1,0 +1,80 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form event-target
+  take form ui-event
+  take form window
+
+form mouse-event, name <MouseEvent>
+  base ui-event
+
+  link alt-key, name <altKey>
+    like native-boolean
+  link button, name <button>
+    like native-number
+  link buttons, name <buttons>
+    like native-number
+  link client-x, name <clientX>
+    like native-number
+  link client-y, name <clientY>
+    like native-number
+  link ctrl-key, name <ctrlKey>
+    like native-boolean
+  link meta-key, name <metaKey>
+    like native-boolean
+  link movement-x, name <movementX>
+    like native-number
+  link movement-y, name <movementY>
+    like native-number
+  link offset-x, name <offsetX>
+    like native-number
+  link offset-y, name <offsetY>
+    like native-number
+  link page-x, name <pageX>
+    like native-number
+  link page-y, name <pageY>
+    like native-number
+  link related-target, name <relatedTarget>
+    like or
+      like event-target
+      like native-null
+  link screen-x, name <screenX>
+    like native-number
+  link screen-y, name <screenY>
+    like native-number
+  link shift-key, name <shiftKey>
+    like native-boolean
+  link x, name <x>
+    like native-number
+  link y, name <y>
+    like native-number
+
+  task get-modifier-state, name <getModifierState>
+    like native-boolean
+
+    take key-arg
+
+  task init-mouse-event, name <initMouseEvent>
+    like native-void
+
+    take type-arg
+    take can-bubble-arg
+    take cancelable-arg
+    take view-arg
+    take detail-arg
+    take screen-x-arg
+    take screen-y-arg
+    take client-x-arg
+    take client-y-arg
+    take ctrl-key-arg
+    take alt-key-arg
+    take shift-key-arg
+    take meta-key-arg
+    take button-arg
+    take related-target-arg

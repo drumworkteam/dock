@@ -1,0 +1,47 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+
+load @termsurf/base/code/browser/webworker
+  take form algorithm
+  take form hash-algorithm-identifier
+
+load @termsurf/base/code/javascript/es5
+  take form array-buffer
+  take form data-view
+  take form float32-array
+  take form float64-array
+  take form int16-array
+  take form int32-array
+  take form int8-array
+  take form uint16-array
+  take form uint32-array
+  take form uint8-array
+  take form uint8-clamped-array
+
+load @termsurf/base/code/browser/dom/pbkdf2-params
+  take form pbkdf2-params
+
+form pbkdf2-params, name <Pbkdf2Params>
+  base algorithm
+
+  link hash, name <hash>
+    like hash-algorithm-identifier
+    flex true
+  link iterations, name <iterations>
+    like native-number
+    flex true
+  link salt, name <salt>
+    like or
+      like int8-array
+      like int16-array
+      like int32-array
+      like uint8-array
+      like uint16-array
+      like uint32-array
+      like uint8-clamped-array
+      like float32-array
+      like float64-array
+      like data-view
+      like array-buffer
+    flex true

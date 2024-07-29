@@ -1,0 +1,52 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form native-undefined
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form idb-cursor-direction
+  take form idb-index
+  take form idb-object-store
+  take form idb-request
+  take form idb-valid-key
+
+form idb-cursor, name <IDBCursor>
+  link direction, name <direction>
+    like idb-cursor-direction
+  link key, name <key>
+    like idb-valid-key
+  link primary-key, name <primaryKey>
+    like idb-valid-key
+  link request, name <request>
+    like idb-request
+  link source, name <source>
+    like or
+      like idb-object-store
+      like idb-index
+
+  task advance, name <advance>
+    like native-void
+
+    take count
+
+  task continue, name <continue>
+    like native-void
+
+    take key, like maybe, like idb-valid-key
+
+  task continue-primary-key, name <continuePrimaryKey>
+    like native-void
+
+    take key
+    take primary-key
+
+  task delete, name <delete>
+    like idb-request
+      like native-undefined
+
+  task update, name <update>
+    like idb-request
+      like idb-valid-key
+
+    take value

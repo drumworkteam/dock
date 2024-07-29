@@ -1,0 +1,42 @@
+
+load @termsurf/moon
+  take form or
+
+load @termsurf/base/code/javascript
+  take form fs-stats
+  take form native-boolean
+  take form native-number
+  take form native-undefined
+  take form native-void
+
+load @termsurf/base/code/node/http
+  take form outgoing-http-headers
+
+load @termsurf/base/code/node/http2
+  take form stat-options
+
+form server-stream-file-response-options, name <ServerStreamFileResponseOptions>
+  link wait-for-trailers, name <waitForTrailers>
+    like or
+      like native-boolean
+      like native-undefined
+    flex true
+  link offset, name <offset>
+    like or
+      like native-number
+      like native-undefined
+    flex true
+  link length, name <length>
+    like or
+      like native-number
+      like native-undefined
+    flex true
+
+  task stat-check, name <statCheck>
+    like or
+      like native-void
+      like native-boolean
+
+    take stats, like fs-stats
+    take headers, like outgoing-http-headers
+    take stat-options, like stat-options

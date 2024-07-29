@@ -1,0 +1,31 @@
+
+load @termsurf/moon
+  take form any
+
+load @termsurf/base/code/javascript
+  take form native-object
+  take form native-void
+  take form node-js-dict
+
+load @termsurf/base/code/node/wasi
+  take form wasi-options
+
+form wasi, name <WASI>
+  link wasi-import, name <wasiImport>
+    like node-js-dict
+      like any
+
+  task start, name <start>
+    like native-void
+
+    take instance, like native-object
+
+  task initialize, name <initialize>
+    like native-void
+
+    take instance, like native-object
+
+form wasi-constructor
+  hook make
+    take options, like wasi-options
+      void true

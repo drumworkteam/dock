@@ -1,0 +1,32 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-undefined
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form buffer-source
+  take form media-key-status
+
+form media-key-status-map, name <MediaKeyStatusMap>
+  link size, name <size>
+    like native-number
+
+  task get, name <get>
+    like or
+      like media-key-status
+      like native-undefined
+
+    take key-id
+
+  task has, name <has>
+    like native-boolean
+
+    take key-id
+
+  task for-each, name <forEach>
+    like native-void
+
+    take callbackfn
+    take this-arg, like maybe, like any

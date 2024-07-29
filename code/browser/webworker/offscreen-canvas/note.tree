@@ -1,0 +1,84 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-number
+
+load @termsurf/base/code/browser/webworker
+  take form blob
+  take form canvas-rendering-context2-d-settings
+  take form event-target
+  take form image-bitmap
+  take form image-bitmap-rendering-context
+  take form image-bitmap-rendering-context-settings
+  take form image-encode-options
+  take form offscreen-canvas-rendering-context2-d
+  take form offscreen-rendering-context
+  take form offscreen-rendering-context-id
+  take form web-gl-context-attributes
+  take form web-gl-rendering-context
+  take form web-gl2-rendering-context
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+
+load @termsurf/base/code/browser/dom/offscreen-canvas
+  take form offscreen-canvas
+
+form offscreen-canvas, name <OffscreenCanvas>
+  base event-target
+
+  link height, name <height>
+    like native-number
+    flex true
+  link width, name <width>
+    like native-number
+    flex true
+
+  task convert-to-blob, name <convertToBlob>
+    like promise
+      like blob
+
+    take options, like maybe, like image-encode-options
+
+  task get-context, name <getContext>
+    like or
+      like offscreen-canvas-rendering-context2-d
+      like native-null
+
+    take context-id
+    take options, like maybe, like canvas-rendering-context2-d-settings
+
+  task get-context, name <getContext>
+    like or
+      like image-bitmap-rendering-context
+      like native-null
+
+    take context-id
+    take options, like maybe, like image-bitmap-rendering-context-settings
+
+  task get-context, name <getContext>
+    like or
+      like web-gl-rendering-context
+      like native-null
+
+    take context-id
+    take options, like maybe, like web-gl-context-attributes
+
+  task get-context, name <getContext>
+    like or
+      like web-gl2-rendering-context
+      like native-null
+
+    take context-id
+    take options, like maybe, like web-gl-context-attributes
+
+  task get-context, name <getContext>
+    like or
+      like offscreen-rendering-context
+      like native-null
+
+    take context-id
+    take options, like maybe, like any
+
+  task transfer-to-image-bitmap, name <transferToImageBitmap>
+    like image-bitmap

@@ -1,0 +1,22 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-string
+  take form native-symbol
+  take form native-undefined
+
+form symbol
+  hook self
+    link prototype, name <prototype>
+      like symbol
+
+    task for, name <for>
+      like native-symbol
+
+      take key
+
+    task key-for, name <keyFor>
+      like or
+        like native-string
+        like native-undefined
+
+      take sym

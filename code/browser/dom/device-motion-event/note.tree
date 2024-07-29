@@ -1,0 +1,27 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-number
+
+load @termsurf/base/code/browser/dom
+  take form device-motion-event-acceleration
+  take form device-motion-event-rotation-rate
+  take form event
+
+form device-motion-event, name <DeviceMotionEvent>
+  base event
+
+  link acceleration, name <acceleration>
+    like or
+      like device-motion-event-acceleration
+      like native-null
+  link acceleration-including-gravity, name <accelerationIncludingGravity>
+    like or
+      like device-motion-event-acceleration
+      like native-null
+  link interval, name <interval>
+    like native-number
+  link rotation-rate, name <rotationRate>
+    like or
+      like device-motion-event-rotation-rate
+      like native-null

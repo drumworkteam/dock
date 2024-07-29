@@ -1,0 +1,22 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form event-init
+  take form rtc-ice-candidate
+
+form rtc-peer-connection-ice-event-init, name <RTCPeerConnectionIceEventInit>
+  base event-init
+
+  link candidate, name <candidate>
+    like or
+      like rtc-ice-candidate
+      like native-null
+    flex true
+  link url, name <url>
+    like or
+      like native-string
+      like native-null
+    flex true

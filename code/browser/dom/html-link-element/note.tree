@@ -1,0 +1,123 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form dom-token-list
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form html-element
+  take form html-element-event-map
+  take form link-style
+
+form html-link-element, name <HTMLLinkElement>
+  base html-element
+  base link-style
+
+  link as, name <as>
+    like native-string
+    flex true
+  link charset, name <charset>
+    like native-string
+    flex true
+  link cross-origin, name <crossOrigin>
+    like or
+      like native-string
+      like native-null
+    flex true
+  link disabled, name <disabled>
+    like native-boolean
+    flex true
+  link href, name <href>
+    like native-string
+    flex true
+  link hreflang, name <hreflang>
+    like native-string
+    flex true
+  link image-sizes, name <imageSizes>
+    like native-string
+    flex true
+  link image-srcset, name <imageSrcset>
+    like native-string
+    flex true
+  link integrity, name <integrity>
+    like native-string
+    flex true
+  link media, name <media>
+    like native-string
+    flex true
+  link referrer-policy, name <referrerPolicy>
+    like native-string
+    flex true
+  link rel, name <rel>
+    like native-string
+    flex true
+  link rel-list, name <relList>
+    like dom-token-list
+  link rev, name <rev>
+    like native-string
+    flex true
+  link sizes, name <sizes>
+    like dom-token-list
+  link target, name <target>
+    like native-string
+    flex true
+  link type, name <type>
+    like native-string
+    flex true
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like html-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like html-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

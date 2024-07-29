@@ -1,0 +1,33 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+
+load @termsurf/base/code/browser/webworker
+  take form push-permission-state
+  take form push-subscription
+  take form push-subscription-options-init
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+
+load @termsurf/base/code/browser/dom/push-manager
+  take form push-manager
+
+form push-manager, name <PushManager>
+  task get-subscription, name <getSubscription>
+    like promise
+      like or
+        like push-subscription
+        like native-null
+
+  task permission-state, name <permissionState>
+    like promise
+      like push-permission-state
+
+    take options, like maybe, like push-subscription-options-init
+
+  task subscribe, name <subscribe>
+    like promise
+      like push-subscription
+
+    take options, like maybe, like push-subscription-options-init

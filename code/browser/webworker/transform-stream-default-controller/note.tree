@@ -1,0 +1,30 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-number
+  take form native-void
+
+load @termsurf/base/code/browser/dom/transform-stream-default-controller
+  take form transform-stream-default-controller
+
+form transform-stream-default-controller, name <TransformStreamDefaultController>
+  head o
+    fall any
+
+  link desired-size, name <desiredSize>
+    like or
+      like native-number
+      like native-null
+
+  task enqueue, name <enqueue>
+    like native-void
+
+    take chunk
+
+  task error, name <error>
+    like native-void
+
+    take reason, like maybe, like any
+
+  task terminate, name <terminate>
+    like native-void

@@ -217,7 +217,7 @@ types.map(t => {
 
   const importText = Object.keys(imports)
     .map(path => {
-      return `load @nerdbond/bolt/code/swift/${path}\n  take ${toSlug(imports[path])}`
+      return `load @nerdbond/base/code/swift/${path}\n  take ${toSlug(imports[path])}`
     })
 
   text.unshift(...importText)

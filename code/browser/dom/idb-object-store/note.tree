@@ -1,0 +1,158 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-undefined
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form dom-string-list
+  take form idb-cursor
+  take form idb-cursor-direction
+  take form idb-cursor-with-value
+  take form idb-index
+  take form idb-index-parameters
+  take form idb-key-range
+  take form idb-request
+  take form idb-transaction
+  take form idb-valid-key
+
+form idb-object-store, name <IDBObjectStore>
+  link auto-increment, name <autoIncrement>
+    like native-boolean
+  link index-names, name <indexNames>
+    like dom-string-list
+  link key-path, name <keyPath>
+    like or
+      like native-string
+      like array
+        like native-string
+  link name, name <name>
+    like native-string
+    flex true
+  link transaction, name <transaction>
+    like idb-transaction
+
+  task add, name <add>
+    like idb-request
+      like idb-valid-key
+
+    take value
+    take key, like maybe, like idb-valid-key
+
+  task clear, name <clear>
+    like idb-request
+      like native-undefined
+
+  task count, name <count>
+    like idb-request
+      like native-number
+
+    take query
+      like maybe
+        like or
+          like idb-valid-key
+          like idb-key-range
+
+  task create-index, name <createIndex>
+    like idb-index
+
+    take name
+    take key-path
+    take options, like maybe, like idb-index-parameters
+
+  task delete, name <delete>
+    like idb-request
+      like native-undefined
+
+    take query
+
+  task delete-index, name <deleteIndex>
+    like native-void
+
+    take name
+
+  task get, name <get>
+    like idb-request
+      like any
+
+    take query
+
+  task get-all, name <getAll>
+    like idb-request
+      like array
+        like any
+
+    take query
+      like maybe
+        like or
+          like idb-valid-key
+          like idb-key-range
+          like native-null
+    take count, like maybe, like native-number
+
+  task get-all-keys, name <getAllKeys>
+    like idb-request
+      like array
+        like idb-valid-key
+
+    take query
+      like maybe
+        like or
+          like idb-valid-key
+          like idb-key-range
+          like native-null
+    take count, like maybe, like native-number
+
+  task get-key, name <getKey>
+    like idb-request
+      like or
+        like idb-valid-key
+        like native-undefined
+
+    take query
+
+  task index, name <index>
+    like idb-index
+
+    take name
+
+  task open-cursor, name <openCursor>
+    like idb-request
+      like or
+        like idb-cursor-with-value
+        like native-null
+
+    take query
+      like maybe
+        like or
+          like idb-valid-key
+          like idb-key-range
+          like native-null
+    take direction, like maybe, like idb-cursor-direction
+
+  task open-key-cursor, name <openKeyCursor>
+    like idb-request
+      like or
+        like idb-cursor
+        like native-null
+
+    take query
+      like maybe
+        like or
+          like idb-valid-key
+          like idb-key-range
+          like native-null
+    take direction, like maybe, like idb-cursor-direction
+
+  task put, name <put>
+    like idb-request
+      like idb-valid-key
+
+    take value
+    take key, like maybe, like idb-valid-key

@@ -1,0 +1,17 @@
+
+load @termsurf/base/code/browser/webworker
+  take form abstract-worker-event-map
+  take form message-event
+
+load @termsurf/base/code/browser/dom/worker-event-map
+  take form worker-event-map
+
+form worker-event-map, name <WorkerEventMap>
+  base abstract-worker-event-map
+
+  link message, name <message>
+    like message-event
+    flex true
+  link messageerror, name <messageerror>
+    like message-event
+    flex true

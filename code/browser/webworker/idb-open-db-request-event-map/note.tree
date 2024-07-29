@@ -1,0 +1,18 @@
+
+load @termsurf/base/code/browser/webworker
+  take form event
+  take form idb-request-event-map
+  take form idb-version-change-event
+
+load @termsurf/base/code/browser/dom/idb-open-db-request-event-map
+  take form idb-open-db-request-event-map
+
+form idb-open-db-request-event-map, name <IDBOpenDBRequestEventMap>
+  base idb-request-event-map
+
+  link blocked, name <blocked>
+    like event
+    flex true
+  link upgradeneeded, name <upgradeneeded>
+    like idb-version-change-event
+    flex true

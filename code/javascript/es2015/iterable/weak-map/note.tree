@@ -1,0 +1,30 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-object
+
+load @termsurf/base/code/javascript/es2015/collection/weak-map
+  take form weak-map
+
+load @termsurf/base/code/javascript/es2015/iterable
+  take form iterable
+
+load @termsurf/base/code/javascript/es2015/iterable/weak-map
+  take form weak-map
+
+form weak-map, name <WeakMap>
+  head k
+    base native-object
+  head v
+
+form weak-map
+  hook self
+  hook make
+    like weak-map
+      like k
+      like v
+
+    head k
+      base native-object
+    head v
+
+    take iterable

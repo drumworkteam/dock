@@ -1,0 +1,87 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-this
+  take form native-undefined
+  take form native-void
+
+load @termsurf/base/code/javascript/es5
+  take form array-like
+
+form array, name <Array>
+  head t
+
+  task find, name <find>
+    like or
+      like s
+      like native-undefined
+
+    head s
+      base t
+
+    take predicate
+    take this-arg, like maybe, like any
+
+  task find, name <find>
+    like or
+      like t
+      like native-undefined
+
+    take predicate
+    take this-arg, like maybe, like any
+
+  task find-index, name <findIndex>
+    like native-number
+
+    take predicate
+    take this-arg, like maybe, like any
+
+  task fill, name <fill>
+    like native-this
+
+    take value
+    take start, like maybe, like native-number
+    take end, like maybe, like native-number
+
+  task copy-within, name <copyWithin>
+    like native-this
+
+    take target
+    take start
+    take end, like maybe, like native-number
+
+form array
+  hook self
+    task from, name <from>
+      like array
+        like t
+
+      head t
+
+      take array-like
+
+    task from, name <from>
+      like array
+        like u
+
+      head t
+      head u
+
+      take array-like
+      take mapfn
+      take this-arg, like maybe, like any
+
+    task of, name <of>
+      like array
+        like t
+
+      head t
+
+      take items
+        like array
+          like t
+        rest true

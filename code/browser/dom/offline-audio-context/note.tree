@@ -1,0 +1,100 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form audio-buffer
+  take form base-audio-context
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form offline-audio-completion-event
+  take form offline-audio-context-event-map
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+
+form offline-audio-context, name <OfflineAudioContext>
+  base base-audio-context
+
+  link length, name <length>
+    like native-number
+  link oncomplete, name <oncomplete>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+
+  task resume, name <resume>
+    like promise
+      like native-void
+
+  task start-rendering, name <startRendering>
+    like promise
+      like audio-buffer
+
+  task suspend, name <suspend>
+    like promise
+      like native-void
+
+    take suspend-time
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like offline-audio-context-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like offline-audio-context-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

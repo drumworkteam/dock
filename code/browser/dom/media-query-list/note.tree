@@ -1,0 +1,93 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form event-target
+  take form media-query-list-event
+  take form media-query-list-event-map
+
+form media-query-list, name <MediaQueryList>
+  base event-target
+
+  link matches, name <matches>
+    like native-boolean
+  link media, name <media>
+    like native-string
+  link onchange, name <onchange>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+
+  task add-listener, name <addListener>
+    like native-void
+
+    take callback
+
+  task remove-listener, name <removeListener>
+    like native-void
+
+    take callback
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like media-query-list-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like media-query-list-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

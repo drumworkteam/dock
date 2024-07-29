@@ -1,0 +1,32 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form media-metadata
+  take form media-position-state
+  take form media-session-action
+  take form media-session-action-handler
+  take form media-session-playback-state
+
+form media-session, name <MediaSession>
+  link metadata, name <metadata>
+    like or
+      like media-metadata
+      like native-null
+    flex true
+  link playback-state, name <playbackState>
+    like media-session-playback-state
+    flex true
+
+  task set-action-handler, name <setActionHandler>
+    like native-void
+
+    take action
+    take handler
+
+  task set-position-state, name <setPositionState>
+    like native-void
+
+    take state, like maybe, like media-position-state

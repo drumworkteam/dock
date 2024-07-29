@@ -1,0 +1,28 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form node
+  take form node-list
+
+form node-list-of, name <NodeListOf>
+  base node-list
+
+  head t-node
+    base node
+
+  task item, name <item>
+    like t-node
+
+    take index
+
+  task for-each, name <forEach>
+    like native-void
+
+    take callbackfn
+    take this-arg, like maybe, like any
+
+  mesh index
+    like t-node

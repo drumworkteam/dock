@@ -1,0 +1,73 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/es2015/iterable
+  take form iterable
+
+load @termsurf/base/code/javascript/es2020/promise
+  take form promise-settled-result
+
+load @termsurf/base/code/javascript/es5
+  take form promise-like
+
+load @termsurf/base/code/javascript/native
+  take form u
+
+load @termsurf/base/code/javascript/es2018/promise/promise
+  take form promise
+
+form promise
+  hook self
+    task all-settled, name <allSettled>
+      like promise
+        slot self
+        walk link-name-like-list
+          loan
+          like key-list
+            like t
+          take name
+          take p
+          beam self
+            take {name}
+              like promise-settled-result
+                like test
+                  fork roll
+                    like index
+                      like t
+                      like p
+                    like promise-like
+                      name u
+                    hook true
+                      like u
+                    hook false
+                      like index
+                        like t
+                        like p
+
+      head t
+        base or
+          like array
+            like unknown
+          like tuple
+            like unknown
+
+      take values
+
+    task all-settled, name <allSettled>
+      like promise
+        like array
+          like promise-settled-result
+            like test
+              fork roll
+                like t
+                like promise-like
+                  name u
+                hook true
+                  like u
+                hook false
+                  like t
+
+      head t
+
+      take values

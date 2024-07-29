@@ -1,0 +1,27 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-number
+  take form native-void
+
+form readable-stream-default-controller, name <ReadableStreamDefaultController>
+  head r
+    fall any
+
+  link desired-size, name <desiredSize>
+    like or
+      like native-number
+      like native-null
+
+  task close, name <close>
+    like native-void
+
+  task enqueue, name <enqueue>
+    like native-void
+
+    take chunk, like maybe, like r
+
+  task error, name <error>
+    like native-void
+
+    take e, like maybe, like any

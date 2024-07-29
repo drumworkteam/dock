@@ -1,0 +1,36 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-bigint
+  take form native-boolean
+  take form native-number
+  take form native-void
+
+load @termsurf/base/code/javascript/es2015/symbol/wellknown/data-view
+  take form data-view
+
+form data-view, name <DataView>
+  task get-big-int64, name <getBigInt64>
+    like native-bigint
+
+    take byte-offset
+    take little-endian, like maybe, like native-boolean
+
+  task get-big-uint64, name <getBigUint64>
+    like native-bigint
+
+    take byte-offset
+    take little-endian, like maybe, like native-boolean
+
+  task set-big-int64, name <setBigInt64>
+    like native-void
+
+    take byte-offset
+    take value
+    take little-endian, like maybe, like native-boolean
+
+  task set-big-uint64, name <setBigUint64>
+    like native-void
+
+    take byte-offset
+    take value
+    take little-endian, like maybe, like native-boolean

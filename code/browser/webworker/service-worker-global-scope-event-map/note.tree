@@ -1,0 +1,41 @@
+
+load @termsurf/base/code/browser/webworker
+  take form extendable-event
+  take form extendable-message-event
+  take form fetch-event
+  take form message-event
+  take form notification-event
+  take form push-event
+  take form sync-event
+  take form worker-global-scope-event-map
+
+form service-worker-global-scope-event-map, name <ServiceWorkerGlobalScopeEventMap>
+  base worker-global-scope-event-map
+
+  link activate, name <activate>
+    like extendable-event
+    flex true
+  link fetch, name <fetch>
+    like fetch-event
+    flex true
+  link install, name <install>
+    like extendable-event
+    flex true
+  link message, name <message>
+    like extendable-message-event
+    flex true
+  link messageerror, name <messageerror>
+    like message-event
+    flex true
+  link notificationclick, name <notificationclick>
+    like notification-event
+    flex true
+  link notificationclose, name <notificationclose>
+    like notification-event
+    flex true
+  link push, name <push>
+    like push-event
+    flex true
+  link sync, name <sync>
+    like sync-event
+    flex true

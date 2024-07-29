@@ -1,0 +1,31 @@
+
+load @termsurf/base/code/javascript/native
+  take form iterable-iterator
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form form-data-entry-value
+
+load @termsurf/base/code/browser/dom/form-data
+  take form form-data
+
+form form-data, name <FormData>
+  task {symbol/iterator}
+    like iterable-iterator
+      like tuple
+        like native-string
+        like form-data-entry-value
+
+  task entries, name <entries>
+    like iterable-iterator
+      like tuple
+        like native-string
+        like form-data-entry-value
+
+  task keys, name <keys>
+    like iterable-iterator
+      like native-string
+
+  task values, name <values>
+    like iterable-iterator
+      like form-data-entry-value

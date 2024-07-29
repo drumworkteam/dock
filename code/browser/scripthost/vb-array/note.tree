@@ -1,0 +1,51 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form safe-array
+
+load @termsurf/base/code/browser/scripthost/vb-array
+  take form vb-array
+
+form vb-array, name <VBArray>
+  head t
+    fall any
+
+  task dimensions, name <dimensions>
+    like native-number
+
+  task get-item, name <getItem>
+    like t
+
+    take dimension1-index
+    take dimension-n-indexes
+      like array
+        like native-number
+      rest true
+
+  task lbound, name <lbound>
+    like native-number
+
+    take dimension, like maybe, like native-number
+
+  task ubound, name <ubound>
+    like native-number
+
+    take dimension, like maybe, like native-number
+
+  task to-array, name <toArray>
+    like array
+      like t
+
+form vb-array
+  hook self
+  hook make
+    like vb-array
+      like t
+
+    head t
+      fall any
+
+    take safe-array

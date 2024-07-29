@@ -1,0 +1,32 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-string
+
+load @termsurf/base/code/browser/webworker
+  take form client
+  take form visibility-state
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+
+form window-client, name <WindowClient>
+  base client
+
+  link focused, name <focused>
+    like native-boolean
+  link visibility-state, name <visibilityState>
+    like visibility-state
+
+  task focus, name <focus>
+    like promise
+      like window-client
+
+  task navigate, name <navigate>
+    like promise
+      like or
+        like window-client
+        like native-null
+
+    take url

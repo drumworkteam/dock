@@ -1,0 +1,20 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-number
+
+load @termsurf/base/code/browser/webworker
+  take form event
+
+load @termsurf/base/code/browser/dom/idb-version-change-event
+  take form idb-version-change-event
+
+form idb-version-change-event, name <IDBVersionChangeEvent>
+  base event
+
+  link new-version, name <newVersion>
+    like or
+      like native-number
+      like native-null
+  link old-version, name <oldVersion>
+    like native-number

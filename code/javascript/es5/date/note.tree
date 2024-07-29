@@ -1,0 +1,268 @@
+
+load @termsurf/base/code/javascript/native
+  take form intl-date-time-format-options
+  take form native-number
+  take form native-string
+
+load @termsurf/base/code/javascript/es5/date
+  take form date
+
+load @termsurf/base/code/javascript
+  take form array
+
+form date, name <Date>
+  task to-string, name <toString>
+    like native-string
+
+  task to-date-string, name <toDateString>
+    like native-string
+
+  task to-time-string, name <toTimeString>
+    like native-string
+
+  task to-locale-string, name <toLocaleString>
+    like native-string
+
+  task to-locale-date-string, name <toLocaleDateString>
+    like native-string
+
+  task to-locale-time-string, name <toLocaleTimeString>
+    like native-string
+
+  task value-of, name <valueOf>
+    like native-number
+
+  task get-time, name <getTime>
+    like native-number
+
+  task get-full-year, name <getFullYear>
+    like native-number
+
+  task get-utc-full-year, name <getUTCFullYear>
+    like native-number
+
+  task get-month, name <getMonth>
+    like native-number
+
+  task get-utc-month, name <getUTCMonth>
+    like native-number
+
+  task get-date, name <getDate>
+    like native-number
+
+  task get-utc-date, name <getUTCDate>
+    like native-number
+
+  task get-day, name <getDay>
+    like native-number
+
+  task get-utc-day, name <getUTCDay>
+    like native-number
+
+  task get-hours, name <getHours>
+    like native-number
+
+  task get-utc-hours, name <getUTCHours>
+    like native-number
+
+  task get-minutes, name <getMinutes>
+    like native-number
+
+  task get-utc-minutes, name <getUTCMinutes>
+    like native-number
+
+  task get-seconds, name <getSeconds>
+    like native-number
+
+  task get-utc-seconds, name <getUTCSeconds>
+    like native-number
+
+  task get-milliseconds, name <getMilliseconds>
+    like native-number
+
+  task get-utc-milliseconds, name <getUTCMilliseconds>
+    like native-number
+
+  task get-timezone-offset, name <getTimezoneOffset>
+    like native-number
+
+  task set-time, name <setTime>
+    like native-number
+
+    take time
+
+  task set-milliseconds, name <setMilliseconds>
+    like native-number
+
+    take ms
+
+  task set-utc-milliseconds, name <setUTCMilliseconds>
+    like native-number
+
+    take ms
+
+  task set-seconds, name <setSeconds>
+    like native-number
+
+    take sec
+    take ms, like maybe, like native-number
+
+  task set-utc-seconds, name <setUTCSeconds>
+    like native-number
+
+    take sec
+    take ms, like maybe, like native-number
+
+  task set-minutes, name <setMinutes>
+    like native-number
+
+    take min
+    take sec, like maybe, like native-number
+    take ms, like maybe, like native-number
+
+  task set-utc-minutes, name <setUTCMinutes>
+    like native-number
+
+    take min
+    take sec, like maybe, like native-number
+    take ms, like maybe, like native-number
+
+  task set-hours, name <setHours>
+    like native-number
+
+    take hours
+    take min, like maybe, like native-number
+    take sec, like maybe, like native-number
+    take ms, like maybe, like native-number
+
+  task set-utc-hours, name <setUTCHours>
+    like native-number
+
+    take hours
+    take min, like maybe, like native-number
+    take sec, like maybe, like native-number
+    take ms, like maybe, like native-number
+
+  task set-date, name <setDate>
+    like native-number
+
+    take date
+
+  task set-utc-date, name <setUTCDate>
+    like native-number
+
+    take date
+
+  task set-month, name <setMonth>
+    like native-number
+
+    take month
+    take date, like maybe, like native-number
+
+  task set-utc-month, name <setUTCMonth>
+    like native-number
+
+    take month
+    take date, like maybe, like native-number
+
+  task set-full-year, name <setFullYear>
+    like native-number
+
+    take year
+    take month, like maybe, like native-number
+    take date, like maybe, like native-number
+
+  task set-utc-full-year, name <setUTCFullYear>
+    like native-number
+
+    take year
+    take month, like maybe, like native-number
+    take date, like maybe, like native-number
+
+  task to-utc-string, name <toUTCString>
+    like native-string
+
+  task to-iso-string, name <toISOString>
+    like native-string
+
+  task to-json, name <toJSON>
+    like native-string
+
+    take key, like maybe, like any
+
+form date
+  hook self
+    link prototype, name <prototype>
+      like date
+
+    task parse, name <parse>
+      like native-number
+
+      take s
+
+    task utc, name <UTC>
+      like native-number
+
+      take year
+      take month
+      take date, like maybe, like native-number
+      take hours, like maybe, like native-number
+      take minutes, like maybe, like native-number
+      take seconds, like maybe, like native-number
+      take ms, like maybe, like native-number
+
+    task now, name <now>
+      like native-number
+
+  hook make
+    like date
+
+  hook make
+    like date
+
+    take value
+
+  hook make
+    like date
+
+    take year
+    take month
+    take date, like maybe, like native-number
+    take hours, like maybe, like native-number
+    take minutes, like maybe, like native-number
+    take seconds, like maybe, like native-number
+    take ms, like maybe, like native-number
+
+form date, name <Date>
+  task to-locale-string, name <toLocaleString>
+    like native-string
+
+    take locales
+      like maybe
+        like or
+          like native-string
+          like array
+            like native-string
+    take options, like maybe, like intl-date-time-format-options
+
+  task to-locale-date-string, name <toLocaleDateString>
+    like native-string
+
+    take locales
+      like maybe
+        like or
+          like native-string
+          like array
+            like native-string
+    take options, like maybe, like intl-date-time-format-options
+
+  task to-locale-time-string, name <toLocaleTimeString>
+    like native-string
+
+    take locales
+      like maybe
+        like or
+          like native-string
+          like array
+            like native-string
+    take options, like maybe, like intl-date-time-format-options

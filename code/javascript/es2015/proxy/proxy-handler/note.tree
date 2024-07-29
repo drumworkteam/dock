@@ -1,0 +1,109 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-object
+  take form native-string
+  take form native-symbol
+  take form native-undefined
+
+load @termsurf/base/code/javascript/es2015/core
+  take form function
+
+load @termsurf/base/code/javascript/es5
+  take form array-like
+  take form property-descriptor
+
+form proxy-handler, name <ProxyHandler>
+  head t
+    base native-object
+
+  task apply, name <apply>
+    like any
+
+    take target
+    take this-arg
+    take arg-array
+
+  task construct, name <construct>
+    like native-object
+
+    take target
+    take arg-array
+    take new-target
+
+  task define-property, name <defineProperty>
+    like native-boolean
+
+    take target
+    take p
+    take attributes
+
+  task delete-property, name <deleteProperty>
+    like native-boolean
+
+    take target
+    take p
+
+  task get, name <get>
+    like any
+
+    take target
+    take p
+    take receiver
+
+  task get-own-property-descriptor, name <getOwnPropertyDescriptor>
+    like or
+      like property-descriptor
+      like native-undefined
+
+    take target
+    take p
+
+  task get-prototype-of, name <getPrototypeOf>
+    like or
+      like native-object
+      like native-null
+
+    take target
+
+  task has, name <has>
+    like native-boolean
+
+    take target
+    take p
+
+  task is-extensible, name <isExtensible>
+    like native-boolean
+
+    take target
+
+  task own-keys, name <ownKeys>
+    like array-like
+      like or
+        like native-string
+        like native-symbol
+
+    take target
+
+  task prevent-extensions, name <preventExtensions>
+    like native-boolean
+
+    take target
+
+  task set, name <set>
+    like native-boolean
+
+    take target
+    take p
+    take value
+    take receiver
+
+  task set-prototype-of, name <setPrototypeOf>
+    like native-boolean
+
+    take target
+    take v

@@ -1,0 +1,104 @@
+
+load @termsurf/base/code/javascript
+  take form array
+  take form async-resource
+  take form native-number
+  take form native-string
+  take form native-this
+  take form this-arg
+
+load @termsurf/moon
+  take form and
+  take form any
+  take form form
+  take form like
+  take form or
+  take form task
+
+load @termsurf/base/code/node/async-hooks
+  take form async-resource-options
+
+form async-resource, name <AsyncResource>
+  task bind, name <bind>
+    like and
+      like func
+      like form
+        link async-resource, name <asyncResource>
+          like async-resource
+          flex true
+
+    head func
+      base task
+        like any
+
+        take args
+          like array
+            like any
+          rest true
+
+    take fn, like func
+
+  task run-in-async-scope, name <runInAsyncScope>
+    like result
+
+    head this
+    head result
+
+    take fn
+      like task
+        like result
+
+        take this, like this
+        take args
+          like array
+            like any
+          rest true
+    take this-arg, like this
+      void true
+    take args
+      like array
+        like any
+      rest true
+
+  task emit-destroy, name <emitDestroy>
+    like native-this
+
+  task async-id, name <asyncId>
+    like native-number
+
+  task trigger-async-id, name <triggerAsyncId>
+    like native-number
+
+form async-resource-constructor
+  hook make
+    take type, like native-string
+    take trigger-async-id
+      like or
+        like native-number
+        like async-resource-options
+      void true
+
+  task bind, name <bind>
+    like and
+      like func
+      like form
+        link async-resource, name <asyncResource>
+          like async-resource
+          flex true
+
+    head func
+      base task
+        like any
+
+        take this, like this-arg
+        take args
+          like array
+            like any
+          rest true
+    head this-arg
+
+    take fn, like func
+    take type, like native-string
+      void true
+    take this-arg, like this-arg
+      void true

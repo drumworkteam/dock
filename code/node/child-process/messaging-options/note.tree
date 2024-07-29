@@ -1,0 +1,32 @@
+
+load @termsurf/moon
+  take form or
+
+load @termsurf/base/code/javascript
+  take form abortable
+  take form native-number
+  take form native-undefined
+  take form node-js-signals
+
+load @termsurf/base/code/node/child-process
+  take form serialization-type
+
+form messaging-options, name <MessagingOptions>
+  base abortable
+
+  link serialization, name <serialization>
+    like or
+      like serialization-type
+      like native-undefined
+    flex true
+  link kill-signal, name <killSignal>
+    like or
+      like node-js-signals
+      like native-number
+      like native-undefined
+    flex true
+  link timeout, name <timeout>
+    like or
+      like native-number
+      like native-undefined
+    flex true

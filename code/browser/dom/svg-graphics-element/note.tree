@@ -1,0 +1,92 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form dom-matrix
+  take form dom-rect
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form svg-animated-transform-list
+  take form svg-bounding-box-options
+  take form svg-element
+  take form svg-element-event-map
+  take form svg-tests
+
+form svg-graphics-element, name <SVGGraphicsElement>
+  base svg-element
+  base svg-tests
+
+  link transform, name <transform>
+    like svg-animated-transform-list
+
+  task get-b-box, name <getBBox>
+    like dom-rect
+
+    take options, like maybe, like svg-bounding-box-options
+
+  task get-ctm, name <getCTM>
+    like or
+      like dom-matrix
+      like native-null
+
+  task get-screen-ctm, name <getScreenCTM>
+    like or
+      like dom-matrix
+      like native-null
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like svg-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like svg-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

@@ -1,0 +1,22 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-string
+
+load @termsurf/base/code/javascript/es2015/symbol/wellknown
+  take form promise-constructor
+
+load @termsurf/base/code/javascript/es2015/symbol/wellknown/promise
+  take form promise
+
+form promise, name <Promise>
+  head t
+
+  link {symbol/to-string-tag}
+    like native-string
+    work true
+
+form promise
+  hook self
+    link {symbol/species}
+      like promise-constructor
+      work true

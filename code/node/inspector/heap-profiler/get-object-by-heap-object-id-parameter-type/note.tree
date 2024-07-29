@@ -1,0 +1,20 @@
+
+load @termsurf/moon
+  take form or
+
+load @termsurf/base/code/javascript
+  take form native-string
+  take form native-undefined
+
+load @termsurf/base/code/node/inspector/heap-profiler
+  take form heap-snapshot-object-id
+
+form get-object-by-heap-object-id-parameter-type, name <GetObjectByHeapObjectIdParameterType>
+  link object-id, name <objectId>
+    like heap-snapshot-object-id
+    flex true
+  link object-group, name <objectGroup>
+    like or
+      like native-string
+      like native-undefined
+    flex true

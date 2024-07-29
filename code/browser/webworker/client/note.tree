@@ -1,0 +1,31 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/webworker
+  take form client-types
+  take form frame-type
+  take form transferable
+
+form client, name <Client>
+  link frame-type, name <frameType>
+    like frame-type
+  link id, name <id>
+    like native-string
+  link type, name <type>
+    like client-types
+  link url, name <url>
+    like native-string
+
+  task post-message, name <postMessage>
+    like native-void
+
+    take message
+    take transfer
+      like maybe
+        like array
+          like transferable

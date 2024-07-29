@@ -1,0 +1,34 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form clipboard-items
+  take form event-target
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+
+form clipboard, name <Clipboard>
+  base event-target
+
+  task read, name <read>
+    like promise
+      like clipboard-items
+
+  task read-text, name <readText>
+    like promise
+      like native-string
+
+  task write, name <write>
+    like promise
+      like native-void
+
+    take data
+
+  task write-text, name <writeText>
+    like promise
+      like native-void
+
+    take data

@@ -1,0 +1,99 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form event
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form html-body-element-event-map
+  take form html-element
+  take form window-event-handlers
+
+form html-body-element, name <HTMLBodyElement>
+  base html-element
+  base window-event-handlers
+
+  link a-link, name <aLink>
+    like native-string
+    flex true
+  link background, name <background>
+    like native-string
+    flex true
+  link bg-color, name <bgColor>
+    like native-string
+    flex true
+  link link, name <link>
+    like native-string
+    flex true
+  link onorientationchange, name <onorientationchange>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link text, name <text>
+    like native-string
+    flex true
+  link v-link, name <vLink>
+    like native-string
+    flex true
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like html-body-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like html-body-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

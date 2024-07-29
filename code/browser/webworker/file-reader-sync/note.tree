@@ -1,0 +1,31 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-string
+
+load @termsurf/base/code/browser/webworker
+  take form blob
+
+load @termsurf/base/code/javascript/es5
+  take form array-buffer
+
+form file-reader-sync, name <FileReaderSync>
+  task read-as-array-buffer, name <readAsArrayBuffer>
+    like array-buffer
+
+    take blob
+
+  task read-as-binary-string, name <readAsBinaryString>
+    like native-string
+
+    take blob
+
+  task read-as-data-url, name <readAsDataURL>
+    like native-string
+
+    take blob
+
+  task read-as-text, name <readAsText>
+    like native-string
+
+    take blob
+    take encoding, like maybe, like native-string

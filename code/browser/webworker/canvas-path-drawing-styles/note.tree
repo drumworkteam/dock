@@ -1,0 +1,40 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form native-void
+
+load @termsurf/base/code/browser/webworker
+  take form canvas-line-cap
+  take form canvas-line-join
+
+load @termsurf/base/code/browser/dom/iterable/canvas-path-drawing-styles
+  take form canvas-path-drawing-styles
+
+form canvas-path-drawing-styles, name <CanvasPathDrawingStyles>
+  link line-cap, name <lineCap>
+    like canvas-line-cap
+    flex true
+  link line-dash-offset, name <lineDashOffset>
+    like native-number
+    flex true
+  link line-join, name <lineJoin>
+    like canvas-line-join
+    flex true
+  link line-width, name <lineWidth>
+    like native-number
+    flex true
+  link miter-limit, name <miterLimit>
+    like native-number
+    flex true
+
+  task get-line-dash, name <getLineDash>
+    like array
+      like native-number
+
+  task set-line-dash, name <setLineDash>
+    like native-void
+
+    take segments

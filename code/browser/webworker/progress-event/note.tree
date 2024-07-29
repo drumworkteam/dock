@@ -1,0 +1,30 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+
+load @termsurf/base/code/browser/webworker
+  take form event
+  take form event-target
+
+load @termsurf/base/code/browser/dom/progress-event
+  take form progress-event
+
+form progress-event, name <ProgressEvent>
+  base event
+
+  head t
+    base event-target
+    fall event-target
+
+  link length-computable, name <lengthComputable>
+    like native-boolean
+  link loaded, name <loaded>
+    like native-number
+  link target, name <target>
+    like or
+      like t
+      like native-null
+  link total, name <total>
+    like native-number

@@ -1,0 +1,89 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form svg-animated-enumeration
+  take form svg-animated-length
+  take form svg-animated-transform-list
+  take form svg-element
+  take form svg-element-event-map
+  take form svg-fit-to-view-box
+  take form svguri-reference
+
+form svg-pattern-element, name <SVGPatternElement>
+  base svg-element
+  base svg-fit-to-view-box
+  base svguri-reference
+
+  link height, name <height>
+    like svg-animated-length
+  link pattern-content-units, name <patternContentUnits>
+    like svg-animated-enumeration
+  link pattern-transform, name <patternTransform>
+    like svg-animated-transform-list
+  link pattern-units, name <patternUnits>
+    like svg-animated-enumeration
+  link width, name <width>
+    like svg-animated-length
+  link x, name <x>
+    like svg-animated-length
+  link y, name <y>
+    like svg-animated-length
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like svg-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like svg-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

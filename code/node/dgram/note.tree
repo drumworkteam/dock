@@ -1,0 +1,45 @@
+
+bear @termsurf/base/code/javascript/node/dgram/remote-info
+bear @termsurf/base/code/javascript/node/dgram/bind-options
+bear @termsurf/base/code/javascript/node/dgram/socket-type
+bear @termsurf/base/code/javascript/node/dgram/socket-options
+bear @termsurf/base/code/javascript/node/dgram/socket
+
+load @termsurf/moon
+  take form task
+
+load @termsurf/base/code/javascript
+  take form native-void
+  take form socket
+
+load @termsurf/base/code/node/buffer
+  take form buffer
+
+load @termsurf/base/code/node/dgram
+  take form remote-info
+  take form socket-options
+  take form socket-type
+
+task create-socket, name <createSocket>
+  like socket
+
+  take type, like socket-type
+  take callback
+    like task
+      like native-void
+
+      take msg, like buffer
+      take rinfo, like remote-info
+    void true
+
+task create-socket, name <createSocket>
+  like socket
+
+  take options, like socket-options
+  take callback
+    like task
+      like native-void
+
+      take msg, like buffer
+      take rinfo, like remote-info
+    void true

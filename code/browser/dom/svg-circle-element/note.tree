@@ -1,0 +1,75 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form svg-animated-length
+  take form svg-element-event-map
+  take form svg-geometry-element
+
+form svg-circle-element, name <SVGCircleElement>
+  base svg-geometry-element
+
+  link cx, name <cx>
+    like svg-animated-length
+  link cy, name <cy>
+    like svg-animated-length
+  link r, name <r>
+    like svg-animated-length
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like svg-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like svg-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

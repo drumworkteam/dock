@@ -1,0 +1,29 @@
+
+load @termsurf/base/code/javascript/native
+  take form iterable
+  take form native-boolean
+  take form native-number
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form media-key-system-access
+  take form media-key-system-configuration
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+
+load @termsurf/base/code/browser/dom/navigator
+  take form navigator
+
+form navigator, name <Navigator>
+  task request-media-key-system-access, name <requestMediaKeySystemAccess>
+    like promise
+      like media-key-system-access
+
+    take key-system
+    take supported-configurations
+
+  task vibrate, name <vibrate>
+    like native-boolean
+
+    take pattern

@@ -1,0 +1,37 @@
+
+load @termsurf/moon
+  take form or
+  take form task
+
+load @termsurf/base/code/javascript
+  take form native-number
+  take form native-undefined
+  take form stream-duplex
+  take form url-url
+
+load @termsurf/base/code/node/http2
+  take form session-options
+
+form client-session-options, name <ClientSessionOptions>
+  base session-options
+
+  link max-reserved-remote-streams, name <maxReservedRemoteStreams>
+    like or
+      like native-number
+      like native-undefined
+    flex true
+  link create-connection, name <createConnection>
+    like or
+      like task
+        like stream-duplex
+
+        take authority, like url-url
+        take option, like session-options
+      like native-undefined
+    flex true
+  link protocol, name <protocol>
+    like or
+      text <http:>
+      text <https:>
+      like native-undefined
+    flex true

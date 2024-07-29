@@ -1,0 +1,25 @@
+
+load @termsurf/base/code/javascript/es5
+  take form error
+  take form error-constructor
+
+load @termsurf/base/code/javascript/native
+  take form native-string
+
+load @termsurf/base/code/javascript/es5/syntax-error
+  take form syntax-error
+
+form syntax-error, name <SyntaxError>
+  base error
+
+form syntax-error
+  hook self
+  base error-constructor
+
+    link prototype, name <prototype>
+      like syntax-error
+
+  hook make
+    like syntax-error
+
+    take message, like maybe, like native-string

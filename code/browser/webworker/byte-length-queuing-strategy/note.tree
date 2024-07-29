@@ -1,0 +1,22 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+
+load @termsurf/base/code/browser/webworker
+  take form queuing-strategy
+  take form queuing-strategy-size
+
+load @termsurf/base/code/javascript/es5
+  take form array-buffer-view
+
+load @termsurf/base/code/browser/dom/byte-length-queuing-strategy
+  take form byte-length-queuing-strategy
+
+form byte-length-queuing-strategy, name <ByteLengthQueuingStrategy>
+  base queuing-strategy
+
+  link high-water-mark, name <highWaterMark>
+    like native-number
+  link size, name <size>
+    like queuing-strategy-size
+      like array-buffer-view

@@ -1,0 +1,82 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-this
+  take form native-undefined
+  take form native-void
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/es2015/collection/map
+  take form map
+
+form map, name <Map>
+  head k
+  head v
+
+  link size, name <size>
+    like native-number
+
+  task clear, name <clear>
+    like native-void
+
+  task delete, name <delete>
+    like native-boolean
+
+    take key
+
+  task for-each, name <forEach>
+    like native-void
+
+    take callbackfn
+    take this-arg, like maybe, like any
+
+  task get, name <get>
+    like or
+      like v
+      like native-undefined
+
+    take key
+
+  task has, name <has>
+    like native-boolean
+
+    take key
+
+  task set, name <set>
+    like native-this
+
+    take key
+    take value
+
+form map
+  hook self
+    link prototype, name <prototype>
+      like map
+        like any
+        like any
+
+  hook make
+    like map
+      like any
+      like any
+
+  hook make
+    like map
+      like k
+      like v
+
+    head k
+    head v
+
+    take entries
+      like maybe
+        like or
+          like array
+            like tuple
+              like k
+              like v
+          like native-null

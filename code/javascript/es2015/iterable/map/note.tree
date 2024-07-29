@@ -1,0 +1,46 @@
+
+load @termsurf/base/code/javascript/es2015/iterable
+  take form iterable
+  take form iterable-iterator
+
+load @termsurf/base/code/javascript/es2015/collection/map
+  take form map
+
+load @termsurf/base/code/javascript/es2015/iterable/map
+  take form map
+
+form map, name <Map>
+  head k
+  head v
+
+  task {symbol/iterator}
+    like iterable-iterator
+      like tuple
+        like k
+        like v
+
+  task entries, name <entries>
+    like iterable-iterator
+      like tuple
+        like k
+        like v
+
+  task keys, name <keys>
+    like iterable-iterator
+      like k
+
+  task values, name <values>
+    like iterable-iterator
+      like v
+
+form map
+  hook self
+  hook make
+    like map
+      like k
+      like v
+
+    head k
+    head v
+
+    take iterable

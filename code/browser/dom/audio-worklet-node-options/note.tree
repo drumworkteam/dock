@@ -1,0 +1,35 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form audio-node-options
+
+load @termsurf/base/code/javascript/es5
+  take form record
+
+form audio-worklet-node-options, name <AudioWorkletNodeOptions>
+  base audio-node-options
+
+  link number-of-inputs, name <numberOfInputs>
+    like native-number
+    flex true
+  link number-of-outputs, name <numberOfOutputs>
+    like native-number
+    flex true
+  link output-channel-count, name <outputChannelCount>
+    like array
+      like native-number
+    flex true
+  link parameter-data, name <parameterData>
+    like record
+      like native-string
+      like native-number
+    flex true
+  link processor-options, name <processorOptions>
+    like any
+    flex true

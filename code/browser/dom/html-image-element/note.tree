@@ -1,0 +1,151 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form html-element
+  take form html-element-event-map
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+
+form html-image-element, name <HTMLImageElement>
+  base html-element
+
+  link align, name <align>
+    like native-string
+    flex true
+  link alt, name <alt>
+    like native-string
+    flex true
+  link border, name <border>
+    like native-string
+    flex true
+  link complete, name <complete>
+    like native-boolean
+  link cross-origin, name <crossOrigin>
+    like or
+      like native-string
+      like native-null
+    flex true
+  link current-src, name <currentSrc>
+    like native-string
+  link decoding, name <decoding>
+    like or
+      text <async>
+      text <sync>
+      text <auto>
+    flex true
+  link height, name <height>
+    like native-number
+    flex true
+  link hspace, name <hspace>
+    like native-number
+    flex true
+  link is-map, name <isMap>
+    like native-boolean
+    flex true
+  link loading, name <loading>
+    like native-string
+    flex true
+  link long-desc, name <longDesc>
+    like native-string
+    flex true
+  link lowsrc, name <lowsrc>
+    like native-string
+    flex true
+  link name, name <name>
+    like native-string
+    flex true
+  link natural-height, name <naturalHeight>
+    like native-number
+  link natural-width, name <naturalWidth>
+    like native-number
+  link referrer-policy, name <referrerPolicy>
+    like native-string
+    flex true
+  link sizes, name <sizes>
+    like native-string
+    flex true
+  link src, name <src>
+    like native-string
+    flex true
+  link srcset, name <srcset>
+    like native-string
+    flex true
+  link use-map, name <useMap>
+    like native-string
+    flex true
+  link vspace, name <vspace>
+    like native-number
+    flex true
+  link width, name <width>
+    like native-number
+    flex true
+  link x, name <x>
+    like native-number
+  link y, name <y>
+    like native-number
+
+  task decode, name <decode>
+    like promise
+      like native-void
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like html-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like html-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

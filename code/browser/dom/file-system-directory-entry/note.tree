@@ -1,0 +1,42 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form error-callback
+  take form file-system-directory-reader
+  take form file-system-entry
+  take form file-system-entry-callback
+  take form file-system-flags
+
+form file-system-directory-entry, name <FileSystemDirectoryEntry>
+  base file-system-entry
+
+  task create-reader, name <createReader>
+    like file-system-directory-reader
+
+  task get-directory, name <getDirectory>
+    like native-void
+
+    take path
+      like maybe
+        like or
+          like native-string
+          like native-null
+    take options, like maybe, like file-system-flags
+    take success-callback, like maybe, like file-system-entry-callback
+    take error-callback, like maybe, like error-callback
+
+  task get-file, name <getFile>
+    like native-void
+
+    take path
+      like maybe
+        like or
+          like native-string
+          like native-null
+    take options, like maybe, like file-system-flags
+    take success-callback, like maybe, like file-system-entry-callback
+    take error-callback, like maybe, like error-callback

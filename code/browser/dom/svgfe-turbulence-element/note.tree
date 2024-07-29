@@ -1,0 +1,98 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form svg-animated-enumeration
+  take form svg-animated-integer
+  take form svg-animated-number
+  take form svg-element
+  take form svg-element-event-map
+  take form svg-filter-primitive-standard-attributes
+
+form svgfe-turbulence-element, name <SVGFETurbulenceElement>
+  base svg-element
+  base svg-filter-primitive-standard-attributes
+
+  link base-frequency-x, name <baseFrequencyX>
+    like svg-animated-number
+  link base-frequency-y, name <baseFrequencyY>
+    like svg-animated-number
+  link num-octaves, name <numOctaves>
+    like svg-animated-integer
+  link seed, name <seed>
+    like svg-animated-number
+  link stitch-tiles, name <stitchTiles>
+    like svg-animated-enumeration
+  link type, name <type>
+    like svg-animated-enumeration
+  link svg-stitchtype-nostitch, name <SVG_STITCHTYPE_NOSTITCH>
+    like native-number
+  link svg-stitchtype-stitch, name <SVG_STITCHTYPE_STITCH>
+    like native-number
+  link svg-stitchtype-unknown, name <SVG_STITCHTYPE_UNKNOWN>
+    like native-number
+  link svg-turbulence-type-fractalnoise, name <SVG_TURBULENCE_TYPE_FRACTALNOISE>
+    like native-number
+  link svg-turbulence-type-turbulence, name <SVG_TURBULENCE_TYPE_TURBULENCE>
+    like native-number
+  link svg-turbulence-type-unknown, name <SVG_TURBULENCE_TYPE_UNKNOWN>
+    like native-number
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like svg-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like svg-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

@@ -1,0 +1,23 @@
+
+load @termsurf/base/code/javascript/native
+  take form var-date
+
+load @termsurf/base/code/javascript/es5/date
+  take form date
+
+load @termsurf/base/code/browser/scripthost/date
+  take form date
+
+form date
+  hook self
+  hook make
+    like date
+
+    take vd
+
+form date, name <Date>
+  link get-var-date, name <getVarDate>
+    like task
+      like var-date
+
+    flex true

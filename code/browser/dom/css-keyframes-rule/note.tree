@@ -1,0 +1,36 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form css-keyframe-rule
+  take form css-rule
+  take form css-rule-list
+
+form css-keyframes-rule, name <CSSKeyframesRule>
+  base css-rule
+
+  link css-rules, name <cssRules>
+    like css-rule-list
+  link name, name <name>
+    like native-string
+    flex true
+
+  task append-rule, name <appendRule>
+    like native-void
+
+    take rule
+
+  task delete-rule, name <deleteRule>
+    like native-void
+
+    take select
+
+  task find-rule, name <findRule>
+    like or
+      like css-keyframe-rule
+      like native-null
+
+    take select

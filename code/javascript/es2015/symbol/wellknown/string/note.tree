@@ -1,0 +1,46 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-number
+  take form native-string
+
+load @termsurf/base/code/javascript/es5
+  take form reg-exp-match-array
+
+load @termsurf/base/code/javascript/es2015/iterable/string
+  take form string
+
+form string, name <String>
+  task match, name <match>
+    like or
+      like reg-exp-match-array
+      like native-null
+
+    take matcher
+
+  task replace, name <replace>
+    like native-string
+
+    take search-value
+    take replace-value
+
+  task replace, name <replace>
+    like native-string
+
+    take search-value
+    take replacer
+
+  task search, name <search>
+    like native-number
+
+    take searcher
+
+  task split, name <split>
+    like array
+      like native-string
+
+    take splitter
+    take limit, like maybe, like native-number

@@ -1,0 +1,52 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-object
+  take form native-this
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/es2015/collection/weak-set
+  take form weak-set
+
+form weak-set, name <WeakSet>
+  head t
+    base native-object
+
+  task add, name <add>
+    like native-this
+
+    take value
+
+  task delete, name <delete>
+    like native-boolean
+
+    take value
+
+  task has, name <has>
+    like native-boolean
+
+    take value
+
+form weak-set
+  hook self
+    link prototype, name <prototype>
+      like weak-set
+        like native-object
+
+  hook make
+    like weak-set
+      like t
+
+    head t
+      base native-object
+      fall native-object
+
+    take values
+      like maybe
+        like or
+          like array
+            like t
+          like native-null

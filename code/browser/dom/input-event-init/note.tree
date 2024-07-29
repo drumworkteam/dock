@@ -1,0 +1,37 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form data-transfer
+  take form static-range
+  take form ui-event-init
+
+form input-event-init, name <InputEventInit>
+  base ui-event-init
+
+  link data, name <data>
+    like or
+      like native-string
+      like native-null
+    flex true
+  link data-transfer, name <dataTransfer>
+    like or
+      like data-transfer
+      like native-null
+    flex true
+  link input-type, name <inputType>
+    like native-string
+    flex true
+  link is-composing, name <isComposing>
+    like native-boolean
+    flex true
+  link target-ranges, name <targetRanges>
+    like array
+      like static-range
+    flex true

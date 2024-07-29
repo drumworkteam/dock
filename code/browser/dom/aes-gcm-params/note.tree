@@ -1,0 +1,20 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+
+load @termsurf/base/code/browser/dom
+  take form algorithm
+  take form buffer-source
+
+form aes-gcm-params, name <AesGcmParams>
+  base algorithm
+
+  link additional-data, name <additionalData>
+    like buffer-source
+    flex true
+  link iv, name <iv>
+    like buffer-source
+    flex true
+  link tag-length, name <tagLength>
+    like native-number
+    flex true

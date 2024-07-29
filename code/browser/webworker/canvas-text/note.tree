@@ -1,0 +1,33 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/webworker
+  take form text-metrics
+
+load @termsurf/base/code/browser/dom/canvas-text
+  take form canvas-text
+
+form canvas-text, name <CanvasText>
+  task fill-text, name <fillText>
+    like native-void
+
+    take text
+    take x
+    take y
+    take max-width, like maybe, like native-number
+
+  task measure-text, name <measureText>
+    like text-metrics
+
+    take text
+
+  task stroke-text, name <strokeText>
+    like native-void
+
+    take text
+    take x
+    take y
+    take max-width, like maybe, like native-number

@@ -1,0 +1,37 @@
+
+load @termsurf/moon
+  take form or
+
+load @termsurf/base/code/javascript
+  take form native-number
+  take form native-string
+  take form native-undefined
+  take form node-js-typed-array
+
+load @termsurf/base/code/node/crypto
+  take form key-like
+
+form rsa-private-key, name <RsaPrivateKey>
+  link key, name <key>
+    like key-like
+    flex true
+  link passphrase, name <passphrase>
+    like or
+      like native-string
+      like native-undefined
+    flex true
+  link oaep-hash, name <oaepHash>
+    like or
+      like native-string
+      like native-undefined
+    flex true
+  link oaep-label, name <oaepLabel>
+    like or
+      like node-js-typed-array
+      like native-undefined
+    flex true
+  link padding, name <padding>
+    like or
+      like native-number
+      like native-undefined
+    flex true

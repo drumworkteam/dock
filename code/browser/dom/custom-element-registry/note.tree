@@ -1,0 +1,39 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-string
+  take form native-undefined
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form custom-element-constructor
+  take form element-definition-options
+  take form node
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+
+form custom-element-registry, name <CustomElementRegistry>
+  task define, name <define>
+    like native-void
+
+    take name
+    take constructor
+    take options, like maybe, like element-definition-options
+
+  task get, name <get>
+    like or
+      like custom-element-constructor
+      like native-undefined
+
+    take name
+
+  task upgrade, name <upgrade>
+    like native-void
+
+    take root
+
+  task when-defined, name <whenDefined>
+    like promise
+      like custom-element-constructor
+
+    take name

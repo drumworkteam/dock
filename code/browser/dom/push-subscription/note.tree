@@ -1,0 +1,34 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form push-encryption-key-name
+  take form push-subscription-json
+  take form push-subscription-options
+
+load @termsurf/base/code/javascript/es5
+  take form array-buffer
+  take form promise
+
+form push-subscription, name <PushSubscription>
+  link endpoint, name <endpoint>
+    like native-string
+  link options, name <options>
+    like push-subscription-options
+
+  task get-key, name <getKey>
+    like or
+      like array-buffer
+      like native-null
+
+    take name
+
+  task to-json, name <toJSON>
+    like push-subscription-json
+
+  task unsubscribe, name <unsubscribe>
+    like promise
+      like native-boolean

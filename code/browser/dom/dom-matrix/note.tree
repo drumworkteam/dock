@@ -1,0 +1,85 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form dom-matrix-init
+  take form dom-matrix-read-only
+
+form dom-matrix, name <DOMMatrix>
+  base dom-matrix-read-only
+
+  task invert-self, name <invertSelf>
+    like dom-matrix
+
+  task multiply-self, name <multiplySelf>
+    like dom-matrix
+
+    take other, like maybe, like dom-matrix-init
+
+  task pre-multiply-self, name <preMultiplySelf>
+    like dom-matrix
+
+    take other, like maybe, like dom-matrix-init
+
+  task rotate-axis-angle-self, name <rotateAxisAngleSelf>
+    like dom-matrix
+
+    take x, like maybe, like native-number
+    take y, like maybe, like native-number
+    take z, like maybe, like native-number
+    take angle, like maybe, like native-number
+
+  task rotate-from-vector-self, name <rotateFromVectorSelf>
+    like dom-matrix
+
+    take x, like maybe, like native-number
+    take y, like maybe, like native-number
+
+  task rotate-self, name <rotateSelf>
+    like dom-matrix
+
+    take rot-x, like maybe, like native-number
+    take rot-y, like maybe, like native-number
+    take rot-z, like maybe, like native-number
+
+  task scale3d-self, name <scale3dSelf>
+    like dom-matrix
+
+    take scale, like maybe, like native-number
+    take origin-x, like maybe, like native-number
+    take origin-y, like maybe, like native-number
+    take origin-z, like maybe, like native-number
+
+  task scale-self, name <scaleSelf>
+    like dom-matrix
+
+    take scale-x, like maybe, like native-number
+    take scale-y, like maybe, like native-number
+    take scale-z, like maybe, like native-number
+    take origin-x, like maybe, like native-number
+    take origin-y, like maybe, like native-number
+    take origin-z, like maybe, like native-number
+
+  task set-matrix-value, name <setMatrixValue>
+    like dom-matrix
+
+    take transform-list
+
+  task skew-x-self, name <skewXSelf>
+    like dom-matrix
+
+    take sx, like maybe, like native-number
+
+  task skew-y-self, name <skewYSelf>
+    like dom-matrix
+
+    take sy, like maybe, like native-number
+
+  task translate-self, name <translateSelf>
+    like dom-matrix
+
+    take tx, like maybe, like native-number
+    take ty, like maybe, like native-number
+    take tz, like maybe, like native-number

@@ -1,0 +1,25 @@
+
+load @termsurf/moon
+  take form or
+
+load @termsurf/base/code/javascript
+  take form native-void
+  take form node-js-read-write-stream
+  take form node-js-readable-stream
+  take form node-js-writable-stream
+  take form promise
+
+load @termsurf/base/code/node/stream/internal
+  take form finished-options
+
+task promisify, name <__promisify__>
+  like promise
+    like native-void
+
+  take stream
+    like or
+      like node-js-readable-stream
+      like node-js-writable-stream
+      like node-js-read-write-stream
+  take options, like finished-options
+    void true

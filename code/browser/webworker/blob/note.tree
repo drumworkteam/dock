@@ -1,0 +1,38 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form native-string
+
+load @termsurf/base/code/browser/webworker
+  take form readable-stream
+
+load @termsurf/base/code/javascript/es5
+  take form array-buffer
+  take form promise
+
+load @termsurf/base/code/browser/dom/blob
+  take form blob
+
+form blob, name <Blob>
+  link size, name <size>
+    like native-number
+  link type, name <type>
+    like native-string
+
+  task array-buffer, name <arrayBuffer>
+    like promise
+      like array-buffer
+
+  task slice, name <slice>
+    like blob
+
+    take start, like maybe, like native-number
+    take end, like maybe, like native-number
+    take content-type, like maybe, like native-string
+
+  task stream, name <stream>
+    like readable-stream
+
+  task text, name <text>
+    like promise
+      like native-string

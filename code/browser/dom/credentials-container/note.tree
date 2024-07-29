@@ -1,0 +1,39 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form credential
+  take form credential-creation-options
+  take form credential-request-options
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+
+form credentials-container, name <CredentialsContainer>
+  task create, name <create>
+    like promise
+      like or
+        like credential
+        like native-null
+
+    take options, like maybe, like credential-creation-options
+
+  task get, name <get>
+    like promise
+      like or
+        like credential
+        like native-null
+
+    take options, like maybe, like credential-request-options
+
+  task prevent-silent-access, name <preventSilentAccess>
+    like promise
+      like native-void
+
+  task store, name <store>
+    like promise
+      like credential
+
+    take credential

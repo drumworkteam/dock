@@ -1,0 +1,43 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-undefined
+
+form promise-like, name <PromiseLike>
+  head t
+
+  task then, name <then>
+    like promise-like
+      like or
+        like t-result1
+        like t-result2
+
+    head t-result1
+      fall t
+    head t-result2
+      fall never
+
+    take onfulfilled
+      like maybe
+        like or
+          like task
+            like or
+              like t-result1
+              like promise-like
+                like t-result1
+
+            take value
+          like native-undefined
+          like native-null
+    take onrejected
+      like maybe
+        like or
+          like task
+            like or
+              like t-result2
+              like promise-like
+                like t-result2
+
+            take reason
+          like native-undefined
+          like native-null

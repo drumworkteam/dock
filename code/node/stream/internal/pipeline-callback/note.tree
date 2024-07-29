@@ -1,0 +1,47 @@
+
+load @termsurf/moon
+  take form any
+  take form like
+  take form or
+  take form task
+  take form test
+
+load @termsurf/base/code/javascript
+  take form native-null
+  take form native-void
+  take form node-js-errno-exception
+  take form p
+
+load @termsurf/base/code/node/stream/internal
+  take form pipeline-destination
+  take form pipeline-destination-promise-function
+
+form pipeline-callback, name <PipelineCallback>
+  head s
+    base pipeline-destination
+      like any
+      like any
+
+  like test
+    stem roll
+      like s
+      like pipeline-destination-promise-function
+        like any
+        name p
+      hook true
+        like task
+          like native-void
+
+          take err
+            like or
+              like node-js-errno-exception
+              like native-null
+          take value, like p
+      hook false
+        like task
+          like native-void
+
+          take err
+            like or
+              like node-js-errno-exception
+              like native-null

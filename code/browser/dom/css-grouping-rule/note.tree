@@ -1,0 +1,26 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form css-rule
+  take form css-rule-list
+
+form css-grouping-rule, name <CSSGroupingRule>
+  base css-rule
+
+  link css-rules, name <cssRules>
+    like css-rule-list
+
+  task delete-rule, name <deleteRule>
+    like native-void
+
+    take index
+
+  task insert-rule, name <insertRule>
+    like native-number
+
+    take rule
+    take index, like maybe, like native-number

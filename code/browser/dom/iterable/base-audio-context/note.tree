@@ -1,0 +1,26 @@
+
+load @termsurf/base/code/javascript/native
+  take form iterable
+  take form native-number
+
+load @termsurf/base/code/browser/dom
+  take form iir-filter-node
+  take form periodic-wave
+  take form periodic-wave-constraints
+
+load @termsurf/base/code/browser/dom/base-audio-context
+  take form base-audio-context
+
+form base-audio-context, name <BaseAudioContext>
+  task create-iir-filter, name <createIIRFilter>
+    like iir-filter-node
+
+    take feedforward
+    take feedback
+
+  task create-periodic-wave, name <createPeriodicWave>
+    like periodic-wave
+
+    take real
+    take imag
+    take constraints, like maybe, like periodic-wave-constraints

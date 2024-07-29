@@ -1,0 +1,58 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-number
+  take form native-string
+
+form json, name <JSON>
+  task parse, name <parse>
+    like any
+
+    take text
+    take reviver
+      like maybe
+        like task
+          like any
+
+          take this
+          take key
+          take value
+
+  task stringify, name <stringify>
+    like native-string
+
+    take value
+    take replacer
+      like maybe
+        like task
+          like any
+
+          take this
+          take key
+          take value
+    take space
+      like maybe
+        like or
+          like native-string
+          like native-number
+
+  task stringify, name <stringify>
+    like native-string
+
+    take value
+    take replacer
+      like maybe
+        like or
+          like array
+            like or
+              like native-number
+              like native-string
+          like native-null
+    take space
+      like maybe
+        like or
+          like native-string
+          like native-number

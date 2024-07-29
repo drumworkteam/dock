@@ -1,0 +1,91 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form svg-animated-enumeration
+  take form svg-animated-length
+  take form svg-element-event-map
+  take form svg-text-content-element
+  take form svguri-reference
+
+form svg-text-path-element, name <SVGTextPathElement>
+  base svg-text-content-element
+  base svguri-reference
+
+  link method, name <method>
+    like svg-animated-enumeration
+  link spacing, name <spacing>
+    like svg-animated-enumeration
+  link start-offset, name <startOffset>
+    like svg-animated-length
+  link textpath-methodtype-align, name <TEXTPATH_METHODTYPE_ALIGN>
+    like native-number
+  link textpath-methodtype-stretch, name <TEXTPATH_METHODTYPE_STRETCH>
+    like native-number
+  link textpath-methodtype-unknown, name <TEXTPATH_METHODTYPE_UNKNOWN>
+    like native-number
+  link textpath-spacingtype-auto, name <TEXTPATH_SPACINGTYPE_AUTO>
+    like native-number
+  link textpath-spacingtype-exact, name <TEXTPATH_SPACINGTYPE_EXACT>
+    like native-number
+  link textpath-spacingtype-unknown, name <TEXTPATH_SPACINGTYPE_UNKNOWN>
+    like native-number
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like svg-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like svg-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

@@ -1,0 +1,131 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form document-and-element-event-handlers
+  take form element
+  take form element-content-editable
+  take form element-css-inline-style
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form global-event-handlers
+  take form html-element-event-map
+  take form html-or-svg-element
+
+form html-element, name <HTMLElement>
+  base element
+  base document-and-element-event-handlers
+  base element-css-inline-style
+  base element-css-inline-style
+  base element-content-editable
+  base global-event-handlers
+  base html-or-svg-element
+
+  link access-key, name <accessKey>
+    like native-string
+    flex true
+  link access-key-label, name <accessKeyLabel>
+    like native-string
+  link autocapitalize, name <autocapitalize>
+    like native-string
+    flex true
+  link dir, name <dir>
+    like native-string
+    flex true
+  link draggable, name <draggable>
+    like native-boolean
+    flex true
+  link hidden, name <hidden>
+    like native-boolean
+    flex true
+  link inner-text, name <innerText>
+    like native-string
+    flex true
+  link lang, name <lang>
+    like native-string
+    flex true
+  link offset-height, name <offsetHeight>
+    like native-number
+  link offset-left, name <offsetLeft>
+    like native-number
+  link offset-parent, name <offsetParent>
+    like or
+      like element
+      like native-null
+  link offset-top, name <offsetTop>
+    like native-number
+  link offset-width, name <offsetWidth>
+    like native-number
+  link outer-text, name <outerText>
+    like native-string
+    flex true
+  link spellcheck, name <spellcheck>
+    like native-boolean
+    flex true
+  link title, name <title>
+    like native-string
+    flex true
+  link translate, name <translate>
+    like native-boolean
+    flex true
+
+  task click, name <click>
+    like native-void
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like html-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like html-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

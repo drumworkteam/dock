@@ -1,0 +1,70 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-undefined
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form cache-query-options
+  take form request
+  take form request-info
+  take form response
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+  take form readonly-array
+
+form cache, name <Cache>
+  task add, name <add>
+    like promise
+      like native-void
+
+    take request
+
+  task add-all, name <addAll>
+    like promise
+      like native-void
+
+    take requests
+
+  task delete, name <delete>
+    like promise
+      like native-boolean
+
+    take request
+    take options, like maybe, like cache-query-options
+
+  task keys, name <keys>
+    like promise
+      like readonly-array
+        like request
+
+    take request, like maybe, like request-info
+    take options, like maybe, like cache-query-options
+
+  task match, name <match>
+    like promise
+      like or
+        like response
+        like native-undefined
+
+    take request
+    take options, like maybe, like cache-query-options
+
+  task match-all, name <matchAll>
+    like promise
+      like readonly-array
+        like response
+
+    take request, like maybe, like request-info
+    take options, like maybe, like cache-query-options
+
+  task put, name <put>
+    like promise
+      like native-void
+
+    take request
+    take response

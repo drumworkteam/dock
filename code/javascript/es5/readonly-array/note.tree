@@ -1,0 +1,167 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/javascript/es5
+  take form concat-array
+
+form readonly-array, name <ReadonlyArray>
+  head t
+
+  link length, name <length>
+    like native-number
+
+  task to-string, name <toString>
+    like native-string
+
+  task to-locale-string, name <toLocaleString>
+    like native-string
+
+  task concat, name <concat>
+    like array
+      like t
+
+    take items
+      like array
+        like concat-array
+          like t
+      rest true
+
+  task concat, name <concat>
+    like array
+      like t
+
+    take items
+      like array
+        like or
+          like t
+          like concat-array
+            like t
+      rest true
+
+  task join, name <join>
+    like native-string
+
+    take separator, like maybe, like native-string
+
+  task slice, name <slice>
+    like array
+      like t
+
+    take start, like maybe, like native-number
+    take end, like maybe, like native-number
+
+  task index-of, name <indexOf>
+    like native-number
+
+    take search-element
+    take from-index, like maybe, like native-number
+
+  task last-index-of, name <lastIndexOf>
+    like native-number
+
+    take search-element
+    take from-index, like maybe, like native-number
+
+  task every, name <every>
+    like native-boolean
+    rank self
+      like array
+        like s
+
+    head s
+      base t
+
+    take predicate
+    take this-arg, like maybe, like any
+
+  task every, name <every>
+    like native-boolean
+
+    take predicate
+    take this-arg, like maybe, like any
+
+  task some, name <some>
+    like native-boolean
+
+    take predicate
+    take this-arg, like maybe, like any
+
+  task for-each, name <forEach>
+    like native-void
+
+    take callbackfn
+    take this-arg, like maybe, like any
+
+  task map, name <map>
+    like array
+      like u
+
+    head u
+
+    take callbackfn
+    take this-arg, like maybe, like any
+
+  task filter, name <filter>
+    like array
+      like s
+
+    head s
+      base t
+
+    take predicate
+    take this-arg, like maybe, like any
+
+  task filter, name <filter>
+    like array
+      like t
+
+    take predicate
+    take this-arg, like maybe, like any
+
+  task reduce, name <reduce>
+    like t
+
+    take callbackfn
+
+  task reduce, name <reduce>
+    like t
+
+    take callbackfn
+    take initial-value
+
+  task reduce, name <reduce>
+    like u
+
+    head u
+
+    take callbackfn
+    take initial-value
+
+  task reduce-right, name <reduceRight>
+    like t
+
+    take callbackfn
+
+  task reduce-right, name <reduceRight>
+    like t
+
+    take callbackfn
+    take initial-value
+
+  task reduce-right, name <reduceRight>
+    like u
+
+    head u
+
+    take callbackfn
+    take initial-value
+
+  mesh n
+    like t

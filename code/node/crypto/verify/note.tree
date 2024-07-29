@@ -1,0 +1,55 @@
+
+load @termsurf/moon
+  take form or
+
+load @termsurf/base/code/javascript
+  take form native-boolean
+  take form native-string
+  take form node-js-array-buffer-view
+  take form verify
+
+load @termsurf/base/code/node/crypto
+  take form binary-like
+  take form binary-to-text-encoding
+  take form encoding
+  take form key-like
+  take form verify-key-object-input
+  take form verify-public-key-input
+
+form verify, name <Verify>
+  base stream-writable
+  task update, name <update>
+    like verify
+
+    take data, like binary-like
+
+  task update, name <update>
+    like verify
+
+    take data, like native-string
+    take input-encoding, like encoding
+
+  task verify, name <verify>
+    like native-boolean
+
+    take object
+      like or
+        like key-like
+        like verify-key-object-input
+        like verify-public-key-input
+    take signature, like node-js-array-buffer-view
+
+  task verify, name <verify>
+    like native-boolean
+
+    take object
+      like or
+        like key-like
+        like verify-key-object-input
+        like verify-public-key-input
+    take signature, like native-string
+    take signature-format, like binary-to-text-encoding
+      void true
+
+form verify-constructor
+  hook make

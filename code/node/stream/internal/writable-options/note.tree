@@ -1,0 +1,90 @@
+
+load @termsurf/moon
+  take form any
+  take form form
+  take form or
+  take form task
+
+load @termsurf/base/code/javascript
+  take form error
+  take form native-boolean
+  take form native-null
+  take form native-undefined
+  take form native-void
+  take form writable
+
+load @termsurf/base/code/node/buffer
+  take form buffer-encoding
+
+load @termsurf/base/code/node/globals
+  take form array
+
+load @termsurf/base/code/node/stream/internal
+  take form stream-options
+
+form writable-options, name <WritableOptions>
+  base stream-options
+
+  link decode-strings, name <decodeStrings>
+    like or
+      like native-boolean
+      like native-undefined
+    flex true
+  link default-encoding, name <defaultEncoding>
+    like or
+      like buffer-encoding
+      like native-undefined
+    flex true
+
+  task write, name <write>
+    like native-void
+
+    take this, like writable
+    take chunk, like any
+    take encoding, like buffer-encoding
+    take callback
+      like task
+        like native-void
+
+        take error
+          like or
+            like error
+            like native-null
+          void true
+
+  task writev, name <writev>
+    like native-void
+
+    take this, like writable
+    take chunks
+      like array
+        like form
+          link chunk, name <chunk>
+            like any
+            flex true
+          link encoding, name <encoding>
+            like buffer-encoding
+            flex true
+    take callback
+      like task
+        like native-void
+
+        take error
+          like or
+            like error
+            like native-null
+          void true
+
+  task final, name <final>
+    like native-void
+
+    take this, like writable
+    take callback
+      like task
+        like native-void
+
+        take error
+          like or
+            like error
+            like native-null
+          void true

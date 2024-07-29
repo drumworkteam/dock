@@ -1,0 +1,92 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form dom-point
+  take form dom-point-init
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form svg-animated-number
+  take form svg-element-event-map
+  take form svg-graphics-element
+
+form svg-geometry-element, name <SVGGeometryElement>
+  base svg-graphics-element
+
+  link path-length, name <pathLength>
+    like svg-animated-number
+
+  task get-point-at-length, name <getPointAtLength>
+    like dom-point
+
+    take distance
+
+  task get-total-length, name <getTotalLength>
+    like native-number
+
+  task is-point-in-fill, name <isPointInFill>
+    like native-boolean
+
+    take point, like maybe, like dom-point-init
+
+  task is-point-in-stroke, name <isPointInStroke>
+    like native-boolean
+
+    take point, like maybe, like dom-point-init
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like svg-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like svg-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

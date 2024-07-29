@@ -1,0 +1,24 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-string
+
+load @termsurf/base/code/browser/webworker
+  take form buffer-source
+  take form generic-transform-stream
+  take form readable-stream
+  take form text-decoder-common
+  take form writable-stream
+
+load @termsurf/base/code/browser/dom/text-decoder-stream
+  take form text-decoder-stream
+
+form text-decoder-stream, name <TextDecoderStream>
+  base generic-transform-stream
+  base text-decoder-common
+
+  link readable, name <readable>
+    like readable-stream
+      like native-string
+  link writable, name <writable>
+    like writable-stream
+      like buffer-source

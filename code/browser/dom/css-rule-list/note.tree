@@ -1,0 +1,21 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-number
+
+load @termsurf/base/code/browser/dom
+  take form css-rule
+
+form css-rule-list, name <CSSRuleList>
+  link length, name <length>
+    like native-number
+
+  task item, name <item>
+    like or
+      like css-rule
+      like native-null
+
+    take index
+
+  mesh index
+    like css-rule

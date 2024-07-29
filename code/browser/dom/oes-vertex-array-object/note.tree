@@ -1,0 +1,33 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form g-lboolean
+  take form g-lenum
+  take form web-gl-vertex-array-object-oes
+
+form oes-vertex-array-object, name <OES_vertex_array_object>
+  link vertex-array-binding-oes, name <VERTEX_ARRAY_BINDING_OES>
+    like g-lenum
+
+  task bind-vertex-array-oes, name <bindVertexArrayOES>
+    like native-void
+
+    take array-object
+
+  task create-vertex-array-oes, name <createVertexArrayOES>
+    like or
+      like web-gl-vertex-array-object-oes
+      like native-null
+
+  task delete-vertex-array-oes, name <deleteVertexArrayOES>
+    like native-void
+
+    take array-object
+
+  task is-vertex-array-oes, name <isVertexArrayOES>
+    like g-lboolean
+
+    take array-object

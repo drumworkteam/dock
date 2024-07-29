@@ -1,0 +1,56 @@
+
+load @termsurf/base/code/javascript/es5/promise
+  take form promise
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/es2015/iterable
+  take form iterable
+
+load @termsurf/base/code/javascript/es5
+  take form promise-like
+
+load @termsurf/base/code/javascript/native
+  take form u
+
+load @termsurf/base/code/javascript/es2015/iterable/promise
+  take form promise
+
+form promise, name <Promise>
+  head t
+
+form promise
+  hook self
+    task all, name <all>
+      like promise
+        like array
+          like t
+
+      head t
+
+      take values
+
+    task race, name <race>
+      like promise
+        like test
+          fork roll
+            like t
+            like promise-like
+              name u
+            hook true
+              like u
+            hook false
+              like t
+
+      head t
+
+      take values
+
+    task race, name <race>
+      like promise
+        like t
+
+      head t
+
+      take values

@@ -1,0 +1,17 @@
+
+load @termsurf/base/code/browser/dom
+  take form readable-stream
+  take form writable-stream
+
+form transform-stream, name <TransformStream>
+  head i
+    fall any
+  head o
+    fall any
+
+  link readable, name <readable>
+    like readable-stream
+      like o
+  link writable, name <writable>
+    like writable-stream
+      like i

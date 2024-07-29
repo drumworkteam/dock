@@ -1,0 +1,22 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+
+load @termsurf/base/code/browser/dom
+  take form audio-node
+  take form over-sample-type
+
+load @termsurf/base/code/javascript/es5
+  take form float32-array
+
+form wave-shaper-node, name <WaveShaperNode>
+  base audio-node
+
+  link curve, name <curve>
+    like or
+      like float32-array
+      like native-null
+    flex true
+  link oversample, name <oversample>
+    like over-sample-type
+    flex true

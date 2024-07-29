@@ -1,0 +1,90 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form document-and-element-event-handlers
+  take form element
+  take form element-css-inline-style
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form global-event-handlers
+  take form html-or-svg-element
+  take form svg-element-event-map
+  take form svgsvg-element
+
+form svg-element, name <SVGElement>
+  base element
+  base document-and-element-event-handlers
+  base document-and-element-event-handlers
+  base element-css-inline-style
+  base global-event-handlers
+  base global-event-handlers
+  base html-or-svg-element
+
+  link class-name, name <className>
+    like any
+  link owner-svg-element, name <ownerSVGElement>
+    like or
+      like svgsvg-element
+      like native-null
+  link viewport-element, name <viewportElement>
+    like or
+      like svg-element
+      like native-null
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like svg-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like svg-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

@@ -1,0 +1,18 @@
+
+load @termsurf/base/code/javascript/native
+  take form iterable
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form idb-transaction
+  take form idb-transaction-mode
+
+load @termsurf/base/code/browser/dom/idb-database
+  take form idb-database
+
+form idb-database, name <IDBDatabase>
+  task transaction, name <transaction>
+    like idb-transaction
+
+    take store-names
+    take mode, like maybe, like idb-transaction-mode

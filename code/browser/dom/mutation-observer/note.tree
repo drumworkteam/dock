@@ -1,0 +1,25 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form mutation-observer-init
+  take form mutation-record
+  take form node
+
+form mutation-observer, name <MutationObserver>
+  task disconnect, name <disconnect>
+    like native-void
+
+  task observe, name <observe>
+    like native-void
+
+    take target
+    take options, like maybe, like mutation-observer-init
+
+  task take-records, name <takeRecords>
+    like array
+      like mutation-record

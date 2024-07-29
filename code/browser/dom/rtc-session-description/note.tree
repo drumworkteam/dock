@@ -1,0 +1,15 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form rtc-sdp-type
+
+form rtc-session-description, name <RTCSessionDescription>
+  link sdp, name <sdp>
+    like native-string
+  link type, name <type>
+    like rtc-sdp-type
+
+  task to-json, name <toJSON>
+    like any

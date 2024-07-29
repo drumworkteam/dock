@@ -1,0 +1,28 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/webworker
+  take form event
+
+load @termsurf/base/code/browser/dom/custom-event
+  take form custom-event
+
+form custom-event, name <CustomEvent>
+  base event
+
+  head t
+    fall any
+
+  link detail, name <detail>
+    like t
+
+  task init-custom-event, name <initCustomEvent>
+    like native-void
+
+    take type-arg
+    take can-bubble-arg
+    take cancelable-arg
+    take detail-arg

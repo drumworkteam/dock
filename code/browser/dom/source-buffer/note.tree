@@ -1,0 +1,154 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form append-mode
+  take form buffer-source
+  take form event
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form event-target
+  take form source-buffer-event-map
+  take form time-ranges
+
+form source-buffer, name <SourceBuffer>
+  base event-target
+
+  link append-window-end, name <appendWindowEnd>
+    like native-number
+    flex true
+  link append-window-start, name <appendWindowStart>
+    like native-number
+    flex true
+  link buffered, name <buffered>
+    like time-ranges
+  link mode, name <mode>
+    like append-mode
+    flex true
+  link onabort, name <onabort>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onerror, name <onerror>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onupdate, name <onupdate>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onupdateend, name <onupdateend>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onupdatestart, name <onupdatestart>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link timestamp-offset, name <timestampOffset>
+    like native-number
+    flex true
+  link updating, name <updating>
+    like native-boolean
+
+  task abort, name <abort>
+    like native-void
+
+  task append-buffer, name <appendBuffer>
+    like native-void
+
+    take data
+
+  task change-type, name <changeType>
+    like native-void
+
+    take type
+
+  task remove, name <remove>
+    like native-void
+
+    take start
+    take end
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like source-buffer-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like source-buffer-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

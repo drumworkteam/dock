@@ -1,0 +1,144 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form blob-callback
+  take form canvas-rendering-context2-d
+  take form canvas-rendering-context2-d-settings
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form html-element
+  take form html-element-event-map
+  take form image-bitmap-rendering-context
+  take form image-bitmap-rendering-context-settings
+  take form media-stream
+  take form rendering-context
+  take form web-gl-context-attributes
+  take form web-gl-rendering-context
+  take form web-gl2-rendering-context
+
+form html-canvas-element, name <HTMLCanvasElement>
+  base html-element
+
+  link height, name <height>
+    like native-number
+    flex true
+  link width, name <width>
+    like native-number
+    flex true
+
+  task capture-stream, name <captureStream>
+    like media-stream
+
+    take frame-request-rate, like maybe, like native-number
+
+  task get-context, name <getContext>
+    like or
+      like canvas-rendering-context2-d
+      like native-null
+
+    take context-id
+    take options, like maybe, like canvas-rendering-context2-d-settings
+
+  task get-context, name <getContext>
+    like or
+      like image-bitmap-rendering-context
+      like native-null
+
+    take context-id
+    take options, like maybe, like image-bitmap-rendering-context-settings
+
+  task get-context, name <getContext>
+    like or
+      like web-gl-rendering-context
+      like native-null
+
+    take context-id
+    take options, like maybe, like web-gl-context-attributes
+
+  task get-context, name <getContext>
+    like or
+      like web-gl2-rendering-context
+      like native-null
+
+    take context-id
+    take options, like maybe, like web-gl-context-attributes
+
+  task get-context, name <getContext>
+    like or
+      like rendering-context
+      like native-null
+
+    take context-id
+    take options, like maybe, like any
+
+  task to-blob, name <toBlob>
+    like native-void
+
+    take callback
+    take type, like maybe, like native-string
+    take quality, like maybe, like any
+
+  task to-data-url, name <toDataURL>
+    like native-string
+
+    take type, like maybe, like native-string
+    take quality, like maybe, like any
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like html-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like html-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

@@ -1,0 +1,44 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form document
+  take form document-type
+  take form xml-document
+
+form dom-implementation, name <DOMImplementation>
+  task create-document, name <createDocument>
+    like xml-document
+
+    take namespace
+    take qualified-name
+    take doctype
+      like maybe
+        like or
+          like document-type
+          like native-null
+
+  task create-document-type, name <createDocumentType>
+    like document-type
+
+    take qualified-name
+    take public-id
+    take system-id
+
+  task create-html-document, name <createHTMLDocument>
+    like document
+
+    take title, like maybe, like native-string
+
+  task has-feature, name <hasFeature>
+    text <true>
+
+    take args
+      like array
+        like any
+      rest true

@@ -1,0 +1,37 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-number
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form html-collection-of
+  take form html-element
+  take form html-opt-group-element
+  take form html-option-element
+
+form html-options-collection, name <HTMLOptionsCollection>
+  base html-collection-of
+
+  link length, name <length>
+    like native-number
+    flex true
+  link selected-index, name <selectedIndex>
+    like native-number
+    flex true
+
+  task add, name <add>
+    like native-void
+
+    take element
+    take before
+      like maybe
+        like or
+          like html-element
+          like native-number
+          like native-null
+
+  task remove, name <remove>
+    like native-void
+
+    take index

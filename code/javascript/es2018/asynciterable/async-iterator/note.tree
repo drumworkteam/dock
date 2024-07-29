@@ -1,0 +1,53 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-undefined
+
+load @termsurf/base/code/javascript/es2015/iterable
+  take form iterator-result
+
+load @termsurf/base/code/javascript/es2015/symbol/wellknown
+  take form promise
+
+load @termsurf/base/code/javascript/es5
+  take form promise-like
+
+form async-iterator, name <AsyncIterator>
+  head t
+  head t-return
+    fall any
+  head t-next
+    fall native-undefined
+
+  task next, name <next>
+    like promise
+      like iterator-result
+        like t
+        like t-return
+
+    take args
+      like or
+        like tuple
+        like tuple
+          like t-next
+      rest true
+
+  task return, name <return>
+    like promise
+      like iterator-result
+        like t
+        like t-return
+
+    take value
+      like maybe
+        like or
+          like t-return
+          like promise-like
+            like t-return
+
+  task throw, name <throw>
+    like promise
+      like iterator-result
+        like t
+        like t-return
+
+    take e, like maybe, like any

@@ -1,0 +1,145 @@
+
+bear @termsurf/base/code/javascript/node/url/url-object
+bear @termsurf/base/code/javascript/node/url/url
+bear @termsurf/base/code/javascript/node/url/url-with-parsed-query
+bear @termsurf/base/code/javascript/node/url/url-with-string-query
+bear @termsurf/base/code/javascript/node/url/url-format-options
+bear @termsurf/base/code/javascript/node/url/url-search-params
+bear @termsurf/base/code/javascript/node/url/global
+
+load @termsurf/moon
+  take form any
+  take form form
+  take form or
+  take form test
+
+load @termsurf/base/code/node/url
+  take form url
+  take form url-format-options
+  take form url-object
+  take form url-search-params
+  take form url-with-parsed-query
+  take form url-with-string-query
+
+load @termsurf/base/code/javascript
+  take form native-boolean
+  take form native-string
+  take form native-undefined
+
+load @termsurf/base/code/node/http
+  take form client-request-args
+
+host url, name <URL>
+  home true
+  like test
+    stem roll
+      like global-this
+      like form
+        link onmessage, name <onmessage>
+          like any
+          flex true
+        link url, name <URL>
+          name url
+          flex true
+      hook true
+        like url
+      hook false
+        like url
+
+host url-search-params, name <URLSearchParams>
+  home true
+  like test
+    stem roll
+      like global-this
+      like form
+        link onmessage, name <onmessage>
+          like any
+          flex true
+        link url-search-params, name <URLSearchParams>
+          name url-search-params
+          flex true
+      hook true
+        like url-search-params
+      hook false
+        like url-search-params
+
+task parse, name <parse>
+  like url-with-string-query
+
+  take url-string, like native-string
+
+task parse, name <parse>
+  like url-with-string-query
+
+  take url-string, like native-string
+  take parse-query-string
+    like or
+      text <false>
+      like native-undefined
+  take slashes-denote-host, like native-boolean
+    void true
+
+task parse, name <parse>
+  like url-with-parsed-query
+
+  take url-string, like native-string
+  take parse-query-string, text <true>
+  take slashes-denote-host, like native-boolean
+    void true
+
+task parse, name <parse>
+  like url
+
+  take url-string, like native-string
+  take parse-query-string, like native-boolean
+  take slashes-denote-host, like native-boolean
+    void true
+
+task format, name <format>
+  like native-string
+
+  take url-object, like url
+  take options, like url-format-options
+    void true
+
+task format, name <format>
+  like native-string
+
+  take url-object
+    like or
+      like url-object
+      like native-string
+
+task resolve, name <resolve>
+  like native-string
+
+  take from, like native-string
+  take to, like native-string
+
+task domain-to-ascii, name <domainToASCII>
+  like native-string
+
+  take domain, like native-string
+
+task domain-to-unicode, name <domainToUnicode>
+  like native-string
+
+  take domain, like native-string
+
+task file-url-to-path, name <fileURLToPath>
+  like native-string
+
+  take url
+    like or
+      like native-string
+      like url
+
+task path-to-file-url, name <pathToFileURL>
+  like url
+
+  take path, like native-string
+
+task url-to-http-options, name <urlToHttpOptions>
+  like client-request-args
+
+  take url, like url

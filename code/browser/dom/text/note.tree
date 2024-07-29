@@ -1,0 +1,26 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-number
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form character-data
+  take form html-slot-element
+  take form slottable
+
+form text, name <Text>
+  base character-data
+  base slottable
+
+  link assigned-slot, name <assignedSlot>
+    like or
+      like html-slot-element
+      like native-null
+  link whole-text, name <wholeText>
+    like native-string
+
+  task split-text, name <splitText>
+    like text
+
+    take offset

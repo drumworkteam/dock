@@ -1,0 +1,112 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form event
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form event-target
+  take form text-track
+  take form text-track-list-event-map
+  take form track-event
+
+form text-track-list, name <TextTrackList>
+  base event-target
+
+  link length, name <length>
+    like native-number
+  link onaddtrack, name <onaddtrack>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onchange, name <onchange>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onremovetrack, name <onremovetrack>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+
+  task get-track-by-id, name <getTrackById>
+    like or
+      like text-track
+      like native-null
+
+    take id
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like text-track-list-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like text-track-list-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  mesh index
+    like text-track

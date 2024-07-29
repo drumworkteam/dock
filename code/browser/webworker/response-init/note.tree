@@ -1,0 +1,21 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form native-string
+
+load @termsurf/base/code/browser/webworker
+  take form headers-init
+
+load @termsurf/base/code/browser/dom/response-init
+  take form response-init
+
+form response-init, name <ResponseInit>
+  link headers, name <headers>
+    like headers-init
+    flex true
+  link status, name <status>
+    like native-number
+    flex true
+  link status-text, name <statusText>
+    like native-string
+    flex true

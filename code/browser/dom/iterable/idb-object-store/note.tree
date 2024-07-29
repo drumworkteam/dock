@@ -1,0 +1,19 @@
+
+load @termsurf/base/code/javascript/native
+  take form iterable
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form idb-index
+  take form idb-index-parameters
+
+load @termsurf/base/code/browser/dom/idb-object-store
+  take form idb-object-store
+
+form idb-object-store, name <IDBObjectStore>
+  task create-index, name <createIndex>
+    like idb-index
+
+    take name
+    take key-path
+    take options, like maybe, like idb-index-parameters

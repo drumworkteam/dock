@@ -1,0 +1,179 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-number
+
+load @termsurf/base/code/browser/dom
+  take form aes-cbc-params
+  take form aes-ctr-params
+  take form aes-derived-key-params
+  take form aes-gcm-params
+  take form aes-key-algorithm
+  take form aes-key-gen-params
+  take form algorithm-identifier
+  take form buffer-source
+  take form crypto-key
+  take form crypto-key-pair
+  take form ec-key-gen-params
+  take form ec-key-import-params
+  take form ecdh-key-derive-params
+  take form ecdsa-params
+  take form hkdf-params
+  take form hmac-import-params
+  take form hmac-key-gen-params
+  take form json-web-key
+  take form key-format
+  take form key-usage
+  take form pbkdf2-params
+  take form rsa-hashed-import-params
+  take form rsa-hashed-key-gen-params
+  take form rsa-oaep-params
+  take form rsa-pss-params
+
+load @termsurf/base/code/javascript/es5
+  take form array-buffer
+  take form exclude
+  take form promise
+
+form subtle-crypto, name <SubtleCrypto>
+  task decrypt, name <decrypt>
+    like promise
+      like any
+
+    take algorithm
+    take key
+    take data
+
+  task derive-bits, name <deriveBits>
+    like promise
+      like array-buffer
+
+    take algorithm
+    take base-key
+    take length
+
+  task derive-key, name <deriveKey>
+    like promise
+      like crypto-key
+
+    take algorithm
+    take base-key
+    take derived-key-type
+    take extractable
+    take key-usages
+
+  task digest, name <digest>
+    like promise
+      like array-buffer
+
+    take algorithm
+    take data
+
+  task encrypt, name <encrypt>
+    like promise
+      like any
+
+    take algorithm
+    take key
+    take data
+
+  task export-key, name <exportKey>
+    like promise
+      like json-web-key
+
+    take format
+    take key
+
+  task export-key, name <exportKey>
+    like promise
+      like array-buffer
+
+    take format
+    take key
+
+  task generate-key, name <generateKey>
+    like promise
+      like crypto-key-pair
+
+    take algorithm
+    take extractable
+    take key-usages
+
+  task generate-key, name <generateKey>
+    like promise
+      like crypto-key
+
+    take algorithm
+    take extractable
+    take key-usages
+
+  task generate-key, name <generateKey>
+    like promise
+      like or
+        like crypto-key-pair
+        like crypto-key
+
+    take algorithm
+    take extractable
+    take key-usages
+
+  task import-key, name <importKey>
+    like promise
+      like crypto-key
+
+    take format
+    take key-data
+    take algorithm
+    take extractable
+    take key-usages
+
+  task import-key, name <importKey>
+    like promise
+      like crypto-key
+
+    take format
+    take key-data
+    take algorithm
+    take extractable
+    take key-usages
+
+  task sign, name <sign>
+    like promise
+      like array-buffer
+
+    take algorithm
+    take key
+    take data
+
+  task unwrap-key, name <unwrapKey>
+    like promise
+      like crypto-key
+
+    take format
+    take wrapped-key
+    take unwrapping-key
+    take unwrap-algorithm
+    take unwrapped-key-algorithm
+    take extractable
+    take key-usages
+
+  task verify, name <verify>
+    like promise
+      like native-boolean
+
+    take algorithm
+    take key
+    take signature
+    take data
+
+  task wrap-key, name <wrapKey>
+    like promise
+      like array-buffer
+
+    take format
+    take key
+    take wrapping-key
+    take wrap-algorithm

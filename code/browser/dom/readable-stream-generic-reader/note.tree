@@ -1,0 +1,18 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-undefined
+  take form native-void
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+
+form readable-stream-generic-reader, name <ReadableStreamGenericReader>
+  link closed, name <closed>
+    like promise
+      like native-undefined
+
+  task cancel, name <cancel>
+    like promise
+      like native-void
+
+    take reason, like maybe, like any

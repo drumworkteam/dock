@@ -1,0 +1,25 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-string
+
+load @termsurf/base/code/javascript/es2015/iterable/set
+  take form set
+
+load @termsurf/base/code/javascript/es2015/symbol/wellknown
+  take form set-constructor
+
+load @termsurf/base/code/javascript/es2015/symbol/wellknown/set
+  take form set
+
+form set, name <Set>
+  head t
+
+  link {symbol/to-string-tag}
+    like native-string
+    work true
+
+form set
+  hook self
+    link {symbol/species}
+      like set-constructor
+      work true

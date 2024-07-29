@@ -1,0 +1,28 @@
+
+load @termsurf/base/code/browser/dom
+  take form device-motion-event
+  take form device-orientation-event
+  take form event
+  take form gamepad-event
+  take form global-event-handlers-event-map
+  take form window-event-handlers-event-map
+
+form window-event-map, name <WindowEventMap>
+  base global-event-handlers-event-map
+  base window-event-handlers-event-map
+
+  link devicemotion, name <devicemotion>
+    like device-motion-event
+    flex true
+  link deviceorientation, name <deviceorientation>
+    like device-orientation-event
+    flex true
+  link gamepadconnected, name <gamepadconnected>
+    like gamepad-event
+    flex true
+  link gamepaddisconnected, name <gamepaddisconnected>
+    like gamepad-event
+    flex true
+  link orientationchange, name <orientationchange>
+    like event
+    flex true

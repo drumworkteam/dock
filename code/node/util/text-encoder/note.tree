@@ -1,0 +1,24 @@
+
+load @termsurf/base/code/javascript
+  take form native-string
+
+load @termsurf/base/code/node/globals
+  take form uint8-array
+
+load @termsurf/base/code/node/util
+  take form encode-into-result
+
+form text-encoder, name <TextEncoder>
+  link encoding, name <encoding>, like native-string
+
+  task encode, name <encode>
+    like uint8-array
+
+    take input, like native-string
+      void true
+
+  task encode-into, name <encodeInto>
+    like encode-into-result
+
+    take src, like native-string
+    take dest, like uint8-array

@@ -1,0 +1,20 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-string
+
+load @termsurf/base/code/browser/webworker
+  take form buffer-source
+  take form text-decode-options
+  take form text-decoder-common
+
+load @termsurf/base/code/browser/dom/text-decoder
+  take form text-decoder
+
+form text-decoder, name <TextDecoder>
+  base text-decoder-common
+
+  task decode, name <decode>
+    like native-string
+
+    take input, like maybe, like buffer-source
+    take options, like maybe, like text-decode-options

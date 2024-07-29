@@ -1,0 +1,62 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-number
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form attr
+
+form named-node-map, name <NamedNodeMap>
+  link length, name <length>
+    like native-number
+
+  task get-named-item, name <getNamedItem>
+    like or
+      like attr
+      like native-null
+
+    take qualified-name
+
+  task get-named-item-ns, name <getNamedItemNS>
+    like or
+      like attr
+      like native-null
+
+    take namespace
+    take local-name
+
+  task item, name <item>
+    like or
+      like attr
+      like native-null
+
+    take index
+
+  task remove-named-item, name <removeNamedItem>
+    like attr
+
+    take qualified-name
+
+  task remove-named-item-ns, name <removeNamedItemNS>
+    like attr
+
+    take namespace
+    take local-name
+
+  task set-named-item, name <setNamedItem>
+    like or
+      like attr
+      like native-null
+
+    take attr
+
+  task set-named-item-ns, name <setNamedItemNS>
+    like or
+      like attr
+      like native-null
+
+    take attr
+
+  mesh index
+    like attr

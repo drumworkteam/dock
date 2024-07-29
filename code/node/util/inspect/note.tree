@@ -1,0 +1,39 @@
+
+load @termsurf/moon
+  take form tuple
+
+load @termsurf/base/code/javascript
+  take form native-number
+  take form native-string
+  take form native-symbol
+  take form node-js-dict
+
+load @termsurf/base/code/node/util
+  take form inspect-options
+  take form style
+
+host colors, name <colors>
+  like node-js-dict
+    like tuple
+      like native-number
+      like native-number
+
+host styles, name <styles>
+  slot self
+  walk link-name-like-list
+    loan like style
+    take name
+    take k
+    beam self
+      take {name}
+        like native-string
+
+host default-options, name <defaultOptions>
+  like inspect-options
+
+host repl-defaults, name <replDefaults>
+  like inspect-options
+
+host custom, name <custom>
+  like native-symbol
+    cool true

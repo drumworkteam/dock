@@ -1,0 +1,80 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form audio-param
+  take form base-audio-context
+  take form channel-count-mode
+  take form channel-interpretation
+  take form event-target
+
+form audio-node, name <AudioNode>
+  base event-target
+
+  link channel-count, name <channelCount>
+    like native-number
+    flex true
+  link channel-count-mode, name <channelCountMode>
+    like channel-count-mode
+    flex true
+  link channel-interpretation, name <channelInterpretation>
+    like channel-interpretation
+    flex true
+  link context, name <context>
+    like base-audio-context
+  link number-of-inputs, name <numberOfInputs>
+    like native-number
+  link number-of-outputs, name <numberOfOutputs>
+    like native-number
+
+  task connect, name <connect>
+    like audio-node
+
+    take destination-node
+    take output, like maybe, like native-number
+    take input, like maybe, like native-number
+
+  task connect, name <connect>
+    like native-void
+
+    take destination-param
+    take output, like maybe, like native-number
+
+  task disconnect, name <disconnect>
+    like native-void
+
+  task disconnect, name <disconnect>
+    like native-void
+
+    take output
+
+  task disconnect, name <disconnect>
+    like native-void
+
+    take destination-node
+
+  task disconnect, name <disconnect>
+    like native-void
+
+    take destination-node
+    take output
+
+  task disconnect, name <disconnect>
+    like native-void
+
+    take destination-node
+    take output
+    take input
+
+  task disconnect, name <disconnect>
+    like native-void
+
+    take destination-param
+
+  task disconnect, name <disconnect>
+    like native-void
+
+    take destination-param
+    take output

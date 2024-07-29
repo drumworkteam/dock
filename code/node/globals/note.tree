@@ -1,0 +1,84 @@
+
+bear @termsurf/base/code/javascript/node/globals/error-constructor
+bear @termsurf/base/code/javascript/node/globals/node-require
+bear @termsurf/base/code/javascript/node/globals/require-resolve
+bear @termsurf/base/code/javascript/node/globals/node-module
+bear @termsurf/base/code/javascript/node/globals/abort-controller
+bear @termsurf/base/code/javascript/node/globals/abort-signal
+bear @termsurf/base/code/javascript/node/globals/relative-indexable
+bear @termsurf/base/code/javascript/node/globals/string
+bear @termsurf/base/code/javascript/node/globals/array
+bear @termsurf/base/code/javascript/node/globals/int8-array
+bear @termsurf/base/code/javascript/node/globals/uint8-array
+bear @termsurf/base/code/javascript/node/globals/uint8-clamped-array
+bear @termsurf/base/code/javascript/node/globals/int16-array
+bear @termsurf/base/code/javascript/node/globals/uint16-array
+bear @termsurf/base/code/javascript/node/globals/int32-array
+bear @termsurf/base/code/javascript/node/globals/uint32-array
+bear @termsurf/base/code/javascript/node/globals/float32-array
+bear @termsurf/base/code/javascript/node/globals/float64-array
+bear @termsurf/base/code/javascript/node/globals/big-int64-array
+bear @termsurf/base/code/javascript/node/globals/big-uint64-array
+bear @termsurf/base/code/javascript/node/globals/global
+
+load @termsurf/moon
+  take form any
+  take form form
+  take form or
+  take form task
+
+load @termsurf/base/code/javascript
+  take form console
+  take form native-string
+  take form native-undefined
+  take form native-void
+  take form node-js-process
+
+load @termsurf/base/code/node/globals
+  take form abort-controller
+  take form abort-signal
+  take form node-module
+  take form node-require
+
+host process, name <process>
+  like node-js-process
+
+host console, name <console>
+  like console
+
+host filename, name <__filename>
+  like native-string
+
+host dirname, name <__dirname>
+  like native-string
+
+host require, name <require>
+  like node-require
+
+host module, name <module>
+  like node-module
+
+host exports, name <exports>
+  like any
+
+host gc, name <gc>
+  like or
+    like native-undefined
+    like task
+      like native-void
+
+host abort-controller, name <AbortController>
+  like form
+    link prototype, name <prototype>
+      like abort-controller
+      flex true
+    hook make
+        like abort-controller
+
+host abort-signal, name <AbortSignal>
+  like form
+    link prototype, name <prototype>
+      like abort-signal
+      flex true
+    hook make
+        like abort-signal

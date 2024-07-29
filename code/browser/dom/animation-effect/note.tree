@@ -1,0 +1,20 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form computed-effect-timing
+  take form effect-timing
+  take form optional-effect-timing
+
+form animation-effect, name <AnimationEffect>
+  task get-computed-timing, name <getComputedTiming>
+    like computed-effect-timing
+
+  task get-timing, name <getTiming>
+    like effect-timing
+
+  task update-timing, name <updateTiming>
+    like native-void
+
+    take timing, like maybe, like optional-effect-timing

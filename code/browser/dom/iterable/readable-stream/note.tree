@@ -1,0 +1,29 @@
+
+load @termsurf/base/code/javascript/native
+  take form iterable-iterator
+  take form native-number
+
+load @termsurf/base/code/browser/dom/readable-stream
+  take form readable-stream
+
+form readable-stream, name <ReadableStream>
+  head r
+    fall any
+
+  task {symbol/iterator}
+    like iterable-iterator
+      like any
+
+  task entries, name <entries>
+    like iterable-iterator
+      like tuple
+        like native-number
+        like any
+
+  task keys, name <keys>
+    like iterable-iterator
+      like native-number
+
+  task values, name <values>
+    like iterable-iterator
+      like any

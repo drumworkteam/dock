@@ -1,0 +1,47 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+
+load @termsurf/base/code/browser/dom
+  take form attestation-conveyance-preference
+  take form authentication-extensions-client-inputs
+  take form authenticator-selection-criteria
+  take form buffer-source
+  take form public-key-credential-descriptor
+  take form public-key-credential-parameters
+  take form public-key-credential-rp-entity
+  take form public-key-credential-user-entity
+
+form public-key-credential-creation-options, name <PublicKeyCredentialCreationOptions>
+  link attestation, name <attestation>
+    like attestation-conveyance-preference
+    flex true
+  link authenticator-selection, name <authenticatorSelection>
+    like authenticator-selection-criteria
+    flex true
+  link challenge, name <challenge>
+    like buffer-source
+    flex true
+  link exclude-credentials, name <excludeCredentials>
+    like array
+      like public-key-credential-descriptor
+    flex true
+  link extensions, name <extensions>
+    like authentication-extensions-client-inputs
+    flex true
+  link pub-key-cred-params, name <pubKeyCredParams>
+    like array
+      like public-key-credential-parameters
+    flex true
+  link rp, name <rp>
+    like public-key-credential-rp-entity
+    flex true
+  link timeout, name <timeout>
+    like native-number
+    flex true
+  link user, name <user>
+    like public-key-credential-user-entity
+    flex true

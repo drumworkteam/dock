@@ -1,0 +1,85 @@
+
+bear @termsurf/base/code/javascript/node/worker-threads/message-channel
+bear @termsurf/base/code/javascript/node/worker-threads/worker-performance
+bear @termsurf/base/code/javascript/node/worker-threads/transfer-list-item
+bear @termsurf/base/code/javascript/node/worker-threads/message-port
+bear @termsurf/base/code/javascript/node/worker-threads/worker-options
+bear @termsurf/base/code/javascript/node/worker-threads/resource-limits
+bear @termsurf/base/code/javascript/node/worker-threads/worker
+bear @termsurf/base/code/javascript/node/worker-threads/broadcast-channel
+bear @termsurf/base/code/javascript/node/worker-threads/serializable
+
+load @termsurf/moon
+  take form any
+  take form form
+  take form or
+
+load @termsurf/base/code/javascript
+  take form message-port
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-object
+  take form native-symbol
+  take form native-undefined
+  take form native-void
+
+load @termsurf/base/code/node/vm
+  take form context
+
+load @termsurf/base/code/node/worker-threads
+  take form resource-limits
+  take form serializable
+
+host is-main-thread, name <isMainThread>
+  like native-boolean
+
+host parent-port, name <parentPort>
+  like or
+    like native-null
+    like message-port
+
+host resource-limits, name <resourceLimits>
+  like resource-limits
+
+host share-env, name <SHARE_ENV>
+  like native-symbol
+    cool true
+
+host thread-id, name <threadId>
+  like native-number
+
+host worker-data, name <workerData>
+  like any
+
+task mark-as-untransferable, name <markAsUntransferable>
+  like native-void
+
+  take object, like native-object
+
+task move-message-port-to-context, name <moveMessagePortToContext>
+  like message-port
+
+  take port, like message-port
+  take contextified-sandbox, like context
+
+task receive-message-on-port, name <receiveMessageOnPort>
+  like or
+    like form
+      link message, name <message>
+        like any
+        flex true
+    like native-undefined
+
+  take port, like message-port
+
+task get-environment-data, name <getEnvironmentData>
+  like serializable
+
+  take key, like serializable
+
+task set-environment-data, name <setEnvironmentData>
+  like native-void
+
+  take key, like serializable
+  take value, like serializable

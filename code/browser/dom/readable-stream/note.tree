@@ -1,0 +1,60 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form readable-stream-default-reader
+  take form readable-writable-pair
+  take form stream-pipe-options
+  take form writable-stream
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+
+form readable-stream, name <ReadableStream>
+  head r
+    fall any
+
+  link locked, name <locked>
+    like native-boolean
+
+  task cancel, name <cancel>
+    like promise
+      like native-void
+
+    take reason, like maybe, like any
+
+  task get-reader, name <getReader>
+    like readable-stream-default-reader
+      like r
+
+  task pipe-through, name <pipeThrough>
+    like readable-stream
+      like t
+
+    head t
+
+    take transform
+    take options, like maybe, like stream-pipe-options
+
+  task pipe-to, name <pipeTo>
+    like promise
+      like native-void
+
+    take destination
+    take options, like maybe, like stream-pipe-options
+
+  task tee, name <tee>
+    like tuple
+      like readable-stream
+        like r
+      like readable-stream
+        like r
+
+  task for-each, name <forEach>
+    like native-void
+
+    take callbackfn
+    take this-arg, like maybe, like any

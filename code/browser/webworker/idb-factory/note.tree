@@ -1,0 +1,28 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form native-string
+
+load @termsurf/base/code/browser/webworker
+  take form idb-open-db-request
+
+load @termsurf/base/code/browser/dom/idb-factory
+  take form idb-factory
+
+form idb-factory, name <IDBFactory>
+  task cmp, name <cmp>
+    like native-number
+
+    take first
+    take second
+
+  task delete-database, name <deleteDatabase>
+    like idb-open-db-request
+
+    take name
+
+  task open, name <open>
+    like idb-open-db-request
+
+    take name
+    take version, like maybe, like native-number

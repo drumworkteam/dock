@@ -1,0 +1,27 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form dom-string-map
+  take form focus-options
+
+form html-or-svg-element, name <HTMLOrSVGElement>
+  link dataset, name <dataset>
+    like dom-string-map
+  link nonce, name <nonce>
+    like native-string
+    flex true
+  link tab-index, name <tabIndex>
+    like native-number
+    flex true
+
+  task blur, name <blur>
+    like native-void
+
+  task focus, name <focus>
+    like native-void
+
+    take options, like maybe, like focus-options

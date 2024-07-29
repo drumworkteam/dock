@@ -1,0 +1,43 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-number
+  take form native-undefined
+  take form native-void
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+
+form writable-stream-default-writer, name <WritableStreamDefaultWriter>
+  head w
+    fall any
+
+  link closed, name <closed>
+    like promise
+      like native-undefined
+  link desired-size, name <desiredSize>
+    like or
+      like native-number
+      like native-null
+  link ready, name <ready>
+    like promise
+      like native-undefined
+
+  task abort, name <abort>
+    like promise
+      like native-void
+
+    take reason, like maybe, like any
+
+  task close, name <close>
+    like promise
+      like native-void
+
+  task release-lock, name <releaseLock>
+    like native-void
+
+  task write, name <write>
+    like promise
+      like native-void
+
+    take chunk, like maybe, like w

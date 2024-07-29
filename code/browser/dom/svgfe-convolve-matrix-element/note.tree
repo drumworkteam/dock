@@ -1,0 +1,109 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form svg-animated-boolean
+  take form svg-animated-enumeration
+  take form svg-animated-integer
+  take form svg-animated-number
+  take form svg-animated-number-list
+  take form svg-animated-string
+  take form svg-element
+  take form svg-element-event-map
+  take form svg-filter-primitive-standard-attributes
+
+form svgfe-convolve-matrix-element, name <SVGFEConvolveMatrixElement>
+  base svg-element
+  base svg-filter-primitive-standard-attributes
+
+  link bias, name <bias>
+    like svg-animated-number
+  link divisor, name <divisor>
+    like svg-animated-number
+  link edge-mode, name <edgeMode>
+    like svg-animated-enumeration
+  link in1, name <in1>
+    like svg-animated-string
+  link kernel-matrix, name <kernelMatrix>
+    like svg-animated-number-list
+  link kernel-unit-length-x, name <kernelUnitLengthX>
+    like svg-animated-number
+  link kernel-unit-length-y, name <kernelUnitLengthY>
+    like svg-animated-number
+  link order-x, name <orderX>
+    like svg-animated-integer
+  link order-y, name <orderY>
+    like svg-animated-integer
+  link preserve-alpha, name <preserveAlpha>
+    like svg-animated-boolean
+  link target-x, name <targetX>
+    like svg-animated-integer
+  link target-y, name <targetY>
+    like svg-animated-integer
+  link svg-edgemode-duplicate, name <SVG_EDGEMODE_DUPLICATE>
+    like native-number
+  link svg-edgemode-none, name <SVG_EDGEMODE_NONE>
+    like native-number
+  link svg-edgemode-unknown, name <SVG_EDGEMODE_UNKNOWN>
+    like native-number
+  link svg-edgemode-wrap, name <SVG_EDGEMODE_WRAP>
+    like native-number
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like svg-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like svg-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

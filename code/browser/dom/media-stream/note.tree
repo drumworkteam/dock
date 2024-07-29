@@ -1,0 +1,128 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form event-target
+  take form media-stream-event-map
+  take form media-stream-track
+  take form media-stream-track-event
+
+form media-stream, name <MediaStream>
+  base event-target
+
+  link active, name <active>
+    like native-boolean
+  link id, name <id>
+    like native-string
+  link onaddtrack, name <onaddtrack>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onremovetrack, name <onremovetrack>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+
+  task add-track, name <addTrack>
+    like native-void
+
+    take track
+
+  task clone, name <clone>
+    like media-stream
+
+  task get-audio-tracks, name <getAudioTracks>
+    like array
+      like media-stream-track
+
+  task get-track-by-id, name <getTrackById>
+    like or
+      like media-stream-track
+      like native-null
+
+    take track-id
+
+  task get-tracks, name <getTracks>
+    like array
+      like media-stream-track
+
+  task get-video-tracks, name <getVideoTracks>
+    like array
+      like media-stream-track
+
+  task remove-track, name <removeTrack>
+    like native-void
+
+    take track
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like media-stream-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like media-stream-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

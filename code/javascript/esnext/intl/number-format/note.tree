@@ -1,0 +1,24 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-bigint
+  take form native-number
+
+load @termsurf/base/code/javascript/esnext/intl
+  take form number-format-part
+
+load @termsurf/base/code/javascript/es2020/bigint/number-format
+  take form number-format
+
+form number-format, name <NumberFormat>
+  task format-to-parts, name <formatToParts>
+    like array
+      like number-format-part
+
+    take number
+      like maybe
+        like or
+          like native-number
+          like native-bigint

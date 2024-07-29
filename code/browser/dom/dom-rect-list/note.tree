@@ -1,0 +1,21 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-number
+
+load @termsurf/base/code/browser/dom
+  take form dom-rect
+
+form dom-rect-list, name <DOMRectList>
+  link length, name <length>
+    like native-number
+
+  task item, name <item>
+    like or
+      like dom-rect
+      like native-null
+
+    take index
+
+  mesh index
+    like dom-rect

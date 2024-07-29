@@ -1,0 +1,20 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-void
+
+load @termsurf/base/code/browser/webworker
+  take form image-bitmap
+  take form offscreen-canvas
+
+load @termsurf/base/code/browser/dom/image-bitmap-rendering-context
+  take form image-bitmap-rendering-context
+
+form image-bitmap-rendering-context, name <ImageBitmapRenderingContext>
+  link canvas, name <canvas>
+    like offscreen-canvas
+
+  task transfer-from-image-bitmap, name <transferFromImageBitmap>
+    like native-void
+
+    take bitmap

@@ -1,0 +1,130 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-number
+  take form native-string
+  take form native-undefined
+
+load @termsurf/base/code/javascript/es5/string
+  take form string
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/es5
+  take form array-like
+
+load @termsurf/base/code/javascript/es2015/core/string
+  take form string
+
+form string, name <String>
+  task code-point-at, name <codePointAt>
+    like or
+      like native-number
+      like native-undefined
+
+    take pos
+
+  task includes, name <includes>
+    like native-boolean
+
+    take search-string
+    take position, like maybe, like native-number
+
+  task ends-with, name <endsWith>
+    like native-boolean
+
+    take search-string
+    take end-position, like maybe, like native-number
+
+  task normalize, name <normalize>
+    like native-string
+
+    take form
+
+  task normalize, name <normalize>
+    like native-string
+
+    take form, like maybe, like native-string
+
+  task repeat, name <repeat>
+    like native-string
+
+    take count
+
+  task starts-with, name <startsWith>
+    like native-boolean
+
+    take search-string
+    take position, like maybe, like native-number
+
+  task anchor, name <anchor>
+    like native-string
+
+    take name
+
+  task big, name <big>
+    like native-string
+
+  task blink, name <blink>
+    like native-string
+
+  task bold, name <bold>
+    like native-string
+
+  task fixed, name <fixed>
+    like native-string
+
+  task fontcolor, name <fontcolor>
+    like native-string
+
+    take color
+
+  task fontsize, name <fontsize>
+    like native-string
+
+    take size
+
+  task fontsize, name <fontsize>
+    like native-string
+
+    take size
+
+  task italics, name <italics>
+    like native-string
+
+  task link, name <link>
+    like native-string
+
+    take url
+
+  task small, name <small>
+    like native-string
+
+  task strike, name <strike>
+    like native-string
+
+  task sub, name <sub>
+    like native-string
+
+  task sup, name <sup>
+    like native-string
+
+form string
+  hook self
+    task from-code-point, name <fromCodePoint>
+      like native-string
+
+      take code-points
+        like array
+          like native-number
+        rest true
+
+    task raw, name <raw>
+      like native-string
+
+      take template
+      take substitutions
+        like array
+          like any
+        rest true

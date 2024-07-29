@@ -1,0 +1,35 @@
+
+load @termsurf/base/code/javascript
+  take form array
+  take form native-string
+  take form native-undefined
+
+load @termsurf/moon
+  take form or
+
+load @termsurf/base/code/node/inspector/debugger
+  take form call-frame
+
+load @termsurf/base/code/node/inspector/runtime
+  take form stack-trace-id
+
+form stack-trace, name <StackTrace>
+  link description, name <description>
+    like or
+      like native-string
+      like native-undefined
+    flex true
+  link call-frames, name <callFrames>
+    like array
+      like call-frame
+    flex true
+  link parent, name <parent>
+    like or
+      like stack-trace
+      like native-undefined
+    flex true
+  link parent-id, name <parentId>
+    like or
+      like stack-trace-id
+      like native-undefined
+    flex true

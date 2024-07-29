@@ -1,0 +1,32 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-number
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form element
+  take form html-collection-base
+
+form html-collection-of, name <HTMLCollectionOf>
+  base html-collection-base
+
+  head t
+    base element
+
+  task item, name <item>
+    like or
+      like t
+      like native-null
+
+    take index
+
+  task named-item, name <namedItem>
+    like or
+      like t
+      like native-null
+
+    take name
+
+  mesh index
+    like t

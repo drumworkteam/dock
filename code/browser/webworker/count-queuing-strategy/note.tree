@@ -1,0 +1,18 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+
+load @termsurf/base/code/browser/webworker
+  take form queuing-strategy
+  take form queuing-strategy-size
+
+load @termsurf/base/code/browser/dom/count-queuing-strategy
+  take form count-queuing-strategy
+
+form count-queuing-strategy, name <CountQueuingStrategy>
+  base queuing-strategy
+
+  link high-water-mark, name <highWaterMark>
+    like native-number
+  link size, name <size>
+    like queuing-strategy-size

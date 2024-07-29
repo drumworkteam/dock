@@ -1,0 +1,27 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/browser/dom
+  take form event-init
+  take form media-stream
+  take form media-stream-track
+  take form rtc-rtp-receiver
+  take form rtc-rtp-transceiver
+
+form rtc-track-event-init, name <RTCTrackEventInit>
+  base event-init
+
+  link receiver, name <receiver>
+    like rtc-rtp-receiver
+    flex true
+  link streams, name <streams>
+    like array
+      like media-stream
+    flex true
+  link track, name <track>
+    like media-stream-track
+    flex true
+  link transceiver, name <transceiver>
+    like rtc-rtp-transceiver
+    flex true

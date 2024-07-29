@@ -1,0 +1,22 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-number
+  take form native-string
+
+load @termsurf/base/code/browser/dom
+  take form text-track-cue
+
+form text-track-cue-list, name <TextTrackCueList>
+  link length, name <length>
+    like native-number
+
+  task get-cue-by-id, name <getCueById>
+    like or
+      like text-track-cue
+      like native-null
+
+    take id
+
+  mesh index
+    like text-track-cue

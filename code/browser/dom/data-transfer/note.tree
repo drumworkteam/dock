@@ -1,0 +1,64 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form data-transfer-item-list
+  take form element
+  take form file-list
+
+load @termsurf/base/code/javascript/es5
+  take form readonly-array
+
+form data-transfer, name <DataTransfer>
+  link drop-effect, name <dropEffect>
+    like or
+      text <none>
+      text <copy>
+      text <link>
+      text <move>
+    flex true
+  link effect-allowed, name <effectAllowed>
+    like or
+      text <none>
+      text <copy>
+      text <copyLink>
+      text <copyMove>
+      text <link>
+      text <linkMove>
+      text <move>
+      text <all>
+      text <uninitialized>
+    flex true
+  link files, name <files>
+    like file-list
+  link items, name <items>
+    like data-transfer-item-list
+  link types, name <types>
+    like readonly-array
+      like native-string
+
+  task clear-data, name <clearData>
+    like native-void
+
+    take format, like maybe, like native-string
+
+  task get-data, name <getData>
+    like native-string
+
+    take format
+
+  task set-data, name <setData>
+    like native-void
+
+    take format
+    take data
+
+  task set-drag-image, name <setDragImage>
+    like native-void
+
+    take image
+    take x
+    take y

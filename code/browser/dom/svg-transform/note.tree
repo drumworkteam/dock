@@ -1,0 +1,64 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-number
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form dom-matrix
+  take form dom-matrix2-d-init
+
+form svg-transform, name <SVGTransform>
+  link angle, name <angle>
+    like native-number
+  link matrix, name <matrix>
+    like dom-matrix
+  link type, name <type>
+    like native-number
+  link svg-transform-matrix, name <SVG_TRANSFORM_MATRIX>
+    like native-number
+  link svg-transform-rotate, name <SVG_TRANSFORM_ROTATE>
+    like native-number
+  link svg-transform-scale, name <SVG_TRANSFORM_SCALE>
+    like native-number
+  link svg-transform-skewx, name <SVG_TRANSFORM_SKEWX>
+    like native-number
+  link svg-transform-skewy, name <SVG_TRANSFORM_SKEWY>
+    like native-number
+  link svg-transform-translate, name <SVG_TRANSFORM_TRANSLATE>
+    like native-number
+  link svg-transform-unknown, name <SVG_TRANSFORM_UNKNOWN>
+    like native-number
+
+  task set-matrix, name <setMatrix>
+    like native-void
+
+    take matrix, like maybe, like dom-matrix2-d-init
+
+  task set-rotate, name <setRotate>
+    like native-void
+
+    take angle
+    take cx
+    take cy
+
+  task set-scale, name <setScale>
+    like native-void
+
+    take sx
+    take sy
+
+  task set-skew-x, name <setSkewX>
+    like native-void
+
+    take angle
+
+  task set-skew-y, name <setSkewY>
+    like native-void
+
+    take angle
+
+  task set-translate, name <setTranslate>
+    like native-void
+
+    take tx
+    take ty

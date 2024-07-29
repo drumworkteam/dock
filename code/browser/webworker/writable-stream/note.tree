@@ -1,0 +1,30 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-void
+
+load @termsurf/base/code/browser/webworker
+  take form writable-stream-default-writer
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+
+load @termsurf/base/code/browser/dom/writable-stream
+  take form writable-stream
+
+form writable-stream, name <WritableStream>
+  head w
+    fall any
+
+  link locked, name <locked>
+    like native-boolean
+
+  task abort, name <abort>
+    like promise
+      like native-void
+
+    take reason, like maybe, like any
+
+  task get-writer, name <getWriter>
+    like writable-stream-default-writer
+      like w

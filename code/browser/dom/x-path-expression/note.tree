@@ -1,0 +1,20 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+  take form native-number
+
+load @termsurf/base/code/browser/dom
+  take form node
+  take form x-path-result
+
+form x-path-expression, name <XPathExpression>
+  task evaluate, name <evaluate>
+    like x-path-result
+
+    take context-node
+    take type, like maybe, like native-number
+    take result
+      like maybe
+        like or
+          like x-path-result
+          like native-null

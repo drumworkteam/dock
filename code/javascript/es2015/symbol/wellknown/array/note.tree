@@ -1,0 +1,45 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+
+load @termsurf/base/code/javascript/es2015/iterable/array
+  take form array
+
+load @termsurf/base/code/javascript/es2015/symbol/wellknown
+  take form array-constructor
+
+load @termsurf/base/code/javascript/es2015/symbol/wellknown/array
+  take form array
+
+form array, name <Array>
+  head t
+
+  task {symbol/unscopables}
+    like form
+      link copy-within, name <copyWithin>
+        like native-boolean
+        flex true
+      link entries, name <entries>
+        like native-boolean
+        flex true
+      link fill, name <fill>
+        like native-boolean
+        flex true
+      link find, name <find>
+        like native-boolean
+        flex true
+      link find-index, name <findIndex>
+        like native-boolean
+        flex true
+      link keys, name <keys>
+        like native-boolean
+        flex true
+      link values, name <values>
+        like native-boolean
+        flex true
+
+form array
+  hook self
+    link {symbol/species}
+      like array-constructor
+      work true

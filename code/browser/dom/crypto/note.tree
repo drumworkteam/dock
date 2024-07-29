@@ -1,0 +1,23 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-null
+
+load @termsurf/base/code/browser/dom
+  take form subtle-crypto
+
+load @termsurf/base/code/javascript/es5
+  take form array-buffer-view
+
+form crypto, name <Crypto>
+  link subtle, name <subtle>
+    like subtle-crypto
+
+  task get-random-values, name <getRandomValues>
+    like t
+
+    head t
+      base or
+        like array-buffer-view
+        like native-null
+
+    take array

@@ -1,0 +1,231 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form can-play-type-result
+  take form event
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form html-element
+  take form html-media-element-event-map
+  take form media-encrypted-event
+  take form media-error
+  take form media-keys
+  take form media-provider
+  take form remote-playback
+  take form text-track
+  take form text-track-kind
+  take form text-track-list
+  take form time-ranges
+
+load @termsurf/base/code/javascript/es5
+  take form promise
+
+form html-media-element, name <HTMLMediaElement>
+  base html-element
+
+  link autoplay, name <autoplay>
+    like native-boolean
+    flex true
+  link buffered, name <buffered>
+    like time-ranges
+  link controls, name <controls>
+    like native-boolean
+    flex true
+  link cross-origin, name <crossOrigin>
+    like or
+      like native-string
+      like native-null
+    flex true
+  link current-src, name <currentSrc>
+    like native-string
+  link current-time, name <currentTime>
+    like native-number
+    flex true
+  link default-muted, name <defaultMuted>
+    like native-boolean
+    flex true
+  link default-playback-rate, name <defaultPlaybackRate>
+    like native-number
+    flex true
+  link disable-remote-playback, name <disableRemotePlayback>
+    like native-boolean
+    flex true
+  link duration, name <duration>
+    like native-number
+  link ended, name <ended>
+    like native-boolean
+  link error, name <error>
+    like or
+      like media-error
+      like native-null
+  link loop, name <loop>
+    like native-boolean
+    flex true
+  link media-keys, name <mediaKeys>
+    like or
+      like media-keys
+      like native-null
+  link muted, name <muted>
+    like native-boolean
+    flex true
+  link network-state, name <networkState>
+    like native-number
+  link onencrypted, name <onencrypted>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link onwaitingforkey, name <onwaitingforkey>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link paused, name <paused>
+    like native-boolean
+  link playback-rate, name <playbackRate>
+    like native-number
+    flex true
+  link played, name <played>
+    like time-ranges
+  link preload, name <preload>
+    like native-string
+    flex true
+  link ready-state, name <readyState>
+    like native-number
+  link remote, name <remote>
+    like remote-playback
+  link seekable, name <seekable>
+    like time-ranges
+  link seeking, name <seeking>
+    like native-boolean
+  link src, name <src>
+    like native-string
+    flex true
+  link src-object, name <srcObject>
+    like or
+      like media-provider
+      like native-null
+    flex true
+  link text-tracks, name <textTracks>
+    like text-track-list
+  link volume, name <volume>
+    like native-number
+    flex true
+  link have-current-data, name <HAVE_CURRENT_DATA>
+    like native-number
+  link have-enough-data, name <HAVE_ENOUGH_DATA>
+    like native-number
+  link have-future-data, name <HAVE_FUTURE_DATA>
+    like native-number
+  link have-metadata, name <HAVE_METADATA>
+    like native-number
+  link have-nothing, name <HAVE_NOTHING>
+    like native-number
+  link network-empty, name <NETWORK_EMPTY>
+    like native-number
+  link network-idle, name <NETWORK_IDLE>
+    like native-number
+  link network-loading, name <NETWORK_LOADING>
+    like native-number
+  link network-no-source, name <NETWORK_NO_SOURCE>
+    like native-number
+
+  task add-text-track, name <addTextTrack>
+    like text-track
+
+    take kind
+    take label, like maybe, like native-string
+    take language, like maybe, like native-string
+
+  task can-play-type, name <canPlayType>
+    like can-play-type-result
+
+    take type
+
+  task fast-seek, name <fastSeek>
+    like native-void
+
+    take time
+
+  task load, name <load>
+    like native-void
+
+  task pause, name <pause>
+    like native-void
+
+  task play, name <play>
+    like promise
+      like native-void
+
+  task set-media-keys, name <setMediaKeys>
+    like promise
+      like native-void
+
+    take media-keys
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like html-media-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like html-media-element-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

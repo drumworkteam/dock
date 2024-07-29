@@ -1,0 +1,23 @@
+
+load @termsurf/base/code/browser/dom
+  take form event
+  take form media-stream
+  take form media-stream-track
+  take form rtc-rtp-receiver
+  take form rtc-rtp-transceiver
+
+load @termsurf/base/code/javascript/es5
+  take form readonly-array
+
+form rtc-track-event, name <RTCTrackEvent>
+  base event
+
+  link receiver, name <receiver>
+    like rtc-rtp-receiver
+  link streams, name <streams>
+    like readonly-array
+      like media-stream
+  link track, name <track>
+    like media-stream-track
+  link transceiver, name <transceiver>
+    like rtc-rtp-transceiver

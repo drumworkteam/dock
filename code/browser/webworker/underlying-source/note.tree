@@ -1,0 +1,30 @@
+
+load @termsurf/base/code/javascript/native
+  take form native-undefined
+
+load @termsurf/base/code/browser/webworker
+  take form underlying-source-cancel-callback
+  take form underlying-source-pull-callback
+  take form underlying-source-start-callback
+
+load @termsurf/base/code/browser/dom/underlying-source
+  take form underlying-source
+
+form underlying-source, name <UnderlyingSource>
+  head r
+    fall any
+
+  link cancel, name <cancel>
+    like underlying-source-cancel-callback
+    flex true
+  link pull, name <pull>
+    like underlying-source-pull-callback
+      like r
+    flex true
+  link start, name <start>
+    like underlying-source-start-callback
+      like r
+    flex true
+  link type, name <type>
+    like native-undefined
+    flex true

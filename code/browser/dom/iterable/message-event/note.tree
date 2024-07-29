@@ -1,0 +1,37 @@
+
+load @termsurf/base/code/javascript/native
+  take form iterable
+  take form native-boolean
+  take form native-null
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form message-event-source
+  take form message-port
+
+load @termsurf/base/code/browser/dom/message-event
+  take form message-event
+
+form message-event, name <MessageEvent>
+  head t
+    fall any
+
+  task init-message-event, name <initMessageEvent>
+    like native-void
+
+    take type
+    take bubbles, like maybe, like native-boolean
+    take cancelable, like maybe, like native-boolean
+    take data, like maybe, like any
+    take origin, like maybe, like native-string
+    take last-event-id, like maybe, like native-string
+    take source
+      like maybe
+        like or
+          like message-event-source
+          like native-null
+    take ports
+      like maybe
+        like iterable
+          like message-port

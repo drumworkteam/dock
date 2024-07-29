@@ -1,0 +1,216 @@
+
+load @termsurf/base/code/javascript
+  take form array
+
+load @termsurf/base/code/javascript/native
+  take form native-boolean
+  take form native-null
+  take form native-number
+  take form native-string
+  take form native-void
+
+load @termsurf/base/code/browser/dom
+  take form add-event-listener-options
+  take form analyser-node
+  take form audio-buffer
+  take form audio-buffer-source-node
+  take form audio-context-state
+  take form audio-destination-node
+  take form audio-listener
+  take form audio-worklet
+  take form base-audio-context-event-map
+  take form biquad-filter-node
+  take form channel-merger-node
+  take form channel-splitter-node
+  take form constant-source-node
+  take form convolver-node
+  take form decode-error-callback
+  take form decode-success-callback
+  take form delay-node
+  take form dynamics-compressor-node
+  take form event
+  take form event-listener-options
+  take form event-listener-or-event-listener-object
+  take form event-target
+  take form gain-node
+  take form iir-filter-node
+  take form oscillator-node
+  take form panner-node
+  take form periodic-wave
+  take form periodic-wave-constraints
+  take form script-processor-node
+  take form stereo-panner-node
+  take form wave-shaper-node
+
+load @termsurf/base/code/javascript/es5
+  take form array-buffer
+  take form float32-array
+  take form promise
+
+form base-audio-context, name <BaseAudioContext>
+  base event-target
+
+  link audio-worklet, name <audioWorklet>
+    like audio-worklet
+  link current-time, name <currentTime>
+    like native-number
+  link destination, name <destination>
+    like audio-destination-node
+  link listener, name <listener>
+    like audio-listener
+  link onstatechange, name <onstatechange>
+    like or
+      like task
+        like any
+
+        take this
+        take ev
+      like native-null
+    flex true
+  link sample-rate, name <sampleRate>
+    like native-number
+  link state, name <state>
+    like audio-context-state
+
+  task create-analyser, name <createAnalyser>
+    like analyser-node
+
+  task create-biquad-filter, name <createBiquadFilter>
+    like biquad-filter-node
+
+  task create-buffer, name <createBuffer>
+    like audio-buffer
+
+    take number-of-channels
+    take length
+    take sample-rate
+
+  task create-buffer-source, name <createBufferSource>
+    like audio-buffer-source-node
+
+  task create-channel-merger, name <createChannelMerger>
+    like channel-merger-node
+
+    take number-of-inputs, like maybe, like native-number
+
+  task create-channel-splitter, name <createChannelSplitter>
+    like channel-splitter-node
+
+    take number-of-outputs, like maybe, like native-number
+
+  task create-constant-source, name <createConstantSource>
+    like constant-source-node
+
+  task create-convolver, name <createConvolver>
+    like convolver-node
+
+  task create-delay, name <createDelay>
+    like delay-node
+
+    take max-delay-time, like maybe, like native-number
+
+  task create-dynamics-compressor, name <createDynamicsCompressor>
+    like dynamics-compressor-node
+
+  task create-gain, name <createGain>
+    like gain-node
+
+  task create-iir-filter, name <createIIRFilter>
+    like iir-filter-node
+
+    take feedforward
+    take feedback
+
+  task create-oscillator, name <createOscillator>
+    like oscillator-node
+
+  task create-panner, name <createPanner>
+    like panner-node
+
+  task create-periodic-wave, name <createPeriodicWave>
+    like periodic-wave
+
+    take real
+    take imag
+    take constraints, like maybe, like periodic-wave-constraints
+
+  task create-script-processor, name <createScriptProcessor>
+    like script-processor-node
+
+    take buffer-size, like maybe, like native-number
+    take number-of-input-channels, like maybe, like native-number
+    take number-of-output-channels, like maybe, like native-number
+
+  task create-stereo-panner, name <createStereoPanner>
+    like stereo-panner-node
+
+  task create-wave-shaper, name <createWaveShaper>
+    like wave-shaper-node
+
+  task decode-audio-data, name <decodeAudioData>
+    like promise
+      like audio-buffer
+
+    take audio-data
+    take success-callback
+      like maybe
+        like or
+          like decode-success-callback
+          like native-null
+    take error-callback
+      like maybe
+        like or
+          like decode-error-callback
+          like native-null
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like base-audio-context-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task add-event-listener, name <addEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like add-event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    head k
+      base key-list
+        like base-audio-context-event-map
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options
+
+  task remove-event-listener, name <removeEventListener>
+    like native-void
+
+    take type
+    take listener
+    take options
+      like maybe
+        like or
+          like native-boolean
+          like event-listener-options

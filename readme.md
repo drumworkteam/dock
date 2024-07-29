@@ -12,7 +12,7 @@
 
 <h3 align='center'>bind.tree</h3>
 <p align='center'>
-  The BaseTree Environment Binding Library
+  The NoteTree Environment Binding Library
 </p>
 
 <br/>
