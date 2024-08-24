@@ -6,11 +6,7 @@
 <br/>
 <br/>
 
-<p align='center'>
-  <img src='https://github.com/termsurf/bind.tree/blob/make/view/view.svg?raw=true' height='192'>
-</p>
-
-<h3 align='center'>bind.tree</h3>
+<h3 align='center'>case.tree</h3>
 <p align='center'>
   The NoteTree Environment Binding Library
 </p>
@@ -21,12 +17,9 @@
 
 ## Welcome
 
-This `bind.tree` project is a collection of low-level environment APIs,
-specifically those for JavaScript, Node.js, Rust, Swift, etc.. They are
-simply the type definitions for most of the useful features of the
-environment, for use in code. We use them to generate the appropriate
-environment code in the `seed.tree` compiler. In addition, it has the
-base types used by the environments, such as `any` and `text`.
+This `case.tree` project is a "wrapper" or "case" around the runtime
+environment. It is simply all the type definitions for the runtime
+environment.
 
 ## License
 
